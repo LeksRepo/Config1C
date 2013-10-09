@@ -1,0 +1,394 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<CheckBoxField name="ЮридическоеЛицо" id="82">
+			<DataPath>Объект.ЮридическоеЛицо</DataPath>
+			<CheckBoxType>Auto</CheckBoxType>
+			<ContextMenu name="ЮридическоеЛицоКонтекстноеМеню" id="83"/>
+			<ExtendedTooltip name="ЮридическоеЛицоРасширеннаяПодсказка" id="84"/>
+			<Events>
+				<Event name="OnChange">ЮридическоеЛицоПриИзменении</Event>
+			</Events>
+		</CheckBoxField>
+		<InputField name="Наименование" id="3">
+			<DataPath>Объект.Description</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Наименование</v8:content>
+				</v8:item>
+			</Title>
+			<TitleLocation>Top</TitleLocation>
+			<EditMode>EnterOnInput</EditMode>
+			<HorizontalStretch>false</HorizontalStretch>
+			<ContextMenu name="НаименованиеКонтекстноеМеню" id="4"/>
+			<ExtendedTooltip name="НаименованиеExtendedTooltip" id="60"/>
+		</InputField>
+		<UsualGroup name="ГруппаЮридическоеЛицо" id="87">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Юридическое лицо</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа юридическое лицо</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<ExtendedTooltip name="ГруппаЮридическоеЛицоРасширеннаяПодсказка" id="88"/>
+			<ChildItems>
+				<InputField name="ПолноеНаименование" id="21">
+					<DataPath>Объект.ПолноеНаименование</DataPath>
+					<TitleLocation>Left</TitleLocation>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ПолноеНаименованиеКонтекстноеМеню" id="22"/>
+					<ExtendedTooltip name="ПолноеНаименованиеExtendedTooltip" id="62"/>
+				</InputField>
+				<InputField name="Руководитель" id="129">
+					<DataPath>Объект.Руководитель</DataPath>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="РуководительКонтекстноеМеню" id="130"/>
+					<ExtendedTooltip name="РуководительРасширеннаяПодсказка" id="131"/>
+				</InputField>
+				<InputField name="ДействуетНаОсновании" id="132">
+					<DataPath>Объект.ДействуетНаОсновании</DataPath>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="ДействуетНаОснованииКонтекстноеМеню" id="133"/>
+					<ExtendedTooltip name="ДействуетНаОснованииРасширеннаяПодсказка" id="134"/>
+				</InputField>
+				<LabelDecoration name="ПолноеНаименованиеПодсказка" id="42">
+					<TextColor>web:SteelBlue</TextColor>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пример: Общество с ограниченной ответственностью "Рога и копыта"</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ПолноеНаименованиеПодсказкаКонтекстноеМеню" id="43"/>
+					<ExtendedTooltip name="ПолноеНаименованиеПодсказкаExtendedTooltip" id="63"/>
+				</LabelDecoration>
+				<InputField name="КонтактноеЛицо" id="44">
+					<DataPath>Объект.КонтактноеЛицо</DataPath>
+					<TitleLocation>Left</TitleLocation>
+					<HorizontalStretch>true</HorizontalStretch>
+					<VerticalStretch>false</VerticalStretch>
+					<MultiLine>true</MultiLine>
+					<ContextMenu name="КонтактноеЛицоКонтекстноеМеню" id="45"/>
+					<ExtendedTooltip name="КонтактноеЛицоExtendedTooltip" id="69"/>
+				</InputField>
+				<LabelDecoration name="КонтактноеЛицоПодсказка" id="46">
+					<TextColor>web:SteelBlue</TextColor>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Например: Петров Иван Геннадьевич, главбух, тел. 89140010010</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="КонтактноеЛицоПодсказкаКонтекстноеМеню" id="47"/>
+					<ExtendedTooltip name="КонтактноеЛицоПодсказкаExtendedTooltip" id="70"/>
+				</LabelDecoration>
+				<InputField name="ЮрЛицоТелефон" id="15">
+					<DataPath>Объект.Телефон</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="ЮрЛицоТелефонКонтекстноеМеню" id="16"/>
+					<ExtendedTooltip name="ЮрЛицоТелефонРасширеннаяПодсказка" id="71"/>
+				</InputField>
+				<InputField name="ЮрЛицоТелефонДополнительный" id="123">
+					<DataPath>Объект.ТелефонДополнительный</DataPath>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="ЮрЛицоТелефонДополнительныйКонтекстноеМеню" id="124"/>
+					<ExtendedTooltip name="ЮрЛицоТелефонДополнительныйРасширеннаяПодсказка" id="125"/>
+				</InputField>
+				<UsualGroup name="ГруппаКоды" id="28">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Коды</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа коды</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<ExtendedTooltip name="ГруппаКодыExtendedTooltip" id="64"/>
+					<ChildItems>
+						<InputField name="ИНН" id="9">
+							<DataPath>Объект.ИНН</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="ИННКонтекстноеМеню" id="10"/>
+							<ExtendedTooltip name="ИННExtendedTooltip" id="65"/>
+						</InputField>
+						<InputField name="КПП" id="23">
+							<DataPath>Объект.КПП</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="КППКонтекстноеМеню" id="24"/>
+							<ExtendedTooltip name="КППExtendedTooltip" id="66"/>
+						</InputField>
+						<InputField name="ОГРН" id="11">
+							<DataPath>Объект.ОГРН</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="ОГРНКонтекстноеМеню" id="12"/>
+							<ExtendedTooltip name="ОГРНExtendedTooltip" id="67"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<InputField name="ЮрАдрес" id="7">
+					<DataPath>Объект.ЮридическийАдрес</DataPath>
+					<TitleLocation>Left</TitleLocation>
+					<EditMode>EnterOnInput</EditMode>
+					<HorizontalStretch>true</HorizontalStretch>
+					<VerticalStretch>false</VerticalStretch>
+					<MultiLine>true</MultiLine>
+					<ContextMenu name="ЮрАдресКонтекстноеМеню" id="8"/>
+					<ExtendedTooltip name="ЮрАдресExtendedTooltip" id="79"/>
+				</InputField>
+				<UsualGroup name="ХарактеристикиПоставщика" id="54">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Характеристики поставщика</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Характеристики поставщика</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ExtendedTooltip name="ХарактеристикиПоставщикаExtendedTooltip" id="75"/>
+				</UsualGroup>
+				<InputField name="ЮрЛицоПочтовыйАдрес" id="34">
+					<DataPath>Объект.ПочтовыйАдрес</DataPath>
+					<TitleLocation>Left</TitleLocation>
+					<HorizontalStretch>true</HorizontalStretch>
+					<VerticalStretch>false</VerticalStretch>
+					<MultiLine>true</MultiLine>
+					<ContextMenu name="ЮрЛицоПочтовыйАдресКонтекстноеМеню" id="35"/>
+					<ExtendedTooltip name="ЮрЛицоПочтовыйАдресРасширеннаяПодсказка" id="74"/>
+				</InputField>
+				<InputField name="БанковскиеРеквизиты" id="48">
+					<DataPath>Объект.БанковскиеРеквизиты</DataPath>
+					<TitleLocation>Left</TitleLocation>
+					<HorizontalStretch>true</HorizontalStretch>
+					<VerticalStretch>false</VerticalStretch>
+					<MultiLine>true</MultiLine>
+					<ContextMenu name="БанковскиеРеквизитыКонтекстноеМеню" id="49"/>
+					<ExtendedTooltip name="БанковскиеРеквизитыExtendedTooltip" id="72"/>
+				</InputField>
+				<LabelDecoration name="БанковскиеРеквизитыПодсказка" id="50">
+					<TextColor>web:SteelBlue</TextColor>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пример: Р/счет 40802810800230000477 в Филиал "Дальневосточный"
+ЗАО "Райффайзенбанк" в Хабаровске, г. Хабаровск, БИК 040813796, К/счет 30101810800000000796</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="БанковскиеРеквизитыПодсказкаКонтекстноеМеню" id="51"/>
+					<ExtendedTooltip name="БанковскиеРеквизитыПодсказкаExtendedTooltip" id="73"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаФизическоеЛицо" id="85">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Физическое лицо</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа физическое лицо</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<ExtendedTooltip name="ГруппаФизическоеЛицоРасширеннаяПодсказка" id="86"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаФИО" id="95">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Фамилия имя отчество</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа ФИО</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ExtendedTooltip name="ГруппаФИОРасширеннаяПодсказка" id="96"/>
+					<ChildItems>
+						<InputField name="Фамилия" id="97">
+							<DataPath>Объект.Фамилия</DataPath>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="ФамилияКонтекстноеМеню" id="98"/>
+							<ExtendedTooltip name="ФамилияРасширеннаяПодсказка" id="99"/>
+							<Events>
+								<Event name="OnChange">ФамилияПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="Имя" id="100">
+							<DataPath>Объект.Имя</DataPath>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="ИмяКонтекстноеМеню" id="101"/>
+							<ExtendedTooltip name="ИмяРасширеннаяПодсказка" id="102"/>
+							<Events>
+								<Event name="OnChange">ИмяПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="Отчество" id="103">
+							<DataPath>Объект.Отчество</DataPath>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="ОтчествоКонтекстноеМеню" id="104"/>
+							<ExtendedTooltip name="ОтчествоРасширеннаяПодсказка" id="105"/>
+							<Events>
+								<Event name="OnChange">ОтчествоПриИзменении</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<InputField name="ДатаРождения" id="126">
+					<DataPath>Объект.ДатаРождения</DataPath>
+					<ContextMenu name="ДатаРожденияКонтекстноеМеню" id="127"/>
+					<ExtendedTooltip name="ДатаРожденияРасширеннаяПодсказка" id="128"/>
+				</InputField>
+				<InputField name="ФизЛицоТелефон" id="92">
+					<DataPath>Объект.Телефон</DataPath>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="ФизЛицоТелефонКонтекстноеМеню" id="93"/>
+					<ExtendedTooltip name="ФизЛицоТелефонРасширеннаяПодсказка" id="94"/>
+				</InputField>
+				<InputField name="ФизЛицоТелефонДополнительный" id="120">
+					<DataPath>Объект.ТелефонДополнительный</DataPath>
+					<Width>42</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="ФизЛицоТелефонДополнительныйКонтекстноеМеню" id="121"/>
+					<ExtendedTooltip name="ФизЛицоТелефонДополнительныйРасширеннаяПодсказка" id="122"/>
+				</InputField>
+				<UsualGroup name="ГруппаПаспорт" id="106">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Паспорт</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа паспорт</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<ExtendedTooltip name="ГруппаПаспортРасширеннаяПодсказка" id="107"/>
+					<ChildItems>
+						<InputField name="ПаспортСерия" id="117">
+							<DataPath>Объект.ПаспортСерия</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Серия</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ПаспортСерияКонтекстноеМеню" id="118"/>
+							<ExtendedTooltip name="ПаспортСерияРасширеннаяПодсказка" id="119"/>
+						</InputField>
+						<InputField name="ПаспортНомер" id="111">
+							<DataPath>Объект.ПаспортНомер</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Номер</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ПаспортНомерКонтекстноеМеню" id="112"/>
+							<ExtendedTooltip name="ПаспортНомерРасширеннаяПодсказка" id="113"/>
+						</InputField>
+						<InputField name="ПаспортКемВыдан" id="108">
+							<DataPath>Объект.ПаспортКемВыдан</DataPath>
+							<ContextMenu name="ПаспортКемВыданКонтекстноеМеню" id="109"/>
+							<ExtendedTooltip name="ПаспортКемВыданРасширеннаяПодсказка" id="110"/>
+						</InputField>
+						<InputField name="ПаспортДатаВыдачи" id="114">
+							<DataPath>Объект.ПаспортДатаВыдачи</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Когда</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ПаспортДатаВыдачиКонтекстноеМеню" id="115"/>
+							<ExtendedTooltip name="ПаспортДатаВыдачиРасширеннаяПодсказка" id="116"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<InputField name="ФизЛицоПочтовыйАдрес" id="89">
+					<DataPath>Объект.ПочтовыйАдрес</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Прописка</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>Left</TitleLocation>
+					<HorizontalStretch>true</HorizontalStretch>
+					<VerticalStretch>false</VerticalStretch>
+					<MultiLine>true</MultiLine>
+					<ContextMenu name="ФизЛицоПочтовыйАдресКонтекстноеМеню" id="90"/>
+					<ExtendedTooltip name="ФизЛицоПочтовыйАдресРасширеннаяПодсказка" id="91"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="Комментарий" id="36">
+			<DataPath>Объект.Комментарий</DataPath>
+			<TitleLocation>Left</TitleLocation>
+			<HorizontalStretch>true</HorizontalStretch>
+			<VerticalStretch>false</VerticalStretch>
+			<MultiLine>false</MultiLine>
+			<ContextMenu name="КомментарийКонтекстноеМеню" id="37"/>
+			<ExtendedTooltip name="КомментарийExtendedTooltip" id="81"/>
+		</InputField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.Контрагенты</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+	</Attributes>
+	<CommandInterface>
+		<NavigationPanel>
+			<Item>
+				<Command>3:92e5b5c3-195d-4526-b5ee-f3d0f7675f58</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+		</NavigationPanel>
+	</CommandInterface>
+</Form>

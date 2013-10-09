@@ -1,0 +1,495 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoTime>CurrentOrLast</AutoTime>
+	<UsePostingMode>Auto</UsePostingMode>
+	<RepostOnWrite>true</RepostOnWrite>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="НомерДатаГруппа" id="25">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номер дата группа</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номер дата группа</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="НомерДатаГруппаExtendedTooltip" id="111"/>
+			<ChildItems>
+				<InputField name="Номер" id="1">
+					<DataPath>Объект.Number</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="НомерExtendedTooltip" id="112"/>
+				</InputField>
+				<InputField name="Дата" id="107">
+					<DataPath>Объект.Date</DataPath>
+					<Width>9</Width>
+					<ContextMenu name="ДатаКонтекстноеМеню" id="108"/>
+					<ExtendedTooltip name="ДатаExtendedTooltip" id="113"/>
+					<Events>
+						<Event name="OnChange">ДатаПриИзменении</Event>
+					</Events>
+				</InputField>
+				<InputField name="Подразделение" id="5">
+					<DataPath>Объект.Подразделение</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>34</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="ПодразделениеКонтекстноеМеню" id="6"/>
+					<ExtendedTooltip name="ПодразделениеExtendedTooltip" id="114"/>
+					<Events>
+						<Event name="OnChange">ПодразделениеПриИзменении</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаОтчет" id="84">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отчет за предыдущие периоды</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа отчет</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<ExtendedTooltip name="ГруппаОтчетExtendedTooltip" id="115"/>
+			<ChildItems>
+				<SpreadSheetDocumentField name="ОтчетПоСтатьям" id="53">
+					<DataPath>ОтчетПоСтатьям</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отчет за предыдущие периоды</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>None</TitleLocation>
+					<Width>1</Width>
+					<ContextMenu name="ОтчетПоСтатьямКонтекстноеМеню" id="54"/>
+					<ExtendedTooltip name="ОтчетПоСтатьямExtendedTooltip" id="116"/>
+				</SpreadSheetDocumentField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаСтатьиРасшифровки" id="52">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа статьи расшифровки</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа статьи расшифровки</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ChildItemsWidth>LeftNarrow</ChildItemsWidth>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаСтатьиРасшифровкиExtendedTooltip" id="117"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаГруппыСтатей" id="42">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>План по группам статей</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа группы статей</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ExtendedTooltip name="ГруппаГруппыСтатейExtendedTooltip" id="118"/>
+					<ChildItems>
+						<Table name="ГруппыСтатей" id="98">
+							<Representation>List</Representation>
+							<ReadOnly>true</ReadOnly>
+							<Header>false</Header>
+							<Footer>true</Footer>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>ГруппыСтатей</DataPath>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ГруппыСтатейКонтекстноеМеню" id="99"/>
+							<AutoCommandBar name="ГруппыСтатейКоманднаяПанель" id="100">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ГруппыСтатейExtendedTooltip" id="119"/>
+							<SearchStringAddition name="ГруппыСтатейСтрокаПоиска" id="136">
+								<AdditionSource>
+									<Item>ГруппыСтатей</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ГруппыСтатейСтрокаПоискаКонтекстноеМеню" id="137"/>
+								<ExtendedTooltip name="ГруппыСтатейСтрокаПоискаРасширеннаяПодсказка" id="138"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ГруппыСтатейСостояниеПросмотра" id="139">
+								<AdditionSource>
+									<Item>ГруппыСтатей</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ГруппыСтатейСостояниеПросмотраКонтекстноеМеню" id="140"/>
+								<ExtendedTooltip name="ГруппыСтатейСостояниеПросмотраРасширеннаяПодсказка" id="141"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ГруппыСтатейУправлениеПоиском" id="142">
+								<AdditionSource>
+									<Item>ГруппыСтатей</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ГруппыСтатейУправлениеПоискомКонтекстноеМеню" id="143"/>
+								<ExtendedTooltip name="ГруппыСтатейУправлениеПоискомРасширеннаяПодсказка" id="144"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="OnActivateRow">ГруппыСтатейПриАктивизацииСтроки</Event>
+							</Events>
+							<ChildItems>
+								<InputField name="ГруппыСтатейГруппаСтатей" id="101">
+									<DataPath>ГруппыСтатей.ГруппаСтатей</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ГруппыСтатейГруппаСтатейКонтекстноеМеню" id="102"/>
+									<ExtendedTooltip name="ГруппыСтатейГруппаСтатейExtendedTooltip" id="120"/>
+								</InputField>
+								<InputField name="ГруппыСтатейСумма" id="103">
+									<DataPath>ГруппыСтатей.Сумма</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<FooterDataPath>ИтогПоСтатьям</FooterDataPath>
+									<ContextMenu name="ГруппыСтатейСуммаКонтекстноеМеню" id="104"/>
+									<ExtendedTooltip name="ГруппыСтатейСуммаExtendedTooltip" id="121"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаСписокСтатей" id="28">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Расшифровка</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа список статей</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ExtendedTooltip name="ГруппаСписокСтатейExtendedTooltip" id="122"/>
+					<ChildItems>
+						<InputField name="ТекущаяСтатья" id="80">
+							<DataPath>ТекущаяСтатья</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Выбранная статья</v8:content>
+								</v8:item>
+							</Title>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ClearButton>true</ClearButton>
+							<OpenButton>false</OpenButton>
+							<QuickChoice>true</QuickChoice>
+							<ChoiceFoldersAndItems>Folders</ChoiceFoldersAndItems>
+							<ChoiceParameters>
+								<app:item name="Отбор.ВидСтатьи">
+									<app:value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xr:DesignTimeRef">Enum.ВидыСтатейДДС.EnumValue.Выплата</Value>
+									</app:value>
+								</app:item>
+							</ChoiceParameters>
+							<ContextMenu name="ТекущаяСтатьяКонтекстноеМеню" id="81"/>
+							<ExtendedTooltip name="ТекущаяСтатьяExtendedTooltip" id="123"/>
+							<Events>
+								<Event name="OnChange">ТекущаяСтатьяПриИзменении</Event>
+							</Events>
+						</InputField>
+						<Table name="СписокСтатей" id="85">
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Объект.СписокСтатей</DataPath>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="СписокСтатейКонтекстноеМеню" id="86"/>
+							<AutoCommandBar name="СписокСтатейКоманднаяПанель" id="87"/>
+							<ExtendedTooltip name="СписокСтатейExtendedTooltip" id="124"/>
+							<SearchStringAddition name="СписокСтатейСтрокаПоиска" id="145">
+								<AdditionSource>
+									<Item>СписокСтатей</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокСтатейСтрокаПоискаКонтекстноеМеню" id="146"/>
+								<ExtendedTooltip name="СписокСтатейСтрокаПоискаРасширеннаяПодсказка" id="147"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="СписокСтатейСостояниеПросмотра" id="148">
+								<AdditionSource>
+									<Item>СписокСтатей</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокСтатейСостояниеПросмотраКонтекстноеМеню" id="149"/>
+								<ExtendedTooltip name="СписокСтатейСостояниеПросмотраРасширеннаяПодсказка" id="150"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="СписокСтатейУправлениеПоиском" id="151">
+								<AdditionSource>
+									<Item>СписокСтатей</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокСтатейУправлениеПоискомКонтекстноеМеню" id="152"/>
+								<ExtendedTooltip name="СписокСтатейУправлениеПоискомРасширеннаяПодсказка" id="153"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="OnChange">СписокСтатейПриИзменении</Event>
+							</Events>
+							<ChildItems>
+								<InputField name="СписокСтатейДата" id="109">
+									<DataPath>Объект.СписокСтатей.Дата</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="СписокСтатейДатаКонтекстноеМеню" id="110"/>
+									<ExtendedTooltip name="СписокСтатейДатаExtendedTooltip" id="125"/>
+								</InputField>
+								<InputField name="СписокСтатейСтатья" id="94">
+									<DataPath>Объект.СписокСтатей.Статья</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="СписокСтатейСтатьяКонтекстноеМеню" id="95"/>
+									<ExtendedTooltip name="СписокСтатейСтатьяExtendedTooltip" id="126"/>
+									<Events>
+										<Event name="StartChoice">СписокСтатейСтатьяНачалоВыбора</Event>
+									</Events>
+								</InputField>
+								<InputField name="СписокСтатейСумма" id="96">
+									<DataPath>Объект.СписокСтатей.Сумма</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="СписокСтатейСуммаКонтекстноеМеню" id="97"/>
+									<ExtendedTooltip name="СписокСтатейСуммаExtendedTooltip" id="127"/>
+								</InputField>
+								<InputField name="СписокСтатейКомментарий" id="90">
+									<DataPath>Объект.СписокСтатей.Комментарий</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<HorizontalStretch>true</HorizontalStretch>
+									<ContextMenu name="СписокСтатейКомментарийКонтекстноеМеню" id="91"/>
+									<ExtendedTooltip name="СписокСтатейКомментарийExtendedTooltip" id="128"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаТексты" id="55">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа тексты</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа тексты</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ChildItemsWidth>Equal</ChildItemsWidth>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаТекстыExtendedTooltip" id="129"/>
+			<ChildItems>
+				<InputField name="ОтчетЗаПрошлыйПериод" id="105">
+					<DataPath>ОтчетЗаПрошлыйПериод</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+					<TitleLocation>Top</TitleLocation>
+					<MultiLine>true</MultiLine>
+					<ContextMenu name="ОтчетЗаПрошлыйПериодКонтекстноеМеню" id="106"/>
+					<ExtendedTooltip name="ОтчетЗаПрошлыйПериодExtendedTooltip" id="130"/>
+				</InputField>
+				<InputField name="Отчет" id="58">
+					<DataPath>Объект.Отчет</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отчет за текущий период</v8:content>
+						</v8:item>
+					</Title>
+					<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+					<MultiLine>true</MultiLine>
+					<ContextMenu name="ОтчетКонтекстноеМеню" id="59"/>
+					<ExtendedTooltip name="ОтчетExtendedTooltip" id="131"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="Комментарий" id="7">
+			<DataPath>1/0:b619a5db-c2cd-45c0-b198-78fe74f061dc</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="КомментарийКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="КомментарийExtendedTooltip" id="132"/>
+		</InputField>
+		<UsualGroup name="АвторыГруппа" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Авторы группа</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Авторы группа</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="АвторыГруппаExtendedTooltip" id="133"/>
+			<ChildItems>
+				<LabelField name="Автор" id="9">
+					<DataPath>1/0:1ffbbcd8-0940-49cf-83d4-54bcf3a63504</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="АвторКонтекстноеМеню" id="10"/>
+					<ExtendedTooltip name="АвторExtendedTooltip" id="134"/>
+				</LabelField>
+				<LabelField name="Соавтор" id="11">
+					<DataPath>1/0:56ba9ae6-d761-4582-913b-39571aa252f8</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="СоавторКонтекстноеМеню" id="12"/>
+					<ExtendedTooltip name="СоавторExtendedTooltip" id="135"/>
+				</LabelField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DocumentObject.ПланРуководителя</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<UseAlways>
+				<Field>Объект.RegisterRecords</Field>
+			</UseAlways>
+		</Attribute>
+		<Attribute name="ОтчетПоСтатьям" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отчет по статьям</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type xmlns:mxl="http://v8.1c.ru/8.2/data/spreadsheet">mxl:SpreadsheetDocument</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ТекущаяСтатья" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текущая статья</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.СтатьиДоходовРасходов</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ГруппыСтатей" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группы статей</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="ГруппаСтатей" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа статей</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.СтатьиДоходовРасходов</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Сумма" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>15</v8:Digits>
+							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ОтчетЗаПрошлыйПериод" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отчет за прошлый период</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ИтогПоСтатьям" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Итог по статьям</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+	</Attributes>
+</Form>

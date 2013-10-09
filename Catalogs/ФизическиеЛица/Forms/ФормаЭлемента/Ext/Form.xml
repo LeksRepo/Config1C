@@ -1,0 +1,419 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаПарольИнкассатора" id="102">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ПарольИнкассатора</CommandName>
+				<ExtendedTooltip name="ФормаПарольИнкассатораРасширеннаяПодсказка" id="103"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+	</Events>
+	<ChildItems>
+		<LabelField name="Наименование" id="1">
+			<DataPath>Объект.Description</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ФИО</v8:content>
+				</v8:item>
+			</Title>
+			<TitleTextColor>style:ПоясняющийТекст</TitleTextColor>
+			<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+			<EditMode>EnterOnInput</EditMode>
+			<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+			<ContextMenu name="НаименованиеКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="3"/>
+		</LabelField>
+		<UsualGroup name="ГруппаОсновное" id="94">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа основное</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа основное</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаОсновноеРасширеннаяПодсказка" id="95"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаФИО" id="82">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа ФИО</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа ФИО</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаФИОРасширеннаяПодсказка" id="83"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаФамилия" id="80">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа фамилия</v8:content>
+								</v8:item>
+							</Title>
+							<TitleTextColor>style:ПоясняющийТекст</TitleTextColor>
+							<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа фамилия</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаФамилияРасширеннаяПодсказка" id="81"/>
+							<ChildItems>
+								<InputField name="Фамилия" id="61">
+									<DataPath>Объект.Фамилия</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ФамилияКонтекстноеМеню" id="62"/>
+									<ExtendedTooltip name="ФамилияРасширеннаяПодсказка" id="63"/>
+									<Events>
+										<Event name="OnChange">ФамилияПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="Имя" id="22">
+									<DataPath>Объект.Имя</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ИмяКонтекстноеМеню" id="23"/>
+									<ExtendedTooltip name="ИмяРасширеннаяПодсказка" id="24"/>
+									<Events>
+										<Event name="OnChange">ФамилияПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="Отчество" id="37">
+									<DataPath>Объект.Отчество</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ОтчествоКонтекстноеМеню" id="38"/>
+									<ExtendedTooltip name="ОтчествоРасширеннаяПодсказка" id="39"/>
+									<Events>
+										<Event name="OnChange">ФамилияПриИзменении</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаЛичныеДанные" id="88">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа личные данные</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа личные данные</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаЛичныеДанныеРасширеннаяПодсказка" id="89"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаАдресаТелефоны" id="84">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Адреса и телефоны</v8:content>
+								</v8:item>
+							</Title>
+							<TitleTextColor>style:ПоясняющийТекст</TitleTextColor>
+							<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа адреса телефоны</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ExtendedTooltip name="ГруппаАдресаТелефоныРасширеннаяПодсказка" id="85"/>
+							<ChildItems>
+								<LabelField name="АдресПроживания" id="7">
+									<DataPath>Объект.АдресПроживания</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Hiperlink>true</Hiperlink>
+									<ContextMenu name="АдресПроживанияКонтекстноеМеню" id="8"/>
+									<ExtendedTooltip name="АдресПроживанияРасширеннаяПодсказка" id="9"/>
+									<Events>
+										<Event name="Click">АдресРегистрацииНажатие</Event>
+									</Events>
+								</LabelField>
+								<LabelField name="АдресРегистрации" id="10">
+									<DataPath>Объект.АдресРегистрации</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Hiperlink>true</Hiperlink>
+									<ContextMenu name="АдресРегистрацииКонтекстноеМеню" id="11"/>
+									<ExtendedTooltip name="АдресРегистрацииРасширеннаяПодсказка" id="12"/>
+									<Events>
+										<Event name="Click">АдресРегистрацииНажатие</Event>
+									</Events>
+								</LabelField>
+								<InputField name="Телефон" id="58">
+									<DataPath>Объект.Телефон</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<HorizontalStretch>false</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
+									<ContextMenu name="ТелефонКонтекстноеМеню" id="59"/>
+									<ExtendedTooltip name="ТелефонРасширеннаяПодсказка" id="60"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаОсновныеЛичныеДанные" id="86">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Основные личные данные</v8:content>
+								</v8:item>
+							</Title>
+							<TitleTextColor>style:ПоясняющийТекст</TitleTextColor>
+							<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа основные личные данные</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ExtendedTooltip name="ГруппаОсновныеЛичныеДанныеРасширеннаяПодсказка" id="87"/>
+							<ChildItems>
+								<InputField name="ДатаРождения" id="19">
+									<DataPath>Объект.ДатаРождения</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ДатаРожденияКонтекстноеМеню" id="20"/>
+									<ExtendedTooltip name="ДатаРожденияРасширеннаяПодсказка" id="21"/>
+								</InputField>
+								<InputField name="Пол" id="52">
+									<DataPath>Объект.Пол</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>11</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
+									<QuickChoice>true</QuickChoice>
+									<ContextMenu name="ПолКонтекстноеМеню" id="53"/>
+									<ExtendedTooltip name="ПолРасширеннаяПодсказка" id="54"/>
+								</InputField>
+								<InputField name="МестоРождения" id="28">
+									<DataPath>Объект.МестоРождения</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="МестоРожденияКонтекстноеМеню" id="29"/>
+									<ExtendedTooltip name="МестоРожденияРасширеннаяПодсказка" id="30"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаМестоРаботы" id="92">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Текущее место работы</v8:content>
+						</v8:item>
+					</Title>
+					<TitleTextColor>style:ПоясняющийТекст</TitleTextColor>
+					<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа место работы</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ExtendedTooltip name="ГруппаМестоРаботыРасширеннаяПодсказка" id="93"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаТекущееМестоРаботы" id="104">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа текущее место работы</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа текущее место работы</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаТекущееМестоРаботыРасширеннаяПодсказка" id="105"/>
+							<ChildItems>
+								<InputField name="Подразделение" id="49">
+									<DataPath>Объект.Подразделение</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<QuickChoice>true</QuickChoice>
+									<ContextMenu name="ПодразделениеКонтекстноеМеню" id="50"/>
+									<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="51"/>
+								</InputField>
+								<InputField name="ОсновнаяДолжность" id="34">
+									<DataPath>Объект.ОсновнаяДолжность</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Должность</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<QuickChoice>true</QuickChoice>
+									<ContextMenu name="ОсновнаяДолжностьКонтекстноеМеню" id="35"/>
+									<ExtendedTooltip name="ОсновнаяДолжностьРасширеннаяПодсказка" id="36"/>
+								</InputField>
+								<CheckBoxField name="Работает" id="55">
+									<DataPath>Объект.Активность</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="РаботаетКонтекстноеМеню" id="56"/>
+									<ExtendedTooltip name="РаботаетРасширеннаяПодсказка" id="57"/>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="ВЛице" id="106">
+			<DataPath>Объект.ВЛице</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ФИО в родительном падеже для заполнения документов</v8:content>
+				</v8:item>
+			</Title>
+			<TitleTextColor>style:ПоясняющийТекст</TitleTextColor>
+			<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+			<TitleLocation>Top</TitleLocation>
+			<HorizontalStretch>false</HorizontalStretch>
+			<VerticalStretch>false</VerticalStretch>
+			<ContextMenu name="ВЛицеКонтекстноеМеню" id="107"/>
+			<ExtendedTooltip name="ВЛицеРасширеннаяПодсказка" id="108"/>
+		</InputField>
+		<Table name="Доверенности" id="64">
+			<Representation>List</Representation>
+			<TitleLocation>Top</TitleLocation>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>Объект.Доверенности</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Доверенности для дизайнеров</v8:content>
+				</v8:item>
+			</Title>
+			<TitleTextColor>style:ПоясняющийТекст</TitleTextColor>
+			<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ДоверенностиКонтекстноеМеню" id="65"/>
+			<AutoCommandBar name="ДоверенностиКоманднаяПанель" id="66"/>
+			<ExtendedTooltip name="ДоверенностиРасширеннаяПодсказка" id="67"/>
+			<SearchStringAddition name="ДоверенностиСтрокаПоиска" id="109">
+				<AdditionSource>
+					<Item>Доверенности</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ДоверенностиСтрокаПоискаКонтекстноеМеню" id="110"/>
+				<ExtendedTooltip name="ДоверенностиСтрокаПоискаРасширеннаяПодсказка" id="111"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ДоверенностиСостояниеПросмотра" id="112">
+				<AdditionSource>
+					<Item>Доверенности</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ДоверенностиСостояниеПросмотраКонтекстноеМеню" id="113"/>
+				<ExtendedTooltip name="ДоверенностиСостояниеПросмотраРасширеннаяПодсказка" id="114"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ДоверенностиУправлениеПоиском" id="115">
+				<AdditionSource>
+					<Item>Доверенности</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ДоверенностиУправлениеПоискомКонтекстноеМеню" id="116"/>
+				<ExtendedTooltip name="ДоверенностиУправлениеПоискомРасширеннаяПодсказка" id="117"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<LabelField name="ДоверенностиНомерСтроки" id="68">
+					<DataPath>Объект.Доверенности.LineNumber</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ДоверенностиНомерСтрокиКонтекстноеМеню" id="69"/>
+					<ExtendedTooltip name="ДоверенностиНомерСтрокиРасширеннаяПодсказка" id="70"/>
+				</LabelField>
+				<InputField name="ДоверенностиОрганизация" id="71">
+					<DataPath>Объект.Доверенности.Организация</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ДоверенностиОрганизацияКонтекстноеМеню" id="72"/>
+					<ExtendedTooltip name="ДоверенностиОрганизацияРасширеннаяПодсказка" id="73"/>
+				</InputField>
+				<InputField name="ДоверенностиНомерДоверенности" id="74">
+					<DataPath>Объект.Доверенности.НомерДоверенности</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ДоверенностиНомерДоверенностиКонтекстноеМеню" id="75"/>
+					<ExtendedTooltip name="ДоверенностиНомерДоверенностиРасширеннаяПодсказка" id="76"/>
+				</InputField>
+				<InputField name="ДоверенностиДатаДоверенности" id="77">
+					<DataPath>Объект.Доверенности.ДатаДоверенности</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ДоверенностиДатаДоверенностиКонтекстноеМеню" id="78"/>
+					<ExtendedTooltip name="ДоверенностиДатаДоверенностиРасширеннаяПодсказка" id="79"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:CatalogObject.ФизическиеЛица</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ПарольИнкассатора" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пароль инкассатора</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пароль инкассатора</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПарольИнкассатора</Action>
+		</Command>
+	</Commands>
+</Form>

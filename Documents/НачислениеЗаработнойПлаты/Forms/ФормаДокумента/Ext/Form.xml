@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoTime>CurrentOrLast</AutoTime>
+	<UsePostingMode>Auto</UsePostingMode>
+	<RepostOnWrite>true</RepostOnWrite>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<ChildItems>
+		<UsualGroup name="ДатаНомер" id="24">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата номер</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дата номер</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ДатаНомерExtendedTooltip" id="37"/>
+			<ChildItems>
+				<InputField name="Номер" id="1">
+					<DataPath>Объект.Number</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="НомерExtendedTooltip" id="38"/>
+				</InputField>
+				<InputField name="Дата" id="3">
+					<DataPath>Объект.Date</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ДатаКонтекстноеМеню" id="4"/>
+					<ExtendedTooltip name="ДатаExtendedTooltip" id="39"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="Подразделение" id="22">
+			<DataPath>Объект.Подразделение</DataPath>
+			<HorizontalStretch>false</HorizontalStretch>
+			<ContextMenu name="ПодразделениеКонтекстноеМеню" id="23"/>
+			<ExtendedTooltip name="ПодразделениеExtendedTooltip" id="40"/>
+		</InputField>
+		<Table name="СписокФизлиц" id="11">
+			<Representation>List</Representation>
+			<Footer>true</Footer>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>Объект.СписокФизлиц</DataPath>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="СписокФизлицКонтекстноеМеню" id="12"/>
+			<AutoCommandBar name="СписокФизлицКоманднаяПанель" id="13"/>
+			<ExtendedTooltip name="СписокФизлицExtendedTooltip" id="41"/>
+			<SearchStringAddition name="СписокФизлицСтрокаПоиска" id="60">
+				<AdditionSource>
+					<Item>СписокФизлиц</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокФизлицСтрокаПоискаКонтекстноеМеню" id="61"/>
+				<ExtendedTooltip name="СписокФизлицСтрокаПоискаРасширеннаяПодсказка" id="62"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="СписокФизлицСостояниеПросмотра" id="63">
+				<AdditionSource>
+					<Item>СписокФизлиц</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокФизлицСостояниеПросмотраКонтекстноеМеню" id="64"/>
+				<ExtendedTooltip name="СписокФизлицСостояниеПросмотраРасширеннаяПодсказка" id="65"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="СписокФизлицУправлениеПоиском" id="66">
+				<AdditionSource>
+					<Item>СписокФизлиц</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокФизлицУправлениеПоискомКонтекстноеМеню" id="67"/>
+				<ExtendedTooltip name="СписокФизлицУправлениеПоискомРасширеннаяПодсказка" id="68"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<LabelField name="СписокФизлицНомерСтроки" id="14">
+					<DataPath>Объект.СписокФизлиц.LineNumber</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="СписокФизлицНомерСтрокиКонтекстноеМеню" id="15"/>
+					<ExtendedTooltip name="СписокФизлицНомерСтрокиExtendedTooltip" id="42"/>
+				</LabelField>
+				<InputField name="СписокФизлицФизЛицо" id="16">
+					<DataPath>Объект.СписокФизлиц.ФизЛицо</DataPath>
+					<DefaultItem>true</DefaultItem>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="СписокФизлицФизЛицоКонтекстноеМеню" id="17"/>
+					<ExtendedTooltip name="СписокФизлицФизЛицоExtendedTooltip" id="43"/>
+				</InputField>
+				<InputField name="СписокФизлицСумма" id="18">
+					<DataPath>Объект.СписокФизлиц.Сумма</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<FooterDataPath>Объект.СписокФизлиц.TotalСумма</FooterDataPath>
+					<ContextMenu name="СписокФизлицСуммаКонтекстноеМеню" id="19"/>
+					<ExtendedTooltip name="СписокФизлицСуммаExtendedTooltip" id="44"/>
+				</InputField>
+				<InputField name="СписокФизлицСтатья" id="31">
+					<DataPath>Объект.СписокФизлиц.Статья</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="СписокФизлицСтатьяКонтекстноеМеню" id="32"/>
+					<ExtendedTooltip name="СписокФизлицСтатьяExtendedTooltip" id="45"/>
+				</InputField>
+				<InputField name="СписокФизлицКомментарий" id="25">
+					<DataPath>Объект.СписокФизлиц.Комментарий</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="СписокФизлицКомментарийКонтекстноеМеню" id="26"/>
+					<ExtendedTooltip name="СписокФизлицКомментарийExtendedTooltip" id="46"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+		<LabelField name="СуммаДокумента" id="54">
+			<DataPath>Объект.СуммаДокумента</DataPath>
+			<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+			<ContextMenu name="СуммаДокументаКонтекстноеМеню" id="55"/>
+			<ExtendedTooltip name="СуммаДокументаРасширеннаяПодсказка" id="56"/>
+		</LabelField>
+		<LabelField name="Автор" id="51">
+			<DataPath>Объект.Автор</DataPath>
+			<ContextMenu name="АвторКонтекстноеМеню" id="52"/>
+			<ExtendedTooltip name="АвторРасширеннаяПодсказка" id="53"/>
+		</LabelField>
+		<InputField name="Комментарий" id="57">
+			<DataPath>Объект.Комментарий</DataPath>
+			<ContextMenu name="КомментарийКонтекстноеМеню" id="58"/>
+			<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="59"/>
+		</InputField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DocumentObject.НачислениеЗаработнойПлаты</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<UseAlways>
+				<Field>Объект.RegisterRecords</Field>
+			</UseAlways>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ЗаполинтьОклады" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполинть оклады</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗаполинтьОклады</Action>
+		</Command>
+		<Command name="ЗаполнитьДизайнерамДоМинимума" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Начислить до минимального оклада</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить дизайнерам до минимума</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗаполнитьДизайнеров</Action>
+		</Command>
+		<Command name="ЗаполнитьДизайнерамБонус" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Бонус от договоров</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить дизайнерам бонус</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗаполнитьДизайнерамБонус</Action>
+		</Command>
+	</Commands>
+</Form>

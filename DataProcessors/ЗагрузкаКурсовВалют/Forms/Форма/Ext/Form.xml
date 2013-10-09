@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Width>60</Width>
+	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаЗагрузитьКурсыВалют" id="32">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.ЗагрузитьКурсыВалют</CommandName>
+				<ExtendedTooltip name="ФормаЗагрузитьКурсыВалютExtendedTooltip" id="33"/>
+			</Button>
+			<ButtonGroup name="КоманднаяПанельСписокВалют" id="6">
+				<CommandSource>Item.СписокВалют</CommandSource>
+				<ExtendedTooltip name="КоманднаяПанельСписокВалютExtendedTooltip" id="34"/>
+				<ChildItems>
+					<Button name="КнопкаЗаполнить" id="8">
+						<Type>CommandBarButton</Type>
+						<Representation>PictureAndText</Representation>
+						<SkipOnInput>false</SkipOnInput>
+						<CommandName>Form.Command.ДобавитьВсеВалюты</CommandName>
+						<TextColor>style:ButtonTextColor</TextColor>
+						<BackColor>style:ButtonBackColor</BackColor>
+						<BorderColor>style:BorderColor</BorderColor>
+						<ExtendedTooltip name="КнопкаЗаполнитьExtendedTooltip" id="35"/>
+					</Button>
+					<Button name="КнопкаПодборВалют" id="17">
+						<Type>CommandBarButton</Type>
+						<Representation>PictureAndText</Representation>
+						<SkipOnInput>false</SkipOnInput>
+						<CommandName>Form.Command.ПодобратьВалюты</CommandName>
+						<TextColor>style:ButtonTextColor</TextColor>
+						<BackColor>style:ButtonBackColor</BackColor>
+						<BorderColor>style:BorderColor</BorderColor>
+						<ExtendedTooltip name="КнопкаПодборВалютExtendedTooltip" id="36"/>
+					</Button>
+					<Button name="СписокВалютУдалить" id="28">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>Form.Item.СписокВалют.StandardCommand.Delete</CommandName>
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Исключить из списка</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="СписокВалютУдалитьExtendedTooltip" id="37"/>
+					</Button>
+					<Button name="КнопкаОчистить" id="14">
+						<Type>CommandBarButton</Type>
+						<SkipOnInput>false</SkipOnInput>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>Form.Command.ОчиститьСписок</CommandName>
+						<TextColor>style:ButtonTextColor</TextColor>
+						<BackColor>style:ButtonBackColor</BackColor>
+						<BorderColor>style:BorderColor</BorderColor>
+						<ExtendedTooltip name="КнопкаОчиститьExtendedTooltip" id="38"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="ChoiceProcessing">ОбработкаВыбора</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<Table name="СписокВалют" id="7">
+			<CommandBarLocation>None</CommandBarLocation>
+			<SkipOnInput>false</SkipOnInput>
+			<Width>40</Width>
+			<HeightInTableRows>10</HeightInTableRows>
+			<SelectionMode>SingleRow</SelectionMode>
+			<RowSelectionMode>Row</RowSelectionMode>
+			<DataPath>Объект.СписокВалют</DataPath>
+			<BorderColor>style:BorderColor</BorderColor>
+			<CommandSet>
+				<ExcludedCommand>Copy</ExcludedCommand>
+				<ExcludedCommand>SortListAsc</ExcludedCommand>
+				<ExcludedCommand>MoveUp</ExcludedCommand>
+				<ExcludedCommand>SortListDesc</ExcludedCommand>
+				<ExcludedCommand>EndEdit</ExcludedCommand>
+				<ExcludedCommand>Add</ExcludedCommand>
+				<ExcludedCommand>Change</ExcludedCommand>
+				<ExcludedCommand>MoveDown</ExcludedCommand>
+			</CommandSet>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="СписокВалютКонтекстноеМеню" id="20">
+				<ChildItems>
+					<Button name="СписокВалютКонтекстноеМенюПодобратьВалюты" id="31">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ПодобратьВалюты</CommandName>
+						<ExtendedTooltip name="СписокВалютКонтекстноеМенюПодобратьВалютыExtendedTooltip" id="39"/>
+					</Button>
+					<Button name="СписокВалютКонтекстноеМенюУдалить" id="29">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>Form.Item.СписокВалют.StandardCommand.Delete</CommandName>
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Исключить из списка</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="СписокВалютКонтекстноеМенюУдалитьExtendedTooltip" id="40"/>
+					</Button>
+					<Button name="СписокВалютКонтекстноеМенюОчиститьСписок" id="30">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ОчиститьСписок</CommandName>
+						<ExtendedTooltip name="СписокВалютКонтекстноеМенюОчиститьСписокExtendedTooltip" id="41"/>
+					</Button>
+				</ChildItems>
+			</ContextMenu>
+			<AutoCommandBar name="СписокВалютКоманднаяПанель" id="26"/>
+			<ExtendedTooltip name="СписокВалютExtendedTooltip" id="42"/>
+			<SearchStringAddition name="СписокВалютСтрокаПоиска" id="51">
+				<AdditionSource>
+					<Item>СписокВалют</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокВалютСтрокаПоискаКонтекстноеМеню" id="52"/>
+				<ExtendedTooltip name="СписокВалютСтрокаПоискаРасширеннаяПодсказка" id="53"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="СписокВалютСостояниеПросмотра" id="54">
+				<AdditionSource>
+					<Item>СписокВалют</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокВалютСостояниеПросмотраКонтекстноеМеню" id="55"/>
+				<ExtendedTooltip name="СписокВалютСостояниеПросмотраРасширеннаяПодсказка" id="56"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="СписокВалютУправлениеПоиском" id="57">
+				<AdditionSource>
+					<Item>СписокВалют</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокВалютУправлениеПоискомКонтекстноеМеню" id="58"/>
+				<ExtendedTooltip name="СписокВалютУправлениеПоискомРасширеннаяПодсказка" id="59"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="Selection">СписокВалютВыбор</Event>
+				<Event name="BeforeAddRow">СписокВалютПередНачаломДобавления</Event>
+			</Events>
+			<ChildItems>
+				<LabelField name="Валюта" id="10">
+					<DataPath>Объект.СписокВалют.Валюта</DataPath>
+					<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+					<ContextMenu name="ВалютаКонтекстноеМеню" id="21"/>
+					<ExtendedTooltip name="ВалютаExtendedTooltip" id="43"/>
+				</LabelField>
+				<LabelField name="КодВалюты" id="9">
+					<DataPath>Объект.СписокВалют.КодВалюты</DataPath>
+					<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+					<ContextMenu name="КодВалютыКонтекстноеМеню" id="22"/>
+					<ExtendedTooltip name="КодВалютыExtendedTooltip" id="44"/>
+				</LabelField>
+				<LabelField name="ДатаКурса" id="11">
+					<DataPath>Объект.СписокВалют.ДатаКурса</DataPath>
+					<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+					<ContextMenu name="ДатаКурсаКонтекстноеМеню" id="23"/>
+					<ExtendedTooltip name="ДатаКурсаExtendedTooltip" id="45"/>
+				</LabelField>
+				<LabelField name="Курс" id="12">
+					<DataPath>Объект.СписокВалют.Курс</DataPath>
+					<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+					<ContextMenu name="КурсКонтекстноеМеню" id="24"/>
+					<ExtendedTooltip name="КурсExtendedTooltip" id="46"/>
+				</LabelField>
+				<LabelField name="Кратность" id="13">
+					<DataPath>Объект.СписокВалют.Кратность</DataPath>
+					<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+					<ContextMenu name="КратностьКонтекстноеМеню" id="25"/>
+					<ExtendedTooltip name="КратностьExtendedTooltip" id="47"/>
+				</LabelField>
+			</ChildItems>
+		</Table>
+		<UsualGroup name="ГруппаПериодКурсовВалют" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Период курсов валют</v8:content>
+				</v8:item>
+			</Title>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаПериодКурсовВалютExtendedTooltip" id="48"/>
+			<ChildItems>
+				<InputField name="НачалоПериода" id="2">
+					<DataPath>Объект.НачалоПериодаЗагрузки</DataPath>
+					<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+					<Wrap>false</Wrap>
+					<BorderColor>style:BorderColor</BorderColor>
+					<ContextMenu name="НачалоПериодаКонтекстноеМеню" id="18"/>
+					<ExtendedTooltip name="НачалоПериодаExtendedTooltip" id="49"/>
+				</InputField>
+				<InputField name="ОкончаниеПериода" id="3">
+					<DataPath>Объект.ОкончаниеПериодаЗагрузки</DataPath>
+					<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+					<Wrap>false</Wrap>
+					<BorderColor>style:BorderColor</BorderColor>
+					<ContextMenu name="ОкончаниеПериодаКонтекстноеМеню" id="19"/>
+					<ExtendedTooltip name="ОкончаниеПериодаExtendedTooltip" id="50"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DataProcessorObject.ЗагрузкаКурсовВалют</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="ДобавитьВсеВалюты" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить все валюты</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить в список для загрузки все валюты</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>КомандаЗаполнитьСписокВалютВыполнить</Action>
+		</Command>
+		<Command name="ОчиститьСписок" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Очистить список</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Очистить список валют для загрузки</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>КомандаОчиститьВыполнить</Action>
+		</Command>
+		<Command name="ЗагрузитьКурсыВалют" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Загрузить курсы выбранных валют с веб-сайта РБК</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗагрузитьКурсыВалют</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="ПодобратьВалюты" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобрать...</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобрать валюты для загрузки курсов</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>КомандаПодборВалютВыполнить</Action>
+		</Command>
+	</Commands>
+</Form>
