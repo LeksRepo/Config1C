@@ -164,7 +164,7 @@
 	</calculatedField>
 	<calculatedField>
 		<dataPath>Наценка</dataPath>
-		<expression>(СуммаОстаток / Количество) / Розничная</expression>
+		<expression>0</expression>
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>ru</v8:lang>
@@ -174,7 +174,7 @@
 		<appearance>
 			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 				<dcscor:parameter>Формат</dcscor:parameter>
-				<dcscor:value xsi:type="xs:string">ЧДЦ=2</dcscor:value>
+				<dcscor:value xsi:type="xs:string">ЧЦ=3; ЧДЦ=0</dcscor:value>
 			</dcscor:item>
 		</appearance>
 	</calculatedField>
@@ -195,12 +195,12 @@
 		<expression>Сумма(Себестоимость)</expression>
 	</totalField>
 	<totalField>
-		<dataPath>Наценка</dataPath>
-		<expression>Сумма(Наценка)</expression>
-	</totalField>
-	<totalField>
 		<dataPath>КоличествоРезерва</dataPath>
 		<expression>Сумма(КоличествоРезерва)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Наценка</dataPath>
+		<expression>100 * (СУММА(Розничная) - СУММА(СуммаОстаток)/ СУММА(Количество))/(СУММА(СуммаОстаток)/ СУММА(Количество))</expression>
 	</totalField>
 	<parameter>
 		<name>Период</name>
