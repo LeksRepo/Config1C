@@ -49,18 +49,36 @@
 			<field>Подразделение</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Количество</dataPath>
-			<field>Количество</field>
+			<dataPath>Наценка</dataPath>
+			<field>Наценка</field>
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Количество</v8:content>
+					<v8:content>Наценка</v8:content>
 				</v8:item>
 			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧЦ=3; ЧДЦ=0</dcscor:value>
+				</dcscor:item>
+			</appearance>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>СуммаОстаток</dataPath>
-			<field>СуммаОстаток</field>
+			<dataPath>Себестоимость</dataPath>
+			<field>Себестоимость</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Себестоимость</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧДЦ=2</dcscor:value>
+				</dcscor:item>
+			</appearance>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>КоличествоРезерва</dataPath>
@@ -77,10 +95,8 @@
 	спрНоменклатура.Ссылка КАК Номенклатура,
 	ЦеныНоменклатурыСрезПоследних.ПлановаяЗакупочная КАК ПлановаяЗакупочная,
 	ЦеныНоменклатурыСрезПоследних.Внутренняя КАК Внутренняя,
-	ЦеныНоменклатурыСрезПоследних.Розничная КАК Розничная,
-	NULL КАК СуммаОстаток,
-	NULL КАК Количество,
-	NULL КАК КоличествоРезерва
+	ЦеныНоменклатурыСрезПоследних.Розничная КАК Розничная
+ПОМЕСТИТЬ Список
 ИЗ
 	Справочник.Номенклатура КАК спрНоменклатура
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ЦеныНоменклатуры.СрезПоследних({(КОНЕЦПЕРИОДА(&amp;Период, ДЕНЬ)) КАК Период}, Регион = &amp;Регион) КАК ЦеныНоменклатурыСрезПоследних
@@ -88,99 +104,54 @@
 ГДЕ
 	спрНоменклатура.Базовый
 	И НЕ спрНоменклатура.ПометкаУдаления
+;
 
-ОБЪЕДИНИТЬ ВСЕ
-
+////////////////////////////////////////////////////////////////////////////////
 ВЫБРАТЬ
-	ВЫБОР
-		КОГДА УправленческийОстатки.Субконто2.Базовый
-			ТОГДА УправленческийОстатки.Субконто2.Ссылка
-		ИНАЧЕ УправленческийОстатки.Субконто2.БазоваяНоменклатура
-	КОНЕЦ,
-	NULL,
-	NULL,
-	NULL,
-	СУММА(УправленческийОстатки.СуммаОстаток),
-	СУММА(УправленческийОстатки.КоличествоОстаток * УправленческийОстатки.Субконто2.КоэффициентБазовых),
-	NULL
+	Список.Номенклатура,
+	Список.ПлановаяЗакупочная,
+	Список.Внутренняя,
+	Список.Розничная,
+	СУММА(ОстаткиРезерв.КоличествоОстаток * ОстаткиРезерв.Субконто2.КоэффициентБазовых) КАК КоличествоРезерва,
+	СУММА(ОстаткиНаСкладе.СуммаОстаток) / СУММА(ОстаткиНаСкладе.КоличествоОстаток * ОстаткиНаСкладе.Субконто2.КоэффициентБазовых) КАК Себестоимость,
+	100 * (Список.Розничная - СУММА(ОстаткиНаСкладе.СуммаОстаток) / СУММА(ОстаткиНаСкладе.КоличествоОстаток * ОстаткиНаСкладе.Субконто2.КоэффициентБазовых)) / (СУММА(ОстаткиНаСкладе.СуммаОстаток) / СУММА(ОстаткиНаСкладе.КоличествоОстаток * ОстаткиНаСкладе.Субконто2.КоэффициентБазовых)) КАК Наценка
 ИЗ
-	РегистрБухгалтерии.Управленческий.Остатки(, Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.МатериалыНаСкладе), , Субконто1.Регион = &amp;Регион) КАК УправленческийОстатки
-ГДЕ
-	НЕ УправленческийОстатки.Субконто2.ПометкаУдаления
+	Список КАК Список
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрБухгалтерии.Управленческий.Остатки(, Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.МатериалыНаСкладе), , Субконто1.Регион = &amp;Регион) КАК ОстаткиНаСкладе
+		ПО (Список.Номенклатура = ВЫБОР
+				КОГДА ОстаткиНаСкладе.Субконто2.Базовый
+					ТОГДА ОстаткиНаСкладе.Субконто2.Ссылка
+				ИНАЧЕ ОстаткиНаСкладе.Субконто2.БазоваяНоменклатура
+			КОНЕЦ)
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрБухгалтерии.Управленческий.Остатки(
+				,
+				Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.РезервныйЗапасМатериалов),
+				,
+				Подразделение = ЗНАЧЕНИЕ(Справочник.Подразделения.Логистика)
+					И Субконто1.Регион = &amp;Регион) КАК ОстаткиРезерв
+		ПО (Список.Номенклатура = ВЫБОР
+				КОГДА ОстаткиРезерв.Субконто2.Базовый
+					ТОГДА ОстаткиРезерв.Субконто2.Ссылка
+				ИНАЧЕ ОстаткиРезерв.Субконто2.БазоваяНоменклатура
+			КОНЕЦ)
 
 СГРУППИРОВАТЬ ПО
-	ВЫБОР
-		КОГДА УправленческийОстатки.Субконто2.Базовый
-			ТОГДА УправленческийОстатки.Субконто2.Ссылка
-		ИНАЧЕ УправленческийОстатки.Субконто2.БазоваяНоменклатура
-	КОНЕЦ
-
-ОБЪЕДИНИТЬ ВСЕ
-
-ВЫБРАТЬ
-	ВЫБОР
-		КОГДА УправленческийОстатки.Субконто2.Базовый
-			ТОГДА УправленческийОстатки.Субконто2.Ссылка
-		ИНАЧЕ УправленческийОстатки.Субконто2.БазоваяНоменклатура
-	КОНЕЦ,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	NULL,
-	СУММА(УправленческийОстатки.КоличествоОстаток * УправленческийОстатки.Субконто2.КоэффициентБазовых)
-ИЗ
-	РегистрБухгалтерии.Управленческий.Остатки(
-			,
-			Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.РезервныйЗапасМатериалов),
-			,
-			Подразделение = ЗНАЧЕНИЕ(Справочник.Подразделения.Логистика)
-				И Субконто1.Регион = &amp;Регион) КАК УправленческийОстатки
-ГДЕ
-	НЕ УправленческийОстатки.Субконто2.ПометкаУдаления
-
-СГРУППИРОВАТЬ ПО
-	ВЫБОР
-		КОГДА УправленческийОстатки.Субконто2.Базовый
-			ТОГДА УправленческийОстатки.Субконто2.Ссылка
-		ИНАЧЕ УправленческийОстатки.Субконто2.БазоваяНоменклатура
-	КОНЕЦ</query>
+	Список.Номенклатура,
+	Список.ПлановаяЗакупочная,
+	Список.Внутренняя,
+	Список.Розничная</query>
 	</dataSet>
-	<calculatedField>
-		<dataPath>Себестоимость</dataPath>
-		<expression>СуммаОстаток / Количество</expression>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Себестоимость</v8:content>
-			</v8:item>
-		</title>
-		<appearance>
-			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-				<dcscor:parameter>Формат</dcscor:parameter>
-				<dcscor:value xsi:type="xs:string">ЧДЦ=2</dcscor:value>
-			</dcscor:item>
-		</appearance>
-	</calculatedField>
-	<calculatedField>
-		<dataPath>Наценка</dataPath>
-		<expression>0</expression>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Наценка</v8:content>
-			</v8:item>
-		</title>
-		<appearance>
-			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-				<dcscor:parameter>Формат</dcscor:parameter>
-				<dcscor:value xsi:type="xs:string">ЧЦ=3; ЧДЦ=0</dcscor:value>
-			</dcscor:item>
-		</appearance>
-	</calculatedField>
 	<totalField>
 		<dataPath>Внутренняя</dataPath>
 		<expression>Сумма(Внутренняя)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>КоличествоРезерва</dataPath>
+		<expression>Сумма(КоличествоРезерва)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Наценка</dataPath>
+		<expression>Сумма(Наценка)</expression>
 	</totalField>
 	<totalField>
 		<dataPath>ПлановаяЗакупочная</dataPath>
@@ -193,14 +164,6 @@
 	<totalField>
 		<dataPath>Себестоимость</dataPath>
 		<expression>Сумма(Себестоимость)</expression>
-	</totalField>
-	<totalField>
-		<dataPath>КоличествоРезерва</dataPath>
-		<expression>Сумма(КоличествоРезерва)</expression>
-	</totalField>
-	<totalField>
-		<dataPath>Наценка</dataPath>
-		<expression>100 * (СУММА(Розничная) - СУММА(СуммаОстаток)/ СУММА(Количество))/(СУММА(СуммаОстаток)/ СУММА(Количество))</expression>
 	</totalField>
 	<parameter>
 		<name>Период</name>
@@ -373,6 +336,44 @@
 						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 							<dcscor:parameter>ЦветФона</dcscor:parameter>
 							<dcscor:value xsi:type="v8ui:Color">#E6FFE6</dcscor:value>
+						</dcscor:item>
+					</dcsset:appearance>
+				</dcsset:item>
+				<dcsset:item>
+					<dcsset:selection>
+						<dcsset:item>
+							<dcsset:field>Внутренняя</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>Номенклатура</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>КоличествоРезерва</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>Наценка</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>ПлановаяЗакупочная</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>Розничная</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>Себестоимость</dcsset:field>
+						</dcsset:item>
+					</dcsset:selection>
+					<dcsset:filter>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">Наценка</dcsset:left>
+							<dcsset:comparisonType>Less</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">20</dcsset:right>
+						</dcsset:item>
+					</dcsset:filter>
+					<dcsset:appearance>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>ЦветФона</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:Color">web:Orange</dcscor:value>
 						</dcscor:item>
 					</dcsset:appearance>
 				</dcsset:item>
