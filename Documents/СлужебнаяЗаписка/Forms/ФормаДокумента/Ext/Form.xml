@@ -39,28 +39,77 @@
 					<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
 					<ExtendedTooltip name="НомерExtendedTooltip" id="45"/>
 				</InputField>
-				<InputField name="Дата" id="3">
+				<LabelField name="Дата" id="3">
 					<DataPath>Объект.Date</DataPath>
 					<EditMode>EnterOnInput</EditMode>
 					<HorizontalStretch>false</HorizontalStretch>
 					<VerticalStretch>false</VerticalStretch>
+					<Format>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ДФ=dd.MM.yyyy</v8:content>
+						</v8:item>
+					</Format>
 					<ContextMenu name="ДатаКонтекстноеМеню" id="4"/>
 					<ExtendedTooltip name="ДатаExtendedTooltip" id="46"/>
+				</LabelField>
+				<InputField name="ДатаКонтроля" id="78">
+					<DataPath>Объект.ДатаКонтроля</DataPath>
+					<EditFormat>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ДФ=dd.MM.yyyy</v8:content>
+						</v8:item>
+					</EditFormat>
+					<ContextMenu name="ДатаКонтроляКонтекстноеМеню" id="79"/>
+					<ExtendedTooltip name="ДатаКонтроляРасширеннаяПодсказка" id="80"/>
 				</InputField>
 			</ChildItems>
 		</UsualGroup>
-		<InputField name="ВидСлужебнойЗаписки" id="61">
-			<DataPath>Объект.ВидСлужебнойЗаписки</DataPath>
+		<UsualGroup name="ВидСЗ_Статус" id="76">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Вид СЗ</v8:content>
+					<v8:content>Вид сз статус</v8:content>
 				</v8:item>
 			</Title>
-			<HorizontalStretch>false</HorizontalStretch>
-			<ContextMenu name="ВидСлужебнойЗапискиКонтекстноеМеню" id="62"/>
-			<ExtendedTooltip name="ВидСлужебнойЗапискиРасширеннаяПодсказка" id="63"/>
-		</InputField>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид сз статус</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ВидСЗ_СтатусРасширеннаяПодсказка" id="77"/>
+			<ChildItems>
+				<InputField name="ВидСлужебнойЗаписки" id="61">
+					<DataPath>Объект.ВидСлужебнойЗаписки</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вид СЗ</v8:content>
+						</v8:item>
+					</Title>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="ВидСлужебнойЗапискиКонтекстноеМеню" id="62"/>
+					<ExtendedTooltip name="ВидСлужебнойЗапискиРасширеннаяПодсказка" id="63"/>
+				</InputField>
+				<InputField name="СтатусСлужебнойЗаписки" id="73">
+					<DataPath>Объект.СтатусСлужебнойЗаписки</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статус</v8:content>
+						</v8:item>
+					</Title>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="СтатусСлужебнойЗапискиКонтекстноеМеню" id="74"/>
+					<ExtendedTooltip name="СтатусСлужебнойЗапискиРасширеннаяПодсказка" id="75"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
 		<UsualGroup name="АдресатЗавершить" id="14">
 			<Title>
 				<v8:item>
@@ -88,7 +137,7 @@
 					<ExtendedTooltip name="АдресатExtendedTooltip" id="48"/>
 				</InputField>
 				<CheckBoxField name="Завершить" id="15">
-					<DataPath>Объект.Завершить</DataPath>
+					<DataPath>1/0:047bbb7e-b953-467c-a34a-727a032be564</DataPath>
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -135,7 +184,7 @@
 			<Enabled>false</Enabled>
 			<ReadOnly>true</ReadOnly>
 			<EditMode>EnterOnInput</EditMode>
-			<HorizontalStretch>false</HorizontalStretch>
+			<HorizontalStretch>true</HorizontalStretch>
 			<VerticalStretch>false</VerticalStretch>
 			<ContextMenu name="АвторКонтекстноеМеню" id="12"/>
 			<ExtendedTooltip name="АвторExtendedTooltip" id="50"/>
@@ -254,29 +303,29 @@
 							<ContextMenu name="ДокументыКонтекстноеМеню" id="28"/>
 							<AutoCommandBar name="ДокументыКоманднаяПанель" id="29"/>
 							<ExtendedTooltip name="ДокументыExtendedTooltip" id="59"/>
-							<SearchStringAddition name="ДокументыСтрокаПоиска" id="73">
+							<SearchStringAddition name="ДокументыСтрокаПоиска" id="81">
 								<AdditionSource>
 									<Item>Документы</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="ДокументыСтрокаПоискаКонтекстноеМеню" id="74"/>
-								<ExtendedTooltip name="ДокументыСтрокаПоискаРасширеннаяПодсказка" id="75"/>
+								<ContextMenu name="ДокументыСтрокаПоискаКонтекстноеМеню" id="82"/>
+								<ExtendedTooltip name="ДокументыСтрокаПоискаРасширеннаяПодсказка" id="83"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="ДокументыСостояниеПросмотра" id="76">
+							<ViewStatusAddition name="ДокументыСостояниеПросмотра" id="84">
 								<AdditionSource>
 									<Item>Документы</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="ДокументыСостояниеПросмотраКонтекстноеМеню" id="77"/>
-								<ExtendedTooltip name="ДокументыСостояниеПросмотраРасширеннаяПодсказка" id="78"/>
+								<ContextMenu name="ДокументыСостояниеПросмотраКонтекстноеМеню" id="85"/>
+								<ExtendedTooltip name="ДокументыСостояниеПросмотраРасширеннаяПодсказка" id="86"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="ДокументыУправлениеПоиском" id="79">
+							<SearchControlAddition name="ДокументыУправлениеПоиском" id="87">
 								<AdditionSource>
 									<Item>Документы</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="ДокументыУправлениеПоискомКонтекстноеМеню" id="80"/>
-								<ExtendedTooltip name="ДокументыУправлениеПоискомРасширеннаяПодсказка" id="81"/>
+								<ContextMenu name="ДокументыУправлениеПоискомКонтекстноеМеню" id="88"/>
+								<ExtendedTooltip name="ДокументыУправлениеПоискомРасширеннаяПодсказка" id="89"/>
 							</SearchControlAddition>
 							<ChildItems>
 								<InputField name="ДокументыДокумент" id="32">
