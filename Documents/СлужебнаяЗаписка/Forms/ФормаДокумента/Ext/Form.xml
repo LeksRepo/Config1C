@@ -6,11 +6,9 @@
 	<RepostOnWrite>true</RepostOnWrite>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
-		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
 		<Event name="BeforeWrite">ПередЗаписью</Event>
+		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
-		<Event name="OnWriteAtServer">ПриЗаписиНаСервере</Event>
-		<Event name="OnClose">ПриЗакрытии</Event>
 	</Events>
 	<ChildItems>
 		<UsualGroup name="ДатаНомер" id="13">
@@ -55,6 +53,9 @@
 				</LabelField>
 				<InputField name="ДатаКонтроля" id="78">
 					<DataPath>Объект.ДатаКонтроля</DataPath>
+					<Width>10</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<VerticalStretch>false</VerticalStretch>
 					<EditFormat>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -73,6 +74,7 @@
 					<v8:content>Вид сз статус</v8:content>
 				</v8:item>
 			</Title>
+			<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -92,6 +94,7 @@
 							<v8:content>Вид СЗ</v8:content>
 						</v8:item>
 					</Title>
+					<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 					<HorizontalStretch>false</HorizontalStretch>
 					<ContextMenu name="ВидСлужебнойЗапискиКонтекстноеМеню" id="62"/>
 					<ExtendedTooltip name="ВидСлужебнойЗапискиРасширеннаяПодсказка" id="63"/>
@@ -104,6 +107,7 @@
 							<v8:content>Статус</v8:content>
 						</v8:item>
 					</Title>
+					<Width>20</Width>
 					<HorizontalStretch>false</HorizontalStretch>
 					<ContextMenu name="СтатусСлужебнойЗапискиКонтекстноеМеню" id="74"/>
 					<ExtendedTooltip name="СтатусСлужебнойЗапискиРасширеннаяПодсказка" id="75"/>
@@ -236,7 +240,7 @@
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="ГруппаПроблемаОтветExtendedTooltip" id="53"/>
 					<ChildItems>
-						<TextDocumentField name="Проблема" id="5">
+						<InputField name="Проблема" id="5">
 							<DataPath>Объект.Проблема</DataPath>
 							<Title>
 								<v8:item>
@@ -247,20 +251,26 @@
 							<TitleFont ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 							<EditMode>EnterOnInput</EditMode>
 							<Width>70</Width>
+							<Height>10</Height>
+							<MultiLine>true</MultiLine>
+							<Font ref="style:NormalTextFont" faceName="Times New Roman" height="10" kind="StyleItem"/>
 							<ContextMenu name="ПроблемаКонтекстноеМеню" id="6"/>
 							<ExtendedTooltip name="ПроблемаExtendedTooltip" id="54"/>
-						</TextDocumentField>
-						<TextDocumentField name="Ответ" id="9">
+						</InputField>
+						<InputField name="Ответ" id="9">
 							<DataPath>Объект.Ответ</DataPath>
 							<TitleFont ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 							<EditMode>EnterOnInput</EditMode>
 							<Width>70</Width>
+							<Height>10</Height>
+							<MultiLine>true</MultiLine>
+							<Font ref="sys:DefaultGUIFont" faceName="Times New Roman" height="10" kind="WindowsFont"/>
 							<ContextMenu name="ОтветКонтекстноеМеню" id="10"/>
 							<ExtendedTooltip name="ОтветExtendedTooltip" id="55"/>
 							<Events>
 								<Event name="OnChange">ОтветПриИзменении</Event>
 							</Events>
-						</TextDocumentField>
+						</InputField>
 					</ChildItems>
 				</UsualGroup>
 				<UsualGroup name="ГруппаТЧ" id="19">
