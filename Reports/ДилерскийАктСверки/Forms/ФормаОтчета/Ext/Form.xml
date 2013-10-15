@@ -27,14 +27,25 @@
 		</InputField>
 		<LabelField name="СвободныйАванс" id="7">
 			<DataPath>Отчет.СвободныйАванс</DataPath>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Можно нажать для детализации</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ToolTipRepresentation>ShowRight</ToolTipRepresentation>
 			<HorizontalAlign>Right</HorizontalAlign>
 			<EditMode>EnterOnInput</EditMode>
-			<Width>49</Width>
+			<Width>26</Width>
 			<HorizontalStretch>false</HorizontalStretch>
+			<Hiperlink>true</Hiperlink>
 			<TextColor>web:Green</TextColor>
 			<Font ref="sys:DefaultGUIFont" height="12" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 			<ContextMenu name="СвободныйАвансКонтекстноеМеню" id="8"/>
 			<ExtendedTooltip name="СвободныйАвансРасширеннаяПодсказка" id="9"/>
+			<Events>
+				<Event name="Click">СвободныйАвансНажатие</Event>
+			</Events>
 		</LabelField>
 		<UsualGroup name="ГруппаДляКрасоты" id="36">
 			<Title>
@@ -83,12 +94,8 @@
 								</v8:item>
 							</Title>
 							<EditMode>EnterOnInput</EditMode>
-							<Hiperlink>true</Hiperlink>
 							<ContextMenu name="ОборотЗаПрошлыйМесяцКонтекстноеМеню" id="2"/>
 							<ExtendedTooltip name="ОборотЗаПрошлыйМесяцРасширеннаяПодсказка" id="3"/>
-							<Events>
-								<Event name="Click">ОборотЗаПрошлыйМесяцНажатие</Event>
-							</Events>
 						</LabelField>
 						<LabelField name="ОборотЗаТекущийМесяц" id="4">
 							<DataPath>Отчет.ОборотЗаТекущийМесяц</DataPath>
@@ -99,12 +106,8 @@
 								</v8:item>
 							</Title>
 							<EditMode>EnterOnInput</EditMode>
-							<Hiperlink>true</Hiperlink>
 							<ContextMenu name="ОборотЗаТекущийМесяцКонтекстноеМеню" id="5"/>
 							<ExtendedTooltip name="ОборотЗаТекущийМесяцРасширеннаяПодсказка" id="6"/>
-							<Events>
-								<Event name="Click">ОборотЗаТекущийМесяцНажатие</Event>
-							</Events>
 						</LabelField>
 					</ChildItems>
 				</UsualGroup>
@@ -338,4 +341,21 @@
 			</Type>
 		</Attribute>
 	</Attributes>
+	<Commands>
+		<Command name="ПоказатьДетально" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать детально</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать детально</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПоказатьДетально</Action>
+		</Command>
+	</Commands>
 </Form>
