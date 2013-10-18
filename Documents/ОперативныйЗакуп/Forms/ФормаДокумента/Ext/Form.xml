@@ -71,30 +71,33 @@
 				</ChildItems>
 			</AutoCommandBar>
 			<ExtendedTooltip name="СписокНоменклатурыРасширеннаяПодсказка" id="13"/>
-			<SearchStringAddition name="СписокНоменклатурыСтрокаПоиска" id="48">
+			<SearchStringAddition name="СписокНоменклатурыСтрокаПоиска" id="64">
 				<AdditionSource>
 					<Item>СписокНоменклатуры</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокНоменклатурыСтрокаПоискаКонтекстноеМеню" id="49"/>
-				<ExtendedTooltip name="СписокНоменклатурыСтрокаПоискаРасширеннаяПодсказка" id="50"/>
+				<ContextMenu name="СписокНоменклатурыСтрокаПоискаКонтекстноеМеню" id="65"/>
+				<ExtendedTooltip name="СписокНоменклатурыСтрокаПоискаРасширеннаяПодсказка" id="66"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокНоменклатурыСостояниеПросмотра" id="51">
+			<ViewStatusAddition name="СписокНоменклатурыСостояниеПросмотра" id="67">
 				<AdditionSource>
 					<Item>СписокНоменклатуры</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокНоменклатурыСостояниеПросмотраКонтекстноеМеню" id="52"/>
-				<ExtendedTooltip name="СписокНоменклатурыСостояниеПросмотраРасширеннаяПодсказка" id="53"/>
+				<ContextMenu name="СписокНоменклатурыСостояниеПросмотраКонтекстноеМеню" id="68"/>
+				<ExtendedTooltip name="СписокНоменклатурыСостояниеПросмотраРасширеннаяПодсказка" id="69"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокНоменклатурыУправлениеПоиском" id="54">
+			<SearchControlAddition name="СписокНоменклатурыУправлениеПоиском" id="70">
 				<AdditionSource>
 					<Item>СписокНоменклатуры</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокНоменклатурыУправлениеПоискомКонтекстноеМеню" id="55"/>
-				<ExtendedTooltip name="СписокНоменклатурыУправлениеПоискомРасширеннаяПодсказка" id="56"/>
+				<ContextMenu name="СписокНоменклатурыУправлениеПоискомКонтекстноеМеню" id="71"/>
+				<ExtendedTooltip name="СписокНоменклатурыУправлениеПоискомРасширеннаяПодсказка" id="72"/>
 			</SearchControlAddition>
+			<Events>
+				<Event name="OnActivateRow">СписокНоменклатурыПриАктивизацииСтроки</Event>
+			</Events>
 			<ChildItems>
 				<LabelField name="СписокНоменклатурыНомерСтроки" id="14">
 					<DataPath>Объект.СписокНоменклатуры.LineNumber</DataPath>
@@ -136,6 +139,76 @@
 				</InputField>
 			</ChildItems>
 		</Table>
+		<Table name="ТаблицаРасшифровки" id="48">
+			<Representation>List</Representation>
+			<TitleLocation>Top</TitleLocation>
+			<Height>7</Height>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<VerticalStretch>false</VerticalStretch>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>ТаблицаРасшифровки</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество номенклатуры в разрезе спецификаций</v8:content>
+				</v8:item>
+			</Title>
+			<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ТаблицаРасшифровкиКонтекстноеМеню" id="49"/>
+			<AutoCommandBar name="ТаблицаРасшифровкиКоманднаяПанель" id="50">
+				<Autofill>false</Autofill>
+			</AutoCommandBar>
+			<ExtendedTooltip name="ТаблицаРасшифровкиРасширеннаяПодсказка" id="51"/>
+			<SearchStringAddition name="ТаблицаРасшифровкиСтрокаПоиска" id="73">
+				<AdditionSource>
+					<Item>ТаблицаРасшифровки</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ТаблицаРасшифровкиСтрокаПоискаКонтекстноеМеню" id="74"/>
+				<ExtendedTooltip name="ТаблицаРасшифровкиСтрокаПоискаРасширеннаяПодсказка" id="75"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ТаблицаРасшифровкиСостояниеПросмотра" id="76">
+				<AdditionSource>
+					<Item>ТаблицаРасшифровки</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ТаблицаРасшифровкиСостояниеПросмотраКонтекстноеМеню" id="77"/>
+				<ExtendedTooltip name="ТаблицаРасшифровкиСостояниеПросмотраРасширеннаяПодсказка" id="78"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ТаблицаРасшифровкиУправлениеПоиском" id="79">
+				<AdditionSource>
+					<Item>ТаблицаРасшифровки</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ТаблицаРасшифровкиУправлениеПоискомКонтекстноеМеню" id="80"/>
+				<ExtendedTooltip name="ТаблицаРасшифровкиУправлениеПоискомРасширеннаяПодсказка" id="81"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<InputField name="ТаблицаРасшифровкиСпецификация" id="52">
+					<DataPath>ТаблицаРасшифровки.Спецификация</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ТаблицаРасшифровкиСпецификацияКонтекстноеМеню" id="53"/>
+					<ExtendedTooltip name="ТаблицаРасшифровкиСпецификацияРасширеннаяПодсказка" id="54"/>
+				</InputField>
+				<InputField name="ТаблицаРасшифровкиСтатус" id="61">
+					<DataPath>ТаблицаРасшифровки.Статус</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ТаблицаРасшифровкиСтатусКонтекстноеМеню" id="62"/>
+					<ExtendedTooltip name="ТаблицаРасшифровкиСтатусРасширеннаяПодсказка" id="63"/>
+				</InputField>
+				<InputField name="ТаблицаРасшифровкиКоличество" id="58">
+					<DataPath>ТаблицаРасшифровки.Количество</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ТаблицаРасшифровкиКоличествоКонтекстноеМеню" id="59"/>
+					<ExtendedTooltip name="ТаблицаРасшифровкиКоличествоРасширеннаяПодсказка" id="60"/>
+				</InputField>
+			</ChildItems>
+		</Table>
 		<LabelField name="СуммаДокумента" id="39">
 			<DataPath>Объект.СуммаДокумента</DataPath>
 			<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
@@ -163,6 +236,68 @@
 			<UseAlways>
 				<Field>Объект.RegisterRecords</Field>
 			</UseAlways>
+		</Attribute>
+		<Attribute name="ТаблицаРасшифровки" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Таблица расшифровки</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Спецификация" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Спецификация</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:DocumentRef.Спецификация</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Номенклатура" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номенклатура</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Номенклатура</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Количество" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Количество</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>4</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Статус" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статус</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:EnumRef.СтатусыСпецификации</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
 		</Attribute>
 	</Attributes>
 	<Commands>
