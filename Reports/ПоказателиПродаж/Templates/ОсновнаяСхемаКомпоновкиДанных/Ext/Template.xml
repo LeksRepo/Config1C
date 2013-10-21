@@ -43,6 +43,7 @@
 			<field>Дизайнер</field>
 			<role>
 				<dcscom:dimension>true</dcscom:dimension>
+				<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
 			</role>
 		</field>
 		<field xsi:type="DataSetFieldField">
@@ -57,6 +58,7 @@
 			<field>Показатель</field>
 			<role>
 				<dcscom:dimension>true</dcscom:dimension>
+				<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
 			</role>
 		</field>
 		<field xsi:type="DataSetFieldField">
@@ -89,9 +91,9 @@
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
-	ПлановыеПоказателиДизайнеровОбороты.Подразделение,
-	ПлановыеПоказателиДизайнеровОбороты.Дизайнер,
-	ПлановыеПоказателиДизайнеровОбороты.Показатель,
+	ISNULL(ПлановыеПоказателиДизайнеровОбороты.Подразделение, УправленческийОбороты.Подразделение) КАК Подразделение,
+	ISNULL(ПлановыеПоказателиДизайнеровОбороты.Дизайнер, УправленческийОбороты.Субконто2) КАК Дизайнер,
+	ISNULL(ПлановыеПоказателиДизайнеровОбороты.Показатель, УправленческийОбороты.Субконто1) КАК Показатель,
 	ПлановыеПоказателиДизайнеровОбороты.ЗначениеОборот КАК План,
 	УправленческийОбороты.СуммаОборот КАК Факт
 ИЗ
@@ -103,13 +105,19 @@
 	</dataSet>
 	<calculatedField>
 		<dataPath>ПроцентВыполнения</dataPath>
-		<expression>ВЫБОР КОГДА Факт &lt;&gt; 0 ТОГДА План * 100 / Факт ИНАЧЕ 0 Конец</expression>
+		<expression>ВЫБОР КОГДА План &lt;&gt; 0 ТОГДА Факт * 100 / План ИНАЧЕ 0 Конец</expression>
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>ru</v8:lang>
 				<v8:content>Процент выполнения</v8:content>
 			</v8:item>
 		</title>
+		<appearance>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>Формат</dcscor:parameter>
+				<dcscor:value xsi:type="xs:string">ЧДЦ=2</dcscor:value>
+			</dcscor:item>
+		</appearance>
 	</calculatedField>
 	<totalField>
 		<dataPath>План</dataPath>
@@ -172,6 +180,16 @@
 					<dcsset:field>ПроцентВыполнения</dcsset:field>
 				</dcsset:item>
 			</dcsset:selection>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ГоризонтальноеРасположениеОбщихИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВертикальноеРасположениеОбщихИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">BeginAndEnd</dcscor:value>
+				</dcscor:item>
+			</dcsset:outputParameters>
 			<dcsset:item xsi:type="dcsset:StructureItemTable">
 				<dcsset:column>
 					<dcsset:groupItems>
