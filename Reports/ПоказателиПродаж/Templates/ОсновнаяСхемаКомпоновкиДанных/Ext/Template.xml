@@ -91,14 +91,14 @@
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
-	ISNULL(ПлановыеПоказателиДизайнеровОбороты.Подразделение, УправленческийОбороты.Подразделение) КАК Подразделение,
-	ISNULL(ПлановыеПоказателиДизайнеровОбороты.Дизайнер, УправленческийОбороты.Субконто2) КАК Дизайнер,
-	ISNULL(ПлановыеПоказателиДизайнеровОбороты.Показатель, УправленческийОбороты.Субконто1) КАК Показатель,
+	ЕСТЬNULL(ПлановыеПоказателиДизайнеровОбороты.Подразделение, УправленческийОбороты.Подразделение) КАК Подразделение,
+	ЕСТЬNULL(ПлановыеПоказателиДизайнеровОбороты.Дизайнер, УправленческийОбороты.Субконто2) КАК Дизайнер,
+	ЕСТЬNULL(ПлановыеПоказателиДизайнеровОбороты.Показатель, УправленческийОбороты.Субконто1) КАК Показатель,
 	ПлановыеПоказателиДизайнеровОбороты.ЗначениеОборот КАК План,
 	УправленческийОбороты.СуммаОборот КАК Факт
 ИЗ
-	РегистрНакопления.ПлановыеПоказателиДизайнеров.Обороты КАК ПлановыеПоказателиДизайнеровОбороты
-		ПОЛНОЕ СОЕДИНЕНИЕ РегистрБухгалтерии.Управленческий.Обороты(, , , Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ПоказателиСотрудника), , , , ) КАК УправленческийОбороты
+	РегистрНакопления.ПлановыеПоказателиДизайнеров.Обороты(&amp;НачалоПериода, &amp;КонецПериода, , ) КАК ПлановыеПоказателиДизайнеровОбороты
+		ПОЛНОЕ СОЕДИНЕНИЕ РегистрБухгалтерии.Управленческий.Обороты(&amp;НачалоПериода, &amp;КонецПериода, , Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ПоказателиСотрудника), , , , ) КАК УправленческийОбороты
 		ПО ПлановыеПоказателиДизайнеровОбороты.Подразделение = УправленческийОбороты.Подразделение
 			И ПлановыеПоказателиДизайнеровОбороты.Дизайнер = УправленческийОбороты.Субконто2
 			И ПлановыеПоказателиДизайнеровОбороты.Показатель = УправленческийОбороты.Субконто1</query>
@@ -147,6 +147,8 @@
 		</valueType>
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 		<useRestriction>false</useRestriction>
+		<expression>&amp;ПериодОтчета.ДатаНачала</expression>
+		<denyIncompleteValues>true</denyIncompleteValues>
 	</parameter>
 	<parameter>
 		<name>КонецПериода</name>
@@ -164,6 +166,26 @@
 		</valueType>
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 		<useRestriction>false</useRestriction>
+		<expression>&amp;ПериодОтчета.ДатаОкончания</expression>
+		<denyIncompleteValues>true</denyIncompleteValues>
+	</parameter>
+	<parameter>
+		<name>ПериодОтчета</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период отчета</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
 	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
@@ -180,6 +202,15 @@
 					<dcsset:field>ПроцентВыполнения</dcsset:field>
 				</dcsset:item>
 			</dcsset:selection>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ПериодОтчета</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
+					</dcscor:value>
+					<dcsset:userSettingID>88a7149b-168f-4aac-9e4d-5b4589fb3d7a</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
 			<dcsset:outputParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>ГоризонтальноеРасположениеОбщихИтогов</dcscor:parameter>
