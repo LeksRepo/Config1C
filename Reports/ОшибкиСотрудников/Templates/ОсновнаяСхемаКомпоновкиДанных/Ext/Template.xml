@@ -7,98 +7,163 @@
 	<dataSet xsi:type="DataSetQuery">
 		<name>НаборДанных1</name>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>КоличествоОборот</dataPath>
-			<field>КоличествоОборот</field>
+			<dataPath>Виновный</dataPath>
+			<field>Виновный</field>
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Количество</v8:content>
+					<v8:content>Виновный</v8:content>
 				</v8:item>
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Сотрудник</dataPath>
-			<field>Сотрудник</field>
-			<role>
-				<dcscom:dimension>true</dcscom:dimension>
-			</role>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>СуммаОборот</dataPath>
-			<field>СуммаОборот</field>
+			<dataPath>НарушениеСроков</dataPath>
+			<field>НарушениеСроков</field>
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Сумма</v8:content>
+					<v8:content>Нарушение сроков</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НарушенияВРаботе</dataPath>
+			<field>НарушенияВРаботе</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Нарушения в работе</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Подразделение</dataPath>
+			<field>Подразделение</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подразделение</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаУдержания</dataPath>
+			<field>СуммаУдержания</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма удержания</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Документ</dataPath>
+			<field>Документ</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документ</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаПеределки</dataPath>
+			<field>СуммаПеределки</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма переделки</v8:content>
 				</v8:item>
 			</title>
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
-		<query>ВЫБРАТЬ
-	ОшибкиСотрудниковОбороты.Сотрудник,
-	ОшибкиСотрудниковОбороты.КоличествоОборот,
-	ОшибкиСотрудниковОбороты.СуммаОборот
+		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ВЫБОР
+		КОГДА СлужебнаяЗаписка.Виновный = ЗНАЧЕНИЕ(Справочник.ФизическиеЛица.ПустаяСсылка)
+			ТОГДА СлужебнаяЗаписка.Адресат.ФизическоеЛицо
+		ИНАЧЕ СлужебнаяЗаписка.Виновный
+	КОНЕЦ КАК Виновный,
+	ВЫБОР
+		КОГДА СлужебнаяЗаписка.ВидСлужебнойЗаписки = ЗНАЧЕНИЕ(Перечисление.ВидыСлужебнойЗаписки.НарушениеСроков)
+			ТОГДА 1
+		ИНАЧЕ НЕОПРЕДЕЛЕНО
+	КОНЕЦ КАК НарушениеСроков,
+	ВЫБОР
+		КОГДА СлужебнаяЗаписка.ВидСлужебнойЗаписки = ЗНАЧЕНИЕ(Перечисление.ВидыСлужебнойЗаписки.НарушенияВРаботе)
+			ТОГДА 1
+		ИНАЧЕ НЕОПРЕДЕЛЕНО
+	КОНЕЦ КАК НарушенияВРаботе,
+	ВЫБОР
+		КОГДА СлужебнаяЗаписка.ВидСлужебнойЗаписки = ЗНАЧЕНИЕ(Перечисление.ВидыСлужебнойЗаписки.Удержание)
+			ТОГДА СлужебнаяЗаписка.Сумма
+		ИНАЧЕ 0
+	КОНЕЦ КАК СуммаУдержания,
+	ВЫБОР
+		КОГДА СлужебнаяЗаписка.Виновный = ЗНАЧЕНИЕ(Справочник.ФизическиеЛица.ПустаяСсылка)
+			ТОГДА СлужебнаяЗаписка.Адресат.ФизическоеЛицо.Подразделение
+		ИНАЧЕ СлужебнаяЗаписка.Виновный.Подразделение
+	КОНЕЦ КАК Подразделение,
+	СлужебнаяЗаписка.Ссылка КАК Документ,
+	NULL КАК СуммаПеределки
 ИЗ
-	РегистрНакопления.ОшибкиСотрудников.Обороты({(&amp;НачалоПериода)}, {(&amp;КонецПериода)}, , {(Сотрудник = &amp;Сотрудник)}) КАК ОшибкиСотрудниковОбороты</query>
+	Документ.СлужебнаяЗаписка КАК СлужебнаяЗаписка
+ГДЕ
+	(ВЫБОР
+				КОГДА СлужебнаяЗаписка.ВидСлужебнойЗаписки = ЗНАЧЕНИЕ(Перечисление.ВидыСлужебнойЗаписки.НарушениеСроков)
+					ТОГДА СлужебнаяЗаписка.Ссылка
+				ИНАЧЕ НЕОПРЕДЕЛЕНО
+			КОНЕЦ &lt;&gt; НЕОПРЕДЕЛЕНО
+			ИЛИ ВЫБОР
+				КОГДА СлужебнаяЗаписка.ВидСлужебнойЗаписки = ЗНАЧЕНИЕ(Перечисление.ВидыСлужебнойЗаписки.НарушенияВРаботе)
+					ТОГДА СлужебнаяЗаписка.Ссылка
+				ИНАЧЕ НЕОПРЕДЕЛЕНО
+			КОНЕЦ &lt;&gt; НЕОПРЕДЕЛЕНО
+			ИЛИ ВЫБОР
+				КОГДА СлужебнаяЗаписка.ВидСлужебнойЗаписки = ЗНАЧЕНИЕ(Перечисление.ВидыСлужебнойЗаписки.Поручение)
+					ТОГДА СлужебнаяЗаписка.Ссылка
+				ИНАЧЕ НЕОПРЕДЕЛЕНО
+			КОНЕЦ &lt;&gt; НЕОПРЕДЕЛЕНО
+			ИЛИ ВЫБОР
+				КОГДА СлужебнаяЗаписка.ВидСлужебнойЗаписки = ЗНАЧЕНИЕ(Перечисление.ВидыСлужебнойЗаписки.Удержание)
+					ТОГДА СлужебнаяЗаписка.Ссылка
+				ИНАЧЕ НЕОПРЕДЕЛЕНО
+			КОНЕЦ &lt;&gt; НЕОПРЕДЕЛЕНО)
+	И СлужебнаяЗаписка.ДатаКонтроля МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания
+	И СлужебнаяЗаписка.Проведен
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	докСпецификация.Виновный,
+	NULL,
+	NULL,
+	NULL,
+	докСпецификация.Виновный.Подразделение,
+	докСпецификация.Ссылка,
+	докСпецификация.СуммаДокумента
+ИЗ
+	Документ.Спецификация КАК докСпецификация
+ГДЕ
+	докСпецификация.Дата МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания
+	И докСпецификация.Изделие = ЗНАЧЕНИЕ(Справочник.Изделия.Переделка)
+	И докСпецификация.Проведен</query>
 	</dataSet>
 	<totalField>
-		<dataPath>КоличествоОборот</dataPath>
-		<expression>Сумма(КоличествоОборот)</expression>
+		<dataPath>НарушениеСроков</dataPath>
+		<expression>Сумма(НарушениеСроков)</expression>
 	</totalField>
 	<totalField>
-		<dataPath>СуммаОборот</dataPath>
-		<expression>Сумма(СуммаОборот)</expression>
+		<dataPath>НарушенияВРаботе</dataPath>
+		<expression>Сумма(НарушенияВРаботе)</expression>
 	</totalField>
-	<parameter>
-		<name>НачалоПериода</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Начало периода</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>xs:dateTime</v8:Type>
-			<v8:DateQualifiers>
-				<v8:DateFractions>DateTime</v8:DateFractions>
-			</v8:DateQualifiers>
-		</valueType>
-		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-		<useRestriction>true</useRestriction>
-		<expression>&amp;Период.ДатаНачала</expression>
-	</parameter>
-	<parameter>
-		<name>КонецПериода</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Конец периода</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>xs:dateTime</v8:Type>
-			<v8:DateQualifiers>
-				<v8:DateFractions>DateTime</v8:DateFractions>
-			</v8:DateQualifiers>
-		</valueType>
-		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-		<useRestriction>true</useRestriction>
-		<expression>&amp;Период.ДатаОкончания</expression>
-	</parameter>
-	<parameter>
-		<name>Сотрудник</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Сотрудник</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.ФизическиеЛица</v8:Type>
-		</valueType>
-		<value xsi:nil="true"/>
-		<useRestriction>false</useRestriction>
-	</parameter>
+	<totalField>
+		<dataPath>СуммаУдержания</dataPath>
+		<expression>Сумма(СуммаУдержания)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>СуммаПеределки</dataPath>
+		<expression>Сумма(СуммаПеределки)</expression>
+	</totalField>
 	<parameter>
 		<name>Период</name>
 		<title xsi:type="v8:LocalStringType">
@@ -117,46 +182,144 @@
 		</value>
 		<useRestriction>false</useRestriction>
 	</parameter>
+	<parameter>
+		<name>ДатаНачала</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Дата начала</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаНачала</expression>
+	</parameter>
+	<parameter>
+		<name>ДатаОкончания</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Дата окончания</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаОкончания</expression>
+	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
 		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 			<dcsset:selection>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Сотрудник</dcsset:field>
+					<dcsset:field>Подразделение</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>КоличествоОборот</dcsset:field>
+					<dcsset:field>Виновный</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>СуммаОборот</dcsset:field>
+					<dcsset:field>Документ</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СуммаПеределки</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>НарушениеСроков</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>НарушенияВРаботе</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СуммаУдержания</dcsset:field>
 				</dcsset:item>
 			</dcsset:selection>
 			<dcsset:dataParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:use>false</dcscor:use>
-					<dcscor:parameter>Сотрудник</dcscor:parameter>
-					<dcscor:value xsi:nil="true"/>
-					<dcsset:userSettingID>9e782f74-cd94-489d-a9f4-82c3a617eed0</dcsset:userSettingID>
-				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:use>false</dcscor:use>
 					<dcscor:parameter>Период</dcscor:parameter>
 					<dcscor:value xsi:type="v8:StandardPeriod">
-						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
-						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
-						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+						<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
 					</dcscor:value>
 					<dcsset:userSettingID>282bf391-9e10-44e8-9fa7-93196e716c8d</dcsset:userSettingID>
 				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ДатаОкончания</dcscor:parameter>
+					<dcscor:value xsi:nil="true"/>
+					<dcsset:userSettingID>9e782f74-cd94-489d-a9f4-82c3a617eed0</dcsset:userSettingID>
+				</dcscor:item>
 			</dcsset:dataParameters>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ГоризонтальноеРасположениеОбщихИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВертикальноеРасположениеОбщихИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+				</dcscor:item>
+			</dcsset:outputParameters>
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Подразделение</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
 				<dcsset:order>
 					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
 				</dcsset:order>
 				<dcsset:selection>
 					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
 				</dcsset:selection>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Виновный</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+					<dcsset:item xsi:type="dcsset:StructureItemGroup">
+						<dcsset:groupItems>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>Документ</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+						</dcsset:groupItems>
+						<dcsset:order>
+							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						</dcsset:order>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						</dcsset:selection>
+					</dcsset:item>
+				</dcsset:item>
 			</dcsset:item>
 		</dcsset:settings>
 	</settingsVariant>
