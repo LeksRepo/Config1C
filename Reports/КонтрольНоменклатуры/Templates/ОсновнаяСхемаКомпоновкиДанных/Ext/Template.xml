@@ -98,9 +98,20 @@
 			<dataPath>СчетКтЧтение</dataPath>
 			<field>СчетКтЧтение</field>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЕдиницаИзмерения</dataPath>
+			<field>ЕдиницаИзмерения</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ед. изм.</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	спрНоменклатура.Ссылка КАК Номенклатура,
+	спрНоменклатура.ЕдиницаИзмерения КАК ЕдиницаИзмерения,
 	ЦеныНоменклатурыСрезПоследних.ПлановаяЗакупочная КАК ПлановаяЗакупочная,
 	ЦеныНоменклатурыСрезПоследних.Внутренняя КАК Внутренняя,
 	ЦеныНоменклатурыСрезПоследних.Розничная КАК Розничная
@@ -119,6 +130,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 ВЫБРАТЬ
 	Список.Номенклатура,
+	Список.ЕдиницаИзмерения,
 	Список.ПлановаяЗакупочная,
 	Список.Внутренняя,
 	Список.Розничная,
@@ -151,6 +163,7 @@
 
 СГРУППИРОВАТЬ ПО
 	Список.Номенклатура,
+	Список.ЕдиницаИзмерения,
 	Список.ПлановаяЗакупочная,
 	Список.Внутренняя,
 	Список.Розничная</query>
@@ -217,6 +230,9 @@
 			<dcsset:selection>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Номенклатура</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ЕдиницаИзмерения</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Себестоимость</dcsset:field>
