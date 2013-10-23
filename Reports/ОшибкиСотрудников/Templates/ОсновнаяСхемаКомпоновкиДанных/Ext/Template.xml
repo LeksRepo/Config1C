@@ -76,6 +76,26 @@
 				</v8:item>
 			</title>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ОтклонениеПоДоговорам</dataPath>
+			<field>ОтклонениеПоДоговорам</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отклонение по договорам</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НарушениеИсполнительскойДисциплины</dataPath>
+			<field>НарушениеИсполнительскойДисциплины</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Нарушение исполнительской дисциплины</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	ВЫБОР
@@ -104,7 +124,9 @@
 		ИНАЧЕ СлужебнаяЗаписка.Виновный.Подразделение
 	КОНЕЦ КАК Подразделение,
 	СлужебнаяЗаписка.Ссылка КАК Документ,
-	NULL КАК СуммаПеределки
+	NULL КАК СуммаПеределки,
+	NULL КАК ОтклонениеПоДоговорам,
+	NULL КАК НарушениеИсполнительскойДисциплины
 ИЗ
 	Документ.СлужебнаяЗаписка КАК СлужебнаяЗаписка
 ГДЕ
@@ -140,13 +162,68 @@
 	NULL,
 	докСпецификация.Виновный.Подразделение,
 	докСпецификация.Ссылка,
-	докСпецификация.СуммаДокумента
+	докСпецификация.СуммаДокумента,
+	NULL,
+	NULL
 ИЗ
 	Документ.Спецификация КАК докСпецификация
 ГДЕ
 	докСпецификация.Дата МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания
 	И докСпецификация.Изделие = ЗНАЧЕНИЕ(Справочник.Изделия.Переделка)
-	И докСпецификация.Проведен</query>
+	И докСпецификация.Проведен
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	докДоговор.Автор.ФизическоеЛицо,
+	NULL,
+	NULL,
+	NULL,
+	докДоговор.Автор.ФизическоеЛицо.Подразделение,
+	докДоговор.Ссылка,
+	NULL,
+	ВЫБОР
+		КОГДА докДоговор.Спецификация.Проведен
+			ТОГДА докДоговор.СуммаДокументаБезСкидки - докДоговор.Спецификация.СуммаДокумента
+		ИНАЧЕ 0
+	КОНЕЦ,
+	NULL
+ИЗ
+	Документ.Договор КАК докДоговор
+ГДЕ
+	ВЫБОР
+			КОГДА докДоговор.Спецификация.Проведен
+				ТОГДА докДоговор.СуммаДокументаБезСкидки - докДоговор.Спецификация.СуммаДокумента
+			ИНАЧЕ 0
+		КОНЕЦ &lt; 0
+	И докДоговор.Дата МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ВЫБОР
+		КОГДА докСлужебнаяЗаписка.Виновный = ЗНАЧЕНИЕ(Справочник.ФизическиеЛица.ПустаяСсылка)
+			ТОГДА докСлужебнаяЗаписка.Адресат.ФизическоеЛицо
+		ИНАЧЕ докСлужебнаяЗаписка.Виновный
+	КОНЕЦ,
+	NULL,
+	NULL,
+	NULL,
+	ВЫБОР
+		КОГДА докСлужебнаяЗаписка.Виновный = ЗНАЧЕНИЕ(Справочник.ФизическиеЛица.ПустаяСсылка)
+			ТОГДА докСлужебнаяЗаписка.Адресат.ФизическоеЛицо.Подразделение
+		ИНАЧЕ докСлужебнаяЗаписка.Виновный.Подразделение
+	КОНЕЦ,
+	докСлужебнаяЗаписка.Ссылка,
+	NULL,
+	NULL,
+	1
+ИЗ
+	Документ.СлужебнаяЗаписка КАК докСлужебнаяЗаписка
+ГДЕ
+	докСлужебнаяЗаписка.ДатаКонтроля МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания
+	И докСлужебнаяЗаписка.ДатаКонтроля &lt; &amp;ТекущаяДата
+	И НЕ докСлужебнаяЗаписка.Проведен</query>
 	</dataSet>
 	<totalField>
 		<dataPath>НарушениеСроков</dataPath>
@@ -163,6 +240,14 @@
 	<totalField>
 		<dataPath>СуммаПеределки</dataPath>
 		<expression>Сумма(СуммаПеределки)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ОтклонениеПоДоговорам</dataPath>
+		<expression>Сумма(ОтклонениеПоДоговорам)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>НарушениеИсполнительскойДисциплины</dataPath>
+		<expression>Сумма(НарушениеИсполнительскойДисциплины)</expression>
 	</totalField>
 	<parameter>
 		<name>Период</name>
@@ -218,6 +303,24 @@
 		<useRestriction>true</useRestriction>
 		<expression>&amp;Период.ДатаОкончания</expression>
 	</parameter>
+	<parameter>
+		<name>ТекущаяДата</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Текущая дата</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>ТекущаяДата()</expression>
+	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
 		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
@@ -236,6 +339,9 @@
 					<dcsset:field>СуммаПеределки</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ОтклонениеПоДоговорам</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>НарушениеСроков</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
@@ -243,6 +349,9 @@
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>СуммаУдержания</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>НарушениеИсполнительскойДисциплины</dcsset:field>
 				</dcsset:item>
 			</dcsset:selection>
 			<dcsset:dataParameters>
