@@ -64,10 +64,15 @@
 				</v8:item>
 			</title>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЕдиницаИзмерения</dataPath>
+			<field>ЕдиницаИзмерения</field>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	спрНоменклатура.Ссылка КАК Номенклатура,
-	ЦеныНоменклатурыСрезПоследних.Розничная КАК Розничная
+	ЦеныНоменклатурыСрезПоследних.Розничная КАК Розничная,
+	спрНоменклатура.ЕдиницаИзмерения
 ПОМЕСТИТЬ Список
 ИЗ
 	Справочник.Номенклатура КАК спрНоменклатура
@@ -78,13 +83,16 @@
 	И НЕ спрНоменклатура.ПометкаУдаления
 	И НЕ спрНоменклатура.Неноменклатурный
 	И спрНоменклатура.НоменклатурнаяГруппа &lt;&gt; ЗНАЧЕНИЕ(Справочник.НоменклатурныеГруппы.Гравировка)
+	И спрНоменклатура.ВидНоменклатуры &lt;&gt; ЗНАЧЕНИЕ(Перечисление.ВидыНоменклатуры.Услуга)
+	И НЕ спрНоменклатура.Неноменклатурный
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
 ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	Список.Номенклатура КАК Номенклатура,
 	Список.Розничная КАК Цена,
-	УправленческийОстатки.КоличествоОстаток * УправленческийОстатки.Субконто2.КоэффициентБазовых КАК Количество
+	ЕСТЬNULL(УправленческийОстатки.КоличествоОстаток * УправленческийОстатки.Субконто2.КоэффициентБазовых, 0) КАК Количество,
+	Список.ЕдиницаИзмерения
 ИЗ
 	Список КАК Список
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрБухгалтерии.Управленческий.Остатки(, Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.МатериалыНаСкладе), , Субконто1.Регион = &amp;Регион) КАК УправленческийОстатки
@@ -142,6 +150,9 @@
 					<dcsset:field>Номенклатура</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ЕдиницаИзмерения</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Количество</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
@@ -168,6 +179,37 @@
 					<dcsset:orderType>Asc</dcsset:orderType>
 				</dcsset:item>
 			</dcsset:order>
+			<dcsset:conditionalAppearance>
+				<dcsset:item>
+					<dcsset:selection>
+						<dcsset:item>
+							<dcsset:field>ЕдиницаИзмерения</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>Номенклатура</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>Количество</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>Цена</dcsset:field>
+						</dcsset:item>
+					</dcsset:selection>
+					<dcsset:filter>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">Количество</dcsset:left>
+							<dcsset:comparisonType>LessOrEqual</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
+						</dcsset:item>
+					</dcsset:filter>
+					<dcsset:appearance>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>ЦветФона</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:Color">web:Coral</dcscor:value>
+						</dcscor:item>
+					</dcsset:appearance>
+				</dcsset:item>
+			</dcsset:conditionalAppearance>
 			<dcsset:outputParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>РасположениеРеквизитов</dcscor:parameter>
@@ -179,6 +221,13 @@
 					<dcsset:item xsi:type="dcsset:GroupItemField">
 						<dcsset:field>Номенклатура</dcsset:field>
 						<dcsset:groupType>Hierarchy</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ЕдиницаИзмерения</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
 						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
 						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
