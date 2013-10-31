@@ -7,36 +7,6 @@
 	<dataSet xsi:type="DataSetQuery">
 		<name>НаборДанных1</name>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Сотрудник</dataPath>
-			<field>Сотрудник</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Сотрудник</v8:content>
-				</v8:item>
-			</title>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>Отлично</dataPath>
-			<field>Отлично</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Отлично</v8:content>
-				</v8:item>
-			</title>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>Плохо</dataPath>
-			<field>Плохо</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Плохо</v8:content>
-				</v8:item>
-			</title>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>Подразделение</dataPath>
 			<field>Подразделение</field>
 			<title xsi:type="v8:LocalStringType">
@@ -47,118 +17,151 @@
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Комментарий</dataPath>
-			<field>Комментарий</field>
+			<dataPath>Договор</dataPath>
+			<field>Договор</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Оценка</dataPath>
+			<field>Оценка</field>
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Комментарий</v8:content>
+					<v8:content>Оценка</v8:content>
 				</v8:item>
 			</title>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Количество</dataPath>
+			<field>Количество</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Дата</dataPath>
+			<field>Дата</field>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
-	ОбзвонДоговоровСписокДоговоров.Договор.Автор.ФизическоеЛицо КАК Сотрудник,
+	ОбзвонДоговоровСписокДоговоров.Договор.Подразделение КАК Подразделение,
 	ВЫБОР
-		КОГДА ОбзвонДоговоровСписокДоговоров.ОценкаДизайн = ЗНАЧЕНИЕ(Перечисление.Оценки.Плохо)
-			ТОГДА 1
-		ИНАЧЕ 0
-	КОНЕЦ КАК Плохо,
+		КОГДА ОбзвонДоговоровСписокДоговоров.ОбщаяОценка = ЗНАЧЕНИЕ(Перечисление.Оценки.Благодарность)
+			ТОГДА "Благодарность"
+		КОГДА ОбзвонДоговоровСписокДоговоров.ОбщаяОценка = ЗНАЧЕНИЕ(Перечисление.Оценки.Претензия)
+			ТОГДА "Претензия"
+		КОГДА ОбзвонДоговоровСписокДоговоров.ОбщаяОценка = ЗНАЧЕНИЕ(Перечисление.Оценки.Напряжение)
+			ТОГДА "Напряжение"
+	КОНЕЦ КАК Оценка,
+	ОбзвонДоговоровСписокДоговоров.Договор КАК Договор,
+	МАКСИМУМ(ОбзвонДоговоровСписокДоговоров.Ссылка.Дата) КАК Дата,
 	ВЫБОР
-		КОГДА ОбзвонДоговоровСписокДоговоров.ОценкаДизайн = ЗНАЧЕНИЕ(Перечисление.Оценки.Отлично)
-			ТОГДА 1
-		ИНАЧЕ 0
-	КОНЕЦ КАК Отлично,
-	ОбзвонДоговоровСписокДоговоров.Договор.Автор.ФизическоеЛицо.Подразделение КАК Подразделение,
-	ОбзвонДоговоровСписокДоговоров.КомментарийДизайн КАК Комментарий
+		КОГДА ОбзвонДоговоровСписокДоговоров.ОбщаяОценка = ЗНАЧЕНИЕ(Перечисление.Оценки.Благодарность)
+			ТОГДА ОбзвонДоговоровСписокДоговоров.ОбщийКомментарий
+		КОГДА ОбзвонДоговоровСписокДоговоров.ОбщаяОценка = ЗНАЧЕНИЕ(Перечисление.Оценки.Претензия)
+			ТОГДА ОбзвонДоговоровСписокДоговоров.ОбщийКомментарий
+		КОГДА ОбзвонДоговоровСписокДоговоров.ОбщаяОценка = ЗНАЧЕНИЕ(Перечисление.Оценки.Напряжение)
+			ТОГДА ОбзвонДоговоровСписокДоговоров.ОбщийКомментарий
+	КОНЕЦ КАК Количество
 ИЗ
 	Документ.ОбзвонДоговоров.СписокДоговоров КАК ОбзвонДоговоровСписокДоговоров
 ГДЕ
-	ОбзвонДоговоровСписокДоговоров.Договор.Автор.ФизическоеЛицо &lt;&gt; ЗНАЧЕНИЕ(Справочник.ФизическиеЛица.ПустаяСсылка)
-	И (ОбзвонДоговоровСписокДоговоров.ОценкаДизайн = ЗНАЧЕНИЕ(Перечисление.Оценки.Отлично)
-			ИЛИ ОбзвонДоговоровСписокДоговоров.ОценкаДизайн = ЗНАЧЕНИЕ(Перечисление.Оценки.Плохо))
+	ОбзвонДоговоровСписокДоговоров.Ссылка.Дата МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания
+	И (ОбзвонДоговоровСписокДоговоров.ОбщаяОценка = ЗНАЧЕНИЕ(Перечисление.Оценки.Благодарность)
+			ИЛИ ОбзвонДоговоровСписокДоговоров.ОбщаяОценка = ЗНАЧЕНИЕ(Перечисление.Оценки.Претензия)
+			ИЛИ ОбзвонДоговоровСписокДоговоров.ОбщаяОценка = ЗНАЧЕНИЕ(Перечисление.Оценки.Напряжение))
 
-ОБЪЕДИНИТЬ ВСЕ
+СГРУППИРОВАТЬ ПО
+	ОбзвонДоговоровСписокДоговоров.Договор.Подразделение,
+	ВЫБОР
+		КОГДА ОбзвонДоговоровСписокДоговоров.ОбщаяОценка = ЗНАЧЕНИЕ(Перечисление.Оценки.Благодарность)
+			ТОГДА "Благодарность"
+		КОГДА ОбзвонДоговоровСписокДоговоров.ОбщаяОценка = ЗНАЧЕНИЕ(Перечисление.Оценки.Претензия)
+			ТОГДА "Претензия"
+		КОГДА ОбзвонДоговоровСписокДоговоров.ОбщаяОценка = ЗНАЧЕНИЕ(Перечисление.Оценки.Напряжение)
+			ТОГДА "Напряжение"
+	КОНЕЦ,
+	ОбзвонДоговоровСписокДоговоров.Договор,
+	ВЫБОР
+		КОГДА ОбзвонДоговоровСписокДоговоров.ОбщаяОценка = ЗНАЧЕНИЕ(Перечисление.Оценки.Благодарность)
+			ТОГДА ОбзвонДоговоровСписокДоговоров.ОбщийКомментарий
+		КОГДА ОбзвонДоговоровСписокДоговоров.ОбщаяОценка = ЗНАЧЕНИЕ(Перечисление.Оценки.Претензия)
+			ТОГДА ОбзвонДоговоровСписокДоговоров.ОбщийКомментарий
+		КОГДА ОбзвонДоговоровСписокДоговоров.ОбщаяОценка = ЗНАЧЕНИЕ(Перечисление.Оценки.Напряжение)
+			ТОГДА ОбзвонДоговоровСписокДоговоров.ОбщийКомментарий
+	КОНЕЦ
 
-ВЫБРАТЬ
-	ОбзвонДоговоровСписокДоговоров.Договор.Спецификация.ДокументОснование.Замерщик,
-	ВЫБОР
-		КОГДА ОбзвонДоговоровСписокДоговоров.ОценкаЗамер = ЗНАЧЕНИЕ(Перечисление.Оценки.Плохо)
-			ТОГДА 1
-		ИНАЧЕ 0
-	КОНЕЦ,
-	ВЫБОР
-		КОГДА ОбзвонДоговоровСписокДоговоров.ОценкаЗамер = ЗНАЧЕНИЕ(Перечисление.Оценки.Отлично)
-			ТОГДА 1
-		ИНАЧЕ 0
-	КОНЕЦ,
-	ОбзвонДоговоровСписокДоговоров.Договор.Спецификация.ДокументОснование.Замерщик.Подразделение,
-	ОбзвонДоговоровСписокДоговоров.КомментарийЗамер
-ИЗ
-	Документ.ОбзвонДоговоров.СписокДоговоров КАК ОбзвонДоговоровСписокДоговоров
-ГДЕ
-	ОбзвонДоговоровСписокДоговоров.Договор.Спецификация.ДокументОснование.Замерщик &lt;&gt; ЗНАЧЕНИЕ(Справочник.ФизическиеЛица.ПустаяСсылка)
-	И (ОбзвонДоговоровСписокДоговоров.ОценкаЗамер = ЗНАЧЕНИЕ(Перечисление.Оценки.Отлично)
-			ИЛИ ОбзвонДоговоровСписокДоговоров.ОценкаЗамер = ЗНАЧЕНИЕ(Перечисление.Оценки.Плохо))
-
-ОБЪЕДИНИТЬ ВСЕ
-
-ВЫБРАТЬ
-	Монтаж.Экспедитор,
-	ВЫБОР
-		КОГДА ОбзвонДоговоровСписокДоговоров.ОценкаДоставка = ЗНАЧЕНИЕ(Перечисление.Оценки.Плохо)
-			ТОГДА 1
-		ИНАЧЕ 0
-	КОНЕЦ,
-	ВЫБОР
-		КОГДА ОбзвонДоговоровСписокДоговоров.ОценкаДоставка = ЗНАЧЕНИЕ(Перечисление.Оценки.Отлично)
-			ТОГДА 1
-		ИНАЧЕ 0
-	КОНЕЦ,
-	Монтаж.Экспедитор.Подразделение,
-	ОбзвонДоговоровСписокДоговоров.КомментарийДоставка
-ИЗ
-	Документ.ОбзвонДоговоров.СписокДоговоров КАК ОбзвонДоговоровСписокДоговоров
-		ЛЕВОЕ СОЕДИНЕНИЕ Документ.Монтаж КАК Монтаж
-		ПО ОбзвонДоговоровСписокДоговоров.Договор.Спецификация = Монтаж.Спецификация
-ГДЕ
-	Монтаж.Экспедитор &lt;&gt; ЗНАЧЕНИЕ(Справочник.ФизическиеЛица.ПустаяСсылка)
-	И (ОбзвонДоговоровСписокДоговоров.ОценкаДоставка = ЗНАЧЕНИЕ(Перечисление.Оценки.Отлично)
-			ИЛИ ОбзвонДоговоровСписокДоговоров.ОценкаДоставка = ЗНАЧЕНИЕ(Перечисление.Оценки.Плохо))
-
-ОБЪЕДИНИТЬ ВСЕ
-
-ВЫБРАТЬ
-	Монтаж.Монтажник,
-	ВЫБОР
-		КОГДА ОбзвонДоговоровСписокДоговоров.ОценкаМонтаж = ЗНАЧЕНИЕ(Перечисление.Оценки.Плохо)
-			ТОГДА 1
-		ИНАЧЕ 0
-	КОНЕЦ,
-	ВЫБОР
-		КОГДА ОбзвонДоговоровСписокДоговоров.ОценкаМонтаж = ЗНАЧЕНИЕ(Перечисление.Оценки.Отлично)
-			ТОГДА 1
-		ИНАЧЕ 0
-	КОНЕЦ,
-	Монтаж.Монтажник.Подразделение,
-	ОбзвонДоговоровСписокДоговоров.КомментарийМонтаж
-ИЗ
-	Документ.ОбзвонДоговоров.СписокДоговоров КАК ОбзвонДоговоровСписокДоговоров
-		ЛЕВОЕ СОЕДИНЕНИЕ Документ.Монтаж КАК Монтаж
-		ПО ОбзвонДоговоровСписокДоговоров.Договор.Спецификация = Монтаж.Спецификация
-ГДЕ
-	Монтаж.Монтажник &lt;&gt; ЗНАЧЕНИЕ(Справочник.ФизическиеЛица.ПустаяСсылка)
-	И (ОбзвонДоговоровСписокДоговоров.ОценкаМонтаж = ЗНАЧЕНИЕ(Перечисление.Оценки.Плохо)
-			ИЛИ ОбзвонДоговоровСписокДоговоров.ОценкаМонтаж = ЗНАЧЕНИЕ(Перечисление.Оценки.Отлично))</query>
+УПОРЯДОЧИТЬ ПО
+	Договор</query>
 	</dataSet>
 	<totalField>
-		<dataPath>Отлично</dataPath>
-		<expression>Сумма(Отлично)</expression>
+		<dataPath>Количество</dataPath>
+		<expression>Количество</expression>
+		<group>Договор</group>
 	</totalField>
 	<totalField>
-		<dataPath>Плохо</dataPath>
-		<expression>Сумма(Плохо)</expression>
+		<dataPath>Количество</dataPath>
+		<expression>Количество(Количество)</expression>
+		<group>Оценка</group>
+		<group>Подразделение</group>
+		<group>ОбщийИтог</group>
 	</totalField>
+	<parameter>
+		<name>ДатаНачала</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Дата начала</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаНачала</expression>
+	</parameter>
+	<parameter>
+		<name>ДатаОкончания</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Дата окончания</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаОкончания</expression>
+	</parameter>
+	<parameter>
+		<name>Период</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
 		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
@@ -168,18 +171,24 @@
 					<dcsset:field>Подразделение</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Сотрудник</dcsset:field>
+					<dcsset:field>Оценка</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Комментарий</dcsset:field>
+					<dcsset:field>Договор</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Отлично</dcsset:field>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Плохо</dcsset:field>
+					<dcsset:field>Количество</dcsset:field>
 				</dcsset:item>
 			</dcsset:selection>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Период</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
+					</dcscor:value>
+					<dcsset:userSettingID>7882dffe-7192-456b-a109-2a041df50f95</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
 				<dcsset:groupItems>
 					<dcsset:item xsi:type="dcsset:GroupItemField">
@@ -199,7 +208,7 @@
 				<dcsset:item xsi:type="dcsset:StructureItemGroup">
 					<dcsset:groupItems>
 						<dcsset:item xsi:type="dcsset:GroupItemField">
-							<dcsset:field>Сотрудник</dcsset:field>
+							<dcsset:field>Оценка</dcsset:field>
 							<dcsset:groupType>Items</dcsset:groupType>
 							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
@@ -213,15 +222,6 @@
 						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
 					</dcsset:selection>
 					<dcsset:item xsi:type="dcsset:StructureItemGroup">
-						<dcsset:groupItems>
-							<dcsset:item xsi:type="dcsset:GroupItemField">
-								<dcsset:field>Комментарий</dcsset:field>
-								<dcsset:groupType>Items</dcsset:groupType>
-								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
-								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
-								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
-							</dcsset:item>
-						</dcsset:groupItems>
 						<dcsset:order>
 							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
 						</dcsset:order>
