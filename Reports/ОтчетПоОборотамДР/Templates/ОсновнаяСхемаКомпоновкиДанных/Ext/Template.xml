@@ -69,20 +69,6 @@
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>СтатьяДДС</dataPath>
-			<field>СтатьяДДС</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Статья ДДС</v8:content>
-				</v8:item>
-			</title>
-			<role>
-				<dcscom:dimension>true</dcscom:dimension>
-				<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
-			</role>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>Сумма</dataPath>
 			<field>Сумма</field>
 			<title xsi:type="v8:LocalStringType">
@@ -93,25 +79,29 @@
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>ВидСтатьиДДС</dataPath>
-			<field>ВидСтатьиДДС</field>
+			<dataPath>ВидСтатьиДР</dataPath>
+			<field>ВидСтатьиДР</field>
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Вид статьи ДДС</v8:content>
+					<v8:content>Вид статьи ДР</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СтатьяДР</dataPath>
+			<field>СтатьяДР</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Статья ДР</v8:content>
 				</v8:item>
 			</title>
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
-	ВЫБОР
-		КОГДА &amp;ВидОтчета = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ДенежныеСредства)
-			ТОГДА УправленческийОбороты.СуммаОборот
-		ИНАЧЕ -УправленческийОбороты.СуммаОборот
-	КОНЕЦ КАК Сумма,
+	-УправленческийОбороты.СуммаОборот КАК Сумма,
 	УправленческийОбороты.Регистратор КАК Регистратор,
-	УправленческийОбороты.Субконто1 КАК СтатьяДДС,
-	УправленческийОбороты.Субконто1.ВидСтатьи КАК ВидСтатьиДДС,
 	ВЫБОР
 		КОГДА &amp;Периодичность = "ДЕНЬ"
 			ТОГДА НАЧАЛОПЕРИОДА(УправленческийОбороты.Период, ДЕНЬ)
@@ -120,9 +110,27 @@
 		КОГДА &amp;Периодичность = "МЕСЯЦ"
 			ТОГДА НАЧАЛОПЕРИОДА(УправленческийОбороты.Период, МЕСЯЦ)
 		ИНАЧЕ НАЧАЛОПЕРИОДА(УправленческийОбороты.Период, ДЕНЬ)
-	КОНЕЦ КАК Период
+	КОНЕЦ КАК Период,
+	СтатьиДоходовРасходов.Ссылка КАК СтатьяДР,
+	СтатьиДоходовРасходов.ВидСтатьи КАК ВидСтатьиДР
 ИЗ
-	РегистрБухгалтерии.Управленческий.Обороты(, , Регистратор, Счет В ИЕРАРХИИ (&amp;ВидОтчета), , , , ) КАК УправленческийОбороты</query>
+	Справочник.СтатьиДоходовРасходов КАК СтатьиДоходовРасходов
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрБухгалтерии.Управленческий.Обороты(
+				,
+				,
+				Регистратор,
+				Счет В ИЕРАРХИИ (ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ПрибыльУбытки)),
+				,
+				НЕ(НЕ &amp;БезВнутренних
+						И Субконто1.Внутрифирменная),
+				,
+				) КАК УправленческийОбороты
+		ПО (УправленческийОбороты.Субконто1 = СтатьиДоходовРасходов.Ссылка)
+ГДЕ
+	НЕ УправленческийОбороты.Период IS NULL
+	И НЕ СтатьиДоходовРасходов.ЭтоГруппа
+	И НЕ(НЕ &amp;БезВнутренних
+				И СтатьиДоходовРасходов.Внутрифирменная)</query>
 	</dataSet>
 	<totalField>
 		<dataPath>Сумма</dataPath>
@@ -227,37 +235,18 @@
 		<useRestriction>false</useRestriction>
 	</parameter>
 	<parameter>
-		<name>ВидОтчета</name>
+		<name>БезВнутренних</name>
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>ru</v8:lang>
-				<v8:content>Вид отчета</v8:content>
+				<v8:content>Без внутренних</v8:content>
 			</v8:item>
 		</title>
 		<valueType>
-			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:ChartOfAccountsRef.Управленческий</v8:Type>
+			<v8:Type>xs:boolean</v8:Type>
 		</valueType>
-		<value xsi:nil="true"/>
-		<useRestriction>false</useRestriction>
-		<availableValue>
-			<value xsi:type="dcscor:DesignTimeValue">ПланСчетов.Управленческий.ДенежныеСредства</value>
-			<presentation xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Движение денежных средств</v8:content>
-				</v8:item>
-			</presentation>
-		</availableValue>
-		<availableValue>
-			<value xsi:type="dcscor:DesignTimeValue">ПланСчетов.Управленческий.ПрибыльУбытки</value>
-			<presentation xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Доходы и расходы</v8:content>
-				</v8:item>
-			</presentation>
-		</availableValue>
-		<use>Always</use>
+		<value xsi:type="xs:boolean">false</value>
+		<useRestriction>true</useRestriction>
 	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
@@ -296,7 +285,7 @@
 				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:use>false</dcscor:use>
-					<dcscor:parameter>ВидОтчета</dcscor:parameter>
+					<dcscor:parameter>БезВнутренних</dcscor:parameter>
 					<dcscor:value xsi:type="dcscor:DesignTimeValue">ПланСчетов.Управленческий.ДенежныеСредства</dcscor:value>
 					<dcsset:userSettingID>9d2e9637-de96-4fa8-82f6-651d4c34b847</dcsset:userSettingID>
 				</dcscor:item>
@@ -331,7 +320,7 @@
 				<dcsset:row>
 					<dcsset:groupItems>
 						<dcsset:item xsi:type="dcsset:GroupItemField">
-							<dcsset:field>ВидСтатьиДДС</dcsset:field>
+							<dcsset:field>ВидСтатьиДР</dcsset:field>
 							<dcsset:groupType>Items</dcsset:groupType>
 							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
@@ -340,7 +329,7 @@
 					</dcsset:groupItems>
 					<dcsset:order>
 						<dcsset:item xsi:type="dcsset:OrderItemField">
-							<dcsset:field>ВидСтатьиДДС.Порядок</dcsset:field>
+							<dcsset:field>ВидСтатьиДР.Порядок</dcsset:field>
 							<dcsset:orderType>Asc</dcsset:orderType>
 						</dcsset:item>
 					</dcsset:order>
@@ -350,7 +339,7 @@
 					<dcsset:item>
 						<dcsset:groupItems>
 							<dcsset:item xsi:type="dcsset:GroupItemField">
-								<dcsset:field>СтатьяДДС</dcsset:field>
+								<dcsset:field>СтатьяДР</dcsset:field>
 								<dcsset:groupType>Hierarchy</dcsset:groupType>
 								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
@@ -359,7 +348,7 @@
 						</dcsset:groupItems>
 						<dcsset:order>
 							<dcsset:item xsi:type="dcsset:OrderItemField">
-								<dcsset:field>СтатьяДДС.Код</dcsset:field>
+								<dcsset:field>СтатьяДР.Код</dcsset:field>
 								<dcsset:orderType>Asc</dcsset:orderType>
 							</dcsset:item>
 						</dcsset:order>
