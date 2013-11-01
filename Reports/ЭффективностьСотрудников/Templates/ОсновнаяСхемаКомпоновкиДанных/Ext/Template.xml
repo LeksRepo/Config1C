@@ -22,7 +22,7 @@
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Нарушение сроков</v8:content>
+					<v8:content>Наруш. сроков</v8:content>
 				</v8:item>
 			</title>
 		</field>
@@ -32,7 +32,7 @@
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Нарушения в работе</v8:content>
+					<v8:content>Наруш. в работе</v8:content>
 				</v8:item>
 			</title>
 		</field>
@@ -52,7 +52,7 @@
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Сумма удержания</v8:content>
+					<v8:content>Удержания</v8:content>
 				</v8:item>
 			</title>
 		</field>
@@ -72,7 +72,7 @@
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Сумма переделки</v8:content>
+					<v8:content>Переделки</v8:content>
 				</v8:item>
 			</title>
 		</field>
@@ -105,6 +105,16 @@
 					<v8:content>Благодарность</v8:content>
 				</v8:item>
 			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Размещение</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTextPlacementType">Wrap</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МаксимальнаяШирина</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">20</dcscor:value>
+				</dcscor:item>
+			</appearance>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Недовольство</dataPath>
@@ -113,6 +123,26 @@
 				<v8:item>
 					<v8:lang>ru</v8:lang>
 					<v8:content>Недовольство</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Размещение</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTextPlacementType">Wrap</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МаксимальнаяШирина</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">20</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоЗаказов</dataPath>
+			<field>КоличествоЗаказов</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество заказов</v8:content>
 				</v8:item>
 			</title>
 		</field>
@@ -219,6 +249,80 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	докСпецификация.Ссылка,
+	докСпецификация.Автор.ФизическоеЛицо КАК Виновный
+ПОМЕСТИТЬ Заказы
+ИЗ
+	Документ.Спецификация КАК докСпецификация
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СтатусСпецификации.СрезПоследних КАК Статусы
+		ПО докСпецификация.Ссылка = Статусы.Спецификация
+ГДЕ
+	(Статусы.Статус = ЗНАЧЕНИЕ(Перечисление.СтатусыСпецификации.Отгружен)
+			ИЛИ Статусы.Статус = ЗНАЧЕНИЕ(Перечисление.СтатусыСпецификации.Изготовлен))
+	И докСпецификация.Дата МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания
+	И докСпецификация.Изделие &lt;&gt; ЗНАЧЕНИЕ(Справочник.Изделия.Переделка)
+	И ТИПЗНАЧЕНИЯ(докСпецификация.Автор) &lt;&gt; ТИП(Справочник.ВнешниеПользователи)
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	КОЛИЧЕСТВО(РАЗЛИЧНЫЕ Заказы.Ссылка) КАК Количество,
+	Заказы.Виновный
+ПОМЕСТИТЬ ЗаказыПоСотрудникам
+ИЗ
+	Заказы КАК Заказы
+
+СГРУППИРОВАТЬ ПО
+	Заказы.Виновный
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	КОЛИЧЕСТВО(РАЗЛИЧНЫЕ Заказы.Ссылка),
+	Монтаж.Монтажник
+ИЗ
+	Заказы КАК Заказы
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.Монтаж КАК Монтаж
+		ПО Заказы.Ссылка = Монтаж.Спецификация
+ГДЕ
+	Монтаж.Монтажник &lt;&gt; ЗНАЧЕНИЕ(Справочник.ФизическиеЛица.ПустаяСсылка)
+
+СГРУППИРОВАТЬ ПО
+	Монтаж.Монтажник
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	КОЛИЧЕСТВО(РАЗЛИЧНЫЕ Заказы.Ссылка),
+	Монтаж.Экспедитор
+ИЗ
+	Заказы КАК Заказы
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.Монтаж КАК Монтаж
+		ПО Заказы.Ссылка = Монтаж.Спецификация
+ГДЕ
+	Монтаж.Экспедитор &lt;&gt; ЗНАЧЕНИЕ(Справочник.ФизическиеЛица.ПустаяСсылка)
+
+СГРУППИРОВАТЬ ПО
+	Монтаж.Экспедитор
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	КОЛИЧЕСТВО(РАЗЛИЧНЫЕ Заказы.Ссылка),
+	Замер.Замерщик
+ИЗ
+	Заказы КАК Заказы
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.Замер КАК Замер
+		ПО Заказы.Ссылка.ДокументОснование = Замер.Ссылка
+ГДЕ
+	Замер.Замерщик &lt;&gt; ЗНАЧЕНИЕ(Справочник.ФизическиеЛица.ПустаяСсылка)
+
+СГРУППИРОВАТЬ ПО
+	Замер.Замерщик
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	ВЫБОР
 		КОГДА СлужебнаяЗаписка.Виновный = ЗНАЧЕНИЕ(Справочник.ФизическиеЛица.ПустаяСсылка)
 			ТОГДА СлужебнаяЗаписка.Адресат.ФизическоеЛицо
@@ -249,7 +353,8 @@
 	NULL КАК ОтклонениеПоДоговорам,
 	NULL КАК НарушениеИсполнительскойДисциплины,
 	NULL КАК Благодарность,
-	NULL КАК Недовольство
+	NULL КАК Недовольство,
+	NULL КАК КоличествоЗаказов
 ИЗ
 	Документ.СлужебнаяЗаписка КАК СлужебнаяЗаписка
 ГДЕ
@@ -289,6 +394,7 @@
 	NULL,
 	NULL,
 	NULL,
+	NULL,
 	NULL
 ИЗ
 	Документ.Спецификация КАК докСпецификация
@@ -312,6 +418,7 @@
 			ТОГДА докДоговор.СуммаДокументаБезСкидки - докДоговор.Спецификация.СуммаДокумента
 		ИНАЧЕ 0
 	КОНЕЦ,
+	NULL,
 	NULL,
 	NULL,
 	NULL
@@ -346,6 +453,7 @@
 	NULL,
 	1,
 	NULL,
+	NULL,
 	NULL
 ИЗ
 	Документ.СлужебнаяЗаписка КАК докСлужебнаяЗаписка
@@ -367,9 +475,28 @@
 	NULL,
 	NULL,
 	Благодарности_Недовольства.Благодарность,
-	Благодарности_Недовольства.Недовольство
+	Благодарности_Недовольства.Недовольство,
+	NULL
 ИЗ
-	Благодарности_Недовольства КАК Благодарности_Недовольства</query>
+	Благодарности_Недовольства КАК Благодарности_Недовольства
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ЗаказыПоСотрудникам.Виновный,
+	NULL,
+	NULL,
+	NULL,
+	ЗаказыПоСотрудникам.Виновный.Подразделение,
+	"Заказы Сотрудника",
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	ЗаказыПоСотрудникам.Количество
+ИЗ
+	ЗаказыПоСотрудникам КАК ЗаказыПоСотрудникам</query>
 	</dataSet>
 	<totalField>
 		<dataPath>НарушениеСроков</dataPath>
@@ -421,6 +548,12 @@
 		<group>Подразделение</group>
 		<group>ОбщийИтог</group>
 	</totalField>
+	<totalField>
+		<dataPath>КоличествоЗаказов</dataPath>
+		<expression>Сумма(КоличествоЗаказов)</expression>
+		<group>Виновный</group>
+		<group>Виновный Иерархия</group>
+	</totalField>
 	<parameter>
 		<name>Период</name>
 		<title xsi:type="v8:LocalStringType">
@@ -430,14 +563,13 @@
 			</v8:item>
 		</title>
 		<valueType>
-			<v8:Type>v8:StandardPeriod</v8:Type>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
 		</valueType>
-		<value xsi:type="v8:StandardPeriod">
-			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
-			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
-			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
-		</value>
-		<useRestriction>false</useRestriction>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
 	</parameter>
 	<parameter>
 		<name>ДатаНачала</name>
@@ -455,7 +587,7 @@
 		</valueType>
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 		<useRestriction>true</useRestriction>
-		<expression>&amp;Период.ДатаНачала</expression>
+		<expression>&amp;ПериодОтчета.ДатаНачала</expression>
 	</parameter>
 	<parameter>
 		<name>ДатаОкончания</name>
@@ -473,7 +605,7 @@
 		</valueType>
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 		<useRestriction>true</useRestriction>
-		<expression>&amp;Период.ДатаОкончания</expression>
+		<expression>&amp;ПериодОтчета.ДатаОкончания</expression>
 	</parameter>
 	<parameter>
 		<name>ТекущаяДата</name>
@@ -492,6 +624,24 @@
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 		<useRestriction>true</useRestriction>
 		<expression>ТекущаяДата()</expression>
+	</parameter>
+	<parameter>
+		<name>ПериодОтчета</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период отчета</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
 	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
@@ -531,13 +681,15 @@
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Недовольство</dcsset:field>
 				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>КоличествоЗаказов</dcsset:field>
+				</dcsset:item>
 			</dcsset:selection>
 			<dcsset:dataParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
 					<dcscor:parameter>Период</dcscor:parameter>
-					<dcscor:value xsi:type="v8:StandardPeriod">
-						<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
-					</dcscor:value>
+					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
 					<dcsset:userSettingID>282bf391-9e10-44e8-9fa7-93196e716c8d</dcsset:userSettingID>
 				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
@@ -545,6 +697,13 @@
 					<dcscor:parameter>ДатаОкончания</dcscor:parameter>
 					<dcscor:value xsi:nil="true"/>
 					<dcsset:userSettingID>9e782f74-cd94-489d-a9f4-82c3a617eed0</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ПериодОтчета</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
+					</dcscor:value>
+					<dcsset:userSettingID>b194c6cb-3687-4397-baef-ae04cc4932d3</dcsset:userSettingID>
 				</dcscor:item>
 			</dcsset:dataParameters>
 			<dcsset:outputParameters>
