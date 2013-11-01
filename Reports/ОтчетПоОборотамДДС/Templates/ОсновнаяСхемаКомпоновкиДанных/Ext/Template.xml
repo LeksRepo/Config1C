@@ -115,24 +115,12 @@
 	СтатьиДвиженияДенежныхСредств.ВидСтатьи КАК ВидСтатьиДДС
 ИЗ
 	Справочник.СтатьиДвиженияДенежныхСредств КАК СтатьиДвиженияДенежныхСредств
-		ЛЕВОЕ СОЕДИНЕНИЕ РегистрБухгалтерии.Управленческий.Обороты(
-				,
-				,
-				Регистратор,
-				Счет В ИЕРАРХИИ (ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ДенежныеСредства)),
-				,
-				НЕ(НЕ &amp;БезВнутренних
-						И Субконто1.Внутрифирменная
-						И Субконто1.МеждуСчетами),
-				,
-				) КАК УправленческийОбороты
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрБухгалтерии.Управленческий.Обороты(, , Регистратор, Счет В ИЕРАРХИИ (ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ДенежныеСредства)), , , , ) КАК УправленческийОбороты
 		ПО (УправленческийОбороты.Субконто1 = СтатьиДвиженияДенежныхСредств.Ссылка)
 ГДЕ
 	НЕ УправленческийОбороты.Период ЕСТЬ NULL 
 	И НЕ СтатьиДвиженияДенежныхСредств.ЭтоГруппа
-	И НЕ(НЕ &amp;БезВнутренних
-				И СтатьиДвиженияДенежныхСредств.Внутрифирменная
-				И СтатьиДвиженияДенежныхСредств.МеждуСчетами)</query>
+	И (&amp;ПоказатьВнутренние ИЛИ НЕ(СтатьиДвиженияДенежныхСредств.Внутрифирменная ИЛИ СтатьиДвиженияДенежныхСредств.МеждуСчетами))</query>
 	</dataSet>
 	<totalField>
 		<dataPath>Сумма</dataPath>
@@ -237,19 +225,18 @@
 		<useRestriction>false</useRestriction>
 	</parameter>
 	<parameter>
-		<name>БезВнутренних</name>
+		<name>ПоказатьВнутренние</name>
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>ru</v8:lang>
-				<v8:content>Без внутренних</v8:content>
+				<v8:content>Показать внутренние</v8:content>
 			</v8:item>
 		</title>
 		<valueType>
 			<v8:Type>xs:boolean</v8:Type>
 		</valueType>
-		<value xsi:type="xs:boolean">true</value>
+		<value xsi:type="xs:boolean">false</value>
 		<useRestriction>false</useRestriction>
-		<use>Always</use>
 	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
@@ -281,14 +268,14 @@
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:use>false</dcscor:use>
 					<dcscor:parameter>ПериодОтчета</dcscor:parameter>
-					<dcscor:value xsi:type="dcscor:DesignTimeValue">ПланСчетов.Управленческий.ДенежныеСредства</dcscor:value>
-					<dcsset:userSettingID>9d2e9637-de96-4fa8-82f6-651d4c34b847</dcsset:userSettingID>
+					<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					<dcsset:userSettingID>3334f509-1cd3-4fd2-9beb-dcac72eb9195</dcsset:userSettingID>
 				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:use>false</dcscor:use>
-					<dcscor:parameter>БезВнутренних</dcscor:parameter>
-					<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
-					<dcsset:userSettingID>3334f509-1cd3-4fd2-9beb-dcac72eb9195</dcsset:userSettingID>
+					<dcscor:parameter>ПоказатьВнутренние</dcscor:parameter>
+					<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					<dcsset:userSettingID>e22bf6b5-458c-4d8e-bcb1-a1fb4d5a4e6c</dcsset:userSettingID>
 				</dcscor:item>
 			</dcsset:dataParameters>
 			<dcsset:order>

@@ -115,22 +115,13 @@
 	СтатьиДоходовРасходов.ВидСтатьи КАК ВидСтатьиДР
 ИЗ
 	Справочник.СтатьиДоходовРасходов КАК СтатьиДоходовРасходов
-		ЛЕВОЕ СОЕДИНЕНИЕ РегистрБухгалтерии.Управленческий.Обороты(
-				,
-				,
-				Регистратор,
-				Счет В ИЕРАРХИИ (ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ПрибыльУбытки)),
-				,
-				НЕ(НЕ &amp;БезВнутренних
-						И Субконто1.Внутрифирменная),
-				,
-				) КАК УправленческийОбороты
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрБухгалтерии.Управленческий.Обороты(, , Регистратор, Счет В ИЕРАРХИИ (ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ПрибыльУбытки)), , , , ) КАК УправленческийОбороты
 		ПО (УправленческийОбороты.Субконто1 = СтатьиДоходовРасходов.Ссылка)
 ГДЕ
-	НЕ УправленческийОбороты.Период IS NULL
+	НЕ УправленческийОбороты.Период ЕСТЬ NULL 
 	И НЕ СтатьиДоходовРасходов.ЭтоГруппа
-	И НЕ(НЕ &amp;БезВнутренних
-				И СтатьиДоходовРасходов.Внутрифирменная)</query>
+	И (&amp;ПоказатьВнутренние
+			ИЛИ НЕ СтатьиДоходовРасходов.Внутрифирменная)</query>
 	</dataSet>
 	<totalField>
 		<dataPath>Сумма</dataPath>
@@ -235,18 +226,19 @@
 		<useRestriction>false</useRestriction>
 	</parameter>
 	<parameter>
-		<name>БезВнутренних</name>
+		<name>ПоказатьВнутренние</name>
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>ru</v8:lang>
-				<v8:content>Без внутренних</v8:content>
+				<v8:content>Показать внутренние</v8:content>
 			</v8:item>
 		</title>
 		<valueType>
 			<v8:Type>xs:boolean</v8:Type>
 		</valueType>
 		<value xsi:type="xs:boolean">false</value>
-		<useRestriction>true</useRestriction>
+		<useRestriction>false</useRestriction>
+		<use>Always</use>
 	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
@@ -284,9 +276,8 @@
 					<dcsset:userSettingID>ffed51c6-d554-482f-86ad-c5df2771f5d5</dcsset:userSettingID>
 				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:use>false</dcscor:use>
-					<dcscor:parameter>БезВнутренних</dcscor:parameter>
-					<dcscor:value xsi:type="dcscor:DesignTimeValue">ПланСчетов.Управленческий.ДенежныеСредства</dcscor:value>
+					<dcscor:parameter>ПоказатьВнутренние</dcscor:parameter>
+					<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
 					<dcsset:userSettingID>9d2e9637-de96-4fa8-82f6-651d4c34b847</dcsset:userSettingID>
 				</dcscor:item>
 			</dcsset:dataParameters>
