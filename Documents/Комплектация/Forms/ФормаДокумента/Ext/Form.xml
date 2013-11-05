@@ -119,7 +119,6 @@
 		</UsualGroup>
 		<Table name="СписокНоменклатуры" id="19">
 			<Representation>List</Representation>
-			<ReadOnly>true</ReadOnly>
 			<AutoInsertNewRow>true</AutoInsertNewRow>
 			<EnableStartDrag>true</EnableStartDrag>
 			<EnableDrag>true</EnableDrag>
@@ -130,6 +129,7 @@
 			<RowFilter xsi:nil="true"/>
 			<ContextMenu name="СписокНоменклатурыКонтекстноеМеню" id="20"/>
 			<AutoCommandBar name="СписокНоменклатурыКоманднаяПанель" id="21">
+				<Autofill>false</Autofill>
 				<ChildItems>
 					<Button name="Перезаполнить" id="43">
 						<Type>CommandBarButton</Type>
@@ -163,6 +163,9 @@
 				<ContextMenu name="СписокНоменклатурыУправлениеПоискомКонтекстноеМеню" id="52"/>
 				<ExtendedTooltip name="СписокНоменклатурыУправлениеПоискомРасширеннаяПодсказка" id="53"/>
 			</SearchControlAddition>
+			<Events>
+				<Event name="BeforeAddRow">СписокНоменклатурыПередНачаломДобавления</Event>
+			</Events>
 			<ChildItems>
 				<LabelField name="СписокНоменклатурыНомерСтроки" id="23">
 					<DataPath>Объект.СписокНоменклатуры.LineNumber</DataPath>
