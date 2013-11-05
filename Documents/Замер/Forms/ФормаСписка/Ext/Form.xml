@@ -87,29 +87,29 @@
 				<Autofill>false</Autofill>
 			</AutoCommandBar>
 			<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="4"/>
-			<SearchStringAddition name="СписокСтрокаПоиска" id="56">
+			<SearchStringAddition name="СписокСтрокаПоиска" id="62">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="57"/>
-				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="58"/>
+				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="63"/>
+				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="64"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокСостояниеПросмотра" id="59">
+			<ViewStatusAddition name="СписокСостояниеПросмотра" id="65">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="60"/>
-				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="61"/>
+				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="66"/>
+				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="67"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокУправлениеПоиском" id="62">
+			<SearchControlAddition name="СписокУправлениеПоиском" id="68">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="63"/>
-				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="64"/>
+				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="69"/>
+				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="70"/>
 			</SearchControlAddition>
 			<Events>
 				<Event name="Selection">СписокВыбор</Event>
@@ -177,10 +177,21 @@
 					<ContextMenu name="АвторКонтекстноеМеню" id="9"/>
 					<ExtendedTooltip name="АвторРасширеннаяПодсказка" id="10"/>
 				</LabelField>
-				<LabelField name="Ссылка" id="37">
-					<DataPath>Список.Ref</DataPath>
-					<ContextMenu name="СсылкаКонтекстноеМеню" id="38"/>
-					<ExtendedTooltip name="СсылкаРасширеннаяПодсказка" id="39"/>
+				<LabelField name="Офис" id="56">
+					<DataPath>Список.Офис</DataPath>
+					<ContextMenu name="ОфисКонтекстноеМеню" id="57"/>
+					<ExtendedTooltip name="ОфисРасширеннаяПодсказка" id="58"/>
+				</LabelField>
+				<LabelField name="Ссылка" id="59">
+					<DataPath>Список.Ссылка</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Замер</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="СсылкаКонтекстноеМеню" id="60"/>
+					<ExtendedTooltip name="СсылкаРасширеннаяПодсказка" id="61"/>
 				</LabelField>
 			</ChildItems>
 		</Table>
@@ -203,19 +214,22 @@
 	ДокументЗамер.Офис КАК Офис,
 	ДокументЗамер.Дата КАК ДатаЗамера,
 	ДокументЗамер.Автор,
-	КОЛИЧЕСТВО(РАЗЛИЧНЫЕ Спецификация.Ссылка) КАК КоличествоСпецификаций,
+	КОЛИЧЕСТВО(РАЗЛИЧНЫЕ докСпецификация.Ссылка) КАК КоличествоСпецификаций,
 	ВЫБОР
 		КОГДА КОЛИЧЕСТВО(РАЗЛИЧНЫЕ Файлы.Ссылка) &gt; 0
 			ТОГДА ИСТИНА
 		ИНАЧЕ ЛОЖЬ
 	КОНЕЦ КАК ПрикрепленныеФайлы,
-	ДокументЗамер.Ссылка
+	ДокументЗамер.Ссылка КАК Ссылка,
+	МАКСИМУМ(докДоговор.Ссылка) КАК Договор
 ИЗ
 	Документ.Замер КАК ДокументЗамер
-		ЛЕВОЕ СОЕДИНЕНИЕ Документ.Спецификация КАК Спецификация
-		ПО ДокументЗамер.Ссылка = Спецификация.ДокументОснование
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.Спецификация КАК докСпецификация
+		ПО ДокументЗамер.Ссылка = докСпецификация.ДокументОснование
 		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.Файлы КАК Файлы
 		ПО (Файлы.ВладелецФайла = ДокументЗамер.Ссылка)
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.Договор КАК докДоговор
+		ПО ДокументЗамер.Ссылка = докДоговор.Спецификация.ДокументОснование.Ссылка
 
 СГРУППИРОВАТЬ ПО
 	ДокументЗамер.АдресЗамера,
@@ -239,6 +253,58 @@
 						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
 					</dcsset:order>
 					<dcsset:conditionalAppearance>
+						<dcsset:item>
+							<dcsset:selection>
+								<dcsset:item>
+									<dcsset:field>Автор</dcsset:field>
+								</dcsset:item>
+								<dcsset:item>
+									<dcsset:field>АдресЗамера</dcsset:field>
+								</dcsset:item>
+								<dcsset:item>
+									<dcsset:field>ДатаЗамера</dcsset:field>
+								</dcsset:item>
+								<dcsset:item>
+									<dcsset:field>Договор</dcsset:field>
+								</dcsset:item>
+								<dcsset:item>
+									<dcsset:field>Замерщик</dcsset:field>
+								</dcsset:item>
+								<dcsset:item>
+									<dcsset:field>ИмяЗаказчика</dcsset:field>
+								</dcsset:item>
+								<dcsset:item>
+									<dcsset:field>КоличествоСпецификаций</dcsset:field>
+								</dcsset:item>
+								<dcsset:item>
+									<dcsset:field>Номер</dcsset:field>
+								</dcsset:item>
+								<dcsset:item>
+									<dcsset:field>Офис</dcsset:field>
+								</dcsset:item>
+								<dcsset:item>
+									<dcsset:field>ПрикрепленныеФайлы</dcsset:field>
+								</dcsset:item>
+								<dcsset:item>
+									<dcsset:field>Ссылка</dcsset:field>
+								</dcsset:item>
+								<dcsset:item>
+									<dcsset:field>Телефон</dcsset:field>
+								</dcsset:item>
+							</dcsset:selection>
+							<dcsset:filter>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">Договор</dcsset:left>
+									<dcsset:comparisonType>Filled</dcsset:comparisonType>
+								</dcsset:item>
+							</dcsset:filter>
+							<dcsset:appearance>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:parameter>ЦветФона</dcscor:parameter>
+									<dcscor:value xsi:type="v8ui:Color">web:LightGreen</dcscor:value>
+								</dcscor:item>
+							</dcsset:appearance>
+						</dcsset:item>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
 						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
 					</dcsset:conditionalAppearance>

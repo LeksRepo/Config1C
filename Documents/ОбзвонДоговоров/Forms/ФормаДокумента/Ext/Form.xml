@@ -96,6 +96,9 @@
 				<ContextMenu name="СписокДоговоровУправлениеПоискомКонтекстноеМеню" id="113"/>
 				<ExtendedTooltip name="СписокДоговоровУправлениеПоискомРасширеннаяПодсказка" id="114"/>
 			</SearchControlAddition>
+			<Events>
+				<Event name="BeforeDeleteRow">СписокДоговоровПередУдалением</Event>
+			</Events>
 			<ChildItems>
 				<ColumnGroup name="НомерДозвонДатаЗвонка" id="95">
 					<Title>
@@ -226,6 +229,58 @@
 						</InputField>
 					</ChildItems>
 				</ColumnGroup>
+				<InputField name="СписокДоговоровОбщийКомментарий" id="76">
+					<DataPath>Объект.СписокДоговоров.ОбщийКомментарий</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>70</Width>
+					<MultiLine>true</MultiLine>
+					<ContextMenu name="СписокДоговоровОбщийКомментарийКонтекстноеМеню" id="77"/>
+					<ExtendedTooltip name="СписокДоговоровОбщийКомментарийРасширеннаяПодсказка" id="78"/>
+				</InputField>
+				<InputField name="СписокДоговоровОбщаяОценка" id="73">
+					<DataPath>Объект.СписокДоговоров.ОбщаяОценка</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>13</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<VerticalStretch>false</VerticalStretch>
+					<ListChoiceMode>true</ListChoiceMode>
+					<ChoiceList>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xr:DesignTimeRef">Enum.Оценки.EnumValue.Благодарность</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xr:DesignTimeRef">Enum.Оценки.EnumValue.Напряжение</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xr:DesignTimeRef">Enum.Оценки.EnumValue.Претензия</Value>
+							</xr:Value>
+						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xr:DesignTimeRef">Enum.Оценки.EnumValue.Перезвонить</Value>
+							</xr:Value>
+						</xr:Item>
+					</ChoiceList>
+					<ContextMenu name="СписокДоговоровОбщаяОценкаКонтекстноеМеню" id="74"/>
+					<ExtendedTooltip name="СписокДоговоровОбщаяОценкаРасширеннаяПодсказка" id="75"/>
+				</InputField>
 				<ColumnGroup name="Комментарий" id="45">
 					<Title>
 						<v8:item>
@@ -535,50 +590,6 @@
 						</InputField>
 					</ChildItems>
 				</ColumnGroup>
-				<InputField name="СписокДоговоровОбщийКомментарий" id="76">
-					<DataPath>Объект.СписокДоговоров.ОбщийКомментарий</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<Width>70</Width>
-					<MultiLine>true</MultiLine>
-					<ContextMenu name="СписокДоговоровОбщийКомментарийКонтекстноеМеню" id="77"/>
-					<ExtendedTooltip name="СписокДоговоровОбщийКомментарийРасширеннаяПодсказка" id="78"/>
-				</InputField>
-				<InputField name="СписокДоговоровОбщаяОценка" id="73">
-					<DataPath>Объект.СписокДоговоров.ОбщаяОценка</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<Width>13</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<VerticalStretch>false</VerticalStretch>
-					<ListChoiceMode>true</ListChoiceMode>
-					<ChoiceList>
-						<xr:Item>
-							<xr:Presentation/>
-							<xr:CheckState>0</xr:CheckState>
-							<xr:Value xsi:type="FormChoiceListDesTimeValue">
-								<Presentation/>
-								<Value xsi:type="xr:DesignTimeRef">Enum.Оценки.EnumValue.Благодарность</Value>
-							</xr:Value>
-						</xr:Item>
-						<xr:Item>
-							<xr:Presentation/>
-							<xr:CheckState>0</xr:CheckState>
-							<xr:Value xsi:type="FormChoiceListDesTimeValue">
-								<Presentation/>
-								<Value xsi:type="xr:DesignTimeRef">Enum.Оценки.EnumValue.Напряжение</Value>
-							</xr:Value>
-						</xr:Item>
-						<xr:Item>
-							<xr:Presentation/>
-							<xr:CheckState>0</xr:CheckState>
-							<xr:Value xsi:type="FormChoiceListDesTimeValue">
-								<Presentation/>
-								<Value xsi:type="xr:DesignTimeRef">Enum.Оценки.EnumValue.Претензия</Value>
-							</xr:Value>
-						</xr:Item>
-					</ChoiceList>
-					<ContextMenu name="СписокДоговоровОбщаяОценкаКонтекстноеМеню" id="74"/>
-					<ExtendedTooltip name="СписокДоговоровОбщаяОценкаРасширеннаяПодсказка" id="75"/>
-				</InputField>
 			</ChildItems>
 		</Table>
 		<LabelField name="Автор" id="42">
