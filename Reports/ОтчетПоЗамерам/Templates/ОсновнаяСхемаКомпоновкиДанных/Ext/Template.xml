@@ -33,10 +33,6 @@
 			<field>Телефон</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>КоличествоРасчетов</dataPath>
-			<field>КоличествоРасчетов</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>Регистратор</dataPath>
 			<field>Регистратор</field>
 			<presentationExpression>Регистратор.Номер</presentationExpression>
@@ -57,10 +53,6 @@
 			<dataPath>КоличествоДоговоров</dataPath>
 			<field>КоличествоДоговоров</field>
 		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>Договор</dataPath>
-			<field>Договор</field>
-		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	ДокЗамер.Ссылка КАК Регистратор,
@@ -72,24 +64,12 @@
 	ДокЗамер.ИмяЗаказчика КАК Заказчик,
 	ДокЗамер.Телефон,
 	ДокЗамер.АдресЗамера,
-	СтоимостьИзделия.Ссылка КАК КоличествоРасчетов,
-	СтоимостьИзделия.Договор КАК Договор,
-	ВЫБОР
-		КОГДА СтоимостьИзделия.Договор &lt;&gt; ЗНАЧЕНИЕ(Документ.Договор.ПустаяСсылка)
-			ТОГДА 1
-		ИНАЧЕ 0
-	КОНЕЦ КАК КоличествоДоговоров
+	1 КАК КоличествоДоговоров
 ИЗ
 	Документ.Замер КАК ДокЗамер
-		ЛЕВОЕ СОЕДИНЕНИЕ Документ.СтоимостьИзделия КАК СтоимостьИзделия
-		ПО (СтоимостьИзделия.Замер = ДокЗамер.Ссылка)
 {ГДЕ
 	(ДокЗамер.Дата МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода)}</query>
 	</dataSet>
-	<totalField>
-		<dataPath>КоличествоРасчетов</dataPath>
-		<expression>Количество(Различные КоличествоРасчетов)</expression>
-	</totalField>
 	<totalField>
 		<dataPath>АдресЗамера</dataPath>
 		<expression>Максимум(АдресЗамера)</expression>
@@ -121,10 +101,6 @@
 	<totalField>
 		<dataPath>КоличествоЗамеров</dataPath>
 		<expression>Сумма(КоличествоЗамеров)</expression>
-	</totalField>
-	<totalField>
-		<dataPath>Договор</dataPath>
-		<expression>Максимум(Договор)</expression>
 	</totalField>
 	<totalField>
 		<dataPath>КоличествоДоговоров</dataPath>
