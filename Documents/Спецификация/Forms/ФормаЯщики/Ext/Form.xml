@@ -126,23 +126,54 @@
 										<Event name="OnChange">КромкаПриИзменении</Event>
 									</Events>
 								</InputField>
-								<InputField name="Направляющие" id="102">
-									<DataPath>Items.Детали.CurrentData.НаправляющиеНоменклатура</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Направляющие</v8:content>
-										</v8:item>
-									</Title>
-									<HorizontalStretch>false</HorizontalStretch>
-									<VerticalStretch>false</VerticalStretch>
-									<ListChoiceMode>true</ListChoiceMode>
-									<ContextMenu name="НаправляющиеКонтекстноеМеню" id="103"/>
-									<ExtendedTooltip name="НаправляющиеExtendedTooltip" id="185"/>
-									<Events>
-										<Event name="OnChange">НаправляющиеПриИзменении</Event>
-									</Events>
-								</InputField>
+								<UsualGroup name="Группа1" id="241">
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="242"/>
+									<ChildItems>
+										<InputField name="Направляющие" id="102">
+											<DataPath>Items.Детали.CurrentData.НаправляющиеНоменклатура</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Направляющие</v8:content>
+												</v8:item>
+											</Title>
+											<HorizontalStretch>false</HorizontalStretch>
+											<VerticalStretch>false</VerticalStretch>
+											<ListChoiceMode>true</ListChoiceMode>
+											<ContextMenu name="НаправляющиеКонтекстноеМеню" id="103"/>
+											<ExtendedTooltip name="НаправляющиеExtendedTooltip" id="185"/>
+											<Events>
+												<Event name="OnChange">НаправляющиеПриИзменении</Event>
+											</Events>
+										</InputField>
+										<CheckBoxField name="ДеталиБезНаправляющих" id="238">
+											<DataPath>Items.Детали.CurrentData.БезНаправляющих</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Б\н</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>Right</TitleLocation>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Без направляющих</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ToolTipRepresentation>Balloon</ToolTipRepresentation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="ДеталиБезНаправляющихКонтекстноеМеню" id="239"/>
+											<ExtendedTooltip name="ДеталиБезНаправляющихРасширеннаяПодсказка" id="240"/>
+											<Events>
+												<Event name="OnChange">ДеталиБезНаправляющихПриИзменении</Event>
+											</Events>
+										</CheckBoxField>
+									</ChildItems>
+								</UsualGroup>
 								<InputField name="ПроемЯщика" id="109">
 									<DataPath>Items.Детали.CurrentData.ПроемЯщика</DataPath>
 									<Title>
@@ -189,6 +220,7 @@
 									<DataPath>Items.Детали.CurrentData.КоличествоЯщиков</DataPath>
 									<Width>5</Width>
 									<SpinButton>true</SpinButton>
+									<MinValue xsi:type="xs:decimal">1</MinValue>
 									<ContextMenu name="КоличествоЯщиковКонтекстноеМеню" id="146"/>
 									<ExtendedTooltip name="КоличествоЯщиковExtendedTooltip" id="190"/>
 								</InputField>
@@ -497,29 +529,29 @@
 								</ChildItems>
 							</AutoCommandBar>
 							<ExtendedTooltip name="ДеталиExtendedTooltip" id="207"/>
-							<SearchStringAddition name="ДеталиСтрокаПоиска" id="238">
+							<SearchStringAddition name="ДеталиСтрокаПоиска" id="243">
 								<AdditionSource>
 									<Item>Детали</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="ДеталиСтрокаПоискаКонтекстноеМеню" id="239"/>
-								<ExtendedTooltip name="ДеталиСтрокаПоискаРасширеннаяПодсказка" id="240"/>
+								<ContextMenu name="ДеталиСтрокаПоискаКонтекстноеМеню" id="244"/>
+								<ExtendedTooltip name="ДеталиСтрокаПоискаРасширеннаяПодсказка" id="245"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="ДеталиСостояниеПросмотра" id="241">
+							<ViewStatusAddition name="ДеталиСостояниеПросмотра" id="246">
 								<AdditionSource>
 									<Item>Детали</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="ДеталиСостояниеПросмотраКонтекстноеМеню" id="242"/>
-								<ExtendedTooltip name="ДеталиСостояниеПросмотраРасширеннаяПодсказка" id="243"/>
+								<ContextMenu name="ДеталиСостояниеПросмотраКонтекстноеМеню" id="247"/>
+								<ExtendedTooltip name="ДеталиСостояниеПросмотраРасширеннаяПодсказка" id="248"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="ДеталиУправлениеПоиском" id="244">
+							<SearchControlAddition name="ДеталиУправлениеПоиском" id="249">
 								<AdditionSource>
 									<Item>Детали</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="ДеталиУправлениеПоискомКонтекстноеМеню" id="245"/>
-								<ExtendedTooltip name="ДеталиУправлениеПоискомРасширеннаяПодсказка" id="246"/>
+								<ContextMenu name="ДеталиУправлениеПоискомКонтекстноеМеню" id="250"/>
+								<ExtendedTooltip name="ДеталиУправлениеПоискомРасширеннаяПодсказка" id="251"/>
 							</SearchControlAddition>
 							<Events>
 								<Event name="OnActivateRow">ДеталиПриАктивизацииСтроки</Event>
@@ -575,7 +607,8 @@
 							<Zoomable>true</Zoomable>
 							<Picture>
 								<xr:Abs>Picture.jpg</xr:Abs>
-								<xr:LoadTransparent>false</xr:LoadTransparent>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+								<xr:TransparentPixel x="246" y="280"/>
 							</Picture>
 							<ContextMenu name="Декорация1КонтекстноеМеню" id="156"/>
 							<ExtendedTooltip name="Декорация1ExtendedTooltip" id="233"/>
@@ -958,6 +991,17 @@
 							<v8:FractionDigits>0</v8:FractionDigits>
 							<v8:AllowedSign>Any</v8:AllowedSign>
 						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="БезНаправляющих" id="16">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Без направляющих</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
 					</Type>
 				</Column>
 			</Columns>
