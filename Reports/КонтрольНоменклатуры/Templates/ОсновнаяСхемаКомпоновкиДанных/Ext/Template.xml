@@ -9,14 +9,39 @@
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Внутренняя</dataPath>
 			<field>Внутренняя</field>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧДЦ=2</dcscor:value>
+				</dcscor:item>
+			</appearance>
+			<inputParameters>
+				<dcscor:item>
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ФорматРедактирования</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧДЦ=2</dcscor:value>
+				</dcscor:item>
+			</inputParameters>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>ПлановаяЗакупочная</dataPath>
 			<field>ПлановаяЗакупочная</field>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧДЦ=2</dcscor:value>
+				</dcscor:item>
+			</appearance>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Розничная</dataPath>
 			<field>Розничная</field>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧДЦ=2</dcscor:value>
+				</dcscor:item>
+			</appearance>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Номенклатура</dataPath>
@@ -117,6 +142,12 @@
 					<v8:content>Базовый лимит цеха</v8:content>
 				</v8:item>
 			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧДЦ=2</dcscor:value>
+				</dcscor:item>
+			</appearance>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>ПроцентОтхода</dataPath>
@@ -125,6 +156,42 @@
 				<v8:item>
 					<v8:lang>ru</v8:lang>
 					<v8:content>Процент отхода</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧДЦ=2</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПолныйЛимитЦеха</dataPath>
+			<field>ПолныйЛимитЦеха</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Полный лимит цеха</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ОстатокНаСкладе</dataPath>
+			<field>ОстатокНаСкладе</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Остаток на складе</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ОстатокВЦеху</dataPath>
+			<field>ОстатокВЦеху</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Остаток в цеху</v8:content>
 				</v8:item>
 			</title>
 		</field>
@@ -167,7 +234,10 @@
 		ИНАЧЕ 100
 	КОНЕЦ КАК Наценка,
 	БазовыйЛимитЦехаСрезПоследних.Количество КАК БазовыйЛимитЦеха,
-	Список.Номенклатура.ПроцентОтхода КАК ПроцентОтхода
+	Список.Номенклатура.ПроцентОтхода КАК ПроцентОтхода,
+	БазовыйЛимитЦехаСрезПоследних.Количество + ДополнительныйЛимит.КоличествоОстаток КАК ПолныйЛимитЦеха,
+	ОстаткиНаСкладе.КоличествоОстаток * ОстаткиНаСкладе.Субконто2.КоэффициентБазовых КАК ОстатокНаСкладе,
+	ОстаткиВЦеху.КоличествоОстаток КАК ОстатокВЦеху
 ИЗ
 	Список КАК Список
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрБухгалтерии.Управленческий.Остатки(, Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.МатериалыНаСкладе), , Субконто1.Регион = &amp;Регион) КАК ОстаткиНаСкладе
@@ -189,6 +259,10 @@
 			КОНЕЦ)
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.БазовыйЛимитЦеха.СрезПоследних КАК БазовыйЛимитЦехаСрезПоследних
 		ПО Список.Номенклатура = БазовыйЛимитЦехаСрезПоследних.Номенклатура
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрБухгалтерии.Управленческий.Остатки(, Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ДополнительныйЛимитЦеха), , Подразделение.Регион = &amp;Регион) КАК ДополнительныйЛимит
+		ПО Список.Номенклатура = ДополнительныйЛимит.Субконто1
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрБухгалтерии.Управленческий.Остатки(, Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ОсновноеПроизводство), , Подразделение.Регион = &amp;Регион) КАК ОстаткиВЦеху
+		ПО Список.Номенклатура = ОстаткиВЦеху.Субконто1
 
 СГРУППИРОВАТЬ ПО
 	Список.Номенклатура,
@@ -197,11 +271,14 @@
 	Список.Внутренняя,
 	Список.Розничная,
 	БазовыйЛимитЦехаСрезПоследних.Количество,
-	Список.Номенклатура.ПроцентОтхода</query>
+	Список.Номенклатура.ПроцентОтхода,
+	БазовыйЛимитЦехаСрезПоследних.Количество + ДополнительныйЛимит.КоличествоОстаток,
+	ОстаткиВЦеху.КоличествоОстаток,
+	ОстаткиНаСкладе.КоличествоОстаток * ОстаткиНаСкладе.Субконто2.КоэффициентБазовых</query>
 	</dataSet>
 	<totalField>
 		<dataPath>Внутренняя</dataPath>
-		<expression>Сумма(Внутренняя)</expression>
+		<expression>Среднее(Внутренняя)</expression>
 	</totalField>
 	<totalField>
 		<dataPath>КоличествоРезерва</dataPath>
@@ -209,27 +286,39 @@
 	</totalField>
 	<totalField>
 		<dataPath>Наценка</dataPath>
-		<expression>Сумма(Наценка)</expression>
+		<expression>Среднее(Наценка)</expression>
 	</totalField>
 	<totalField>
 		<dataPath>ПлановаяЗакупочная</dataPath>
-		<expression>Сумма(ПлановаяЗакупочная)</expression>
+		<expression>Среднее(ПлановаяЗакупочная)</expression>
 	</totalField>
 	<totalField>
 		<dataPath>Розничная</dataPath>
-		<expression>Сумма(Розничная)</expression>
+		<expression>Среднее(Розничная)</expression>
 	</totalField>
 	<totalField>
 		<dataPath>Себестоимость</dataPath>
-		<expression>Сумма(Себестоимость)</expression>
+		<expression>Среднее(Себестоимость)</expression>
 	</totalField>
 	<totalField>
 		<dataPath>БазовыйЛимитЦеха</dataPath>
-		<expression>Сумма(БазовыйЛимитЦеха)</expression>
+		<expression>Среднее(БазовыйЛимитЦеха)</expression>
 	</totalField>
 	<totalField>
 		<dataPath>ПроцентОтхода</dataPath>
-		<expression>Сумма(ПроцентОтхода)</expression>
+		<expression>Среднее(ПроцентОтхода)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ПолныйЛимитЦеха</dataPath>
+		<expression>Сумма(ПолныйЛимитЦеха)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ОстатокНаСкладе</dataPath>
+		<expression>Сумма(ОстатокНаСкладе)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ОстатокВЦеху</dataPath>
+		<expression>Сумма(ОстатокВЦеху)</expression>
 	</totalField>
 	<parameter>
 		<name>Период</name>
@@ -289,6 +378,9 @@
 					<dcsset:field>КоличествоРезерва</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ОстатокНаСкладе</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Наценка</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
@@ -296,6 +388,12 @@
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>БазовыйЛимитЦеха</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ПолныйЛимитЦеха</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ОстатокВЦеху</dcsset:field>
 				</dcsset:item>
 			</dcsset:selection>
 			<dcsset:dataParameters>
@@ -325,16 +423,13 @@
 							<dcsset:field>Номенклатура</dcsset:field>
 						</dcsset:item>
 						<dcsset:item>
+							<dcsset:field>ЕдиницаИзмерения</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>БазовыйЛимитЦеха</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
 							<dcsset:field>Внутренняя</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:field>ПлановаяЗакупочная</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:field>Розничная</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:field>Себестоимость</dcsset:field>
 						</dcsset:item>
 						<dcsset:item>
 							<dcsset:field>КоличествоРезерва</dcsset:field>
@@ -343,121 +438,61 @@
 							<dcsset:field>Наценка</dcsset:field>
 						</dcsset:item>
 						<dcsset:item>
-							<dcsset:field>ЕдиницаИзмерения</dcsset:field>
+							<dcsset:field>ОстатокВЦеху</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>ОстатокНаСкладе</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>ПлановаяЗакупочная</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>ПолныйЛимитЦеха</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>ПроцентОтхода</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>Розничная</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>Себестоимость</dcsset:field>
 						</dcsset:item>
 					</dcsset:selection>
 					<dcsset:filter>
-						<dcsset:item xsi:type="dcsset:FilterItemComparison">
-							<dcsset:left xsi:type="dcscor:Field">Номенклатура.ЭтоГруппа</dcsset:left>
-							<dcsset:comparisonType>Equal</dcsset:comparisonType>
-							<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
-						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:FilterItemGroup">
-							<dcsset:groupType>OrGroup</dcsset:groupType>
+							<dcsset:groupType>AndGroup</dcsset:groupType>
 							<dcsset:item xsi:type="dcsset:FilterItemComparison">
-								<dcsset:left xsi:type="dcscor:Field">Розничная</dcsset:left>
-								<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+								<dcsset:left xsi:type="dcscor:Field">Номенклатура.ЭтоГруппа</dcsset:left>
+								<dcsset:comparisonType>Equal</dcsset:comparisonType>
+								<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
 							</dcsset:item>
-							<dcsset:item xsi:type="dcsset:FilterItemComparison">
-								<dcsset:left xsi:type="dcscor:Field">ПлановаяЗакупочная</dcsset:left>
-								<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
-							</dcsset:item>
-							<dcsset:item xsi:type="dcsset:FilterItemComparison">
-								<dcsset:left xsi:type="dcscor:Field">Розничная</dcsset:left>
-								<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+							<dcsset:item xsi:type="dcsset:FilterItemGroup">
+								<dcsset:groupType>OrGroup</dcsset:groupType>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">Наценка</dcsset:left>
+									<dcsset:comparisonType>Less</dcsset:comparisonType>
+									<dcsset:right xsi:type="xs:decimal">20</dcsset:right>
+								</dcsset:item>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">Розничная</dcsset:left>
+									<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+								</dcsset:item>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">Внутренняя</dcsset:left>
+									<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+								</dcsset:item>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">ПлановаяЗакупочная</dcsset:left>
+									<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+								</dcsset:item>
 							</dcsset:item>
 						</dcsset:item>
 					</dcsset:filter>
 					<dcsset:appearance>
 						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 							<dcscor:parameter>ЦветФона</dcscor:parameter>
-							<dcscor:value xsi:type="v8ui:Color">#FF0000</dcscor:value>
-						</dcscor:item>
-						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-							<dcscor:parameter>ЦветТекста</dcscor:parameter>
-							<dcscor:value xsi:type="v8ui:Color">#FFFFFF</dcscor:value>
-						</dcscor:item>
-					</dcsset:appearance>
-				</dcsset:item>
-				<dcsset:item>
-					<dcsset:selection>
-						<dcsset:item>
-							<dcsset:field>Номенклатура</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:field>Внутренняя</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:field>ПлановаяЗакупочная</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:field>Розничная</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:field>Себестоимость</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:field>КоличествоРезерва</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:field>Наценка</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:field>ЕдиницаИзмерения</dcsset:field>
-						</dcsset:item>
-					</dcsset:selection>
-					<dcsset:filter>
-						<dcsset:item xsi:type="dcsset:FilterItemComparison">
-							<dcsset:left xsi:type="dcscor:Field">Номенклатура.ЭтоГруппа</dcsset:left>
-							<dcsset:comparisonType>Equal</dcsset:comparisonType>
-							<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-						</dcsset:item>
-					</dcsset:filter>
-					<dcsset:appearance>
-						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-							<dcscor:parameter>ЦветФона</dcscor:parameter>
-							<dcscor:value xsi:type="v8ui:Color">#E6FFE6</dcscor:value>
-						</dcscor:item>
-					</dcsset:appearance>
-				</dcsset:item>
-				<dcsset:item>
-					<dcsset:selection>
-						<dcsset:item>
-							<dcsset:field>Внутренняя</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:field>Номенклатура</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:field>КоличествоРезерва</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:field>Наценка</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:field>ПлановаяЗакупочная</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:field>Розничная</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:field>Себестоимость</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:field>ЕдиницаИзмерения</dcsset:field>
-						</dcsset:item>
-					</dcsset:selection>
-					<dcsset:filter>
-						<dcsset:item xsi:type="dcsset:FilterItemComparison">
-							<dcsset:left xsi:type="dcscor:Field">Наценка</dcsset:left>
-							<dcsset:comparisonType>Less</dcsset:comparisonType>
-							<dcsset:right xsi:type="xs:decimal">20</dcsset:right>
-						</dcsset:item>
-					</dcsset:filter>
-					<dcsset:appearance>
-						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-							<dcscor:parameter>ЦветФона</dcscor:parameter>
-							<dcscor:value xsi:type="v8ui:Color">web:Orange</dcscor:value>
+							<dcscor:value xsi:type="v8ui:Color">web:Pink</dcscor:value>
 						</dcscor:item>
 					</dcsset:appearance>
 				</dcsset:item>
