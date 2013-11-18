@@ -41,29 +41,29 @@
 				<Autofill>false</Autofill>
 			</AutoCommandBar>
 			<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="4"/>
-			<SearchStringAddition name="СписокСтрокаПоиска" id="40">
+			<SearchStringAddition name="СписокСтрокаПоиска" id="43">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="41"/>
-				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="42"/>
+				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="44"/>
+				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="45"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокСостояниеПросмотра" id="43">
+			<ViewStatusAddition name="СписокСостояниеПросмотра" id="46">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="44"/>
-				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="45"/>
+				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="47"/>
+				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="48"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокУправлениеПоиском" id="46">
+			<SearchControlAddition name="СписокУправлениеПоиском" id="49">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="47"/>
-				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="48"/>
+				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="50"/>
+				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="51"/>
 			</SearchControlAddition>
 			<ChildItems>
 				<LabelField name="ДатаИзготовления" id="31">
@@ -101,6 +101,18 @@
 					<ContextMenu name="СтатусКонтекстноеМеню" id="24"/>
 					<ExtendedTooltip name="СтатусРасширеннаяПодсказка" id="25"/>
 				</LabelField>
+				<CheckBoxField name="ЕстьКомплектация" id="40">
+					<DataPath>Список.ЕстьКомплектация</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Скомплектован</v8:content>
+						</v8:item>
+					</Title>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ЕстьКомплектацияКонтекстноеМеню" id="41"/>
+					<ExtendedTooltip name="ЕстьКомплектацияРасширеннаяПодсказка" id="42"/>
+				</CheckBoxField>
 				<LabelField name="Подразделение" id="11">
 					<DataPath>Список.Подразделение</DataPath>
 					<Title>
@@ -196,13 +208,20 @@
 	ДокументСпецификация.Упаковка,
 	ДокументСпецификация.УслугаМонтаж,
 	СтатусСпецификацииСрезПоследних.Статус,
-	НарядЗаданиеСписокСпецификаций.Ссылка.Номер КАК Наряд
+	НарядЗаданиеСписокСпецификаций.Ссылка.Номер КАК Наряд,
+	ВЫБОР
+		КОГДА ДокументКомплектация.Ссылка ЕСТЬ NULL 
+			ТОГДА ЛОЖЬ
+		ИНАЧЕ ИСТИНА
+	КОНЕЦ КАК ЕстьКомплектация
 ИЗ
 	Документ.Спецификация КАК ДокументСпецификация
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СтатусСпецификации.СрезПоследних(, ) КАК СтатусСпецификацииСрезПоследних
 		ПО (СтатусСпецификацииСрезПоследних.Спецификация = ДокументСпецификация.Ссылка)
 		ЛЕВОЕ СОЕДИНЕНИЕ Документ.НарядЗадание.СписокСпецификаций КАК НарядЗаданиеСписокСпецификаций
-		ПО НарядЗаданиеСписокСпецификаций.Спецификация = ДокументСпецификация.Ссылка</QueryText>
+		ПО (НарядЗаданиеСписокСпецификаций.Спецификация = ДокументСпецификация.Ссылка)
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.Комплектация КАК ДокументКомплектация
+		ПО ДокументКомплектация.Спецификация = ДокументСпецификация.Ссылка</QueryText>
 				<MainTable>Document.Спецификация</MainTable>
 				<ListSettings>
 					<dcsset:filter>
