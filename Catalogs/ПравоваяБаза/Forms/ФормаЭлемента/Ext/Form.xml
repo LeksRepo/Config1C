@@ -59,16 +59,42 @@
 				</InputField>
 			</ChildItems>
 		</UsualGroup>
-		<LabelField name="ИмяФайла" id="27">
-			<DataPath>Объект.ИмяФайла</DataPath>
-			<TitleLocation>None</TitleLocation>
-			<Hiperlink>true</Hiperlink>
-			<ContextMenu name="ИмяФайлаКонтекстноеМеню" id="28"/>
-			<ExtendedTooltip name="ИмяФайлаРасширеннаяПодсказка" id="29"/>
-			<Events>
-				<Event name="Click">ИмяФайлаНажатие</Event>
-			</Events>
-		</LabelField>
+		<UsualGroup name="ГруппаФайлОзнакомлен" id="35">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа файл ознакомлен</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа файл ознакомлен</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаФайлОзнакомленРасширеннаяПодсказка" id="36"/>
+			<ChildItems>
+				<CheckBoxField name="Ознакомлен" id="37">
+					<DataPath>Ознакомлен</DataPath>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ОзнакомленКонтекстноеМеню" id="38"/>
+					<ExtendedTooltip name="ОзнакомленРасширеннаяПодсказка" id="39"/>
+				</CheckBoxField>
+				<LabelField name="ИмяФайла" id="27">
+					<DataPath>Объект.ИмяФайла</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<Hiperlink>true</Hiperlink>
+					<ContextMenu name="ИмяФайлаКонтекстноеМеню" id="28"/>
+					<ExtendedTooltip name="ИмяФайлаРасширеннаяПодсказка" id="29"/>
+					<Events>
+						<Event name="Click">ИмяФайлаНажатие</Event>
+					</Events>
+				</LabelField>
+			</ChildItems>
+		</UsualGroup>
 		<Table name="Должности" id="7">
 			<TitleLocation>Top</TitleLocation>
 			<AutoInsertNewRow>true</AutoInsertNewRow>
@@ -95,31 +121,44 @@
 			<SearchControlLocation>None</SearchControlLocation>
 			<RowFilter xsi:nil="true"/>
 			<ContextMenu name="ДолжностиКонтекстноеМеню" id="8"/>
-			<AutoCommandBar name="ДолжностиКоманднаяПанель" id="9"/>
+			<AutoCommandBar name="ДолжностиКоманднаяПанель" id="9">
+				<Autofill>false</Autofill>
+				<ChildItems>
+					<Button name="ДолжностиЗаполнитьНовыми" id="33">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.Обновить</CommandName>
+						<Picture>
+							<xr:Ref>CommonPicture.СинхронизацияДанныхВыполнение</xr:Ref>
+							<xr:LoadTransparent>true</xr:LoadTransparent>
+						</Picture>
+						<ExtendedTooltip name="ДолжностиЗаполнитьНовымиРасширеннаяПодсказка" id="34"/>
+					</Button>
+				</ChildItems>
+			</AutoCommandBar>
 			<ExtendedTooltip name="ДолжностиРасширеннаяПодсказка" id="10"/>
-			<SearchStringAddition name="ДолжностиСтрокаПоиска" id="30">
+			<SearchStringAddition name="ДолжностиСтрокаПоиска" id="40">
 				<AdditionSource>
 					<Item>Должности</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="ДолжностиСтрокаПоискаКонтекстноеМеню" id="31"/>
-				<ExtendedTooltip name="ДолжностиСтрокаПоискаРасширеннаяПодсказка" id="32"/>
+				<ContextMenu name="ДолжностиСтрокаПоискаКонтекстноеМеню" id="41"/>
+				<ExtendedTooltip name="ДолжностиСтрокаПоискаРасширеннаяПодсказка" id="42"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="ДолжностиСостояниеПросмотра" id="33">
+			<ViewStatusAddition name="ДолжностиСостояниеПросмотра" id="43">
 				<AdditionSource>
 					<Item>Должности</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="ДолжностиСостояниеПросмотраКонтекстноеМеню" id="34"/>
-				<ExtendedTooltip name="ДолжностиСостояниеПросмотраРасширеннаяПодсказка" id="35"/>
+				<ContextMenu name="ДолжностиСостояниеПросмотраКонтекстноеМеню" id="44"/>
+				<ExtendedTooltip name="ДолжностиСостояниеПросмотраРасширеннаяПодсказка" id="45"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="ДолжностиУправлениеПоиском" id="36">
+			<SearchControlAddition name="ДолжностиУправлениеПоиском" id="46">
 				<AdditionSource>
 					<Item>Должности</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="ДолжностиУправлениеПоискомКонтекстноеМеню" id="37"/>
-				<ExtendedTooltip name="ДолжностиУправлениеПоискомРасширеннаяПодсказка" id="38"/>
+				<ContextMenu name="ДолжностиУправлениеПоискомКонтекстноеМеню" id="47"/>
+				<ExtendedTooltip name="ДолжностиУправлениеПоискомРасширеннаяПодсказка" id="48"/>
 			</SearchControlAddition>
 			<ChildItems>
 				<InputField name="ДолжностиДолжность" id="14">
@@ -128,6 +167,13 @@
 					<ContextMenu name="ДолжностиДолжностьКонтекстноеМеню" id="15"/>
 					<ExtendedTooltip name="ДолжностиДолжностьРасширеннаяПодсказка" id="16"/>
 				</InputField>
+				<CheckBoxField name="ДолжностиДоступность" id="30">
+					<DataPath>Объект.Должности.Доступность</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ДолжностиДоступностьКонтекстноеМеню" id="31"/>
+					<ExtendedTooltip name="ДолжностиДоступностьРасширеннаяПодсказка" id="32"/>
+				</CheckBoxField>
 			</ChildItems>
 		</Table>
 	</ChildItems>
@@ -186,6 +232,17 @@
 				</v8:NumberQualifiers>
 			</Type>
 		</Attribute>
+		<Attribute name="Ознакомлен" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ознакомлен</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
 	</Attributes>
 	<Commands>
 		<Command name="Добавить" id="1">
@@ -202,6 +259,21 @@
 				</v8:item>
 			</ToolTip>
 			<Action>Добавить</Action>
+		</Command>
+		<Command name="Обновить" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Обновить</Action>
 		</Command>
 	</Commands>
 	<CommandInterface>
