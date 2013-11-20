@@ -14,170 +14,361 @@
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<HorizontalAlign>Right</HorizontalAlign>
 		<Autofill>false</Autofill>
-		<ChildItems>
-			<Button name="КомандаОК" id="7">
-				<Type>CommandBarButton</Type>
-				<DefaultButton>true</DefaultButton>
-				<SkipOnInput>false</SkipOnInput>
-				<CommandName>Form.Command.КомандаОК</CommandName>
-				<TextColor>style:ButtonTextColor</TextColor>
-				<BackColor>style:ButtonBackColor</BackColor>
-				<BorderColor>style:BorderColor</BorderColor>
-				<ExtendedTooltip name="КомандаОКExtendedTooltip" id="77"/>
-			</Button>
-			<Button name="ФормаОтмена" id="113">
-				<Type>CommandBarButton</Type>
-				<CommandName>Form.StandardCommand.Cancel</CommandName>
-				<ExtendedTooltip name="ФормаОтменаРасширеннаяПодсказка" id="114"/>
-			</Button>
-		</ChildItems>
 	</AutoCommandBar>
 	<Events>
 		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
-		<InputField name="Подразделение" id="118">
-			<DataPath>ГородВладелец</DataPath>
-			<ContextMenu name="ПодразделениеКонтекстноеМеню" id="119"/>
-			<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="120"/>
-			<Events>
-				<Event name="OnChange">ПодразделениеПриИзменении</Event>
-			</Events>
-		</InputField>
-		<InputField name="НаселенныйПункт" id="23">
-			<DataPath>НаселенныйПункт</DataPath>
-			<Title>
+		<CheckBoxField name="АвтоматическийВвод" id="163">
+			<DataPath>АвтоматическийВвод</DataPath>
+			<TitleLocation>None</TitleLocation>
+			<CheckBoxType>Tumbler</CheckBoxType>
+			<EditFormat>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Населенный пункт</v8:content>
+					<v8:content>БЛ='Ручной ввод'; БИ='По классификатору'</v8:content>
 				</v8:item>
-			</Title>
-			<Width>25</Width>
-			<Wrap>false</Wrap>
-			<ChoiceButton>true</ChoiceButton>
-			<ClearButton>true</ClearButton>
-			<TextEdit>false</TextEdit>
-			<ChoiceListButton>false</ChoiceListButton>
-			<BorderColor>style:BorderColor</BorderColor>
-			<ContextMenu name="НаселенныйПунктКонтекстноеМеню" id="24"/>
-			<ExtendedTooltip name="НаселенныйПунктExtendedTooltip" id="93"/>
+			</EditFormat>
+			<ContextMenu name="АвтоматическийВводКонтекстноеМеню" id="164"/>
+			<ExtendedTooltip name="АвтоматическийВводРасширеннаяПодсказка" id="165"/>
 			<Events>
-				<Event name="OnChange">НаселенныйПунктПриИзменении</Event>
-				<Event name="StartChoice">ОбработкаВыбораНП</Event>
+				<Event name="OnChange">АвтоматическийВводПриИзменении</Event>
 			</Events>
-		</InputField>
-		<InputField name="Улица" id="25">
-			<DataPath>Улица</DataPath>
-			<Width>25</Width>
-			<ClearButton>true</ClearButton>
-			<ListChoiceMode>true</ListChoiceMode>
-			<AutoChoiceIncomplete>true</AutoChoiceIncomplete>
-			<ChooseType>false</ChooseType>
-			<EditTextUpdate>OnValueChange</EditTextUpdate>
-			<ContextMenu name="УлицаКонтекстноеМеню" id="26"/>
-			<ExtendedTooltip name="УлицаExtendedTooltip" id="94"/>
-			<Events>
-				<Event name="OnChange">УлицаПриИзменении</Event>
-				<Event name="AutoComplete">УлицаАвтоПодбор</Event>
-			</Events>
-		</InputField>
-		<UsualGroup name="ГруппаДомПодъездКодЭтажКвартира" id="27">
+		</CheckBoxField>
+		<Pages name="ВерхняяСтраница" id="124">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Группа дом подъезд код этаж квартира</v8:content>
+					<v8:content>Верхняя страница</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Группа дом подъезд код этаж квартира</v8:content>
+					<v8:content>Верхняя страница</v8:content>
 				</v8:item>
 			</ToolTip>
-			<HorizontalStretch>false</HorizontalStretch>
-			<Group>Horizontal</Group>
-			<Representation>None</Representation>
-			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаДомПодъездКодЭтажКвартираРасширеннаяПодсказка" id="95"/>
+			<ExtendedTooltip name="ВерхняяСтраницаРасширеннаяПодсказка" id="125"/>
 			<ChildItems>
-				<InputField name="Дом" id="30">
-					<DataPath>Дом</DataPath>
-					<TitleLocation>Top</TitleLocation>
-					<Width>3</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<Wrap>false</Wrap>
-					<BorderColor>style:BorderColor</BorderColor>
-					<ContextMenu name="ДомКонтекстноеМеню" id="31"/>
-					<ExtendedTooltip name="ДомExtendedTooltip" id="97"/>
-					<Events>
-						<Event name="OnChange">ДомПриИзменении</Event>
-					</Events>
-				</InputField>
-				<InputField name="Квартира" id="38">
-					<DataPath>Квартира</DataPath>
-					<TitleLocation>Top</TitleLocation>
-					<Width>3</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<Wrap>false</Wrap>
-					<BorderColor>style:BorderColor</BorderColor>
-					<ContextMenu name="КвартираКонтекстноеМеню" id="39"/>
-					<ExtendedTooltip name="КвартираExtendedTooltip" id="101"/>
-					<Events>
-						<Event name="OnChange">КвартираПриИзменении</Event>
-					</Events>
-				</InputField>
-				<InputField name="Подъезд" id="104">
-					<DataPath>Подъезд</DataPath>
+				<Page name="ПоКлассификатору" id="126">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Подъезд</v8:content>
+							<v8:content>Ввод адреса по классификатору</v8:content>
 						</v8:item>
 					</Title>
-					<TitleLocation>Top</TitleLocation>
-					<Wrap>false</Wrap>
-					<ContextMenu name="ПодъездКонтекстноеМеню" id="105"/>
-					<ExtendedTooltip name="ПодъездРасширеннаяПодсказка" id="106"/>
-					<Events>
-						<Event name="OnChange">ПодъездПриИзменении</Event>
-					</Events>
-				</InputField>
-				<InputField name="КодПодъезда" id="107">
-					<DataPath>КодПодъезда</DataPath>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>По классификатору</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ПоКлассификаторуРасширеннаяПодсказка" id="127"/>
+					<ChildItems>
+						<InputField name="Подразделение" id="118">
+							<DataPath>ГородВладелец</DataPath>
+							<ContextMenu name="ПодразделениеКонтекстноеМеню" id="119"/>
+							<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="120"/>
+							<Events>
+								<Event name="OnChange">ПодразделениеПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="НаселенныйПункт" id="23">
+							<DataPath>НаселенныйПункт</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Населенный пункт</v8:content>
+								</v8:item>
+							</Title>
+							<Width>25</Width>
+							<Wrap>false</Wrap>
+							<ChoiceButton>true</ChoiceButton>
+							<ClearButton>true</ClearButton>
+							<TextEdit>false</TextEdit>
+							<ChoiceListButton>false</ChoiceListButton>
+							<BorderColor>style:BorderColor</BorderColor>
+							<ContextMenu name="НаселенныйПунктКонтекстноеМеню" id="24"/>
+							<ExtendedTooltip name="НаселенныйПунктExtendedTooltip" id="93"/>
+							<Events>
+								<Event name="OnChange">НаселенныйПунктПриИзменении</Event>
+								<Event name="StartChoice">ОбработкаВыбораНП</Event>
+							</Events>
+						</InputField>
+						<InputField name="Улица" id="25">
+							<DataPath>Улица</DataPath>
+							<Width>25</Width>
+							<ClearButton>true</ClearButton>
+							<ListChoiceMode>true</ListChoiceMode>
+							<AutoChoiceIncomplete>true</AutoChoiceIncomplete>
+							<ChooseType>false</ChooseType>
+							<EditTextUpdate>OnValueChange</EditTextUpdate>
+							<ContextMenu name="УлицаКонтекстноеМеню" id="26"/>
+							<ExtendedTooltip name="УлицаExtendedTooltip" id="94"/>
+							<Events>
+								<Event name="OnChange">УлицаПриИзменении</Event>
+								<Event name="AutoComplete">УлицаАвтоПодбор</Event>
+							</Events>
+						</InputField>
+						<UsualGroup name="ГруппаДомПодъездКодЭтажКвартира" id="27">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа дом подъезд код этаж квартира</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа дом подъезд код этаж квартира</v8:content>
+								</v8:item>
+							</ToolTip>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаДомПодъездКодЭтажКвартираРасширеннаяПодсказка" id="95"/>
+							<ChildItems>
+								<InputField name="Дом" id="30">
+									<DataPath>Дом</DataPath>
+									<TitleLocation>Top</TitleLocation>
+									<Width>3</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Wrap>false</Wrap>
+									<BorderColor>style:BorderColor</BorderColor>
+									<ContextMenu name="ДомКонтекстноеМеню" id="31"/>
+									<ExtendedTooltip name="ДомExtendedTooltip" id="97"/>
+									<Events>
+										<Event name="OnChange">ДомПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="Подъезд" id="104">
+									<DataPath>Подъезд</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Подъезд</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Top</TitleLocation>
+									<Wrap>false</Wrap>
+									<ContextMenu name="ПодъездКонтекстноеМеню" id="105"/>
+									<ExtendedTooltip name="ПодъездРасширеннаяПодсказка" id="106"/>
+									<Events>
+										<Event name="OnChange">ПодъездПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="КодПодъезда" id="107">
+									<DataPath>КодПодъезда</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Код подъезда</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Top</TitleLocation>
+									<Wrap>false</Wrap>
+									<ContextMenu name="КодПодъездаКонтекстноеМеню" id="108"/>
+									<ExtendedTooltip name="КодПодъездаРасширеннаяПодсказка" id="109"/>
+									<Events>
+										<Event name="OnChange">КодПодъездаПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="Этаж" id="110">
+									<DataPath>Этаж</DataPath>
+									<TitleLocation>Top</TitleLocation>
+									<Wrap>false</Wrap>
+									<ContextMenu name="ЭтажКонтекстноеМеню" id="111"/>
+									<ExtendedTooltip name="ЭтажРасширеннаяПодсказка" id="112"/>
+									<Events>
+										<Event name="OnChange">ЭтажПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="Квартира" id="38">
+									<DataPath>Квартира</DataPath>
+									<TitleLocation>Top</TitleLocation>
+									<Width>3</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Wrap>false</Wrap>
+									<BorderColor>style:BorderColor</BorderColor>
+									<ContextMenu name="КвартираКонтекстноеМеню" id="39"/>
+									<ExtendedTooltip name="КвартираExtendedTooltip" id="101"/>
+									<Events>
+										<Event name="OnChange">КвартираПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="Километраж" id="121">
+									<DataPath>Километраж</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<TitleLocation>Top</TitleLocation>
+									<ContextMenu name="КилометражКонтекстноеМеню" id="122"/>
+									<ExtendedTooltip name="КилометражРасширеннаяПодсказка" id="123"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="РучнойНабор" id="130">
+					<Visible>false</Visible>
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Код подъезда</v8:content>
+							<v8:content>Ручной набор адреса</v8:content>
 						</v8:item>
 					</Title>
-					<TitleLocation>Top</TitleLocation>
-					<Wrap>false</Wrap>
-					<ContextMenu name="КодПодъездаКонтекстноеМеню" id="108"/>
-					<ExtendedTooltip name="КодПодъездаРасширеннаяПодсказка" id="109"/>
-					<Events>
-						<Event name="OnChange">КодПодъездаПриИзменении</Event>
-					</Events>
-				</InputField>
-				<InputField name="Этаж" id="110">
-					<DataPath>Этаж</DataPath>
-					<TitleLocation>Top</TitleLocation>
-					<Wrap>false</Wrap>
-					<ContextMenu name="ЭтажКонтекстноеМеню" id="111"/>
-					<ExtendedTooltip name="ЭтажРасширеннаяПодсказка" id="112"/>
-					<Events>
-						<Event name="OnChange">ЭтажПриИзменении</Event>
-					</Events>
-				</InputField>
-				<InputField name="Километраж" id="121">
-					<DataPath>Километраж</DataPath>
-					<ReadOnly>true</ReadOnly>
-					<TitleLocation>Top</TitleLocation>
-					<ContextMenu name="КилометражКонтекстноеМеню" id="122"/>
-					<ExtendedTooltip name="КилометражРасширеннаяПодсказка" id="123"/>
-				</InputField>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ручной набор</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="РучнойНаборРасширеннаяПодсказка" id="131"/>
+					<ChildItems>
+						<InputField name="НаселенныйПунктВручную" id="132">
+							<DataPath>НаселенныйПунктВручную</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Населенный пункт</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="НаселенныйПунктВручнуюКонтекстноеМеню" id="133"/>
+							<ExtendedTooltip name="НаселенныйПунктВручнуюРасширеннаяПодсказка" id="134"/>
+							<Events>
+								<Event name="OnChange">НаселенныйПунктВручнуюОкончаниеВводаТекста</Event>
+							</Events>
+						</InputField>
+						<InputField name="УлицаВручную" id="135">
+							<DataPath>УлицаВручную</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Улица</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="УлицаВручнуюКонтекстноеМеню" id="136"/>
+							<ExtendedTooltip name="УлицаВручнуюРасширеннаяПодсказка" id="137"/>
+							<Events>
+								<Event name="OnChange">УлицаВручнуюОкончаниеВводаТекста</Event>
+							</Events>
+						</InputField>
+						<UsualGroup name="ГруппаДеталиАдреса" id="156">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа детали адреса</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа детали адреса</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаДеталиАдресаРасширеннаяПодсказка" id="157"/>
+							<ChildItems>
+								<InputField name="ДомВручную" id="138">
+									<DataPath>ДомВручную</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Дом</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Top</TitleLocation>
+									<Width>3</Width>
+									<ContextMenu name="ДомВручнуюКонтекстноеМеню" id="139"/>
+									<ExtendedTooltip name="ДомВручнуюРасширеннаяПодсказка" id="140"/>
+									<Events>
+										<Event name="OnChange">ДомВручнуюОкончаниеВводаТекста</Event>
+									</Events>
+								</InputField>
+								<InputField name="ПодъездВручную" id="141">
+									<DataPath>ПодъездВручную</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Подъезд</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Top</TitleLocation>
+									<Width>1</Width>
+									<ContextMenu name="ПодъездВручнуюКонтекстноеМеню" id="142"/>
+									<ExtendedTooltip name="ПодъездВручнуюРасширеннаяПодсказка" id="143"/>
+									<Events>
+										<Event name="OnChange">ПодъездВручнуюОкончаниеВводаТекста</Event>
+									</Events>
+								</InputField>
+								<InputField name="КодПодъездаВручную" id="158">
+									<DataPath>КодПодъездаВручную</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Код подъезда</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Top</TitleLocation>
+									<Width>1</Width>
+									<ContextMenu name="КодПодъездаВручнуюКонтекстноеМеню" id="159"/>
+									<ExtendedTooltip name="КодПодъездаВручнуюРасширеннаяПодсказка" id="160"/>
+									<Events>
+										<Event name="OnChange">КодПодъездаВручнуюОкончаниеВводаТекста</Event>
+									</Events>
+								</InputField>
+								<InputField name="ЭтажВручную" id="147">
+									<DataPath>ЭтажВручную</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Этаж</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Top</TitleLocation>
+									<Width>1</Width>
+									<ContextMenu name="ЭтажВручнуюКонтекстноеМеню" id="148"/>
+									<ExtendedTooltip name="ЭтажВручнуюРасширеннаяПодсказка" id="149"/>
+									<Events>
+										<Event name="OnChange">ЭтажВручнуюОкончаниеВводаТекста</Event>
+									</Events>
+								</InputField>
+								<InputField name="КвартираВручную" id="150">
+									<DataPath>КвартираВручную</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Квартира</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Top</TitleLocation>
+									<Width>1</Width>
+									<ContextMenu name="КвартираВручнуюКонтекстноеМеню" id="151"/>
+									<ExtendedTooltip name="КвартираВручнуюРасширеннаяПодсказка" id="152"/>
+									<Events>
+										<Event name="OnChange">КвартираВручнуюОкончаниеВводаТекста</Event>
+									</Events>
+								</InputField>
+								<InputField name="КилометражВручную" id="153">
+									<DataPath>КилометражВручную</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Километраж</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Top</TitleLocation>
+									<Width>2</Width>
+									<ContextMenu name="КилометражВручнуюКонтекстноеМеню" id="154"/>
+									<ExtendedTooltip name="КилометражВручнуюРасширеннаяПодсказка" id="155"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
 			</ChildItems>
-		</UsualGroup>
+		</Pages>
 		<InputField name="ОтображениеАдреса" id="115">
 			<DataPath>ОтображениеАдреса</DataPath>
 			<ReadOnly>true</ReadOnly>
@@ -185,6 +376,41 @@
 			<ContextMenu name="ОтображениеАдресаКонтекстноеМеню" id="116"/>
 			<ExtendedTooltip name="ОтображениеАдресаРасширеннаяПодсказка" id="117"/>
 		</InputField>
+		<UsualGroup name="ГруппаКоманднаяПанель" id="128">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа командная панель</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа командная панель</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаКоманднаяПанельРасширеннаяПодсказка" id="129"/>
+			<ChildItems>
+				<Button name="КомандаОК" id="7">
+					<Type>UsualButton</Type>
+					<DefaultButton>true</DefaultButton>
+					<SkipOnInput>false</SkipOnInput>
+					<CommandName>Form.Command.КомандаОК</CommandName>
+					<TextColor>style:ButtonTextColor</TextColor>
+					<BackColor>style:ButtonBackColor</BackColor>
+					<BorderColor>style:BorderColor</BorderColor>
+					<ExtendedTooltip name="КомандаОКExtendedTooltip" id="77"/>
+				</Button>
+				<Button name="ФормаОтмена" id="113">
+					<Type>UsualButton</Type>
+					<CommandName>Form.StandardCommand.Cancel</CommandName>
+					<ExtendedTooltip name="ФормаОтменаРасширеннаяПодсказка" id="114"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="НаселенныйПункт" id="8">
@@ -361,6 +587,142 @@
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
 			</Type>
+		</Attribute>
+		<Attribute name="НаселенныйПунктВручную" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Населенный пункт вручную</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="УлицаВручную" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Улица вручную</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ДомВручную" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дом вручную</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ПодъездВручную" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подъезд вручную</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="КодПодъездаВручную" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Код подъезда вручную</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ЭтажВручную" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Этаж вручную</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="КвартираВручную" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Квартира вручную</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="КилометражВручную" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Километраж вручную</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="АвтоматическийВвод" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Автоматический ввод</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+			<SavedData>true</SavedData>
 		</Attribute>
 	</Attributes>
 	<Commands>
