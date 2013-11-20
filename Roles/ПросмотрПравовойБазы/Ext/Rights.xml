@@ -33,6 +33,39 @@
 		</right>
 	</object>
 	<object>
+		<name>Catalog.ПравоваяБаза.TabularSection.Должности.Attribute.Доступность</name>
+		<right>
+			<name>View</name>
+			<value>false</value>
+		</right>
+		<right>
+			<name>Edit</name>
+			<value>false</value>
+		</right>
+	</object>
+	<object>
+		<name>Catalog.ПравоваяБаза.TabularSection.Должности</name>
+		<right>
+			<name>View</name>
+			<value>false</value>
+		</right>
+		<right>
+			<name>Edit</name>
+			<value>false</value>
+		</right>
+	</object>
+	<object>
+		<name>Catalog.ПравоваяБаза.TabularSection.Должности.Attribute.Должность</name>
+		<right>
+			<name>View</name>
+			<value>false</value>
+		</right>
+		<right>
+			<name>Edit</name>
+			<value>false</value>
+		</right>
+	</object>
+	<object>
 		<name>InformationRegister.ФайлыВБазе.Dimension.НомерВерсии</name>
 		<right>
 			<name>View</name>
@@ -107,6 +140,20 @@
 	</object>
 	<restrictionTemplate>
 		<name>ДоступностьДолжности</name>
-		<condition>Где Должности.Доступность</condition>
+		<condition>ПравоваяБаза ГДЕ (ПравоваяБаза.Должности.Доступность) И ПравоваяБаза.Должности.Должность В
+			(ВЫБРАТЬ
+				Должности.Ссылка
+			ИЗ
+				Справочник.Должности КАК Должности
+					ЛЕВОЕ СОЕДИНЕНИЕ Справочник.Пользователи КАК Пользователи
+					ПО
+						Должности.Ссылка = Пользователи.ФизическоеЛицо.ОсновнаяДолжность
+			ГДЕ
+				Пользователи.Ссылка = &amp;ТекущийПользователь) 
+
+
+
+
+</condition>
 	</restrictionTemplate>
 </Rights>
