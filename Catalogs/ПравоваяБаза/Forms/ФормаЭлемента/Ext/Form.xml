@@ -6,6 +6,10 @@
 		<ChildItems>
 			<Button name="ФормаДобавить" id="23">
 				<Type>CommandBarButton</Type>
+				<UserVisible>
+					<xr:Common>true</xr:Common>
+					<xr:Value name="Role.ПолныеПрава">false</xr:Value>
+				</UserVisible>
 				<Representation>PictureAndText</Representation>
 				<CommandName>Form.Command.Добавить</CommandName>
 				<Picture>
@@ -102,7 +106,7 @@
 		</UsualGroup>
 		<Table name="Должности" id="7">
 			<UserVisible>
-				<xr:Common>false</xr:Common>
+				<xr:Common>true</xr:Common>
 				<xr:Value name="Role.ПолныеПрава">false</xr:Value>
 			</UserVisible>
 			<TitleLocation>Top</TitleLocation>
@@ -130,31 +134,43 @@
 			<SearchControlLocation>None</SearchControlLocation>
 			<RowFilter xsi:nil="true"/>
 			<ContextMenu name="ДолжностиКонтекстноеМеню" id="8"/>
-			<AutoCommandBar name="ДолжностиКоманднаяПанель" id="9"/>
+			<AutoCommandBar name="ДолжностиКоманднаяПанель" id="9">
+				<ChildItems>
+					<Button name="ДолжностиПерезаполнить" id="42">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.Перезаполнить</CommandName>
+						<Picture>
+							<xr:Ref>CommonPicture.СинхронизацияДанныхВыполнение</xr:Ref>
+							<xr:LoadTransparent>true</xr:LoadTransparent>
+						</Picture>
+						<ExtendedTooltip name="ДолжностиПерезаполнитьРасширеннаяПодсказка" id="43"/>
+					</Button>
+				</ChildItems>
+			</AutoCommandBar>
 			<ExtendedTooltip name="ДолжностиРасширеннаяПодсказка" id="10"/>
-			<SearchStringAddition name="ДолжностиСтрокаПоиска" id="42">
+			<SearchStringAddition name="ДолжностиСтрокаПоиска" id="44">
 				<AdditionSource>
 					<Item>Должности</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="ДолжностиСтрокаПоискаКонтекстноеМеню" id="43"/>
-				<ExtendedTooltip name="ДолжностиСтрокаПоискаРасширеннаяПодсказка" id="44"/>
+				<ContextMenu name="ДолжностиСтрокаПоискаКонтекстноеМеню" id="45"/>
+				<ExtendedTooltip name="ДолжностиСтрокаПоискаРасширеннаяПодсказка" id="46"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="ДолжностиСостояниеПросмотра" id="45">
+			<ViewStatusAddition name="ДолжностиСостояниеПросмотра" id="47">
 				<AdditionSource>
 					<Item>Должности</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="ДолжностиСостояниеПросмотраКонтекстноеМеню" id="46"/>
-				<ExtendedTooltip name="ДолжностиСостояниеПросмотраРасширеннаяПодсказка" id="47"/>
+				<ContextMenu name="ДолжностиСостояниеПросмотраКонтекстноеМеню" id="48"/>
+				<ExtendedTooltip name="ДолжностиСостояниеПросмотраРасширеннаяПодсказка" id="49"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="ДолжностиУправлениеПоиском" id="48">
+			<SearchControlAddition name="ДолжностиУправлениеПоиском" id="50">
 				<AdditionSource>
 					<Item>Должности</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="ДолжностиУправлениеПоискомКонтекстноеМеню" id="49"/>
-				<ExtendedTooltip name="ДолжностиУправлениеПоискомРасширеннаяПодсказка" id="50"/>
+				<ContextMenu name="ДолжностиУправлениеПоискомКонтекстноеМеню" id="51"/>
+				<ExtendedTooltip name="ДолжностиУправлениеПоискомРасширеннаяПодсказка" id="52"/>
 			</SearchControlAddition>
 			<ChildItems>
 				<InputField name="ДолжностиДолжность" id="14">
@@ -259,6 +275,21 @@
 				</v8:item>
 			</ToolTip>
 			<Action>Ознакомиться</Action>
+		</Command>
+		<Command name="Перезаполнить" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перезаполнить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перезаполнить</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Перезаполнить</Action>
 		</Command>
 	</Commands>
 	<CommandInterface>

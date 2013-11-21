@@ -6,13 +6,26 @@
 			<v8:content>Ознакомление с правовой базой</v8:content>
 		</v8:item>
 	</Title>
+	<AutoTitle>false</AutoTitle>
+	<Customizable>false</Customizable>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<Autofill>false</Autofill>
 	</AutoCommandBar>
 	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
+		<LabelDecoration name="Декорация1" id="8">
+			<Title formatted="true">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>&lt;fontsize 9&gt;&lt;b&gt;&lt;colorstyle -14&gt;Список документов с которыми вам необходимо ознакомиться&lt;/&gt;&lt;/&gt;&lt;/&gt;</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="Декорация1КонтекстноеМеню" id="9"/>
+			<ExtendedTooltip name="Декорация1РасширеннаяПодсказка" id="10"/>
+		</LabelDecoration>
 		<Table name="Список" id="1">
 			<Representation>List</Representation>
 			<Header>false</Header>
@@ -21,6 +34,22 @@
 			<AutoInsertNewRow>true</AutoInsertNewRow>
 			<DataPath>Список</DataPath>
 			<RowPictureDataPath>Список.Picture</RowPictureDataPath>
+			<CommandSet>
+				<ExcludedCommand>Copy</ExcludedCommand>
+				<ExcludedCommand>CheckAll</ExcludedCommand>
+				<ExcludedCommand>SortListAsc</ExcludedCommand>
+				<ExcludedCommand>MoveUp</ExcludedCommand>
+				<ExcludedCommand>UncheckAll</ExcludedCommand>
+				<ExcludedCommand>SelectAll</ExcludedCommand>
+				<ExcludedCommand>SortListDesc</ExcludedCommand>
+				<ExcludedCommand>Pickup</ExcludedCommand>
+				<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+				<ExcludedCommand>Delete</ExcludedCommand>
+				<ExcludedCommand>EndEdit</ExcludedCommand>
+				<ExcludedCommand>Add</ExcludedCommand>
+				<ExcludedCommand>Change</ExcludedCommand>
+				<ExcludedCommand>MoveDown</ExcludedCommand>
+			</CommandSet>
 			<SearchStringLocation>None</SearchStringLocation>
 			<ViewStatusLocation>None</ViewStatusLocation>
 			<SearchControlLocation>None</SearchControlLocation>
@@ -29,33 +58,37 @@
 				<Autofill>false</Autofill>
 			</AutoCommandBar>
 			<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="4"/>
-			<SearchStringAddition name="СписокСтрокаПоиска" id="8">
+			<SearchStringAddition name="СписокСтрокаПоиска" id="11">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="9"/>
-				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="10"/>
+				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="12"/>
+				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="13"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокСостояниеПросмотра" id="11">
+			<ViewStatusAddition name="СписокСостояниеПросмотра" id="14">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="12"/>
-				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="13"/>
+				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="15"/>
+				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="16"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокУправлениеПоиском" id="14">
+			<SearchControlAddition name="СписокУправлениеПоиском" id="17">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="15"/>
-				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="16"/>
+				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="18"/>
+				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="19"/>
 			</SearchControlAddition>
+			<Events>
+				<Event name="Selection">СписокВыбор</Event>
+			</Events>
 			<ChildItems>
 				<InputField name="СписокЗначение" id="5">
 					<DataPath>Список.Value</DataPath>
+					<ReadOnly>true</ReadOnly>
 					<EditMode>EnterOnInput</EditMode>
 					<ContextMenu name="СписокЗначениеКонтекстноеМеню" id="6"/>
 					<ExtendedTooltip name="СписокЗначениеРасширеннаяПодсказка" id="7"/>
