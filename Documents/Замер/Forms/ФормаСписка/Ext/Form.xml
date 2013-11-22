@@ -5,31 +5,31 @@
 			<Button name="ФормаСоздать" id="40">
 				<Type>CommandBarButton</Type>
 				<Visible>false</Visible>
-				<CommandName>Form.Item.Список.StandardCommand.Create</CommandName>
+				<CommandName>1:0f8d6d98-2f8b-405a-b8b3-0538e9d95da5</CommandName>
 				<ExtendedTooltip name="ФормаСоздатьРасширеннаяПодсказка" id="41"/>
 			</Button>
 			<Button name="ФормаСкопировать" id="42">
 				<Type>CommandBarButton</Type>
 				<Visible>false</Visible>
-				<CommandName>Form.Item.Список.StandardCommand.Copy</CommandName>
+				<CommandName>1:0ae4bea5-23be-42a7-b69e-97b11b29c453</CommandName>
 				<ExtendedTooltip name="ФормаСкопироватьРасширеннаяПодсказка" id="43"/>
 			</Button>
 			<Button name="ФормаИзменить" id="44">
 				<Type>CommandBarButton</Type>
 				<Visible>false</Visible>
-				<CommandName>Form.Item.Список.StandardCommand.Change</CommandName>
+				<CommandName>1:b41f5bbc-ba5d-4888-8cd1-db246a371418</CommandName>
 				<ExtendedTooltip name="ФормаИзменитьРасширеннаяПодсказка" id="45"/>
 			</Button>
 			<Button name="ФормаУстановитьПометкуУдаления" id="46">
 				<Type>CommandBarButton</Type>
 				<Visible>false</Visible>
-				<CommandName>Form.Item.Список.StandardCommand.SetDeletionMark</CommandName>
+				<CommandName>1:a2f737a8-0114-4e86-a214-45e5c213fa65</CommandName>
 				<ExtendedTooltip name="ФормаУстановитьПометкуУдаленияРасширеннаяПодсказка" id="47"/>
 			</Button>
 			<Button name="ФормаУстановитьИнтервал" id="52">
 				<Type>CommandBarButton</Type>
 				<Visible>false</Visible>
-				<CommandName>Form.Item.Список.StandardCommand.SetDateInterval</CommandName>
+				<CommandName>1:daa306cd-a78a-4e74-a14c-739daba624cb</CommandName>
 				<ExtendedTooltip name="ФормаУстановитьИнтервалРасширеннаяПодсказка" id="53"/>
 			</Button>
 			<Button name="ФормаНайти" id="48">
@@ -204,7 +204,7 @@
 			<MainAttribute>true</MainAttribute>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
-				<DynamicDataRead>true</DynamicDataRead>
+				<DynamicDataRead>false</DynamicDataRead>
 				<QueryText>ВЫБРАТЬ
 	ДокументЗамер.АдресЗамера,
 	ДокументЗамер.Замерщик,
@@ -229,7 +229,7 @@
 		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.Файлы КАК Файлы
 		ПО (Файлы.ВладелецФайла = ДокументЗамер.Ссылка)
 		ЛЕВОЕ СОЕДИНЕНИЕ Документ.Договор КАК докДоговор
-		ПО ДокументЗамер.Ссылка = докДоговор.Спецификация.ДокументОснование.Ссылка
+		ПО ДокументЗамер.Ссылка = докДоговор.Спецификация.ДокументОснование.Ссылка И ДокДоговор.Проведен
 
 СГРУППИРОВАТЬ ПО
 	ДокументЗамер.АдресЗамера,
@@ -242,7 +242,6 @@
 	ПОДСТРОКА(ДокументЗамер.Комментарий, 1, 40),
 	ДокументЗамер.Дата,
 	ДокументЗамер.Ссылка</QueryText>
-				<MainTable>Document.Замер</MainTable>
 				<ListSettings>
 					<dcsset:filter>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
