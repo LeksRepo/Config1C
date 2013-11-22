@@ -263,13 +263,30 @@
 				</dcscor:item>
 			</appearance>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПриобертаемОптом</dataPath>
+			<field>ПриобертаемОптом</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Опт</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">БЛ=; БИ=V</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	спрНоменклатура.Ссылка КАК Номенклатура,
 	спрНоменклатура.ЕдиницаИзмерения КАК ЕдиницаИзмерения,
 	ЦеныНоменклатурыСрезПоследних.ПлановаяЗакупочная КАК ПлановаяЗакупочная,
 	ЦеныНоменклатурыСрезПоследних.Внутренняя КАК Внутренняя,
-	ЦеныНоменклатурыСрезПоследних.Розничная КАК Розничная
+	ЦеныНоменклатурыСрезПоследних.Розничная КАК Розничная,
+	спрНоменклатура.ПриобертаемОптом
 ПОМЕСТИТЬ Список
 ИЗ
 	Справочник.Номенклатура КАК спрНоменклатура
@@ -322,9 +339,10 @@
 	БазовыйЛимитЦехаСрезПоследних.Количество КАК БазовыйЛимитЦеха,
 	Список.Номенклатура.ПроцентОтхода КАК ПроцентОтхода,
 	БазовыйЛимитЦехаСрезПоследних.Количество + ДополнительныйЛимит.КоличествоОстаток КАК ПолныйЛимитЦеха,
-	ОстаткиНаСкладе.КоличествоОстаток * ОстаткиНаСкладе.Субконто2.КоэффициентБазовых КАК ОстатокНаСкладе,
+	СУММА(ОстаткиНаСкладе.КоличествоОстаток * ОстаткиНаСкладе.Субконто2.КоэффициентБазовых) КАК ОстатокНаСкладе,
 	ОстаткиВЦеху.КоличествоОстаток КАК ОстатокВЦеху,
-	ТребуетсяПоСпецификациям.Количество КАК ТребуетсяПоСпецификациям
+	ТребуетсяПоСпецификациям.Количество КАК ТребуетсяПоСпецификациям,
+	Список.ПриобертаемОптом
 ИЗ
 	Список КАК Список
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрБухгалтерии.Управленческий.Остатки(, Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.МатериалыНаСкладе), , Субконто1.Регион = &amp;Регион) КАК ОстаткиНаСкладе
@@ -363,8 +381,8 @@
 	Список.Номенклатура.ПроцентОтхода,
 	БазовыйЛимитЦехаСрезПоследних.Количество + ДополнительныйЛимит.КоличествоОстаток,
 	ОстаткиВЦеху.КоличествоОстаток,
-	ОстаткиНаСкладе.КоличествоОстаток * ОстаткиНаСкладе.Субконто2.КоэффициентБазовых,
-	ТребуетсяПоСпецификациям.Количество</query>
+	ТребуетсяПоСпецификациям.Количество,
+	Список.ПриобертаемОптом</query>
 	</dataSet>
 	<totalField>
 		<dataPath>Внутренняя</dataPath>
@@ -413,6 +431,10 @@
 	<totalField>
 		<dataPath>ТребуетсяПоСпецификациям</dataPath>
 		<expression>Сумма(ТребуетсяПоСпецификациям)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ПриобертаемОптом</dataPath>
+		<expression>Максимум(ПриобертаемОптом)</expression>
 	</totalField>
 	<parameter>
 		<name>Период</name>
@@ -496,6 +518,9 @@
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
 						<dcsset:field>ТребуетсяПоСпецификациям</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ПриобертаемОптом</dcsset:field>
 					</dcsset:item>
 					<dcsset:placement>Auto</dcsset:placement>
 				</dcsset:item>
@@ -594,6 +619,9 @@
 						<dcsset:item>
 							<dcsset:field>ТребуетсяПоСпецификациям</dcsset:field>
 						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>ПриобертаемОптом</dcsset:field>
+						</dcsset:item>
 					</dcsset:selection>
 					<dcsset:filter>
 						<dcsset:item xsi:type="dcsset:FilterItemGroup">
@@ -631,6 +659,12 @@
 							<dcscor:value xsi:type="v8ui:Color">web:Pink</dcscor:value>
 						</dcscor:item>
 					</dcsset:appearance>
+					<dcsset:useInHierarchicalGroup>DontUse</dcsset:useInHierarchicalGroup>
+					<dcsset:useInOverall>DontUse</dcsset:useInOverall>
+					<dcsset:useInFieldsHeader>DontUse</dcsset:useInFieldsHeader>
+					<dcsset:useInHeader>DontUse</dcsset:useInHeader>
+					<dcsset:useInParameters>DontUse</dcsset:useInParameters>
+					<dcsset:useInFilter>DontUse</dcsset:useInFilter>
 				</dcsset:item>
 			</dcsset:conditionalAppearance>
 			<dcsset:outputParameters>
