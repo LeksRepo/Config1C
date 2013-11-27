@@ -115,6 +115,7 @@
 								<InputField name="Номер" id="1">
 									<DataPath>Объект.Number</DataPath>
 									<EditMode>EnterOnInput</EditMode>
+									<HorizontalStretch>false</HorizontalStretch>
 									<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
 									<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="3"/>
 								</InputField>
@@ -163,7 +164,6 @@
 		<Table name="СписокПлатежей" id="25">
 			<Representation>List</Representation>
 			<TitleLocation>Top</TitleLocation>
-			<Footer>true</Footer>
 			<AutoInsertNewRow>true</AutoInsertNewRow>
 			<EnableStartDrag>true</EnableStartDrag>
 			<EnableDrag>true</EnableDrag>
@@ -183,29 +183,29 @@
 			<ContextMenu name="СписокПлатежейКонтекстноеМеню" id="26"/>
 			<AutoCommandBar name="СписокПлатежейКоманднаяПанель" id="27"/>
 			<ExtendedTooltip name="СписокПлатежейРасширеннаяПодсказка" id="28"/>
-			<SearchStringAddition name="СписокПлатежейСтрокаПоиска" id="77">
+			<SearchStringAddition name="СписокПлатежейСтрокаПоиска" id="80">
 				<AdditionSource>
 					<Item>СписокПлатежей</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокПлатежейСтрокаПоискаКонтекстноеМеню" id="78"/>
-				<ExtendedTooltip name="СписокПлатежейСтрокаПоискаРасширеннаяПодсказка" id="79"/>
+				<ContextMenu name="СписокПлатежейСтрокаПоискаКонтекстноеМеню" id="81"/>
+				<ExtendedTooltip name="СписокПлатежейСтрокаПоискаРасширеннаяПодсказка" id="82"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокПлатежейСостояниеПросмотра" id="80">
+			<ViewStatusAddition name="СписокПлатежейСостояниеПросмотра" id="83">
 				<AdditionSource>
 					<Item>СписокПлатежей</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокПлатежейСостояниеПросмотраКонтекстноеМеню" id="81"/>
-				<ExtendedTooltip name="СписокПлатежейСостояниеПросмотраРасширеннаяПодсказка" id="82"/>
+				<ContextMenu name="СписокПлатежейСостояниеПросмотраКонтекстноеМеню" id="84"/>
+				<ExtendedTooltip name="СписокПлатежейСостояниеПросмотраРасширеннаяПодсказка" id="85"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокПлатежейУправлениеПоиском" id="83">
+			<SearchControlAddition name="СписокПлатежейУправлениеПоиском" id="86">
 				<AdditionSource>
 					<Item>СписокПлатежей</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокПлатежейУправлениеПоискомКонтекстноеМеню" id="84"/>
-				<ExtendedTooltip name="СписокПлатежейУправлениеПоискомРасширеннаяПодсказка" id="85"/>
+				<ContextMenu name="СписокПлатежейУправлениеПоискомКонтекстноеМеню" id="87"/>
+				<ExtendedTooltip name="СписокПлатежейУправлениеПоискомРасширеннаяПодсказка" id="88"/>
 			</SearchControlAddition>
 			<Events>
 				<Event name="OnActivateRow">СписокПлатежейПриАктивизацииСтроки</Event>
@@ -387,7 +387,6 @@
 				<InputField name="СписокПлатежейСумма" id="38">
 					<DataPath>Объект.СписокПлатежей.Сумма</DataPath>
 					<EditMode>EnterOnInput</EditMode>
-					<FooterDataPath>Объект.СуммаДокумента</FooterDataPath>
 					<FooterFont ref="sys:DefaultGUIFont" height="9" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 					<ContextMenu name="СписокПлатежейСуммаКонтекстноеМеню" id="39"/>
 					<ExtendedTooltip name="СписокПлатежейСуммаРасширеннаяПодсказка" id="40"/>
@@ -403,6 +402,18 @@
 				</InputField>
 			</ChildItems>
 		</Table>
+		<InputField name="СписокПлатежейИтогСумма" id="77">
+			<DataPath>Объект.СписокПлатежей.TotalСумма</DataPath>
+			<ReadOnly>true</ReadOnly>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Всего по документу</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="СписокПлатежейИтогСуммаКонтекстноеМеню" id="78"/>
+			<ExtendedTooltip name="СписокПлатежейИтогСуммаРасширеннаяПодсказка" id="79"/>
+		</InputField>
 		<LabelField name="Автор" id="22">
 			<DataPath>Объект.Автор</DataPath>
 			<EditMode>EnterOnInput</EditMode>
