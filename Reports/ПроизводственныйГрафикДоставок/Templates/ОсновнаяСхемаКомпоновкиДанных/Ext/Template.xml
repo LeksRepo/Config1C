@@ -48,6 +48,30 @@
 				</v8:item>
 			</title>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Дилерский</dataPath>
+			<field>Дилерский</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дил</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Телефон</dataPath>
+			<field>Телефон</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДТК</dataPath>
+			<field>ДТК</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ДТК</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	Спецификация.АдресМонтажа КАК АдресДоставки,
@@ -55,14 +79,20 @@
 	Спецификация.Ссылка,
 	Спецификация.Производство,
 	Спецификация.Контрагент КАК Заказчик,
-	Спецификация.ДатаОтгрузки КАК ДатаДоставки
+	Спецификация.ДатаОтгрузки КАК ДатаДоставки,
+	Спецификация.Телефон,
+	Спецификация.Дилерский,
+	ВЫБОР
+		КОГДА Спецификация.ПакетУслуг = ЗНАЧЕНИЕ(Перечисление.ПакетыУслуг.ДоставкаДоТранспортнойКомпании)
+			ТОГДА "ДТК"
+		ИНАЧЕ ""
+	КОНЕЦ КАК ДТК
 ИЗ
 	Документ.Спецификация КАК Спецификация
 ГДЕ
 	Спецификация.ДатаОтгрузки МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания
 	И Спецификация.ПакетУслуг &lt;&gt; ЗНАЧЕНИЕ(Перечисление.ПакетыУслуг.СамовывозОтПроизводителя)
-	И Спецификация.Проведен
-//	И Спецификация.Производство = &amp;Производство</query>
+	И Спецификация.Проведен</query>
 	</dataSet>
 	<parameter>
 		<name>ДатаНачала</name>
@@ -127,16 +157,25 @@
 					<dcsset:field>ДатаДоставки</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Ссылка</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Телефон</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ДТК</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>АдресДоставки</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Дилерский</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Комментарий</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Заказчик</dcsset:field>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Ссылка</dcsset:field>
 				</dcsset:item>
 			</dcsset:selection>
 			<dcsset:filter>
