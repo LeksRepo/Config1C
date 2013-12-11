@@ -1,10 +1,29 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
 	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<CommandSet>
+		<ExcludedCommand>PostAndClose</ExcludedCommand>
+	</CommandSet>
 	<AutoTime>CurrentOrLast</AutoTime>
 	<UsePostingMode>Auto</UsePostingMode>
 	<RepostOnWrite>true</RepostOnWrite>
-	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаПровести" id="107">
+				<Type>CommandBarButton</Type>
+				<Representation>Text</Representation>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.StandardCommand.Post</CommandName>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>В Архив</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ФормаПровестиРасширеннаяПодсказка" id="108"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
 	<Events>
 		<Event name="BeforeWrite">ПередЗаписью</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
@@ -151,6 +170,57 @@
 									</Title>
 									<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 									<HorizontalStretch>false</HorizontalStretch>
+									<ListChoiceMode>true</ListChoiceMode>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.ВидыСлужебнойЗаписки.EnumValue.Заявка</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.ВидыСлужебнойЗаписки.EnumValue.Информирование</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.ВидыСлужебнойЗаписки.EnumValue.НарушенияВРаботе</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.ВидыСлужебнойЗаписки.EnumValue.Поручение</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.ВидыСлужебнойЗаписки.EnumValue.ПретензияЗаявление</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xr:DesignTimeRef">Enum.ВидыСлужебнойЗаписки.EnumValue.Удержание</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
 									<ContextMenu name="ВидСлужебнойЗапискиКонтекстноеМеню" id="62"/>
 									<ExtendedTooltip name="ВидСлужебнойЗапискиРасширеннаяПодсказка" id="63"/>
 								</InputField>
@@ -337,10 +407,11 @@
 					<ChildItems>
 						<InputField name="Проблема" id="5">
 							<DataPath>Объект.Проблема</DataPath>
+							<ReadOnly>true</ReadOnly>
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Проблема/предложение</v8:content>
+									<v8:content>История</v8:content>
 								</v8:item>
 							</Title>
 							<TitleFont ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
@@ -352,8 +423,36 @@
 							<ContextMenu name="ПроблемаКонтекстноеМеню" id="6"/>
 							<ExtendedTooltip name="ПроблемаExtendedTooltip" id="54"/>
 						</InputField>
+						<UsualGroup name="Группа1" id="122">
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="123"/>
+							<ChildItems>
+								<CheckBoxField name="Выполнена" id="116">
+									<DataPath>Объект.Выполнена</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="ВыполненаКонтекстноеМеню" id="117"/>
+									<ExtendedTooltip name="ВыполненаРасширеннаяПодсказка" id="118"/>
+								</CheckBoxField>
+								<InputField name="ДатаВыполнения" id="119">
+									<DataPath>Объект.ДатаВыполнения</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditFormat>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>ДФ=dd.MM.yyyy</v8:content>
+										</v8:item>
+									</EditFormat>
+									<ContextMenu name="ДатаВыполненияКонтекстноеМеню" id="120"/>
+									<ExtendedTooltip name="ДатаВыполненияРасширеннаяПодсказка" id="121"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
 						<InputField name="Ответ" id="9">
 							<DataPath>Объект.Ответ</DataPath>
+							<ReadOnly>true</ReadOnly>
 							<TitleFont ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 							<EditMode>EnterOnInput</EditMode>
 							<Width>70</Width>
@@ -384,6 +483,32 @@
 							<ContextMenu name="СлужебноеКонтекстноеМеню" id="105"/>
 							<ExtendedTooltip name="СлужебноеРасширеннаяПодсказка" id="106"/>
 						</InputField>
+						<InputField name="ТекстОтвета" id="109">
+							<DataPath>ТекстОтвета</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Введите текст</v8:content>
+								</v8:item>
+							</Title>
+							<TitleFont ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							<TitleLocation>Top</TitleLocation>
+							<Height>8</Height>
+							<MultiLine>true</MultiLine>
+							<ContextMenu name="ТекстОтветаКонтекстноеМеню" id="110"/>
+							<ExtendedTooltip name="ТекстОтветаРасширеннаяПодсказка" id="111"/>
+						</InputField>
+						<Button name="Добавить" id="114">
+							<Type>UsualButton</Type>
+							<Representation>PictureAndText</Representation>
+							<Height>1</Height>
+							<CommandName>Form.Command.Добавить</CommandName>
+							<Picture>
+								<xr:Ref>StdPicture.NewWindow</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</Picture>
+							<ExtendedTooltip name="ДобавитьРасширеннаяПодсказка" id="115"/>
+						</Button>
 					</ChildItems>
 				</UsualGroup>
 				<UsualGroup name="ГруппаТЧ" id="19">
@@ -426,29 +551,29 @@
 							<ContextMenu name="ДокументыКонтекстноеМеню" id="28"/>
 							<AutoCommandBar name="ДокументыКоманднаяПанель" id="29"/>
 							<ExtendedTooltip name="ДокументыExtendedTooltip" id="59"/>
-							<SearchStringAddition name="ДокументыСтрокаПоиска" id="107">
+							<SearchStringAddition name="ДокументыСтрокаПоиска" id="124">
 								<AdditionSource>
 									<Item>Документы</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="ДокументыСтрокаПоискаКонтекстноеМеню" id="108"/>
-								<ExtendedTooltip name="ДокументыСтрокаПоискаРасширеннаяПодсказка" id="109"/>
+								<ContextMenu name="ДокументыСтрокаПоискаКонтекстноеМеню" id="125"/>
+								<ExtendedTooltip name="ДокументыСтрокаПоискаРасширеннаяПодсказка" id="126"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="ДокументыСостояниеПросмотра" id="110">
+							<ViewStatusAddition name="ДокументыСостояниеПросмотра" id="127">
 								<AdditionSource>
 									<Item>Документы</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="ДокументыСостояниеПросмотраКонтекстноеМеню" id="111"/>
-								<ExtendedTooltip name="ДокументыСостояниеПросмотраРасширеннаяПодсказка" id="112"/>
+								<ContextMenu name="ДокументыСостояниеПросмотраКонтекстноеМеню" id="128"/>
+								<ExtendedTooltip name="ДокументыСостояниеПросмотраРасширеннаяПодсказка" id="129"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="ДокументыУправлениеПоиском" id="113">
+							<SearchControlAddition name="ДокументыУправлениеПоиском" id="130">
 								<AdditionSource>
 									<Item>Документы</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="ДокументыУправлениеПоискомКонтекстноеМеню" id="114"/>
-								<ExtendedTooltip name="ДокументыУправлениеПоискомРасширеннаяПодсказка" id="115"/>
+								<ContextMenu name="ДокументыУправлениеПоискомКонтекстноеМеню" id="131"/>
+								<ExtendedTooltip name="ДокументыУправлениеПоискомРасширеннаяПодсказка" id="132"/>
 							</SearchControlAddition>
 							<ChildItems>
 								<InputField name="ДокументыДокумент" id="32">
@@ -492,6 +617,36 @@
 				</v8:NumberQualifiers>
 			</Type>
 		</Attribute>
+		<Attribute name="ТекстОтвета" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текст ответа</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ФизЛицоСтрока" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Физ лицо строка</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
 	</Attributes>
 	<Commands>
 		<Command name="ДобавитьФайл" id="1">
@@ -508,6 +663,21 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ДобавитьФайл</Action>
+		</Command>
+		<Command name="Добавить" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Добавить</Action>
 		</Command>
 	</Commands>
 </Form>
