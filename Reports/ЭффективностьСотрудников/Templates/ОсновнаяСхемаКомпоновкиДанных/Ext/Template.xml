@@ -37,16 +37,6 @@
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>СуммаУдержания</dataPath>
-			<field>СуммаУдержания</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Удержания</v8:content>
-				</v8:item>
-			</title>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>Документ</dataPath>
 			<field>Документ</field>
 			<title xsi:type="v8:LocalStringType">
@@ -65,16 +55,6 @@
 					<dcscor:value xsi:type="xs:decimal">50</dcscor:value>
 				</dcscor:item>
 			</appearance>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>СуммаПеределки</dataPath>
-			<field>СуммаПеределки</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Переделки</v8:content>
-				</v8:item>
-			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>ОтклонениеПоДоговорам</dataPath>
@@ -135,6 +115,26 @@
 					<v8:content>Количество заказов</v8:content>
 				</v8:item>
 			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПеределкиУдержания</dataPath>
+			<field>ПеределкиУдержания</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Переделки/Удержания</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Размещение</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTextPlacementType">Wrap</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МаксимальнаяШирина</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">12</dcscor:value>
+				</dcscor:item>
+			</appearance>
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
@@ -351,14 +351,13 @@
 		КОГДА СлужебнаяЗаписка.ВидСлужебнойЗаписки = ЗНАЧЕНИЕ(Перечисление.ВидыСлужебнойЗаписки.Удержание)
 			ТОГДА СлужебнаяЗаписка.Сумма
 		ИНАЧЕ 0
-	КОНЕЦ КАК СуммаУдержания,
+	КОНЕЦ КАК ПеределкиУдержания,
 	ВЫБОР
 		КОГДА СлужебнаяЗаписка.Виновный = ЗНАЧЕНИЕ(Справочник.ФизическиеЛица.ПустаяСсылка)
 			ТОГДА СлужебнаяЗаписка.Адресат.ФизическоеЛицо.Подразделение
 		ИНАЧЕ СлужебнаяЗаписка.Виновный.Подразделение
 	КОНЕЦ КАК Подразделение,
 	СлужебнаяЗаписка.Ссылка КАК Документ,
-	NULL КАК СуммаПеределки,
 	NULL КАК ОтклонениеПоДоговорам,
 	NULL КАК Благодарность,
 	NULL КАК Недовольство,
@@ -389,10 +388,9 @@
 ВЫБРАТЬ
 	докСпецификация.Виновный,
 	NULL,
-	NULL,
+	докСпецификация.СуммаДокумента,
 	докСпецификация.Виновный.Подразделение,
 	докСпецификация.Ссылка,
-	докСпецификация.СуммаДокумента,
 	NULL,
 	NULL,
 	NULL,
@@ -412,7 +410,6 @@
 	NULL,
 	докДоговор.Автор.ФизическоеЛицо.Подразделение,
 	докДоговор.Ссылка,
-	NULL,
 	ВЫБОР
 		КОГДА докДоговор.Спецификация.Проведен
 			ТОГДА докДоговор.СуммаДокументаБезСкидки - докДоговор.Спецификация.СуммаДокумента
@@ -442,7 +439,6 @@
 	NULL,
 	NULL,
 	NULL,
-	NULL,
 	NULL
 ИЗ
 	Документ.СлужебнаяЗаписка КАК докСлужебнаяЗаписка
@@ -458,7 +454,6 @@
 	NULL,
 	Благодарности_Недовольства.Подразделение,
 	Благодарности_Недовольства.Комментарий,
-	NULL,
 	NULL,
 	Благодарности_Недовольства.Благодарность,
 	Благодарности_Недовольства.Недовольство,
@@ -477,7 +472,6 @@
 	NULL,
 	NULL,
 	NULL,
-	NULL,
 	ЗаказыПоСотрудникам.Количество
 ИЗ
 	ЗаказыПоСотрудникам КАК ЗаказыПоСотрудникам</query>
@@ -485,14 +479,6 @@
 	<totalField>
 		<dataPath>НарушенияВРаботе</dataPath>
 		<expression>Сумма(НарушенияВРаботе)</expression>
-	</totalField>
-	<totalField>
-		<dataPath>СуммаУдержания</dataPath>
-		<expression>Сумма(СуммаУдержания)</expression>
-	</totalField>
-	<totalField>
-		<dataPath>СуммаПеределки</dataPath>
-		<expression>Сумма(СуммаПеределки)</expression>
 	</totalField>
 	<totalField>
 		<dataPath>ОтклонениеПоДоговорам</dataPath>
@@ -529,6 +515,10 @@
 		<expression>Сумма(КоличествоЗаказов)</expression>
 		<group>Виновный</group>
 		<group>Виновный Иерархия</group>
+	</totalField>
+	<totalField>
+		<dataPath>ПеределкиУдержания</dataPath>
+		<expression>Сумма(ПеределкиУдержания)</expression>
 	</totalField>
 	<parameter>
 		<name>Период</name>
@@ -640,16 +630,13 @@
 					<dcsset:field>Недовольство</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>СуммаПеределки</dcsset:field>
+					<dcsset:field>ПеределкиУдержания</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>ОтклонениеПоДоговорам</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>НарушенияВРаботе</dcsset:field>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>СуммаУдержания</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>КоличествоЗаказов</dcsset:field>
