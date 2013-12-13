@@ -6,55 +6,95 @@
 	<RepostOnWrite>true</RepostOnWrite>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<ChildItems>
-		<UsualGroup name="НомерДата" id="22">
+		<UsualGroup name="ГруппаШапка" id="63">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Номер дата</v8:content>
+					<v8:content>Группа шапка</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Номер дата</v8:content>
+					<v8:content>Группа шапка</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="НомерДатаExtendedTooltip" id="38"/>
+			<ExtendedTooltip name="ГруппаШапкаРасширеннаяПодсказка" id="64"/>
 			<ChildItems>
-				<InputField name="Номер" id="1">
-					<DataPath>Объект.Number</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<HorizontalStretch>false</HorizontalStretch>
-					<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
-					<ExtendedTooltip name="НомерExtendedTooltip" id="39"/>
-				</InputField>
-				<InputField name="Дата" id="3">
-					<DataPath>Объект.Date</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ДатаКонтекстноеМеню" id="4"/>
-					<ExtendedTooltip name="ДатаExtendedTooltip" id="40"/>
-				</InputField>
+				<UsualGroup name="ГруппаЛеваяКолонка" id="22">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа левая колонка</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа левая колонка</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаЛеваяКолонкаРасширеннаяПодсказка" id="38"/>
+					<ChildItems>
+						<InputField name="Дата" id="3">
+							<DataPath>Объект.Date</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="ДатаКонтекстноеМеню" id="4"/>
+							<ExtendedTooltip name="ДатаExtendedTooltip" id="40"/>
+						</InputField>
+						<InputField name="Подразделение" id="29">
+							<DataPath>Объект.Подразделение</DataPath>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="ПодразделениеКонтекстноеМеню" id="30"/>
+							<ExtendedTooltip name="ПодразделениеExtendedTooltip" id="41"/>
+							<Events>
+								<Event name="OnChange">ПодразделениеПриИзменении</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаПраваяКолонка" id="61">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа правая колонка</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа правая колонка</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаПраваяКолонкаРасширеннаяПодсказка" id="62"/>
+					<ChildItems>
+						<InputField name="Номер" id="1">
+							<DataPath>Объект.Number</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
+							<ExtendedTooltip name="НомерExtendedTooltip" id="39"/>
+						</InputField>
+						<InputField name="Склад" id="5">
+							<DataPath>Объект.Склад</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="СкладКонтекстноеМеню" id="6"/>
+							<ExtendedTooltip name="СкладExtendedTooltip" id="42"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
-		<LabelField name="Подразделение" id="29">
-			<DataPath>Объект.Подразделение</DataPath>
-			<HorizontalStretch>false</HorizontalStretch>
-			<ContextMenu name="ПодразделениеКонтекстноеМеню" id="30"/>
-			<ExtendedTooltip name="ПодразделениеExtendedTooltip" id="41"/>
-			<Events>
-				<Event name="OnChange">ПодразделениеПриИзменении</Event>
-			</Events>
-		</LabelField>
-		<InputField name="Склад" id="5">
-			<DataPath>Объект.Склад</DataPath>
-			<EditMode>EnterOnInput</EditMode>
-			<HorizontalStretch>false</HorizontalStretch>
-			<ContextMenu name="СкладКонтекстноеМеню" id="6"/>
-			<ExtendedTooltip name="СкладExtendedTooltip" id="42"/>
-		</InputField>
 		<Table name="СписокНоменклатуры" id="7">
 			<Representation>List</Representation>
 			<AutoInsertNewRow>true</AutoInsertNewRow>
@@ -68,29 +108,29 @@
 			<ContextMenu name="СписокНоменклатурыКонтекстноеМеню" id="8"/>
 			<AutoCommandBar name="СписокНоменклатурыКоманднаяПанель" id="9"/>
 			<ExtendedTooltip name="СписокНоменклатурыExtendedTooltip" id="43"/>
-			<SearchStringAddition name="СписокНоменклатурыСтрокаПоиска" id="55">
+			<SearchStringAddition name="СписокНоменклатурыСтрокаПоиска" id="65">
 				<AdditionSource>
 					<Item>СписокНоменклатуры</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокНоменклатурыСтрокаПоискаКонтекстноеМеню" id="56"/>
-				<ExtendedTooltip name="СписокНоменклатурыСтрокаПоискаРасширеннаяПодсказка" id="57"/>
+				<ContextMenu name="СписокНоменклатурыСтрокаПоискаКонтекстноеМеню" id="66"/>
+				<ExtendedTooltip name="СписокНоменклатурыСтрокаПоискаРасширеннаяПодсказка" id="67"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокНоменклатурыСостояниеПросмотра" id="58">
+			<ViewStatusAddition name="СписокНоменклатурыСостояниеПросмотра" id="68">
 				<AdditionSource>
 					<Item>СписокНоменклатуры</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокНоменклатурыСостояниеПросмотраКонтекстноеМеню" id="59"/>
-				<ExtendedTooltip name="СписокНоменклатурыСостояниеПросмотраРасширеннаяПодсказка" id="60"/>
+				<ContextMenu name="СписокНоменклатурыСостояниеПросмотраКонтекстноеМеню" id="69"/>
+				<ExtendedTooltip name="СписокНоменклатурыСостояниеПросмотраРасширеннаяПодсказка" id="70"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокНоменклатурыУправлениеПоиском" id="61">
+			<SearchControlAddition name="СписокНоменклатурыУправлениеПоиском" id="71">
 				<AdditionSource>
 					<Item>СписокНоменклатуры</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокНоменклатурыУправлениеПоискомКонтекстноеМеню" id="62"/>
-				<ExtendedTooltip name="СписокНоменклатурыУправлениеПоискомРасширеннаяПодсказка" id="63"/>
+				<ContextMenu name="СписокНоменклатурыУправлениеПоискомКонтекстноеМеню" id="72"/>
+				<ExtendedTooltip name="СписокНоменклатурыУправлениеПоискомРасширеннаяПодсказка" id="73"/>
 			</SearchControlAddition>
 			<ChildItems>
 				<LabelField name="СписокНоменклатурыНомерСтроки" id="10">
@@ -126,42 +166,15 @@
 				</InputField>
 			</ChildItems>
 		</Table>
-		<UsualGroup name="Авторы" id="31">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Авторы</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Авторы</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Group>Horizontal</Group>
-			<Representation>None</Representation>
-			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="АвторыExtendedTooltip" id="48"/>
-			<ChildItems>
-				<LabelField name="Автор" id="32">
-					<DataPath>1/0:1ffbbcd8-0940-49cf-83d4-54bcf3a63504</DataPath>
-					<ReadOnly>true</ReadOnly>
-					<ContextMenu name="АвторКонтекстноеМеню" id="33"/>
-					<ExtendedTooltip name="АвторExtendedTooltip" id="49"/>
-				</LabelField>
-				<LabelField name="Соавтор" id="34">
-					<DataPath>1/0:56ba9ae6-d761-4582-913b-39571aa252f8</DataPath>
-					<ReadOnly>true</ReadOnly>
-					<ContextMenu name="СоавторКонтекстноеМеню" id="35"/>
-					<ExtendedTooltip name="СоавторExtendedTooltip" id="50"/>
-				</LabelField>
-			</ChildItems>
-		</UsualGroup>
-		<InputField name="Комментарий" id="36">
-			<DataPath>1/0:b619a5db-c2cd-45c0-b198-78fe74f061dc</DataPath>
-			<ContextMenu name="КомментарийКонтекстноеМеню" id="37"/>
-			<ExtendedTooltip name="КомментарийExtendedTooltip" id="51"/>
+		<LabelField name="Автор" id="55">
+			<DataPath>Объект.Автор</DataPath>
+			<ContextMenu name="АвторКонтекстноеМеню" id="56"/>
+			<ExtendedTooltip name="АвторРасширеннаяПодсказка" id="57"/>
+		</LabelField>
+		<InputField name="Комментарий" id="58">
+			<DataPath>Объект.Комментарий</DataPath>
+			<ContextMenu name="КомментарийКонтекстноеМеню" id="59"/>
+			<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="60"/>
 		</InputField>
 	</ChildItems>
 	<Attributes>
