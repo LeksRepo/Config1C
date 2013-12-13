@@ -29,6 +29,17 @@
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
+		<LabelDecoration name="СтрокаПредупреждение" id="127">
+			<Visible>false</Visible>
+			<Title formatted="true">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>&lt;fontsize 12&gt;&lt;b&gt;&lt;colorstyle -16&gt;Нарушены сроки работы со служебной запиской !!!&lt;/&gt;&lt;/&gt;&lt;/&gt;</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="СтрокаПредупреждениеКонтекстноеМеню" id="128"/>
+			<ExtendedTooltip name="СтрокаПредупреждениеРасширеннаяПодсказка" id="129"/>
+		</LabelDecoration>
 		<UsualGroup name="ДатаНомер" id="13">
 			<Title>
 				<v8:item>
@@ -170,57 +181,6 @@
 									</Title>
 									<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 									<HorizontalStretch>false</HorizontalStretch>
-									<ListChoiceMode>true</ListChoiceMode>
-									<ChoiceList>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation/>
-												<Value xsi:type="xr:DesignTimeRef">Enum.ВидыСлужебнойЗаписки.EnumValue.Заявка</Value>
-											</xr:Value>
-										</xr:Item>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation/>
-												<Value xsi:type="xr:DesignTimeRef">Enum.ВидыСлужебнойЗаписки.EnumValue.Информирование</Value>
-											</xr:Value>
-										</xr:Item>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation/>
-												<Value xsi:type="xr:DesignTimeRef">Enum.ВидыСлужебнойЗаписки.EnumValue.НарушенияВРаботе</Value>
-											</xr:Value>
-										</xr:Item>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation/>
-												<Value xsi:type="xr:DesignTimeRef">Enum.ВидыСлужебнойЗаписки.EnumValue.Поручение</Value>
-											</xr:Value>
-										</xr:Item>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation/>
-												<Value xsi:type="xr:DesignTimeRef">Enum.ВидыСлужебнойЗаписки.EnumValue.ПретензияЗаявление</Value>
-											</xr:Value>
-										</xr:Item>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation/>
-												<Value xsi:type="xr:DesignTimeRef">Enum.ВидыСлужебнойЗаписки.EnumValue.Удержание</Value>
-											</xr:Value>
-										</xr:Item>
-									</ChoiceList>
 									<ContextMenu name="ВидСлужебнойЗапискиКонтекстноеМеню" id="62"/>
 									<ExtendedTooltip name="ВидСлужебнойЗапискиРасширеннаяПодсказка" id="63"/>
 								</InputField>
@@ -332,13 +292,6 @@
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="СтатусыРасширеннаяПодсказка" id="94"/>
 					<ChildItems>
-						<CheckBoxField name="Ознакомлен" id="86">
-							<DataPath>Объект.Ознакомлен</DataPath>
-							<TitleLocation>Right</TitleLocation>
-							<CheckBoxType>Auto</CheckBoxType>
-							<ContextMenu name="ОзнакомленКонтекстноеМеню" id="87"/>
-							<ExtendedTooltip name="ОзнакомленРасширеннаяПодсказка" id="88"/>
-						</CheckBoxField>
 						<CheckBoxField name="НеСогласен" id="95">
 							<DataPath>Объект.НеСогласен</DataPath>
 							<TitleLocation>Right</TitleLocation>
@@ -423,12 +376,42 @@
 							<ContextMenu name="ПроблемаКонтекстноеМеню" id="6"/>
 							<ExtendedTooltip name="ПроблемаExtendedTooltip" id="54"/>
 						</InputField>
-						<UsualGroup name="Группа1" id="122">
+						<UsualGroup name="ОтметкиВыполнения" id="122">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Отметки выполнения</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Отметки выполнения</v8:content>
+								</v8:item>
+							</ToolTip>
 							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="123"/>
+							<ExtendedTooltip name="ОтметкиВыполненияРасширеннаяПодсказка" id="123"/>
 							<ChildItems>
+								<CheckBoxField name="Ознакомлен" id="86">
+									<DataPath>Объект.Ознакомлен</DataPath>
+									<TitleLocation>Right</TitleLocation>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="ОзнакомленКонтекстноеМеню" id="87"/>
+									<ExtendedTooltip name="ОзнакомленРасширеннаяПодсказка" id="88"/>
+								</CheckBoxField>
+								<LabelField name="ДатаОзнакомления" id="124">
+									<DataPath>Объект.ДатаОзнакомления</DataPath>
+									<Format>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>ДФ=dd.MM.yyyy</v8:content>
+										</v8:item>
+									</Format>
+									<ContextMenu name="ДатаОзнакомленияКонтекстноеМеню" id="125"/>
+									<ExtendedTooltip name="ДатаОзнакомленияРасширеннаяПодсказка" id="126"/>
+								</LabelField>
 								<CheckBoxField name="Выполнена" id="116">
 									<DataPath>Объект.Выполнена</DataPath>
 									<ReadOnly>true</ReadOnly>
@@ -436,18 +419,17 @@
 									<ContextMenu name="ВыполненаКонтекстноеМеню" id="117"/>
 									<ExtendedTooltip name="ВыполненаРасширеннаяПодсказка" id="118"/>
 								</CheckBoxField>
-								<InputField name="ДатаВыполнения" id="119">
+								<LabelField name="ДатаВыполнения" id="119">
 									<DataPath>Объект.ДатаВыполнения</DataPath>
-									<ReadOnly>true</ReadOnly>
-									<EditFormat>
+									<Format>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
 											<v8:content>ДФ=dd.MM.yyyy</v8:content>
 										</v8:item>
-									</EditFormat>
+									</Format>
 									<ContextMenu name="ДатаВыполненияКонтекстноеМеню" id="120"/>
 									<ExtendedTooltip name="ДатаВыполненияРасширеннаяПодсказка" id="121"/>
-								</InputField>
+								</LabelField>
 							</ChildItems>
 						</UsualGroup>
 						<InputField name="Ответ" id="9">
@@ -488,7 +470,7 @@
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Введите текст</v8:content>
+									<v8:content>Текст</v8:content>
 								</v8:item>
 							</Title>
 							<TitleFont ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
@@ -504,9 +486,15 @@
 							<Height>1</Height>
 							<CommandName>Form.Command.Добавить</CommandName>
 							<Picture>
-								<xr:Ref>StdPicture.NewWindow</xr:Ref>
+								<xr:Ref>CommonPicture.Переключатель</xr:Ref>
 								<xr:LoadTransparent>true</xr:LoadTransparent>
 							</Picture>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Отправить</v8:content>
+								</v8:item>
+							</Title>
 							<ExtendedTooltip name="ДобавитьРасширеннаяПодсказка" id="115"/>
 						</Button>
 					</ChildItems>
@@ -551,29 +539,29 @@
 							<ContextMenu name="ДокументыКонтекстноеМеню" id="28"/>
 							<AutoCommandBar name="ДокументыКоманднаяПанель" id="29"/>
 							<ExtendedTooltip name="ДокументыExtendedTooltip" id="59"/>
-							<SearchStringAddition name="ДокументыСтрокаПоиска" id="124">
+							<SearchStringAddition name="ДокументыСтрокаПоиска" id="130">
 								<AdditionSource>
 									<Item>Документы</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="ДокументыСтрокаПоискаКонтекстноеМеню" id="125"/>
-								<ExtendedTooltip name="ДокументыСтрокаПоискаРасширеннаяПодсказка" id="126"/>
+								<ContextMenu name="ДокументыСтрокаПоискаКонтекстноеМеню" id="131"/>
+								<ExtendedTooltip name="ДокументыСтрокаПоискаРасширеннаяПодсказка" id="132"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="ДокументыСостояниеПросмотра" id="127">
+							<ViewStatusAddition name="ДокументыСостояниеПросмотра" id="133">
 								<AdditionSource>
 									<Item>Документы</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="ДокументыСостояниеПросмотраКонтекстноеМеню" id="128"/>
-								<ExtendedTooltip name="ДокументыСостояниеПросмотраРасширеннаяПодсказка" id="129"/>
+								<ContextMenu name="ДокументыСостояниеПросмотраКонтекстноеМеню" id="134"/>
+								<ExtendedTooltip name="ДокументыСостояниеПросмотраРасширеннаяПодсказка" id="135"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="ДокументыУправлениеПоиском" id="130">
+							<SearchControlAddition name="ДокументыУправлениеПоиском" id="136">
 								<AdditionSource>
 									<Item>Документы</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="ДокументыУправлениеПоискомКонтекстноеМеню" id="131"/>
-								<ExtendedTooltip name="ДокументыУправлениеПоискомРасширеннаяПодсказка" id="132"/>
+								<ContextMenu name="ДокументыУправлениеПоискомКонтекстноеМеню" id="137"/>
+								<ExtendedTooltip name="ДокументыУправлениеПоискомРасширеннаяПодсказка" id="138"/>
 							</SearchControlAddition>
 							<ChildItems>
 								<InputField name="ДокументыДокумент" id="32">
