@@ -2,7 +2,7 @@
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
-		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
 	</Events>
 	<ChildItems>
 		<UsualGroup name="Группа3" id="51">
@@ -11,11 +11,24 @@
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="Группа3РасширеннаяПодсказка" id="52"/>
 			<ChildItems>
-				<UsualGroup name="Группа1" id="10">
+				<UsualGroup name="ПараметрыИзделия" id="10">
+					<Enabled>false</Enabled>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Параметры изделия</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Параметры изделия</v8:content>
+						</v8:item>
+					</ToolTip>
 					<Group>Vertical</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="11"/>
+					<ExtendedTooltip name="ПараметрыИзделияРасширеннаяПодсказка" id="11"/>
 					<ChildItems>
 						<InputField name="Изделие" id="39">
 							<DataPath>Items.Детали.CurrentData.Изделие</DataPath>
@@ -50,10 +63,24 @@
 							<TitleLocation>None</TitleLocation>
 							<Height>3</Height>
 							<Hyperlink>true</Hyperlink>
-							<ContextMenu name="КрышаКонтекстноеМеню" id="65"/>
+							<ContextMenu name="КрышаКонтекстноеМеню" id="65">
+								<Autofill>false</Autofill>
+								<ChildItems>
+									<Button name="КрышаКонтекстноеМенюВыборИзделия" id="79">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ВыборИзделия</CommandName>
+										<ExtendedTooltip name="КрышаКонтекстноеМенюВыборИзделияРасширеннаяПодсказка" id="80"/>
+									</Button>
+									<Button name="КрышаКонтекстноеМенюОчистить" id="81">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.Очистить</CommandName>
+										<ExtendedTooltip name="КрышаКонтекстноеМенюОчиститьРасширеннаяПодсказка" id="82"/>
+									</Button>
+								</ChildItems>
+							</ContextMenu>
 							<ExtendedTooltip name="КрышаРасширеннаяПодсказка" id="66"/>
 							<Events>
-								<Event name="Click">КрышаНажатие</Event>
+								<Event name="Click">ИзделиеНажатие</Event>
 							</Events>
 						</PictureField>
 						<UsualGroup name="Группа4" id="62">
@@ -66,10 +93,24 @@
 									<DataPath>ЛевыйБоковойЭлемент</DataPath>
 									<TitleLocation>None</TitleLocation>
 									<Hyperlink>true</Hyperlink>
-									<ContextMenu name="ЛевыйБоковойЭлементКонтекстноеМеню" id="68"/>
+									<ContextMenu name="ЛевыйБоковойЭлементКонтекстноеМеню" id="68">
+										<Autofill>false</Autofill>
+										<ChildItems>
+											<Button name="ЛевыйБоковойЭлементКонтекстноеМенюВыборИзделия" id="83">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.ВыборИзделия</CommandName>
+												<ExtendedTooltip name="ЛевыйБоковойЭлементКонтекстноеМенюВыборИзделияРасширеннаяПодсказка" id="84"/>
+											</Button>
+											<Button name="ЛевыйБоковойЭлементКонтекстноеМенюОчистить" id="85">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.Очистить</CommandName>
+												<ExtendedTooltip name="ЛевыйБоковойЭлементКонтекстноеМенюОчиститьРасширеннаяПодсказка" id="86"/>
+											</Button>
+										</ChildItems>
+									</ContextMenu>
 									<ExtendedTooltip name="ЛевыйБоковойЭлементРасширеннаяПодсказка" id="69"/>
 									<Events>
-										<Event name="Click">КрышаНажатие</Event>
+										<Event name="Click">ИзделиеНажатие</Event>
 									</Events>
 								</PictureField>
 								<PictureField name="ОсновнойЭлемент" id="70">
@@ -78,20 +119,48 @@
 									<Width>30</Width>
 									<Height>10</Height>
 									<Hyperlink>true</Hyperlink>
-									<ContextMenu name="ОсновнойЭлементКонтекстноеМеню" id="71"/>
+									<ContextMenu name="ОсновнойЭлементКонтекстноеМеню" id="71">
+										<Autofill>false</Autofill>
+										<ChildItems>
+											<Button name="ОсновнойЭлементКонтекстноеМенюВыборИзделия" id="87">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.ВыборИзделия</CommandName>
+												<ExtendedTooltip name="ОсновнойЭлементКонтекстноеМенюВыборИзделияРасширеннаяПодсказка" id="88"/>
+											</Button>
+											<Button name="ОсновнойЭлементКонтекстноеМенюОчистить" id="89">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.Очистить</CommandName>
+												<ExtendedTooltip name="ОсновнойЭлементКонтекстноеМенюОчиститьРасширеннаяПодсказка" id="90"/>
+											</Button>
+										</ChildItems>
+									</ContextMenu>
 									<ExtendedTooltip name="ОсновнойЭлементРасширеннаяПодсказка" id="72"/>
 									<Events>
-										<Event name="Click">КрышаНажатие</Event>
+										<Event name="Click">ИзделиеНажатие</Event>
 									</Events>
 								</PictureField>
 								<PictureField name="ПравыйБоковойЭлемент" id="73">
 									<DataPath>ПравыйБоковойЭлемент</DataPath>
 									<TitleLocation>None</TitleLocation>
 									<Hyperlink>true</Hyperlink>
-									<ContextMenu name="ПравыйБоковойЭлементКонтекстноеМеню" id="74"/>
+									<ContextMenu name="ПравыйБоковойЭлементКонтекстноеМеню" id="74">
+										<Autofill>false</Autofill>
+										<ChildItems>
+											<Button name="ПравыйБоковойЭлементКонтекстноеМенюВыборИзделия" id="91">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.ВыборИзделия</CommandName>
+												<ExtendedTooltip name="ПравыйБоковойЭлементКонтекстноеМенюВыборИзделияРасширеннаяПодсказка" id="92"/>
+											</Button>
+											<Button name="ПравыйБоковойЭлементКонтекстноеМенюОчистить" id="93">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.Очистить</CommandName>
+												<ExtendedTooltip name="ПравыйБоковойЭлементКонтекстноеМенюОчиститьРасширеннаяПодсказка" id="94"/>
+											</Button>
+										</ChildItems>
+									</ContextMenu>
 									<ExtendedTooltip name="ПравыйБоковойЭлементРасширеннаяПодсказка" id="75"/>
 									<Events>
-										<Event name="Click">КрышаНажатие</Event>
+										<Event name="Click">ИзделиеНажатие</Event>
 									</Events>
 								</PictureField>
 							</ChildItems>
@@ -101,10 +170,24 @@
 							<TitleLocation>None</TitleLocation>
 							<Height>3</Height>
 							<Hyperlink>true</Hyperlink>
-							<ContextMenu name="ПолКонтекстноеМеню" id="77"/>
+							<ContextMenu name="ПолКонтекстноеМеню" id="77">
+								<Autofill>false</Autofill>
+								<ChildItems>
+									<Button name="ПолКонтекстноеМенюВыборИзделия" id="95">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ВыборИзделия</CommandName>
+										<ExtendedTooltip name="ПолКонтекстноеМенюВыборИзделияРасширеннаяПодсказка" id="96"/>
+									</Button>
+									<Button name="ПолКонтекстноеМенюОчистить" id="97">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.Очистить</CommandName>
+										<ExtendedTooltip name="ПолКонтекстноеМенюОчиститьРасширеннаяПодсказка" id="98"/>
+									</Button>
+								</ChildItems>
+							</ContextMenu>
 							<ExtendedTooltip name="ПолРасширеннаяПодсказка" id="78"/>
 							<Events>
-								<Event name="Click">КрышаНажатие</Event>
+								<Event name="Click">ИзделиеНажатие</Event>
 							</Events>
 						</PictureField>
 					</ChildItems>
@@ -126,29 +209,29 @@
 				<Autofill>false</Autofill>
 			</AutoCommandBar>
 			<ExtendedTooltip name="ДеталиРасширеннаяПодсказка" id="26"/>
-			<SearchStringAddition name="ДеталиСтрокаПоиска" id="79">
+			<SearchStringAddition name="ДеталиСтрокаПоиска" id="99">
 				<AdditionSource>
 					<Item>Детали</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="ДеталиСтрокаПоискаКонтекстноеМеню" id="80"/>
-				<ExtendedTooltip name="ДеталиСтрокаПоискаРасширеннаяПодсказка" id="81"/>
+				<ContextMenu name="ДеталиСтрокаПоискаКонтекстноеМеню" id="100"/>
+				<ExtendedTooltip name="ДеталиСтрокаПоискаРасширеннаяПодсказка" id="101"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="ДеталиСостояниеПросмотра" id="82">
+			<ViewStatusAddition name="ДеталиСостояниеПросмотра" id="102">
 				<AdditionSource>
 					<Item>Детали</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="ДеталиСостояниеПросмотраКонтекстноеМеню" id="83"/>
-				<ExtendedTooltip name="ДеталиСостояниеПросмотраРасширеннаяПодсказка" id="84"/>
+				<ContextMenu name="ДеталиСостояниеПросмотраКонтекстноеМеню" id="103"/>
+				<ExtendedTooltip name="ДеталиСостояниеПросмотраРасширеннаяПодсказка" id="104"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="ДеталиУправлениеПоиском" id="85">
+			<SearchControlAddition name="ДеталиУправлениеПоиском" id="105">
 				<AdditionSource>
 					<Item>Детали</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="ДеталиУправлениеПоискомКонтекстноеМеню" id="86"/>
-				<ExtendedTooltip name="ДеталиУправлениеПоискомРасширеннаяПодсказка" id="87"/>
+				<ContextMenu name="ДеталиУправлениеПоискомКонтекстноеМеню" id="106"/>
+				<ExtendedTooltip name="ДеталиУправлениеПоискомРасширеннаяПодсказка" id="107"/>
 			</SearchControlAddition>
 			<ChildItems>
 				<InputField name="ДеталиИзделие" id="27">
@@ -259,7 +342,7 @@
 					<Type>
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>
-							<v8:Length>0</v8:Length>
+							<v8:Length>25</v8:Length>
 							<v8:AllowedLength>Variable</v8:AllowedLength>
 						</v8:StringQualifiers>
 					</Type>
@@ -341,5 +424,52 @@
 				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
+		<Attribute name="РабочийКаталог" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Рабочий каталог</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
 	</Attributes>
+	<Commands>
+		<Command name="ВыборИзделия" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбор изделия</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбор изделия</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыборИзделия</Action>
+		</Command>
+		<Command name="Очистить" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Очистить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Очистить</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Очистить</Action>
+		</Command>
+	</Commands>
 </Form>
