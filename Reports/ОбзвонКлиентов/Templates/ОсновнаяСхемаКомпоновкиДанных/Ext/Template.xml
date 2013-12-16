@@ -178,16 +178,16 @@
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
-	КОЛИЧЕСТВО(РАЗЛИЧНЫЕ ОбзвонДоговоровСписокДоговоров.Договор) КАК Общее,
-	ОбзвонДоговоровСписокДоговоров.Договор.Подразделение КАК Подразделение
+	КОЛИЧЕСТВО(РАЗЛИЧНЫЕ ОбзвонСписокДоговоров.Договор) КАК Общее,
+	ОбзвонСписокДоговоров.Договор.Подразделение КАК Подразделение
 ИЗ
-	Документ.ОбзвонДоговоров.СписокДоговоров КАК ОбзвонДоговоровСписокДоговоров
+	Документ.Обзвон.СписокДоговоров КАК ОбзвонСписокДоговоров
 ГДЕ
-	ОбзвонДоговоровСписокДоговоров.Ссылка.Дата МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания
-	И ОбзвонДоговоровСписокДоговоров.Договор.Подразделение = &amp;Подразделение
+	ОбзвонСписокДоговоров.Ссылка.Дата МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания
+	И ОбзвонСписокДоговоров.Договор.Подразделение = &amp;Подразделение
 
 СГРУППИРОВАТЬ ПО
-	ОбзвонДоговоровСписокДоговоров.Договор.Подразделение
+	ОбзвонСписокДоговоров.Договор.Подразделение
 
 ОБЪЕДИНИТЬ ВСЕ
 
@@ -230,18 +230,22 @@
 	<totalField>
 		<dataPath>Количество</dataPath>
 		<expression>Количество(Количество)</expression>
+		<group>Оценка</group>
 	</totalField>
 	<totalField>
 		<dataPath>Процент</dataPath>
 		<expression>Процент</expression>
+		<group>Оценка</group>
 	</totalField>
 	<totalField>
 		<dataPath>Количество</dataPath>
 		<expression>Общее</expression>
+		<group>Подразделение</group>
 	</totalField>
 	<totalField>
 		<dataPath>Количество</dataPath>
 		<expression>Количество</expression>
+		<group>Договор</group>
 	</totalField>
 	<parameter>
 		<name>ДатаНачала</name>
@@ -319,6 +323,9 @@
 				<v8:content>Ссылка</v8:content>
 			</v8:item>
 		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:DocumentRef.Обзвон</v8:Type>
+		</valueType>
 		<value xsi:nil="true"/>
 		<useRestriction>true</useRestriction>
 	</parameter>
@@ -350,6 +357,11 @@
 						<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
 					</dcscor:value>
 					<dcsset:userSettingID>7882dffe-7192-456b-a109-2a041df50f95</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>Ссылка</dcscor:parameter>
+					<dcscor:value xsi:nil="true"/>
 				</dcscor:item>
 			</dcsset:dataParameters>
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
