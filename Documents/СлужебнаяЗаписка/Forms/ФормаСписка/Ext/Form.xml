@@ -332,9 +332,12 @@
 	ДокументСлужебнаяЗаписка.Тема,
 	ДокументСлужебнаяЗаписка.НеСогласен,
 	ДокументСлужебнаяЗаписка.Утверждаю,
-	ДокументСлужебнаяЗаписка.Ознакомлен
+	ДокументСлужебнаяЗаписка.Ознакомлен,
+	СтатусыСлужебныхЗаписок.Статус
 ИЗ
 	Документ.СлужебнаяЗаписка КАК ДокументСлужебнаяЗаписка
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СтатусыСлужебныхЗаписок КАК СтатусыСлужебныхЗаписок
+		ПО ДокументСлужебнаяЗаписка.Ссылка = СтатусыСлужебныхЗаписок.СлужебнаяЗаписка
 ГДЕ
 	НЕ ДокументСлужебнаяЗаписка.Проведен</QueryText>
 				<MainTable>Document.СлужебнаяЗаписка</MainTable>
@@ -377,17 +380,15 @@
 							</dcsset:selection>
 							<dcsset:filter>
 								<dcsset:item xsi:type="dcsset:FilterItemComparison">
-									<dcsset:left xsi:type="dcscor:Field">ДатаКонтроля</dcsset:left>
-									<dcsset:comparisonType>Less</dcsset:comparisonType>
-									<dcsset:right xsi:type="v8:StandardBeginningDate">
-										<v8:variant xsi:type="v8:StandardBeginningDateVariant">BeginningOfThisDay</v8:variant>
-									</dcsset:right>
+									<dcsset:left xsi:type="dcscor:Field">Статус</dcsset:left>
+									<dcsset:comparisonType>Equal</dcsset:comparisonType>
+									<dcsset:right xsi:type="dcscor:DesignTimeValue">Перечисление.СтатусыСлужебнойЗаписки.Новая</dcsset:right>
 								</dcsset:item>
 							</dcsset:filter>
 							<dcsset:appearance>
 								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 									<dcscor:parameter>ЦветФона</dcscor:parameter>
-									<dcscor:value xsi:type="v8ui:Color">web:Coral</dcscor:value>
+									<dcscor:value xsi:type="v8ui:Color">web:Khaki</dcscor:value>
 								</dcscor:item>
 							</dcsset:appearance>
 						</dcsset:item>
@@ -419,36 +420,16 @@
 								</dcsset:item>
 							</dcsset:selection>
 							<dcsset:filter>
-								<dcsset:item xsi:type="dcsset:FilterItemGroup">
-									<dcsset:groupType>AndGroup</dcsset:groupType>
-									<dcsset:item xsi:type="dcsset:FilterItemComparison">
-										<dcsset:left xsi:type="dcscor:Field">Ознакомлен</dcsset:left>
-										<dcsset:comparisonType>Equal</dcsset:comparisonType>
-										<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
-									</dcsset:item>
-									<dcsset:item xsi:type="dcsset:FilterItemComparison">
-										<dcsset:left xsi:type="dcscor:Field">Утверждаю</dcsset:left>
-										<dcsset:comparisonType>Equal</dcsset:comparisonType>
-										<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
-									</dcsset:item>
-									<dcsset:item xsi:type="dcsset:FilterItemComparison">
-										<dcsset:left xsi:type="dcscor:Field">НеСогласен</dcsset:left>
-										<dcsset:comparisonType>Equal</dcsset:comparisonType>
-										<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
-									</dcsset:item>
-								</dcsset:item>
 								<dcsset:item xsi:type="dcsset:FilterItemComparison">
-									<dcsset:left xsi:type="dcscor:Field">ДатаКонтроля</dcsset:left>
-									<dcsset:comparisonType>GreaterOrEqual</dcsset:comparisonType>
-									<dcsset:right xsi:type="v8:StandardBeginningDate">
-										<v8:variant xsi:type="v8:StandardBeginningDateVariant">BeginningOfThisDay</v8:variant>
-									</dcsset:right>
+									<dcsset:left xsi:type="dcscor:Field">Статус</dcsset:left>
+									<dcsset:comparisonType>Equal</dcsset:comparisonType>
+									<dcsset:right xsi:type="dcscor:DesignTimeValue">Перечисление.СтатусыСлужебнойЗаписки.Просрочена</dcsset:right>
 								</dcsset:item>
 							</dcsset:filter>
 							<dcsset:appearance>
 								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 									<dcscor:parameter>ЦветФона</dcscor:parameter>
-									<dcscor:value xsi:type="v8ui:Color">web:Khaki</dcscor:value>
+									<dcscor:value xsi:type="v8ui:Color">web:Coral</dcscor:value>
 								</dcscor:item>
 							</dcsset:appearance>
 						</dcsset:item>
