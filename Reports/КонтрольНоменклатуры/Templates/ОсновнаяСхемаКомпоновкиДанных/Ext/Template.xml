@@ -388,6 +388,40 @@
 	ТребуетсяПоСпецификациям.Количество,
 	Список.ПриобертаемОптом</query>
 	</dataSet>
+	<calculatedField>
+		<dataPath>ПлановаяНаценка</dataPath>
+		<expression>ВЫБОР КОГДА ПлановаяЗакупочная &lt;&gt; 0
+ТОГДА Розничная / ПлановаяЗакупочная * 100 - 100
+ИНАЧЕ 0 КОНЕЦ</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Плановая наценка (%)</v8:content>
+			</v8:item>
+		</title>
+		<appearance>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>Формат</dcscor:parameter>
+				<dcscor:value xsi:type="xs:string">ЧДЦ=2</dcscor:value>
+			</dcscor:item>
+		</appearance>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>РозничнаяЦенаМинус30</dataPath>
+		<expression>Розничная * 0.7</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Розничная -30%</v8:content>
+			</v8:item>
+		</title>
+		<appearance>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>Формат</dcscor:parameter>
+				<dcscor:value xsi:type="xs:string">ЧДЦ=2</dcscor:value>
+			</dcscor:item>
+		</appearance>
+	</calculatedField>
 	<totalField>
 		<dataPath>Внутренняя</dataPath>
 		<expression>Среднее(Внутренняя)</expression>
@@ -439,6 +473,14 @@
 	<totalField>
 		<dataPath>ПриобертаемОптом</dataPath>
 		<expression>Максимум(ПриобертаемОптом)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ПлановаяНаценка</dataPath>
+		<expression>Среднее(ПлановаяНаценка)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>РозничнаяЦенаМинус30</dataPath>
+		<expression>Среднее(РозничнаяЦенаМинус30)</expression>
 	</totalField>
 	<parameter>
 		<name>Период</name>
@@ -503,7 +545,13 @@
 						<dcsset:field>Розничная</dcsset:field>
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>РозничнаяЦенаМинус30</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
 						<dcsset:field>Наценка</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ПлановаяНаценка</dcsset:field>
 					</dcsset:item>
 					<dcsset:placement>Auto</dcsset:placement>
 				</dcsset:item>
@@ -600,6 +648,9 @@
 							<dcsset:field>Наценка</dcsset:field>
 						</dcsset:item>
 						<dcsset:item>
+							<dcsset:field>ПлановаяНаценка</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
 							<dcsset:field>ОстатокВЦеху</dcsset:field>
 						</dcsset:item>
 						<dcsset:item>
@@ -616,6 +667,9 @@
 						</dcsset:item>
 						<dcsset:item>
 							<dcsset:field>Розничная</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>РозничнаяЦенаМинус30</dcsset:field>
 						</dcsset:item>
 						<dcsset:item>
 							<dcsset:field>Себестоимость</dcsset:field>
