@@ -127,6 +127,7 @@
 			</ChildItems>
 		</UsualGroup>
 		<Table name="СписокНоменклатуры" id="91">
+			<Footer>true</Footer>
 			<AutoInsertNewRow>true</AutoInsertNewRow>
 			<EnableStartDrag>true</EnableStartDrag>
 			<EnableDrag>true</EnableDrag>
@@ -158,6 +159,11 @@
 								<CommandName>Form.Command.ЗаполнитьУчетнымиДанными</CommandName>
 								<ExtendedTooltip name="СписокНоменклатурыЗаполнитьОстаткамиПоСкладуРасширеннаяПодсказка" id="119"/>
 							</Button>
+							<Button name="СписокНоменклатурыЗаполнитьУчетнымиДаннымиГруппой" id="139">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ЗаполнитьУчетнымиДаннымиГруппой</CommandName>
+								<ExtendedTooltip name="СписокНоменклатурыЗаполнитьУчетнымиДаннымиГруппойРасширеннаяПодсказка" id="140"/>
+							</Button>
 							<Button name="СписокНоменклатурыЗаполнитьФактическиеДанныеУчетными" id="120">
 								<Type>CommandBarButton</Type>
 								<CommandName>Form.Command.ЗаполнитьФактическиеДанныеУчетными</CommandName>
@@ -168,29 +174,29 @@
 				</ChildItems>
 			</AutoCommandBar>
 			<ExtendedTooltip name="СписокНоменклатурыРасширеннаяПодсказка" id="94"/>
-			<SearchStringAddition name="СписокНоменклатурыСтрокаПоиска" id="139">
+			<SearchStringAddition name="СписокНоменклатурыСтрокаПоиска" id="141">
 				<AdditionSource>
 					<Item>СписокНоменклатуры</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокНоменклатурыСтрокаПоискаКонтекстноеМеню" id="140"/>
-				<ExtendedTooltip name="СписокНоменклатурыСтрокаПоискаРасширеннаяПодсказка" id="141"/>
+				<ContextMenu name="СписокНоменклатурыСтрокаПоискаКонтекстноеМеню" id="142"/>
+				<ExtendedTooltip name="СписокНоменклатурыСтрокаПоискаРасширеннаяПодсказка" id="143"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокНоменклатурыСостояниеПросмотра" id="142">
+			<ViewStatusAddition name="СписокНоменклатурыСостояниеПросмотра" id="144">
 				<AdditionSource>
 					<Item>СписокНоменклатуры</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокНоменклатурыСостояниеПросмотраКонтекстноеМеню" id="143"/>
-				<ExtendedTooltip name="СписокНоменклатурыСостояниеПросмотраРасширеннаяПодсказка" id="144"/>
+				<ContextMenu name="СписокНоменклатурыСостояниеПросмотраКонтекстноеМеню" id="145"/>
+				<ExtendedTooltip name="СписокНоменклатурыСостояниеПросмотраРасширеннаяПодсказка" id="146"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокНоменклатурыУправлениеПоиском" id="145">
+			<SearchControlAddition name="СписокНоменклатурыУправлениеПоиском" id="147">
 				<AdditionSource>
 					<Item>СписокНоменклатуры</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокНоменклатурыУправлениеПоискомКонтекстноеМеню" id="146"/>
-				<ExtendedTooltip name="СписокНоменклатурыУправлениеПоискомРасширеннаяПодсказка" id="147"/>
+				<ContextMenu name="СписокНоменклатурыУправлениеПоискомКонтекстноеМеню" id="148"/>
+				<ExtendedTooltip name="СписокНоменклатурыУправлениеПоискомРасширеннаяПодсказка" id="149"/>
 			</SearchControlAddition>
 			<ChildItems>
 				<LabelField name="СписокНоменклатурыНомерСтроки" id="95">
@@ -221,12 +227,14 @@
 					<DataPath>Объект.СписокНоменклатуры.КоличествоУчетное</DataPath>
 					<ReadOnly>true</ReadOnly>
 					<EditMode>EnterOnInput</EditMode>
+					<FooterDataPath>Объект.СписокНоменклатуры.TotalКоличествоУчетное</FooterDataPath>
 					<ContextMenu name="СписокНоменклатурыКоличествоУчетноеКонтекстноеМеню" id="99"/>
 					<ExtendedTooltip name="СписокНоменклатурыКоличествоУчетноеРасширеннаяПодсказка" id="100"/>
 				</InputField>
 				<InputField name="СписокНоменклатурыКоличествоФакт" id="101">
 					<DataPath>Объект.СписокНоменклатуры.КоличествоФакт</DataPath>
 					<EditMode>EnterOnInput</EditMode>
+					<FooterDataPath>Объект.СписокНоменклатуры.TotalКоличествоФакт</FooterDataPath>
 					<ContextMenu name="СписокНоменклатурыКоличествоФактКонтекстноеМеню" id="102"/>
 					<ExtendedTooltip name="СписокНоменклатурыКоличествоФактРасширеннаяПодсказка" id="103"/>
 					<Events>
@@ -237,6 +245,7 @@
 					<DataPath>Объект.СписокНоменклатуры.Отклонение</DataPath>
 					<ReadOnly>true</ReadOnly>
 					<EditMode>EnterOnInput</EditMode>
+					<FooterDataPath>Объект.СписокНоменклатуры.TotalОтклонение</FooterDataPath>
 					<ContextMenu name="СписокНоменклатурыОтклонениеКонтекстноеМеню" id="108"/>
 					<ExtendedTooltip name="СписокНоменклатурыОтклонениеРасширеннаяПодсказка" id="109"/>
 				</InputField>
@@ -257,6 +266,7 @@
 						</v8:item>
 					</Title>
 					<EditMode>EnterOnInput</EditMode>
+					<FooterDataPath>Объект.СписокНоменклатуры.TotalСтоимостьУчетная</FooterDataPath>
 					<ContextMenu name="СписокНоменклатурыСтоимостьУчетнаяКонтекстноеМеню" id="131"/>
 					<ExtendedTooltip name="СписокНоменклатурыСтоимостьУчетнаяРасширеннаяПодсказка" id="132"/>
 				</InputField>
@@ -290,6 +300,17 @@
 				<Field>Объект.RegisterRecords</Field>
 			</UseAlways>
 		</Attribute>
+		<Attribute name="ГруппаНоменклатуры" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа номенклатуры</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Номенклатура</v8:Type>
+			</Type>
+		</Attribute>
 	</Attributes>
 	<Commands>
 		<Command name="ЗаполнитьУчетнымиДанными" id="1">
@@ -322,6 +343,22 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ЗаполнитьФактическиеДанныеУчетными</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ЗаполнитьУчетнымиДаннымиГруппой" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Учетными данными (по группе)</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить учетными данными группой</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗаполнитьУчетнымиДаннымиГруппой</Action>
 			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>
 	</Commands>
