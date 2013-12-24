@@ -422,6 +422,24 @@
 			</dcscor:item>
 		</appearance>
 	</calculatedField>
+	<calculatedField>
+		<dataPath>НаценкаЛогистики</dataPath>
+		<expression>ВЫБОР КОГДА Себестоимость &lt;&gt; 0
+ТОГДА Внутренняя / Себестоимость * 100 - 100
+ИНАЧЕ 0 КОНЕЦ</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Наценка логистики</v8:content>
+			</v8:item>
+		</title>
+		<appearance>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>Формат</dcscor:parameter>
+				<dcscor:value xsi:type="xs:string">ЧДЦ=2</dcscor:value>
+			</dcscor:item>
+		</appearance>
+	</calculatedField>
 	<totalField>
 		<dataPath>Внутренняя</dataPath>
 		<expression>Среднее(Внутренняя)</expression>
@@ -481,6 +499,10 @@
 	<totalField>
 		<dataPath>РозничнаяЦенаМинус30</dataPath>
 		<expression>Среднее(РозничнаяЦенаМинус30)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>НаценкаЛогистики</dataPath>
+		<expression>Сумма(НаценкаЛогистики)</expression>
 	</totalField>
 	<parameter>
 		<name>Период</name>
@@ -547,11 +569,23 @@
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
 						<dcsset:field>РозничнаяЦенаМинус30</dcsset:field>
 					</dcsset:item>
+					<dcsset:placement>Auto</dcsset:placement>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+					<dcsset:lwsTitle>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наценки</v8:content>
+						</v8:item>
+					</dcsset:lwsTitle>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
 						<dcsset:field>Наценка</dcsset:field>
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
 						<dcsset:field>ПлановаяНаценка</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>НаценкаЛогистики</dcsset:field>
 					</dcsset:item>
 					<dcsset:placement>Auto</dcsset:placement>
 				</dcsset:item>
@@ -649,6 +683,9 @@
 						</dcsset:item>
 						<dcsset:item>
 							<dcsset:field>ПлановаяНаценка</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>НаценкаЛогистики</dcsset:field>
 						</dcsset:item>
 						<dcsset:item>
 							<dcsset:field>ОстатокВЦеху</dcsset:field>
