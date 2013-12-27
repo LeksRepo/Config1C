@@ -23,7 +23,6 @@
 	<ChildItems>
 		<Table name="ТаблицаЗначений" id="17">
 			<Representation>List</Representation>
-			<Header>false</Header>
 			<AutoInsertNewRow>true</AutoInsertNewRow>
 			<EnableStartDrag>true</EnableStartDrag>
 			<EnableDrag>true</EnableDrag>
@@ -73,29 +72,29 @@
 				</ChildItems>
 			</AutoCommandBar>
 			<ExtendedTooltip name="ТаблицаЗначенийРасширеннаяПодсказка" id="20"/>
-			<SearchStringAddition name="ТаблицаЗначенийСтрокаПоиска" id="39">
+			<SearchStringAddition name="ТаблицаЗначенийСтрокаПоиска" id="62">
 				<AdditionSource>
 					<Item>ТаблицаЗначений</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="ТаблицаЗначенийСтрокаПоискаКонтекстноеМеню" id="40"/>
-				<ExtendedTooltip name="ТаблицаЗначенийСтрокаПоискаРасширеннаяПодсказка" id="41"/>
+				<ContextMenu name="ТаблицаЗначенийСтрокаПоискаКонтекстноеМеню" id="63"/>
+				<ExtendedTooltip name="ТаблицаЗначенийСтрокаПоискаРасширеннаяПодсказка" id="64"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="ТаблицаЗначенийСостояниеПросмотра" id="42">
+			<ViewStatusAddition name="ТаблицаЗначенийСостояниеПросмотра" id="65">
 				<AdditionSource>
 					<Item>ТаблицаЗначений</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="ТаблицаЗначенийСостояниеПросмотраКонтекстноеМеню" id="43"/>
-				<ExtendedTooltip name="ТаблицаЗначенийСостояниеПросмотраРасширеннаяПодсказка" id="44"/>
+				<ContextMenu name="ТаблицаЗначенийСостояниеПросмотраКонтекстноеМеню" id="66"/>
+				<ExtendedTooltip name="ТаблицаЗначенийСостояниеПросмотраРасширеннаяПодсказка" id="67"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="ТаблицаЗначенийУправлениеПоиском" id="45">
+			<SearchControlAddition name="ТаблицаЗначенийУправлениеПоиском" id="68">
 				<AdditionSource>
 					<Item>ТаблицаЗначений</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="ТаблицаЗначенийУправлениеПоискомКонтекстноеМеню" id="46"/>
-				<ExtendedTooltip name="ТаблицаЗначенийУправлениеПоискомРасширеннаяПодсказка" id="47"/>
+				<ContextMenu name="ТаблицаЗначенийУправлениеПоискомКонтекстноеМеню" id="69"/>
+				<ExtendedTooltip name="ТаблицаЗначенийУправлениеПоискомРасширеннаяПодсказка" id="70"/>
 			</SearchControlAddition>
 			<ChildItems>
 				<CheckBoxField name="ТаблицаЗначенийОбновить" id="27">
@@ -108,16 +107,18 @@
 				</CheckBoxField>
 				<InputField name="ТаблицаЗначенийИмя" id="21">
 					<DataPath>ТаблицаЗначений.Имя</DataPath>
+					<ReadOnly>true</ReadOnly>
 					<EditMode>EnterOnInput</EditMode>
 					<ContextMenu name="ТаблицаЗначенийИмяКонтекстноеМеню" id="22"/>
 					<ExtendedTooltip name="ТаблицаЗначенийИмяРасширеннаяПодсказка" id="23"/>
 				</InputField>
 				<InputField name="ТаблицаЗначенийРазмер" id="30">
 					<DataPath>ТаблицаЗначений.Размер</DataPath>
+					<ReadOnly>true</ReadOnly>
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Размер, КБ</v8:content>
+							<v8:content>Размер, Кбайт</v8:content>
 						</v8:item>
 					</Title>
 					<EditMode>EnterOnInput</EditMode>
@@ -126,6 +127,85 @@
 				</InputField>
 			</ChildItems>
 		</Table>
+		<UsualGroup name="ГруппаИтог" id="42">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа итог</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа итог</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаИтогРасширеннаяПодсказка" id="43"/>
+			<ChildItems>
+				<LabelDecoration name="Заглушка" id="44">
+					<HorizontalStretch>true</HorizontalStretch>
+					<ContextMenu name="ЗаглушкаКонтекстноеМеню" id="45"/>
+					<ExtendedTooltip name="ЗаглушкаРасширеннаяПодсказка" id="46"/>
+				</LabelDecoration>
+				<LabelDecoration name="НадписьИтого" id="53">
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Итого:</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="НадписьИтогоКонтекстноеМеню" id="54"/>
+					<ExtendedTooltip name="НадписьИтогоРасширеннаяПодсказка" id="55"/>
+				</LabelDecoration>
+				<LabelField name="ИтогКоличество" id="50">
+					<DataPath>ИтогКоличество</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<Width>5</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Format>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ЧРГ=</v8:content>
+						</v8:item>
+					</Format>
+					<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+					<ContextMenu name="ИтогКоличествоКонтекстноеМеню" id="51"/>
+					<ExtendedTooltip name="ИтогКоличествоРасширеннаяПодсказка" id="52"/>
+				</LabelField>
+				<LabelDecoration name="НадписьШт" id="56">
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>шт.</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="НадписьШтКонтекстноеМеню" id="57"/>
+					<ExtendedTooltip name="НадписьШтРасширеннаяПодсказка" id="58"/>
+				</LabelDecoration>
+				<LabelField name="ИтогРазмер" id="47">
+					<DataPath>ИтогРазмер</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<Width>5</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+					<ContextMenu name="ИтогРазмерКонтекстноеМеню" id="48"/>
+					<ExtendedTooltip name="ИтогРазмерРасширеннаяПодсказка" id="49"/>
+				</LabelField>
+				<LabelDecoration name="НадписьМбайт" id="59">
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Мбайт</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="НадписьМбайтКонтекстноеМеню" id="60"/>
+					<ExtendedTooltip name="НадписьМбайтРасширеннаяПодсказка" id="61"/>
+				</LabelDecoration>
+			</ChildItems>
+		</UsualGroup>
 		<UsualGroup name="ГруппаКнопки" id="15">
 			<Title>
 				<v8:item>
@@ -148,6 +228,8 @@
 				<Button name="Обновить" id="11">
 					<Type>UsualButton</Type>
 					<Representation>PictureAndText</Representation>
+					<DefaultButton>true</DefaultButton>
+					<DefaultItem>true</DefaultItem>
 					<Width>20</Width>
 					<Height>2</Height>
 					<CommandName>Form.Command.Обновить</CommandName>
@@ -261,7 +343,7 @@
 						<v8:Type>xs:decimal</v8:Type>
 						<v8:NumberQualifiers>
 							<v8:Digits>20</v8:Digits>
-							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:FractionDigits>0</v8:FractionDigits>
 							<v8:AllowedSign>Any</v8:AllowedSign>
 						</v8:NumberQualifiers>
 					</Type>
@@ -329,6 +411,38 @@
 					</Type>
 				</Column>
 			</Columns>
+		</Attribute>
+		<Attribute name="ИтогРазмер" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Итого (МБайт)</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>1</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ИтогКоличество" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Итог количество</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>4</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
 		</Attribute>
 	</Attributes>
 	<Commands>
