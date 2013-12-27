@@ -38,12 +38,17 @@
 			<dataPath>Дата</dataPath>
 			<field>Дата</field>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Подразделение</dataPath>
+			<field>Подразделение</field>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	СпецификацияСписокНоменклатуры.Номенклатура КАК Номенклатура,
 	СпецификацияСписокНоменклатуры.Количество КАК Количество,
 	СпецификацияСписокНоменклатуры.ЕдиницаИзмерения,
 	СпецификацияСписокНоменклатуры.Ссылка.Дилерский,
+	СпецификацияСписокНоменклатуры.Ссылка.Подразделение КАК Подразделение,
 	СпецификацияСписокНоменклатуры.Ссылка.Дата
 ИЗ
 	Документ.Спецификация.СписокНоменклатуры КАК СпецификацияСписокНоменклатуры
@@ -127,6 +132,19 @@
 					<dcsset:field>Количество</dcsset:field>
 				</dcsset:item>
 			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:left xsi:type="dcscor:Field">Подразделение</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>76f30129-6e04-46e8-842c-131997e4b1f6</dcsset:userSettingID>
+					<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подразделение</v8:content>
+						</v8:item>
+					</dcsset:userSettingPresentation>
+				</dcsset:item>
+			</dcsset:filter>
 			<dcsset:dataParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:use>false</dcscor:use>
