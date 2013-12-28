@@ -25,20 +25,6 @@
 			<field>Производство</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>АдресДоставки</dataPath>
-			<field>АдресДоставки</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Адрес доставки</v8:content>
-				</v8:item>
-			</title>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>ДатаДоставки</dataPath>
-			<field>ДатаДоставки</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>Заказчик</dataPath>
 			<field>Заказчик</field>
 			<title xsi:type="v8:LocalStringType">
@@ -57,41 +43,55 @@
 					<v8:content>Дил</v8:content>
 				</v8:item>
 			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">БЛ=; БИ=Да</dcscor:value>
+				</dcscor:item>
+			</appearance>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Телефон</dataPath>
 			<field>Телефон</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>ДТК</dataPath>
-			<field>ДТК</field>
+			<dataPath>ДатаОтгрузки</dataPath>
+			<field>ДатаОтгрузки</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Отгружен</dataPath>
+			<field>Отгружен</field>
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>ДТК</v8:content>
+					<v8:content>Отгружен</v8:content>
 				</v8:item>
 			</title>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>[Спецификация №]</dataPath>
+			<field>СсылкаНомер</field>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
-		<query>ВЫБРАТЬ
-	Спецификация.АдресМонтажа КАК АдресДоставки,
+		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	Спецификация.Комментарий,
 	Спецификация.Ссылка,
+	Спецификация.Ссылка.Номер,
 	Спецификация.Производство,
 	Спецификация.Контрагент КАК Заказчик,
-	Спецификация.ДатаОтгрузки КАК ДатаДоставки,
-	Спецификация.Телефон,
-	Спецификация.Дилерский,
+	Спецификация.ДатаОтгрузки КАК ДатаОтгрузки,
 	ВЫБОР
-		КОГДА Спецификация.ПакетУслуг = ЗНАЧЕНИЕ(Перечисление.ПакетыУслуг.ДоставкаДоТранспортнойКомпании)
-			ТОГДА "ДТК"
-		ИНАЧЕ ""
-	КОНЕЦ КАК ДТК
+		КОГДА Спецификация.Контрагент = ЗНАЧЕНИЕ(Справочник.Контрагенты.ЧастноеЛицо)
+			ТОГДА Спецификация.Телефон
+		ИНАЧЕ Спецификация.Контрагент.Телефон
+	КОНЕЦ КАК Телефон,
+	Спецификация.Дилерский,
+	ПРЕДСТАВЛЕНИЕ(Спецификация.Ссылка),
+	"" КАК Отгружен
 ИЗ
 	Документ.Спецификация КАК Спецификация
 ГДЕ
 	Спецификация.ДатаОтгрузки МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания
-	И Спецификация.ПакетУслуг &lt;&gt; ЗНАЧЕНИЕ(Перечисление.ПакетыУслуг.СамовывозОтПроизводителя)
 	И Спецификация.Проведен</query>
 	</dataSet>
 	<parameter>
@@ -154,19 +154,16 @@
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 			<dcsset:selection>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>ДатаДоставки</dcsset:field>
+					<dcsset:field>ДатаОтгрузки</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Ссылка</dcsset:field>
+					<dcsset:field>[Спецификация №]</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Заказчик</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Телефон</dcsset:field>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>ДТК</dcsset:field>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>АдресДоставки</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Дилерский</dcsset:field>
@@ -175,7 +172,7 @@
 					<dcsset:field>Комментарий</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Заказчик</dcsset:field>
+					<dcsset:field>Отгружен</dcsset:field>
 				</dcsset:item>
 			</dcsset:selection>
 			<dcsset:filter>
@@ -221,7 +218,7 @@
 					<dcscor:value xsi:type="v8:LocalStringType">
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>График доставок</v8:content>
+							<v8:content>График отгрузок</v8:content>
 						</v8:item>
 					</dcscor:value>
 				</dcscor:item>
