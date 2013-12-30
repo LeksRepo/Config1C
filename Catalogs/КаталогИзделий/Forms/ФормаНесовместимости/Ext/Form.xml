@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Несовместимость изделий</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="Принять" id="8">
+				<Type>CommandBarButton</Type>
+				<Representation>PictureAndText</Representation>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.Записать</CommandName>
+				<Picture>
+					<xr:Ref>StdPicture.Write</xr:Ref>
+					<xr:LoadTransparent>true</xr:LoadTransparent>
+				</Picture>
+				<ExtendedTooltip name="ПринятьРасширеннаяПодсказка" id="9"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<Table name="СписокНесовместимости" id="1">
+			<Representation>List</Representation>
+			<Header>false</Header>
+			<HorizontalLines>false</HorizontalLines>
+			<VerticalLines>false</VerticalLines>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<DataPath>СписокНесовместимости</DataPath>
+			<RowPictureDataPath>СписокНесовместимости.Picture</RowPictureDataPath>
+			<CommandSet>
+				<ExcludedCommand>Copy</ExcludedCommand>
+				<ExcludedCommand>CheckAll</ExcludedCommand>
+				<ExcludedCommand>SortListAsc</ExcludedCommand>
+				<ExcludedCommand>MoveUp</ExcludedCommand>
+				<ExcludedCommand>UncheckAll</ExcludedCommand>
+				<ExcludedCommand>SelectAll</ExcludedCommand>
+				<ExcludedCommand>SortListDesc</ExcludedCommand>
+				<ExcludedCommand>Pickup</ExcludedCommand>
+				<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+				<ExcludedCommand>EndEdit</ExcludedCommand>
+				<ExcludedCommand>Change</ExcludedCommand>
+				<ExcludedCommand>MoveDown</ExcludedCommand>
+			</CommandSet>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<ContextMenu name="СписокНесовместимостиКонтекстноеМеню" id="2"/>
+			<AutoCommandBar name="СписокНесовместимостиКоманднаяПанель" id="3"/>
+			<ExtendedTooltip name="СписокНесовместимостиРасширеннаяПодсказка" id="4"/>
+			<SearchStringAddition name="СписокНесовместимостиСтрокаПоиска" id="10">
+				<AdditionSource>
+					<Item>СписокНесовместимости</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокНесовместимостиСтрокаПоискаКонтекстноеМеню" id="11"/>
+				<ExtendedTooltip name="СписокНесовместимостиСтрокаПоискаРасширеннаяПодсказка" id="12"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="СписокНесовместимостиСостояниеПросмотра" id="13">
+				<AdditionSource>
+					<Item>СписокНесовместимости</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокНесовместимостиСостояниеПросмотраКонтекстноеМеню" id="14"/>
+				<ExtendedTooltip name="СписокНесовместимостиСостояниеПросмотраРасширеннаяПодсказка" id="15"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="СписокНесовместимостиУправлениеПоиском" id="16">
+				<AdditionSource>
+					<Item>СписокНесовместимости</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокНесовместимостиУправлениеПоискомКонтекстноеМеню" id="17"/>
+				<ExtendedTooltip name="СписокНесовместимостиУправлениеПоискомРасширеннаяПодсказка" id="18"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<InputField name="СписокНесовместимостиЗначение" id="5">
+					<DataPath>СписокНесовместимости.Value</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="СписокНесовместимостиЗначениеКонтекстноеМеню" id="6"/>
+					<ExtendedTooltip name="СписокНесовместимостиЗначениеРасширеннаяПодсказка" id="7"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="СписокНесовместимости" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список несовместимости</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Изделие" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изделие</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.КаталогИзделий</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Записать" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Записать</Action>
+		</Command>
+	</Commands>
+</Form>

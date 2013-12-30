@@ -9,9 +9,15 @@
 				<CommandName>Form.Command.ОбновитьИзображение</CommandName>
 				<ExtendedTooltip name="ФормаОбновитьИзображениеРасширеннаяПодсказка" id="274"/>
 			</Button>
+			<Button name="ФормаНесовместимость" id="318">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.Несовместимость</CommandName>
+				<ExtendedTooltip name="ФормаНесовместимостьРасширеннаяПодсказка" id="319"/>
+			</Button>
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
 		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
@@ -129,10 +135,16 @@
 							<v8:content>Использовать для крыши</v8:content>
 						</v8:item>
 					</ToolTip>
-					<ToolTipRepresentation>ShowRight</ToolTipRepresentation>
+					<ToolTipRepresentation>None</ToolTipRepresentation>
 					<CheckBoxType>Auto</CheckBoxType>
 					<ContextMenu name="НаВсеИзделиеКонтекстноеМеню" id="313"/>
 					<ExtendedTooltip name="НаВсеИзделиеРасширеннаяПодсказка" id="314"/>
+				</CheckBoxField>
+				<CheckBoxField name="УчитыватьПол" id="315">
+					<DataPath>Объект.УчитыватьПол</DataPath>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="УчитыватьПолКонтекстноеМеню" id="316"/>
+					<ExtendedTooltip name="УчитыватьПолРасширеннаяПодсказка" id="317"/>
 				</CheckBoxField>
 			</ChildItems>
 		</UsualGroup>
@@ -488,29 +500,29 @@
 								</ChildItems>
 							</AutoCommandBar>
 							<ExtendedTooltip name="СписокМатериалыРасширеннаяПодсказка" id="131"/>
-							<SearchStringAddition name="СписокМатериалыСтрокаПоиска" id="315">
+							<SearchStringAddition name="СписокМатериалыСтрокаПоиска" id="320">
 								<AdditionSource>
 									<Item>СписокМатериалы</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокМатериалыСтрокаПоискаКонтекстноеМеню" id="316"/>
-								<ExtendedTooltip name="СписокМатериалыСтрокаПоискаРасширеннаяПодсказка" id="317"/>
+								<ContextMenu name="СписокМатериалыСтрокаПоискаКонтекстноеМеню" id="321"/>
+								<ExtendedTooltip name="СписокМатериалыСтрокаПоискаРасширеннаяПодсказка" id="322"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="СписокМатериалыСостояниеПросмотра" id="318">
+							<ViewStatusAddition name="СписокМатериалыСостояниеПросмотра" id="323">
 								<AdditionSource>
 									<Item>СписокМатериалы</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокМатериалыСостояниеПросмотраКонтекстноеМеню" id="319"/>
-								<ExtendedTooltip name="СписокМатериалыСостояниеПросмотраРасширеннаяПодсказка" id="320"/>
+								<ContextMenu name="СписокМатериалыСостояниеПросмотраКонтекстноеМеню" id="324"/>
+								<ExtendedTooltip name="СписокМатериалыСостояниеПросмотраРасширеннаяПодсказка" id="325"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="СписокМатериалыУправлениеПоиском" id="321">
+							<SearchControlAddition name="СписокМатериалыУправлениеПоиском" id="326">
 								<AdditionSource>
 									<Item>СписокМатериалы</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокМатериалыУправлениеПоискомКонтекстноеМеню" id="322"/>
-								<ExtendedTooltip name="СписокМатериалыУправлениеПоискомРасширеннаяПодсказка" id="323"/>
+								<ContextMenu name="СписокМатериалыУправлениеПоискомКонтекстноеМеню" id="327"/>
+								<ExtendedTooltip name="СписокМатериалыУправлениеПоискомРасширеннаяПодсказка" id="328"/>
 							</SearchControlAddition>
 							<Events>
 								<Event name="ChoiceProcessing">СписокМатериалыОбработкаВыбора</Event>
@@ -616,29 +628,29 @@
 								</ChildItems>
 							</AutoCommandBar>
 							<ExtendedTooltip name="СписокЯщикиРасширеннаяПодсказка" id="222"/>
-							<SearchStringAddition name="СписокЯщикиСтрокаПоиска" id="324">
+							<SearchStringAddition name="СписокЯщикиСтрокаПоиска" id="329">
 								<AdditionSource>
 									<Item>СписокЯщики</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокЯщикиСтрокаПоискаКонтекстноеМеню" id="325"/>
-								<ExtendedTooltip name="СписокЯщикиСтрокаПоискаРасширеннаяПодсказка" id="326"/>
+								<ContextMenu name="СписокЯщикиСтрокаПоискаКонтекстноеМеню" id="330"/>
+								<ExtendedTooltip name="СписокЯщикиСтрокаПоискаРасширеннаяПодсказка" id="331"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="СписокЯщикиСостояниеПросмотра" id="327">
+							<ViewStatusAddition name="СписокЯщикиСостояниеПросмотра" id="332">
 								<AdditionSource>
 									<Item>СписокЯщики</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокЯщикиСостояниеПросмотраКонтекстноеМеню" id="328"/>
-								<ExtendedTooltip name="СписокЯщикиСостояниеПросмотраРасширеннаяПодсказка" id="329"/>
+								<ContextMenu name="СписокЯщикиСостояниеПросмотраКонтекстноеМеню" id="333"/>
+								<ExtendedTooltip name="СписокЯщикиСостояниеПросмотраРасширеннаяПодсказка" id="334"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="СписокЯщикиУправлениеПоиском" id="330">
+							<SearchControlAddition name="СписокЯщикиУправлениеПоиском" id="335">
 								<AdditionSource>
 									<Item>СписокЯщики</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокЯщикиУправлениеПоискомКонтекстноеМеню" id="331"/>
-								<ExtendedTooltip name="СписокЯщикиУправлениеПоискомРасширеннаяПодсказка" id="332"/>
+								<ContextMenu name="СписокЯщикиУправлениеПоискомКонтекстноеМеню" id="336"/>
+								<ExtendedTooltip name="СписокЯщикиУправлениеПоискомРасширеннаяПодсказка" id="337"/>
 							</SearchControlAddition>
 							<Events>
 								<Event name="ChoiceProcessing">СписокЯщикиОбработкаВыбора</Event>
@@ -738,29 +750,29 @@
 							<ContextMenu name="СписокНоменклатурыКонтекстноеМеню" id="191"/>
 							<AutoCommandBar name="СписокНоменклатурыКоманднаяПанель" id="192"/>
 							<ExtendedTooltip name="СписокНоменклатурыРасширеннаяПодсказка" id="193"/>
-							<SearchStringAddition name="СписокНоменклатурыСтрокаПоиска" id="333">
+							<SearchStringAddition name="СписокНоменклатурыСтрокаПоиска" id="338">
 								<AdditionSource>
 									<Item>СписокНоменклатуры</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокНоменклатурыСтрокаПоискаКонтекстноеМеню" id="334"/>
-								<ExtendedTooltip name="СписокНоменклатурыСтрокаПоискаРасширеннаяПодсказка" id="335"/>
+								<ContextMenu name="СписокНоменклатурыСтрокаПоискаКонтекстноеМеню" id="339"/>
+								<ExtendedTooltip name="СписокНоменклатурыСтрокаПоискаРасширеннаяПодсказка" id="340"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="СписокНоменклатурыСостояниеПросмотра" id="336">
+							<ViewStatusAddition name="СписокНоменклатурыСостояниеПросмотра" id="341">
 								<AdditionSource>
 									<Item>СписокНоменклатуры</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокНоменклатурыСостояниеПросмотраКонтекстноеМеню" id="337"/>
-								<ExtendedTooltip name="СписокНоменклатурыСостояниеПросмотраРасширеннаяПодсказка" id="338"/>
+								<ContextMenu name="СписокНоменклатурыСостояниеПросмотраКонтекстноеМеню" id="342"/>
+								<ExtendedTooltip name="СписокНоменклатурыСостояниеПросмотраРасширеннаяПодсказка" id="343"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="СписокНоменклатурыУправлениеПоиском" id="339">
+							<SearchControlAddition name="СписокНоменклатурыУправлениеПоиском" id="344">
 								<AdditionSource>
 									<Item>СписокНоменклатуры</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокНоменклатурыУправлениеПоискомКонтекстноеМеню" id="340"/>
-								<ExtendedTooltip name="СписокНоменклатурыУправлениеПоискомРасширеннаяПодсказка" id="341"/>
+								<ContextMenu name="СписокНоменклатурыУправлениеПоискомКонтекстноеМеню" id="345"/>
+								<ExtendedTooltip name="СписокНоменклатурыУправлениеПоискомРасширеннаяПодсказка" id="346"/>
 							</SearchControlAddition>
 							<ChildItems>
 								<LabelField name="СписокНоменклатурыНомерСтроки" id="194">
@@ -818,29 +830,29 @@
 							<ContextMenu name="СписокДопЭлементовКонтекстноеМеню" id="290"/>
 							<AutoCommandBar name="СписокДопЭлементовКоманднаяПанель" id="291"/>
 							<ExtendedTooltip name="СписокДопЭлементовРасширеннаяПодсказка" id="292"/>
-							<SearchStringAddition name="СписокДопЭлементовСтрокаПоиска" id="342">
+							<SearchStringAddition name="СписокДопЭлементовСтрокаПоиска" id="347">
 								<AdditionSource>
 									<Item>СписокДопЭлементов</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокДопЭлементовСтрокаПоискаКонтекстноеМеню" id="343"/>
-								<ExtendedTooltip name="СписокДопЭлементовСтрокаПоискаРасширеннаяПодсказка" id="344"/>
+								<ContextMenu name="СписокДопЭлементовСтрокаПоискаКонтекстноеМеню" id="348"/>
+								<ExtendedTooltip name="СписокДопЭлементовСтрокаПоискаРасширеннаяПодсказка" id="349"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="СписокДопЭлементовСостояниеПросмотра" id="345">
+							<ViewStatusAddition name="СписокДопЭлементовСостояниеПросмотра" id="350">
 								<AdditionSource>
 									<Item>СписокДопЭлементов</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокДопЭлементовСостояниеПросмотраКонтекстноеМеню" id="346"/>
-								<ExtendedTooltip name="СписокДопЭлементовСостояниеПросмотраРасширеннаяПодсказка" id="347"/>
+								<ContextMenu name="СписокДопЭлементовСостояниеПросмотраКонтекстноеМеню" id="351"/>
+								<ExtendedTooltip name="СписокДопЭлементовСостояниеПросмотраРасширеннаяПодсказка" id="352"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="СписокДопЭлементовУправлениеПоиском" id="348">
+							<SearchControlAddition name="СписокДопЭлементовУправлениеПоиском" id="353">
 								<AdditionSource>
 									<Item>СписокДопЭлементов</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокДопЭлементовУправлениеПоискомКонтекстноеМеню" id="349"/>
-								<ExtendedTooltip name="СписокДопЭлементовУправлениеПоискомРасширеннаяПодсказка" id="350"/>
+								<ContextMenu name="СписокДопЭлементовУправлениеПоискомКонтекстноеМеню" id="354"/>
+								<ExtendedTooltip name="СписокДопЭлементовУправлениеПоискомРасширеннаяПодсказка" id="355"/>
 							</SearchControlAddition>
 							<ChildItems>
 								<LabelField name="СписокДопЭлементовНомерСтроки" id="293">
@@ -986,6 +998,21 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ОбновитьИзображение</Action>
+		</Command>
+		<Command name="Несовместимость" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Несовместимость изделий</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Несовместимость</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Несовместимость</Action>
 		</Command>
 	</Commands>
 </Form>
