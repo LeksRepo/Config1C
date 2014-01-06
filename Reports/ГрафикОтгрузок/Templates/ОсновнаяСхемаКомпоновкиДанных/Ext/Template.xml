@@ -72,27 +72,40 @@
 			<dataPath>[Спецификация №]</dataPath>
 			<field>СсылкаНомер</field>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СтатусСпецификации</dataPath>
+			<field>СтатусСпецификации</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Статус спецификации</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
-	Спецификация.Комментарий,
-	Спецификация.Ссылка,
-	Спецификация.Ссылка.Номер,
-	Спецификация.Производство,
-	Спецификация.Контрагент КАК Заказчик,
-	Спецификация.ДатаОтгрузки КАК ДатаОтгрузки,
+	Спец.Комментарий,
+	Спец.Ссылка,
+	Спец.Ссылка.Номер,
+	Спец.Производство,
+	Спец.Контрагент КАК Заказчик,
+	Спец.ДатаОтгрузки КАК ДатаОтгрузки,
 	ВЫБОР
-		КОГДА Спецификация.Контрагент = ЗНАЧЕНИЕ(Справочник.Контрагенты.ЧастноеЛицо)
-			ТОГДА Спецификация.Телефон
-		ИНАЧЕ Спецификация.Контрагент.Телефон
+		КОГДА Спец.Контрагент = ЗНАЧЕНИЕ(Справочник.Контрагенты.ЧастноеЛицо)
+			ТОГДА Спец.Телефон
+		ИНАЧЕ Спец.Контрагент.Телефон
 	КОНЕЦ КАК Телефон,
-	Спецификация.Дилерский,
-	ПРЕДСТАВЛЕНИЕ(Спецификация.Ссылка),
-	"" КАК Отгружен
+	Спец.Дилерский,
+	ПРЕДСТАВЛЕНИЕ(Спец.Ссылка),
+	"" КАК Отгружен,
+	СтатусСпецификации.Статус КАК СтатусСпецификации
 ИЗ
-	Документ.Спецификация КАК Спецификация
+	Документ.Спецификация КАК Спец
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СтатусСпецификации.СрезПоследних(&amp;ДатаОкончания, ) КАК СтатусСпецификации
+		ПО СтатусСпецификации.Спецификация = Спец.Ссылка
 ГДЕ
-	Спецификация.ДатаОтгрузки МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания
-	И Спецификация.Проведен</query>
+	Спец.ДатаОтгрузки МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания
+	И Спец.Проведен</query>
 	</dataSet>
 	<parameter>
 		<name>ДатаНачала</name>
@@ -148,6 +161,23 @@
 		</value>
 		<useRestriction>false</useRestriction>
 	</parameter>
+	<parameter>
+		<name>Период</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
 		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
@@ -170,6 +200,9 @@
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Комментарий</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СтатусСпецификации</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Отгружен</dcsset:field>
