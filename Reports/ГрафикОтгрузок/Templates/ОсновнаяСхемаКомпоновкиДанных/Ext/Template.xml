@@ -102,35 +102,20 @@
 ИЗ
 	Документ.Спецификация КАК Спец
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СтатусСпецификации.СрезПоследних(&amp;ДатаОкончания, ) КАК СтатусСпецификации
-		ПО СтатусСпецификации.Спецификация = Спец.Ссылка
+		ПО (СтатусСпецификации.Спецификация = Спец.Ссылка)
 ГДЕ
-	Спец.ДатаОтгрузки МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания
-	И Спец.Проведен</query>
+	Спец.ДатаОтгрузки &lt; &amp;ДатаОкончания
+	И Спец.Проведен
+	И СтатусСпецификации.Статус &lt;&gt; ЗНАЧЕНИЕ(Перечисление.СтатусыСпецификации.Установлен)
+	И СтатусСпецификации.Статус &lt;&gt; ЗНАЧЕНИЕ(Перечисление.СтатусыСпецификации.Изготовлен)
+	И СтатусСпецификации.Статус &lt;&gt; ЗНАЧЕНИЕ(Перечисление.СтатусыСпецификации.Отгружен)</query>
 	</dataSet>
-	<parameter>
-		<name>ДатаНачала</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Дата начала</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>xs:dateTime</v8:Type>
-			<v8:DateQualifiers>
-				<v8:DateFractions>Date</v8:DateFractions>
-			</v8:DateQualifiers>
-		</valueType>
-		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-		<useRestriction>true</useRestriction>
-		<expression>&amp;СтандартныйПериод.ДатаНачала</expression>
-	</parameter>
 	<parameter>
 		<name>ДатаОкончания</name>
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>ru</v8:lang>
-				<v8:content>Дата окончания</v8:content>
+				<v8:content>Дата</v8:content>
 			</v8:item>
 		</title>
 		<valueType>
@@ -140,25 +125,6 @@
 			</v8:DateQualifiers>
 		</valueType>
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-		<useRestriction>true</useRestriction>
-		<expression>&amp;СтандартныйПериод.ДатаОкончания</expression>
-	</parameter>
-	<parameter>
-		<name>СтандартныйПериод</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Стандартный период</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>v8:StandardPeriod</v8:Type>
-		</valueType>
-		<value xsi:type="v8:StandardPeriod">
-			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
-			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
-			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
-		</value>
 		<useRestriction>false</useRestriction>
 	</parameter>
 	<parameter>
@@ -218,9 +184,11 @@
 			</dcsset:filter>
 			<dcsset:dataParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>СтандартныйПериод</dcscor:parameter>
-					<dcscor:value xsi:nil="true"/>
-					<dcsset:userSettingID>24904d3d-74ba-46c4-a12f-db41e4cabc31</dcsset:userSettingID>
+					<dcscor:parameter>ДатаОкончания</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardBeginningDate">
+						<v8:variant xsi:type="v8:StandardBeginningDateVariant">BeginningOfThisDay</v8:variant>
+					</dcscor:value>
+					<dcsset:userSettingID>4e961338-6c51-41ef-a2c9-3c69fd4628a4</dcsset:userSettingID>
 				</dcscor:item>
 			</dcsset:dataParameters>
 			<dcsset:order>
@@ -229,7 +197,7 @@
 					<dcsset:orderType>Asc</dcsset:orderType>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:OrderItemField">
-					<dcsset:field>ДатаДоставки</dcsset:field>
+					<dcsset:field>ДатаОтгрузки</dcsset:field>
 					<dcsset:orderType>Asc</dcsset:orderType>
 				</dcsset:item>
 			</dcsset:order>
