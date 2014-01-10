@@ -1,14 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
-		<ChildItems>
-			<Button name="ФормаДокументСпецификацияСменаВиновного" id="26">
-				<Type>CommandBarButton</Type>
-				<CommandName>Document.Спецификация.Command.СменаВиновного</CommandName>
-				<DataPath>Items.Список.CurrentData.Ref</DataPath>
-				<ExtendedTooltip name="ФормаДокументСпецификацияСменаВиновногоРасширеннаяПодсказка" id="27"/>
-			</Button>
-		</ChildItems>
+		<Autofill>false</Autofill>
 	</AutoCommandBar>
 	<ChildItems>
 		<Pages name="ГруппаСтраницы" id="43">
@@ -43,7 +36,7 @@
 					<ChildItems>
 						<Table name="Список" id="1">
 							<Representation>List</Representation>
-							<CommandBarLocation>None</CommandBarLocation>
+							<CommandBarLocation>Top</CommandBarLocation>
 							<UseAlternationRowColor>true</UseAlternationRowColor>
 							<InitialTreeView>ExpandTopLevel</InitialTreeView>
 							<EnableStartDrag>true</EnableStartDrag>
@@ -66,9 +59,7 @@
 							<AllowRootChoice>false</AllowRootChoice>
 							<UpdateOnDataChange>Auto</UpdateOnDataChange>
 							<ContextMenu name="СписокКонтекстноеМеню" id="2"/>
-							<AutoCommandBar name="СписокКоманднаяПанель" id="3">
-								<Autofill>false</Autofill>
-							</AutoCommandBar>
+							<AutoCommandBar name="СписокКоманднаяПанель" id="3"/>
 							<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="4"/>
 							<SearchStringAddition name="СписокСтрокаПоиска" id="155">
 								<AdditionSource>
@@ -106,6 +97,7 @@
 								</LabelField>
 								<LabelField name="ДатаИзготовления" id="31">
 									<DataPath>Список.ДатаИзготовления</DataPath>
+									<Visible>false</Visible>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -120,6 +112,7 @@
 								</LabelField>
 								<LabelField name="ДатаОтгрузки" id="34">
 									<DataPath>Список.ДатаОтгрузки</DataPath>
+									<Visible>false</Visible>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -139,6 +132,7 @@
 								</LabelField>
 								<CheckBoxField name="ЕстьКомплектация" id="40">
 									<DataPath>Список.ЕстьКомплектация</DataPath>
+									<Visible>false</Visible>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -173,6 +167,7 @@
 								</LabelField>
 								<LabelField name="Наряд" id="37">
 									<DataPath>Список.Наряд</DataPath>
+									<Visible>false</Visible>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -614,7 +609,6 @@
 			<Type>
 				<v8:Type>cfg:DynamicList</v8:Type>
 			</Type>
-			<MainAttribute>true</MainAttribute>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
@@ -737,13 +731,14 @@
 		ПО (НарядЗаданиеСписокСпецификаций.Спецификация = ДокументСпецификация.Ссылка)
 		ЛЕВОЕ СОЕДИНЕНИЕ Документ.Комплектация КАК ДокументКомплектация
 		ПО (ДокументКомплектация.Спецификация = ДокументСпецификация.Ссылка)
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.Договор КАК ДокументДоговор
+		ПО (ДокументДоговор.Спецификация = ДокументСпецификация.Ссылка)
 ГДЕ
 	ДокументСпецификация.Проведен
-	И СтатусСпецификацииСрезПоследних.Статус &lt;&gt; ЗНАЧЕНИЕ(Перечисление.СтатусыСпецификации.Установлен)
 	И ВЫБОР
-			КОГДА ДокументСпецификация.Дилерский
+			КОГДА ДокументДоговор.Ссылка ЕСТЬ NULL 
 				ТОГДА СтатусСпецификацииСрезПоследних.Статус &lt;&gt; ЗНАЧЕНИЕ(Перечисление.СтатусыСпецификации.Отгружен)
-			ИНАЧЕ ИСТИНА
+			ИНАЧЕ СтатусСпецификацииСрезПоследних.Статус &lt;&gt; ЗНАЧЕНИЕ(Перечисление.СтатусыСпецификации.Установлен)
 		КОНЕЦ</QueryText>
 				<MainTable>Document.Спецификация</MainTable>
 				<ListSettings>
@@ -919,7 +914,7 @@
 			</Type>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
-				<DynamicDataRead>false</DynamicDataRead>
+				<DynamicDataRead>true</DynamicDataRead>
 				<QueryText>ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	ДокументСпецификация.Номер,
 	ДокументСпецификация.ДатаОтгрузки КАК Отгрузить,
@@ -948,12 +943,9 @@
 		ПО ДокументСпецификация.Ссылка = АктВыполненияДоговора.Договор.Спецификация
 ГДЕ
 	ДокументСпецификация.Проведен
-	И  ВЫБОР
-			КОГДА ДокументСпецификация.Дилерский
-				ТОГДА СтатусСпецификацииСрезПоследних.Статус &lt;&gt; ЗНАЧЕНИЕ(Перечисление.СтатусыСпецификации.Отгружен)
-			ИНАЧЕ ИСТИНА
-		КОНЕЦ 
-	И СтатусСпецификацииСрезПоследних.Статус = ЗНАЧЕНИЕ(Перечисление.СтатусыСпецификации.Установлен)</QueryText>
+	И (СтатусСпецификацииСрезПоследних.Статус = ЗНАЧЕНИЕ(Перечисление.СтатусыСпецификации.Изготовлен)
+			ИЛИ СтатусСпецификацииСрезПоследних.Статус = ЗНАЧЕНИЕ(Перечисление.СтатусыСпецификации.Установлен))</QueryText>
+				<MainTable>Document.Спецификация</MainTable>
 				<ListSettings>
 					<dcsset:filter>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
