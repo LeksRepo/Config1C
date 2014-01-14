@@ -93,7 +93,7 @@
 	Монтаж.Комментарий,
 	СтатусСпецификацииСрезПоследних.Статус,
 	ВЫБОР
-		КОГДА Монтаж.ДатаМонтажа &lt; &amp;Период
+		КОГДА Монтаж.ДатаМонтажа &lt; &amp;ПериодОтчета
 				И СтатусСпецификацииСрезПоследних.Статус &lt;&gt; ЗНАЧЕНИЕ(Перечисление.СтатусыСпецификации.Установлен)
 			ТОГДА ИСТИНА
 		ИНАЧЕ ЛОЖЬ
@@ -104,14 +104,14 @@
 	Договор.Контрагент.ТелефонДополнительный
 ИЗ
 	Документ.Монтаж КАК Монтаж
-		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СтатусСпецификации.СрезПоследних(&amp;Период, ) КАК СтатусСпецификацииСрезПоследних
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СтатусСпецификации.СрезПоследних(ДАТАВРЕМЯ(3999, 11, 1), ) КАК СтатусСпецификацииСрезПоследних
 		ПО Монтаж.Спецификация = СтатусСпецификацииСрезПоследних.Спецификация
 		ЛЕВОЕ СОЕДИНЕНИЕ Документ.Договор КАК Договор
 		ПО Монтаж.Спецификация = Договор.Спецификация
 ГДЕ
 	Монтаж.Проведен
-	И (НАЧАЛОПЕРИОДА(Монтаж.ДатаМонтажа, ДЕНЬ) = &amp;Период
-			ИЛИ Монтаж.ДатаМонтажа &lt; &amp;Период
+	И (НАЧАЛОПЕРИОДА(Монтаж.ДатаМонтажа, ДЕНЬ) = &amp;ПериодОтчета
+			ИЛИ Монтаж.ДатаМонтажа &lt; &amp;ПериодОтчета
 				И СтатусСпецификацииСрезПоследних.Статус &lt;&gt; ЗНАЧЕНИЕ(Перечисление.СтатусыСпецификации.Установлен))
 {ГДЕ
 	(Монтаж.Подразделение = &amp;Подразделение)}</query>
@@ -131,7 +131,7 @@
 			</v8:DateQualifiers>
 		</valueType>
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-		<useRestriction>false</useRestriction>
+		<useRestriction>true</useRestriction>
 	</parameter>
 	<parameter>
 		<name>Подразделение</name>
@@ -161,6 +161,24 @@
 				<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
 			</dcscor:item>
 		</inputParameters>
+	</parameter>
+	<parameter>
+		<name>ПериодОтчета</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период отчета</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>Date</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+		<use>Always</use>
 	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
@@ -194,19 +212,39 @@
 			</dcsset:selection>
 			<dcsset:dataParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>Период</dcscor:parameter>
-					<dcscor:value xsi:type="v8:StandardBeginningDate">
-						<v8:variant xsi:type="v8:StandardBeginningDateVariant">BeginningOfThisDay</v8:variant>
-					</dcscor:value>
-					<dcsset:userSettingID>21886dba-a7fa-4b02-8a6c-c70e97033bca</dcsset:userSettingID>
-				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:use>false</dcscor:use>
 					<dcscor:parameter>Подразделение</dcscor:parameter>
 					<dcscor:value xsi:nil="true"/>
 					<dcsset:userSettingID>fd2b69ba-eed4-412a-8ca4-aceec0ed541e</dcsset:userSettingID>
 				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ПериодОтчета</dcscor:parameter>
+					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
+					<dcsset:userSettingID>ee96f769-d61d-4476-acf4-205ef43b48a8</dcsset:userSettingID>
+				</dcscor:item>
 			</dcsset:dataParameters>
+			<dcsset:order>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>ДатаМонтажа</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+			</dcsset:order>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">Output</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Заголовок</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Монтажи</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</dcsset:outputParameters>
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
 				<dcsset:filter>
 					<dcsset:item xsi:type="dcsset:FilterItemComparison">
