@@ -145,7 +145,7 @@
 	КОНЕЦ КАК Просрочен
 ИЗ
 	Документ.Спецификация КАК Спец
-		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СтатусСпецификации.СрезПоследних(, ) КАК СтатусСпецификации
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СтатусСпецификации.СрезПоследних(&amp;ДатаОкончания, ) КАК СтатусСпецификации
 		ПО (СтатусСпецификации.Спецификация = Спец.Ссылка)
 		ЛЕВОЕ СОЕДИНЕНИЕ Документ.Договор КАК Дог
 		ПО (Дог.Спецификация = Спец.Ссылка)
@@ -288,6 +288,7 @@
 						<dcsset:left xsi:type="dcscor:Field">Просрочен</dcsset:left>
 						<dcsset:comparisonType>Equal</dcsset:comparisonType>
 						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+						<dcsset:viewMode>Inaccessible</dcsset:viewMode>
 					</dcsset:item>
 				</dcsset:filter>
 				<dcsset:order>
@@ -303,6 +304,7 @@
 						<dcsset:left xsi:type="dcscor:Field">Просрочен</dcsset:left>
 						<dcsset:comparisonType>Equal</dcsset:comparisonType>
 						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+						<dcsset:viewMode>Inaccessible</dcsset:viewMode>
 					</dcsset:item>
 				</dcsset:filter>
 				<dcsset:order>
