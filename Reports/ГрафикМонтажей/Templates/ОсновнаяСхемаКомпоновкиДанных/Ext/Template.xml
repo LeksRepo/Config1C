@@ -25,6 +25,17 @@
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Спецификация</dataPath>
 			<field>Спецификация</field>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Шрифт</dcscor:parameter>
+					<dcscor:value xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ОриентацияТекста</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">39</dcscor:value>
+				</dcscor:item>
+			</appearance>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Экспедитор</dataPath>
@@ -185,29 +196,65 @@
 		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 			<dcsset:selection>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>ДатаМонтажа</dcsset:field>
+				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+					<dcsset:lwsTitle>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата, статус</v8:content>
+						</v8:item>
+					</dcsset:lwsTitle>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ДатаМонтажа</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Статус</dcsset:field>
+					</dcsset:item>
+					<dcsset:placement>Auto</dcsset:placement>
 				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Адрес</dcsset:field>
+				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+					<dcsset:lwsTitle>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Телефоны</v8:content>
+						</v8:item>
+					</dcsset:lwsTitle>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Телефон</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ТелефонДополнительный</dcsset:field>
+					</dcsset:item>
+					<dcsset:placement>Vertically</dcsset:placement>
 				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Телефон</dcsset:field>
+				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+					<dcsset:lwsTitle>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сотрудники</v8:content>
+						</v8:item>
+					</dcsset:lwsTitle>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Монтажник</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Экспедитор</dcsset:field>
+					</dcsset:item>
+					<dcsset:placement>Vertically</dcsset:placement>
 				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>ТелефонДополнительный</dcsset:field>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Монтажник</dcsset:field>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Спецификация</dcsset:field>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Экспедитор</dcsset:field>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Статус</dcsset:field>
+				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+					<dcsset:lwsTitle>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Спецификация, адрес</v8:content>
+						</v8:item>
+					</dcsset:lwsTitle>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Спецификация</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Адрес</dcsset:field>
+					</dcsset:item>
+					<dcsset:placement>Vertically</dcsset:placement>
 				</dcsset:item>
 			</dcsset:selection>
 			<dcsset:dataParameters>
@@ -248,6 +295,7 @@
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
 				<dcsset:filter>
 					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:use>false</dcsset:use>
 						<dcsset:left xsi:type="dcscor:Field">Просрочен</dcsset:left>
 						<dcsset:comparisonType>Equal</dcsset:comparisonType>
 						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
@@ -261,8 +309,10 @@
 				</dcsset:selection>
 			</dcsset:item>
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:use>false</dcsset:use>
 				<dcsset:filter>
 					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:use>false</dcsset:use>
 						<dcsset:left xsi:type="dcscor:Field">Просрочен</dcsset:left>
 						<dcsset:comparisonType>Equal</dcsset:comparisonType>
 						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
