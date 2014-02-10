@@ -675,79 +675,12 @@
 											<ContextMenu name="ДеталиПоложениеРучкиКонтекстноеМеню" id="504"/>
 											<ExtendedTooltip name="ДеталиПоложениеРучкиРасширеннаяПодсказка" id="505"/>
 										</InputField>
-										<InputField name="ДеталиРадиусФасада" id="506">
-											<DataPath>Items.Детали.CurrentData.РадиусФасада</DataPath>
-											<ListChoiceMode>true</ListChoiceMode>
-											<ChoiceList>
-												<xr:Item>
-													<xr:Presentation/>
-													<xr:CheckState>0</xr:CheckState>
-													<xr:Value xsi:type="FormChoiceListDesTimeValue">
-														<Presentation>
-															<v8:item>
-																<v8:lang>ru</v8:lang>
-																<v8:content>Без радиуса</v8:content>
-															</v8:item>
-														</Presentation>
-														<Value xsi:type="xs:string">БезРадиуса</Value>
-													</xr:Value>
-												</xr:Item>
-												<xr:Item>
-													<xr:Presentation/>
-													<xr:CheckState>0</xr:CheckState>
-													<xr:Value xsi:type="FormChoiceListDesTimeValue">
-														<Presentation>
-															<v8:item>
-																<v8:lang>ru</v8:lang>
-																<v8:content>Левый 300</v8:content>
-															</v8:item>
-														</Presentation>
-														<Value xsi:type="xs:string">Левый300</Value>
-													</xr:Value>
-												</xr:Item>
-												<xr:Item>
-													<xr:Presentation/>
-													<xr:CheckState>0</xr:CheckState>
-													<xr:Value xsi:type="FormChoiceListDesTimeValue">
-														<Presentation>
-															<v8:item>
-																<v8:lang>ru</v8:lang>
-																<v8:content>Левый 400</v8:content>
-															</v8:item>
-														</Presentation>
-														<Value xsi:type="xs:string">Левый400</Value>
-													</xr:Value>
-												</xr:Item>
-												<xr:Item>
-													<xr:Presentation/>
-													<xr:CheckState>0</xr:CheckState>
-													<xr:Value xsi:type="FormChoiceListDesTimeValue">
-														<Presentation>
-															<v8:item>
-																<v8:lang>ru</v8:lang>
-																<v8:content>Правый 300</v8:content>
-															</v8:item>
-														</Presentation>
-														<Value xsi:type="xs:string">Правый300</Value>
-													</xr:Value>
-												</xr:Item>
-												<xr:Item>
-													<xr:Presentation/>
-													<xr:CheckState>0</xr:CheckState>
-													<xr:Value xsi:type="FormChoiceListDesTimeValue">
-														<Presentation>
-															<v8:item>
-																<v8:lang>ru</v8:lang>
-																<v8:content>Правый 400</v8:content>
-															</v8:item>
-														</Presentation>
-														<Value xsi:type="xs:string">Правый400</Value>
-													</xr:Value>
-												</xr:Item>
-											</ChoiceList>
-											<ContextMenu name="ДеталиРадиусФасадаКонтекстноеМеню" id="507"/>
-											<ExtendedTooltip name="ДеталиРадиусФасадаРасширеннаяПодсказка" id="508"/>
-										</InputField>
+										<CheckBoxField name="ДеталиДемпфер" id="506">
+											<DataPath>Items.Детали.CurrentData.Демпфер</DataPath>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="ДеталиДемпферКонтекстноеМеню" id="507"/>
+											<ExtendedTooltip name="ДеталиДемпферРасширеннаяПодсказка" id="508"/>
+										</CheckBoxField>
 									</ChildItems>
 								</UsualGroup>
 								<UsualGroup name="Кромка" id="531">
@@ -1234,19 +1167,15 @@
 						<v8:Type>cfg:EnumRef.Стороны</v8:Type>
 					</Type>
 				</Column>
-				<Column name="РадиусФасада" id="9">
+				<Column name="Демпфер" id="9">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Радиус фасада</v8:content>
+							<v8:content>Демпфер</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
-						<v8:Type>xs:string</v8:Type>
-						<v8:StringQualifiers>
-							<v8:Length>11</v8:Length>
-							<v8:AllowedLength>Variable</v8:AllowedLength>
-						</v8:StringQualifiers>
+						<v8:Type>xs:boolean</v8:Type>
 					</Type>
 				</Column>
 				<Column name="Обтачивать" id="10">
