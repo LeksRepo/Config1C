@@ -32,29 +32,29 @@
 				<Autofill>false</Autofill>
 			</AutoCommandBar>
 			<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="4"/>
-			<SearchStringAddition name="СписокСтрокаПоиска" id="38">
+			<SearchStringAddition name="СписокСтрокаПоиска" id="35">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="39"/>
-				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="40"/>
+				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="36"/>
+				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="37"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокСостояниеПросмотра" id="41">
+			<ViewStatusAddition name="СписокСостояниеПросмотра" id="38">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="42"/>
-				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="43"/>
+				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="39"/>
+				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="40"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокУправлениеПоиском" id="44">
+			<SearchControlAddition name="СписокУправлениеПоиском" id="41">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="45"/>
-				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="46"/>
+				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="42"/>
+				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="43"/>
 			</SearchControlAddition>
 			<ChildItems>
 				<LabelField name="Дата" id="5">
@@ -93,22 +93,6 @@
 					<ContextMenu name="НомерКонтекстноеМеню" id="9"/>
 					<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="10"/>
 				</LabelField>
-				<PictureField name="ЕстьЗаметка" id="35">
-					<DataPath>Список.ЕстьЗаметка</DataPath>
-					<TitleLocation>None</TitleLocation>
-					<FixingInTable>Left</FixingInTable>
-					<HeaderPicture>
-						<xr:Ref>CommonPicture.Заметка</xr:Ref>
-						<xr:LoadTransparent>true</xr:LoadTransparent>
-					</HeaderPicture>
-					<Width>2</Width>
-					<ValuesPicture>
-						<xr:Ref>CommonPicture.Заметка</xr:Ref>
-						<xr:LoadTransparent>true</xr:LoadTransparent>
-					</ValuesPicture>
-					<ContextMenu name="ЕстьЗаметкаКонтекстноеМеню" id="36"/>
-					<ExtendedTooltip name="ЕстьЗаметкаРасширеннаяПодсказка" id="37"/>
-				</PictureField>
 				<LabelField name="Спецификация" id="11">
 					<DataPath>Список.Спецификация</DataPath>
 					<ContextMenu name="СпецификацияКонтекстноеМеню" id="12"/>
@@ -184,20 +168,13 @@
 		ИНАЧЕ ЛОЖЬ
 	КОНЕЦ КАК ДатаМонтажаИзменена,
 	Договор.Номер КАК НомерДоговора,
-	СтатусСпецификацииСрезПоследних.Статус,
-	ВЫБОР
-		КОГДА ЕСТЬNULL(НаличиеЗаметокПоПредмету.ЕстьЗаметка, ЛОЖЬ)
-			ТОГДА 0
-		ИНАЧЕ -1
-	КОНЕЦ КАК ЕстьЗаметка
+	СтатусСпецификацииСрезПоследних.Статус
 ИЗ
 	Документ.Монтаж КАК ДокументМонтаж
 		ПОЛНОЕ СОЕДИНЕНИЕ Документ.Договор КАК Договор
 		ПО ДокументМонтаж.Спецификация = Договор.Спецификация
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СтатусСпецификации.СрезПоследних КАК СтатусСпецификацииСрезПоследних
-		ПО ДокументМонтаж.Спецификация = СтатусСпецификацииСрезПоследних.Спецификация
-		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.НаличиеЗаметокПоПредмету КАК НаличиеЗаметокПоПредмету
-		ПО ДокументМонтаж.Ссылка = НаличиеЗаметокПоПредмету.Предмет</QueryText>
+		ПО ДокументМонтаж.Спецификация = СтатусСпецификацииСрезПоследних.Спецификация</QueryText>
 				<MainTable>Document.Монтаж</MainTable>
 				<ListSettings>
 					<dcsset:filter>

@@ -87,29 +87,29 @@
 				<Autofill>false</Autofill>
 			</AutoCommandBar>
 			<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="4"/>
-			<SearchStringAddition name="СписокСтрокаПоиска" id="62">
+			<SearchStringAddition name="СписокСтрокаПоиска" id="59">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="63"/>
-				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="64"/>
+				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="60"/>
+				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="61"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокСостояниеПросмотра" id="65">
+			<ViewStatusAddition name="СписокСостояниеПросмотра" id="62">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="66"/>
-				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="67"/>
+				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="63"/>
+				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="64"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокУправлениеПоиском" id="68">
+			<SearchControlAddition name="СписокУправлениеПоиском" id="65">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="69"/>
-				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="70"/>
+				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="66"/>
+				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="67"/>
 			</SearchControlAddition>
 			<Events>
 				<Event name="Selection">СписокВыбор</Event>
@@ -122,21 +122,6 @@
 					<ContextMenu name="ДатаЗамераКонтекстноеМеню" id="15"/>
 					<ExtendedTooltip name="ДатаЗамераРасширеннаяПодсказка" id="16"/>
 				</LabelField>
-				<PictureField name="ЕстьЗаметка" id="59">
-					<DataPath>Список.ЕстьЗаметка</DataPath>
-					<TitleLocation>None</TitleLocation>
-					<FixingInTable>Left</FixingInTable>
-					<HeaderPicture>
-						<xr:Ref>CommonPicture.Заметка</xr:Ref>
-						<xr:LoadTransparent>true</xr:LoadTransparent>
-					</HeaderPicture>
-					<ValuesPicture>
-						<xr:Ref>CommonPicture.Заметка</xr:Ref>
-						<xr:LoadTransparent>true</xr:LoadTransparent>
-					</ValuesPicture>
-					<ContextMenu name="ЕстьЗаметкаКонтекстноеМеню" id="60"/>
-					<ExtendedTooltip name="ЕстьЗаметкаРасширеннаяПодсказка" id="61"/>
-				</PictureField>
 				<LabelField name="КоличествоСпецификаций" id="23">
 					<DataPath>Список.Спецификаций</DataPath>
 					<TitleLocation>None</TitleLocation>
@@ -237,12 +222,7 @@
 	докЗамер.Ссылка КАК Ссылка,
 	ЕСТЬNULL(ЗапросФайлы.Значение, 0) КАК Файлов,
 	ЕСТЬNULL(ЗапросСпецификации.Значение, 0) КАК Спецификаций,
-	ЕСТЬNULL(ЗапросДоговоры.Значение, 0) КАК Договоров,
-	ВЫБОР
-		КОГДА ЕСТЬNULL(НаличиеЗаметокПоПредмету.ЕстьЗаметка, ЛОЖЬ)
-			ТОГДА 0
-		ИНАЧЕ -1
-	КОНЕЦ КАК ЕстьЗаметка
+	ЕСТЬNULL(ЗапросДоговоры.Значение, 0) КАК Договоров
 ИЗ
 	Документ.Замер КАК докЗамер
 		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
@@ -278,9 +258,7 @@
 		
 		СГРУППИРОВАТЬ ПО
 			Замер.Ссылка) КАК ЗапросДоговоры
-		ПО докЗамер.Ссылка = ЗапросДоговоры.Ссылка
-		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.НаличиеЗаметокПоПредмету КАК НаличиеЗаметокПоПредмету
-		ПО докЗамер.Ссылка = НаличиеЗаметокПоПредмету.Предмет</QueryText>
+		ПО докЗамер.Ссылка = ЗапросДоговоры.Ссылка</QueryText>
 				<MainTable>Document.Замер</MainTable>
 				<ListSettings>
 					<dcsset:filter>

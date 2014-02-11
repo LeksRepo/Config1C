@@ -131,6 +131,12 @@
 								<PictureField name="ЕстьЗаметка" id="155">
 									<DataPath>Список.ЕстьЗаметка</DataPath>
 									<TitleLocation>None</TitleLocation>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Есть заметка</v8:content>
+										</v8:item>
+									</ToolTip>
 									<HeaderPicture>
 										<xr:Ref>CommonPicture.Заметка</xr:Ref>
 										<xr:LoadTransparent>true</xr:LoadTransparent>
@@ -143,7 +149,7 @@
 									<ContextMenu name="ЕстьЗаметкаКонтекстноеМеню" id="156"/>
 									<ExtendedTooltip name="ЕстьЗаметкаРасширеннаяПодсказка" id="157"/>
 								</PictureField>
-								<CheckBoxField name="ЕстьКомплектация" id="40">
+								<PictureField name="ЕстьКомплектация" id="40">
 									<DataPath>Список.ЕстьКомплектация</DataPath>
 									<Title>
 										<v8:item>
@@ -162,10 +168,13 @@
 										<xr:Ref>CommonPicture.РаспространяетсяВИерархии</xr:Ref>
 										<xr:LoadTransparent>true</xr:LoadTransparent>
 									</HeaderPicture>
-									<CheckBoxType>Auto</CheckBoxType>
+									<ValuesPicture>
+										<xr:Ref>CommonPicture.РаспространяетсяВИерархии</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</ValuesPicture>
 									<ContextMenu name="ЕстьКомплектацияКонтекстноеМеню" id="41"/>
 									<ExtendedTooltip name="ЕстьКомплектацияРасширеннаяПодсказка" id="42"/>
-								</CheckBoxField>
+								</PictureField>
 								<LabelField name="Подразделение" id="11">
 									<DataPath>Список.Подразделение</DataPath>
 									<Title>
@@ -307,7 +316,7 @@
 									<ContextMenu name="ВРаботеИзделиеКонтекстноеМеню" id="150"/>
 									<ExtendedTooltip name="ВРаботеИзделиеРасширеннаяПодсказка" id="151"/>
 								</LabelField>
-								<CheckBoxField name="ВРаботеЕстьКомплектация" id="101">
+								<PictureField name="ВРаботеЕстьКомплектация" id="101">
 									<DataPath>ВРаботе.ЕстьКомплектация</DataPath>
 									<Title>
 										<v8:item>
@@ -320,10 +329,13 @@
 										<xr:Ref>CommonPicture.РаспространяетсяВИерархии</xr:Ref>
 										<xr:LoadTransparent>true</xr:LoadTransparent>
 									</HeaderPicture>
-									<CheckBoxType>Auto</CheckBoxType>
+									<ValuesPicture>
+										<xr:Ref>CommonPicture.РаспространяетсяВИерархии</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</ValuesPicture>
 									<ContextMenu name="ВРаботеЕстьКомплектацияКонтекстноеМеню" id="102"/>
 									<ExtendedTooltip name="ВРаботеЕстьКомплектацияРасширеннаяПодсказка" id="103"/>
-								</CheckBoxField>
+								</PictureField>
 								<LabelField name="ВРаботеДатаОтгрузки" id="77">
 									<DataPath>ВРаботе.ДатаОтгрузки</DataPath>
 									<Title>
@@ -664,8 +676,8 @@
 	НарядЗаданиеСписокСпецификаций.Ссылка.Номер КАК Наряд,
 	ВЫБОР
 		КОГДА ДокументКомплектация.Ссылка ЕСТЬ NULL 
-			ТОГДА ЛОЖЬ
-		ИНАЧЕ ИСТИНА
+			ТОГДА 0
+		ИНАЧЕ -1
 	КОНЕЦ КАК ЕстьКомплектация,
 		ВЫБОР
 		КОГДА ЕСТЬNULL(НаличиеЗаметокПоПредмету.ЕстьЗаметка, ЛОЖЬ)
@@ -730,8 +742,8 @@
 	ДокументСпецификация.Производство,
 	ВЫБОР
 		КОГДА ДокументКомплектация.Ссылка ЕСТЬ NULL 
-			ТОГДА ЛОЖЬ
-		ИНАЧЕ ИСТИНА
+			ТОГДА 0
+		ИНАЧЕ -1
 	КОНЕЦ КАК ЕстьКомплектация,
 	ВЫБОР
 		КОГДА ДЕНЬНЕДЕЛИ(ДокументСпецификация.ДатаМонтажа) &lt; 7
