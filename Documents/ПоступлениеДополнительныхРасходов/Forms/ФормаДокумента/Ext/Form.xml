@@ -41,12 +41,12 @@
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="ГруппаШапкаЛеваяКолонкаРасширеннаяПодсказка" id="43"/>
 					<ChildItems>
-						<InputField name="Подразделение" id="23">
+						<LabelField name="Подразделение" id="23">
 							<DataPath>Объект.Подразделение</DataPath>
 							<HorizontalStretch>false</HorizontalStretch>
 							<ContextMenu name="ПодразделениеКонтекстноеМеню" id="24"/>
 							<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="25"/>
-						</InputField>
+						</LabelField>
 						<InputField name="Контрагент" id="26">
 							<DataPath>Объект.Контрагент</DataPath>
 							<HorizontalStretch>false</HorizontalStretch>
@@ -94,28 +94,25 @@
 								<InputField name="Номер" id="1">
 									<DataPath>Объект.Number</DataPath>
 									<EditMode>EnterOnInput</EditMode>
+									<HorizontalStretch>false</HorizontalStretch>
 									<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
 									<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="3"/>
 								</InputField>
 								<InputField name="Дата" id="4">
 									<DataPath>Объект.Date</DataPath>
 									<EditMode>EnterOnInput</EditMode>
+									<HorizontalStretch>false</HorizontalStretch>
 									<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
 									<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="6"/>
 								</InputField>
 							</ChildItems>
 						</UsualGroup>
-						<InputField name="ПоступлениеМатериалоУслуг" id="7">
-							<DataPath>Объект.ПоступлениеМатериаловУслуг</DataPath>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Поступление</v8:content>
-								</v8:item>
-							</Title>
+						<InputField name="ДокументОснование" id="51">
+							<DataPath>Объект.ДокументОснование</DataPath>
+							<Width>36</Width>
 							<HorizontalStretch>false</HorizontalStretch>
-							<ContextMenu name="ПоступлениеМатериалоУслугКонтекстноеМеню" id="8"/>
-							<ExtendedTooltip name="ПоступлениеМатериалоУслугРасширеннаяПодсказка" id="9"/>
+							<ContextMenu name="ДокументОснованиеКонтекстноеМеню" id="52"/>
+							<ExtendedTooltip name="ДокументОснованиеРасширеннаяПодсказка" id="53"/>
 						</InputField>
 					</ChildItems>
 				</UsualGroup>
@@ -125,7 +122,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Распределить услуги пропорционально</v8:content>
+					<v8:content>Распределить пропорционально</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
@@ -153,60 +150,66 @@
 				</CheckBoxField>
 			</ChildItems>
 		</UsualGroup>
-		<Table name="Номенклатура" id="10">
+		<Table name="СписокНоменклатуры" id="54">
 			<AutoInsertNewRow>true</AutoInsertNewRow>
 			<EnableStartDrag>true</EnableStartDrag>
 			<EnableDrag>true</EnableDrag>
-			<DataPath>Объект.Номенклатура</DataPath>
+			<DataPath>Объект.СписокНоменклатуры</DataPath>
 			<SearchStringLocation>None</SearchStringLocation>
 			<ViewStatusLocation>None</ViewStatusLocation>
 			<SearchControlLocation>None</SearchControlLocation>
 			<RowFilter xsi:nil="true"/>
-			<ContextMenu name="НоменклатураКонтекстноеМеню" id="11"/>
-			<AutoCommandBar name="НоменклатураКоманднаяПанель" id="12"/>
-			<ExtendedTooltip name="НоменклатураРасширеннаяПодсказка" id="13"/>
-			<SearchStringAddition name="НоменклатураСтрокаПоиска" id="51">
+			<ContextMenu name="СписокНоменклатурыКонтекстноеМеню" id="55"/>
+			<AutoCommandBar name="СписокНоменклатурыКоманднаяПанель" id="56"/>
+			<ExtendedTooltip name="СписокНоменклатурыРасширеннаяПодсказка" id="57"/>
+			<SearchStringAddition name="СписокНоменклатурыСтрокаПоиска" id="70">
 				<AdditionSource>
-					<Item>Номенклатура</Item>
+					<Item>СписокНоменклатуры</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="НоменклатураСтрокаПоискаКонтекстноеМеню" id="52"/>
-				<ExtendedTooltip name="НоменклатураСтрокаПоискаРасширеннаяПодсказка" id="53"/>
+				<ContextMenu name="СписокНоменклатурыСтрокаПоискаКонтекстноеМеню" id="71"/>
+				<ExtendedTooltip name="СписокНоменклатурыСтрокаПоискаРасширеннаяПодсказка" id="72"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="НоменклатураСостояниеПросмотра" id="54">
+			<ViewStatusAddition name="СписокНоменклатурыСостояниеПросмотра" id="73">
 				<AdditionSource>
-					<Item>Номенклатура</Item>
+					<Item>СписокНоменклатуры</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="НоменклатураСостояниеПросмотраКонтекстноеМеню" id="55"/>
-				<ExtendedTooltip name="НоменклатураСостояниеПросмотраРасширеннаяПодсказка" id="56"/>
+				<ContextMenu name="СписокНоменклатурыСостояниеПросмотраКонтекстноеМеню" id="74"/>
+				<ExtendedTooltip name="СписокНоменклатурыСостояниеПросмотраРасширеннаяПодсказка" id="75"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="НоменклатураУправлениеПоиском" id="57">
+			<SearchControlAddition name="СписокНоменклатурыУправлениеПоиском" id="76">
 				<AdditionSource>
-					<Item>Номенклатура</Item>
+					<Item>СписокНоменклатуры</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="НоменклатураУправлениеПоискомКонтекстноеМеню" id="58"/>
-				<ExtendedTooltip name="НоменклатураУправлениеПоискомРасширеннаяПодсказка" id="59"/>
+				<ContextMenu name="СписокНоменклатурыУправлениеПоискомКонтекстноеМеню" id="77"/>
+				<ExtendedTooltip name="СписокНоменклатурыУправлениеПоискомРасширеннаяПодсказка" id="78"/>
 			</SearchControlAddition>
 			<ChildItems>
-				<LabelField name="НоменклатураНомерСтроки" id="14">
-					<DataPath>Объект.Номенклатура.LineNumber</DataPath>
+				<LabelField name="СписокНоменклатурыНомерСтроки" id="58">
+					<DataPath>Объект.СписокНоменклатуры.LineNumber</DataPath>
 					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="НоменклатураНомерСтрокиКонтекстноеМеню" id="15"/>
-					<ExtendedTooltip name="НоменклатураНомерСтрокиРасширеннаяПодсказка" id="16"/>
+					<ContextMenu name="СписокНоменклатурыНомерСтрокиКонтекстноеМеню" id="59"/>
+					<ExtendedTooltip name="СписокНоменклатурыНомерСтрокиРасширеннаяПодсказка" id="60"/>
 				</LabelField>
-				<InputField name="НоменклатураНоменклатура" id="17">
-					<DataPath>Объект.Номенклатура.Номенклатура</DataPath>
+				<InputField name="СписокНоменклатурыНоменклатура" id="61">
+					<DataPath>Объект.СписокНоменклатуры.Номенклатура</DataPath>
 					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="НоменклатураНоменклатураКонтекстноеМеню" id="18"/>
-					<ExtendedTooltip name="НоменклатураНоменклатураРасширеннаяПодсказка" id="19"/>
+					<ContextMenu name="СписокНоменклатурыНоменклатураКонтекстноеМеню" id="62"/>
+					<ExtendedTooltip name="СписокНоменклатурыНоменклатураРасширеннаяПодсказка" id="63"/>
 				</InputField>
-				<InputField name="НоменклатураСтоимость" id="20">
-					<DataPath>Объект.Номенклатура.Стоимость</DataPath>
+				<InputField name="СписокНоменклатурыСтоимость" id="64">
+					<DataPath>Объект.СписокНоменклатуры.Стоимость</DataPath>
 					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="НоменклатураСтоимостьКонтекстноеМеню" id="21"/>
-					<ExtendedTooltip name="НоменклатураСтоимостьРасширеннаяПодсказка" id="22"/>
+					<ContextMenu name="СписокНоменклатурыСтоимостьКонтекстноеМеню" id="65"/>
+					<ExtendedTooltip name="СписокНоменклатурыСтоимостьРасширеннаяПодсказка" id="66"/>
+				</InputField>
+				<InputField name="СписокНоменклатурыОписание" id="67">
+					<DataPath>Объект.СписокНоменклатуры.Описание</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="СписокНоменклатурыОписаниеКонтекстноеМеню" id="68"/>
+					<ExtendedTooltip name="СписокНоменклатурыОписаниеРасширеннаяПодсказка" id="69"/>
 				</InputField>
 			</ChildItems>
 		</Table>
