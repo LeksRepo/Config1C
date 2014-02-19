@@ -145,6 +145,14 @@
 		<dataPath>КоличествоДоговоров</dataPath>
 		<expression>Сумма(КоличествоДоговоров)</expression>
 	</totalField>
+	<totalField>
+		<dataPath>Номер</dataPath>
+		<expression>Количество(Номер)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>АдресЗамера</dataPath>
+		<expression>"Эффективность = " + Строка(Окр(Сумма(КоличествоДоговоров) / Количество(Номер) * 100, 2)) + " %"</expression>
+	</totalField>
 	<parameter>
 		<name>КонецПериода</name>
 		<title xsi:type="v8:LocalStringType">
@@ -213,65 +221,17 @@
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>КоличествоДоговоров</dcsset:field>
 				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
-					<dcsset:lwsTitle>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Подразделение Адрес</v8:content>
-						</v8:item>
-					</dcsset:lwsTitle>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Подразделение</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>АдресЗамера</dcsset:field>
-					</dcsset:item>
-					<dcsset:placement>Vertically</dcsset:placement>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>АдресЗамера</dcsset:field>
 				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
-					<dcsset:lwsTitle>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Заказчик Телефон</v8:content>
-						</v8:item>
-					</dcsset:lwsTitle>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>ИмяЗаказчика</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Телефон</dcsset:field>
-					</dcsset:item>
-					<dcsset:placement>Vertically</dcsset:placement>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ИмяЗаказчика</dcsset:field>
 				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
-					<dcsset:lwsTitle>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Автор Агент</v8:content>
-						</v8:item>
-					</dcsset:lwsTitle>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Автор</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Агент</dcsset:field>
-					</dcsset:item>
-					<dcsset:placement>Vertically</dcsset:placement>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Телефон</dcsset:field>
 				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
-					<dcsset:lwsTitle>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Замерщик Офис</v8:content>
-						</v8:item>
-					</dcsset:lwsTitle>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Замерщик</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Офис</dcsset:field>
-					</dcsset:item>
-					<dcsset:placement>Vertically</dcsset:placement>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Автор</dcsset:field>
 				</dcsset:item>
 			</dcsset:selection>
 			<dcsset:filter>
@@ -317,12 +277,46 @@
 				</dcscor:item>
 			</dcsset:outputParameters>
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Подразделение</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
 				<dcsset:order>
 					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
 				</dcsset:order>
 				<dcsset:selection>
 					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
 				</dcsset:selection>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Замерщик</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+					<dcsset:item xsi:type="dcsset:StructureItemGroup">
+						<dcsset:order>
+							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						</dcsset:order>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						</dcsset:selection>
+					</dcsset:item>
+				</dcsset:item>
 			</dcsset:item>
 		</dcsset:settings>
 	</settingsVariant>
