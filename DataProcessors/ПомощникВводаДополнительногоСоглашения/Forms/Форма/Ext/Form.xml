@@ -40,21 +40,12 @@
 				</Title>
 				<ExtendedTooltip name="КнопкаДалееРасширеннаяПодсказка" id="2"/>
 			</Button>
-			<Button name="КнопкаЗакрыть" id="18">
-				<Type>CommandBarButton</Type>
-				<Representation>Text</Representation>
-				<CommandName>Form.StandardCommand.Close</CommandName>
-				<ExtendedTooltip name="КнопкаЗакрытьРасширеннаяПодсказка" id="19"/>
-			</Button>
-			<Button name="КнопкаСправка" id="20">
-				<Type>CommandBarButton</Type>
-				<CommandName>Form.StandardCommand.Help</CommandName>
-				<ExtendedTooltip name="КнопкаСправкаРасширеннаяПодсказка" id="21"/>
-			</Button>
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
+		<Event name="ChoiceProcessing">ОбработкаВыбора</Event>
 		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
@@ -93,25 +84,6 @@
 					<VerticalStretch>true</VerticalStretch>
 					<PagesRepresentation>None</PagesRepresentation>
 					<ExtendedTooltip name="СтраницыКартинокРасширеннаяПодсказка" id="25"/>
-					<ChildItems>
-						<Page name="СтраницаКартинкиПервогоЭтапа" id="28">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Страница картинки первого этапа</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Страница картинки первого этапа</v8:content>
-								</v8:item>
-							</ToolTip>
-							<HorizontalStretch>true</HorizontalStretch>
-							<VerticalStretch>true</VerticalStretch>
-							<ExtendedTooltip name="СтраницаКартинкиПервогоЭтапаРасширеннаяПодсказка" id="29"/>
-						</Page>
-					</ChildItems>
 				</Pages>
 				<Pages name="СтраницыПомощника" id="26">
 					<Title>
@@ -129,71 +101,75 @@
 					<PagesRepresentation>None</PagesRepresentation>
 					<ExtendedTooltip name="СтраницыПомощникаРасширеннаяПодсказка" id="27"/>
 					<ChildItems>
-						<Page name="ЭтапВыбораВидаПлатежа" id="35">
+						<Page name="ПервыйЭтап" id="28">
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Этап выбора вида платежа</v8:content>
+									<v8:content>Первый этап</v8:content>
 								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Этап выбора вида платежа</v8:content>
+									<v8:content>Первый этап</v8:content>
 								</v8:item>
 							</ToolTip>
-							<ExtendedTooltip name="ЭтапВыбораВидаПлатежаРасширеннаяПодсказка" id="36"/>
+							<HorizontalStretch>true</HorizontalStretch>
+							<VerticalStretch>true</VerticalStretch>
+							<ExtendedTooltip name="ПервыйЭтапРасширеннаяПодсказка" id="29"/>
 							<ChildItems>
-								<LabelDecoration name="Декорация2" id="49">
+								<LabelDecoration name="Декорация7" id="138">
 									<HorizontalStretch>true</HorizontalStretch>
 									<TextColor>style:FieldSelectionBackColor</TextColor>
 									<Font ref="style:TextFont" faceName="Verdana" height="11" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
 									<Title formatted="false">
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>1. Выберите вид доп. соглашения</v8:content>
+											<v8:content>Помощник ввода доп. соглашения  автоматически откроет нужный или создаст новый документ "Спецификация". Нажмите "Далее".</v8:content>
 										</v8:item>
 									</Title>
-									<ContextMenu name="Декорация2КонтекстноеМеню" id="50"/>
-									<ExtendedTooltip name="Декорация2РасширеннаяПодсказка" id="51"/>
+									<ContextMenu name="Декорация7КонтекстноеМеню" id="139"/>
+									<ExtendedTooltip name="Декорация7РасширеннаяПодсказка" id="140"/>
 								</LabelDecoration>
-								<RadioButtonField name="ВидПлатежа" id="82">
-									<DataPath>ВидПлатежа</DataPath>
-									<TitleLocation>None</TitleLocation>
-									<RadioButtonType>RadioButtons</RadioButtonType>
-									<ColumnsCount>1</ColumnsCount>
-									<ChoiceList>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation>
-													<v8:item>
-														<v8:lang>ru</v8:lang>
-														<v8:content>Внесение средств</v8:content>
-													</v8:item>
-												</Presentation>
-												<Value xsi:type="xs:string">Приход</Value>
-											</xr:Value>
-										</xr:Item>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation>
-													<v8:item>
-														<v8:lang>ru</v8:lang>
-														<v8:content>Возврат средств</v8:content>
-													</v8:item>
-												</Presentation>
-												<Value xsi:type="xs:string">Расход</Value>
-											</xr:Value>
-										</xr:Item>
-									</ChoiceList>
-									<Font ref="sys:DefaultGUIFont" height="10" kind="WindowsFont"/>
-									<ContextMenu name="ВидПлатежаКонтекстноеМеню" id="83"/>
-									<ExtendedTooltip name="ВидПлатежаРасширеннаяПодсказка" id="84"/>
-								</RadioButtonField>
+							</ChildItems>
+						</Page>
+						<Page name="ЭтапПроверкиСпецификации" id="127">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Этап проверки спецификации</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Этап проверки спецификации</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="ЭтапПроверкиСпецификацииРасширеннаяПодсказка" id="128"/>
+							<ChildItems>
+								<LabelDecoration name="Декорация6" id="132">
+									<HorizontalStretch>true</HorizontalStretch>
+									<TextColor>style:FieldSelectionBackColor</TextColor>
+									<Font ref="style:TextFont" faceName="Verdana" height="11" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Прежде чем нажать "Далее", убедитесь, что закончили работу с документом "Спецификация".</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="Декорация6КонтекстноеМеню" id="133"/>
+									<ExtendedTooltip name="Декорация6РасширеннаяПодсказка" id="134"/>
+								</LabelDecoration>
+								<InputField name="Спецификация" id="135">
+									<DataPath>Спецификация</DataPath>
+									<ChoiceButton>false</ChoiceButton>
+									<ContextMenu name="СпецификацияКонтекстноеМеню" id="136"/>
+									<ExtendedTooltip name="СпецификацияРасширеннаяПодсказка" id="137"/>
+									<Events>
+										<Event name="Opening">СпецификацияОткрытие</Event>
+									</Events>
+								</InputField>
 							</ChildItems>
 						</Page>
 						<Page name="ЭтапВыбораСпособаПлатежа" id="37">
@@ -211,18 +187,18 @@
 							</ToolTip>
 							<ExtendedTooltip name="ЭтапВыбораСпособаПлатежаРасширеннаяПодсказка" id="38"/>
 							<ChildItems>
-								<LabelDecoration name="Декорация3" id="52">
+								<LabelDecoration name="Декорация13" id="141">
 									<HorizontalStretch>true</HorizontalStretch>
 									<TextColor>style:FieldSelectionBackColor</TextColor>
 									<Font ref="style:TextFont" faceName="Verdana" height="11" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
 									<Title formatted="false">
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>2. Выберите способ платежа</v8:content>
+											<v8:content>Выберите способ платежа</v8:content>
 										</v8:item>
 									</Title>
-									<ContextMenu name="Декорация3КонтекстноеМеню" id="53"/>
-									<ExtendedTooltip name="Декорация3РасширеннаяПодсказка" id="54"/>
+									<ContextMenu name="Декорация13КонтекстноеМеню" id="142"/>
+									<ExtendedTooltip name="Декорация13РасширеннаяПодсказка" id="143"/>
 								</LabelDecoration>
 								<LabelDecoration name="Декорация8" id="102">
 									<Font ref="sys:DefaultGUIFont" height="10" kind="WindowsFont"/>
@@ -287,6 +263,9 @@
 								</RadioButtonField>
 							</ChildItems>
 						</Page>
+						<Page name="Группа1" id="125">
+							<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="126"/>
+						</Page>
 						<Page name="ЭтапВыбораСпособаПлатежаБезнал" id="88">
 							<Title>
 								<v8:item>
@@ -309,7 +288,7 @@
 									<Title formatted="false">
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>2.1 Выберите расчетный счет</v8:content>
+											<v8:content>Выберите расчетный счет</v8:content>
 										</v8:item>
 									</Title>
 									<ContextMenu name="Декорация5КонтекстноеМеню" id="91"/>
@@ -360,7 +339,7 @@
 									<Title formatted="false">
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>3. Установка реквизитов документа</v8:content>
+											<v8:content>Установка реквизитов документа</v8:content>
 										</v8:item>
 									</Title>
 									<ContextMenu name="Декорация4КонтекстноеМеню" id="65"/>
@@ -634,6 +613,44 @@
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.ФизическиеЛица</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СтараяСуммаДокумента" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Старая сумма документа</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Спецификация" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Спецификация</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DocumentRef.Спецификация</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СсылкаНаДопСоглашение" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ссылка на доп соглашение</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DocumentRef.ДополнительноеСоглашение</v8:Type>
 			</Type>
 		</Attribute>
 	</Attributes>
