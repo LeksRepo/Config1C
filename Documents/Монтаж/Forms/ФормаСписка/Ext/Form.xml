@@ -1,6 +1,15 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
-	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаОбщаяКомандаСоздатьЗаметкуПоПредмету" id="38">
+				<Type>CommandBarButton</Type>
+				<CommandName>CommonCommand.СоздатьЗаметкуПоПредмету</CommandName>
+				<DataPath>Items.Список.CurrentData.Спецификация</DataPath>
+				<ExtendedTooltip name="ФормаОбщаяКомандаСоздатьЗаметкуПоПредметуРасширеннаяПодсказка" id="39"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
 	<ChildItems>
 		<Table name="Список" id="1">
 			<Representation>List</Representation>
@@ -32,29 +41,29 @@
 				<Autofill>false</Autofill>
 			</AutoCommandBar>
 			<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="4"/>
-			<SearchStringAddition name="СписокСтрокаПоиска" id="35">
+			<SearchStringAddition name="СписокСтрокаПоиска" id="43">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="36"/>
-				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="37"/>
+				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="44"/>
+				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="45"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокСостояниеПросмотра" id="38">
+			<ViewStatusAddition name="СписокСостояниеПросмотра" id="46">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="39"/>
-				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="40"/>
+				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="47"/>
+				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="48"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокУправлениеПоиском" id="41">
+			<SearchControlAddition name="СписокУправлениеПоиском" id="49">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="42"/>
-				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="43"/>
+				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="50"/>
+				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="51"/>
 			</SearchControlAddition>
 			<ChildItems>
 				<LabelField name="Дата" id="5">
@@ -93,6 +102,21 @@
 					<ContextMenu name="НомерКонтекстноеМеню" id="9"/>
 					<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="10"/>
 				</LabelField>
+				<PictureField name="ЕстьЗаметка" id="40">
+					<DataPath>Список.ЕстьЗаметка</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<HeaderPicture>
+						<xr:Ref>CommonPicture.Заметка</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</HeaderPicture>
+					<Width>2</Width>
+					<ValuesPicture>
+						<xr:Ref>CommonPicture.Заметка</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</ValuesPicture>
+					<ContextMenu name="ЕстьЗаметкаКонтекстноеМеню" id="41"/>
+					<ExtendedTooltip name="ЕстьЗаметкаРасширеннаяПодсказка" id="42"/>
+				</PictureField>
 				<LabelField name="Спецификация" id="11">
 					<DataPath>Список.Спецификация</DataPath>
 					<ContextMenu name="СпецификацияКонтекстноеМеню" id="12"/>
@@ -103,15 +127,15 @@
 					<ContextMenu name="СтатусКонтекстноеМеню" id="33"/>
 					<ExtendedTooltip name="СтатусРасширеннаяПодсказка" id="34"/>
 				</LabelField>
+				<LabelField name="СпецификацияАдресМонтажа" id="35">
+					<DataPath>Список.Спецификация.АдресМонтажа</DataPath>
+					<ContextMenu name="СпецификацияАдресМонтажаКонтекстноеМеню" id="36"/>
+					<ExtendedTooltip name="СпецификацияАдресМонтажаРасширеннаяПодсказка" id="37"/>
+				</LabelField>
 				<LabelField name="НомерДоговора" id="29">
 					<DataPath>Список.НомерДоговора</DataPath>
 					<ContextMenu name="НомерДоговораКонтекстноеМеню" id="30"/>
 					<ExtendedTooltip name="НомерДоговораРасширеннаяПодсказка" id="31"/>
-				</LabelField>
-				<LabelField name="СпецификацияОфисАдрес" id="20">
-					<DataPath>Список.Спецификация.Офис.Адрес</DataPath>
-					<ContextMenu name="СпецификацияОфисАдресКонтекстноеМеню" id="21"/>
-					<ExtendedTooltip name="СпецификацияОфисАдресРасширеннаяПодсказка" id="22"/>
 				</LabelField>
 				<LabelField name="СпецификацияОфисГород" id="17">
 					<DataPath>Список.Спецификация.Офис.Город</DataPath>
@@ -167,6 +191,11 @@
 			ТОГДА ИСТИНА
 		ИНАЧЕ ЛОЖЬ
 	КОНЕЦ КАК ДатаМонтажаИзменена,
+	ВЫБОР
+		КОГДА ЕСТЬNULL(НаличиеЗаметокПоПредмету.ЕстьЗаметка, ЛОЖЬ)
+			ТОГДА 0
+		ИНАЧЕ -1
+	КОНЕЦ КАК ЕстьЗаметка,
 	Договор.Номер КАК НомерДоговора,
 	СтатусСпецификацииСрезПоследних.Статус
 ИЗ
@@ -174,7 +203,9 @@
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СтатусСпецификации.СрезПоследних КАК СтатусСпецификацииСрезПоследних
 		ПО ДокументМонтаж.Спецификация = СтатусСпецификацииСрезПоследних.Спецификация
 		ЛЕВОЕ СОЕДИНЕНИЕ Документ.Договор КАК Договор
-		ПО ДокументМонтаж.Спецификация = Договор.Спецификация</QueryText>
+		ПО ДокументМонтаж.Спецификация = Договор.Спецификация
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.НаличиеЗаметокПоПредмету КАК НаличиеЗаметокПоПредмету
+		ПО ДокументМонтаж.Спецификация = НаличиеЗаметокПоПредмету.Предмет</QueryText>
 				<MainTable>Document.Монтаж</MainTable>
 				<ListSettings>
 					<dcsset:filter>
