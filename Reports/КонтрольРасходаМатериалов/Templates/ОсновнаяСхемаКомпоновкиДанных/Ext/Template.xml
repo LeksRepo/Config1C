@@ -155,7 +155,7 @@
 			</title>
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
-		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+		<query>ВЫБРАТЬ
 	ЕСТЬNULL(ОсновноеПроизводство.Субконто1, ДополнительныйЛимит.Субконто1) КАК Номенклатура,
 	ЕСТЬNULL(ОсновноеПроизводство.КоличествоОборотДт, 0) КАК ПолученоВЦехКоличество,
 	ЕСТЬNULL(ДополнительныйЛимит.КоличествоОборотДт, 0) КАК ТребуетсяПоСпецификациямКоличество
@@ -188,7 +188,7 @@
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
-ВЫБРАТЬ РАЗРЕШЕННЫЕ
+ВЫБРАТЬ
 	втМатериалы.Номенклатура,
 	втМатериалы.ПолученоВЦехКоличество,
 	втМатериалы.ПолученоВЦехКоличество * ЦеныНоменклатурыСрезПоследних.ПлановаяЗакупочная КАК ПолученоВЦехСтоимость,
@@ -234,6 +234,7 @@
 		</valueType>
 		<value xsi:nil="true"/>
 		<useRestriction>false</useRestriction>
+		<use>Always</use>
 	</parameter>
 	<parameter>
 		<name>НачалоПериода</name>
@@ -398,7 +399,7 @@
 				<dcsset:groupItems>
 					<dcsset:item xsi:type="dcsset:GroupItemField">
 						<dcsset:field>Номенклатура</dcsset:field>
-						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:groupType>Hierarchy</dcsset:groupType>
 						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
 						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
