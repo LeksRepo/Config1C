@@ -31,38 +31,8 @@
 			<field>Подразделение</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Адрес</dataPath>
-			<field>СпецификацияАдресМонтажа</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>Телефон</dataPath>
-			<field>КонтрагентТелефон</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Тел.</v8:content>
-				</v8:item>
-			</title>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>ТелефонДополнительный</dataPath>
-			<field>КонтрагентТелефонДополнительный</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Доп. телефон</v8:content>
-				</v8:item>
-			</title>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>М2</dataPath>
 			<field>М2</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>М2</v8:content>
-				</v8:item>
-			</title>
 			<appearance>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:use>false</dcscor:use>
@@ -74,32 +44,26 @@
 		<field xsi:type="DataSetFieldField">
 			<dataPath>ТекстЗаметки</dataPath>
 			<field>ТекстЗаметки</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Текст заметки</v8:content>
-				</v8:item>
-			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>НомерДоговора</dataPath>
 			<field>НомерДоговора</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Номер договора</v8:content>
-				</v8:item>
-			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>НомерСпецификации</dataPath>
 			<field>НомерСпецификации</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Номер спецификации</v8:content>
-				</v8:item>
-			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДопТелефон</dataPath>
+			<field>ДопТелефон</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Телефон</dataPath>
+			<field>Телефон</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Адрес</dataPath>
+			<field>Адрес</field>
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
@@ -111,12 +75,11 @@
 	Договор.Номер КАК НомерДоговора,
 	Монтаж.Комментарий,
 	Монтаж.Подразделение,
-	Монтаж.Спецификация.АдресМонтажа,
-	Договор.Контрагент.Телефон,
-	Договор.Контрагент.ТелефонДополнительный,
+	Монтаж.Спецификация.АдресМонтажа КАК Адрес,
+	Договор.Контрагент.Телефон КАК Телефон,
+	Договор.Контрагент.ТелефонДополнительный КАК ДопТелефон,
 	Монтаж.Спецификация.КоличествоМетровЛДСП КАК М2,
 	Заметки.ТекстСодержания КАК ТекстЗаметки
-	
 ИЗ
 	Документ.Монтаж КАК Монтаж
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СтатусСпецификации.СрезПоследних(ДАТАВРЕМЯ(3999, 11, 1), ) КАК СтатусСпецификацииСрезПоследних
@@ -359,17 +322,6 @@
 					</dcsat:item>
 					<dcsat:item xsi:type="dcsat:Field">
 						<dcsat:value xsi:type="dcscor:Parameter">НомерСпецификации</dcsat:value>
-					</dcsat:item>
-					<dcsat:item xsi:type="dcsat:Field">
-						<dcsat:value xsi:type="v8:LocalStringType">
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content> / Дог № </v8:content>
-							</v8:item>
-						</dcsat:value>
-					</dcsat:item>
-					<dcsat:item xsi:type="dcsat:Field">
-						<dcsat:value xsi:type="dcscor:Parameter">НомерДоговора</dcsat:value>
 					</dcsat:item>
 					<dcsat:appearance>
 						<dcscor:item>
@@ -888,7 +840,7 @@
 		</parameter>
 		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
 			<dcsat:name>ТелефонДополнительный</dcsat:name>
-			<dcsat:expression>ТелефонДополнительный</dcsat:expression>
+			<dcsat:expression>ДопТелефон</dcsat:expression>
 		</parameter>
 		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
 			<dcsat:name>Адрес</dcsat:name>
@@ -901,10 +853,6 @@
 		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
 			<dcsat:name>НомерСпецификации</dcsat:name>
 			<dcsat:expression>НомерСпецификации</dcsat:expression>
-		</parameter>
-		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
-			<dcsat:name>НомерДоговора</dcsat:name>
-			<dcsat:expression>НомерДоговора</dcsat:expression>
 		</parameter>
 	</template>
 	<template>
@@ -1668,12 +1616,6 @@
 					<dcsset:field>Телефон</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>ТелефонДополнительный</dcsset:field>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Адрес</dcsset:field>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Монтажник</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
@@ -1687,6 +1629,12 @@
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>НомерСпецификации</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ДопТелефон</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Адрес</dcsset:field>
 				</dcsset:item>
 			</dcsset:selection>
 			<dcsset:dataParameters>
