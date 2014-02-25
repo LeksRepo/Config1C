@@ -1,12 +1,212 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
-	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<HorizontalAlign>Right</HorizontalAlign>
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="ФормаОбновитьДанные" id="9">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.ОбновитьДанные</CommandName>
+				<Picture>
+					<xr:Ref>CommonPicture.СинхронизацияДанныхДлительнаяОперация</xr:Ref>
+					<xr:LoadTransparent>true</xr:LoadTransparent>
+				</Picture>
+				<ExtendedTooltip name="ФормаОбновитьДанныеРасширеннаяПодсказка" id="10"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
 	<ChildItems>
 		<InputField name="Дизайнер" id="1">
 			<DataPath>Дизайнер</DataPath>
+			<TitleLocation>None</TitleLocation>
 			<ContextMenu name="ДизайнерКонтекстноеМеню" id="2"/>
 			<ExtendedTooltip name="ДизайнерРасширеннаяПодсказка" id="3"/>
 		</InputField>
+		<UsualGroup name="ГруппаПериод" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Период</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа период</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<ExtendedTooltip name="ГруппаПериодРасширеннаяПодсказка" id="8"/>
+			<ChildItems>
+				<LabelField name="Период" id="4">
+					<DataPath>Период</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<ContextMenu name="ПериодКонтекстноеМеню" id="5"/>
+					<ExtendedTooltip name="ПериодРасширеннаяПодсказка" id="6"/>
+				</LabelField>
+				<Button name="МесяцНазад" id="11">
+					<Type>UsualButton</Type>
+					<Representation>Picture</Representation>
+					<CommandName>Form.Command.МесяцНазад</CommandName>
+					<Picture>
+						<xr:Ref>CommonPicture.СтрелкаНазад</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<ExtendedTooltip name="МесяцНазадРасширеннаяПодсказка" id="12"/>
+				</Button>
+				<Button name="МесяцВеперд" id="13">
+					<Type>UsualButton</Type>
+					<Representation>Picture</Representation>
+					<CommandName>Form.Command.МесяцВеперд</CommandName>
+					<Picture>
+						<xr:Ref>CommonPicture.СтрелкаВперед</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<ExtendedTooltip name="МесяцВепердРасширеннаяПодсказка" id="14"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="СтоимостьДоговоровГруппа" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Стоимость заключенных договоров</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Стоимость договоров группа</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<ExtendedTooltip name="СтоимостьДоговоровГруппаРасширеннаяПодсказка" id="16"/>
+			<ChildItems>
+				<LabelField name="ПланЗаключеноДоговоров" id="23">
+					<DataPath>ПланЗаключеноДоговоров</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>План:</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ПланЗаключеноДоговоровКонтекстноеМеню" id="24"/>
+					<ExtendedTooltip name="ПланЗаключеноДоговоровРасширеннаяПодсказка" id="25"/>
+				</LabelField>
+				<LabelField name="ФактЗаключеноДоговоров" id="20">
+					<DataPath>ФактЗаключеноДоговоров</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Факт:</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ФактЗаключеноДоговоровКонтекстноеМеню" id="21"/>
+					<ExtendedTooltip name="ФактЗаключеноДоговоровРасширеннаяПодсказка" id="22"/>
+				</LabelField>
+				<LabelField name="ПроцентВыполненияПлана" id="17">
+					<DataPath>ПроцентВыполненияПлана</DataPath>
+					<ContextMenu name="ПроцентВыполненияПланаКонтекстноеМеню" id="18"/>
+					<ExtendedTooltip name="ПроцентВыполненияПланаРасширеннаяПодсказка" id="19"/>
+				</LabelField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаЗарплата" id="26">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оклад / Бонус</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа зарплата</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<ExtendedTooltip name="ГруппаЗарплатаРасширеннаяПодсказка" id="27"/>
+			<ChildItems>
+				<LabelField name="ОкладЗаМесяц" id="31">
+					<DataPath>ОкладЗаМесяц</DataPath>
+					<ContextMenu name="ОкладЗаМесяцКонтекстноеМеню" id="32"/>
+					<ExtendedTooltip name="ОкладЗаМесяцРасширеннаяПодсказка" id="33"/>
+				</LabelField>
+				<LabelField name="ШтрафБонус" id="28">
+					<DataPath>ШтрафБонус</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вознаграждение</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="ШтрафБонусКонтекстноеМеню" id="29"/>
+					<ExtendedTooltip name="ШтрафБонусРасширеннаяПодсказка" id="30"/>
+				</LabelField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ВыручкаПоДоговорам" id="34">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выручка по договорам</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выручка по договорам</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<ExtendedTooltip name="ВыручкаПоДоговорамРасширеннаяПодсказка" id="35"/>
+			<ChildItems>
+				<LabelField name="ПолученоДенегПоДоговорам" id="39">
+					<DataPath>ПолученоДенегПоДоговорам</DataPath>
+					<ContextMenu name="ПолученоДенегПоДоговорамКонтекстноеМеню" id="40"/>
+					<ExtendedTooltip name="ПолученоДенегПоДоговорамРасширеннаяПодсказка" id="41"/>
+				</LabelField>
+				<LabelField name="ЗарплатаОтВыручки" id="36">
+					<DataPath>ЗарплатаОтВыручки</DataPath>
+					<ContextMenu name="ЗарплатаОтВыручкиКонтекстноеМеню" id="37"/>
+					<ExtendedTooltip name="ЗарплатаОтВыручкиРасширеннаяПодсказка" id="38"/>
+				</LabelField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ОстальныеПоказатели" id="42">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Остальные показатели</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Остальные показатели</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<ExtendedTooltip name="ОстальныеПоказателиРасширеннаяПодсказка" id="43"/>
+			<ChildItems>
+				<LabelField name="КоличествоЗаключенныхДоговоров" id="50">
+					<DataPath>КоличествоЗаключенныхДоговоров</DataPath>
+					<ContextMenu name="КоличествоЗаключенныхДоговоровКонтекстноеМеню" id="51"/>
+					<ExtendedTooltip name="КоличествоЗаключенныхДоговоровРасширеннаяПодсказка" id="52"/>
+				</LabelField>
+				<LabelField name="УщербОтПеределок" id="47">
+					<DataPath>УщербОтПеределок</DataPath>
+					<ContextMenu name="УщербОтПеределокКонтекстноеМеню" id="48"/>
+					<ExtendedTooltip name="УщербОтПеределокРасширеннаяПодсказка" id="49"/>
+				</LabelField>
+				<LabelField name="ПросроченныхЗамеров" id="44">
+					<DataPath>ПросроченныхЗамеров</DataPath>
+					<ContextMenu name="ПросроченныхЗамеровКонтекстноеМеню" id="45"/>
+					<ExtendedTooltip name="ПросроченныхЗамеровРасширеннаяПодсказка" id="46"/>
+				</LabelField>
+			</ChildItems>
+		</UsualGroup>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Объект" id="1">
@@ -196,5 +396,68 @@
 				</v8:NumberQualifiers>
 			</Type>
 		</Attribute>
+		<Attribute name="ФактЗаключеноДоговоров" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Факт заключено договоров</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>15</v8:Digits>
+					<v8:FractionDigits>2</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
 	</Attributes>
+	<Commands>
+		<Command name="ОбновитьДанные" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить данные</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Обновить данные</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОбновитьДанные</Action>
+		</Command>
+		<Command name="МесяцНазад" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Месяц назад</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Месяц назад</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>МесяцНазад</Action>
+		</Command>
+		<Command name="МесяцВеперд" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Месяц веперд</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Месяц веперд</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>МесяцВперед</Action>
+		</Command>
+	</Commands>
 </Form>
