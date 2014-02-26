@@ -41,10 +41,6 @@
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Дизайнер</dataPath>
 			<field>Дизайнер</field>
-			<role>
-				<dcscom:dimension>true</dcscom:dimension>
-				<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
-			</role>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Подразделение</dataPath>
@@ -89,20 +85,50 @@
 				</v8:item>
 			</title>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Регистратор</dataPath>
+			<field>Регистратор</field>
+			<role>
+				<dcscom:periodNumber>1</dcscom:periodNumber>
+				<dcscom:periodType>Main</dcscom:periodType>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Сотрудник</dataPath>
+			<field>Сотрудник</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сотрудник</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+				<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
+			</role>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
-	ЕСТЬNULL(ПлановыеПоказателиДизайнеровОбороты.Подразделение, УправленческийОбороты.Подразделение) КАК Подразделение,
-	ЕСТЬNULL(ПлановыеПоказателиДизайнеровОбороты.Дизайнер, УправленческийОбороты.Субконто2) КАК Дизайнер,
-	ЕСТЬNULL(ПлановыеПоказателиДизайнеровОбороты.Показатель, УправленческийОбороты.Субконто1) КАК Показатель,
-	ПлановыеПоказателиДизайнеровОбороты.ЗначениеОборот КАК План,
-	УправленческийОбороты.СуммаОборот КАК Факт
-
+	УправленческийОбороты.Регистратор,
+	УправленческийОбороты.Субконто1 КАК Показатель,
+	УправленческийОбороты.Субконто2 КАК Сотрудник,
+	0 КАК План,
+	УправленческийОбороты.СуммаОборот КАК Факт,
+	УправленческийОбороты.Подразделение
 ИЗ
-	РегистрНакопления.ПлановыеПоказателиДизайнеров.Обороты(&amp;НачалоПериода, &amp;КонецПериода, , ) КАК ПлановыеПоказателиДизайнеровОбороты
-		ПОЛНОЕ СОЕДИНЕНИЕ РегистрБухгалтерии.Управленческий.Обороты(&amp;НачалоПериода, &amp;КонецПериода,, Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ПоказателиСотрудника), , Субконто1 В (&amp;СписокПоказателей), , ) КАК УправленческийОбороты
-		ПО ПлановыеПоказателиДизайнеровОбороты.Подразделение = УправленческийОбороты.Подразделение
-			И ПлановыеПоказателиДизайнеровОбороты.Дизайнер = УправленческийОбороты.Субконто2
-			И ПлановыеПоказателиДизайнеровОбороты.Показатель = УправленческийОбороты.Субконто1</query>
+	РегистрБухгалтерии.Управленческий.Обороты(, , Регистратор, Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ПоказателиСотрудника), , ВЫРАЗИТЬ(Субконто1 КАК Перечисление.ВидыПоказателейСотрудников) В (&amp;СписокПоказателей), , ) КАК УправленческийОбороты
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ПлановыеПоказателиДизайнеровОбороты.Регистратор,
+	ПлановыеПоказателиДизайнеровОбороты.Показатель,
+	ПлановыеПоказателиДизайнеровОбороты.Дизайнер,
+	ПлановыеПоказателиДизайнеровОбороты.ЗначениеОборот,
+	0,
+	ПлановыеПоказателиДизайнеровОбороты.Подразделение
+ИЗ
+	РегистрНакопления.ПлановыеПоказателиДизайнеров.Обороты(, , Регистратор, Показатель В (&amp;СписокПоказателей)) КАК ПлановыеПоказателиДизайнеровОбороты</query>
 	</dataSet>
 	<calculatedField>
 		<dataPath>ПроцентВыполнения</dataPath>
@@ -205,8 +231,6 @@
 		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ВидыПоказателейСотрудников.КоличествоЗаключенныхДоговоров</value>
 		<useRestriction>true</useRestriction>
 		<valueListAllowed>true</valueListAllowed>
-		<availableAsField>false</availableAsField>
-		<use>Always</use>
 	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
@@ -279,7 +303,7 @@
 					<dcsset:item>
 						<dcsset:groupItems>
 							<dcsset:item xsi:type="dcsset:GroupItemField">
-								<dcsset:field>Дизайнер</dcsset:field>
+								<dcsset:field>Сотрудник</dcsset:field>
 								<dcsset:groupType>Items</dcsset:groupType>
 								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
