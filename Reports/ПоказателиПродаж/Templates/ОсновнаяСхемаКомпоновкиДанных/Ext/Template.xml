@@ -132,7 +132,7 @@
 	</dataSet>
 	<calculatedField>
 		<dataPath>ПроцентВыполнения</dataPath>
-		<expression>ВЫБОР КОГДА План &lt;&gt; 0 ТОГДА Факт * 100 / План ИНАЧЕ 0 Конец</expression>
+		<expression>0</expression>
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>ru</v8:lang>
@@ -156,7 +156,7 @@
 	</totalField>
 	<totalField>
 		<dataPath>ПроцентВыполнения</dataPath>
-		<expression>СУММА(Факт) * 100 / СУММА(План)</expression>
+		<expression>ВЫБОР КОГДА  Сумма(План) &lt;&gt; 0 ТОГДА Сумма(Факт) / Сумма(План) * 100 ИНАЧЕ 0 КОНЕЦ</expression>
 	</totalField>
 	<parameter>
 		<name>НачалоПериода</name>
