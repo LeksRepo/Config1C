@@ -65,6 +65,10 @@
 			<dataPath>Адрес</dataPath>
 			<field>Адрес</field>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Спецификация</dataPath>
+			<field>Спецификация</field>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	Монтаж.ДатаМонтажа,
@@ -78,10 +82,9 @@
 	Монтаж.Спецификация.АдресМонтажа КАК Адрес,
 	Договор.Контрагент.Телефон КАК Телефон,
 	Договор.Контрагент.ТелефонДополнительный КАК ДопТелефон,
-	//43214321 КАК Телефон,
-	//12341234 КАК ДопТелефон,
 	Монтаж.Спецификация.КоличествоМетровЛДСП КАК М2,
-	Заметки.ТекстСодержания КАК ТекстЗаметки
+	Заметки.ТекстСодержания КАК ТекстЗаметки,
+	СтатусСпецификацииСрезПоследних.Спецификация
 ИЗ
 	Документ.Монтаж КАК Монтаж
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СтатусСпецификации.СрезПоследних(ДАТАВРЕМЯ(3999, 11, 1), ) КАК СтатусСпецификацииСрезПоследних
@@ -370,6 +373,10 @@
 						<dcscor:item>
 							<dcscor:parameter>МаксимальнаяШирина</dcscor:parameter>
 							<dcscor:value xsi:type="xs:decimal">43.25</dcscor:value>
+						</dcscor:item>
+						<dcscor:item>
+							<dcscor:parameter>Расшифровка</dcscor:parameter>
+							<dcscor:value xsi:type="dcscor:Parameter">Спецификация</dcscor:value>
 						</dcscor:item>
 					</dcsat:appearance>
 				</dcsat:tableCell>
@@ -870,6 +877,9 @@
 		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
 			<dcsat:name>НомерДоговора</dcsat:name>
 			<dcsat:expression>НомерДоговора</dcsat:expression>
+		</parameter>
+		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:DetailsAreaTemplateParameter">
+			<dcsat:name>Спецификация</dcsat:name>
 		</parameter>
 	</template>
 	<template>
