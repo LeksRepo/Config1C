@@ -59,16 +59,6 @@
 			<field>ДатаОтгрузки</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Отгружен</dataPath>
-			<field>Отгружен</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Отгружен</v8:content>
-				</v8:item>
-			</title>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>СтатусСпецификации</dataPath>
 			<field>СтатусСпецификации</field>
 			<title xsi:type="v8:LocalStringType">
@@ -114,6 +104,36 @@
 				</v8:item>
 			</title>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КомплектацияСклад</dataPath>
+			<field>КомплектацияСклад</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>На склад</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КомплектацияЦех</dataPath>
+			<field>КомплектацияЦех</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>В цех</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Скомплектован</dataPath>
+			<field>Скомплектован</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Скомплектован</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	Спец.Комментарий,
@@ -136,7 +156,6 @@
 	КОНЕЦ КАК Телефон,
 	Спец.Дилерский,
 	ПРЕДСТАВЛЕНИЕ(Спец.Ссылка),
-	"" КАК Отгружен,
 	СтатусСпецификации.Статус КАК СтатусСпецификации,
 	ВЫБОР
 		КОГДА Спец.ПакетУслуг &lt;&gt; ЗНАЧЕНИЕ(Перечисление.ПакетыУслуг.СамовывозОтПроизводителя)
@@ -148,13 +167,19 @@
 			ТОГДА ЛОЖЬ
 		ИНАЧЕ ИСТИНА
 	КОНЕЦ КАК Просрочен,
-	Спец.Номер КАК НомерСпецификации
+	Спец.Номер КАК НомерСпецификации,
+	Спец.КомплектацияСклад,
+	Спец.КомплектацияЦех,
+	Компл.Проведен КАК Скомплектован
 ИЗ
 	Документ.Спецификация КАК Спец
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СтатусСпецификации.СрезПоследних(&amp;ДатаОкончания, ) КАК СтатусСпецификации
 		ПО (СтатусСпецификации.Спецификация = Спец.Ссылка)
 		ЛЕВОЕ СОЕДИНЕНИЕ Документ.Договор КАК Дог
 		ПО (Дог.Спецификация = Спец.Ссылка)
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.Комплектация КАК Компл
+		ПО (Компл.Спецификация = Спец.Ссылка)
+			И (Компл.Проведен)
 ГДЕ
 	Спец.ДатаОтгрузки &lt;= &amp;ДатаОкончания
 	И Спец.Проведен
@@ -203,8 +228,20 @@
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>ДатаОтгрузки</dcsset:field>
 				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>СтатусСпецификации</dcsset:field>
+				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+					<dcsset:lwsTitle>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Статусы</v8:content>
+						</v8:item>
+					</dcsset:lwsTitle>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>СтатусСпецификации</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Скомплектован</dcsset:field>
+					</dcsset:item>
+					<dcsset:placement>Vertically</dcsset:placement>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
 					<dcsset:lwsTitle>
@@ -251,8 +288,14 @@
 					</dcsset:item>
 					<dcsset:placement>Vertically</dcsset:placement>
 				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Отгружен</dcsset:field>
+				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>КомплектацияСклад</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>КомплектацияЦех</dcsset:field>
+					</dcsset:item>
+					<dcsset:placement>Vertically</dcsset:placement>
 				</dcsset:item>
 			</dcsset:selection>
 			<dcsset:filter>
