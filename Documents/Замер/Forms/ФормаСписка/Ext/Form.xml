@@ -61,142 +61,319 @@
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
-		<Table name="Список" id="1">
-			<UseAlternationRowColor>true</UseAlternationRowColor>
-			<EnableStartDrag>true</EnableStartDrag>
-			<DataPath>Список</DataPath>
-			<RowPictureDataPath>Список.DefaultPicture</RowPictureDataPath>
-			<SearchStringLocation>None</SearchStringLocation>
-			<ViewStatusLocation>None</ViewStatusLocation>
-			<SearchControlLocation>None</SearchControlLocation>
-			<AutoRefresh>false</AutoRefresh>
-			<AutoRefreshPeriod>60</AutoRefreshPeriod>
-			<Period>
-				<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
-				<v8:startDate>0001-01-01T00:00:00</v8:startDate>
-				<v8:endDate>0001-01-01T00:00:00</v8:endDate>
-			</Period>
-			<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
-			<RestoreCurrentRow>false</RestoreCurrentRow>
-			<TopLevelParent xsi:nil="true"/>
-			<ShowRoot>true</ShowRoot>
-			<AllowRootChoice>false</AllowRootChoice>
-			<UpdateOnDataChange>Auto</UpdateOnDataChange>
-			<ContextMenu name="СписокКонтекстноеМеню" id="2"/>
-			<AutoCommandBar name="СписокКоманднаяПанель" id="3">
-				<Autofill>false</Autofill>
-			</AutoCommandBar>
-			<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="4"/>
-			<SearchStringAddition name="СписокСтрокаПоиска" id="59">
-				<AdditionSource>
-					<Item>Список</Item>
-					<Type>SearchStringRepresentation</Type>
-				</AdditionSource>
-				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="60"/>
-				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="61"/>
-			</SearchStringAddition>
-			<ViewStatusAddition name="СписокСостояниеПросмотра" id="62">
-				<AdditionSource>
-					<Item>Список</Item>
-					<Type>ViewStatusRepresentation</Type>
-				</AdditionSource>
-				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="63"/>
-				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="64"/>
-			</ViewStatusAddition>
-			<SearchControlAddition name="СписокУправлениеПоиском" id="65">
-				<AdditionSource>
-					<Item>Список</Item>
-					<Type>SearchControl</Type>
-				</AdditionSource>
-				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="66"/>
-				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="67"/>
-			</SearchControlAddition>
-			<Events>
-				<Event name="Selection">СписокВыбор</Event>
-			</Events>
+		<Pages name="ГруппаСписков" id="59">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа списков</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа списков</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ExtendedTooltip name="ГруппаСписковРасширеннаяПодсказка" id="60"/>
 			<ChildItems>
-				<LabelField name="ДатаЗамера" id="14">
-					<DataPath>Список.ДатаЗамера</DataPath>
-					<FixingInTable>Left</FixingInTable>
-					<Width>12</Width>
-					<ContextMenu name="ДатаЗамераКонтекстноеМеню" id="15"/>
-					<ExtendedTooltip name="ДатаЗамераРасширеннаяПодсказка" id="16"/>
-				</LabelField>
-				<LabelField name="КоличествоСпецификаций" id="23">
-					<DataPath>Список.Спецификаций</DataPath>
-					<TitleLocation>None</TitleLocation>
+				<Page name="ГруппаВРаботе" id="61">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Активные замеры</v8:content>
+						</v8:item>
+					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Количество спецификаций к замеру</v8:content>
+							<v8:content>Группа в работе</v8:content>
 						</v8:item>
 					</ToolTip>
-					<FixingInTable>Left</FixingInTable>
-					<HeaderPicture>
-						<xr:Ref>CommonPicture.Рассчитать</xr:Ref>
-						<xr:LoadTransparent>true</xr:LoadTransparent>
-					</HeaderPicture>
-					<Width>2</Width>
-					<ContextMenu name="КоличествоСпецификацийКонтекстноеМеню" id="24"/>
-					<ExtendedTooltip name="КоличествоСпецификацийРасширеннаяПодсказка" id="25"/>
-				</LabelField>
-				<InputField name="ПрикрепленныеФайлы" id="29">
-					<DataPath>Список.Файлов</DataPath>
-					<TitleLocation>None</TitleLocation>
+					<ExtendedTooltip name="ГруппаВРаботеРасширеннаяПодсказка" id="62"/>
+					<ChildItems>
+						<Table name="Список" id="1">
+							<UseAlternationRowColor>true</UseAlternationRowColor>
+							<EnableStartDrag>true</EnableStartDrag>
+							<DataPath>Список</DataPath>
+							<RowPictureDataPath>Список.DefaultPicture</RowPictureDataPath>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<AutoRefresh>false</AutoRefresh>
+							<AutoRefreshPeriod>60</AutoRefreshPeriod>
+							<Period>
+								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+							</Period>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<RestoreCurrentRow>false</RestoreCurrentRow>
+							<TopLevelParent xsi:nil="true"/>
+							<ShowRoot>true</ShowRoot>
+							<AllowRootChoice>false</AllowRootChoice>
+							<UpdateOnDataChange>Auto</UpdateOnDataChange>
+							<ContextMenu name="СписокКонтекстноеМеню" id="2"/>
+							<AutoCommandBar name="СписокКоманднаяПанель" id="3">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
+							<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="4"/>
+							<SearchStringAddition name="СписокСтрокаПоиска" id="141">
+								<AdditionSource>
+									<Item>Список</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="142"/>
+								<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="143"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="СписокСостояниеПросмотра" id="144">
+								<AdditionSource>
+									<Item>Список</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="145"/>
+								<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="146"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="СписокУправлениеПоиском" id="147">
+								<AdditionSource>
+									<Item>Список</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="148"/>
+								<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="149"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">СписокВыбор</Event>
+							</Events>
+							<ChildItems>
+								<LabelField name="ДатаЗамера" id="14">
+									<DataPath>Список.ДатаЗамера</DataPath>
+									<FixingInTable>Left</FixingInTable>
+									<Width>12</Width>
+									<ContextMenu name="ДатаЗамераКонтекстноеМеню" id="15"/>
+									<ExtendedTooltip name="ДатаЗамераРасширеннаяПодсказка" id="16"/>
+								</LabelField>
+								<LabelField name="КоличествоСпецификаций" id="23">
+									<DataPath>Список.Спецификаций</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Количество спецификаций к замеру</v8:content>
+										</v8:item>
+									</ToolTip>
+									<FixingInTable>Left</FixingInTable>
+									<HeaderPicture>
+										<xr:Ref>CommonPicture.Рассчитать</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</HeaderPicture>
+									<Width>2</Width>
+									<ContextMenu name="КоличествоСпецификацийКонтекстноеМеню" id="24"/>
+									<ExtendedTooltip name="КоличествоСпецификацийРасширеннаяПодсказка" id="25"/>
+								</LabelField>
+								<InputField name="ПрикрепленныеФайлы" id="29">
+									<DataPath>Список.Файлов</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Прикреплено файлов</v8:content>
+										</v8:item>
+									</ToolTip>
+									<FixingInTable>Left</FixingInTable>
+									<HeaderPicture>
+										<xr:Ref>CommonPicture.Сканирование</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</HeaderPicture>
+									<Width>2</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ПрикрепленныеФайлыКонтекстноеМеню" id="30"/>
+									<ExtendedTooltip name="ПрикрепленныеФайлыРасширеннаяПодсказка" id="31"/>
+								</InputField>
+								<LabelField name="Номер" id="5">
+									<DataPath>Список.Номер</DataPath>
+									<FixingInTable>Left</FixingInTable>
+									<ContextMenu name="НомерКонтекстноеМеню" id="6"/>
+									<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="7"/>
+								</LabelField>
+								<LabelField name="ДатаВстречи" id="138">
+									<DataPath>Список.ДатаВстречи</DataPath>
+									<ContextMenu name="ДатаВстречиКонтекстноеМеню" id="139"/>
+									<ExtendedTooltip name="ДатаВстречиРасширеннаяПодсказка" id="140"/>
+								</LabelField>
+								<LabelField name="Ответственный" id="135">
+									<DataPath>Список.Ответственный</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Дизайнер</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ОтветственныйКонтекстноеМеню" id="136"/>
+									<ExtendedTooltip name="ОтветственныйРасширеннаяПодсказка" id="137"/>
+								</LabelField>
+								<LabelField name="АдресЗамера" id="11">
+									<DataPath>Список.АдресЗамера</DataPath>
+									<ContextMenu name="АдресЗамераКонтекстноеМеню" id="12"/>
+									<ExtendedTooltip name="АдресЗамераРасширеннаяПодсказка" id="13"/>
+								</LabelField>
+								<LabelField name="Замерщик" id="17">
+									<DataPath>Список.Замерщик</DataPath>
+									<ContextMenu name="ЗамерщикКонтекстноеМеню" id="18"/>
+									<ExtendedTooltip name="ЗамерщикРасширеннаяПодсказка" id="19"/>
+								</LabelField>
+								<LabelField name="Агент" id="132">
+									<DataPath>Список.Агент</DataPath>
+									<ContextMenu name="АгентКонтекстноеМеню" id="133"/>
+									<ExtendedTooltip name="АгентРасширеннаяПодсказка" id="134"/>
+								</LabelField>
+								<LabelField name="Автор" id="8">
+									<DataPath>Список.Автор</DataPath>
+									<ContextMenu name="АвторКонтекстноеМеню" id="9"/>
+									<ExtendedTooltip name="АвторРасширеннаяПодсказка" id="10"/>
+								</LabelField>
+								<LabelField name="Офис" id="56">
+									<DataPath>Список.Офис</DataPath>
+									<ContextMenu name="ОфисКонтекстноеМеню" id="57"/>
+									<ExtendedTooltip name="ОфисРасширеннаяПодсказка" id="58"/>
+								</LabelField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="ГруппаАрхив" id="63">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Архив</v8:content>
+						</v8:item>
+					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Прикреплено файлов</v8:content>
+							<v8:content>Группа архив</v8:content>
 						</v8:item>
 					</ToolTip>
-					<FixingInTable>Left</FixingInTable>
-					<HeaderPicture>
-						<xr:Ref>CommonPicture.Сканирование</xr:Ref>
-						<xr:LoadTransparent>true</xr:LoadTransparent>
-					</HeaderPicture>
-					<Width>2</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<ContextMenu name="ПрикрепленныеФайлыКонтекстноеМеню" id="30"/>
-					<ExtendedTooltip name="ПрикрепленныеФайлыРасширеннаяПодсказка" id="31"/>
-				</InputField>
-				<LabelField name="Номер" id="5">
-					<DataPath>Список.Номер</DataPath>
-					<FixingInTable>Left</FixingInTable>
-					<ContextMenu name="НомерКонтекстноеМеню" id="6"/>
-					<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="7"/>
-				</LabelField>
-				<LabelField name="АдресЗамера" id="11">
-					<DataPath>Список.АдресЗамера</DataPath>
-					<ContextMenu name="АдресЗамераКонтекстноеМеню" id="12"/>
-					<ExtendedTooltip name="АдресЗамераРасширеннаяПодсказка" id="13"/>
-				</LabelField>
-				<LabelField name="Замерщик" id="17">
-					<DataPath>Список.Замерщик</DataPath>
-					<ContextMenu name="ЗамерщикКонтекстноеМеню" id="18"/>
-					<ExtendedTooltip name="ЗамерщикРасширеннаяПодсказка" id="19"/>
-				</LabelField>
-				<LabelField name="ИмяЗаказчика" id="20">
-					<DataPath>Список.ИмяЗаказчика</DataPath>
-					<ContextMenu name="ИмяЗаказчикаКонтекстноеМеню" id="21"/>
-					<ExtendedTooltip name="ИмяЗаказчикаРасширеннаяПодсказка" id="22"/>
-				</LabelField>
-				<LabelField name="Телефон" id="32">
-					<DataPath>Список.Телефон</DataPath>
-					<ContextMenu name="ТелефонКонтекстноеМеню" id="33"/>
-					<ExtendedTooltip name="ТелефонРасширеннаяПодсказка" id="34"/>
-				</LabelField>
-				<LabelField name="Автор" id="8">
-					<DataPath>Список.Автор</DataPath>
-					<ContextMenu name="АвторКонтекстноеМеню" id="9"/>
-					<ExtendedTooltip name="АвторРасширеннаяПодсказка" id="10"/>
-				</LabelField>
-				<LabelField name="Офис" id="56">
-					<DataPath>Список.Офис</DataPath>
-					<ContextMenu name="ОфисКонтекстноеМеню" id="57"/>
-					<ExtendedTooltip name="ОфисРасширеннаяПодсказка" id="58"/>
-				</LabelField>
+					<ExtendedTooltip name="ГруппаАрхивРасширеннаяПодсказка" id="64"/>
+					<ChildItems>
+						<Table name="Архив" id="65">
+							<UseAlternationRowColor>true</UseAlternationRowColor>
+							<EnableStartDrag>true</EnableStartDrag>
+							<DataPath>Архив</DataPath>
+							<RowPictureDataPath>Архив.DefaultPicture</RowPictureDataPath>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<AutoRefresh>false</AutoRefresh>
+							<AutoRefreshPeriod>60</AutoRefreshPeriod>
+							<Period>
+								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+							</Period>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<RestoreCurrentRow>false</RestoreCurrentRow>
+							<TopLevelParent xsi:nil="true"/>
+							<ShowRoot>true</ShowRoot>
+							<AllowRootChoice>false</AllowRootChoice>
+							<UpdateOnDataChange>Auto</UpdateOnDataChange>
+							<ContextMenu name="АрхивКонтекстноеМеню" id="66"/>
+							<AutoCommandBar name="АрхивКоманднаяПанель" id="67">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
+							<ExtendedTooltip name="АрхивРасширеннаяПодсказка" id="68"/>
+							<SearchStringAddition name="АрхивСтрокаПоиска" id="150">
+								<AdditionSource>
+									<Item>Архив</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="АрхивСтрокаПоискаКонтекстноеМеню" id="151"/>
+								<ExtendedTooltip name="АрхивСтрокаПоискаРасширеннаяПодсказка" id="152"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="АрхивСостояниеПросмотра" id="153">
+								<AdditionSource>
+									<Item>Архив</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="АрхивСостояниеПросмотраКонтекстноеМеню" id="154"/>
+								<ExtendedTooltip name="АрхивСостояниеПросмотраРасширеннаяПодсказка" id="155"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="АрхивУправлениеПоиском" id="156">
+								<AdditionSource>
+									<Item>Архив</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="АрхивУправлениеПоискомКонтекстноеМеню" id="157"/>
+								<ExtendedTooltip name="АрхивУправлениеПоискомРасширеннаяПодсказка" id="158"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="АрхивДата" id="69">
+									<DataPath>Архив.Date</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Дата замера</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="АрхивДатаКонтекстноеМеню" id="70"/>
+									<ExtendedTooltip name="АрхивДатаРасширеннаяПодсказка" id="71"/>
+								</LabelField>
+								<LabelField name="АрхивКоличествоСпецификаций" id="105">
+									<DataPath>Архив.КоличествоСпецификаций</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<HeaderPicture>
+										<xr:Ref>CommonPicture.Рассчитать</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</HeaderPicture>
+									<Width>2</Width>
+									<ContextMenu name="АрхивКоличествоСпецификацийКонтекстноеМеню" id="106"/>
+									<ExtendedTooltip name="АрхивКоличествоСпецификацийРасширеннаяПодсказка" id="107"/>
+								</LabelField>
+								<LabelField name="АрхивНомер" id="75">
+									<DataPath>Архив.Number</DataPath>
+									<ContextMenu name="АрхивНомерКонтекстноеМеню" id="76"/>
+									<ExtendedTooltip name="АрхивНомерРасширеннаяПодсказка" id="77"/>
+								</LabelField>
+								<LabelField name="АрхивАдресЗамера" id="90">
+									<DataPath>Архив.АдресЗамера</DataPath>
+									<ContextMenu name="АрхивАдресЗамераКонтекстноеМеню" id="91"/>
+									<ExtendedTooltip name="АрхивАдресЗамераРасширеннаяПодсказка" id="92"/>
+								</LabelField>
+								<LabelField name="АрхивЗамерщик" id="96">
+									<DataPath>Архив.Замерщик</DataPath>
+									<ContextMenu name="АрхивЗамерщикКонтекстноеМеню" id="97"/>
+									<ExtendedTooltip name="АрхивЗамерщикРасширеннаяПодсказка" id="98"/>
+								</LabelField>
+								<LabelField name="АрхивИмяЗаказчика" id="99">
+									<DataPath>Архив.ИмяЗаказчика</DataPath>
+									<ContextMenu name="АрхивИмяЗаказчикаКонтекстноеМеню" id="100"/>
+									<ExtendedTooltip name="АрхивИмяЗаказчикаРасширеннаяПодсказка" id="101"/>
+								</LabelField>
+								<LabelField name="АрхивТелефон" id="129">
+									<DataPath>Архив.Телефон</DataPath>
+									<ContextMenu name="АрхивТелефонКонтекстноеМеню" id="130"/>
+									<ExtendedTooltip name="АрхивТелефонРасширеннаяПодсказка" id="131"/>
+								</LabelField>
+								<LabelField name="АрхивАвтор" id="84">
+									<DataPath>Архив.Автор</DataPath>
+									<ContextMenu name="АрхивАвторКонтекстноеМеню" id="85"/>
+									<ExtendedTooltip name="АрхивАвторРасширеннаяПодсказка" id="86"/>
+								</LabelField>
+								<LabelField name="АрхивАгент" id="87">
+									<DataPath>Архив.Агент</DataPath>
+									<ContextMenu name="АрхивАгентКонтекстноеМеню" id="88"/>
+									<ExtendedTooltip name="АрхивАгентРасширеннаяПодсказка" id="89"/>
+								</LabelField>
+								<LabelField name="АрхивОфис" id="114">
+									<DataPath>Архив.Офис</DataPath>
+									<ContextMenu name="АрхивОфисКонтекстноеМеню" id="115"/>
+									<ExtendedTooltip name="АрхивОфисРасширеннаяПодсказка" id="116"/>
+								</LabelField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
 			</ChildItems>
-		</Table>
+		</Pages>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Список" id="1">
@@ -213,16 +390,17 @@
 				<QueryText>ВЫБРАТЬ
 	докЗамер.АдресЗамера КАК АдресЗамера,
 	докЗамер.Замерщик КАК Замерщик,
-	докЗамер.ИмяЗаказчика КАК ИмяЗаказчика,
-	докЗамер.Телефон КАК Телефон,
 	докЗамер.Номер КАК Номер,
 	докЗамер.Офис КАК Офис,
-	докЗамер.Дата КАК ДатаЗамера,
 	докЗамер.Автор КАК Автор,
 	докЗамер.Ссылка КАК Ссылка,
 	ЕСТЬNULL(ЗапросФайлы.Значение, 0) КАК Файлов,
 	ЕСТЬNULL(ЗапросСпецификации.Значение, 0) КАК Спецификаций,
-	ЕСТЬNULL(ЗапросДоговоры.Значение, 0) КАК Договоров
+	ЕСТЬNULL(ЗапросДоговоры.Значение, 0) КАК Договоров,
+	докЗамер.Агент КАК Агент,
+	Встречи.Ответственный,
+	докЗамер.Дата КАК ДатаЗамера,
+	Встречи.Дата КАК ДатаВстречи
 ИЗ
 	Документ.Замер КАК докЗамер
 		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
@@ -258,7 +436,23 @@
 		
 		СГРУППИРОВАТЬ ПО
 			Замер.Ссылка) КАК ЗапросДоговоры
-		ПО докЗамер.Ссылка = ЗапросДоговоры.Ссылка</QueryText>
+		ПО докЗамер.Ссылка = ЗапросДоговоры.Ссылка
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.АктивностьЗамеров КАК АктивностьЗамеров
+		ПО (АктивностьЗамеров.Замер = докЗамер.Ссылка)
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
+			Замер.Ссылка КАК Ссылка,
+			МАКСИМУМ(ВстречаСКлиентом.Ответственный) КАК Ответственный,
+			МАКСИМУМ(ВстречаСКлиентом.Дата) КАК Дата
+		ИЗ
+			Документ.Замер КАК Замер
+				ЛЕВОЕ СОЕДИНЕНИЕ Документ.ВстречаСКлиентом КАК ВстречаСКлиентом
+				ПО (ВстречаСКлиентом.Основание = Замер.Ссылка)
+		
+		СГРУППИРОВАТЬ ПО
+			Замер.Ссылка) КАК Встречи
+		ПО докЗамер.Ссылка = Встречи.Ссылка
+ГДЕ
+	АктивностьЗамеров.Статус</QueryText>
 				<MainTable>Document.Замер</MainTable>
 				<ListSettings>
 					<dcsset:filter>
@@ -288,9 +482,6 @@
 									<dcsset:field>Замерщик</dcsset:field>
 								</dcsset:item>
 								<dcsset:item>
-									<dcsset:field>ИмяЗаказчика</dcsset:field>
-								</dcsset:item>
-								<dcsset:item>
 									<dcsset:field>Номер</dcsset:field>
 								</dcsset:item>
 								<dcsset:item>
@@ -303,13 +494,16 @@
 									<dcsset:field>Ссылка</dcsset:field>
 								</dcsset:item>
 								<dcsset:item>
-									<dcsset:field>Телефон</dcsset:field>
-								</dcsset:item>
-								<dcsset:item>
 									<dcsset:field>Файлов</dcsset:field>
 								</dcsset:item>
 								<dcsset:item>
-									<dcsset:field>ЕстьЗаметка</dcsset:field>
+									<dcsset:field>ДатаВстречи</dcsset:field>
+								</dcsset:item>
+								<dcsset:item>
+									<dcsset:field>Ответственный</dcsset:field>
+								</dcsset:item>
+								<dcsset:item>
+									<dcsset:field>Агент</dcsset:field>
 								</dcsset:item>
 							</dcsset:selection>
 							<dcsset:filter>
@@ -323,6 +517,62 @@
 								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 									<dcscor:parameter>ЦветФона</dcscor:parameter>
 									<dcscor:value xsi:type="v8ui:Color">web:LightGreen</dcscor:value>
+								</dcscor:item>
+							</dcsset:appearance>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:selection>
+								<dcsset:item>
+									<dcsset:field>Ответственный</dcsset:field>
+								</dcsset:item>
+								<dcsset:item>
+									<dcsset:field>Автор</dcsset:field>
+								</dcsset:item>
+								<dcsset:item>
+									<dcsset:field>Агент</dcsset:field>
+								</dcsset:item>
+								<dcsset:item>
+									<dcsset:field>АдресЗамера</dcsset:field>
+								</dcsset:item>
+								<dcsset:item>
+									<dcsset:field>ДатаВстречи</dcsset:field>
+								</dcsset:item>
+								<dcsset:item>
+									<dcsset:field>Замерщик</dcsset:field>
+								</dcsset:item>
+								<dcsset:item>
+									<dcsset:field>Офис</dcsset:field>
+								</dcsset:item>
+								<dcsset:item>
+									<dcsset:field>Спецификаций</dcsset:field>
+								</dcsset:item>
+								<dcsset:item>
+									<dcsset:field>Файлов</dcsset:field>
+								</dcsset:item>
+								<dcsset:item>
+									<dcsset:field>ДатаЗамера</dcsset:field>
+								</dcsset:item>
+								<dcsset:item>
+									<dcsset:field>Номер</dcsset:field>
+								</dcsset:item>
+							</dcsset:selection>
+							<dcsset:filter>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">ДатаВстречи</dcsset:left>
+									<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+								</dcsset:item>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">ДатаЗамера</dcsset:left>
+									<dcsset:comparisonType>LessOrEqual</dcsset:comparisonType>
+									<dcsset:right xsi:type="v8:StandardBeginningDate">
+										<v8:variant xsi:type="v8:StandardBeginningDateVariant">BeginningOfThisDay</v8:variant>
+									</dcsset:right>
+								</dcsset:item>
+							</dcsset:filter>
+							<dcsset:appearance>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:parameter>ЦветФона</dcscor:parameter>
+									<dcscor:value xsi:type="v8ui:Color">web:Salmon</dcscor:value>
 								</dcscor:item>
 							</dcsset:appearance>
 						</dcsset:item>
@@ -376,6 +626,65 @@
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
 			</Type>
+		</Attribute>
+		<Attribute name="Архив" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Архив</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	ДокументЗамер.Ссылка,
+	ДокументЗамер.ПометкаУдаления,
+	ДокументЗамер.Номер,
+	ДокументЗамер.Дата,
+	ДокументЗамер.Проведен,
+	ДокументЗамер.Автор,
+	ДокументЗамер.Агент,
+	ДокументЗамер.АдресЗамера,
+	ДокументЗамер.ДатаПриемаОплаты,
+	ДокументЗамер.Замерщик,
+	ДокументЗамер.ИмяЗаказчика,
+	ДокументЗамер.Километраж,
+	ДокументЗамер.КоличествоСпецификаций,
+	ДокументЗамер.Комментарий,
+	ДокументЗамер.ОткудаПришел,
+	ДокументЗамер.Офис,
+	ДокументЗамер.ПервыйЗамер,
+	ДокументЗамер.Подразделение,
+	ДокументЗамер.ПричинаОтказа,
+	ДокументЗамер.СуммаОплаты,
+	ДокументЗамер.Телефон,
+	ДокументЗамер.МоментВремени
+ИЗ
+	Документ.Замер КАК ДокументЗамер
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.АктивностьЗамеров КАК АктивностьЗамеров
+		ПО АктивностьЗамеров.Замер = ДокументЗамер.Ссылка
+ГДЕ
+	НЕ АктивностьЗамеров.Статус</QueryText>
+				<MainTable>Document.Замер</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+				</ListSettings>
+			</Settings>
 		</Attribute>
 	</Attributes>
 	<Commands>

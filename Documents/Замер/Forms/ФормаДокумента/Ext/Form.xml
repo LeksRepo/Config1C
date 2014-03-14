@@ -32,6 +32,22 @@
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
+		<LabelField name="Адрес" id="118">
+			<DataPath>Объект.АдресЗамера</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес</v8:content>
+				</v8:item>
+			</Title>
+			<Hiperlink>true</Hiperlink>
+			<Font ref="sys:DefaultGUIFont" kind="WindowsFont"/>
+			<ContextMenu name="АдресКонтекстноеМеню" id="119"/>
+			<ExtendedTooltip name="АдресРасширеннаяПодсказка" id="120"/>
+			<Events>
+				<Event name="Click">АдресНажатие</Event>
+			</Events>
+		</LabelField>
 		<UsualGroup name="ГруппаШапка" id="30">
 			<Title>
 				<v8:item>
@@ -68,6 +84,16 @@
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="ГруппаЛеваяКолонкаРасширеннаяПодсказка" id="92"/>
 					<ChildItems>
+						<LabelField name="ПервыйЗамер" id="156">
+							<DataPath>Объект.ПервыйЗамер</DataPath>
+							<Width>30</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<VerticalStretch>false</VerticalStretch>
+							<Hiperlink>true</Hiperlink>
+							<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							<ContextMenu name="ПервыйЗамерКонтекстноеМеню" id="157"/>
+							<ExtendedTooltip name="ПервыйЗамерРасширеннаяПодсказка" id="158"/>
+						</LabelField>
 						<InputField name="ИмяЗаказчика" id="17">
 							<DataPath>Объект.ИмяЗаказчика</DataPath>
 							<EditMode>EnterOnInput</EditMode>
@@ -317,6 +343,57 @@
 							<ContextMenu name="ОткудаПришелКонтекстноеМеню" id="70"/>
 							<ExtendedTooltip name="ОткудаПришелExtendedTooltip" id="95"/>
 						</InputField>
+						<InputField name="ПричинаОтказа" id="159">
+							<DataPath>Объект.ПричинаОтказа</DataPath>
+							<Width>30</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<VerticalStretch>false</VerticalStretch>
+							<ListChoiceMode>true</ListChoiceMode>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xs:string">Дорого</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xs:string">Мы еще думаем</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xs:string">Уже заказали</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xs:string">Причина неизвесна</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xs:string">Плохая работа специалистов</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="ПричинаОтказаКонтекстноеМеню" id="160"/>
+							<ExtendedTooltip name="ПричинаОтказаРасширеннаяПодсказка" id="161"/>
+						</InputField>
 						<UsualGroup name="ГруппаДата" id="72">
 							<Title>
 								<v8:item>
@@ -493,24 +570,6 @@
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ГруппаАдресРасширеннаяПодсказка" id="97"/>
-			<ChildItems>
-				<LabelField name="Адрес" id="118">
-					<DataPath>Объект.АдресЗамера</DataPath>
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Адрес</v8:content>
-						</v8:item>
-					</Title>
-					<Hiperlink>true</Hiperlink>
-					<Font ref="sys:DefaultGUIFont" kind="WindowsFont"/>
-					<ContextMenu name="АдресКонтекстноеМеню" id="119"/>
-					<ExtendedTooltip name="АдресРасширеннаяПодсказка" id="120"/>
-					<Events>
-						<Event name="Click">АдресНажатие</Event>
-					</Events>
-				</LabelField>
-			</ChildItems>
 		</UsualGroup>
 		<UsualGroup name="ГруппаОплата" id="132">
 			<Title>
@@ -594,29 +653,29 @@
 				<Autofill>false</Autofill>
 			</AutoCommandBar>
 			<ExtendedTooltip name="СписокСпецификацийРасширеннаяПодсказка" id="137"/>
-			<SearchStringAddition name="СписокСпецификацийСтрокаПоиска" id="156">
+			<SearchStringAddition name="СписокСпецификацийСтрокаПоиска" id="162">
 				<AdditionSource>
 					<Item>СписокСпецификаций</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСпецификацийСтрокаПоискаКонтекстноеМеню" id="157"/>
-				<ExtendedTooltip name="СписокСпецификацийСтрокаПоискаРасширеннаяПодсказка" id="158"/>
+				<ContextMenu name="СписокСпецификацийСтрокаПоискаКонтекстноеМеню" id="163"/>
+				<ExtendedTooltip name="СписокСпецификацийСтрокаПоискаРасширеннаяПодсказка" id="164"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокСпецификацийСостояниеПросмотра" id="159">
+			<ViewStatusAddition name="СписокСпецификацийСостояниеПросмотра" id="165">
 				<AdditionSource>
 					<Item>СписокСпецификаций</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСпецификацийСостояниеПросмотраКонтекстноеМеню" id="160"/>
-				<ExtendedTooltip name="СписокСпецификацийСостояниеПросмотраРасширеннаяПодсказка" id="161"/>
+				<ContextMenu name="СписокСпецификацийСостояниеПросмотраКонтекстноеМеню" id="166"/>
+				<ExtendedTooltip name="СписокСпецификацийСостояниеПросмотраРасширеннаяПодсказка" id="167"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокСпецификацийУправлениеПоиском" id="162">
+			<SearchControlAddition name="СписокСпецификацийУправлениеПоиском" id="168">
 				<AdditionSource>
 					<Item>СписокСпецификаций</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСпецификацийУправлениеПоискомКонтекстноеМеню" id="163"/>
-				<ExtendedTooltip name="СписокСпецификацийУправлениеПоискомРасширеннаяПодсказка" id="164"/>
+				<ContextMenu name="СписокСпецификацийУправлениеПоискомКонтекстноеМеню" id="169"/>
+				<ExtendedTooltip name="СписокСпецификацийУправлениеПоискомРасширеннаяПодсказка" id="170"/>
 			</SearchControlAddition>
 			<Events>
 				<Event name="Selection">СписокСпецификацийВыбор</Event>
