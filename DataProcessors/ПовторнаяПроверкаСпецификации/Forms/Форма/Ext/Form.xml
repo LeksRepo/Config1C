@@ -7,6 +7,37 @@
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
+		<UsualGroup name="ГруппаИнформация" id="218">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа информация</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа информация</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаИнформацияРасширеннаяПодсказка" id="219"/>
+			<ChildItems>
+				<LabelField name="Спецификация" id="212">
+					<DataPath>Спецификация</DataPath>
+					<Hiperlink>true</Hiperlink>
+					<ContextMenu name="СпецификацияКонтекстноеМеню" id="213"/>
+					<ExtendedTooltip name="СпецификацияРасширеннаяПодсказка" id="214"/>
+				</LabelField>
+				<LabelField name="Подразделение" id="215">
+					<DataPath>Подразделение</DataPath>
+					<ContextMenu name="ПодразделениеКонтекстноеМеню" id="216"/>
+					<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="217"/>
+				</LabelField>
+			</ChildItems>
+		</UsualGroup>
 		<Button name="ПроверитьДетали" id="1">
 			<Type>UsualButton</Type>
 			<CommandName>Form.Command.ПроверитьДетали</CommandName>
@@ -28,44 +59,41 @@
 				<Autofill>false</Autofill>
 			</AutoCommandBar>
 			<ExtendedTooltip name="ТаблицаДеталейРасширеннаяПодсказка" id="6"/>
-			<SearchStringAddition name="ТаблицаДеталейСтрокаПоиска" id="209">
+			<SearchStringAddition name="ТаблицаДеталейСтрокаПоиска" id="220">
 				<AdditionSource>
 					<Item>ТаблицаДеталей</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="ТаблицаДеталейСтрокаПоискаКонтекстноеМеню" id="210"/>
-				<ExtendedTooltip name="ТаблицаДеталейСтрокаПоискаРасширеннаяПодсказка" id="211"/>
+				<ContextMenu name="ТаблицаДеталейСтрокаПоискаКонтекстноеМеню" id="221"/>
+				<ExtendedTooltip name="ТаблицаДеталейСтрокаПоискаРасширеннаяПодсказка" id="222"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="ТаблицаДеталейСостояниеПросмотра" id="212">
+			<ViewStatusAddition name="ТаблицаДеталейСостояниеПросмотра" id="223">
 				<AdditionSource>
 					<Item>ТаблицаДеталей</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="ТаблицаДеталейСостояниеПросмотраКонтекстноеМеню" id="213"/>
-				<ExtendedTooltip name="ТаблицаДеталейСостояниеПросмотраРасширеннаяПодсказка" id="214"/>
+				<ContextMenu name="ТаблицаДеталейСостояниеПросмотраКонтекстноеМеню" id="224"/>
+				<ExtendedTooltip name="ТаблицаДеталейСостояниеПросмотраРасширеннаяПодсказка" id="225"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="ТаблицаДеталейУправлениеПоиском" id="215">
+			<SearchControlAddition name="ТаблицаДеталейУправлениеПоиском" id="226">
 				<AdditionSource>
 					<Item>ТаблицаДеталей</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="ТаблицаДеталейУправлениеПоискомКонтекстноеМеню" id="216"/>
-				<ExtendedTooltip name="ТаблицаДеталейУправлениеПоискомРасширеннаяПодсказка" id="217"/>
+				<ContextMenu name="ТаблицаДеталейУправлениеПоискомКонтекстноеМеню" id="227"/>
+				<ExtendedTooltip name="ТаблицаДеталейУправлениеПоискомРасширеннаяПодсказка" id="228"/>
 			</SearchControlAddition>
+			<Events>
+				<Event name="Selection">ТаблицаДеталейВыбор</Event>
+			</Events>
 			<ChildItems>
 				<ColumnGroup name="ТаблицаДеталейГруппаПроверки" id="205">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Таблица деталей группа проверки</v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
 							<v8:content>Проверка деталей</v8:content>
 						</v8:item>
-					</ToolTip>
+					</Title>
 					<Group>Horizontal</Group>
 					<ShowInHeader>true</ShowInHeader>
 					<ExtendedTooltip name="ТаблицаДеталейГруппаПроверкиРасширеннаяПодсказка" id="206"/>
@@ -108,7 +136,7 @@
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Таблица деталей группа спецификации</v8:content>
+							<v8:content>Детали спецификации</v8:content>
 						</v8:item>
 					</Title>
 					<ToolTip>
