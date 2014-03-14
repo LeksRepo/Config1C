@@ -77,6 +77,7 @@
 			<ExtendedTooltip name="ГруппаСписковРасширеннаяПодсказка" id="60"/>
 			<ChildItems>
 				<Page name="ГруппаВРаботе" id="61">
+					<Visible>false</Visible>
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -317,17 +318,6 @@
 									<ContextMenu name="АрхивДатаКонтекстноеМеню" id="70"/>
 									<ExtendedTooltip name="АрхивДатаРасширеннаяПодсказка" id="71"/>
 								</LabelField>
-								<LabelField name="АрхивКоличествоСпецификаций" id="105">
-									<DataPath>Архив.КоличествоСпецификаций</DataPath>
-									<TitleLocation>None</TitleLocation>
-									<HeaderPicture>
-										<xr:Ref>CommonPicture.Рассчитать</xr:Ref>
-										<xr:LoadTransparent>true</xr:LoadTransparent>
-									</HeaderPicture>
-									<Width>2</Width>
-									<ContextMenu name="АрхивКоличествоСпецификацийКонтекстноеМеню" id="106"/>
-									<ExtendedTooltip name="АрхивКоличествоСпецификацийРасширеннаяПодсказка" id="107"/>
-								</LabelField>
 								<LabelField name="АрхивНомер" id="75">
 									<DataPath>Архив.Number</DataPath>
 									<ContextMenu name="АрхивНомерКонтекстноеМеню" id="76"/>
@@ -380,7 +370,6 @@
 			<Type>
 				<v8:Type>cfg:DynamicList</v8:Type>
 			</Type>
-			<MainAttribute>true</MainAttribute>
 			<UseAlways>
 				<Field>Список.Ссылка</Field>
 			</UseAlways>
@@ -637,6 +626,7 @@
 			<Type>
 				<v8:Type>cfg:DynamicList</v8:Type>
 			</Type>
+			<MainAttribute>true</MainAttribute>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
@@ -665,10 +655,7 @@
 	ДокументЗамер.МоментВремени
 ИЗ
 	Документ.Замер КАК ДокументЗамер
-		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.АктивностьЗамеров КАК АктивностьЗамеров
-		ПО АктивностьЗамеров.Замер = ДокументЗамер.Ссылка
-ГДЕ
-	НЕ АктивностьЗамеров.Статус</QueryText>
+</QueryText>
 				<MainTable>Document.Замер</MainTable>
 				<ListSettings>
 					<dcsset:filter>
