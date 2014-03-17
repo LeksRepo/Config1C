@@ -78,7 +78,7 @@
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Получено в цех количество</v8:content>
+					<v8:content>Количество</v8:content>
 				</v8:item>
 			</title>
 			<appearance>
@@ -94,7 +94,7 @@
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Получено в цех стоимость</v8:content>
+					<v8:content>Плановая стоимость</v8:content>
 				</v8:item>
 			</title>
 			<appearance>
@@ -118,7 +118,7 @@
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Требуется по спецификациям количество</v8:content>
+					<v8:content>Количество</v8:content>
 				</v8:item>
 			</title>
 			<appearance>
@@ -134,7 +134,7 @@
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Требуется по спецификациям стоимость</v8:content>
+					<v8:content>Плановая стоимость</v8:content>
 				</v8:item>
 			</title>
 			<appearance>
@@ -154,11 +154,22 @@
 				</v8:item>
 			</title>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПолученоВЦехСебестоимость</dataPath>
+			<field>ПолученоВЦехСебестоимость</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Себестоимость</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	ЕСТЬNULL(ОсновноеПроизводство.Субконто1, ДополнительныйЛимит.Субконто1) КАК Номенклатура,
 	ЕСТЬNULL(ОсновноеПроизводство.КоличествоОборотДт, 0) КАК ПолученоВЦехКоличество,
-	ЕСТЬNULL(ДополнительныйЛимит.КоличествоОборотДт, 0) КАК ТребуетсяПоСпецификациямКоличество
+	ЕСТЬNULL(ДополнительныйЛимит.КоличествоОборотДт, 0) КАК ТребуетсяПоСпецификациямКоличество,
+	ОсновноеПроизводство.СуммаОборотДт КАК ПолученоВЦехСебестоимость
 ПОМЕСТИТЬ втМатериалы
 ИЗ
 	РегистрБухгалтерии.Управленческий.Обороты(
@@ -195,7 +206,8 @@
 	втМатериалы.ТребуетсяПоСпецификациямКоличество,
 	втМатериалы.ТребуетсяПоСпецификациямКоличество * ЦеныНоменклатурыСрезПоследних.Внутренняя КАК ТребуетсяПоСпецификациямСтоимость,
 	(втМатериалы.ТребуетсяПоСпецификациямКоличество - втМатериалы.ПолученоВЦехКоличество) * ЦеныНоменклатурыСрезПоследних.Внутренняя КАК Отклонение,
-	втМатериалы.Номенклатура.ЕдиницаИзмерения КАК ЕдиницаИзмерения
+	втМатериалы.Номенклатура.ЕдиницаИзмерения КАК ЕдиницаИзмерения,
+	втМатериалы.ПолученоВЦехСебестоимость
 ИЗ
 	втМатериалы КАК втМатериалы
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ЦеныНоменклатуры.СрезПоследних({(&amp;НеТрогатьНикогда)}, Регион = &amp;Регион) КАК ЦеныНоменклатурыСрезПоследних
@@ -220,6 +232,10 @@
 	<totalField>
 		<dataPath>ТребуетсяПоСпецификациямСтоимость</dataPath>
 		<expression>Сумма(ТребуетсяПоСпецификациямСтоимость)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ПолученоВЦехСебестоимость</dataPath>
+		<expression>Сумма(ПолученоВЦехСебестоимость)</expression>
 	</totalField>
 	<parameter>
 		<name>Регион</name>
@@ -341,6 +357,9 @@
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
 						<dcsset:field>ПолученоВЦехСтоимость</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ПолученоВЦехСебестоимость</dcsset:field>
 					</dcsset:item>
 					<dcsset:placement>Auto</dcsset:placement>
 				</dcsset:item>
