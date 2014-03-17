@@ -77,7 +77,6 @@
 			<ExtendedTooltip name="ГруппаСписковРасширеннаяПодсказка" id="60"/>
 			<ChildItems>
 				<Page name="ГруппаВРаботе" id="61">
-					<Visible>false</Visible>
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -370,6 +369,7 @@
 			<Type>
 				<v8:Type>cfg:DynamicList</v8:Type>
 			</Type>
+			<MainAttribute>true</MainAttribute>
 			<UseAlways>
 				<Field>Список.Ссылка</Field>
 			</UseAlways>
@@ -385,7 +385,6 @@
 	докЗамер.Ссылка КАК Ссылка,
 	ЕСТЬNULL(ЗапросФайлы.Значение, 0) КАК Файлов,
 	ЕСТЬNULL(ЗапросСпецификации.Значение, 0) КАК Спецификаций,
-	ЕСТЬNULL(ЗапросДоговоры.Значение, 0) КАК Договоров,
 	докЗамер.Агент КАК Агент,
 	Встречи.Ответственный,
 	докЗамер.Дата КАК ДатаЗамера,
@@ -414,18 +413,6 @@
 		СГРУППИРОВАТЬ ПО
 			Замер.Ссылка) КАК ЗапросФайлы
 		ПО докЗамер.Ссылка = ЗапросФайлы.Ссылка
-		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
-			Замер.Ссылка КАК Ссылка,
-			КОЛИЧЕСТВО(РАЗЛИЧНЫЕ Договор.Ссылка) КАК Значение
-		ИЗ
-			Документ.Замер КАК Замер
-				ЛЕВОЕ СОЕДИНЕНИЕ Документ.Договор КАК Договор
-				ПО (Договор.Проведен)
-					И Замер.Ссылка = Договор.Спецификация.ДокументОснование
-		
-		СГРУППИРОВАТЬ ПО
-			Замер.Ссылка) КАК ЗапросДоговоры
-		ПО докЗамер.Ссылка = ЗапросДоговоры.Ссылка
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.АктивностьЗамеров КАК АктивностьЗамеров
 		ПО (АктивностьЗамеров.Замер = докЗамер.Ссылка)
 		ВНУТРЕННЕЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
@@ -454,62 +441,7 @@
 					</dcsset:order>
 					<dcsset:conditionalAppearance>
 						<dcsset:item>
-							<dcsset:selection>
-								<dcsset:item>
-									<dcsset:field>Автор</dcsset:field>
-								</dcsset:item>
-								<dcsset:item>
-									<dcsset:field>АдресЗамера</dcsset:field>
-								</dcsset:item>
-								<dcsset:item>
-									<dcsset:field>ДатаЗамера</dcsset:field>
-								</dcsset:item>
-								<dcsset:item>
-									<dcsset:field>Договоров</dcsset:field>
-								</dcsset:item>
-								<dcsset:item>
-									<dcsset:field>Замерщик</dcsset:field>
-								</dcsset:item>
-								<dcsset:item>
-									<dcsset:field>Номер</dcsset:field>
-								</dcsset:item>
-								<dcsset:item>
-									<dcsset:field>Офис</dcsset:field>
-								</dcsset:item>
-								<dcsset:item>
-									<dcsset:field>Спецификаций</dcsset:field>
-								</dcsset:item>
-								<dcsset:item>
-									<dcsset:field>Ссылка</dcsset:field>
-								</dcsset:item>
-								<dcsset:item>
-									<dcsset:field>Файлов</dcsset:field>
-								</dcsset:item>
-								<dcsset:item>
-									<dcsset:field>ДатаВстречи</dcsset:field>
-								</dcsset:item>
-								<dcsset:item>
-									<dcsset:field>Ответственный</dcsset:field>
-								</dcsset:item>
-								<dcsset:item>
-									<dcsset:field>Агент</dcsset:field>
-								</dcsset:item>
-							</dcsset:selection>
-							<dcsset:filter>
-								<dcsset:item xsi:type="dcsset:FilterItemComparison">
-									<dcsset:left xsi:type="dcscor:Field">Договоров</dcsset:left>
-									<dcsset:comparisonType>Greater</dcsset:comparisonType>
-									<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
-								</dcsset:item>
-							</dcsset:filter>
-							<dcsset:appearance>
-								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-									<dcscor:parameter>ЦветФона</dcscor:parameter>
-									<dcscor:value xsi:type="v8ui:Color">web:LightGreen</dcscor:value>
-								</dcscor:item>
-							</dcsset:appearance>
-						</dcsset:item>
-						<dcsset:item>
+							<dcsset:use>false</dcsset:use>
 							<dcsset:selection>
 								<dcsset:item>
 									<dcsset:field>Ответственный</dcsset:field>
@@ -571,51 +503,6 @@
 				</ListSettings>
 			</Settings>
 		</Attribute>
-		<Attribute name="ДолгийРасчетСтоимости" id="2">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Долгий расчет стоимости</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:string</v8:Type>
-				<v8:StringQualifiers>
-					<v8:Length>0</v8:Length>
-					<v8:AllowedLength>Variable</v8:AllowedLength>
-				</v8:StringQualifiers>
-			</Type>
-		</Attribute>
-		<Attribute name="ЕстьДоговор" id="3">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Есть договор</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:string</v8:Type>
-				<v8:StringQualifiers>
-					<v8:Length>0</v8:Length>
-					<v8:AllowedLength>Variable</v8:AllowedLength>
-				</v8:StringQualifiers>
-			</Type>
-		</Attribute>
-		<Attribute name="НетСпецификации" id="4">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Нет спецификации</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:string</v8:Type>
-				<v8:StringQualifiers>
-					<v8:Length>0</v8:Length>
-					<v8:AllowedLength>Variable</v8:AllowedLength>
-				</v8:StringQualifiers>
-			</Type>
-		</Attribute>
 		<Attribute name="Архив" id="5">
 			<Title>
 				<v8:item>
@@ -626,7 +513,6 @@
 			<Type>
 				<v8:Type>cfg:DynamicList</v8:Type>
 			</Type>
-			<MainAttribute>true</MainAttribute>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
@@ -655,7 +541,10 @@
 	ДокументЗамер.МоментВремени
 ИЗ
 	Документ.Замер КАК ДокументЗамер
-</QueryText>
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.АктивностьЗамеров КАК АктивностьЗамеров
+		ПО АктивностьЗамеров.Замер = ДокументЗамер.Ссылка
+ГДЕ
+	НЕ АктивностьЗамеров.Статус</QueryText>
 				<MainTable>Document.Замер</MainTable>
 				<ListSettings>
 					<dcsset:filter>
