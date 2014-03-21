@@ -12,6 +12,11 @@
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<Autofill>false</Autofill>
 	</AutoCommandBar>
+	<Events>
+		<Event name="ChoiceProcessing">ОбработкаВыбора</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
 	<ChildItems>
 		<UsualGroup name="ОсновнаяГруппа" id="139">
 			<Title>
@@ -57,22 +62,47 @@
 							<CommandName>Form.Command.Сформировать</CommandName>
 							<ExtendedTooltip name="СформироватьРасширеннаяПодсказка" id="11"/>
 						</Button>
-						<InputField name="СписокПодразделений" id="1">
-							<DataPath>СписокПодразделений</DataPath>
+						<InputField name="Период" id="161">
+							<DataPath>Период</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Месяц</v8:content>
+								</v8:item>
+							</Title>
+							<Width>12</Width>
 							<HorizontalStretch>false</HorizontalStretch>
-							<ContextMenu name="СписокПодразделенийКонтекстноеМеню" id="2"/>
-							<ExtendedTooltip name="СписокПодразделенийРасширеннаяПодсказка" id="3"/>
+							<ChoiceListButton>true</ChoiceListButton>
+							<ContextMenu name="ПериодКонтекстноеМеню" id="162"/>
+							<ExtendedTooltip name="ПериодРасширеннаяПодсказка" id="163"/>
+							<Events>
+								<Event name="OnChange">ПериодПриИзменении</Event>
+								<Event name="AutoComplete">ПериодАвтоПодбор</Event>
+								<Event name="StartListChoice">ПериодНачалоВыбораИзСписка</Event>
+								<Event name="TextEditEnd">ПериодОкончаниеВводаТекста</Event>
+								<Event name="ChoiceProcessing">ПериодОбработкаВыбора</Event>
+							</Events>
 						</InputField>
 						<InputField name="День" id="4">
 							<DataPath>День</DataPath>
 							<ContextMenu name="ДеньКонтекстноеМеню" id="5"/>
 							<ExtendedTooltip name="ДеньРасширеннаяПодсказка" id="6"/>
 						</InputField>
-						<InputField name="Месяц" id="12">
-							<DataPath>Месяц</DataPath>
-							<ContextMenu name="МесяцКонтекстноеМеню" id="13"/>
-							<ExtendedTooltip name="МесяцРасширеннаяПодсказка" id="14"/>
-						</InputField>
+						<LabelField name="СписокПодразделений" id="1">
+							<DataPath>СписокПодразделений</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Подразделения</v8:content>
+								</v8:item>
+							</Title>
+							<Hiperlink>true</Hiperlink>
+							<ContextMenu name="СписокПодразделенийКонтекстноеМеню" id="2"/>
+							<ExtendedTooltip name="СписокПодразделенийРасширеннаяПодсказка" id="3"/>
+							<Events>
+								<Event name="Click">СписокПодразделенийНажатие</Event>
+							</Events>
+						</LabelField>
 					</ChildItems>
 				</UsualGroup>
 				<Pages name="СтраницыОтчеты" id="143">
@@ -478,6 +508,13 @@
 			<Type>
 				<v8:Type>v8:ValueListType</v8:Type>
 			</Type>
+			<UseAlways>
+				<Field>СписокПодразделений.ValueType</Field>
+				<Field>СписокПодразделений.Value</Field>
+				<Field>СписокПодразделений.Presentation</Field>
+				<Field>СписокПодразделений.Picture</Field>
+				<Field>СписокПодразделений.Check</Field>
+			</UseAlways>
 			<Save>
 				<Field>СписокПодразделений</Field>
 			</Save>
@@ -500,23 +537,6 @@
 			</Type>
 			<Save>
 				<Field>День</Field>
-			</Save>
-		</Attribute>
-		<Attribute name="Месяц" id="4">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Месяц</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:dateTime</v8:Type>
-				<v8:DateQualifiers>
-					<v8:DateFractions>Date</v8:DateFractions>
-				</v8:DateQualifiers>
-			</Type>
-			<Save>
-				<Field>Месяц</Field>
 			</Save>
 		</Attribute>
 		<Attribute name="ДоходЗаПериод" id="5">
@@ -1031,17 +1051,6 @@
 				</v8:NumberQualifiers>
 			</Type>
 		</Attribute>
-		<Attribute name="ПериодОтчета" id="37">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Период отчета</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>v8:StandardPeriod</v8:Type>
-			</Type>
-		</Attribute>
 		<Attribute name="СтоимостьЗаключенныхДоговоровЗаДень" id="38">
 			<Title>
 				<v8:item>
@@ -1110,6 +1119,32 @@
 			</Title>
 			<Type>
 				<v8:Type xmlns:mxl="http://v8.1c.ru/8.2/data/spreadsheet">mxl:SpreadsheetDocument</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Период" id="43">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Период</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ВидПериода" id="44">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид периода</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.ДоступныеПериодыОтчета</v8:Type>
 			</Type>
 		</Attribute>
 	</Attributes>
