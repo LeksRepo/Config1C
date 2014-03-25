@@ -550,6 +550,9 @@
 								<ContextMenu name="СписокЗеркалУправлениеПоискомКонтекстноеМеню" id="230"/>
 								<ExtendedTooltip name="СписокЗеркалУправлениеПоискомРасширеннаяПодсказка" id="231"/>
 							</SearchControlAddition>
+							<Events>
+								<Event name="OnActivateRow">СписокЗеркалПриАктивизацииСтроки</Event>
+							</Events>
 							<ChildItems>
 								<LabelField name="СписокЗеркалНомерСтроки" id="166">
 									<DataPath>Объект.СписокЗеркал.LineNumber</DataPath>
@@ -666,6 +669,19 @@
 				<Field>Объект.RegisterRecords</Field>
 			</UseAlways>
 			<Columns>
+				<AdditionalColumns table="Объект.СписокЗеркал">
+					<Column name="СписокВыбора" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Список выбора</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>v8:ValueListType</v8:Type>
+						</Type>
+					</Column>
+				</AdditionalColumns>
 				<AdditionalColumns table="Объект.СписокНоменклатуры"/>
 			</Columns>
 		</Attribute>
