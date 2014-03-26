@@ -28,163 +28,204 @@
 				<LabelField name="Спецификация" id="212">
 					<DataPath>Спецификация</DataPath>
 					<Hiperlink>true</Hiperlink>
+					<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 					<ContextMenu name="СпецификацияКонтекстноеМеню" id="213"/>
 					<ExtendedTooltip name="СпецификацияРасширеннаяПодсказка" id="214"/>
 				</LabelField>
 				<LabelField name="Подразделение" id="215">
 					<DataPath>Подразделение</DataPath>
+					<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 					<ContextMenu name="ПодразделениеКонтекстноеМеню" id="216"/>
 					<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="217"/>
 				</LabelField>
 			</ChildItems>
 		</UsualGroup>
-		<Button name="ПроверитьДетали" id="1">
-			<Type>UsualButton</Type>
-			<CommandName>Form.Command.ПроверитьДетали</CommandName>
-			<ExtendedTooltip name="ПроверитьДеталиРасширеннаяПодсказка" id="2"/>
-		</Button>
-		<Table name="ТаблицаДеталей" id="3">
-			<Representation>List</Representation>
-			<ReadOnly>true</ReadOnly>
-			<AutoInsertNewRow>true</AutoInsertNewRow>
-			<EnableStartDrag>true</EnableStartDrag>
-			<EnableDrag>true</EnableDrag>
-			<DataPath>ТаблицаДеталей</DataPath>
-			<SearchStringLocation>None</SearchStringLocation>
-			<ViewStatusLocation>None</ViewStatusLocation>
-			<SearchControlLocation>None</SearchControlLocation>
-			<RowFilter xsi:nil="true"/>
-			<ContextMenu name="ТаблицаДеталейКонтекстноеМеню" id="4"/>
-			<AutoCommandBar name="ТаблицаДеталейКоманднаяПанель" id="5">
-				<Autofill>false</Autofill>
-			</AutoCommandBar>
-			<ExtendedTooltip name="ТаблицаДеталейРасширеннаяПодсказка" id="6"/>
-			<SearchStringAddition name="ТаблицаДеталейСтрокаПоиска" id="220">
-				<AdditionSource>
-					<Item>ТаблицаДеталей</Item>
-					<Type>SearchStringRepresentation</Type>
-				</AdditionSource>
-				<ContextMenu name="ТаблицаДеталейСтрокаПоискаКонтекстноеМеню" id="221"/>
-				<ExtendedTooltip name="ТаблицаДеталейСтрокаПоискаРасширеннаяПодсказка" id="222"/>
-			</SearchStringAddition>
-			<ViewStatusAddition name="ТаблицаДеталейСостояниеПросмотра" id="223">
-				<AdditionSource>
-					<Item>ТаблицаДеталей</Item>
-					<Type>ViewStatusRepresentation</Type>
-				</AdditionSource>
-				<ContextMenu name="ТаблицаДеталейСостояниеПросмотраКонтекстноеМеню" id="224"/>
-				<ExtendedTooltip name="ТаблицаДеталейСостояниеПросмотраРасширеннаяПодсказка" id="225"/>
-			</ViewStatusAddition>
-			<SearchControlAddition name="ТаблицаДеталейУправлениеПоиском" id="226">
-				<AdditionSource>
-					<Item>ТаблицаДеталей</Item>
-					<Type>SearchControl</Type>
-				</AdditionSource>
-				<ContextMenu name="ТаблицаДеталейУправлениеПоискомКонтекстноеМеню" id="227"/>
-				<ExtendedTooltip name="ТаблицаДеталейУправлениеПоискомРасширеннаяПодсказка" id="228"/>
-			</SearchControlAddition>
-			<Events>
-				<Event name="Selection">ТаблицаДеталейВыбор</Event>
-			</Events>
+		<Pages name="ГруппаСпецификация" id="220">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа спецификация</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа спецификация</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ExtendedTooltip name="ГруппаСпецификацияРасширеннаяПодсказка" id="221"/>
 			<ChildItems>
-				<ColumnGroup name="ТаблицаДеталейГруппаПроверки" id="205">
+				<Page name="Детали" id="222">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Проверка деталей</v8:content>
-						</v8:item>
-					</Title>
-					<Group>Horizontal</Group>
-					<ShowInHeader>true</ShowInHeader>
-					<ExtendedTooltip name="ТаблицаДеталейГруппаПроверкиРасширеннаяПодсказка" id="206"/>
-					<ChildItems>
-						<InputField name="ТаблицаДеталейМатериал" id="19">
-							<DataPath>ТаблицаДеталей.Материал</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<Width>12</Width>
-							<HorizontalStretch>false</HorizontalStretch>
-							<ContextMenu name="ТаблицаДеталейМатериалКонтекстноеМеню" id="20"/>
-							<ExtendedTooltip name="ТаблицаДеталейМатериалРасширеннаяПодсказка" id="21"/>
-						</InputField>
-						<InputField name="ТаблицаДеталейНоменклатура" id="7">
-							<DataPath>ТаблицаДеталей.Номенклатура</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<ContextMenu name="ТаблицаДеталейНоменклатураКонтекстноеМеню" id="8"/>
-							<ExtendedTooltip name="ТаблицаДеталейНоменклатураРасширеннаяПодсказка" id="9"/>
-						</InputField>
-						<InputField name="ТаблицаДеталейВысотаДетали" id="13">
-							<DataPath>ТаблицаДеталей.ВысотаДетали</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<ContextMenu name="ТаблицаДеталейВысотаДеталиКонтекстноеМеню" id="14"/>
-							<ExtendedTooltip name="ТаблицаДеталейВысотаДеталиРасширеннаяПодсказка" id="15"/>
-						</InputField>
-						<InputField name="ТаблицаДеталейШиринаДетали" id="10">
-							<DataPath>ТаблицаДеталей.ШиринаДетали</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<ContextMenu name="ТаблицаДеталейШиринаДеталиКонтекстноеМеню" id="11"/>
-							<ExtendedTooltip name="ТаблицаДеталейШиринаДеталиРасширеннаяПодсказка" id="12"/>
-						</InputField>
-						<InputField name="ТаблицаДеталейКоличество" id="22">
-							<DataPath>ТаблицаДеталей.Количество</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<ContextMenu name="ТаблицаДеталейКоличествоКонтекстноеМеню" id="23"/>
-							<ExtendedTooltip name="ТаблицаДеталейКоличествоРасширеннаяПодсказка" id="24"/>
-						</InputField>
-					</ChildItems>
-				</ColumnGroup>
-				<ColumnGroup name="ТаблицаДеталейГруппаСпецификации" id="207">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Детали спецификации</v8:content>
+							<v8:content>Детали</v8:content>
 						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Детали спецификации</v8:content>
+							<v8:content>Детали</v8:content>
 						</v8:item>
 					</ToolTip>
-					<Group>Horizontal</Group>
-					<ShowInHeader>true</ShowInHeader>
-					<ExtendedTooltip name="ТаблицаДеталейГруппаСпецификацииРасширеннаяПодсказка" id="208"/>
+					<ExtendedTooltip name="ДеталиРасширеннаяПодсказка" id="223"/>
 					<ChildItems>
-						<InputField name="ТаблицаДеталейМатериалСпецификации" id="193">
-							<DataPath>ТаблицаДеталей.МатериалСпецификации</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<Width>12</Width>
-							<HorizontalStretch>false</HorizontalStretch>
-							<ContextMenu name="ТаблицаДеталейМатериалСпецификацииКонтекстноеМеню" id="194"/>
-							<ExtendedTooltip name="ТаблицаДеталейМатериалСпецификацииРасширеннаяПодсказка" id="195"/>
-						</InputField>
-						<InputField name="ТаблицаДеталейНоменклатураСпецификации" id="190">
-							<DataPath>ТаблицаДеталей.НоменклатураСпецификации</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<ContextMenu name="ТаблицаДеталейНоменклатураСпецификацииКонтекстноеМеню" id="191"/>
-							<ExtendedTooltip name="ТаблицаДеталейНоменклатураСпецификацииРасширеннаяПодсказка" id="192"/>
-						</InputField>
-						<InputField name="ТаблицаДеталейВысотаДеталиСпецификации" id="199">
-							<DataPath>ТаблицаДеталей.ВысотаДеталиСпецификации</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<ContextMenu name="ТаблицаДеталейВысотаДеталиСпецификацииКонтекстноеМеню" id="200"/>
-							<ExtendedTooltip name="ТаблицаДеталейВысотаДеталиСпецификацииРасширеннаяПодсказка" id="201"/>
-						</InputField>
-						<InputField name="ТаблицаДеталейШиринаДеталиСпецификации" id="196">
-							<DataPath>ТаблицаДеталей.ШиринаДеталиСпецификации</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<ContextMenu name="ТаблицаДеталейШиринаДеталиСпецификацииКонтекстноеМеню" id="197"/>
-							<ExtendedTooltip name="ТаблицаДеталейШиринаДеталиСпецификацииРасширеннаяПодсказка" id="198"/>
-						</InputField>
-						<InputField name="ТаблицаДеталейКоличествоСпецификации" id="202">
-							<DataPath>ТаблицаДеталей.КоличествоСпецификации</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<ContextMenu name="ТаблицаДеталейКоличествоСпецификацииКонтекстноеМеню" id="203"/>
-							<ExtendedTooltip name="ТаблицаДеталейКоличествоСпецификацииРасширеннаяПодсказка" id="204"/>
-						</InputField>
+						<Button name="ПроверитьДетали" id="1">
+							<Type>UsualButton</Type>
+							<Representation>PictureAndText</Representation>
+							<CommandName>Form.Command.ПроверитьДетали</CommandName>
+							<Picture>
+								<xr:Ref>StdPicture.ExecuteTask</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</Picture>
+							<ExtendedTooltip name="ПроверитьДеталиРасширеннаяПодсказка" id="2"/>
+						</Button>
+						<Table name="ТаблицаДеталей" id="3">
+							<Representation>List</Representation>
+							<ReadOnly>true</ReadOnly>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>ТаблицаДеталей</DataPath>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ТаблицаДеталейКонтекстноеМеню" id="4"/>
+							<AutoCommandBar name="ТаблицаДеталейКоманднаяПанель" id="5">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ТаблицаДеталейРасширеннаяПодсказка" id="6"/>
+							<SearchStringAddition name="ТаблицаДеталейСтрокаПоиска" id="224">
+								<AdditionSource>
+									<Item>ТаблицаДеталей</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаДеталейСтрокаПоискаКонтекстноеМеню" id="225"/>
+								<ExtendedTooltip name="ТаблицаДеталейСтрокаПоискаРасширеннаяПодсказка" id="226"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ТаблицаДеталейСостояниеПросмотра" id="227">
+								<AdditionSource>
+									<Item>ТаблицаДеталей</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаДеталейСостояниеПросмотраКонтекстноеМеню" id="228"/>
+								<ExtendedTooltip name="ТаблицаДеталейСостояниеПросмотраРасширеннаяПодсказка" id="229"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ТаблицаДеталейУправлениеПоиском" id="230">
+								<AdditionSource>
+									<Item>ТаблицаДеталей</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаДеталейУправлениеПоискомКонтекстноеМеню" id="231"/>
+								<ExtendedTooltip name="ТаблицаДеталейУправлениеПоискомРасширеннаяПодсказка" id="232"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">ТаблицаДеталейВыбор</Event>
+							</Events>
+							<ChildItems>
+								<ColumnGroup name="ТаблицаДеталейГруппаПроверки" id="205">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Проверка деталей</v8:content>
+										</v8:item>
+									</Title>
+									<Group>Horizontal</Group>
+									<ShowInHeader>true</ShowInHeader>
+									<ExtendedTooltip name="ТаблицаДеталейГруппаПроверкиРасширеннаяПодсказка" id="206"/>
+									<ChildItems>
+										<InputField name="ТаблицаДеталейМатериал" id="19">
+											<DataPath>ТаблицаДеталей.Материал</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>12</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="ТаблицаДеталейМатериалКонтекстноеМеню" id="20"/>
+											<ExtendedTooltip name="ТаблицаДеталейМатериалРасширеннаяПодсказка" id="21"/>
+										</InputField>
+										<InputField name="ТаблицаДеталейНоменклатура" id="7">
+											<DataPath>ТаблицаДеталей.Номенклатура</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ТаблицаДеталейНоменклатураКонтекстноеМеню" id="8"/>
+											<ExtendedTooltip name="ТаблицаДеталейНоменклатураРасширеннаяПодсказка" id="9"/>
+										</InputField>
+										<InputField name="ТаблицаДеталейВысотаДетали" id="13">
+											<DataPath>ТаблицаДеталей.ВысотаДетали</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ТаблицаДеталейВысотаДеталиКонтекстноеМеню" id="14"/>
+											<ExtendedTooltip name="ТаблицаДеталейВысотаДеталиРасширеннаяПодсказка" id="15"/>
+										</InputField>
+										<InputField name="ТаблицаДеталейШиринаДетали" id="10">
+											<DataPath>ТаблицаДеталей.ШиринаДетали</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ТаблицаДеталейШиринаДеталиКонтекстноеМеню" id="11"/>
+											<ExtendedTooltip name="ТаблицаДеталейШиринаДеталиРасширеннаяПодсказка" id="12"/>
+										</InputField>
+										<InputField name="ТаблицаДеталейКоличество" id="22">
+											<DataPath>ТаблицаДеталей.Количество</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ТаблицаДеталейКоличествоКонтекстноеМеню" id="23"/>
+											<ExtendedTooltip name="ТаблицаДеталейКоличествоРасширеннаяПодсказка" id="24"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="ТаблицаДеталейГруппаСпецификации" id="207">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Детали спецификации</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Детали спецификации</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<ShowInHeader>true</ShowInHeader>
+									<ExtendedTooltip name="ТаблицаДеталейГруппаСпецификацииРасширеннаяПодсказка" id="208"/>
+									<ChildItems>
+										<InputField name="ТаблицаДеталейМатериалСпецификации" id="193">
+											<DataPath>ТаблицаДеталей.МатериалСпецификации</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<Width>12</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ContextMenu name="ТаблицаДеталейМатериалСпецификацииКонтекстноеМеню" id="194"/>
+											<ExtendedTooltip name="ТаблицаДеталейМатериалСпецификацииРасширеннаяПодсказка" id="195"/>
+										</InputField>
+										<InputField name="ТаблицаДеталейНоменклатураСпецификации" id="190">
+											<DataPath>ТаблицаДеталей.НоменклатураСпецификации</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ТаблицаДеталейНоменклатураСпецификацииКонтекстноеМеню" id="191"/>
+											<ExtendedTooltip name="ТаблицаДеталейНоменклатураСпецификацииРасширеннаяПодсказка" id="192"/>
+										</InputField>
+										<InputField name="ТаблицаДеталейВысотаДеталиСпецификации" id="199">
+											<DataPath>ТаблицаДеталей.ВысотаДеталиСпецификации</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ТаблицаДеталейВысотаДеталиСпецификацииКонтекстноеМеню" id="200"/>
+											<ExtendedTooltip name="ТаблицаДеталейВысотаДеталиСпецификацииРасширеннаяПодсказка" id="201"/>
+										</InputField>
+										<InputField name="ТаблицаДеталейШиринаДеталиСпецификации" id="196">
+											<DataPath>ТаблицаДеталей.ШиринаДеталиСпецификации</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ТаблицаДеталейШиринаДеталиСпецификацииКонтекстноеМеню" id="197"/>
+											<ExtendedTooltip name="ТаблицаДеталейШиринаДеталиСпецификацииРасширеннаяПодсказка" id="198"/>
+										</InputField>
+										<InputField name="ТаблицаДеталейКоличествоСпецификации" id="202">
+											<DataPath>ТаблицаДеталей.КоличествоСпецификации</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="ТаблицаДеталейКоличествоСпецификацииКонтекстноеМеню" id="203"/>
+											<ExtendedTooltip name="ТаблицаДеталейКоличествоСпецификацииРасширеннаяПодсказка" id="204"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+							</ChildItems>
+						</Table>
 					</ChildItems>
-				</ColumnGroup>
+				</Page>
 			</ChildItems>
-		</Table>
+		</Pages>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Объект" id="1">
@@ -1160,6 +1201,33 @@
 							<v8:FractionDigits>0</v8:FractionDigits>
 							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
 						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="НомерСтрокиСпецификации" id="67">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер строки</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Проверка" id="68">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Проверка</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
 					</Type>
 				</Column>
 			</Columns>
