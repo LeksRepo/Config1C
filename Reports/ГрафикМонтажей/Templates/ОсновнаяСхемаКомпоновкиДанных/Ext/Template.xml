@@ -69,6 +69,10 @@
 			<dataPath>Спецификация</dataPath>
 			<field>Спецификация</field>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Ссылка</dataPath>
+			<field>Ссылка</field>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	Монтаж.ДатаМонтажа,
@@ -84,7 +88,8 @@
 	Договор.Контрагент.ТелефонДополнительный КАК ДопТелефон,
 	Монтаж.Спецификация.КоличествоМетровЛДСП КАК М2,
 	Заметки.ТекстСодержания КАК ТекстЗаметки,
-	СтатусСпецификацииСрезПоследних.Спецификация
+	СтатусСпецификацииСрезПоследних.Спецификация,
+	Монтаж.Ссылка
 ИЗ
 	Документ.Монтаж КАК Монтаж
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СтатусСпецификации.СрезПоследних(ДАТАВРЕМЯ(3999, 11, 1), ) КАК СтатусСпецификацииСрезПоследних
@@ -816,6 +821,11 @@
 		</parameter>
 		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:DetailsAreaTemplateParameter">
 			<dcsat:name>Спецификация</dcsat:name>
+			<dcsat:fieldExpression>
+				<dcsat:field>Ссылка</dcsat:field>
+				<dcsat:expression>Ссылка</dcsat:expression>
+			</dcsat:fieldExpression>
+			<dcsat:mainAction>DrillDown</dcsat:mainAction>
 		</parameter>
 	</template>
 	<template>
@@ -1530,6 +1540,9 @@
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Адрес</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Ссылка</dcsset:field>
 				</dcsset:item>
 			</dcsset:selection>
 			<dcsset:dataParameters>
