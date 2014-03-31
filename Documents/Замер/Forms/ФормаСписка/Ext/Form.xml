@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
 		<ChildItems>
 			<Button name="ФормаСоздать" id="40">
 				<Type>CommandBarButton</Type>
@@ -43,11 +44,6 @@
 				<Visible>false</Visible>
 				<CommandName>Form.Item.Список.StandardCommand.CancelSearch</CommandName>
 				<ExtendedTooltip name="ФормаОтменитьПоискРасширеннаяПодсказка" id="51"/>
-			</Button>
-			<Button name="ФормаГрафикЗамеров" id="35">
-				<Type>CommandBarButton</Type>
-				<CommandName>Form.Command.ГрафикЗамеров</CommandName>
-				<ExtendedTooltip name="ФормаГрафикЗамеровРасширеннаяПодсказка" id="36"/>
 			</Button>
 			<Button name="ФормаВывестиСписок" id="54">
 				<Type>CommandBarButton</Type>
@@ -114,32 +110,130 @@
 							<UpdateOnDataChange>Auto</UpdateOnDataChange>
 							<ContextMenu name="СписокКонтекстноеМеню" id="2"/>
 							<AutoCommandBar name="СписокКоманднаяПанель" id="3">
-								<Autofill>false</Autofill>
+								<ChildItems>
+									<Button name="СписокОбщаяКомандаПоказатьДвиженияДокумента" id="155">
+										<Type>CommandBarButton</Type>
+										<CommandName>CommonCommand.ПоказатьДвиженияДокумента</CommandName>
+										<DataPath>Items.Список.CurrentData.Ссылка</DataPath>
+										<ExtendedTooltip name="СписокОбщаяКомандаПоказатьДвиженияДокументаРасширеннаяПодсказка" id="156"/>
+									</Button>
+									<Button name="СписокОбщаяКомандаСоздатьЗаметкуПоПредмету" id="171">
+										<Type>CommandBarButton</Type>
+										<CommandName>CommonCommand.СоздатьЗаметкуПоПредмету</CommandName>
+										<DataPath>Items.Список.CurrentData.Ссылка</DataPath>
+										<ExtendedTooltip name="СписокОбщаяКомандаСоздатьЗаметкуПоПредметуРасширеннаяПодсказка" id="172"/>
+									</Button>
+									<Popup name="СоздатьНаОсновании" id="157">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Создать на основании</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Создать на основании</v8:content>
+											</v8:item>
+										</ToolTip>
+										<ExtendedTooltip name="СоздатьНаОснованииРасширеннаяПодсказка" id="158"/>
+										<ChildItems>
+											<Button name="СписокДокументЗамерСоздатьНаОсновании" id="231">
+												<Type>CommandBarButton</Type>
+												<CommandName>Document.Замер.Command.СоздатьНаОсновании</CommandName>
+												<DataPath>Items.Список.CurrentData.Ссылка</DataPath>
+												<ExtendedTooltip name="СписокДокументЗамерСоздатьНаОснованииРасширеннаяПодсказка" id="232"/>
+											</Button>
+											<Button name="СписокДокументСлужебнаяЗапискаСоздатьНаОсновании" id="227">
+												<Type>CommandBarButton</Type>
+												<CommandName>Document.СлужебнаяЗаписка.StandardCommand.CreateBasedOn</CommandName>
+												<DataPath>Items.Список.CurrentData.Ссылка</DataPath>
+												<ExtendedTooltip name="СписокДокументСлужебнаяЗапискаСоздатьНаОснованииРасширеннаяПодсказка" id="228"/>
+											</Button>
+											<Button name="СписокДокументСпецификацияСоздатьНаОсновании" id="229">
+												<Type>CommandBarButton</Type>
+												<CommandName>Document.Спецификация.StandardCommand.CreateBasedOn</CommandName>
+												<DataPath>Items.Список.CurrentData.Ссылка</DataPath>
+												<ExtendedTooltip name="СписокДокументСпецификацияСоздатьНаОснованииРасширеннаяПодсказка" id="230"/>
+											</Button>
+										</ChildItems>
+									</Popup>
+									<Popup name="Печать" id="159">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Печать</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Печать</v8:content>
+											</v8:item>
+										</ToolTip>
+										<Picture>
+											<xr:Ref>StdPicture.Print</xr:Ref>
+											<xr:LoadTransparent>true</xr:LoadTransparent>
+										</Picture>
+										<ExtendedTooltip name="ПечатьРасширеннаяПодсказка" id="160"/>
+										<ChildItems>
+											<Button name="СписокДокументЗамерКухняЛицеваяСторона" id="163">
+												<Type>CommandBarButton</Type>
+												<CommandName>Document.Замер.Command.КухняЛицеваяСторона</CommandName>
+												<DataPath>Items.Список.CurrentData.Ссылка</DataPath>
+												<ExtendedTooltip name="СписокДокументЗамерКухняЛицеваяСторонаРасширеннаяПодсказка" id="164"/>
+											</Button>
+											<Button name="СписокДокументЗамерКухняОборотнаяСторона" id="165">
+												<Type>CommandBarButton</Type>
+												<CommandName>Document.Замер.Command.КухняОборотнаяСторона</CommandName>
+												<DataPath>Items.Список.CurrentData.Ссылка</DataPath>
+												<ExtendedTooltip name="СписокДокументЗамерКухняОборотнаяСторонаРасширеннаяПодсказка" id="166"/>
+											</Button>
+											<Button name="СписокДокументЗамерШкафЛицеваяСторона" id="167">
+												<Type>CommandBarButton</Type>
+												<CommandName>Document.Замер.Command.ШкафЛицеваяСторона</CommandName>
+												<DataPath>Items.Список.CurrentData.Ссылка</DataPath>
+												<ExtendedTooltip name="СписокДокументЗамерШкафЛицеваяСторонаРасширеннаяПодсказка" id="168"/>
+											</Button>
+											<Button name="СписокДокументЗамерШкафОборотнаяСторона" id="169">
+												<Type>CommandBarButton</Type>
+												<CommandName>Document.Замер.Command.ШкафОборотнаяСторона</CommandName>
+												<DataPath>Items.Список.CurrentData.Ссылка</DataPath>
+												<ExtendedTooltip name="СписокДокументЗамерШкафОборотнаяСторонаРасширеннаяПодсказка" id="170"/>
+											</Button>
+										</ChildItems>
+									</Popup>
+									<Button name="ФормаГрафикЗамеров" id="35">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ГрафикЗамеров</CommandName>
+										<ExtendedTooltip name="ФормаГрафикЗамеровРасширеннаяПодсказка" id="36"/>
+									</Button>
+								</ChildItems>
 							</AutoCommandBar>
 							<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="4"/>
-							<SearchStringAddition name="СписокСтрокаПоиска" id="153">
+							<SearchStringAddition name="СписокСтрокаПоиска" id="233">
 								<AdditionSource>
 									<Item>Список</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="154"/>
-								<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="155"/>
+								<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="234"/>
+								<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="235"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="СписокСостояниеПросмотра" id="156">
+							<ViewStatusAddition name="СписокСостояниеПросмотра" id="236">
 								<AdditionSource>
 									<Item>Список</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="157"/>
-								<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="158"/>
+								<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="237"/>
+								<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="238"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="СписокУправлениеПоиском" id="159">
+							<SearchControlAddition name="СписокУправлениеПоиском" id="239">
 								<AdditionSource>
 									<Item>Список</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="160"/>
-								<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="161"/>
+								<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="240"/>
+								<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="241"/>
 							</SearchControlAddition>
 							<Events>
 								<Event name="Selection">СписокВыбор</Event>
@@ -297,32 +391,130 @@
 							<UpdateOnDataChange>Auto</UpdateOnDataChange>
 							<ContextMenu name="АрхивКонтекстноеМеню" id="66"/>
 							<AutoCommandBar name="АрхивКоманднаяПанель" id="67">
-								<Autofill>false</Autofill>
+								<ChildItems>
+									<Button name="АрхивОбщаяКомандаПоказатьДвиженияДокумента" id="223">
+										<Type>CommandBarButton</Type>
+										<CommandName>CommonCommand.ПоказатьДвиженияДокумента</CommandName>
+										<DataPath>Items.Архив.CurrentData.Ref</DataPath>
+										<ExtendedTooltip name="АрхивОбщаяКомандаПоказатьДвиженияДокументаРасширеннаяПодсказка" id="224"/>
+									</Button>
+									<Button name="АрхивОбщаяКомандаСоздатьЗаметкуПоПредмету" id="225">
+										<Type>CommandBarButton</Type>
+										<CommandName>CommonCommand.СоздатьЗаметкуПоПредмету</CommandName>
+										<DataPath>Items.Архив.CurrentData.Ref</DataPath>
+										<ExtendedTooltip name="АрхивОбщаяКомандаСоздатьЗаметкуПоПредметуРасширеннаяПодсказка" id="226"/>
+									</Button>
+									<Popup name="СоздатьНаОсновании1" id="179">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Создать на основании</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Создать на основании</v8:content>
+											</v8:item>
+										</ToolTip>
+										<ExtendedTooltip name="СоздатьНаОсновании1РасширеннаяПодсказка" id="180"/>
+										<ChildItems>
+											<Button name="АрхивДокументЗамерСоздатьНаОсновании" id="209">
+												<Type>CommandBarButton</Type>
+												<CommandName>Document.Замер.Command.СоздатьНаОсновании</CommandName>
+												<DataPath>Items.Архив.CurrentData.Ref</DataPath>
+												<ExtendedTooltip name="АрхивДокументЗамерСоздатьНаОснованииРасширеннаяПодсказка" id="210"/>
+											</Button>
+											<Button name="АрхивДокументСлужебнаяЗапискаСоздатьНаОсновании" id="211">
+												<Type>CommandBarButton</Type>
+												<CommandName>Document.СлужебнаяЗаписка.StandardCommand.CreateBasedOn</CommandName>
+												<DataPath>Items.Архив.CurrentData.Ref</DataPath>
+												<ExtendedTooltip name="АрхивДокументСлужебнаяЗапискаСоздатьНаОснованииРасширеннаяПодсказка" id="212"/>
+											</Button>
+											<Button name="АрхивДокументСпецификацияСоздатьНаОсновании" id="213">
+												<Type>CommandBarButton</Type>
+												<CommandName>Document.Спецификация.StandardCommand.CreateBasedOn</CommandName>
+												<DataPath>Items.Архив.CurrentData.Ref</DataPath>
+												<ExtendedTooltip name="АрхивДокументСпецификацияСоздатьНаОснованииРасширеннаяПодсказка" id="214"/>
+											</Button>
+										</ChildItems>
+									</Popup>
+									<Popup name="Печать1" id="187">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Печать</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Печать</v8:content>
+											</v8:item>
+										</ToolTip>
+										<Picture>
+											<xr:Ref>StdPicture.Print</xr:Ref>
+											<xr:LoadTransparent>true</xr:LoadTransparent>
+										</Picture>
+										<ExtendedTooltip name="Печать1РасширеннаяПодсказка" id="188"/>
+										<ChildItems>
+											<Button name="АрхивДокументЗамерКухняЛицеваяСторона" id="215">
+												<Type>CommandBarButton</Type>
+												<CommandName>Document.Замер.Command.КухняЛицеваяСторона</CommandName>
+												<DataPath>Items.Архив.CurrentData.Ref</DataPath>
+												<ExtendedTooltip name="АрхивДокументЗамерКухняЛицеваяСторонаРасширеннаяПодсказка" id="216"/>
+											</Button>
+											<Button name="АрхивДокументЗамерКухняОборотнаяСторона" id="217">
+												<Type>CommandBarButton</Type>
+												<CommandName>Document.Замер.Command.КухняОборотнаяСторона</CommandName>
+												<DataPath>Items.Архив.CurrentData.Ref</DataPath>
+												<ExtendedTooltip name="АрхивДокументЗамерКухняОборотнаяСторонаРасширеннаяПодсказка" id="218"/>
+											</Button>
+											<Button name="АрхивДокументЗамерШкафЛицеваяСторона" id="219">
+												<Type>CommandBarButton</Type>
+												<CommandName>Document.Замер.Command.ШкафЛицеваяСторона</CommandName>
+												<DataPath>Items.Архив.CurrentData.Ref</DataPath>
+												<ExtendedTooltip name="АрхивДокументЗамерШкафЛицеваяСторонаРасширеннаяПодсказка" id="220"/>
+											</Button>
+											<Button name="АрхивДокументЗамерШкафОборотнаяСторона" id="221">
+												<Type>CommandBarButton</Type>
+												<CommandName>Document.Замер.Command.ШкафОборотнаяСторона</CommandName>
+												<DataPath>Items.Архив.CurrentData.Ref</DataPath>
+												<ExtendedTooltip name="АрхивДокументЗамерШкафОборотнаяСторонаРасширеннаяПодсказка" id="222"/>
+											</Button>
+										</ChildItems>
+									</Popup>
+									<Button name="ФормаГрафикЗамеров1" id="197">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ГрафикЗамеров</CommandName>
+										<ExtendedTooltip name="ФормаГрафикЗамеров1РасширеннаяПодсказка" id="198"/>
+									</Button>
+								</ChildItems>
 							</AutoCommandBar>
 							<ExtendedTooltip name="АрхивРасширеннаяПодсказка" id="68"/>
-							<SearchStringAddition name="АрхивСтрокаПоиска" id="162">
+							<SearchStringAddition name="АрхивСтрокаПоиска" id="242">
 								<AdditionSource>
 									<Item>Архив</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="АрхивСтрокаПоискаКонтекстноеМеню" id="163"/>
-								<ExtendedTooltip name="АрхивСтрокаПоискаРасширеннаяПодсказка" id="164"/>
+								<ContextMenu name="АрхивСтрокаПоискаКонтекстноеМеню" id="243"/>
+								<ExtendedTooltip name="АрхивСтрокаПоискаРасширеннаяПодсказка" id="244"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="АрхивСостояниеПросмотра" id="165">
+							<ViewStatusAddition name="АрхивСостояниеПросмотра" id="245">
 								<AdditionSource>
 									<Item>Архив</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="АрхивСостояниеПросмотраКонтекстноеМеню" id="166"/>
-								<ExtendedTooltip name="АрхивСостояниеПросмотраРасширеннаяПодсказка" id="167"/>
+								<ContextMenu name="АрхивСостояниеПросмотраКонтекстноеМеню" id="246"/>
+								<ExtendedTooltip name="АрхивСостояниеПросмотраРасширеннаяПодсказка" id="247"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="АрхивУправлениеПоиском" id="168">
+							<SearchControlAddition name="АрхивУправлениеПоиском" id="248">
 								<AdditionSource>
 									<Item>Архив</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="АрхивУправлениеПоискомКонтекстноеМеню" id="169"/>
-								<ExtendedTooltip name="АрхивУправлениеПоискомРасширеннаяПодсказка" id="170"/>
+								<ContextMenu name="АрхивУправлениеПоискомКонтекстноеМеню" id="249"/>
+								<ExtendedTooltip name="АрхивУправлениеПоискомРасширеннаяПодсказка" id="250"/>
 							</SearchControlAddition>
 							<ChildItems>
 								<LabelField name="АрхивДата" id="69">
