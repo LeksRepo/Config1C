@@ -194,6 +194,10 @@
 				</v8:item>
 			</title>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПлановаяЗакупочная</dataPath>
+			<field>ПлановаяЗакупочная</field>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	ЕСТЬNULL(ОсновноеПроизводство.Субконто1, ДополнительныйЛимит.Субконто1) КАК Номенклатура,
@@ -240,7 +244,8 @@
 	втМатериалы.ПолученоВЦехСебестоимость,
 	втМатериалы.ПолученоВЦехКоличество * ЦеныНоменклатурыСрезПоследних.ПлановаяЗакупочная КАК ПолученоВЦехСтоимостьПлановая,
 	втМатериалы.ТребуетсяПоСпецификациямКоличество * ЦеныНоменклатурыСрезПоследних.ПлановаяЗакупочная КАК ТребуетсяПоСпецификациямСтоимостьПлановая,
-	(втМатериалы.ТребуетсяПоСпецификациямКоличество - втМатериалы.ПолученоВЦехКоличество) * ЦеныНоменклатурыСрезПоследних.ПлановаяЗакупочная КАК ОтклонениеПлановое
+	(втМатериалы.ТребуетсяПоСпецификациямКоличество - втМатериалы.ПолученоВЦехКоличество) * ЦеныНоменклатурыСрезПоследних.ПлановаяЗакупочная КАК ОтклонениеПлановое,
+	ЦеныНоменклатурыСрезПоследних.ПлановаяЗакупочная
 ИЗ
 	втМатериалы КАК втМатериалы
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ЦеныНоменклатуры.СрезПоследних({(&amp;НеТрогатьНикогда)}, Регион = &amp;Регион) КАК ЦеныНоменклатурыСрезПоследних
@@ -281,6 +286,10 @@
 	<totalField>
 		<dataPath>ТребуетсяПоСпецификациямСтоимостьПлановая</dataPath>
 		<expression>Сумма(ТребуетсяПоСпецификациямСтоимостьПлановая)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ПлановаяЗакупочная</dataPath>
+		<expression>Минимум(ПлановаяЗакупочная)</expression>
 	</totalField>
 	<parameter>
 		<name>Регион</name>
@@ -544,7 +553,7 @@
 						<dcsset:field>ТребуетсяПоСпецификациямКоличество</dcsset:field>
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>ТребуетсяПоСпецификациямСтоимость</dcsset:field>
+						<dcsset:field>ТребуетсяПоСпецификациямСтоимостьПлановая</dcsset:field>
 					</dcsset:item>
 					<dcsset:placement>Auto</dcsset:placement>
 				</dcsset:item>
@@ -644,7 +653,7 @@
 							<dcsset:field>ТребуетсяПоСпецификациямКоличество</dcsset:field>
 						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:SelectedItemField">
-							<dcsset:field>ТребуетсяПоСпецификациямСтоимость</dcsset:field>
+							<dcsset:field>ТребуетсяПоСпецификациямСтоимостьПлановая</dcsset:field>
 						</dcsset:item>
 						<dcsset:placement>Auto</dcsset:placement>
 					</dcsset:item>
@@ -662,6 +671,7 @@
 							<dcsset:field>ПолученоВЦехСтоимостьПлановая</dcsset:field>
 						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:use>false</dcsset:use>
 							<dcsset:field>ПолученоВЦехСебестоимость</dcsset:field>
 						</dcsset:item>
 						<dcsset:placement>Auto</dcsset:placement>
