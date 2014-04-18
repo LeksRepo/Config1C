@@ -53,6 +53,10 @@
 					<v8:content>Количество</v8:content>
 				</v8:item>
 			</title>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+				<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
+			</role>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Цена</dataPath>
@@ -68,16 +72,23 @@
 			<dataPath>ЕдиницаИзмерения</dataPath>
 			<field>ЕдиницаИзмерения</field>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Доступность</dataPath>
+			<field>Доступность</field>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	спрНоменклатура.Ссылка КАК Номенклатура,
 	ЦеныНоменклатурыСрезПоследних.Розничная КАК Розничная,
-	спрНоменклатура.ЕдиницаИзмерения
+	спрНоменклатура.ЕдиницаИзмерения,
+	НоменклатураПодразделений.Доступность
 ПОМЕСТИТЬ Список
 ИЗ
 	Справочник.Номенклатура КАК спрНоменклатура
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ЦеныНоменклатуры.СрезПоследних({(КОНЕЦПЕРИОДА(&amp;Период, ДЕНЬ)) КАК Период}, Регион = &amp;Регион) КАК ЦеныНоменклатурыСрезПоследних
 		ПО (ЦеныНоменклатурыСрезПоследних.Номенклатура = спрНоменклатура.Ссылка)
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.НоменклатураПодразделений КАК НоменклатураПодразделений
+		ПО (НоменклатураПодразделений.Номенклатура = спрНоменклатура.Ссылка)
 ГДЕ
 	спрНоменклатура.Базовый
 	И НЕ спрНоменклатура.ПометкаУдаления
@@ -86,26 +97,29 @@
 	И спрНоменклатура.НоменклатурнаяГруппа &lt;&gt; ЗНАЧЕНИЕ(Справочник.НоменклатурныеГруппы.РасходныйМатериал)
 	И спрНоменклатура.ВидНоменклатуры &lt;&gt; ЗНАЧЕНИЕ(Перечисление.ВидыНоменклатуры.Услуга)
 	И НЕ спрНоменклатура.Неноменклатурный
+	И НоменклатураПодразделений.Подразделение.ВидПодразделения = ЗНАЧЕНИЕ(Перечисление.ВидыПодразделений.Производство)
+	И НоменклатураПодразделений.Подразделение.Регион = &amp;Регион
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
 ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	Список.Номенклатура КАК Номенклатура,
 	Список.Розничная КАК Цена,
-	ЕСТЬNULL(УправленческийОстатки.КоличествоОстаток * УправленческийОстатки.Субконто2.КоэффициентБазовых, 0) КАК Количество,
-	Список.ЕдиницаИзмерения
+	ЕСТЬNULL(УправленческийОстатки.КоличествоОстаток * ВЫРАЗИТЬ(УправленческийОстатки.Субконто2 КАК Справочник.Номенклатура).КоэффициентБазовых, 0) КАК Количество,
+	Список.ЕдиницаИзмерения,
+	Список.Доступность
 ИЗ
 	Список КАК Список
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрБухгалтерии.Управленческий.Остатки(
 				,
 				Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.МатериалыНаСкладе),
 				,
-				Субконто1.ОсновнойСклад = ИСТИНА
-					И Субконто1.Регион = &amp;Регион) КАК УправленческийОстатки
+				ВЫРАЗИТЬ(Субконто1 КАК Справочник.Склады).ОсновнойСклад = ИСТИНА
+					И ВЫРАЗИТЬ(Субконто1 КАК Справочник.Склады).Регион = &amp;Регион) КАК УправленческийОстатки
 		ПО (Список.Номенклатура = ВЫБОР
-				КОГДА УправленческийОстатки.Субконто2.Базовый
-					ТОГДА УправленческийОстатки.Субконто2.Ссылка
-				ИНАЧЕ УправленческийОстатки.Субконто2.БазоваяНоменклатура
+				КОГДА ВЫРАЗИТЬ(УправленческийОстатки.Субконто2 КАК Справочник.Номенклатура).Базовый
+					ТОГДА ВЫРАЗИТЬ(УправленческийОстатки.Субконто2 КАК Справочник.Номенклатура)
+				ИНАЧЕ ВЫРАЗИТЬ(УправленческийОстатки.Субконто2 КАК Справочник.Номенклатура).БазоваяНоменклатура
 			КОНЕЦ)</query>
 	</dataSet>
 	<totalField>
@@ -115,6 +129,11 @@
 	<totalField>
 		<dataPath>Цена</dataPath>
 		<expression>Максимум(Цена)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Доступность</dataPath>
+		<expression>Максимум(Доступность)</expression>
+		<group>Номенклатура</group>
 	</totalField>
 	<parameter>
 		<name>Период</name>
@@ -159,6 +178,10 @@
 					<dcsset:field>ЕдиницаИзмерения</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:field>Доступность</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Количество</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
@@ -195,6 +218,35 @@
 							<dcsset:field>Номенклатура</dcsset:field>
 						</dcsset:item>
 						<dcsset:item>
+							<dcsset:field>Цена</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>Количество</dcsset:field>
+						</dcsset:item>
+					</dcsset:selection>
+					<dcsset:filter>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">Доступность</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+						</dcsset:item>
+					</dcsset:filter>
+					<dcsset:appearance>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>ЦветФона</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:Color">web:Violet</dcscor:value>
+						</dcscor:item>
+					</dcsset:appearance>
+				</dcsset:item>
+				<dcsset:item>
+					<dcsset:selection>
+						<dcsset:item>
+							<dcsset:field>ЕдиницаИзмерения</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>Номенклатура</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
 							<dcsset:field>Количество</dcsset:field>
 						</dcsset:item>
 						<dcsset:item>
@@ -206,6 +258,11 @@
 							<dcsset:left xsi:type="dcscor:Field">Количество</dcsset:left>
 							<dcsset:comparisonType>LessOrEqual</dcsset:comparisonType>
 							<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">Доступность</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
 						</dcsset:item>
 					</dcsset:filter>
 					<dcsset:appearance>
