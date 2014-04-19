@@ -102,25 +102,26 @@
 		<query>ВЫБРАТЬ
 	УправленческийОбороты.СуммаОборот КАК Сумма,
 	УправленческийОбороты.Регистратор КАК Регистратор,
-	ВЫБОР
-		КОГДА &amp;Периодичность = "ДЕНЬ"
-			ТОГДА НАЧАЛОПЕРИОДА(УправленческийОбороты.Период, ДЕНЬ)
-		КОГДА &amp;Периодичность = "НЕДЕЛЯ"
-			ТОГДА НАЧАЛОПЕРИОДА(УправленческийОбороты.Период, НЕДЕЛЯ)
-		КОГДА &amp;Периодичность = "МЕСЯЦ"
-			ТОГДА НАЧАЛОПЕРИОДА(УправленческийОбороты.Период, МЕСЯЦ)
-		ИНАЧЕ НАЧАЛОПЕРИОДА(УправленческийОбороты.Период, ДЕНЬ)
-	КОНЕЦ КАК Период,
+	ЕСТЬNULL(ВЫБОР
+			КОГДА &amp;Периодичность = "ДЕНЬ"
+				ТОГДА НАЧАЛОПЕРИОДА(УправленческийОбороты.Период, ДЕНЬ)
+			КОГДА &amp;Периодичность = "НЕДЕЛЯ"
+				ТОГДА НАЧАЛОПЕРИОДА(УправленческийОбороты.Период, НЕДЕЛЯ)
+			КОГДА &amp;Периодичность = "МЕСЯЦ"
+				ТОГДА НАЧАЛОПЕРИОДА(УправленческийОбороты.Период, МЕСЯЦ)
+			ИНАЧЕ НАЧАЛОПЕРИОДА(УправленческийОбороты.Период, ДЕНЬ)
+		КОНЕЦ, &amp;НачалоПериода) КАК Период,
 	СтатьиДвиженияДенежныхСредств.Ссылка КАК СтатьяДДС,
 	СтатьиДвиженияДенежныхСредств.ВидСтатьи КАК ВидСтатьиДДС
 ИЗ
 	Справочник.СтатьиДвиженияДенежныхСредств КАК СтатьиДвиженияДенежныхСредств
-		ЛЕВОЕ СОЕДИНЕНИЕ РегистрБухгалтерии.Управленческий.Обороты(, , Регистратор, Счет В ИЕРАРХИИ (ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ДенежныеСредства)), , , , ) КАК УправленческийОбороты
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрБухгалтерии.Управленческий.Обороты({(&amp;НачалоПериода)}, {(&amp;КонецПериода)}, Регистратор, Счет В ИЕРАРХИИ (ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ДенежныеСредства)), , , , ) КАК УправленческийОбороты
 		ПО (УправленческийОбороты.Субконто1 = СтатьиДвиженияДенежныхСредств.Ссылка)
 ГДЕ
-	//НЕ УправленческийОбороты.Период ЕСТЬ NULL 
 	НЕ СтатьиДвиженияДенежныхСредств.ЭтоГруппа
-	И (&amp;ПоказатьВнутренние ИЛИ НЕ(СтатьиДвиженияДенежныхСредств.Внутрифирменная ИЛИ СтатьиДвиженияДенежныхСредств.МеждуСчетами))</query>
+	И (&amp;ПоказатьВнутренние
+			ИЛИ НЕ(СтатьиДвиженияДенежныхСредств.Внутрифирменная
+					ИЛИ СтатьиДвиженияДенежныхСредств.МеждуСчетами))</query>
 	</dataSet>
 	<totalField>
 		<dataPath>Сумма</dataPath>
@@ -177,7 +178,7 @@
 				<v8:AllowedLength>Variable</v8:AllowedLength>
 			</v8:StringQualifiers>
 		</valueType>
-		<value xsi:type="xs:string">День</value>
+		<value xsi:type="xs:string">Месяц</value>
 		<useRestriction>false</useRestriction>
 		<availableValue>
 			<value xsi:type="xs:string">День</value>
@@ -223,6 +224,7 @@
 			<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
 		</value>
 		<useRestriction>false</useRestriction>
+		<use>Always</use>
 	</parameter>
 	<parameter>
 		<name>ПоказатьВнутренние</name>
@@ -244,6 +246,7 @@
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 			<dcsset:selection>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:use>false</dcsset:use>
 					<dcsset:field>СтатьяДДС.Код</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
@@ -260,25 +263,31 @@
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:userSettingID>abc3b248-3c0f-4a2f-b0cc-73c49a249aac</dcsset:userSettingID>
 				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">СтатьяДДС</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>60dcfa1b-5335-49da-9453-d8a33643a1d9</dcsset:userSettingID>
+				</dcsset:item>
 			</dcsset:filter>
 			<dcsset:dataParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:use>false</dcscor:use>
 					<dcscor:parameter>Периодичность</dcscor:parameter>
-					<dcscor:value xsi:type="xs:string">День</dcscor:value>
-					<dcsset:userSettingID>78f646d8-8bbc-4dd2-8fbe-eeaf18eef04c</dcsset:userSettingID>
+					<dcscor:value xsi:type="xs:string">Месяц</dcscor:value>
 				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:use>false</dcscor:use>
 					<dcscor:parameter>ПериодОтчета</dcscor:parameter>
-					<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
+					</dcscor:value>
 					<dcsset:userSettingID>3334f509-1cd3-4fd2-9beb-dcac72eb9195</dcsset:userSettingID>
 				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:use>false</dcscor:use>
 					<dcscor:parameter>ПоказатьВнутренние</dcscor:parameter>
-					<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
-					<dcsset:userSettingID>e22bf6b5-458c-4d8e-bcb1-a1fb4d5a4e6c</dcsset:userSettingID>
+					<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>1817bf7c-4f82-4c93-adf1-8eb202cdd230</dcsset:userSettingID>
 				</dcscor:item>
 			</dcsset:dataParameters>
 			<dcsset:order>
@@ -288,6 +297,14 @@
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>РасположениеРеквизитов</dcscor:parameter>
 					<dcscor:value xsi:type="dcsset:DataCompositionAttributesPlacement">Separately</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ГоризонтальноеРасположениеОбщихИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВертикальноеРасположениеОбщихИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">BeginAndEnd</dcscor:value>
 				</dcscor:item>
 			</dcsset:outputParameters>
 			<dcsset:item xsi:type="dcsset:StructureItemTable">

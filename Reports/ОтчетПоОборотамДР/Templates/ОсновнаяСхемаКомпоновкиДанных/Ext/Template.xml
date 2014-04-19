@@ -104,15 +104,15 @@
 	СтатьиДоходовРасходов.ВидСтатьи КАК ВидСтатьиДР,
 	-УправленческийОбороты.СуммаОборот КАК Сумма,
 	УправленческийОбороты.Регистратор КАК Регистратор,
-	ВЫБОР
-		КОГДА &amp;Периодичность = "ДЕНЬ"
-			ТОГДА НАЧАЛОПЕРИОДА(УправленческийОбороты.Период, ДЕНЬ)
-		КОГДА &amp;Периодичность = "НЕДЕЛЯ"
-			ТОГДА НАЧАЛОПЕРИОДА(УправленческийОбороты.Период, НЕДЕЛЯ)
-		КОГДА &amp;Периодичность = "МЕСЯЦ"
-			ТОГДА НАЧАЛОПЕРИОДА(УправленческийОбороты.Период, МЕСЯЦ)
-		ИНАЧЕ НАЧАЛОПЕРИОДА(УправленческийОбороты.Период, ДЕНЬ)
-	КОНЕЦ КАК Период
+	ЕСТЬNULL(ВЫБОР
+			КОГДА &amp;Периодичность = "ДЕНЬ"
+				ТОГДА НАЧАЛОПЕРИОДА(УправленческийОбороты.Период, ДЕНЬ)
+			КОГДА &amp;Периодичность = "НЕДЕЛЯ"
+				ТОГДА НАЧАЛОПЕРИОДА(УправленческийОбороты.Период, НЕДЕЛЯ)
+			КОГДА &amp;Периодичность = "МЕСЯЦ"
+				ТОГДА НАЧАЛОПЕРИОДА(УправленческийОбороты.Период, МЕСЯЦ)
+			ИНАЧЕ НАЧАЛОПЕРИОДА(УправленческийОбороты.Период, ДЕНЬ)
+		КОНЕЦ, &amp;НачалоПериода) КАК Период
 ИЗ
 	Справочник.СтатьиДоходовРасходов КАК СтатьиДоходовРасходов
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрБухгалтерии.Управленческий.Обороты(, , Регистратор, Счет В ИЕРАРХИИ (ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ПрибыльУбытки)), , , , ) КАК УправленческийОбороты
@@ -177,7 +177,7 @@
 				<v8:AllowedLength>Variable</v8:AllowedLength>
 			</v8:StringQualifiers>
 		</valueType>
-		<value xsi:type="xs:string">День</value>
+		<value xsi:type="xs:string">Месяц</value>
 		<useRestriction>false</useRestriction>
 		<availableValue>
 			<value xsi:type="xs:string">День</value>
@@ -223,6 +223,7 @@
 			<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
 		</value>
 		<useRestriction>false</useRestriction>
+		<use>Always</use>
 	</parameter>
 	<parameter>
 		<name>ПоказатьВнутренние</name>
@@ -245,6 +246,7 @@
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 			<dcsset:selection>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:use>false</dcsset:use>
 					<dcsset:field>СтатьяДР.Код</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
@@ -261,16 +263,20 @@
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:userSettingID>abc3b248-3c0f-4a2f-b0cc-73c49a249aac</dcsset:userSettingID>
 				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">СтатьяДР</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>cb65eed3-ba5b-4ce5-9759-ef28140c92b0</dcsset:userSettingID>
+				</dcsset:item>
 			</dcsset:filter>
 			<dcsset:dataParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:use>false</dcscor:use>
 					<dcscor:parameter>Периодичность</dcscor:parameter>
-					<dcscor:value xsi:type="xs:string">День</dcscor:value>
-					<dcsset:userSettingID>78f646d8-8bbc-4dd2-8fbe-eeaf18eef04c</dcsset:userSettingID>
+					<dcscor:value xsi:type="xs:string">Месяц</dcscor:value>
 				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:use>false</dcscor:use>
 					<dcscor:parameter>ПериодОтчета</dcscor:parameter>
 					<dcscor:value xsi:type="v8:StandardPeriod">
 						<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
@@ -280,7 +286,8 @@
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>ПоказатьВнутренние</dcscor:parameter>
 					<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
-					<dcsset:userSettingID>9d2e9637-de96-4fa8-82f6-651d4c34b847</dcsset:userSettingID>
+					<dcsset:viewMode>Normal</dcsset:viewMode>
+					<dcsset:userSettingID>9d1a9fb7-a7b1-4fb8-9e93-36830125e2fd</dcsset:userSettingID>
 				</dcscor:item>
 			</dcsset:dataParameters>
 			<dcsset:order>
@@ -290,6 +297,14 @@
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>РасположениеРеквизитов</dcscor:parameter>
 					<dcscor:value xsi:type="dcsset:DataCompositionAttributesPlacement">Separately</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ГоризонтальноеРасположениеОбщихИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВертикальноеРасположениеОбщихИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">BeginAndEnd</dcscor:value>
 				</dcscor:item>
 			</dcsset:outputParameters>
 			<dcsset:item xsi:type="dcsset:StructureItemTable">
