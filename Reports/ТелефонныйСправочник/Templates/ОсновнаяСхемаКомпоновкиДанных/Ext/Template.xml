@@ -38,17 +38,24 @@
 			<dataPath>ФизЛицо</dataPath>
 			<field>ФизЛицо</field>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЭлектронныйАдрес</dataPath>
+			<field>ЭлектронныйАдрес</field>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	ДолжностиСотрудниковСрезПоследних.ФизЛицо,
 	ДолжностиСотрудниковСрезПоследних.Подразделение,
 	ДолжностиСотрудниковСрезПоследних.Должность,
 	ФизическиеЛица.Телефон,
-	ФизическиеЛица.ТелефонРабочий
+	ФизическиеЛица.ТелефонРабочий,
+	ФизическиеЛица.ЭлектронныйАдрес
 ИЗ
-	РегистрСведений.ДолжностиСотрудников.СрезПоследних(&amp;Дата, Работает) КАК ДолжностиСотрудниковСрезПоследних
+	РегистрСведений.ДолжностиСотрудников.СрезПоследних(, ) КАК ДолжностиСотрудниковСрезПоследних
 		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.ФизическиеЛица КАК ФизическиеЛица
-		ПО ДолжностиСотрудниковСрезПоследних.ФизЛицо = ФизическиеЛица.Ссылка</query>
+		ПО ДолжностиСотрудниковСрезПоследних.ФизЛицо = ФизическиеЛица.Ссылка
+ГДЕ
+	ДолжностиСотрудниковСрезПоследних.Работает</query>
 	</dataSet>
 	<parameter>
 		<name>Период</name>
@@ -66,25 +73,6 @@
 		</valueType>
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 		<useRestriction>false</useRestriction>
-		<availableAsField>false</availableAsField>
-	</parameter>
-	<parameter>
-		<name>Дата</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Дата</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>xs:dateTime</v8:Type>
-			<v8:DateQualifiers>
-				<v8:DateFractions>DateTime</v8:DateFractions>
-			</v8:DateQualifiers>
-		</valueType>
-		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-		<useRestriction>true</useRestriction>
-		<expression>ТекущаяДата()</expression>
 		<availableAsField>false</availableAsField>
 	</parameter>
 	<settingsVariant>
@@ -130,18 +118,18 @@
 					<dcsset:orderType>Asc</dcsset:orderType>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:OrderItemField">
-					<dcsset:field>Должность</dcsset:field>
+					<dcsset:field>ФизЛицо</dcsset:field>
 					<dcsset:orderType>Asc</dcsset:orderType>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:OrderItemField">
-					<dcsset:field>ФизЛицо</dcsset:field>
+					<dcsset:field>Должность</dcsset:field>
 					<dcsset:orderType>Asc</dcsset:orderType>
 				</dcsset:item>
 			</dcsset:order>
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
 				<dcsset:groupItems>
 					<dcsset:item xsi:type="dcsset:GroupItemField">
-						<dcsset:field>Должность</dcsset:field>
+						<dcsset:field>Подразделение</dcsset:field>
 						<dcsset:groupType>Items</dcsset:groupType>
 						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
