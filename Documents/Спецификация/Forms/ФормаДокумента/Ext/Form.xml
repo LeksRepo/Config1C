@@ -234,6 +234,7 @@
 						</LabelField>
 						<LabelField name="Договор" id="528">
 							<DataPath>Договор</DataPath>
+							<Width>30</Width>
 							<HorizontalStretch>false</HorizontalStretch>
 							<Hiperlink>true</Hiperlink>
 							<ContextMenu name="ДоговорКонтекстноеМеню" id="529"/>
@@ -242,15 +243,24 @@
 								<Event name="Click">ДоговорНажатие</Event>
 							</Events>
 						</LabelField>
-						<LabelField name="НадписьДилерам" id="683">
-							<DataPath>НадписьДилерам</DataPath>
+						<LabelField name="ЕстьМатериалПодЗаказ" id="683">
+							<DataPath>Объект.ЕстьМатериалПодЗаказ</DataPath>
 							<TitleLocation>None</TitleLocation>
-							<Width>45</Width>
-							<Height>1</Height>
-							<HorizontalStretch>false</HorizontalStretch>
-							<TextColor>web:SteelBlue</TextColor>
-							<ContextMenu name="НадписьДилерамКонтекстноеМеню" id="684"/>
-							<ExtendedTooltip name="НадписьДилерамРасширеннаяПодсказка" id="685"/>
+							<Width>40</Width>
+							<Format>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>БЛ=""; БИ='Есть материал под заказ. Согласуйте с заводом.'</v8:content>
+								</v8:item>
+							</Format>
+							<Hiperlink>true</Hiperlink>
+							<TextColor>web:Red</TextColor>
+							<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							<ContextMenu name="ЕстьМатериалПодЗаказКонтекстноеМеню" id="684"/>
+							<ExtendedTooltip name="ЕстьМатериалПодЗаказРасширеннаяПодсказка" id="685"/>
+							<Events>
+								<Event name="Click">ЕстьМатериалПодЗаказНажатие</Event>
+							</Events>
 						</LabelField>
 					</ChildItems>
 				</UsualGroup>
@@ -1911,21 +1921,6 @@
 					<v8:FractionDigits>0</v8:FractionDigits>
 					<v8:AllowedSign>Any</v8:AllowedSign>
 				</v8:NumberQualifiers>
-			</Type>
-		</Attribute>
-		<Attribute name="НадписьДилерам" id="8">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Надпись дилерам</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:string</v8:Type>
-				<v8:StringQualifiers>
-					<v8:Length>0</v8:Length>
-					<v8:AllowedLength>Variable</v8:AllowedLength>
-				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
 		<Attribute name="ПовторнаяПроверка" id="9">
