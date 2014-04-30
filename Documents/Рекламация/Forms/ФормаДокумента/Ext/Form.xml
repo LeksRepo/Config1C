@@ -5,9 +5,6 @@
 	<UsePostingMode>Auto</UsePostingMode>
 	<RepostOnWrite>true</RepostOnWrite>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
-	<Events>
-		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
-	</Events>
 	<ChildItems>
 		<UsualGroup name="Шапка" id="1">
 			<Title>
@@ -54,6 +51,7 @@
 								<InputField name="Номер" id="3">
 									<DataPath>Объект.Number</DataPath>
 									<EditMode>EnterOnInput</EditMode>
+									<HorizontalStretch>false</HorizontalStretch>
 									<ContextMenu name="НомерКонтекстноеМеню" id="4"/>
 									<ExtendedTooltip name="НомерExtendedTooltip" id="25"/>
 								</InputField>
@@ -74,8 +72,15 @@
 								</v8:item>
 							</Title>
 							<EditMode>EnterOnInput</EditMode>
+							<HorizontalStretch>false</HorizontalStretch>
 							<ContextMenu name="ПодразделениеКонтекстноеМеню" id="8"/>
 							<ExtendedTooltip name="ПодразделениеExtendedTooltip" id="27"/>
+						</InputField>
+						<InputField name="Статья" id="37">
+							<DataPath>Объект.Статья</DataPath>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="СтатьяКонтекстноеМеню" id="38"/>
+							<ExtendedTooltip name="СтатьяРасширеннаяПодсказка" id="39"/>
 						</InputField>
 					</ChildItems>
 				</UsualGroup>
@@ -94,7 +99,7 @@
 						<InputField name="Сумма" id="12">
 							<DataPath>Объект.Сумма</DataPath>
 							<EditMode>EnterOnInput</EditMode>
-							<HorizontalStretch>true</HorizontalStretch>
+							<HorizontalStretch>false</HorizontalStretch>
 							<ContextMenu name="СуммаКонтекстноеМеню" id="13"/>
 							<ExtendedTooltip name="СуммаExtendedTooltip" id="29"/>
 						</InputField>
@@ -107,50 +112,29 @@
 								</v8:item>
 							</Title>
 							<EditMode>EnterOnInput</EditMode>
+							<HorizontalStretch>false</HorizontalStretch>
 							<ContextMenu name="ПодразделениеПолучательКонтекстноеМеню" id="10"/>
 							<ExtendedTooltip name="ПодразделениеПолучательExtendedTooltip" id="30"/>
+						</InputField>
+						<InputField name="СтатьяПолучатель" id="40">
+							<DataPath>Объект.СтатьяПолучатель</DataPath>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="СтатьяПолучательКонтекстноеМеню" id="41"/>
+							<ExtendedTooltip name="СтатьяПолучательРасширеннаяПодсказка" id="42"/>
 						</InputField>
 					</ChildItems>
 				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
-		<UsualGroup name="Авторы" id="20">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Авторы</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Авторы</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Group>Horizontal</Group>
-			<Representation>None</Representation>
-			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="АвторыExtendedTooltip" id="31"/>
-			<ChildItems>
-				<LabelField name="Автор" id="16">
-					<DataPath>1/0:1ffbbcd8-0940-49cf-83d4-54bcf3a63504</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="АвторКонтекстноеМеню" id="17"/>
-					<ExtendedTooltip name="АвторExtendedTooltip" id="32"/>
-				</LabelField>
-				<LabelField name="Соавтор" id="18">
-					<DataPath>1/0:56ba9ae6-d761-4582-913b-39571aa252f8</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="СоавторКонтекстноеМеню" id="19"/>
-					<ExtendedTooltip name="СоавторExtendedTooltip" id="33"/>
-				</LabelField>
-			</ChildItems>
-		</UsualGroup>
-		<InputField name="Комментарий" id="14">
-			<DataPath>1/0:b619a5db-c2cd-45c0-b198-78fe74f061dc</DataPath>
-			<EditMode>EnterOnInput</EditMode>
-			<ContextMenu name="КомментарийКонтекстноеМеню" id="15"/>
-			<ExtendedTooltip name="КомментарийExtendedTooltip" id="34"/>
+		<LabelField name="Автор" id="31">
+			<DataPath>Объект.Автор</DataPath>
+			<ContextMenu name="АвторКонтекстноеМеню" id="32"/>
+			<ExtendedTooltip name="АвторРасширеннаяПодсказка" id="33"/>
+		</LabelField>
+		<InputField name="Комментарий" id="34">
+			<DataPath>Объект.Комментарий</DataPath>
+			<ContextMenu name="КомментарийКонтекстноеМеню" id="35"/>
+			<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="36"/>
 		</InputField>
 	</ChildItems>
 	<Attributes>
