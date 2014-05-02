@@ -83,6 +83,10 @@
 				</v8:item>
 			</title>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Офис</dataPath>
+			<field>Офис</field>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	Монтаж.ДатаМонтажа,
@@ -100,7 +104,8 @@
 	Заметки.ТекстСодержания КАК ТекстЗаметки,
 	СтатусСпецификацииСрезПоследних.Спецификация,
 	Монтаж.Спецификация.Ссылка КАК Ссылка,
-	СтатусСпецификацииСрезПоследних.Спецификация.ДокументОснование.Замерщик КАК Замерщик
+	СтатусСпецификацииСрезПоследних.Спецификация.ДокументОснование.Замерщик КАК Замерщик,
+	Договор.Офис
 ИЗ
 	Документ.Монтаж КАК Монтаж
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СтатусСпецификации.СрезПоследних(ДАТАВРЕМЯ(3999, 11, 1), ) КАК СтатусСпецификацииСрезПоследних
@@ -706,18 +711,15 @@
 					</dcsat:appearance>
 				</dcsat:tableCell>
 				<dcsat:tableCell>
+					<dcsat:item xsi:type="dcsat:Field">
+						<dcsat:value xsi:type="dcscor:Parameter">Офис</dcsat:value>
+					</dcsat:item>
 					<dcsat:appearance>
 						<dcscor:item>
 							<dcscor:parameter>СтильГраницы</dcscor:parameter>
 							<dcscor:value xsi:type="v8ui:Line" width="0" gap="false">
 								<v8ui:style xsi:type="v8ui:SpreadsheetDocumentCellLineType">None</v8ui:style>
 							</dcscor:value>
-							<dcscor:item>
-								<dcscor:parameter>СтильГраницы.Слева</dcscor:parameter>
-								<dcscor:value xsi:type="v8ui:Line" width="1" gap="false">
-									<v8ui:style xsi:type="v8ui:SpreadsheetDocumentCellLineType">Solid</v8ui:style>
-								</dcscor:value>
-							</dcscor:item>
 							<dcscor:item>
 								<dcscor:parameter>СтильГраницы.Сверху</dcscor:parameter>
 								<dcscor:value xsi:type="v8ui:Line" width="1" gap="false">
@@ -925,6 +927,10 @@
 		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
 			<dcsat:name>Замерщик</dcsat:name>
 			<dcsat:expression>Представление(Замерщик)</dcsat:expression>
+		</parameter>
+		<parameter xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:ExpressionAreaTemplateParameter">
+			<dcsat:name>Офис</dcsat:name>
+			<dcsat:expression>Представление(Офис)</dcsat:expression>
 		</parameter>
 	</template>
 	<template>
@@ -1514,6 +1520,14 @@
 					</dcsat:appearance>
 				</dcsat:tableCell>
 				<dcsat:tableCell>
+					<dcsat:item xsi:type="dcsat:Field">
+						<dcsat:value xsi:type="v8:LocalStringType">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Офис</v8:content>
+							</v8:item>
+						</dcsat:value>
+					</dcsat:item>
 					<dcsat:appearance>
 						<dcscor:item>
 							<dcscor:parameter>СтильГраницы</dcscor:parameter>
