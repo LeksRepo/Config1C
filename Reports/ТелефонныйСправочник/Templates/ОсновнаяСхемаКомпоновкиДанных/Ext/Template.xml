@@ -42,6 +42,16 @@
 			<dataPath>ЭлектронныйАдрес</dataPath>
 			<field>ЭлектронныйАдрес</field>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДолжностьРуководителя</dataPath>
+			<field>ДолжностьРуководителя</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Должность руководителя</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	ДолжностиСотрудниковСрезПоследних.ФизЛицо,
@@ -49,7 +59,8 @@
 	ДолжностиСотрудниковСрезПоследних.Должность,
 	ФизическиеЛица.Телефон,
 	ФизическиеЛица.ТелефонРабочий,
-	ФизическиеЛица.ЭлектронныйАдрес
+	ФизическиеЛица.ЭлектронныйАдрес,
+	ДолжностиСотрудниковСрезПоследних.Должность.ДолжностьРуководителя КАК ДолжностьРуководителя
 ИЗ
 	РегистрСведений.ДолжностиСотрудников.СрезПоследних(, ) КАК ДолжностиСотрудниковСрезПоследних
 		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.ФизическиеЛица КАК ФизическиеЛица
@@ -57,6 +68,35 @@
 ГДЕ
 	ДолжностиСотрудниковСрезПоследних.Работает</query>
 	</dataSet>
+	<dataSet xsi:type="DataSetQuery">
+		<name>Должности</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Наименование</dataPath>
+			<field>Наименование</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Руководитель</dataPath>
+			<field>Руководитель</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Руководитель</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	Должности.Ссылка КАК Руководитель,
+	Должности.Наименование
+ИЗ
+	Справочник.Должности КАК Должности</query>
+	</dataSet>
+	<dataSetLink>
+		<sourceDataSet>НаборДанных1</sourceDataSet>
+		<destinationDataSet>Должности</destinationDataSet>
+		<sourceExpression>ДолжностьРуководителя</sourceExpression>
+		<destinationExpression>Руководитель</destinationExpression>
+	</dataSetLink>
 	<parameter>
 		<name>Период</name>
 		<title xsi:type="v8:LocalStringType">
