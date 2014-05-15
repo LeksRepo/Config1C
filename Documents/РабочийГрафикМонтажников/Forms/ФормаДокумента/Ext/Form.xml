@@ -44,14 +44,17 @@
 				</InputField>
 			</ChildItems>
 		</UsualGroup>
-		<InputField name="Подразделение" id="13">
+		<InputField name="Подразделение" id="48">
+			<DataPath>Объект.Подразделение</DataPath>
+			<HorizontalStretch>false</HorizontalStretch>
+			<ContextMenu name="ПодразделениеКонтекстноеМеню" id="49"/>
+			<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="50"/>
+		</InputField>
+		<InputField name="Город" id="45">
 			<DataPath>Объект.Город</DataPath>
 			<HorizontalStretch>false</HorizontalStretch>
-			<ContextMenu name="ПодразделениеКонтекстноеМеню" id="14"/>
-			<ExtendedTooltip name="ПодразделениеExtendedTooltip" id="34"/>
-			<Events>
-				<Event name="OnChange">ПодразделениеПриИзменении</Event>
-			</Events>
+			<ContextMenu name="ГородКонтекстноеМеню" id="46"/>
+			<ExtendedTooltip name="ГородРасширеннаяПодсказка" id="47"/>
 		</InputField>
 		<Button name="ТабельЗаполнитьТабель" id="24">
 			<Type>UsualButton</Type>
@@ -77,29 +80,29 @@
 				<Autofill>false</Autofill>
 			</AutoCommandBar>
 			<ExtendedTooltip name="ТабельExtendedTooltip" id="36"/>
-			<SearchStringAddition name="ТабельСтрокаПоиска" id="45">
+			<SearchStringAddition name="ТабельСтрокаПоиска" id="57">
 				<AdditionSource>
 					<Item>Табель</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="ТабельСтрокаПоискаКонтекстноеМеню" id="46"/>
-				<ExtendedTooltip name="ТабельСтрокаПоискаРасширеннаяПодсказка" id="47"/>
+				<ContextMenu name="ТабельСтрокаПоискаКонтекстноеМеню" id="58"/>
+				<ExtendedTooltip name="ТабельСтрокаПоискаРасширеннаяПодсказка" id="59"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="ТабельСостояниеПросмотра" id="48">
+			<ViewStatusAddition name="ТабельСостояниеПросмотра" id="60">
 				<AdditionSource>
 					<Item>Табель</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="ТабельСостояниеПросмотраКонтекстноеМеню" id="49"/>
-				<ExtendedTooltip name="ТабельСостояниеПросмотраРасширеннаяПодсказка" id="50"/>
+				<ContextMenu name="ТабельСостояниеПросмотраКонтекстноеМеню" id="61"/>
+				<ExtendedTooltip name="ТабельСостояниеПросмотраРасширеннаяПодсказка" id="62"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="ТабельУправлениеПоиском" id="51">
+			<SearchControlAddition name="ТабельУправлениеПоиском" id="63">
 				<AdditionSource>
 					<Item>Табель</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="ТабельУправлениеПоискомКонтекстноеМеню" id="52"/>
-				<ExtendedTooltip name="ТабельУправлениеПоискомРасширеннаяПодсказка" id="53"/>
+				<ContextMenu name="ТабельУправлениеПоискомКонтекстноеМеню" id="64"/>
+				<ExtendedTooltip name="ТабельУправлениеПоискомРасширеннаяПодсказка" id="65"/>
 			</SearchControlAddition>
 			<Events>
 				<Event name="BeforeAddRow">ТабельПередНачаломДобавления</Event>
@@ -154,43 +157,15 @@
 				</InputField>
 			</ChildItems>
 		</Table>
-		<UsualGroup name="ГруппаАвторы" id="11">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа авторы</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа авторы</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Group>Horizontal</Group>
-			<Representation>None</Representation>
-			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаАвторыExtendedTooltip" id="41"/>
-			<ChildItems>
-				<LabelField name="Автор" id="5">
-					<DataPath>1/0:1ffbbcd8-0940-49cf-83d4-54bcf3a63504</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="АвторКонтекстноеМеню" id="6"/>
-					<ExtendedTooltip name="АвторExtendedTooltip" id="42"/>
-				</LabelField>
-				<LabelField name="Соавтор" id="9">
-					<DataPath>1/0:56ba9ae6-d761-4582-913b-39571aa252f8</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="СоавторКонтекстноеМеню" id="10"/>
-					<ExtendedTooltip name="СоавторExtendedTooltip" id="43"/>
-				</LabelField>
-			</ChildItems>
-		</UsualGroup>
-		<InputField name="Комментарий" id="7">
-			<DataPath>1/0:b619a5db-c2cd-45c0-b198-78fe74f061dc</DataPath>
-			<EditMode>EnterOnInput</EditMode>
-			<ContextMenu name="КомментарийКонтекстноеМеню" id="8"/>
-			<ExtendedTooltip name="КомментарийExtendedTooltip" id="44"/>
+		<LabelField name="Автор" id="51">
+			<DataPath>Объект.Автор</DataPath>
+			<ContextMenu name="АвторКонтекстноеМеню" id="52"/>
+			<ExtendedTooltip name="АвторРасширеннаяПодсказка" id="53"/>
+		</LabelField>
+		<InputField name="Комментарий" id="54">
+			<DataPath>Объект.Комментарий</DataPath>
+			<ContextMenu name="КомментарийКонтекстноеМеню" id="55"/>
+			<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="56"/>
 		</InputField>
 	</ChildItems>
 	<Attributes>
