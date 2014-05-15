@@ -20,28 +20,28 @@
 				</v8:item>
 			</ToolTip>
 			<HorizontalStretch>false</HorizontalStretch>
-			<Group>Horizontal</Group>
+			<Group>Vertical</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ШапкаГруппаExtendedTooltip" id="28"/>
 			<ChildItems>
-				<UsualGroup name="ЛеваяКолонка" id="23">
+				<UsualGroup name="ГруппаНомерДата" id="23">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Левая колонка</v8:content>
+							<v8:content>Группа номер дата</v8:content>
 						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Левая колонка</v8:content>
+							<v8:content>Группа номер дата</v8:content>
 						</v8:item>
 					</ToolTip>
-					<Group>Vertical</Group>
+					<Group>Horizontal</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="ЛеваяКолонкаExtendedTooltip" id="29"/>
+					<ExtendedTooltip name="ГруппаНомерДатаРасширеннаяПодсказка" id="29"/>
 					<ChildItems>
 						<InputField name="Номер" id="1">
 							<DataPath>Объект.Number</DataPath>
@@ -49,12 +49,12 @@
 							<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
 							<ExtendedTooltip name="НомерExtendedTooltip" id="30"/>
 						</InputField>
-						<InputField name="Подразделение" id="5">
-							<DataPath>Объект.Подразделение</DataPath>
+						<InputField name="Дата" id="3">
+							<DataPath>Объект.Date</DataPath>
 							<EditMode>EnterOnInput</EditMode>
 							<Width>20</Width>
-							<ContextMenu name="ПодразделениеКонтекстноеМеню" id="6"/>
-							<ExtendedTooltip name="ПодразделениеExtendedTooltip" id="31"/>
+							<ContextMenu name="ДатаКонтекстноеМеню" id="4"/>
+							<ExtendedTooltip name="ДатаExtendedTooltip" id="33"/>
 						</InputField>
 					</ChildItems>
 				</UsualGroup>
@@ -76,23 +76,13 @@
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="ПраваяКолонкаExtendedTooltip" id="32"/>
 					<ChildItems>
-						<InputField name="Дата" id="3">
-							<DataPath>Объект.Date</DataPath>
+						<InputField name="Подразделение" id="5">
+							<DataPath>Объект.Подразделение</DataPath>
 							<EditMode>EnterOnInput</EditMode>
-							<Width>20</Width>
-							<ContextMenu name="ДатаКонтекстноеМеню" id="4"/>
-							<ExtendedTooltip name="ДатаExtendedTooltip" id="33"/>
-						</InputField>
-						<InputField name="Склад" id="44">
-							<DataPath>Объект.Склад</DataPath>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Склад</v8:content>
-								</v8:item>
-							</Title>
-							<ContextMenu name="СкладКонтекстноеМеню" id="45"/>
-							<ExtendedTooltip name="СкладРасширеннаяПодсказка" id="46"/>
+							<Width>40</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="ПодразделениеКонтекстноеМеню" id="6"/>
+							<ExtendedTooltip name="ПодразделениеExtendedTooltip" id="31"/>
 						</InputField>
 					</ChildItems>
 				</UsualGroup>
@@ -115,11 +105,6 @@
 						<Type>CommandBarButton</Type>
 						<CommandName>Form.Command.ЗаполнитьГруппой</CommandName>
 						<ExtendedTooltip name="СписокНоменклатурыЗаполнитьГруппойExtendedTooltip" id="34"/>
-					</Button>
-					<Button name="СписокНоменклатурыЗаполнитьПустыми" id="27">
-						<Type>CommandBarButton</Type>
-						<CommandName>Form.Command.ЗаполнитьПустыми</CommandName>
-						<ExtendedTooltip name="СписокНоменклатурыЗаполнитьПустымиExtendedTooltip" id="35"/>
 					</Button>
 				</ChildItems>
 			</AutoCommandBar>
@@ -191,7 +176,7 @@
 	<Attributes>
 		<Attribute name="Объект" id="1">
 			<Type>
-				<v8:Type>cfg:DocumentObject.УстановкаЛимитаРезерва</v8:Type>
+				<v8:Type>cfg:DocumentObject.УстановкаЦеховогоЛимита</v8:Type>
 			</Type>
 			<MainAttribute>true</MainAttribute>
 			<SavedData>true</SavedData>
@@ -215,21 +200,6 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ЗаполнитьГруппой</Action>
-		</Command>
-		<Command name="ЗаполнитьПустыми" id="2">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Заполнить пустыми</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Заполнить пустыми</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Action>ЗаполнитьПустыми</Action>
 		</Command>
 	</Commands>
 </Form>
