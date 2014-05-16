@@ -11,91 +11,49 @@
 			<field>Должность</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Подразделение</dataPath>
-			<field>Подразделение</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>Телефон</dataPath>
-			<field>Телефон</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Телефон (личный)</v8:content>
-				</v8:item>
-			</title>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>ТелефонРабочий</dataPath>
-			<field>ТелефонРабочий</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Телефон (служебный)</v8:content>
-				</v8:item>
-			</title>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>ФизЛицо</dataPath>
 			<field>ФизЛицо</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
+			<dataPath>Телефон</dataPath>
+			<field>ФизЛицоТелефон</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ТелефонРабочий</dataPath>
+			<field>ФизЛицоТелефонРабочий</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
 			<dataPath>ЭлектронныйАдрес</dataPath>
-			<field>ЭлектронныйАдрес</field>
+			<field>ФизЛицоЭлектронныйАдрес</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>ДолжностьРуководителя</dataPath>
-			<field>ДолжностьРуководителя</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Должность руководителя</v8:content>
-				</v8:item>
-			</title>
+			<field>ДолжностьДолжностьРуководителя</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Подразделение</dataPath>
+			<field>Подразделение</field>
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	ДолжностиСотрудниковСрезПоследних.ФизЛицо,
-	ДолжностиСотрудниковСрезПоследних.Подразделение,
 	ДолжностиСотрудниковСрезПоследних.Должность,
-	ФизическиеЛица.Телефон,
-	ФизическиеЛица.ТелефонРабочий,
-	ФизическиеЛица.ЭлектронныйАдрес,
-	ДолжностиСотрудниковСрезПоследних.Должность.ДолжностьРуководителя КАК ДолжностьРуководителя
+	ДолжностиСотрудниковСрезПоследних.Должность.ДолжностьРуководителя,
+	ДолжностиСотрудниковСрезПоследних.ФизЛицо.Телефон,
+	ДолжностиСотрудниковСрезПоследних.ФизЛицо.ТелефонРабочий,
+	ДолжностиСотрудниковСрезПоследних.ФизЛицо.ЭлектронныйАдрес,
+	ДолжностиСотрудниковСрезПоследних.Подразделение
 ИЗ
 	РегистрСведений.ДолжностиСотрудников.СрезПоследних(, ) КАК ДолжностиСотрудниковСрезПоследних
-		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.ФизическиеЛица КАК ФизическиеЛица
-		ПО ДолжностиСотрудниковСрезПоследних.ФизЛицо = ФизическиеЛица.Ссылка
 ГДЕ
 	ДолжностиСотрудниковСрезПоследних.Работает</query>
 	</dataSet>
-	<dataSet xsi:type="DataSetQuery">
-		<name>Должности</name>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>Наименование</dataPath>
-			<field>Наименование</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>Руководитель</dataPath>
-			<field>Руководитель</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Руководитель</v8:content>
-				</v8:item>
-			</title>
-		</field>
-		<dataSource>ИсточникДанных1</dataSource>
-		<query>ВЫБРАТЬ
-	Должности.Ссылка КАК Руководитель,
-	Должности.Наименование
-ИЗ
-	Справочник.Должности КАК Должности</query>
-	</dataSet>
 	<dataSetLink>
 		<sourceDataSet>НаборДанных1</sourceDataSet>
-		<destinationDataSet>Должности</destinationDataSet>
-		<sourceExpression>ДолжностьРуководителя</sourceExpression>
-		<destinationExpression>Руководитель</destinationExpression>
+		<destinationDataSet>НаборДанных1</destinationDataSet>
+		<sourceExpression>Должность</sourceExpression>
+		<destinationExpression>ДолжностьРуководителя</destinationExpression>
+		<startExpression>ЗНАЧЕНИЕ(Справочник.Должности.ПустаяСсылка)</startExpression>
 	</dataSetLink>
 	<parameter>
 		<name>Период</name>
@@ -124,16 +82,19 @@
 					<dcsset:field>СистемныеПоля.НомерПоПорядку</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>ФизЛицо</dcsset:field>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Должность</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>ТелефонРабочий</dcsset:field>
+					<dcsset:field>ФизЛицо</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Подразделение</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Телефон</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ТелефонРабочий</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>ЭлектронныйАдрес</dcsset:field>
@@ -154,29 +115,12 @@
 				</dcsset:item>
 			</dcsset:order>
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
-				<dcsset:groupItems>
-					<dcsset:item xsi:type="dcsset:GroupItemField">
-						<dcsset:field>Подразделение</dcsset:field>
-						<dcsset:groupType>Items</dcsset:groupType>
-						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
-						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
-						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
-					</dcsset:item>
-				</dcsset:groupItems>
 				<dcsset:order>
 					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
 				</dcsset:order>
 				<dcsset:selection>
 					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
 				</dcsset:selection>
-				<dcsset:item xsi:type="dcsset:StructureItemGroup">
-					<dcsset:order>
-						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
-					</dcsset:order>
-					<dcsset:selection>
-						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
-					</dcsset:selection>
-				</dcsset:item>
 			</dcsset:item>
 		</dcsset:settings>
 	</settingsVariant>
