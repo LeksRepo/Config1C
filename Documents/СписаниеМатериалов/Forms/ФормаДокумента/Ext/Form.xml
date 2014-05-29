@@ -146,6 +146,7 @@
 		</UsualGroup>
 		<Table name="СписокНоменклатуры" id="7">
 			<Representation>List</Representation>
+			<Footer>true</Footer>
 			<AutoInsertNewRow>true</AutoInsertNewRow>
 			<EnableStartDrag>true</EnableStartDrag>
 			<EnableDrag>true</EnableDrag>
@@ -157,29 +158,29 @@
 			<ContextMenu name="СписокНоменклатурыКонтекстноеМеню" id="8"/>
 			<AutoCommandBar name="СписокНоменклатурыКоманднаяПанель" id="9"/>
 			<ExtendedTooltip name="СписокНоменклатурыExtendedTooltip" id="43"/>
-			<SearchStringAddition name="СписокНоменклатурыСтрокаПоиска" id="76">
+			<SearchStringAddition name="СписокНоменклатурыСтрокаПоиска" id="79">
 				<AdditionSource>
 					<Item>СписокНоменклатуры</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокНоменклатурыСтрокаПоискаКонтекстноеМеню" id="77"/>
-				<ExtendedTooltip name="СписокНоменклатурыСтрокаПоискаРасширеннаяПодсказка" id="78"/>
+				<ContextMenu name="СписокНоменклатурыСтрокаПоискаКонтекстноеМеню" id="80"/>
+				<ExtendedTooltip name="СписокНоменклатурыСтрокаПоискаРасширеннаяПодсказка" id="81"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокНоменклатурыСостояниеПросмотра" id="79">
+			<ViewStatusAddition name="СписокНоменклатурыСостояниеПросмотра" id="82">
 				<AdditionSource>
 					<Item>СписокНоменклатуры</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокНоменклатурыСостояниеПросмотраКонтекстноеМеню" id="80"/>
-				<ExtendedTooltip name="СписокНоменклатурыСостояниеПросмотраРасширеннаяПодсказка" id="81"/>
+				<ContextMenu name="СписокНоменклатурыСостояниеПросмотраКонтекстноеМеню" id="83"/>
+				<ExtendedTooltip name="СписокНоменклатурыСостояниеПросмотраРасширеннаяПодсказка" id="84"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокНоменклатурыУправлениеПоиском" id="82">
+			<SearchControlAddition name="СписокНоменклатурыУправлениеПоиском" id="85">
 				<AdditionSource>
 					<Item>СписокНоменклатуры</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокНоменклатурыУправлениеПоискомКонтекстноеМеню" id="83"/>
-				<ExtendedTooltip name="СписокНоменклатурыУправлениеПоискомРасширеннаяПодсказка" id="84"/>
+				<ContextMenu name="СписокНоменклатурыУправлениеПоискомКонтекстноеМеню" id="86"/>
+				<ExtendedTooltip name="СписокНоменклатурыУправлениеПоискомРасширеннаяПодсказка" id="87"/>
 			</SearchControlAddition>
 			<ChildItems>
 				<LabelField name="СписокНоменклатурыНомерСтроки" id="10">
@@ -210,6 +211,7 @@
 				<InputField name="СписокНоменклатурыКоличество" id="16">
 					<DataPath>Объект.СписокНоменклатуры.Количество</DataPath>
 					<EditMode>EnterOnInput</EditMode>
+					<FooterDataPath>Объект.СписокНоменклатуры.TotalКоличество</FooterDataPath>
 					<ContextMenu name="СписокНоменклатурыКоличествоКонтекстноеМеню" id="17"/>
 					<ExtendedTooltip name="СписокНоменклатурыКоличествоExtendedTooltip" id="47"/>
 				</InputField>
@@ -221,6 +223,19 @@
 				</InputField>
 			</ChildItems>
 		</Table>
+		<LabelField name="СуммаДокумента" id="76">
+			<DataPath>Объект.СуммаДокумента</DataPath>
+			<HorizontalAlign>Left</HorizontalAlign>
+			<Format>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ЧДЦ=2</v8:content>
+				</v8:item>
+			</Format>
+			<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+			<ContextMenu name="СуммаДокументаКонтекстноеМеню" id="77"/>
+			<ExtendedTooltip name="СуммаДокументаРасширеннаяПодсказка" id="78"/>
+		</LabelField>
 		<LabelField name="Автор" id="55">
 			<DataPath>Объект.Автор</DataPath>
 			<ContextMenu name="АвторКонтекстноеМеню" id="56"/>
