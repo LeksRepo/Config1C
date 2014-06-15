@@ -29,26 +29,6 @@
 		<Pages name="Группа1" id="520">
 			<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="521"/>
 			<ChildItems>
-				<Page name="Группа3" id="524">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>3D редактор (в разработке)</v8:content>
-						</v8:item>
-					</Title>
-					<ExtendedTooltip name="Группа3РасширеннаяПодсказка" id="525"/>
-					<ChildItems>
-						<HTMLDocumentField name="Флэш3D" id="517">
-							<DataPath>Флэш3D</DataPath>
-							<TitleLocation>None</TitleLocation>
-							<ContextMenu name="Флэш3DКонтекстноеМеню" id="518"/>
-							<ExtendedTooltip name="Флэш3DРасширеннаяПодсказка" id="519"/>
-							<Events>
-								<Event name="OnClick">Флэш3DПриНажатии</Event>
-							</Events>
-						</HTMLDocumentField>
-					</ChildItems>
-				</Page>
 				<Page name="Группа2" id="522">
 					<Title>
 						<v8:item>
@@ -1827,43 +1807,39 @@
 														</ChildItems>
 													</AutoCommandBar>
 													<ExtendedTooltip name="ДеталиExtendedTooltip" id="320"/>
-													<SearchStringAddition name="ДеталиСтрокаПоиска" id="529">
+													<SearchStringAddition name="ДеталиСтрокаПоиска" id="526">
 														<AdditionSource>
 															<Item>Детали</Item>
 															<Type>SearchStringRepresentation</Type>
 														</AdditionSource>
-														<ContextMenu name="ДеталиСтрокаПоискаКонтекстноеМеню" id="530"/>
-														<ExtendedTooltip name="ДеталиСтрокаПоискаРасширеннаяПодсказка" id="531"/>
+														<ContextMenu name="ДеталиСтрокаПоискаКонтекстноеМеню" id="527"/>
+														<ExtendedTooltip name="ДеталиСтрокаПоискаРасширеннаяПодсказка" id="528"/>
 													</SearchStringAddition>
-													<ViewStatusAddition name="ДеталиСостояниеПросмотра" id="532">
+													<ViewStatusAddition name="ДеталиСостояниеПросмотра" id="529">
 														<AdditionSource>
 															<Item>Детали</Item>
 															<Type>ViewStatusRepresentation</Type>
 														</AdditionSource>
-														<ContextMenu name="ДеталиСостояниеПросмотраКонтекстноеМеню" id="533"/>
-														<ExtendedTooltip name="ДеталиСостояниеПросмотраРасширеннаяПодсказка" id="534"/>
+														<ContextMenu name="ДеталиСостояниеПросмотраКонтекстноеМеню" id="530"/>
+														<ExtendedTooltip name="ДеталиСостояниеПросмотраРасширеннаяПодсказка" id="531"/>
 													</ViewStatusAddition>
-													<SearchControlAddition name="ДеталиУправлениеПоиском" id="535">
+													<SearchControlAddition name="ДеталиУправлениеПоиском" id="532">
 														<AdditionSource>
 															<Item>Детали</Item>
 															<Type>SearchControl</Type>
 														</AdditionSource>
-														<ContextMenu name="ДеталиУправлениеПоискомКонтекстноеМеню" id="536"/>
-														<ExtendedTooltip name="ДеталиУправлениеПоискомРасширеннаяПодсказка" id="537"/>
+														<ContextMenu name="ДеталиУправлениеПоискомКонтекстноеМеню" id="533"/>
+														<ExtendedTooltip name="ДеталиУправлениеПоискомРасширеннаяПодсказка" id="534"/>
 													</SearchControlAddition>
 													<Events>
+														<Event name="BeforeDeleteRow">ДеталиПередУдалением</Event>
 														<Event name="BeforeEditEnd">ДеталиПередОкончаниемРедактирования</Event>
 														<Event name="OnActivateRow">ДеталиПриАктивизацииСтроки</Event>
 														<Event name="ChoiceProcessing">ДеталиОбработкаВыбора</Event>
+														<Event name="OnStartEdit">ДеталиПриНачалеРедактирования</Event>
 														<Event name="OnChange">ДеталиПриИзменении</Event>
 													</Events>
 													<ChildItems>
-														<InputField name="ДеталиИД" id="526">
-															<DataPath>Детали.ИД</DataPath>
-															<EditMode>EnterOnInput</EditMode>
-															<ContextMenu name="ДеталиИДКонтекстноеМеню" id="527"/>
-															<ExtendedTooltip name="ДеталиИДРасширеннаяПодсказка" id="528"/>
-														</InputField>
 														<InputField name="ДеталиНомерСтроки" id="506">
 															<DataPath>Детали.НомерСтроки</DataPath>
 															<Title>
@@ -2077,6 +2053,26 @@
 								</Pages>
 							</ChildItems>
 						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="Группа3" id="524">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>3D редактор (в разработке)</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="Группа3РасширеннаяПодсказка" id="525"/>
+					<ChildItems>
+						<HTMLDocumentField name="Флэш3D" id="517">
+							<DataPath>Флэш3D</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ContextMenu name="Флэш3DКонтекстноеМеню" id="518"/>
+							<ExtendedTooltip name="Флэш3DРасширеннаяПодсказка" id="519"/>
+							<Events>
+								<Event name="OnClick">Флэш3DПриНажатии</Event>
+							</Events>
+						</HTMLDocumentField>
 					</ChildItems>
 				</Page>
 			</ChildItems>
