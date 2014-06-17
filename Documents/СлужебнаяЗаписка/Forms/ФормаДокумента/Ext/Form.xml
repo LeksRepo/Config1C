@@ -175,6 +175,27 @@
 									<ContextMenu name="ВидСлужебнойЗапискиКонтекстноеМеню" id="62"/>
 									<ExtendedTooltip name="ВидСлужебнойЗапискиРасширеннаяПодсказка" id="63"/>
 								</InputField>
+								<PictureDecoration name="Декорация2" id="127">
+									<Width>5</Width>
+									<Height>1</Height>
+									<ContextMenu name="Декорация2КонтекстноеМеню" id="128"/>
+									<ExtendedTooltip name="Декорация2РасширеннаяПодсказка" id="129"/>
+								</PictureDecoration>
+								<LabelField name="Ознакомлен" id="86">
+									<DataPath>Объект.Ознакомлен</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<TitleLocation>None</TitleLocation>
+									<Format>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>БЛ='Не ознакомлен'; БИ=Ознакомлен</v8:content>
+										</v8:item>
+									</Format>
+									<TextColor>style:SpecialTextColor</TextColor>
+									<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+									<ContextMenu name="ОзнакомленКонтекстноеМеню" id="87"/>
+									<ExtendedTooltip name="ОзнакомленРасширеннаяПодсказка" id="88"/>
+								</LabelField>
 							</ChildItems>
 						</UsualGroup>
 						<UsualGroup name="АдресатДатаКонтроля" id="14">
@@ -239,6 +260,7 @@
 							<ChildItems>
 								<InputField name="Виновный" id="70">
 									<DataPath>Объект.Виновный</DataPath>
+									<Visible>false</Visible>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -252,6 +274,7 @@
 								</InputField>
 								<InputField name="Сумма" id="83">
 									<DataPath>Объект.Сумма</DataPath>
+									<Visible>false</Visible>
 									<ContextMenu name="СуммаКонтекстноеМеню" id="84"/>
 									<ExtendedTooltip name="СуммаРасширеннаяПодсказка" id="85"/>
 								</InputField>
@@ -285,6 +308,7 @@
 					<ChildItems>
 						<CheckBoxField name="НеСогласен" id="95">
 							<DataPath>Объект.НеСогласен</DataPath>
+							<Visible>false</Visible>
 							<TitleLocation>Right</TitleLocation>
 							<CheckBoxType>Auto</CheckBoxType>
 							<ContextMenu name="НеСогласенКонтекстноеМеню" id="96"/>
@@ -292,6 +316,7 @@
 						</CheckBoxField>
 						<CheckBoxField name="Утверждаю" id="98">
 							<DataPath>Объект.Утверждаю</DataPath>
+							<Visible>false</Visible>
 							<TitleLocation>Right</TitleLocation>
 							<CheckBoxType>Auto</CheckBoxType>
 							<ContextMenu name="УтверждаюКонтекстноеМеню" id="99"/>
@@ -385,15 +410,9 @@
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="ОтметкиВыполненияРасширеннаяПодсказка" id="123"/>
 							<ChildItems>
-								<CheckBoxField name="Ознакомлен" id="86">
-									<DataPath>Объект.Ознакомлен</DataPath>
-									<TitleLocation>Right</TitleLocation>
-									<CheckBoxType>Auto</CheckBoxType>
-									<ContextMenu name="ОзнакомленКонтекстноеМеню" id="87"/>
-									<ExtendedTooltip name="ОзнакомленРасширеннаяПодсказка" id="88"/>
-								</CheckBoxField>
 								<LabelField name="ДатаОзнакомления" id="124">
 									<DataPath>Объект.ДатаОзнакомления</DataPath>
+									<Visible>false</Visible>
 									<Format>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -405,6 +424,7 @@
 								</LabelField>
 								<CheckBoxField name="Выполнена" id="116">
 									<DataPath>Объект.Выполнена</DataPath>
+									<Visible>false</Visible>
 									<ReadOnly>true</ReadOnly>
 									<CheckBoxType>Auto</CheckBoxType>
 									<ContextMenu name="ВыполненаКонтекстноеМеню" id="117"/>
@@ -412,6 +432,7 @@
 								</CheckBoxField>
 								<LabelField name="ДатаВыполнения" id="119">
 									<DataPath>Объект.ДатаВыполнения</DataPath>
+									<Visible>false</Visible>
 									<Format>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -423,36 +444,6 @@
 								</LabelField>
 							</ChildItems>
 						</UsualGroup>
-						<InputField name="Ответ" id="9">
-							<DataPath>Объект.Ответ</DataPath>
-							<ReadOnly>true</ReadOnly>
-							<TitleFont ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
-							<EditMode>EnterOnInput</EditMode>
-							<Width>70</Width>
-							<Height>8</Height>
-							<MultiLine>true</MultiLine>
-							<Font ref="sys:DefaultGUIFont" faceName="Times New Roman" height="10" kind="WindowsFont"/>
-							<ContextMenu name="ОтветКонтекстноеМеню" id="10"/>
-							<ExtendedTooltip name="ОтветExtendedTooltip" id="55"/>
-						</InputField>
-						<InputField name="Служебное" id="104">
-							<DataPath>Объект.Служебное</DataPath>
-							<ReadOnly>true</ReadOnly>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Служебное поле</v8:content>
-								</v8:item>
-							</Title>
-							<TitleFont ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
-							<TitleLocation>Top</TitleLocation>
-							<Width>70</Width>
-							<Height>5</Height>
-							<MultiLine>true</MultiLine>
-							<Font ref="sys:DefaultGUIFont" height="10" kind="WindowsFont"/>
-							<ContextMenu name="СлужебноеКонтекстноеМеню" id="105"/>
-							<ExtendedTooltip name="СлужебноеРасширеннаяПодсказка" id="106"/>
-						</InputField>
 						<InputField name="ТекстОтвета" id="109">
 							<DataPath>ТекстОтвета</DataPath>
 							<Title>
@@ -546,6 +537,17 @@
 					<v8:Length>0</v8:Length>
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Пользователь" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пользователь</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Пользователи</v8:Type>
 			</Type>
 		</Attribute>
 	</Attributes>
