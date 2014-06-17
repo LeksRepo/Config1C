@@ -28,10 +28,10 @@
 				</Title>
 				<ExtendedTooltip name="ЗаполнитьОтверстияРасширеннаяПодсказка" id="505"/>
 			</Button>
-			<Button name="ФормаРедактироватьДеталь" id="532">
+			<Button name="РедактироватьДеталь" id="532">
 				<Type>CommandBarButton</Type>
 				<CommandName>Form.Command.РедактироватьДеталь</CommandName>
-				<ExtendedTooltip name="ФормаРедактироватьДетальРасширеннаяПодсказка" id="533"/>
+				<ExtendedTooltip name="РедактироватьДетальРасширеннаяПодсказка" id="533"/>
 			</Button>
 			<Button name="УдалитьСтрокуДляФлэш" id="255">
 				<Type>CommandBarButton</Type>
@@ -60,6 +60,21 @@
 				</Title>
 				<ExtendedTooltip name="РазвернутьРасширеннаяПодсказка" id="481"/>
 			</Button>
+			<Button name="ДеталиЗаменитьНоменклатуру" id="509">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.ЗаменитьНоменклатуру</CommandName>
+				<Picture>
+					<xr:Ref>CommonPicture.СинхронизацияДанныхКоллизия</xr:Ref>
+					<xr:LoadTransparent>true</xr:LoadTransparent>
+				</Picture>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Заменить цвет номенклатуры</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ДеталиЗаменитьНоменклатуруРасширеннаяПодсказка" id="510"/>
+			</Button>
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
@@ -68,668 +83,778 @@
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
-		<UsualGroup name="Группа1" id="530">
-			<Group>Vertical</Group>
-			<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="531"/>
+		<UsualGroup name="ГруппаШапка" id="237">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа шапка</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа шапка</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаШапкаExtendedTooltip" id="294"/>
 			<ChildItems>
-				<UsualGroup name="ГруппаШапка" id="237">
+				<UsualGroup name="ГруппаМатериал" id="241">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Группа шапка</v8:content>
+							<v8:content>Материал</v8:content>
 						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Группа шапка</v8:content>
+							<v8:content>Группа материал</v8:content>
 						</v8:item>
 					</ToolTip>
-					<Group>Horizontal</Group>
-					<Representation>None</Representation>
-					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="ГруппаШапкаExtendedTooltip" id="294"/>
+					<Group>Vertical</Group>
+					<ExtendedTooltip name="ГруппаМатериалРасширеннаяПодсказка" id="296"/>
 					<ChildItems>
-						<UsualGroup name="ШапкаЛеваяКолонка" id="241">
+						<InputField name="Материал" id="186">
+							<DataPath>Items.Детали.CurrentData.Материал</DataPath>
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Шапка левая колонка</v8:content>
+									<v8:content>Материал</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Left</TitleLocation>
+							<Width>30</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ChoiceButton>false</ChoiceButton>
+							<OpenButton>false</OpenButton>
+							<ListChoiceMode>true</ListChoiceMode>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>10 ЛДСП</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">10 ЛДСП</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>16 ЛДСП</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">16 ЛДСП</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>10 ЛДСП+10 ЛДСП</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">10 ЛДСП+10 ЛДСП</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>16 ЛДСП+10 ЛДСП</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">16 ЛДСП+10 ЛДСП</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>16 ЛДСП+16 ЛДСП</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">16 ЛДСП+16 ЛДСП</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>ДВП</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">ДВП</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Столешница</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">Столешница</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Стекло</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">Стекло</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Стеклянный фасад</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">ФасадСтеклянный</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>АГТ фасад</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">ФасадАГТ</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>ЛДСП фасад</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">ФасадЛДСП</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>МДФ фасад</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">ФасадМДФ</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Алюминиевый фасад</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">ФасадАлюминиевый</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>МДФ</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">МДФ</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Пристенок</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">Пристенок</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Закругленный стеклянный фасад</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">ФасадСтеклянныйЗакругленный</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ChoiceListButton>false</ChoiceListButton>
+							<ContextMenu name="МатериалКонтекстноеМеню" id="187"/>
+							<ExtendedTooltip name="МатериалРасширеннаяПодсказка" id="297"/>
+							<Events>
+								<Event name="OnChange">МатериалПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="Номенклатура" id="188">
+							<DataPath>Items.Детали.CurrentData.Номенклатура</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Текстура</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Left</TitleLocation>
+							<Width>25</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ListChoiceMode>true</ListChoiceMode>
+							<QuickChoice>false</QuickChoice>
+							<ContextMenu name="НоменклатураКонтекстноеМеню" id="189"/>
+							<ExtendedTooltip name="НоменклатураExtendedTooltip" id="298"/>
+							<Events>
+								<Event name="OnChange">НоменклатураПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="НоменклатураДляСклеивания" id="243">
+							<DataPath>Items.Детали.CurrentData.НоменклатураДляСклеивания</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Доп. ном.</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Left</TitleLocation>
+							<Width>25</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ListChoiceMode>true</ListChoiceMode>
+							<QuickChoice>false</QuickChoice>
+							<InputHint>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Ручка, склейка</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="НоменклатураДляСклеиванияКонтекстноеМеню" id="244"/>
+							<ExtendedTooltip name="НоменклатураДляСклеиванияExtendedTooltip" id="299"/>
+							<Events>
+								<Event name="OnChange">НоменклатураДляСклеиванияПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="ШиринаДетали" id="182">
+							<DataPath>ШиринаСКромкой</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Ширина</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTipRepresentation>None</ToolTipRepresentation>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ChoiceButton>true</ChoiceButton>
+							<ContextMenu name="ШиринаДеталиКонтекстноеМеню" id="183"/>
+							<ExtendedTooltip name="ШиринаДеталиExtendedTooltip" id="304"/>
+							<Events>
+								<Event name="OnChange">ШиринаПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="ВысотаДетали" id="184">
+							<DataPath>ВысотаСКромкой</DataPath>
+							<DefaultItem>true</DefaultItem>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Высота</v8:content>
+								</v8:item>
+							</Title>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ChoiceButton>true</ChoiceButton>
+							<ContextMenu name="ВысотаДеталиКонтекстноеМеню" id="185"/>
+							<ExtendedTooltip name="ВысотаДеталиРасширеннаяПодсказка" id="301"/>
+							<Events>
+								<Event name="OnChange">ВысотаПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="Количество" id="180">
+							<DataPath>Items.Детали.CurrentData.Количество</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Кол-во</v8:content>
+								</v8:item>
+							</Title>
+							<Width>11</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<SpinButton>true</SpinButton>
+							<ContextMenu name="КоличествоКонтекстноеМеню" id="181"/>
+							<ExtendedTooltip name="КоличествоExtendedTooltip" id="306"/>
+							<Events>
+								<Event name="OnChange">КоличествоПриИзменении</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаОсновнаяКромка" id="240">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Обрамление</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа основная кромка</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ExtendedTooltip name="ГруппаОсновнаяКромкаРасширеннаяПодсказка" id="307"/>
+					<ChildItems>
+						<InputField name="Кант" id="194">
+							<DataPath>Items.Детали.CurrentData.Кант</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>К</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Left</TitleLocation>
+							<Width>30</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ListChoiceMode>true</ListChoiceMode>
+							<DropListWidth>50</DropListWidth>
+							<InputHint>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Кант</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="КантКонтекстноеМеню" id="195"/>
+							<ExtendedTooltip name="КантExtendedTooltip" id="309"/>
+							<Events>
+								<Event name="OnChange">КантПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="Кромка045мм" id="196">
+							<DataPath>Items.Детали.CurrentData.Кромка045мм</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>0.5</v8:content>
+								</v8:item>
+							</Title>
+							<Width>30</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ListChoiceMode>true</ListChoiceMode>
+							<DropListWidth>50</DropListWidth>
+							<InputHint>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Кромка толщиной 0.45 мм.</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="Кромка045ммКонтекстноеМеню" id="197"/>
+							<ExtendedTooltip name="Кромка045ммExtendedTooltip" id="311"/>
+							<Events>
+								<Event name="OnChange">Кромка045ммПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="Кромка2мм" id="198">
+							<DataPath>Items.Детали.CurrentData.Кромка2мм</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>2</v8:content>
+								</v8:item>
+							</Title>
+							<Width>30</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ListChoiceMode>true</ListChoiceMode>
+							<DropListWidth>50</DropListWidth>
+							<InputHint>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Кромка толщиной 2 мм.</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="Кромка2ммКонтекстноеМеню" id="199"/>
+							<ExtendedTooltip name="Кромка2ммExtendedTooltip" id="310"/>
+							<Events>
+								<Event name="OnChange">Кромка2ммПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="УниверсальнаяКромка" id="477">
+							<DataPath>Items.Детали.CurrentData.УниверсальнаяКромка</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Ок</v8:content>
+								</v8:item>
+							</Title>
+							<Width>30</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ListChoiceMode>true</ListChoiceMode>
+							<DropListWidth>50</DropListWidth>
+							<InputHint>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Окантовка (фасады, столешн...)</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="УниверсальнаяКромкаКонтекстноеМеню" id="478"/>
+							<ExtendedTooltip name="УниверсальнаяКромкаРасширеннаяПодсказка" id="479"/>
+							<Events>
+								<Event name="OnChange">УниверсальнаяКромкаПриИзменении</Event>
+							</Events>
+						</InputField>
+						<CheckBoxField name="НеТорцевать" id="437">
+							<DataPath>Items.Детали.CurrentData.НеТорцевать</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Не торцевать</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="НеТорцеватьКонтекстноеМеню" id="438"/>
+							<ExtendedTooltip name="НеТорцеватьРасширеннаяПодсказка" id="439"/>
+							<Events>
+								<Event name="OnChange">НеТорцеватьПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
+						<CheckBoxField name="СоблюдениеТекстуры" id="192">
+							<DataPath>Items.Детали.CurrentData.СоблюдениеТекстуры</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Соблюдать текстуру</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="СоблюдениеТекстурыКонтекстноеМеню" id="193"/>
+							<ExtendedTooltip name="СоблюдениеТекстурыExtendedTooltip" id="308"/>
+						</CheckBoxField>
+						<CheckBoxField name="Обтачивать" id="418">
+							<DataPath>Items.Детали.CurrentData.Обтачивать</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Обтачивать/ Скруглять</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ОбтачиватьКонтекстноеМеню" id="419"/>
+							<ExtendedTooltip name="ОбтачиватьРасширеннаяПодсказка" id="420"/>
+							<Events>
+								<Event name="OnChange">ОбтачиватьПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаРадиусы" id="423">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Радиусы (кратно 50 мм.)</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа радиусы</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ExtendedTooltip name="ГруппаРадиусыРасширеннаяПодсказка" id="424"/>
+					<ChildItems>
+						<InputField name="РадиусЛевоВерх" id="202">
+							<DataPath>Items.Детали.CurrentData.РадиусЛевоВерх</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>R1 (Слева - сверху)</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Left</TitleLocation>
+							<Width>7</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="РадиусЛевоВерхКонтекстноеМеню" id="203"/>
+							<ExtendedTooltip name="РадиусЛевоВерхExtendedTooltip" id="355"/>
+							<Events>
+								<Event name="OnChange">РадиусЛевоВерхПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="РадиусПравоВерх" id="222">
+							<DataPath>Items.Детали.CurrentData.РадиусПравоВерх</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>R2 (Справа - сверху)</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Left</TitleLocation>
+							<Width>7</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="РадиусПравоВерхКонтекстноеМеню" id="223"/>
+							<ExtendedTooltip name="РадиусПравоВерхExtendedTooltip" id="369"/>
+							<Events>
+								<Event name="OnChange">РадиусПравоВерхПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="РадиусПравоНиз" id="220">
+							<DataPath>Items.Детали.CurrentData.РадиусПравоНиз</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>R3 (Справа - снизу)</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Left</TitleLocation>
+							<Width>7</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="РадиусПравоНизКонтекстноеМеню" id="221"/>
+							<ExtendedTooltip name="РадиусПравоНизExtendedTooltip" id="401"/>
+							<Events>
+								<Event name="OnChange">РадиусПравоНизПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="РадиусЛевоНиз" id="212">
+							<DataPath>Items.Детали.CurrentData.РадиусЛевоНиз</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>R4 (Слева - снизу)</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Left</TitleLocation>
+							<Width>7</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="РадиусЛевоНизКонтекстноеМеню" id="213"/>
+							<ExtendedTooltip name="РадиусЛевоНизExtendedTooltip" id="359"/>
+							<Events>
+								<Event name="OnChange">РадиусЛевоНизПриИзменении</Event>
+							</Events>
+						</InputField>
+						<CheckBoxField name="Срез" id="218">
+							<DataPath>Items.Детали.CurrentData.Срез</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Срез (R3)</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>Left</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="СрезКонтекстноеМеню" id="219"/>
+							<ExtendedTooltip name="СрезExtendedTooltip" id="402"/>
+							<Events>
+								<Event name="OnChange">СрезПриИзменении</Event>
+							</Events>
+						</CheckBoxField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаФасады" id="453">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Фасады</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа фасады</v8:content>
+						</v8:item>
+					</ToolTip>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Group>Vertical</Group>
+					<ExtendedTooltip name="ГруппаФасадыРасширеннаяПодсказка" id="454"/>
+					<ChildItems>
+						<InputField name="ОтверстийПодРучку" id="450">
+							<DataPath>Items.Детали.CurrentData.ОтверстийПодРучку</DataPath>
+							<Visible>false</Visible>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Отв. под ручку</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ОтверстийПодРучкуКонтекстноеМеню" id="451"/>
+							<ExtendedTooltip name="ОтверстийПодРучкуРасширеннаяПодсказка" id="452"/>
+						</InputField>
+						<InputField name="ПоложениеРучки" id="445">
+							<DataPath>Items.Детали.CurrentData.ПоложениеРучки</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Положение ручки</v8:content>
+								</v8:item>
+							</Title>
+							<Width>30</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ChoiceButton>false</ChoiceButton>
+							<ListChoiceMode>true</ListChoiceMode>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Верх</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xr:DesignTimeRef">Enum.Стороны.EnumValue.Сверху</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Центр</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xr:DesignTimeRef">Enum.Стороны.EnumValue.ПоЦентру</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Низ</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xr:DesignTimeRef">Enum.Стороны.EnumValue.Снизу</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="ПоложениеРучкиКонтекстноеМеню" id="446"/>
+							<ExtendedTooltip name="ПоложениеРучкиРасширеннаяПодсказка" id="447"/>
+						</InputField>
+						<InputField name="РадиусФасада" id="442">
+							<DataPath>Items.Детали.CurrentData.РадиусФасада</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Радиус фасада</v8:content>
+								</v8:item>
+							</Title>
+							<Width>30</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>300</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">300</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>400</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xs:string">400</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ChoiceListButton>true</ChoiceListButton>
+							<InputHint>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Закругленный</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="РадиусФасадаКонтекстноеМеню" id="443"/>
+							<ExtendedTooltip name="РадиусФасадаРасширеннаяПодсказка" id="444"/>
+						</InputField>
+						<UsualGroup name="ГруппаПетли" id="534">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Петли</v8:content>
 								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Шапка левая колонка</v8:content>
+									<v8:content>Группа петли</v8:content>
 								</v8:item>
 							</ToolTip>
 							<Group>Vertical</Group>
-							<Representation>None</Representation>
-							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ШапкаЛеваяКолонкаРасширеннаяПодсказка" id="296"/>
-							<ChildItems>
-								<InputField name="Материал" id="186">
-									<DataPath>Items.Детали.CurrentData.Материал</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Материал</v8:content>
-										</v8:item>
-									</Title>
-									<TitleLocation>Left</TitleLocation>
-									<Width>15</Width>
-									<HorizontalStretch>false</HorizontalStretch>
-									<ChoiceButton>false</ChoiceButton>
-									<OpenButton>false</OpenButton>
-									<ListChoiceMode>true</ListChoiceMode>
-									<ChoiceList>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation>
-													<v8:item>
-														<v8:lang>ru</v8:lang>
-														<v8:content>10 ЛДСП</v8:content>
-													</v8:item>
-												</Presentation>
-												<Value xsi:type="xs:string">10 ЛДСП</Value>
-											</xr:Value>
-										</xr:Item>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation>
-													<v8:item>
-														<v8:lang>ru</v8:lang>
-														<v8:content>16 ЛДСП</v8:content>
-													</v8:item>
-												</Presentation>
-												<Value xsi:type="xs:string">16 ЛДСП</Value>
-											</xr:Value>
-										</xr:Item>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation>
-													<v8:item>
-														<v8:lang>ru</v8:lang>
-														<v8:content>10 ЛДСП+10 ЛДСП</v8:content>
-													</v8:item>
-												</Presentation>
-												<Value xsi:type="xs:string">10 ЛДСП+10 ЛДСП</Value>
-											</xr:Value>
-										</xr:Item>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation>
-													<v8:item>
-														<v8:lang>ru</v8:lang>
-														<v8:content>16 ЛДСП+10 ЛДСП</v8:content>
-													</v8:item>
-												</Presentation>
-												<Value xsi:type="xs:string">16 ЛДСП+10 ЛДСП</Value>
-											</xr:Value>
-										</xr:Item>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation>
-													<v8:item>
-														<v8:lang>ru</v8:lang>
-														<v8:content>16 ЛДСП+16 ЛДСП</v8:content>
-													</v8:item>
-												</Presentation>
-												<Value xsi:type="xs:string">16 ЛДСП+16 ЛДСП</Value>
-											</xr:Value>
-										</xr:Item>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation>
-													<v8:item>
-														<v8:lang>ru</v8:lang>
-														<v8:content>ДВП</v8:content>
-													</v8:item>
-												</Presentation>
-												<Value xsi:type="xs:string">ДВП</Value>
-											</xr:Value>
-										</xr:Item>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation>
-													<v8:item>
-														<v8:lang>ru</v8:lang>
-														<v8:content>Столешница</v8:content>
-													</v8:item>
-												</Presentation>
-												<Value xsi:type="xs:string">Столешница</Value>
-											</xr:Value>
-										</xr:Item>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation>
-													<v8:item>
-														<v8:lang>ru</v8:lang>
-														<v8:content>Стекло</v8:content>
-													</v8:item>
-												</Presentation>
-												<Value xsi:type="xs:string">Стекло</Value>
-											</xr:Value>
-										</xr:Item>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation>
-													<v8:item>
-														<v8:lang>ru</v8:lang>
-														<v8:content>Стеклянный фасад</v8:content>
-													</v8:item>
-												</Presentation>
-												<Value xsi:type="xs:string">ФасадСтеклянный</Value>
-											</xr:Value>
-										</xr:Item>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation>
-													<v8:item>
-														<v8:lang>ru</v8:lang>
-														<v8:content>АГТ фасад</v8:content>
-													</v8:item>
-												</Presentation>
-												<Value xsi:type="xs:string">ФасадАГТ</Value>
-											</xr:Value>
-										</xr:Item>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation>
-													<v8:item>
-														<v8:lang>ru</v8:lang>
-														<v8:content>ЛДСП фасад</v8:content>
-													</v8:item>
-												</Presentation>
-												<Value xsi:type="xs:string">ФасадЛДСП</Value>
-											</xr:Value>
-										</xr:Item>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation>
-													<v8:item>
-														<v8:lang>ru</v8:lang>
-														<v8:content>МДФ фасад</v8:content>
-													</v8:item>
-												</Presentation>
-												<Value xsi:type="xs:string">ФасадМДФ</Value>
-											</xr:Value>
-										</xr:Item>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation>
-													<v8:item>
-														<v8:lang>ru</v8:lang>
-														<v8:content>Алюминиевый фасад</v8:content>
-													</v8:item>
-												</Presentation>
-												<Value xsi:type="xs:string">ФасадАлюминиевый</Value>
-											</xr:Value>
-										</xr:Item>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation>
-													<v8:item>
-														<v8:lang>ru</v8:lang>
-														<v8:content>МДФ</v8:content>
-													</v8:item>
-												</Presentation>
-												<Value xsi:type="xs:string">МДФ</Value>
-											</xr:Value>
-										</xr:Item>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation>
-													<v8:item>
-														<v8:lang>ru</v8:lang>
-														<v8:content>Пристенок</v8:content>
-													</v8:item>
-												</Presentation>
-												<Value xsi:type="xs:string">Пристенок</Value>
-											</xr:Value>
-										</xr:Item>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation>
-													<v8:item>
-														<v8:lang>ru</v8:lang>
-														<v8:content>Закругленный стеклянный фасад</v8:content>
-													</v8:item>
-												</Presentation>
-												<Value xsi:type="xs:string">ФасадСтеклянныйЗакругленный</Value>
-											</xr:Value>
-										</xr:Item>
-									</ChoiceList>
-									<ChoiceListButton>false</ChoiceListButton>
-									<ContextMenu name="МатериалКонтекстноеМеню" id="187"/>
-									<ExtendedTooltip name="МатериалРасширеннаяПодсказка" id="297"/>
-									<Events>
-										<Event name="OnChange">МатериалПриИзменении</Event>
-									</Events>
-								</InputField>
-								<InputField name="Номенклатура" id="188">
-									<DataPath>Items.Детали.CurrentData.Номенклатура</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Текстура</v8:content>
-										</v8:item>
-									</Title>
-									<TitleLocation>Left</TitleLocation>
-									<HorizontalStretch>false</HorizontalStretch>
-									<ListChoiceMode>true</ListChoiceMode>
-									<QuickChoice>false</QuickChoice>
-									<ContextMenu name="НоменклатураКонтекстноеМеню" id="189"/>
-									<ExtendedTooltip name="НоменклатураExtendedTooltip" id="298"/>
-									<Events>
-										<Event name="OnChange">НоменклатураПриИзменении</Event>
-									</Events>
-								</InputField>
-								<InputField name="НоменклатураДляСклеивания" id="243">
-									<DataPath>Items.Детали.CurrentData.НоменклатураДляСклеивания</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Доп.текст/Ручка</v8:content>
-										</v8:item>
-									</Title>
-									<TitleLocation>Left</TitleLocation>
-									<HorizontalStretch>false</HorizontalStretch>
-									<ListChoiceMode>true</ListChoiceMode>
-									<QuickChoice>false</QuickChoice>
-									<ContextMenu name="НоменклатураДляСклеиванияКонтекстноеМеню" id="244"/>
-									<ExtendedTooltip name="НоменклатураДляСклеиванияExtendedTooltip" id="299"/>
-									<Events>
-										<Event name="OnChange">НоменклатураДляСклеиванияПриИзменении</Event>
-									</Events>
-								</InputField>
-								<UsualGroup name="ГруппаФлаги" id="440">
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Группа флаги</v8:content>
-										</v8:item>
-									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Группа флаги</v8:content>
-										</v8:item>
-									</ToolTip>
-									<Group>Horizontal</Group>
-									<Representation>None</Representation>
-									<ShowTitle>false</ShowTitle>
-									<ExtendedTooltip name="ГруппаФлагиРасширеннаяПодсказка" id="441"/>
-									<ChildItems>
-										<CheckBoxField name="НеТорцевать" id="437">
-											<DataPath>Items.Детали.CurrentData.НеТорцевать</DataPath>
-											<Title>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Не торцевать</v8:content>
-												</v8:item>
-											</Title>
-											<TitleLocation>Right</TitleLocation>
-											<CheckBoxType>Auto</CheckBoxType>
-											<ContextMenu name="НеТорцеватьКонтекстноеМеню" id="438"/>
-											<ExtendedTooltip name="НеТорцеватьРасширеннаяПодсказка" id="439"/>
-											<Events>
-												<Event name="OnChange">НеТорцеватьПриИзменении</Event>
-											</Events>
-										</CheckBoxField>
-										<CheckBoxField name="СоблюдениеТекстуры" id="192">
-											<DataPath>Items.Детали.CurrentData.СоблюдениеТекстуры</DataPath>
-											<Title>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Соблюдать текстуру</v8:content>
-												</v8:item>
-											</Title>
-											<TitleLocation>Right</TitleLocation>
-											<CheckBoxType>Auto</CheckBoxType>
-											<ContextMenu name="СоблюдениеТекстурыКонтекстноеМеню" id="193"/>
-											<ExtendedTooltip name="СоблюдениеТекстурыExtendedTooltip" id="308"/>
-										</CheckBoxField>
-										<CheckBoxField name="Обтачивать" id="418">
-											<DataPath>Items.Детали.CurrentData.Обтачивать</DataPath>
-											<Title>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Обтачивать/ Скруглять</v8:content>
-												</v8:item>
-											</Title>
-											<TitleLocation>Right</TitleLocation>
-											<CheckBoxType>Auto</CheckBoxType>
-											<ContextMenu name="ОбтачиватьКонтекстноеМеню" id="419"/>
-											<ExtendedTooltip name="ОбтачиватьРасширеннаяПодсказка" id="420"/>
-											<Events>
-												<Event name="OnChange">ОбтачиватьПриИзменении</Event>
-											</Events>
-										</CheckBoxField>
-									</ChildItems>
-								</UsualGroup>
-								<InputField name="ВысотаДетали" id="184">
-									<DataPath>ВысотаСКромкой</DataPath>
-									<DefaultItem>true</DefaultItem>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Высота</v8:content>
-										</v8:item>
-									</Title>
-									<ChoiceButton>true</ChoiceButton>
-									<ContextMenu name="ВысотаДеталиКонтекстноеМеню" id="185"/>
-									<ExtendedTooltip name="ВысотаДеталиРасширеннаяПодсказка" id="301"/>
-									<Events>
-										<Event name="OnChange">ДлинаПриИзменении</Event>
-									</Events>
-								</InputField>
-								<InputField name="ШиринаДетали" id="182">
-									<DataPath>ШиринаСКромкой</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Ширина</v8:content>
-										</v8:item>
-									</Title>
-									<ToolTipRepresentation>None</ToolTipRepresentation>
-									<ChoiceButton>true</ChoiceButton>
-									<ContextMenu name="ШиринаДеталиКонтекстноеМеню" id="183"/>
-									<ExtendedTooltip name="ШиринаДеталиExtendedTooltip" id="304"/>
-									<Events>
-										<Event name="OnChange">ШиринаПриИзменении</Event>
-									</Events>
-								</InputField>
-								<InputField name="Количество" id="180">
-									<DataPath>Items.Детали.CurrentData.Количество</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Количество</v8:content>
-										</v8:item>
-									</Title>
-									<HorizontalStretch>false</HorizontalStretch>
-									<SpinButton>true</SpinButton>
-									<ContextMenu name="КоличествоКонтекстноеМеню" id="181"/>
-									<ExtendedTooltip name="КоличествоExtendedTooltip" id="306"/>
-									<Events>
-										<Event name="OnChange">КоличествоПриИзменении</Event>
-									</Events>
-								</InputField>
-							</ChildItems>
-						</UsualGroup>
-						<UsualGroup name="ШапкаПраваяКолонка" id="240">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Шапка правая колонка</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Шапка правая колонка</v8:content>
-								</v8:item>
-							</ToolTip>
-							<Group>Vertical</Group>
-							<Representation>None</Representation>
-							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ШапкаПраваяКолонкаРасширеннаяПодсказка" id="307"/>
-							<ChildItems>
-								<InputField name="Кант" id="194">
-									<DataPath>Items.Детали.CurrentData.Кант</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Кант</v8:content>
-										</v8:item>
-									</Title>
-									<TitleLocation>Left</TitleLocation>
-									<HorizontalStretch>false</HorizontalStretch>
-									<ListChoiceMode>true</ListChoiceMode>
-									<DropListWidth>50</DropListWidth>
-									<ContextMenu name="КантКонтекстноеМеню" id="195"/>
-									<ExtendedTooltip name="КантExtendedTooltip" id="309"/>
-									<Events>
-										<Event name="OnChange">КантПриИзменении</Event>
-									</Events>
-								</InputField>
-								<InputField name="Кромка045мм" id="196">
-									<DataPath>Items.Детали.CurrentData.Кромка045мм</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>0.45мм</v8:content>
-										</v8:item>
-									</Title>
-									<HorizontalStretch>false</HorizontalStretch>
-									<ListChoiceMode>true</ListChoiceMode>
-									<DropListWidth>50</DropListWidth>
-									<ContextMenu name="Кромка045ммКонтекстноеМеню" id="197"/>
-									<ExtendedTooltip name="Кромка045ммExtendedTooltip" id="311"/>
-									<Events>
-										<Event name="OnChange">Кромка045ммПриИзменении</Event>
-									</Events>
-								</InputField>
-								<InputField name="Кромка2мм" id="198">
-									<DataPath>Items.Детали.CurrentData.Кромка2мм</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>2мм</v8:content>
-										</v8:item>
-									</Title>
-									<HorizontalStretch>false</HorizontalStretch>
-									<ListChoiceMode>true</ListChoiceMode>
-									<DropListWidth>50</DropListWidth>
-									<ContextMenu name="Кромка2ммКонтекстноеМеню" id="199"/>
-									<ExtendedTooltip name="Кромка2ммExtendedTooltip" id="310"/>
-									<Events>
-										<Event name="OnChange">Кромка2ммПриИзменении</Event>
-									</Events>
-								</InputField>
-								<InputField name="УниверсальнаяКромка" id="477">
-									<DataPath>Items.Детали.CurrentData.УниверсальнаяКромка</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Окантовка</v8:content>
-										</v8:item>
-									</Title>
-									<HorizontalStretch>false</HorizontalStretch>
-									<ListChoiceMode>true</ListChoiceMode>
-									<DropListWidth>50</DropListWidth>
-									<ContextMenu name="УниверсальнаяКромкаКонтекстноеМеню" id="478"/>
-									<ExtendedTooltip name="УниверсальнаяКромкаРасширеннаяПодсказка" id="479"/>
-									<Events>
-										<Event name="OnChange">УниверсальнаяКромкаПриИзменении</Event>
-									</Events>
-								</InputField>
-							</ChildItems>
-						</UsualGroup>
-						<UsualGroup name="ЛеваяКолонкаПараметров" id="490">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Левая колонка параметров</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Левая колонка параметров</v8:content>
-								</v8:item>
-							</ToolTip>
-							<Group>Vertical</Group>
-							<Representation>None</Representation>
-							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ЛеваяКолонкаПараметровРасширеннаяПодсказка" id="491"/>
-						</UsualGroup>
-						<UsualGroup name="ГруппаРадиусы" id="423">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Радиусы</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа радиусы</v8:content>
-								</v8:item>
-							</ToolTip>
-							<Group>Vertical</Group>
-							<ExtendedTooltip name="ГруппаРадиусыРасширеннаяПодсказка" id="424"/>
-							<ChildItems>
-								<InputField name="РадиусЛевоВерх" id="202">
-									<DataPath>Items.Детали.CurrentData.РадиусЛевоВерх</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>R1 (Слева - сверху)</v8:content>
-										</v8:item>
-									</Title>
-									<TitleLocation>Left</TitleLocation>
-									<ContextMenu name="РадиусЛевоВерхКонтекстноеМеню" id="203"/>
-									<ExtendedTooltip name="РадиусЛевоВерхExtendedTooltip" id="355"/>
-									<Events>
-										<Event name="OnChange">РадиусЛевоВерхПриИзменении</Event>
-									</Events>
-								</InputField>
-								<InputField name="РадиусПравоВерх" id="222">
-									<DataPath>Items.Детали.CurrentData.РадиусПравоВерх</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>R2 (Справа - сверху)</v8:content>
-										</v8:item>
-									</Title>
-									<TitleLocation>Left</TitleLocation>
-									<ContextMenu name="РадиусПравоВерхКонтекстноеМеню" id="223"/>
-									<ExtendedTooltip name="РадиусПравоВерхExtendedTooltip" id="369"/>
-									<Events>
-										<Event name="OnChange">РадиусПравоВерхПриИзменении</Event>
-									</Events>
-								</InputField>
-								<InputField name="РадиусПравоНиз" id="220">
-									<DataPath>Items.Детали.CurrentData.РадиусПравоНиз</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>R3 (Справа - снизу)</v8:content>
-										</v8:item>
-									</Title>
-									<TitleLocation>Left</TitleLocation>
-									<ContextMenu name="РадиусПравоНизКонтекстноеМеню" id="221"/>
-									<ExtendedTooltip name="РадиусПравоНизExtendedTooltip" id="401"/>
-									<Events>
-										<Event name="OnChange">РадиусПравоНизПриИзменении</Event>
-									</Events>
-								</InputField>
-								<InputField name="РадиусЛевоНиз" id="212">
-									<DataPath>Items.Детали.CurrentData.РадиусЛевоНиз</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>R4 (Слева - снизу)</v8:content>
-										</v8:item>
-									</Title>
-									<TitleLocation>Left</TitleLocation>
-									<ContextMenu name="РадиусЛевоНизКонтекстноеМеню" id="213"/>
-									<ExtendedTooltip name="РадиусЛевоНизExtendedTooltip" id="359"/>
-									<Events>
-										<Event name="OnChange">РадиусЛевоНизПриИзменении</Event>
-									</Events>
-								</InputField>
-								<InputField name="КоличествоПетель" id="458">
-									<DataPath>Items.Детали.CurrentData.КоличествоПетель</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Количество петель</v8:content>
-										</v8:item>
-									</Title>
-									<SpinButton>true</SpinButton>
-									<ContextMenu name="КоличествоПетельКонтекстноеМеню" id="459"/>
-									<ExtendedTooltip name="КоличествоПетельРасширеннаяПодсказка" id="460"/>
-								</InputField>
-								<InputField name="ДиаметрПазов" id="461">
-									<DataPath>Items.Детали.CurrentData.ДиаметрПазов</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Диаметр петель</v8:content>
-										</v8:item>
-									</Title>
-									<SpinButton>true</SpinButton>
-									<ContextMenu name="ДиаметрПазовКонтекстноеМеню" id="462"/>
-									<ExtendedTooltip name="ДиаметрПазовРасширеннаяПодсказка" id="463"/>
-								</InputField>
-								<CheckBoxField name="Срез" id="218">
-									<DataPath>Items.Детали.CurrentData.Срез</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Срез(R3)</v8:content>
-										</v8:item>
-									</Title>
-									<TitleLocation>Left</TitleLocation>
-									<CheckBoxType>Auto</CheckBoxType>
-									<ContextMenu name="СрезКонтекстноеМеню" id="219"/>
-									<ExtendedTooltip name="СрезExtendedTooltip" id="402"/>
-									<Events>
-										<Event name="OnChange">СрезПриИзменении</Event>
-									</Events>
-								</CheckBoxField>
-							</ChildItems>
-						</UsualGroup>
-						<UsualGroup name="ПраваяКолонкаПараметров" id="453">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Фасады</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Правая колонка параметров</v8:content>
-								</v8:item>
-							</ToolTip>
-							<Group>Vertical</Group>
-							<ExtendedTooltip name="ПраваяКолонкаПараметровРасширеннаяПодсказка" id="454"/>
+							<ExtendedTooltip name="ГруппаПетлиРасширеннаяПодсказка" id="535"/>
 							<ChildItems>
 								<InputField name="Петли" id="455">
 									<DataPath>Items.Детали.CurrentData.Петли</DataPath>
@@ -739,19 +864,37 @@
 											<v8:content>Петли</v8:content>
 										</v8:item>
 									</Title>
-									<HorizontalAlign>Right</HorizontalAlign>
+									<TitleLocation>None</TitleLocation>
+									<Width>34</Width>
+									<HorizontalStretch>false</HorizontalStretch>
 									<ListChoiceMode>true</ListChoiceMode>
 									<ContextMenu name="ПетлиКонтекстноеМеню" id="456"/>
 									<ExtendedTooltip name="ПетлиРасширеннаяПодсказка" id="457"/>
+								</InputField>
+								<InputField name="КоличествоПетель" id="458">
+									<DataPath>Items.Детали.CurrentData.КоличествоПетель</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Кол-во</v8:content>
+										</v8:item>
+									</Title>
+									<Width>30</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<SpinButton>true</SpinButton>
+									<ContextMenu name="КоличествоПетельКонтекстноеМеню" id="459"/>
+									<ExtendedTooltip name="КоличествоПетельРасширеннаяПодсказка" id="460"/>
 								</InputField>
 								<InputField name="РасположениеПазов" id="467">
 									<DataPath>Items.Детали.CurrentData.РасположениеПазов</DataPath>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Расположение петель</v8:content>
+											<v8:content>Расположение</v8:content>
 										</v8:item>
 									</Title>
+									<Width>30</Width>
+									<HorizontalStretch>false</HorizontalStretch>
 									<ListChoiceMode>true</ListChoiceMode>
 									<ChoiceList>
 										<xr:Item>
@@ -813,111 +956,19 @@
 										<Event name="OnChange">РасположениеПазовПриИзменении</Event>
 									</Events>
 								</InputField>
-								<InputField name="ОтверстийПодРучку" id="450">
-									<DataPath>Items.Детали.CurrentData.ОтверстийПодРучку</DataPath>
-									<Visible>false</Visible>
+								<InputField name="ДиаметрПазов" id="461">
+									<DataPath>Items.Детали.CurrentData.ДиаметрПазов</DataPath>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Отв. под ручку</v8:content>
+											<v8:content>Диаметр</v8:content>
 										</v8:item>
 									</Title>
-									<ContextMenu name="ОтверстийПодРучкуКонтекстноеМеню" id="451"/>
-									<ExtendedTooltip name="ОтверстийПодРучкуРасширеннаяПодсказка" id="452"/>
-								</InputField>
-								<InputField name="ПоложениеРучки" id="445">
-									<DataPath>Items.Детали.CurrentData.ПоложениеРучки</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Положение ручки</v8:content>
-										</v8:item>
-									</Title>
-									<ChoiceButton>false</ChoiceButton>
-									<ListChoiceMode>true</ListChoiceMode>
-									<ChoiceList>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation>
-													<v8:item>
-														<v8:lang>ru</v8:lang>
-														<v8:content>Верх</v8:content>
-													</v8:item>
-												</Presentation>
-												<Value xsi:type="xr:DesignTimeRef">Enum.Стороны.EnumValue.Сверху</Value>
-											</xr:Value>
-										</xr:Item>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation>
-													<v8:item>
-														<v8:lang>ru</v8:lang>
-														<v8:content>Центр</v8:content>
-													</v8:item>
-												</Presentation>
-												<Value xsi:type="xr:DesignTimeRef">Enum.Стороны.EnumValue.ПоЦентру</Value>
-											</xr:Value>
-										</xr:Item>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation>
-													<v8:item>
-														<v8:lang>ru</v8:lang>
-														<v8:content>Низ</v8:content>
-													</v8:item>
-												</Presentation>
-												<Value xsi:type="xr:DesignTimeRef">Enum.Стороны.EnumValue.Снизу</Value>
-											</xr:Value>
-										</xr:Item>
-									</ChoiceList>
-									<ContextMenu name="ПоложениеРучкиКонтекстноеМеню" id="446"/>
-									<ExtendedTooltip name="ПоложениеРучкиРасширеннаяПодсказка" id="447"/>
-								</InputField>
-								<InputField name="РадиусФасада" id="442">
-									<DataPath>Items.Детали.CurrentData.РадиусФасада</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Радиус фасада</v8:content>
-										</v8:item>
-									</Title>
-									<ChoiceList>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation>
-													<v8:item>
-														<v8:lang>ru</v8:lang>
-														<v8:content>300</v8:content>
-													</v8:item>
-												</Presentation>
-												<Value xsi:type="xs:string">300</Value>
-											</xr:Value>
-										</xr:Item>
-										<xr:Item>
-											<xr:Presentation/>
-											<xr:CheckState>0</xr:CheckState>
-											<xr:Value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation>
-													<v8:item>
-														<v8:lang>ru</v8:lang>
-														<v8:content>400</v8:content>
-													</v8:item>
-												</Presentation>
-												<Value xsi:type="xs:string">400</Value>
-											</xr:Value>
-										</xr:Item>
-									</ChoiceList>
-									<ChoiceListButton>true</ChoiceListButton>
-									<ContextMenu name="РадиусФасадаКонтекстноеМеню" id="443"/>
-									<ExtendedTooltip name="РадиусФасадаРасширеннаяПодсказка" id="444"/>
+									<Width>30</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<SpinButton>true</SpinButton>
+									<ContextMenu name="ДиаметрПазовКонтекстноеМеню" id="462"/>
+									<ExtendedTooltip name="ДиаметрПазовРасширеннаяПодсказка" id="463"/>
 								</InputField>
 							</ChildItems>
 						</UsualGroup>
@@ -925,10 +976,23 @@
 				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
-		<UsualGroup name="Группа2" id="522">
+		<UsualGroup name="ГруппаТело" id="522">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа тело</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа тело</v8:content>
+				</v8:item>
+			</ToolTip>
 			<Group>Horizontal</Group>
-			<ChildItemsWidth>LeftWidest</ChildItemsWidth>
-			<ExtendedTooltip name="Группа2РасширеннаяПодсказка" id="523"/>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаТелоРасширеннаяПодсказка" id="523"/>
 			<ChildItems>
 				<Pages name="СтраницыФлэш" id="524">
 					<Title>
@@ -946,32 +1010,6 @@
 					<Width>80</Width>
 					<ExtendedTooltip name="СтраницыФлэшРасширеннаяПодсказка" id="525"/>
 					<ChildItems>
-						<Page name="Страница3D" id="526">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>3D</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Страница3 D</v8:content>
-								</v8:item>
-							</ToolTip>
-							<ExtendedTooltip name="Страница3DРасширеннаяПодсказка" id="527"/>
-							<ChildItems>
-								<HTMLDocumentField name="Флэш3D" id="517">
-									<DataPath>Флэш3D</DataPath>
-									<TitleLocation>None</TitleLocation>
-									<ContextMenu name="Флэш3DКонтекстноеМеню" id="518"/>
-									<ExtendedTooltip name="Флэш3DРасширеннаяПодсказка" id="519"/>
-									<Events>
-										<Event name="OnClick">Флэш3DПриНажатии</Event>
-									</Events>
-								</HTMLDocumentField>
-							</ChildItems>
-						</Page>
 						<Page name="Страница2D" id="528">
 							<Title>
 								<v8:item>
@@ -999,675 +1037,616 @@
 								</HTMLDocumentField>
 							</ChildItems>
 						</Page>
-					</ChildItems>
-				</Pages>
-				<UsualGroup name="ГруппаОсновная" id="472">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа основная</v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа основная</v8:content>
-						</v8:item>
-					</ToolTip>
-					<Width>75</Width>
-					<HorizontalStretch>true</HorizontalStretch>
-					<Group>Vertical</Group>
-					<ExtendedTooltip name="ГруппаОсновнаяРасширеннаяПодсказка" id="473"/>
-					<ChildItems>
-						<UsualGroup name="ГруппаЦентральная" id="482">
+						<Page name="Страница3D" id="526">
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Группа центральная</v8:content>
+									<v8:content>3D</v8:content>
 								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Группа центральная</v8:content>
+									<v8:content>Страница3 D</v8:content>
 								</v8:item>
 							</ToolTip>
-							<Group>Horizontal</Group>
-							<Representation>None</Representation>
-							<ChildItemsWidth>LeftWidest</ChildItemsWidth>
-							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ГруппаЦентральнаяРасширеннаяПодсказка" id="483"/>
+							<ExtendedTooltip name="Страница3DРасширеннаяПодсказка" id="527"/>
 							<ChildItems>
-								<UsualGroup name="ГруппаДопНастройки" id="486">
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Группа доп настройки</v8:content>
-										</v8:item>
-									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Группа доп настройки</v8:content>
-										</v8:item>
-									</ToolTip>
-									<Group>Vertical</Group>
-									<Representation>None</Representation>
-									<ShowTitle>false</ShowTitle>
-									<ExtendedTooltip name="ГруппаДопНастройкиРасширеннаяПодсказка" id="487"/>
-									<ChildItems>
-										<UsualGroup name="ДополнительныеНастройки" id="421">
-											<Title>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Дополнительные настройки</v8:content>
-												</v8:item>
-											</Title>
-											<ToolTip>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Дополнительные настройки</v8:content>
-												</v8:item>
-											</ToolTip>
-											<Group>Horizontal</Group>
-											<Representation>None</Representation>
-											<ShowTitle>false</ShowTitle>
-											<ExtendedTooltip name="ДополнительныеНастройкиРасширеннаяПодсказка" id="422"/>
-											<ChildItems>
-												<UsualGroup name="ГруппаМебельнаяКромка" id="433">
-													<Title>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>Мебельная кромка</v8:content>
-														</v8:item>
-													</Title>
-													<ToolTip>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>Группа мебельная кромка</v8:content>
-														</v8:item>
-													</ToolTip>
-													<Group>Vertical</Group>
-													<ExtendedTooltip name="ГруппаМебельнаяКромкаРасширеннаяПодсказка" id="434"/>
-													<ChildItems>
-														<UsualGroup name="ВерхнийПереключатель" id="427">
-															<Title>
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>Сверху</v8:content>
-																</v8:item>
-															</Title>
-															<ToolTip>
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>Верхний переключатель</v8:content>
-																</v8:item>
-															</ToolTip>
-															<Group>Horizontal</Group>
-															<ExtendedTooltip name="ВерхнийПереключательРасширеннаяПодсказка" id="428"/>
-															<ChildItems>
-																<RadioButtonField name="ПереключательКромкаСверху" id="208">
-																	<DataPath>Items.Детали.CurrentData.ПереключательКромкаСверху</DataPath>
-																	<SkipOnInput>true</SkipOnInput>
-																	<Title>
-																		<v8:item>
-																			<v8:lang>ru</v8:lang>
-																			<v8:content>Сверху</v8:content>
-																		</v8:item>
-																	</Title>
-																	<TitleLocation>None</TitleLocation>
-																	<RadioButtonType>Tumbler</RadioButtonType>
-																	<ItemWidth>10</ItemWidth>
-																	<ColumnsCount>2</ColumnsCount>
-																	<EqualColumnsWidth>true</EqualColumnsWidth>
-																	<ChoiceList>
-																		<xr:Item>
-																			<xr:Presentation/>
-																			<xr:CheckState>0</xr:CheckState>
-																			<xr:Value xsi:type="FormChoiceListDesTimeValue">
-																				<Presentation>
-																					<v8:item>
-																						<v8:lang>ru</v8:lang>
-																						<v8:content>По месту</v8:content>
-																					</v8:item>
-																				</Presentation>
-																				<Value xsi:type="xs:string">По месту</Value>
-																			</xr:Value>
-																		</xr:Item>
-																		<xr:Item>
-																			<xr:Presentation/>
-																			<xr:CheckState>0</xr:CheckState>
-																			<xr:Value xsi:type="FormChoiceListDesTimeValue">
-																				<Presentation>
-																					<v8:item>
-																						<v8:lang>ru</v8:lang>
-																						<v8:content>Кант</v8:content>
-																					</v8:item>
-																				</Presentation>
-																				<Value xsi:type="xs:string">Кант</Value>
-																			</xr:Value>
-																		</xr:Item>
-																		<xr:Item>
-																			<xr:Presentation/>
-																			<xr:CheckState>0</xr:CheckState>
-																			<xr:Value xsi:type="FormChoiceListDesTimeValue">
-																				<Presentation>
-																					<v8:item>
-																						<v8:lang>ru</v8:lang>
-																						<v8:content>0.45</v8:content>
-																					</v8:item>
-																				</Presentation>
-																				<Value xsi:type="xs:string">0.45</Value>
-																			</xr:Value>
-																		</xr:Item>
-																		<xr:Item>
-																			<xr:Presentation/>
-																			<xr:CheckState>0</xr:CheckState>
-																			<xr:Value xsi:type="FormChoiceListDesTimeValue">
-																				<Presentation>
-																					<v8:item>
-																						<v8:lang>ru</v8:lang>
-																						<v8:content>2</v8:content>
-																					</v8:item>
-																				</Presentation>
-																				<Value xsi:type="xs:string">2</Value>
-																			</xr:Value>
-																		</xr:Item>
-																		<xr:Item>
-																			<xr:Presentation/>
-																			<xr:CheckState>0</xr:CheckState>
-																			<xr:Value xsi:type="FormChoiceListDesTimeValue">
-																				<Presentation>
-																					<v8:item>
-																						<v8:lang>ru</v8:lang>
-																						<v8:content>Ок</v8:content>
-																					</v8:item>
-																				</Presentation>
-																				<Value xsi:type="xs:string">УниверсальнаяКромка</Value>
-																			</xr:Value>
-																		</xr:Item>
-																		<xr:Item>
-																			<xr:Presentation/>
-																			<xr:CheckState>0</xr:CheckState>
-																			<xr:Value xsi:type="FormChoiceListDesTimeValue">
-																				<Presentation>
-																					<v8:item>
-																						<v8:lang>ru</v8:lang>
-																						<v8:content>Нет</v8:content>
-																					</v8:item>
-																				</Presentation>
-																				<Value xsi:type="xs:string">Нет</Value>
-																			</xr:Value>
-																		</xr:Item>
-																	</ChoiceList>
-																	<Font ref="sys:DefaultGUIFont" kind="WindowsFont"/>
-																	<ContextMenu name="ПереключательКромкаСверхуКонтекстноеМеню" id="209"/>
-																	<ExtendedTooltip name="ПереключательКромкаСверхуExtendedTooltip" id="362"/>
-																	<Events>
-																		<Event name="OnChange">ПереключательКромкаСверхуПриИзменении</Event>
-																	</Events>
-																</RadioButtonField>
-																<InputField name="ВыборМебельнойКромкиСверху" id="210">
-																	<DataPath>Items.Детали.CurrentData.ВыборМебельнойКромкиСверху</DataPath>
-																	<SkipOnInput>true</SkipOnInput>
-																	<Title>
-																		<v8:item>
-																			<v8:lang>ru</v8:lang>
-																			<v8:content>Сверху</v8:content>
-																		</v8:item>
-																	</Title>
-																	<TitleLocation>None</TitleLocation>
-																	<ChoiceButton>false</ChoiceButton>
-																	<ClearButton>false</ClearButton>
-																	<OpenButton>false</OpenButton>
-																	<QuickChoice>false</QuickChoice>
-																	<TextEdit>false</TextEdit>
-																	<ChoiceListButton>true</ChoiceListButton>
-																	<DropListWidth>50</DropListWidth>
-																	<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
-																	<ContextMenu name="ВыборМебельнойКромкиСверхуКонтекстноеМеню" id="211"/>
-																	<ExtendedTooltip name="ВыборМебельнойКромкиСверхуExtendedTooltip" id="363"/>
-																	<Events>
-																		<Event name="OnChange">ВыборМебельнойКромкиСверхуПриИзменении</Event>
-																	</Events>
-																</InputField>
-															</ChildItems>
-														</UsualGroup>
-														<UsualGroup name="ЛевыйПереключатель" id="425">
-															<Title>
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>Слева</v8:content>
-																</v8:item>
-															</Title>
-															<ToolTip>
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>Левый переключатель</v8:content>
-																</v8:item>
-															</ToolTip>
-															<Group>Horizontal</Group>
-															<ExtendedTooltip name="ЛевыйПереключательРасширеннаяПодсказка" id="426"/>
-															<ChildItems>
-																<RadioButtonField name="ПереключательКромкаСлева" id="204">
-																	<DataPath>Items.Детали.CurrentData.ПереключательКромкаСлева</DataPath>
-																	<SkipOnInput>true</SkipOnInput>
-																	<Title>
-																		<v8:item>
-																			<v8:lang>ru</v8:lang>
-																			<v8:content>Слева</v8:content>
-																		</v8:item>
-																	</Title>
-																	<TitleLocation>None</TitleLocation>
-																	<RadioButtonType>Tumbler</RadioButtonType>
-																	<ItemWidth>10</ItemWidth>
-																	<ColumnsCount>2</ColumnsCount>
-																	<EqualColumnsWidth>true</EqualColumnsWidth>
-																	<ChoiceList>
-																		<xr:Item>
-																			<xr:Presentation/>
-																			<xr:CheckState>0</xr:CheckState>
-																			<xr:Value xsi:type="FormChoiceListDesTimeValue">
-																				<Presentation>
-																					<v8:item>
-																						<v8:lang>ru</v8:lang>
-																						<v8:content>По месту</v8:content>
-																					</v8:item>
-																				</Presentation>
-																				<Value xsi:type="xs:string">По месту</Value>
-																			</xr:Value>
-																		</xr:Item>
-																		<xr:Item>
-																			<xr:Presentation/>
-																			<xr:CheckState>0</xr:CheckState>
-																			<xr:Value xsi:type="FormChoiceListDesTimeValue">
-																				<Presentation>
-																					<v8:item>
-																						<v8:lang>ru</v8:lang>
-																						<v8:content>Кант</v8:content>
-																					</v8:item>
-																				</Presentation>
-																				<Value xsi:type="xs:string">Кант</Value>
-																			</xr:Value>
-																		</xr:Item>
-																		<xr:Item>
-																			<xr:Presentation/>
-																			<xr:CheckState>0</xr:CheckState>
-																			<xr:Value xsi:type="FormChoiceListDesTimeValue">
-																				<Presentation>
-																					<v8:item>
-																						<v8:lang>ru</v8:lang>
-																						<v8:content>0.45</v8:content>
-																					</v8:item>
-																				</Presentation>
-																				<Value xsi:type="xs:string">0.45</Value>
-																			</xr:Value>
-																		</xr:Item>
-																		<xr:Item>
-																			<xr:Presentation/>
-																			<xr:CheckState>0</xr:CheckState>
-																			<xr:Value xsi:type="FormChoiceListDesTimeValue">
-																				<Presentation>
-																					<v8:item>
-																						<v8:lang>ru</v8:lang>
-																						<v8:content>2</v8:content>
-																					</v8:item>
-																				</Presentation>
-																				<Value xsi:type="xs:string">2</Value>
-																			</xr:Value>
-																		</xr:Item>
-																		<xr:Item>
-																			<xr:Presentation/>
-																			<xr:CheckState>0</xr:CheckState>
-																			<xr:Value xsi:type="FormChoiceListDesTimeValue">
-																				<Presentation>
-																					<v8:item>
-																						<v8:lang>ru</v8:lang>
-																						<v8:content>Ок</v8:content>
-																					</v8:item>
-																				</Presentation>
-																				<Value xsi:type="xs:string">УниверсальнаяКромка</Value>
-																			</xr:Value>
-																		</xr:Item>
-																		<xr:Item>
-																			<xr:Presentation/>
-																			<xr:CheckState>0</xr:CheckState>
-																			<xr:Value xsi:type="FormChoiceListDesTimeValue">
-																				<Presentation>
-																					<v8:item>
-																						<v8:lang>ru</v8:lang>
-																						<v8:content>Нет</v8:content>
-																					</v8:item>
-																				</Presentation>
-																				<Value xsi:type="xs:string">Нет</Value>
-																			</xr:Value>
-																		</xr:Item>
-																	</ChoiceList>
-																	<Font ref="sys:DefaultGUIFont" kind="WindowsFont" scale="90"/>
-																	<ContextMenu name="ПереключательКромкаСлеваКонтекстноеМеню" id="205"/>
-																	<ExtendedTooltip name="ПереключательКромкаСлеваExtendedTooltip" id="356"/>
-																	<Events>
-																		<Event name="OnChange">ПереключательКромкаСлеваПриИзменении</Event>
-																	</Events>
-																</RadioButtonField>
-																<InputField name="ВыборМебельнойКромкиСлева" id="206">
-																	<DataPath>Items.Детали.CurrentData.ВыборМебельнойКромкиСлева</DataPath>
-																	<SkipOnInput>true</SkipOnInput>
-																	<Title>
-																		<v8:item>
-																			<v8:lang>ru</v8:lang>
-																			<v8:content> </v8:content>
-																		</v8:item>
-																	</Title>
-																	<TitleLocation>None</TitleLocation>
-																	<ChoiceButton>false</ChoiceButton>
-																	<OpenButton>false</OpenButton>
-																	<TextEdit>false</TextEdit>
-																	<ChoiceListButton>true</ChoiceListButton>
-																	<DropListWidth>50</DropListWidth>
-																	<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
-																	<ContextMenu name="ВыборМебельнойКромкиСлеваКонтекстноеМеню" id="207"/>
-																	<ExtendedTooltip name="ВыборМебельнойКромкиСлеваExtendedTooltip" id="357"/>
-																	<Events>
-																		<Event name="OnChange">ВыборМебельнойКромкиСлеваПриИзменении</Event>
-																	</Events>
-																</InputField>
-															</ChildItems>
-														</UsualGroup>
-														<UsualGroup name="ПравыйПереключатель" id="429">
-															<Title>
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>Справа</v8:content>
-																</v8:item>
-															</Title>
-															<ToolTip>
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>Верхний переключатель</v8:content>
-																</v8:item>
-															</ToolTip>
-															<Group>Horizontal</Group>
-															<ExtendedTooltip name="ПравыйПереключательРасширеннаяПодсказка" id="430"/>
-															<ChildItems>
-																<RadioButtonField name="ПереключательКромкаСправа" id="224">
-																	<DataPath>Items.Детали.CurrentData.ПереключательКромкаСправа</DataPath>
-																	<SkipOnInput>true</SkipOnInput>
-																	<Title>
-																		<v8:item>
-																			<v8:lang>ru</v8:lang>
-																			<v8:content>Справа</v8:content>
-																		</v8:item>
-																	</Title>
-																	<TitleLocation>None</TitleLocation>
-																	<RadioButtonType>Tumbler</RadioButtonType>
-																	<ItemWidth>10</ItemWidth>
-																	<ColumnsCount>2</ColumnsCount>
-																	<EqualColumnsWidth>true</EqualColumnsWidth>
-																	<ChoiceList>
-																		<xr:Item>
-																			<xr:Presentation/>
-																			<xr:CheckState>0</xr:CheckState>
-																			<xr:Value xsi:type="FormChoiceListDesTimeValue">
-																				<Presentation>
-																					<v8:item>
-																						<v8:lang>ru</v8:lang>
-																						<v8:content>По месту</v8:content>
-																					</v8:item>
-																				</Presentation>
-																				<Value xsi:type="xs:string">По месту</Value>
-																			</xr:Value>
-																		</xr:Item>
-																		<xr:Item>
-																			<xr:Presentation/>
-																			<xr:CheckState>0</xr:CheckState>
-																			<xr:Value xsi:type="FormChoiceListDesTimeValue">
-																				<Presentation>
-																					<v8:item>
-																						<v8:lang>ru</v8:lang>
-																						<v8:content>Кант</v8:content>
-																					</v8:item>
-																				</Presentation>
-																				<Value xsi:type="xs:string">Кант</Value>
-																			</xr:Value>
-																		</xr:Item>
-																		<xr:Item>
-																			<xr:Presentation/>
-																			<xr:CheckState>0</xr:CheckState>
-																			<xr:Value xsi:type="FormChoiceListDesTimeValue">
-																				<Presentation>
-																					<v8:item>
-																						<v8:lang>ru</v8:lang>
-																						<v8:content>0.45</v8:content>
-																					</v8:item>
-																				</Presentation>
-																				<Value xsi:type="xs:string">0.45</Value>
-																			</xr:Value>
-																		</xr:Item>
-																		<xr:Item>
-																			<xr:Presentation/>
-																			<xr:CheckState>0</xr:CheckState>
-																			<xr:Value xsi:type="FormChoiceListDesTimeValue">
-																				<Presentation>
-																					<v8:item>
-																						<v8:lang>ru</v8:lang>
-																						<v8:content>2</v8:content>
-																					</v8:item>
-																				</Presentation>
-																				<Value xsi:type="xs:string">2</Value>
-																			</xr:Value>
-																		</xr:Item>
-																		<xr:Item>
-																			<xr:Presentation/>
-																			<xr:CheckState>0</xr:CheckState>
-																			<xr:Value xsi:type="FormChoiceListDesTimeValue">
-																				<Presentation>
-																					<v8:item>
-																						<v8:lang>ru</v8:lang>
-																						<v8:content>Ок</v8:content>
-																					</v8:item>
-																				</Presentation>
-																				<Value xsi:type="xs:string">УниверсальнаяКромка</Value>
-																			</xr:Value>
-																		</xr:Item>
-																		<xr:Item>
-																			<xr:Presentation/>
-																			<xr:CheckState>0</xr:CheckState>
-																			<xr:Value xsi:type="FormChoiceListDesTimeValue">
-																				<Presentation>
-																					<v8:item>
-																						<v8:lang>ru</v8:lang>
-																						<v8:content>Нет</v8:content>
-																					</v8:item>
-																				</Presentation>
-																				<Value xsi:type="xs:string">Нет</Value>
-																			</xr:Value>
-																		</xr:Item>
-																	</ChoiceList>
-																	<Font ref="sys:DefaultGUIFont" kind="WindowsFont" scale="90"/>
-																	<ContextMenu name="ПереключательКромкаСправаКонтекстноеМеню" id="225"/>
-																	<ExtendedTooltip name="ПереключательКромкаСправаExtendedTooltip" id="370"/>
-																	<Events>
-																		<Event name="OnChange">ПереключательКромкаСправаПриИзменении</Event>
-																	</Events>
-																</RadioButtonField>
-																<InputField name="ВыборМебельнойКромкиСправа" id="226">
-																	<DataPath>Items.Детали.CurrentData.ВыборМебельнойКромкиСправа</DataPath>
-																	<SkipOnInput>true</SkipOnInput>
-																	<Title>
-																		<v8:item>
-																			<v8:lang>ru</v8:lang>
-																			<v8:content> </v8:content>
-																		</v8:item>
-																	</Title>
-																	<TitleLocation>None</TitleLocation>
-																	<ChoiceButton>false</ChoiceButton>
-																	<OpenButton>false</OpenButton>
-																	<TextEdit>false</TextEdit>
-																	<ChoiceListButton>true</ChoiceListButton>
-																	<DropListWidth>50</DropListWidth>
-																	<ContextMenu name="ВыборМебельнойКромкиСправаКонтекстноеМеню" id="227"/>
-																	<ExtendedTooltip name="ВыборМебельнойКромкиСправаExtendedTooltip" id="371"/>
-																	<Events>
-																		<Event name="OnChange">ВыборМебельнойКромкиСправаПриИзменении</Event>
-																	</Events>
-																</InputField>
-															</ChildItems>
-														</UsualGroup>
-														<UsualGroup name="НижнийПереключатель" id="431">
-															<Title>
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>Снизу</v8:content>
-																</v8:item>
-															</Title>
-															<ToolTip>
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>Верхний переключатель</v8:content>
-																</v8:item>
-															</ToolTip>
-															<Group>Horizontal</Group>
-															<ExtendedTooltip name="НижнийПереключательРасширеннаяПодсказка" id="432"/>
-															<ChildItems>
-																<RadioButtonField name="ПереключательКромкаСнизу" id="214">
-																	<DataPath>Items.Детали.CurrentData.ПереключательКромкаСнизу</DataPath>
-																	<SkipOnInput>true</SkipOnInput>
-																	<Title>
-																		<v8:item>
-																			<v8:lang>ru</v8:lang>
-																			<v8:content>Снизу</v8:content>
-																		</v8:item>
-																	</Title>
-																	<TitleLocation>None</TitleLocation>
-																	<RadioButtonType>Tumbler</RadioButtonType>
-																	<ItemWidth>10</ItemWidth>
-																	<ColumnsCount>2</ColumnsCount>
-																	<EqualColumnsWidth>true</EqualColumnsWidth>
-																	<ChoiceList>
-																		<xr:Item>
-																			<xr:Presentation/>
-																			<xr:CheckState>0</xr:CheckState>
-																			<xr:Value xsi:type="FormChoiceListDesTimeValue">
-																				<Presentation>
-																					<v8:item>
-																						<v8:lang>ru</v8:lang>
-																						<v8:content>По месту</v8:content>
-																					</v8:item>
-																				</Presentation>
-																				<Value xsi:type="xs:string">По месту</Value>
-																			</xr:Value>
-																		</xr:Item>
-																		<xr:Item>
-																			<xr:Presentation/>
-																			<xr:CheckState>0</xr:CheckState>
-																			<xr:Value xsi:type="FormChoiceListDesTimeValue">
-																				<Presentation>
-																					<v8:item>
-																						<v8:lang>ru</v8:lang>
-																						<v8:content>Кант</v8:content>
-																					</v8:item>
-																				</Presentation>
-																				<Value xsi:type="xs:string">Кант</Value>
-																			</xr:Value>
-																		</xr:Item>
-																		<xr:Item>
-																			<xr:Presentation/>
-																			<xr:CheckState>0</xr:CheckState>
-																			<xr:Value xsi:type="FormChoiceListDesTimeValue">
-																				<Presentation>
-																					<v8:item>
-																						<v8:lang>ru</v8:lang>
-																						<v8:content>0.45</v8:content>
-																					</v8:item>
-																				</Presentation>
-																				<Value xsi:type="xs:string">0.45</Value>
-																			</xr:Value>
-																		</xr:Item>
-																		<xr:Item>
-																			<xr:Presentation/>
-																			<xr:CheckState>0</xr:CheckState>
-																			<xr:Value xsi:type="FormChoiceListDesTimeValue">
-																				<Presentation>
-																					<v8:item>
-																						<v8:lang>ru</v8:lang>
-																						<v8:content>2</v8:content>
-																					</v8:item>
-																				</Presentation>
-																				<Value xsi:type="xs:string">2</Value>
-																			</xr:Value>
-																		</xr:Item>
-																		<xr:Item>
-																			<xr:Presentation/>
-																			<xr:CheckState>0</xr:CheckState>
-																			<xr:Value xsi:type="FormChoiceListDesTimeValue">
-																				<Presentation>
-																					<v8:item>
-																						<v8:lang>ru</v8:lang>
-																						<v8:content>Ок</v8:content>
-																					</v8:item>
-																				</Presentation>
-																				<Value xsi:type="xs:string">УниверсальнаяКромка</Value>
-																			</xr:Value>
-																		</xr:Item>
-																		<xr:Item>
-																			<xr:Presentation/>
-																			<xr:CheckState>0</xr:CheckState>
-																			<xr:Value xsi:type="FormChoiceListDesTimeValue">
-																				<Presentation>
-																					<v8:item>
-																						<v8:lang>ru</v8:lang>
-																						<v8:content>Нет</v8:content>
-																					</v8:item>
-																				</Presentation>
-																				<Value xsi:type="xs:string">Нет</Value>
-																			</xr:Value>
-																		</xr:Item>
-																	</ChoiceList>
-																	<Font ref="sys:DefaultGUIFont" kind="WindowsFont" scale="90"/>
-																	<ContextMenu name="ПереключательКромкаСнизуКонтекстноеМеню" id="215"/>
-																	<ExtendedTooltip name="ПереключательКромкаСнизуРасширеннаяПодсказка" id="366"/>
-																	<Events>
-																		<Event name="OnChange">ПереключательКромкаСнизуПриИзменении</Event>
-																	</Events>
-																</RadioButtonField>
-																<InputField name="ВыборМебельнойКромкиСнизу" id="216">
-																	<DataPath>Items.Детали.CurrentData.ВыборМебельнойКромкиСнизу</DataPath>
-																	<SkipOnInput>true</SkipOnInput>
-																	<TitleLocation>None</TitleLocation>
-																	<ChoiceButton>false</ChoiceButton>
-																	<OpenButton>false</OpenButton>
-																	<TextEdit>false</TextEdit>
-																	<ChoiceListButton>true</ChoiceListButton>
-																	<DropListWidth>50</DropListWidth>
-																	<ContextMenu name="ВыборМебельнойКромкиСнизуКонтекстноеМеню" id="217"/>
-																	<ExtendedTooltip name="ВыборМебельнойКромкиСнизуExtendedTooltip" id="367"/>
-																	<Events>
-																		<Event name="OnChange">ВыборМебельнойКромкиСнизуПриИзменении</Event>
-																	</Events>
-																</InputField>
-															</ChildItems>
-														</UsualGroup>
-													</ChildItems>
-												</UsualGroup>
-											</ChildItems>
-										</UsualGroup>
-									</ChildItems>
-								</UsualGroup>
+								<HTMLDocumentField name="Флэш3D" id="517">
+									<DataPath>Флэш3D</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<ContextMenu name="Флэш3DКонтекстноеМеню" id="518"/>
+									<ExtendedTooltip name="Флэш3DРасширеннаяПодсказка" id="519"/>
+									<Events>
+										<Event name="OnClick">Флэш3DПриНажатии</Event>
+									</Events>
+								</HTMLDocumentField>
 							</ChildItems>
-						</UsualGroup>
-						<InputField name="Комментарий" id="230">
-							<DataPath>Items.Детали.CurrentData.Комментарий</DataPath>
+						</Page>
+					</ChildItems>
+				</Pages>
+				<UsualGroup name="ГруппаМебельнаяКромка" id="433">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Мебельная кромка</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа мебельная кромка</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ExtendedTooltip name="ГруппаМебельнаяКромкаРасширеннаяПодсказка" id="434"/>
+					<ChildItems>
+						<UsualGroup name="ВерхнийПереключатель" id="427">
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Комментарий</v8:content>
+									<v8:content>Сверху</v8:content>
 								</v8:item>
 							</Title>
-							<TitleLocation>Left</TitleLocation>
-							<ContextMenu name="КомментарийКонтекстноеМеню" id="231"/>
-							<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="403"/>
-						</InputField>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Верхний переключатель</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<ExtendedTooltip name="ВерхнийПереключательРасширеннаяПодсказка" id="428"/>
+							<ChildItems>
+								<RadioButtonField name="ПереключательКромкаСверху" id="208">
+									<DataPath>Items.Детали.CurrentData.ПереключательКромкаСверху</DataPath>
+									<SkipOnInput>true</SkipOnInput>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Сверху</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>None</TitleLocation>
+									<RadioButtonType>Tumbler</RadioButtonType>
+									<ItemWidth>10</ItemWidth>
+									<ColumnsCount>3</ColumnsCount>
+									<EqualColumnsWidth>true</EqualColumnsWidth>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>По месту</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string">По месту</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Кант</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string">Кант</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>0.45</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string">0.45</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>2</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string">2</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Ок</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string">УниверсальнаяКромка</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Нет</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string">Нет</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<Font ref="sys:DefaultGUIFont" kind="WindowsFont"/>
+									<ContextMenu name="ПереключательКромкаСверхуКонтекстноеМеню" id="209"/>
+									<ExtendedTooltip name="ПереключательКромкаСверхуExtendedTooltip" id="362"/>
+									<Events>
+										<Event name="OnChange">ПереключательКромкаСверхуПриИзменении</Event>
+									</Events>
+								</RadioButtonField>
+								<InputField name="ВыборМебельнойКромкиСверху" id="210">
+									<DataPath>Items.Детали.CurrentData.ВыборМебельнойКромкиСверху</DataPath>
+									<SkipOnInput>true</SkipOnInput>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Сверху</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>None</TitleLocation>
+									<Width>29</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ChoiceButton>false</ChoiceButton>
+									<ClearButton>false</ClearButton>
+									<OpenButton>false</OpenButton>
+									<QuickChoice>false</QuickChoice>
+									<TextEdit>false</TextEdit>
+									<ChoiceListButton>true</ChoiceListButton>
+									<DropListWidth>50</DropListWidth>
+									<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
+									<ContextMenu name="ВыборМебельнойКромкиСверхуКонтекстноеМеню" id="211"/>
+									<ExtendedTooltip name="ВыборМебельнойКромкиСверхуExtendedTooltip" id="363"/>
+									<Events>
+										<Event name="OnChange">ВыборМебельнойКромкиСверхуПриИзменении</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ПравыйПереключатель" id="429">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Справа</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Верхний переключатель</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<ExtendedTooltip name="ПравыйПереключательРасширеннаяПодсказка" id="430"/>
+							<ChildItems>
+								<RadioButtonField name="ПереключательКромкаСправа" id="224">
+									<DataPath>Items.Детали.CurrentData.ПереключательКромкаСправа</DataPath>
+									<SkipOnInput>true</SkipOnInput>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Справа</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>None</TitleLocation>
+									<RadioButtonType>Tumbler</RadioButtonType>
+									<ItemWidth>10</ItemWidth>
+									<ColumnsCount>3</ColumnsCount>
+									<EqualColumnsWidth>true</EqualColumnsWidth>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>По месту</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string">По месту</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Кант</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string">Кант</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>0.45</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string">0.45</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>2</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string">2</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Ок</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string">УниверсальнаяКромка</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Нет</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string">Нет</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<Font ref="sys:DefaultGUIFont" kind="WindowsFont" scale="90"/>
+									<ContextMenu name="ПереключательКромкаСправаКонтекстноеМеню" id="225"/>
+									<ExtendedTooltip name="ПереключательКромкаСправаExtendedTooltip" id="370"/>
+									<Events>
+										<Event name="OnChange">ПереключательКромкаСправаПриИзменении</Event>
+									</Events>
+								</RadioButtonField>
+								<InputField name="ВыборМебельнойКромкиСправа" id="226">
+									<DataPath>Items.Детали.CurrentData.ВыборМебельнойКромкиСправа</DataPath>
+									<SkipOnInput>true</SkipOnInput>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content> </v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>None</TitleLocation>
+									<Width>29</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ChoiceButton>false</ChoiceButton>
+									<OpenButton>false</OpenButton>
+									<TextEdit>false</TextEdit>
+									<ChoiceListButton>true</ChoiceListButton>
+									<DropListWidth>50</DropListWidth>
+									<ContextMenu name="ВыборМебельнойКромкиСправаКонтекстноеМеню" id="227"/>
+									<ExtendedTooltip name="ВыборМебельнойКромкиСправаExtendedTooltip" id="371"/>
+									<Events>
+										<Event name="OnChange">ВыборМебельнойКромкиСправаПриИзменении</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="НижнийПереключатель" id="431">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Снизу</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Верхний переключатель</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<ExtendedTooltip name="НижнийПереключательРасширеннаяПодсказка" id="432"/>
+							<ChildItems>
+								<RadioButtonField name="ПереключательКромкаСнизу" id="214">
+									<DataPath>Items.Детали.CurrentData.ПереключательКромкаСнизу</DataPath>
+									<SkipOnInput>true</SkipOnInput>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Снизу</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>None</TitleLocation>
+									<RadioButtonType>Tumbler</RadioButtonType>
+									<ItemWidth>10</ItemWidth>
+									<ColumnsCount>3</ColumnsCount>
+									<EqualColumnsWidth>true</EqualColumnsWidth>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>По месту</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string">По месту</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Кант</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string">Кант</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>0.45</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string">0.45</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>2</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string">2</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Ок</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string">УниверсальнаяКромка</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Нет</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string">Нет</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<Font ref="sys:DefaultGUIFont" kind="WindowsFont" scale="90"/>
+									<ContextMenu name="ПереключательКромкаСнизуКонтекстноеМеню" id="215"/>
+									<ExtendedTooltip name="ПереключательКромкаСнизуРасширеннаяПодсказка" id="366"/>
+									<Events>
+										<Event name="OnChange">ПереключательКромкаСнизуПриИзменении</Event>
+									</Events>
+								</RadioButtonField>
+								<InputField name="ВыборМебельнойКромкиСнизу" id="216">
+									<DataPath>Items.Детали.CurrentData.ВыборМебельнойКромкиСнизу</DataPath>
+									<SkipOnInput>true</SkipOnInput>
+									<TitleLocation>None</TitleLocation>
+									<Width>29</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ChoiceButton>false</ChoiceButton>
+									<OpenButton>false</OpenButton>
+									<TextEdit>false</TextEdit>
+									<ChoiceListButton>true</ChoiceListButton>
+									<DropListWidth>50</DropListWidth>
+									<ContextMenu name="ВыборМебельнойКромкиСнизуКонтекстноеМеню" id="217"/>
+									<ExtendedTooltip name="ВыборМебельнойКромкиСнизуExtendedTooltip" id="367"/>
+									<Events>
+										<Event name="OnChange">ВыборМебельнойКромкиСнизуПриИзменении</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ЛевыйПереключатель" id="425">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Слева</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Левый переключатель</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<ExtendedTooltip name="ЛевыйПереключательРасширеннаяПодсказка" id="426"/>
+							<ChildItems>
+								<RadioButtonField name="ПереключательКромкаСлева" id="204">
+									<DataPath>Items.Детали.CurrentData.ПереключательКромкаСлева</DataPath>
+									<SkipOnInput>true</SkipOnInput>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Слева</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>None</TitleLocation>
+									<RadioButtonType>Tumbler</RadioButtonType>
+									<ItemWidth>10</ItemWidth>
+									<ColumnsCount>3</ColumnsCount>
+									<EqualColumnsWidth>true</EqualColumnsWidth>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>По месту</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string">По месту</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Кант</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string">Кант</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>0.45</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string">0.45</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>2</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string">2</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Ок</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string">УниверсальнаяКромка</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Нет</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:string">Нет</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<Font ref="sys:DefaultGUIFont" kind="WindowsFont" scale="90"/>
+									<ContextMenu name="ПереключательКромкаСлеваКонтекстноеМеню" id="205"/>
+									<ExtendedTooltip name="ПереключательКромкаСлеваExtendedTooltip" id="356"/>
+									<Events>
+										<Event name="OnChange">ПереключательКромкаСлеваПриИзменении</Event>
+									</Events>
+								</RadioButtonField>
+								<InputField name="ВыборМебельнойКромкиСлева" id="206">
+									<DataPath>Items.Детали.CurrentData.ВыборМебельнойКромкиСлева</DataPath>
+									<SkipOnInput>true</SkipOnInput>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content> </v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>None</TitleLocation>
+									<Width>29</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ChoiceButton>false</ChoiceButton>
+									<OpenButton>false</OpenButton>
+									<TextEdit>false</TextEdit>
+									<ChoiceListButton>true</ChoiceListButton>
+									<DropListWidth>50</DropListWidth>
+									<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
+									<ContextMenu name="ВыборМебельнойКромкиСлеваКонтекстноеМеню" id="207"/>
+									<ExtendedTooltip name="ВыборМебельнойКромкиСлеваExtendedTooltip" id="357"/>
+									<Events>
+										<Event name="OnChange">ВыборМебельнойКромкиСлеваПриИзменении</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
 					</ChildItems>
 				</UsualGroup>
 			</ChildItems>
@@ -1704,47 +1683,32 @@
 						<CommandName>Form.Item.Детали.StandardCommand.Delete</CommandName>
 						<ExtendedTooltip name="ДеталиУдалитьExtendedTooltip" id="319"/>
 					</Button>
-					<Button name="ДеталиЗаменитьНоменклатуру" id="509">
-						<Type>CommandBarButton</Type>
-						<CommandName>Form.Command.ЗаменитьНоменклатуру</CommandName>
-						<Picture>
-							<xr:Ref>CommonPicture.СинхронизацияДанныхКоллизия</xr:Ref>
-							<xr:LoadTransparent>true</xr:LoadTransparent>
-						</Picture>
-						<Title>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Заменить цвет номенклатуры</v8:content>
-							</v8:item>
-						</Title>
-						<ExtendedTooltip name="ДеталиЗаменитьНоменклатуруРасширеннаяПодсказка" id="510"/>
-					</Button>
 				</ChildItems>
 			</AutoCommandBar>
 			<ExtendedTooltip name="ДеталиExtendedTooltip" id="320"/>
-			<SearchStringAddition name="ДеталиСтрокаПоиска" id="534">
+			<SearchStringAddition name="ДеталиСтрокаПоиска" id="542">
 				<AdditionSource>
 					<Item>Детали</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="ДеталиСтрокаПоискаКонтекстноеМеню" id="535"/>
-				<ExtendedTooltip name="ДеталиСтрокаПоискаРасширеннаяПодсказка" id="536"/>
+				<ContextMenu name="ДеталиСтрокаПоискаКонтекстноеМеню" id="543"/>
+				<ExtendedTooltip name="ДеталиСтрокаПоискаРасширеннаяПодсказка" id="544"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="ДеталиСостояниеПросмотра" id="537">
+			<ViewStatusAddition name="ДеталиСостояниеПросмотра" id="545">
 				<AdditionSource>
 					<Item>Детали</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="ДеталиСостояниеПросмотраКонтекстноеМеню" id="538"/>
-				<ExtendedTooltip name="ДеталиСостояниеПросмотраРасширеннаяПодсказка" id="539"/>
+				<ContextMenu name="ДеталиСостояниеПросмотраКонтекстноеМеню" id="546"/>
+				<ExtendedTooltip name="ДеталиСостояниеПросмотраРасширеннаяПодсказка" id="547"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="ДеталиУправлениеПоиском" id="540">
+			<SearchControlAddition name="ДеталиУправлениеПоиском" id="548">
 				<AdditionSource>
 					<Item>Детали</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="ДеталиУправлениеПоискомКонтекстноеМеню" id="541"/>
-				<ExtendedTooltip name="ДеталиУправлениеПоискомРасширеннаяПодсказка" id="542"/>
+				<ContextMenu name="ДеталиУправлениеПоискомКонтекстноеМеню" id="549"/>
+				<ExtendedTooltip name="ДеталиУправлениеПоискомРасширеннаяПодсказка" id="550"/>
 			</SearchControlAddition>
 			<Events>
 				<Event name="BeforeDeleteRow">ДеталиПередУдалением</Event>
@@ -1814,10 +1778,21 @@
 						</v8:item>
 					</Title>
 					<EditMode>EnterOnInput</EditMode>
-					<Width>6</Width>
 					<HorizontalStretch>false</HorizontalStretch>
 					<ContextMenu name="ДеталиНоменклатураКонтекстноеМеню" id="66"/>
 					<ExtendedTooltip name="ДеталиНоменклатураExtendedTooltip" id="325"/>
+				</InputField>
+				<InputField name="ДеталиНоменклатураДляСклеивания" id="539">
+					<DataPath>Детали.НоменклатураДляСклеивания</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Доп. номенклатура</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ДеталиНоменклатураДляСклеиванияКонтекстноеМеню" id="540"/>
+					<ExtendedTooltip name="ДеталиНоменклатураДляСклеиванияРасширеннаяПодсказка" id="541"/>
 				</InputField>
 				<InputField name="ДеталиДлина" id="69">
 					<DataPath>Детали.ВысотаДетали</DataPath>
@@ -1858,15 +1833,32 @@
 						</v8:item>
 					</ToolTip>
 					<EditMode>EnterOnInput</EditMode>
-					<FixingInTable>Right</FixingInTable>
 					<Width>1</Width>
 					<HorizontalStretch>false</HorizontalStretch>
 					<VerticalStretch>false</VerticalStretch>
 					<ContextMenu name="ДеталиКоличествоКонтекстноеМеню" id="77"/>
 					<ExtendedTooltip name="ДеталиКоличествоExtendedTooltip" id="334"/>
 				</InputField>
+				<InputField name="ДеталиКомментарий" id="536">
+					<DataPath>Детали.Комментарий</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ДеталиКомментарийКонтекстноеМеню" id="537"/>
+					<ExtendedTooltip name="ДеталиКомментарийРасширеннаяПодсказка" id="538"/>
+				</InputField>
 			</ChildItems>
 		</Table>
+		<InputField name="Комментарий" id="230">
+			<DataPath>Items.Детали.CurrentData.Комментарий</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Комментарий</v8:content>
+				</v8:item>
+			</Title>
+			<TitleLocation>Left</TitleLocation>
+			<ContextMenu name="КомментарийКонтекстноеМеню" id="231"/>
+			<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="403"/>
+		</InputField>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Флэш" id="15">
@@ -3016,6 +3008,7 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ЗаменитьНоменклатуру</Action>
+			<Representation>TextPicture</Representation>
 			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>
 	</Commands>
