@@ -81,7 +81,7 @@
 											<Button name="АктивныеДокументСлужебнаяЗапискаАктОбОказанныхУслугах" id="145">
 												<Type>CommandBarButton</Type>
 												<CommandName>Document.СлужебнаяЗаписка.Command.АктОбОказанныхУслугах</CommandName>
-												<DataPath>Items.Активные.CurrentData.Ref</DataPath>
+												<DataPath>36:02023637-7868-4a5f-8576-835a76e0c9ba/23</DataPath>
 												<ExtendedTooltip name="АктивныеДокументСлужебнаяЗапискаАктОбОказанныхУслугахРасширеннаяПодсказка" id="146"/>
 											</Button>
 										</ChildItems>
@@ -123,7 +123,7 @@
 							</SearchControlAddition>
 							<ChildItems>
 								<LabelField name="Дата" id="40">
-									<DataPath>Активные.Date</DataPath>
+									<DataPath>2/1</DataPath>
 									<Width>6</Width>
 									<Format>
 										<v8:item>
@@ -135,7 +135,7 @@
 									<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="42"/>
 								</LabelField>
 								<LabelField name="Номер" id="134">
-									<DataPath>Активные.Number</DataPath>
+									<DataPath>2/3</DataPath>
 									<Width>4</Width>
 									<HorizontalStretch>false</HorizontalStretch>
 									<VerticalStretch>false</VerticalStretch>
@@ -143,13 +143,13 @@
 									<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="136"/>
 								</LabelField>
 								<LabelField name="Адресат" id="49">
-									<DataPath>Активные.Адресат</DataPath>
+									<DataPath>2/8</DataPath>
 									<Width>18</Width>
 									<ContextMenu name="АдресатКонтекстноеМеню" id="50"/>
 									<ExtendedTooltip name="АдресатРасширеннаяПодсказка" id="51"/>
 								</LabelField>
 								<LabelField name="ВидСлужебнойЗаписки" id="52">
-									<DataPath>Активные.ВидСлужебнойЗаписки</DataPath>
+									<DataPath>2/9</DataPath>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -160,7 +160,7 @@
 									<ExtendedTooltip name="ВидСлужебнойЗапискиРасширеннаяПодсказка" id="54"/>
 								</LabelField>
 								<LabelField name="ДатаКонтроля" id="140">
-									<DataPath>Активные.ДатаКонтроля</DataPath>
+									<DataPath>2/11</DataPath>
 									<Format>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -171,12 +171,12 @@
 									<ExtendedTooltip name="ДатаКонтроляРасширеннаяПодсказка" id="142"/>
 								</LabelField>
 								<LabelField name="Тема" id="125">
-									<DataPath>Активные.Тема</DataPath>
+									<DataPath>2/18</DataPath>
 									<ContextMenu name="ТемаКонтекстноеМеню" id="126"/>
 									<ExtendedTooltip name="ТемаРасширеннаяПодсказка" id="127"/>
 								</LabelField>
 								<LabelField name="Автор" id="46">
-									<DataPath>Активные.Автор</DataPath>
+									<DataPath>2/7</DataPath>
 									<Width>18</Width>
 									<ContextMenu name="АвторКонтекстноеМеню" id="47"/>
 									<ExtendedTooltip name="АвторРасширеннаяПодсказка" id="48"/>
@@ -335,6 +335,7 @@
 	ДокументСлужебнаяЗаписка.НеСогласен,
 	ДокументСлужебнаяЗаписка.Утверждаю,
 	ДокументСлужебнаяЗаписка.Ознакомлен,
+	ДокументСлужебнаяЗаписка.Архив,
 	СтатусыСлужебныхЗаписок.Статус
 ИЗ
 	Документ.СлужебнаяЗаписка КАК ДокументСлужебнаяЗаписка
@@ -389,11 +390,82 @@
 									<dcsset:comparisonType>Equal</dcsset:comparisonType>
 									<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
 								</dcsset:item>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">ВидСлужебнойЗаписки</dcsset:left>
+									<dcsset:comparisonType>NotInList</dcsset:comparisonType>
+									<dcsset:right xsi:type="dcscor:DesignTimeValue">Перечисление.ВидыСлужебнойЗаписки.НарушенияВРаботе</dcsset:right>
+									<dcsset:right xsi:type="dcscor:DesignTimeValue">Перечисление.ВидыСлужебнойЗаписки.ПретензияЗаявление</dcsset:right>
+								</dcsset:item>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">Архив</dcsset:left>
+									<dcsset:comparisonType>Equal</dcsset:comparisonType>
+									<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+								</dcsset:item>
 							</dcsset:filter>
 							<dcsset:appearance>
 								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 									<dcscor:parameter>ЦветФона</dcscor:parameter>
 									<dcscor:value xsi:type="v8ui:Color">web:Khaki</dcscor:value>
+								</dcscor:item>
+							</dcsset:appearance>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:selection>
+								<dcsset:item>
+									<dcsset:field>Автор</dcsset:field>
+								</dcsset:item>
+								<dcsset:item>
+									<dcsset:field>Адресат</dcsset:field>
+								</dcsset:item>
+								<dcsset:item>
+									<dcsset:field>ВидСлужебнойЗаписки</dcsset:field>
+								</dcsset:item>
+								<dcsset:item>
+									<dcsset:field>Виновный</dcsset:field>
+								</dcsset:item>
+								<dcsset:item>
+									<dcsset:field>Дата</dcsset:field>
+								</dcsset:item>
+								<dcsset:item>
+									<dcsset:field>ДатаКонтроля</dcsset:field>
+								</dcsset:item>
+								<dcsset:item>
+									<dcsset:field>Документ</dcsset:field>
+								</dcsset:item>
+								<dcsset:item>
+									<dcsset:field>НеСогласен</dcsset:field>
+								</dcsset:item>
+								<dcsset:item>
+									<dcsset:field>Номер</dcsset:field>
+								</dcsset:item>
+								<dcsset:item>
+									<dcsset:field>Ознакомлен</dcsset:field>
+								</dcsset:item>
+								<dcsset:item>
+									<dcsset:field>Ссылка</dcsset:field>
+								</dcsset:item>
+								<dcsset:item>
+									<dcsset:field>Статус</dcsset:field>
+								</dcsset:item>
+								<dcsset:item>
+									<dcsset:field>Тема</dcsset:field>
+								</dcsset:item>
+								<dcsset:item>
+									<dcsset:field>Утверждаю</dcsset:field>
+								</dcsset:item>
+							</dcsset:selection>
+							<dcsset:filter>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">ВидСлужебнойЗаписки</dcsset:left>
+									<dcsset:comparisonType>InList</dcsset:comparisonType>
+									<dcsset:right xsi:type="dcscor:DesignTimeValue">Перечисление.ВидыСлужебнойЗаписки.НарушенияВРаботе</dcsset:right>
+									<dcsset:right xsi:type="dcscor:DesignTimeValue">Перечисление.ВидыСлужебнойЗаписки.ПретензияЗаявление</dcsset:right>
+								</dcsset:item>
+							</dcsset:filter>
+							<dcsset:appearance>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:parameter>ЦветФона</dcscor:parameter>
+									<dcscor:value xsi:type="v8ui:Color">web:Coral</dcscor:value>
 								</dcscor:item>
 							</dcsset:appearance>
 						</dcsset:item>
