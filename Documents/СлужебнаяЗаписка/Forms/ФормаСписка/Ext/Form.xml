@@ -3,6 +3,16 @@
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="ФормаОтчетОшибкиСотрудниковОткрыть" id="25">
+				<Type>CommandBarButton</Type>
+				<Representation>Text</Representation>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Report.ЭффективностьСотрудников.StandardCommand.Open</CommandName>
+				<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+				<ExtendedTooltip name="ФормаОтчетОшибкиСотрудниковОткрытьРасширеннаяПодсказка" id="26"/>
+			</Button>
+		</ChildItems>
 	</AutoCommandBar>
 	<ChildItems>
 		<Pages name="СтраницыСписков" id="30">
@@ -86,40 +96,32 @@
 											</Button>
 										</ChildItems>
 									</Popup>
-									<Button name="ФормаОтчетОшибкиСотрудниковОткрыть" id="25">
-										<Type>CommandBarButton</Type>
-										<Representation>Text</Representation>
-										<DefaultButton>true</DefaultButton>
-										<CommandName>Report.ЭффективностьСотрудников.StandardCommand.Open</CommandName>
-										<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
-										<ExtendedTooltip name="ФормаОтчетОшибкиСотрудниковОткрытьРасширеннаяПодсказка" id="26"/>
-									</Button>
 								</ChildItems>
 							</AutoCommandBar>
 							<ExtendedTooltip name="АктивныеРасширеннаяПодсказка" id="39"/>
-							<SearchStringAddition name="АктивныеСтрокаПоиска" id="150">
+							<SearchStringAddition name="АктивныеСтрокаПоиска" id="162">
 								<AdditionSource>
 									<Item>Активные</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="АктивныеСтрокаПоискаКонтекстноеМеню" id="151"/>
-								<ExtendedTooltip name="АктивныеСтрокаПоискаРасширеннаяПодсказка" id="152"/>
+								<ContextMenu name="АктивныеСтрокаПоискаКонтекстноеМеню" id="163"/>
+								<ExtendedTooltip name="АктивныеСтрокаПоискаРасширеннаяПодсказка" id="164"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="АктивныеСостояниеПросмотра" id="153">
+							<ViewStatusAddition name="АктивныеСостояниеПросмотра" id="165">
 								<AdditionSource>
 									<Item>Активные</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="АктивныеСостояниеПросмотраКонтекстноеМеню" id="154"/>
-								<ExtendedTooltip name="АктивныеСостояниеПросмотраРасширеннаяПодсказка" id="155"/>
+								<ContextMenu name="АктивныеСостояниеПросмотраКонтекстноеМеню" id="166"/>
+								<ExtendedTooltip name="АктивныеСостояниеПросмотраРасширеннаяПодсказка" id="167"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="АктивныеУправлениеПоиском" id="156">
+							<SearchControlAddition name="АктивныеУправлениеПоиском" id="168">
 								<AdditionSource>
 									<Item>Активные</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="АктивныеУправлениеПоискомКонтекстноеМеню" id="157"/>
-								<ExtendedTooltip name="АктивныеУправлениеПоискомРасширеннаяПодсказка" id="158"/>
+								<ContextMenu name="АктивныеУправлениеПоискомКонтекстноеМеню" id="169"/>
+								<ExtendedTooltip name="АктивныеУправлениеПоискомРасширеннаяПодсказка" id="170"/>
 							</SearchControlAddition>
 							<ChildItems>
 								<LabelField name="Дата" id="40">
@@ -236,31 +238,75 @@
 							<ContextMenu name="АрхивКонтекстноеМеню" id="83"/>
 							<AutoCommandBar name="АрхивКоманднаяПанель" id="84">
 								<Autofill>false</Autofill>
+								<ChildItems>
+									<Button name="АрхивУстановитьИнтервал" id="154">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.Архив.StandardCommand.SetDateInterval</CommandName>
+										<ExtendedTooltip name="АрхивУстановитьИнтервалРасширеннаяПодсказка" id="155"/>
+									</Button>
+									<Button name="АрхивНайти" id="150">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.Архив.StandardCommand.Find</CommandName>
+										<ExtendedTooltip name="АрхивНайтиРасширеннаяПодсказка" id="151"/>
+									</Button>
+									<Button name="АрхивОтменитьПоиск" id="152">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.Архив.StandardCommand.CancelSearch</CommandName>
+										<ExtendedTooltip name="АрхивОтменитьПоискРасширеннаяПодсказка" id="153"/>
+									</Button>
+									<Popup name="ГруппаПечатьАрхив" id="156">
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Печать</v8:content>
+											</v8:item>
+										</Title>
+										<ToolTip>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Группа печать</v8:content>
+											</v8:item>
+										</ToolTip>
+										<Picture>
+											<xr:Ref>StdPicture.Print</xr:Ref>
+											<xr:LoadTransparent>true</xr:LoadTransparent>
+										</Picture>
+										<ExtendedTooltip name="ГруппаПечатьАрхивРасширеннаяПодсказка" id="157"/>
+										<ChildItems>
+											<Button name="АрхивДокументСлужебнаяЗапискаАктОбОказанныхУслугах" id="160">
+												<Type>CommandBarButton</Type>
+												<CommandName>Document.СлужебнаяЗаписка.Command.АктОбОказанныхУслугах</CommandName>
+												<DataPath>Items.Архив.CurrentData.Ref</DataPath>
+												<ExtendedTooltip name="АрхивДокументСлужебнаяЗапискаАктОбОказанныхУслугахРасширеннаяПодсказка" id="161"/>
+											</Button>
+										</ChildItems>
+									</Popup>
+								</ChildItems>
 							</AutoCommandBar>
 							<ExtendedTooltip name="АрхивРасширеннаяПодсказка" id="85"/>
-							<SearchStringAddition name="АрхивСтрокаПоиска" id="159">
+							<SearchStringAddition name="АрхивСтрокаПоиска" id="171">
 								<AdditionSource>
 									<Item>Архив</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="АрхивСтрокаПоискаКонтекстноеМеню" id="160"/>
-								<ExtendedTooltip name="АрхивСтрокаПоискаРасширеннаяПодсказка" id="161"/>
+								<ContextMenu name="АрхивСтрокаПоискаКонтекстноеМеню" id="172"/>
+								<ExtendedTooltip name="АрхивСтрокаПоискаРасширеннаяПодсказка" id="173"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="АрхивСостояниеПросмотра" id="162">
+							<ViewStatusAddition name="АрхивСостояниеПросмотра" id="174">
 								<AdditionSource>
 									<Item>Архив</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="АрхивСостояниеПросмотраКонтекстноеМеню" id="163"/>
-								<ExtendedTooltip name="АрхивСостояниеПросмотраРасширеннаяПодсказка" id="164"/>
+								<ContextMenu name="АрхивСостояниеПросмотраКонтекстноеМеню" id="175"/>
+								<ExtendedTooltip name="АрхивСостояниеПросмотраРасширеннаяПодсказка" id="176"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="АрхивУправлениеПоиском" id="165">
+							<SearchControlAddition name="АрхивУправлениеПоиском" id="177">
 								<AdditionSource>
 									<Item>Архив</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="АрхивУправлениеПоискомКонтекстноеМеню" id="166"/>
-								<ExtendedTooltip name="АрхивУправлениеПоискомРасширеннаяПодсказка" id="167"/>
+								<ContextMenu name="АрхивУправлениеПоискомКонтекстноеМеню" id="178"/>
+								<ExtendedTooltip name="АрхивУправлениеПоискомРасширеннаяПодсказка" id="179"/>
 							</SearchControlAddition>
 							<ChildItems>
 								<LabelField name="АрхивДата" id="86">
