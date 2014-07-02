@@ -3,6 +3,10 @@
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
 	<ChildItems>
 		<UsualGroup name="ЛогистическиеХарактеристики" id="131">
 			<Title>
@@ -90,13 +94,16 @@
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Базовая</v8:content>
+									<v8:content>Базовый</v8:content>
 								</v8:item>
 							</Title>
 							<EditMode>EnterOnInput</EditMode>
 							<CheckBoxType>Auto</CheckBoxType>
 							<ContextMenu name="БазовыйКонтекстноеМеню" id="14"/>
 							<ExtendedTooltip name="БазовыйРасширеннаяПодсказка" id="15"/>
+							<Events>
+								<Event name="OnChange">БазовыйПриИзменении</Event>
+							</Events>
 						</CheckBoxField>
 						<CheckBoxField name="ОсновнаяПоСкладу" id="116">
 							<DataPath>Объект.ОсновнаяПоСкладу</DataPath>
@@ -112,6 +119,7 @@
 						</CheckBoxField>
 						<CheckBoxField name="Неноменклатурный" id="139">
 							<DataPath>Объект.Неноменклатурный</DataPath>
+							<Visible>false</Visible>
 							<CheckBoxType>Auto</CheckBoxType>
 							<ContextMenu name="НеноменклатурныйКонтекстноеМеню" id="140"/>
 							<ExtendedTooltip name="НеноменклатурныйРасширеннаяПодсказка" id="141"/>
@@ -212,18 +220,21 @@
 				</InputField>
 				<InputField name="ОсновнойПоставщик" id="125">
 					<DataPath>Объект.ОсновнойПоставщик</DataPath>
+					<Visible>false</Visible>
 					<HorizontalStretch>false</HorizontalStretch>
 					<ContextMenu name="ОсновнойПоставщикКонтекстноеМеню" id="126"/>
 					<ExtendedTooltip name="ОсновнойПоставщикРасширеннаяПодсказка" id="127"/>
 				</InputField>
 				<CheckBoxField name="ПриобертаемОптом" id="144">
 					<DataPath>Объект.ПриобертаемОптом</DataPath>
+					<Visible>false</Visible>
 					<CheckBoxType>Auto</CheckBoxType>
 					<ContextMenu name="ПриобертаемОптомКонтекстноеМеню" id="145"/>
 					<ExtendedTooltip name="ПриобертаемОптомРасширеннаяПодсказка" id="146"/>
 				</CheckBoxField>
 				<InputField name="МинимальнаяПартия" id="133">
 					<DataPath>Объект.МинимальнаяПартия</DataPath>
+					<Visible>false</Visible>
 					<ContextMenu name="МинимальнаяПартияКонтекстноеМеню" id="134"/>
 					<ExtendedTooltip name="МинимальнаяПартияРасширеннаяПодсказка" id="135"/>
 				</InputField>
@@ -248,10 +259,15 @@
 					<v8:content>Статьи группа</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Group>Horizontal</Group>
+			<Group>Vertical</Group>
 			<Representation>StrongSeparation</Representation>
 			<ExtendedTooltip name="СтатьиГруппаРасширеннаяПодсказка" id="93"/>
 			<ChildItems>
+				<InputField name="СтатьяДохода" id="150">
+					<DataPath>Объект.СтатьяДохода</DataPath>
+					<ContextMenu name="СтатьяДоходаКонтекстноеМеню" id="151"/>
+					<ExtendedTooltip name="СтатьяДоходаРасширеннаяПодсказка" id="152"/>
+				</InputField>
 				<InputField name="СтатьяДоходаРасхода" id="55">
 					<DataPath>Объект.СтатьяДоходаРасхода</DataPath>
 					<Title>
@@ -292,29 +308,29 @@
 			<ContextMenu name="СоставКонтекстноеМеню" id="68"/>
 			<AutoCommandBar name="СоставКоманднаяПанель" id="69"/>
 			<ExtendedTooltip name="СоставРасширеннаяПодсказка" id="70"/>
-			<SearchStringAddition name="СоставСтрокаПоиска" id="150">
+			<SearchStringAddition name="СоставСтрокаПоиска" id="155">
 				<AdditionSource>
 					<Item>Состав</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СоставСтрокаПоискаКонтекстноеМеню" id="151"/>
-				<ExtendedTooltip name="СоставСтрокаПоискаРасширеннаяПодсказка" id="152"/>
+				<ContextMenu name="СоставСтрокаПоискаКонтекстноеМеню" id="156"/>
+				<ExtendedTooltip name="СоставСтрокаПоискаРасширеннаяПодсказка" id="157"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СоставСостояниеПросмотра" id="153">
+			<ViewStatusAddition name="СоставСостояниеПросмотра" id="158">
 				<AdditionSource>
 					<Item>Состав</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СоставСостояниеПросмотраКонтекстноеМеню" id="154"/>
-				<ExtendedTooltip name="СоставСостояниеПросмотраРасширеннаяПодсказка" id="155"/>
+				<ContextMenu name="СоставСостояниеПросмотраКонтекстноеМеню" id="159"/>
+				<ExtendedTooltip name="СоставСостояниеПросмотраРасширеннаяПодсказка" id="160"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СоставУправлениеПоиском" id="156">
+			<SearchControlAddition name="СоставУправлениеПоиском" id="161">
 				<AdditionSource>
 					<Item>Состав</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СоставУправлениеПоискомКонтекстноеМеню" id="157"/>
-				<ExtendedTooltip name="СоставУправлениеПоискомРасширеннаяПодсказка" id="158"/>
+				<ContextMenu name="СоставУправлениеПоискомКонтекстноеМеню" id="162"/>
+				<ExtendedTooltip name="СоставУправлениеПоискомРасширеннаяПодсказка" id="163"/>
 			</SearchControlAddition>
 			<ChildItems>
 				<LabelField name="СоставНомерСтроки" id="71">
@@ -349,111 +365,131 @@
 				</InputField>
 			</ChildItems>
 		</Table>
-		<UsualGroup name="ТехническиеХарактеристикиГруппа" id="90">
+		<UsualGroup name="ГруппаХарактеристиОписание" id="153">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Технические характеристики</v8:content>
+					<v8:content>Группа характеристи описание</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Технические характеристики группа</v8:content>
+					<v8:content>Группа характеристи описание</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Group>Vertical</Group>
-			<Representation>StrongSeparation</Representation>
-			<ExtendedTooltip name="ТехническиеХарактеристикиГруппаРасширеннаяПодсказка" id="91"/>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаХарактеристиОписаниеРасширеннаяПодсказка" id="154"/>
 			<ChildItems>
-				<InputField name="НоменклатурнаяГруппа" id="43">
-					<DataPath>Объект.НоменклатурнаяГруппа</DataPath>
+				<UsualGroup name="ТехническиеХарактеристикиГруппа" id="90">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Технические характеристики</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Технические характеристики группа</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>StrongSeparation</Representation>
+					<ExtendedTooltip name="ТехническиеХарактеристикиГруппаРасширеннаяПодсказка" id="91"/>
+					<ChildItems>
+						<InputField name="НоменклатурнаяГруппа" id="43">
+							<DataPath>Объект.НоменклатурнаяГруппа</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="НоменклатурнаяГруппаКонтекстноеМеню" id="44"/>
+							<ExtendedTooltip name="НоменклатурнаяГруппаРасширеннаяПодсказка" id="45"/>
+						</InputField>
+						<InputField name="ДлинаДетали" id="28">
+							<DataPath>Объект.ДлинаДетали</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="ДлинаДеталиКонтекстноеМеню" id="29"/>
+							<ExtendedTooltip name="ДлинаДеталиРасширеннаяПодсказка" id="30"/>
+						</InputField>
+						<InputField name="ШиринаДетали" id="61">
+							<DataPath>Объект.ШиринаДетали</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="ШиринаДеталиКонтекстноеМеню" id="62"/>
+							<ExtendedTooltip name="ШиринаДеталиРасширеннаяПодсказка" id="63"/>
+						</InputField>
+						<InputField name="ГлубинаДетали" id="25">
+							<DataPath>Объект.ГлубинаДетали</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="ГлубинаДеталиКонтекстноеМеню" id="26"/>
+							<ExtendedTooltip name="ГлубинаДеталиРасширеннаяПодсказка" id="27"/>
+						</InputField>
+						<InputField name="ШиринаПаза" id="101">
+							<DataPath>Объект.ШиринаПаза</DataPath>
+							<ContextMenu name="ШиринаПазаКонтекстноеМеню" id="102"/>
+							<ExtendedTooltip name="ШиринаПазаРасширеннаяПодсказка" id="103"/>
+						</InputField>
+						<InputField name="ГлубинаПаза" id="113">
+							<DataPath>Объект.ГлубинаПаза</DataPath>
+							<ContextMenu name="ГлубинаПазаКонтекстноеМеню" id="114"/>
+							<ExtendedTooltip name="ГлубинаПазаРасширеннаяПодсказка" id="115"/>
+						</InputField>
+						<InputField name="Цвет" id="58">
+							<DataPath>Объект.Цвет</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="ЦветКонтекстноеМеню" id="59"/>
+							<ExtendedTooltip name="ЦветРасширеннаяПодсказка" id="60"/>
+						</InputField>
+						<InputField name="ПроцентОтхода" id="49">
+							<DataPath>Объект.ПроцентОтхода</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="ПроцентОтходаКонтекстноеМеню" id="50"/>
+							<ExtendedTooltip name="ПроцентОтходаРасширеннаяПодсказка" id="51"/>
+						</InputField>
+						<CheckBoxField name="НаличиеТекстуры" id="104">
+							<DataPath>Объект.НаличиеТекстуры</DataPath>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="НаличиеТекстурыКонтекстноеМеню" id="105"/>
+							<ExtendedTooltip name="НаличиеТекстурыРасширеннаяПодсказка" id="106"/>
+						</CheckBoxField>
+						<InputField name="ЦеховаяЗона" id="119">
+							<DataPath>Объект.ЦеховаяЗона</DataPath>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="ЦеховаяЗонаКонтекстноеМеню" id="120"/>
+							<ExtendedTooltip name="ЦеховаяЗонаРасширеннаяПодсказка" id="121"/>
+						</InputField>
+						<InputField name="МестоОбработки" id="128">
+							<DataPath>Объект.МестоОбработки</DataPath>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="МестоОбработкиКонтекстноеМеню" id="129"/>
+							<ExtendedTooltip name="МестоОбработкиРасширеннаяПодсказка" id="130"/>
+						</InputField>
+						<InputField name="ДополнительныйЭлемент" id="110">
+							<DataPath>Объект.ДополнительныйЭлемент</DataPath>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="ДополнительныйЭлементКонтекстноеМеню" id="111"/>
+							<ExtendedTooltip name="ДополнительныйЭлементРасширеннаяПодсказка" id="112"/>
+						</InputField>
+						<InputField name="ДополнительнаяУслуга" id="107">
+							<DataPath>Объект.ДополнительнаяУслуга</DataPath>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="ДополнительнаяУслугаКонтекстноеМеню" id="108"/>
+							<ExtendedTooltip name="ДополнительнаяУслугаРасширеннаяПодсказка" id="109"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<InputField name="Описание" id="46">
+					<DataPath>Объект.Описание</DataPath>
 					<EditMode>EnterOnInput</EditMode>
-					<HorizontalStretch>false</HorizontalStretch>
-					<ContextMenu name="НоменклатурнаяГруппаКонтекстноеМеню" id="44"/>
-					<ExtendedTooltip name="НоменклатурнаяГруппаРасширеннаяПодсказка" id="45"/>
-				</InputField>
-				<InputField name="ДлинаДетали" id="28">
-					<DataPath>Объект.ДлинаДетали</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ДлинаДеталиКонтекстноеМеню" id="29"/>
-					<ExtendedTooltip name="ДлинаДеталиРасширеннаяПодсказка" id="30"/>
-				</InputField>
-				<InputField name="ШиринаДетали" id="61">
-					<DataPath>Объект.ШиринаДетали</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ШиринаДеталиКонтекстноеМеню" id="62"/>
-					<ExtendedTooltip name="ШиринаДеталиРасширеннаяПодсказка" id="63"/>
-				</InputField>
-				<InputField name="ГлубинаДетали" id="25">
-					<DataPath>Объект.ГлубинаДетали</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ГлубинаДеталиКонтекстноеМеню" id="26"/>
-					<ExtendedTooltip name="ГлубинаДеталиРасширеннаяПодсказка" id="27"/>
-				</InputField>
-				<InputField name="ШиринаПаза" id="101">
-					<DataPath>Объект.ШиринаПаза</DataPath>
-					<ContextMenu name="ШиринаПазаКонтекстноеМеню" id="102"/>
-					<ExtendedTooltip name="ШиринаПазаРасширеннаяПодсказка" id="103"/>
-				</InputField>
-				<InputField name="ГлубинаПаза" id="113">
-					<DataPath>Объект.ГлубинаПаза</DataPath>
-					<ContextMenu name="ГлубинаПазаКонтекстноеМеню" id="114"/>
-					<ExtendedTooltip name="ГлубинаПазаРасширеннаяПодсказка" id="115"/>
-				</InputField>
-				<InputField name="Цвет" id="58">
-					<DataPath>Объект.Цвет</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<HorizontalStretch>false</HorizontalStretch>
-					<ContextMenu name="ЦветКонтекстноеМеню" id="59"/>
-					<ExtendedTooltip name="ЦветРасширеннаяПодсказка" id="60"/>
-				</InputField>
-				<InputField name="ПроцентОтхода" id="49">
-					<DataPath>Объект.ПроцентОтхода</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ПроцентОтходаКонтекстноеМеню" id="50"/>
-					<ExtendedTooltip name="ПроцентОтходаРасширеннаяПодсказка" id="51"/>
-				</InputField>
-				<CheckBoxField name="НаличиеТекстуры" id="104">
-					<DataPath>Объект.НаличиеТекстуры</DataPath>
-					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="НаличиеТекстурыКонтекстноеМеню" id="105"/>
-					<ExtendedTooltip name="НаличиеТекстурыРасширеннаяПодсказка" id="106"/>
-				</CheckBoxField>
-				<InputField name="ЦеховаяЗона" id="119">
-					<DataPath>Объект.ЦеховаяЗона</DataPath>
-					<HorizontalStretch>false</HorizontalStretch>
-					<ContextMenu name="ЦеховаяЗонаКонтекстноеМеню" id="120"/>
-					<ExtendedTooltip name="ЦеховаяЗонаРасширеннаяПодсказка" id="121"/>
-				</InputField>
-				<InputField name="МестоОбработки" id="128">
-					<DataPath>Объект.МестоОбработки</DataPath>
-					<HorizontalStretch>false</HorizontalStretch>
-					<ContextMenu name="МестоОбработкиКонтекстноеМеню" id="129"/>
-					<ExtendedTooltip name="МестоОбработкиРасширеннаяПодсказка" id="130"/>
-				</InputField>
-				<InputField name="ДополнительныйЭлемент" id="110">
-					<DataPath>Объект.ДополнительныйЭлемент</DataPath>
-					<HorizontalStretch>false</HorizontalStretch>
-					<ContextMenu name="ДополнительныйЭлементКонтекстноеМеню" id="111"/>
-					<ExtendedTooltip name="ДополнительныйЭлементРасширеннаяПодсказка" id="112"/>
-				</InputField>
-				<InputField name="ДополнительнаяУслуга" id="107">
-					<DataPath>Объект.ДополнительнаяУслуга</DataPath>
-					<HorizontalStretch>false</HorizontalStretch>
-					<ContextMenu name="ДополнительнаяУслугаКонтекстноеМеню" id="108"/>
-					<ExtendedTooltip name="ДополнительнаяУслугаРасширеннаяПодсказка" id="109"/>
+					<Height>8</Height>
+					<MultiLine>true</MultiLine>
+					<ContextMenu name="ОписаниеКонтекстноеМеню" id="47"/>
+					<ExtendedTooltip name="ОписаниеРасширеннаяПодсказка" id="48"/>
 				</InputField>
 			</ChildItems>
 		</UsualGroup>
-		<InputField name="Описание" id="46">
-			<DataPath>Объект.Описание</DataPath>
-			<EditMode>EnterOnInput</EditMode>
-			<Height>8</Height>
-			<MultiLine>true</MultiLine>
-			<ContextMenu name="ОписаниеКонтекстноеМеню" id="47"/>
-			<ExtendedTooltip name="ОписаниеРасширеннаяПодсказка" id="48"/>
-		</InputField>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Объект" id="1">
