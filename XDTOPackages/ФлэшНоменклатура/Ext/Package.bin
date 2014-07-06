@@ -1,0 +1,25 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="myNamespace">
+	<property name="items"/>
+	<objectType name="Items">
+		<property name="item" lowerBound="0" upperBound="-1">
+			<typeDef xsi:type="ObjectType">
+				<property name="Name" type="xs:string"/>
+				<property name="Reference">
+					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic" minLength="16" maxLength="16"/>
+				</property>
+				<property name="Category">
+					<typeDef xsi:type="ValueType" base="xs:string" variety="Atomic">
+						<enumeration>ЛДСП 10</enumeration>
+						<enumeration>ЛДСП 16</enumeration>
+						<enumeration>МДФ</enumeration>
+						<enumeration>ДВП</enumeration>
+					</typeDef>
+				</property>
+				<property name="MaxHeight" type="xs:integer"/>
+				<property name="MaxWidth" type="xs:integer"/>
+				<property name="Thickness" type="xs:integer"/>
+				<property name="Textured" type="xs:boolean"/>
+			</typeDef>
+		</property>
+	</objectType>
+</package>
