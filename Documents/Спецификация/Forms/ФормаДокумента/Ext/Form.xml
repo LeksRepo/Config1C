@@ -1255,6 +1255,10 @@
 									<v8:content>Список дверей</v8:content>
 								</v8:item>
 							</Title>
+							<CommandSet>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>Add</ExcludedCommand>
+							</CommandSet>
 							<SearchStringLocation>None</SearchStringLocation>
 							<ViewStatusLocation>None</ViewStatusLocation>
 							<SearchControlLocation>None</SearchControlLocation>
@@ -1263,12 +1267,28 @@
 							<AutoCommandBar name="СписокДверейКоманднаяПанель" id="443">
 								<Autofill>false</Autofill>
 								<ChildItems>
+									<Button name="Двери" id="439">
+										<Type>CommandBarButton</Type>
+										<Representation>PictureAndText</Representation>
+										<CommandName>Form.Command.ДобавитьНовуюДверь</CommandName>
+										<Picture>
+											<xr:Ref>StdPicture.CreateListItem</xr:Ref>
+											<xr:LoadTransparent>true</xr:LoadTransparent>
+										</Picture>
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Новые двери</v8:content>
+											</v8:item>
+										</Title>
+										<ExtendedTooltip name="ДвериРасширеннаяПодсказка" id="440"/>
+									</Button>
 									<Button name="СписокДверейДобавитьДвери" id="581">
 										<Type>CommandBarButton</Type>
 										<Representation>PictureAndText</Representation>
 										<CommandName>Form.Command.ДобавитьДвериСоСпецификации</CommandName>
 										<Picture>
-											<xr:Ref>StdPicture.CreateListItem</xr:Ref>
+											<xr:Ref>StdPicture.CloneObject</xr:Ref>
 											<xr:LoadTransparent>true</xr:LoadTransparent>
 										</Picture>
 										<Title>
@@ -1279,36 +1299,10 @@
 										</Title>
 										<ExtendedTooltip name="СписокДверейДобавитьДвериРасширеннаяПодсказка" id="582"/>
 									</Button>
-									<Button name="СписокДверейСкопировать" id="583">
-										<Type>CommandBarButton</Type>
-										<CommandName>Form.Item.СписокДверей.StandardCommand.Copy</CommandName>
-										<ExtendedTooltip name="СписокДверейСкопироватьРасширеннаяПодсказка" id="584"/>
-									</Button>
 									<Button name="СписокДверейУдалить" id="585">
 										<Type>CommandBarButton</Type>
 										<CommandName>Form.Item.СписокДверей.StandardCommand.Delete</CommandName>
 										<ExtendedTooltip name="СписокДверейУдалитьРасширеннаяПодсказка" id="586"/>
-									</Button>
-									<Button name="СписокДверейПереместитьВверх" id="587">
-										<Type>CommandBarButton</Type>
-										<CommandName>Form.Item.СписокДверей.StandardCommand.MoveUp</CommandName>
-										<ExtendedTooltip name="СписокДверейПереместитьВверхРасширеннаяПодсказка" id="588"/>
-									</Button>
-									<Button name="СписокДверейПереместитьВниз" id="589">
-										<Type>CommandBarButton</Type>
-										<CommandName>Form.Item.СписокДверей.StandardCommand.MoveDown</CommandName>
-										<ExtendedTooltip name="СписокДверейПереместитьВнизРасширеннаяПодсказка" id="590"/>
-									</Button>
-									<Button name="Двери" id="439">
-										<Type>CommandBarButton</Type>
-										<CommandName>Form.Command.ДобавитьНовуюДверь</CommandName>
-										<Title>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Новые двери</v8:content>
-											</v8:item>
-										</Title>
-										<ExtendedTooltip name="ДвериРасширеннаяПодсказка" id="440"/>
 									</Button>
 								</ChildItems>
 							</AutoCommandBar>
