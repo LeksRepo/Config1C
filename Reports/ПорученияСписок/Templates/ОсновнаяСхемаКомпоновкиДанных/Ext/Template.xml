@@ -21,41 +21,37 @@
 			<field>Автор</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Оценка</dataPath>
-			<field>Оценка</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>СрокВыполнения</dataPath>
-			<field>СрокВыполнения</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>Тема</dataPath>
 			<field>Тема</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>Сотрудник</dataPath>
-			<field>Сотрудник</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>ПросроченоДней</dataPath>
 			<field>ПросроченоДней</field>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Адресат</dataPath>
+			<field>Адресат</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДатаКонтроля</dataPath>
+			<field>ДатаКонтроля</field>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
-	Поручение.Автор,
-	Поручение.Дата,
-	Поручение.Оценка,
-	Поручение.СрокВыполнения,
+	СлужебнаяЗаписка.Автор,
+	СлужебнаяЗаписка.Дата,
+	СлужебнаяЗаписка.ДатаКонтроля,
 	ВЫБОР
-		КОГДА Поручение.СрокВыполнения &lt; &amp;ТекущаяДата
-				И Поручение.Оценка = ""
-			ТОГДА РАЗНОСТЬДАТ(Поручение.СрокВыполнения, &amp;ТекущаяДата, ДЕНЬ)
+		КОГДА СлужебнаяЗаписка.ДатаКонтроля &lt; &amp;ТекущаяДата
+			ТОГДА РАЗНОСТЬДАТ(СлужебнаяЗаписка.ДатаКонтроля, &amp;ТекущаяДата, ДЕНЬ)
 		ИНАЧЕ 0
 	КОНЕЦ КАК ПросроченоДней,
-	Поручение.Тема,
-	Поручение.Сотрудник
+	СлужебнаяЗаписка.Тема,
+	СлужебнаяЗаписка.Адресат
 ИЗ
-	Документ.Поручение КАК Поручение</query>
+	Документ.СлужебнаяЗаписка КАК СлужебнаяЗаписка
+ГДЕ
+	НЕ СлужебнаяЗаписка.Проведен</query>
 	</dataSet>
 	<parameter>
 		<name>ТекущаяДата</name>
@@ -90,10 +86,7 @@
 					<dcsset:field>Автор</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Оценка</dcsset:field>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>СрокВыполнения</dcsset:field>
+					<dcsset:field>ДатаКонтроля</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>ПросроченоДней</dcsset:field>
@@ -101,38 +94,8 @@
 			</dcsset:selection>
 			<dcsset:filter>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
-					<dcsset:left xsi:type="dcscor:Field">СрокВыполнения</dcsset:left>
-					<dcsset:comparisonType>GreaterOrEqual</dcsset:comparisonType>
-					<dcsset:right xsi:type="v8:StandardBeginningDate">
-						<v8:variant xsi:type="v8:StandardBeginningDateVariant">Custom</v8:variant>
-						<v8:date>0001-01-01T00:00:00</v8:date>
-					</dcsset:right>
-					<dcsset:userSettingID>f633f9c2-cf6f-45d2-b46c-d59c859adb32</dcsset:userSettingID>
-					<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Срок выполнения (начало)</v8:content>
-						</v8:item>
-					</dcsset:userSettingPresentation>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:FilterItemComparison">
-					<dcsset:left xsi:type="dcscor:Field">СрокВыполнения</dcsset:left>
-					<dcsset:comparisonType>LessOrEqual</dcsset:comparisonType>
-					<dcsset:right xsi:type="v8:StandardBeginningDate">
-						<v8:variant xsi:type="v8:StandardBeginningDateVariant">Custom</v8:variant>
-						<v8:date>0001-01-01T00:00:00</v8:date>
-					</dcsset:right>
-					<dcsset:userSettingID>5574b4a8-ef6c-473e-8060-9bf3b17e084f</dcsset:userSettingID>
-					<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Срок выполнения (окончание)</v8:content>
-						</v8:item>
-					</dcsset:userSettingPresentation>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:FilterItemComparison">
 					<dcsset:use>false</dcsset:use>
-					<dcsset:left xsi:type="dcscor:Field">Сотрудник</dcsset:left>
+					<dcsset:left xsi:type="dcscor:Field">Адресат</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:userSettingID>e44a63da-1cf7-4efc-a349-1c8a69040ab6</dcsset:userSettingID>
 				</dcsset:item>
@@ -142,18 +105,6 @@
 					<dcsset:comparisonType>GreaterOrEqual</dcsset:comparisonType>
 					<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
 					<dcsset:userSettingID>c950f256-7dae-4ea6-b2f3-ddfd57f3b27b</dcsset:userSettingID>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:FilterItemComparison">
-					<dcsset:use>false</dcsset:use>
-					<dcsset:left xsi:type="dcscor:Field">Оценка</dcsset:left>
-					<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
-					<dcsset:userSettingID>4e4afd53-e369-44bd-847f-2a4091c853eb</dcsset:userSettingID>
-					<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Оценка (без завершенных)</v8:content>
-						</v8:item>
-					</dcsset:userSettingPresentation>
 				</dcsset:item>
 			</dcsset:filter>
 			<dcsset:dataParameters>
@@ -167,7 +118,7 @@
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
 				<dcsset:groupItems>
 					<dcsset:item xsi:type="dcsset:GroupItemField">
-						<dcsset:field>Сотрудник</dcsset:field>
+						<dcsset:field>Адресат</dcsset:field>
 						<dcsset:groupType>Items</dcsset:groupType>
 						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
