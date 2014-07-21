@@ -10,163 +10,512 @@
 		<Event name="OnOpen">ПриОткрытии</Event>
 	</Events>
 	<ChildItems>
-		<UsualGroup name="ГруппаНомерДата" id="12">
+		<Pages name="Страницы" id="162">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Группа номер дата</v8:content>
+					<v8:content>Страницы</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Группа номер дата</v8:content>
+					<v8:content>Страницы</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Group>Horizontal</Group>
-			<Representation>None</Representation>
-			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаНомерДатаExtendedTooltip" id="31"/>
+			<ExtendedTooltip name="СтраницыРасширеннаяПодсказка" id="163"/>
 			<ChildItems>
-				<InputField name="Номер" id="1">
-					<DataPath>Объект.Number</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<HorizontalStretch>false</HorizontalStretch>
-					<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
-					<ExtendedTooltip name="НомерExtendedTooltip" id="32"/>
-				</InputField>
-				<InputField name="Дата" id="3">
-					<DataPath>Объект.Date</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<HorizontalStretch>false</HorizontalStretch>
-					<ContextMenu name="ДатаКонтекстноеМеню" id="4"/>
-					<ExtendedTooltip name="ДатаExtendedTooltip" id="33"/>
-				</InputField>
-			</ChildItems>
-		</UsualGroup>
-		<InputField name="Подразделение" id="48">
-			<DataPath>Объект.Подразделение</DataPath>
-			<HorizontalStretch>false</HorizontalStretch>
-			<ContextMenu name="ПодразделениеКонтекстноеМеню" id="49"/>
-			<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="50"/>
-		</InputField>
-		<InputField name="Город" id="45">
-			<DataPath>Объект.Город</DataPath>
-			<HorizontalStretch>false</HorizontalStretch>
-			<ContextMenu name="ГородКонтекстноеМеню" id="46"/>
-			<ExtendedTooltip name="ГородРасширеннаяПодсказка" id="47"/>
-		</InputField>
-		<Button name="ТабельЗаполнитьТабель" id="24">
-			<Type>UsualButton</Type>
-			<Representation>PictureAndText</Representation>
-			<CommandName>Form.Command.ЗаполнитьТабель</CommandName>
-			<Picture>
-				<xr:Ref>StdPicture.FixTable</xr:Ref>
-				<xr:LoadTransparent>true</xr:LoadTransparent>
-			</Picture>
-			<ExtendedTooltip name="ТабельЗаполнитьТабельExtendedTooltip" id="35"/>
-		</Button>
-		<Table name="Табель" id="15">
-			<AutoInsertNewRow>true</AutoInsertNewRow>
-			<EnableStartDrag>true</EnableStartDrag>
-			<EnableDrag>true</EnableDrag>
-			<DataPath>Объект.Табель</DataPath>
-			<SearchStringLocation>None</SearchStringLocation>
-			<ViewStatusLocation>None</ViewStatusLocation>
-			<SearchControlLocation>None</SearchControlLocation>
-			<RowFilter xsi:nil="true"/>
-			<ContextMenu name="ТабельКонтекстноеМеню" id="16"/>
-			<AutoCommandBar name="ТабельКоманднаяПанель" id="17">
-				<Autofill>false</Autofill>
-			</AutoCommandBar>
-			<ExtendedTooltip name="ТабельExtendedTooltip" id="36"/>
-			<SearchStringAddition name="ТабельСтрокаПоиска" id="57">
-				<AdditionSource>
-					<Item>Табель</Item>
-					<Type>SearchStringRepresentation</Type>
-				</AdditionSource>
-				<ContextMenu name="ТабельСтрокаПоискаКонтекстноеМеню" id="58"/>
-				<ExtendedTooltip name="ТабельСтрокаПоискаРасширеннаяПодсказка" id="59"/>
-			</SearchStringAddition>
-			<ViewStatusAddition name="ТабельСостояниеПросмотра" id="60">
-				<AdditionSource>
-					<Item>Табель</Item>
-					<Type>ViewStatusRepresentation</Type>
-				</AdditionSource>
-				<ContextMenu name="ТабельСостояниеПросмотраКонтекстноеМеню" id="61"/>
-				<ExtendedTooltip name="ТабельСостояниеПросмотраРасширеннаяПодсказка" id="62"/>
-			</ViewStatusAddition>
-			<SearchControlAddition name="ТабельУправлениеПоиском" id="63">
-				<AdditionSource>
-					<Item>Табель</Item>
-					<Type>SearchControl</Type>
-				</AdditionSource>
-				<ContextMenu name="ТабельУправлениеПоискомКонтекстноеМеню" id="64"/>
-				<ExtendedTooltip name="ТабельУправлениеПоискомРасширеннаяПодсказка" id="65"/>
-			</SearchControlAddition>
-			<Events>
-				<Event name="BeforeAddRow">ТабельПередНачаломДобавления</Event>
-				<Event name="BeforeDeleteRow">ТабельПередУдалением</Event>
-			</Events>
-			<ChildItems>
-				<InputField name="ТабельДень" id="20">
-					<DataPath>Объект.Табель.День</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<Width>10</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<Format>
+				<Page name="ОсновнаяСтраница" id="166">
+					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>ДЛФ=DD</v8:content>
+							<v8:content>График монтажников</v8:content>
 						</v8:item>
-					</Format>
-					<EditFormat>
+					</Title>
+					<ToolTip>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>ДЛФ=DD</v8:content>
+							<v8:content>Основная страница</v8:content>
 						</v8:item>
-					</EditFormat>
-					<ContextMenu name="ТабельДеньКонтекстноеМеню" id="21"/>
-					<ExtendedTooltip name="ТабельДеньExtendedTooltip" id="37"/>
-				</InputField>
-				<InputField name="ТабельДеньНедели" id="25">
-					<DataPath>Объект.Табель.ДеньНедели</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<Width>15</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<ContextMenu name="ТабельДеньНеделиКонтекстноеМеню" id="26"/>
-					<ExtendedTooltip name="ТабельДеньНеделиExtendedTooltip" id="38"/>
-				</InputField>
-				<InputField name="ТабельКоличествоМонтажников" id="22">
-					<DataPath>Объект.Табель.КоличествоМонтажников</DataPath>
-					<HorizontalAlign>Left</HorizontalAlign>
-					<EditMode>EnterOnInput</EditMode>
-					<Width>10</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<ContextMenu name="ТабельКоличествоМонтажниковКонтекстноеМеню" id="23"/>
-					<ExtendedTooltip name="ТабельКоличествоМонтажниковExtendedTooltip" id="39"/>
-				</InputField>
-				<InputField name="ТабельКоличествоМонтажей" id="29">
-					<DataPath>Объект.Табель.КоличествоМонтажей</DataPath>
-					<HorizontalAlign>Left</HorizontalAlign>
-					<EditMode>EnterOnInput</EditMode>
-					<FooterHorizontalAlign>Left</FooterHorizontalAlign>
-					<HorizontalStretch>false</HorizontalStretch>
-					<ContextMenu name="ТабельКоличествоМонтажейКонтекстноеМеню" id="30"/>
-					<ExtendedTooltip name="ТабельКоличествоМонтажейExtendedTooltip" id="40"/>
-				</InputField>
+					</ToolTip>
+					<ExtendedTooltip name="ОсновнаяСтраницаРасширеннаяПодсказка" id="167"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаНомерДата" id="12">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа номер дата</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа номер дата</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаНомерДатаExtendedTooltip" id="31"/>
+							<ChildItems>
+								<InputField name="Номер" id="1">
+									<DataPath>Объект.Number</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
+									<ExtendedTooltip name="НомерExtendedTooltip" id="32"/>
+								</InputField>
+								<InputField name="Дата" id="3">
+									<DataPath>Объект.Date</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ДатаКонтекстноеМеню" id="4"/>
+									<ExtendedTooltip name="ДатаExtendedTooltip" id="33"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<InputField name="Подразделение" id="48">
+							<DataPath>Объект.Подразделение</DataPath>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="ПодразделениеКонтекстноеМеню" id="49"/>
+							<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="50"/>
+						</InputField>
+						<InputField name="Город" id="45">
+							<DataPath>Объект.Город</DataPath>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="ГородКонтекстноеМеню" id="46"/>
+							<ExtendedTooltip name="ГородРасширеннаяПодсказка" id="47"/>
+						</InputField>
+						<Button name="ТабельЗаполнитьТабель" id="24">
+							<Type>UsualButton</Type>
+							<Representation>PictureAndText</Representation>
+							<CommandName>Form.Command.ЗаполнитьТабель</CommandName>
+							<Picture>
+								<xr:Ref>StdPicture.FixTable</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</Picture>
+							<ExtendedTooltip name="ТабельЗаполнитьТабельExtendedTooltip" id="35"/>
+						</Button>
+						<Table name="Табель" id="15">
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Объект.Табель</DataPath>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ТабельКонтекстноеМеню" id="16"/>
+							<AutoCommandBar name="ТабельКоманднаяПанель" id="17">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ТабельExtendedTooltip" id="36"/>
+							<SearchStringAddition name="ТабельСтрокаПоиска" id="170">
+								<AdditionSource>
+									<Item>Табель</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТабельСтрокаПоискаКонтекстноеМеню" id="171"/>
+								<ExtendedTooltip name="ТабельСтрокаПоискаРасширеннаяПодсказка" id="172"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ТабельСостояниеПросмотра" id="173">
+								<AdditionSource>
+									<Item>Табель</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТабельСостояниеПросмотраКонтекстноеМеню" id="174"/>
+								<ExtendedTooltip name="ТабельСостояниеПросмотраРасширеннаяПодсказка" id="175"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ТабельУправлениеПоиском" id="176">
+								<AdditionSource>
+									<Item>Табель</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ТабельУправлениеПоискомКонтекстноеМеню" id="177"/>
+								<ExtendedTooltip name="ТабельУправлениеПоискомРасширеннаяПодсказка" id="178"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="BeforeAddRow">ТабельПередНачаломДобавления</Event>
+								<Event name="BeforeDeleteRow">ТабельПередУдалением</Event>
+							</Events>
+							<ChildItems>
+								<InputField name="ТабельДень" id="20">
+									<DataPath>Объект.Табель.День</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Format>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>ДЛФ=DD</v8:content>
+										</v8:item>
+									</Format>
+									<EditFormat>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>ДЛФ=DD</v8:content>
+										</v8:item>
+									</EditFormat>
+									<ContextMenu name="ТабельДеньКонтекстноеМеню" id="21"/>
+									<ExtendedTooltip name="ТабельДеньExtendedTooltip" id="37"/>
+								</InputField>
+								<InputField name="ТабельДеньНедели" id="25">
+									<DataPath>Объект.Табель.ДеньНедели</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>15</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ТабельДеньНеделиКонтекстноеМеню" id="26"/>
+									<ExtendedTooltip name="ТабельДеньНеделиExtendedTooltip" id="38"/>
+								</InputField>
+								<InputField name="ТабельКоличествоМонтажников" id="22">
+									<DataPath>Объект.Табель.КоличествоМонтажников</DataPath>
+									<HorizontalAlign>Left</HorizontalAlign>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>10</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ТабельКоличествоМонтажниковКонтекстноеМеню" id="23"/>
+									<ExtendedTooltip name="ТабельКоличествоМонтажниковExtendedTooltip" id="39"/>
+								</InputField>
+								<InputField name="ТабельКоличествоМонтажей" id="29">
+									<DataPath>Объект.Табель.КоличествоМонтажей</DataPath>
+									<HorizontalAlign>Left</HorizontalAlign>
+									<EditMode>EnterOnInput</EditMode>
+									<FooterHorizontalAlign>Left</FooterHorizontalAlign>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ТабельКоличествоМонтажейКонтекстноеМеню" id="30"/>
+									<ExtendedTooltip name="ТабельКоличествоМонтажейExtendedTooltip" id="40"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+						<LabelField name="Автор" id="51">
+							<DataPath>Объект.Автор</DataPath>
+							<ContextMenu name="АвторКонтекстноеМеню" id="52"/>
+							<ExtendedTooltip name="АвторРасширеннаяПодсказка" id="53"/>
+						</LabelField>
+						<InputField name="Комментарий" id="54">
+							<DataPath>Объект.Комментарий</DataPath>
+							<ContextMenu name="КомментарийКонтекстноеМеню" id="55"/>
+							<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="56"/>
+						</InputField>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницыРабочиеДни" id="164">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Рабочие дни</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страницы рабочие дни</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="СтраницыРабочиеДниРасширеннаяПодсказка" id="165"/>
+					<ChildItems>
+						<Button name="Заполнить" id="168">
+							<Type>UsualButton</Type>
+							<Representation>PictureAndText</Representation>
+							<CommandName>Form.Command.Заполнить</CommandName>
+							<Picture>
+								<xr:Ref>StdPicture.FixTable</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</Picture>
+							<ExtendedTooltip name="ЗаполнитьРасширеннаяПодсказка" id="169"/>
+						</Button>
+						<Table name="РабочиеДни" id="59">
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Объект.РабочиеДни</DataPath>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="РабочиеДниКонтекстноеМеню" id="60"/>
+							<AutoCommandBar name="РабочиеДниКоманднаяПанель" id="61">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
+							<ExtendedTooltip name="РабочиеДниРасширеннаяПодсказка" id="62"/>
+							<SearchStringAddition name="РабочиеДниСтрокаПоиска" id="179">
+								<AdditionSource>
+									<Item>РабочиеДни</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="РабочиеДниСтрокаПоискаКонтекстноеМеню" id="180"/>
+								<ExtendedTooltip name="РабочиеДниСтрокаПоискаРасширеннаяПодсказка" id="181"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="РабочиеДниСостояниеПросмотра" id="182">
+								<AdditionSource>
+									<Item>РабочиеДни</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="РабочиеДниСостояниеПросмотраКонтекстноеМеню" id="183"/>
+								<ExtendedTooltip name="РабочиеДниСостояниеПросмотраРасширеннаяПодсказка" id="184"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="РабочиеДниУправлениеПоиском" id="185">
+								<AdditionSource>
+									<Item>РабочиеДни</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="РабочиеДниУправлениеПоискомКонтекстноеМеню" id="186"/>
+								<ExtendedTooltip name="РабочиеДниУправлениеПоискомРасширеннаяПодсказка" id="187"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<InputField name="РабочиеДниМонтажник" id="159">
+									<DataPath>Объект.РабочиеДни.Монтажник</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="РабочиеДниМонтажникКонтекстноеМеню" id="160"/>
+									<ExtendedTooltip name="РабочиеДниМонтажникРасширеннаяПодсказка" id="161"/>
+								</InputField>
+								<CheckBoxField name="РабочиеДниДень1" id="66">
+									<DataPath>Объект.РабочиеДни.День1</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>День1</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="РабочиеДниДень1КонтекстноеМеню" id="67"/>
+									<ExtendedTooltip name="РабочиеДниДень1РасширеннаяПодсказка" id="68"/>
+								</CheckBoxField>
+								<CheckBoxField name="РабочиеДниДень2" id="69">
+									<DataPath>Объект.РабочиеДни.День2</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>День2</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="РабочиеДниДень2КонтекстноеМеню" id="70"/>
+									<ExtendedTooltip name="РабочиеДниДень2РасширеннаяПодсказка" id="71"/>
+								</CheckBoxField>
+								<CheckBoxField name="РабочиеДниДень3" id="72">
+									<DataPath>Объект.РабочиеДни.День3</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>День3</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="РабочиеДниДень3КонтекстноеМеню" id="73"/>
+									<ExtendedTooltip name="РабочиеДниДень3РасширеннаяПодсказка" id="74"/>
+								</CheckBoxField>
+								<CheckBoxField name="РабочиеДниДень4" id="75">
+									<DataPath>Объект.РабочиеДни.День4</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>День4</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="РабочиеДниДень4КонтекстноеМеню" id="76"/>
+									<ExtendedTooltip name="РабочиеДниДень4РасширеннаяПодсказка" id="77"/>
+								</CheckBoxField>
+								<CheckBoxField name="РабочиеДниДень5" id="78">
+									<DataPath>Объект.РабочиеДни.День5</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="РабочиеДниДень5КонтекстноеМеню" id="79"/>
+									<ExtendedTooltip name="РабочиеДниДень5РасширеннаяПодсказка" id="80"/>
+								</CheckBoxField>
+								<CheckBoxField name="РабочиеДниДень6" id="81">
+									<DataPath>Объект.РабочиеДни.День6</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="РабочиеДниДень6КонтекстноеМеню" id="82"/>
+									<ExtendedTooltip name="РабочиеДниДень6РасширеннаяПодсказка" id="83"/>
+								</CheckBoxField>
+								<CheckBoxField name="РабочиеДниДень7" id="84">
+									<DataPath>Объект.РабочиеДни.День7</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="РабочиеДниДень7КонтекстноеМеню" id="85"/>
+									<ExtendedTooltip name="РабочиеДниДень7РасширеннаяПодсказка" id="86"/>
+								</CheckBoxField>
+								<CheckBoxField name="РабочиеДниДень8" id="87">
+									<DataPath>Объект.РабочиеДни.День8</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="РабочиеДниДень8КонтекстноеМеню" id="88"/>
+									<ExtendedTooltip name="РабочиеДниДень8РасширеннаяПодсказка" id="89"/>
+								</CheckBoxField>
+								<CheckBoxField name="РабочиеДниДень9" id="90">
+									<DataPath>Объект.РабочиеДни.День9</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="РабочиеДниДень9КонтекстноеМеню" id="91"/>
+									<ExtendedTooltip name="РабочиеДниДень9РасширеннаяПодсказка" id="92"/>
+								</CheckBoxField>
+								<CheckBoxField name="РабочиеДниДень10" id="93">
+									<DataPath>Объект.РабочиеДни.День10</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="РабочиеДниДень10КонтекстноеМеню" id="94"/>
+									<ExtendedTooltip name="РабочиеДниДень10РасширеннаяПодсказка" id="95"/>
+								</CheckBoxField>
+								<CheckBoxField name="РабочиеДниДень11" id="96">
+									<DataPath>Объект.РабочиеДни.День11</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="РабочиеДниДень11КонтекстноеМеню" id="97"/>
+									<ExtendedTooltip name="РабочиеДниДень11РасширеннаяПодсказка" id="98"/>
+								</CheckBoxField>
+								<CheckBoxField name="РабочиеДниДень12" id="99">
+									<DataPath>Объект.РабочиеДни.День12</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="РабочиеДниДень12КонтекстноеМеню" id="100"/>
+									<ExtendedTooltip name="РабочиеДниДень12РасширеннаяПодсказка" id="101"/>
+								</CheckBoxField>
+								<CheckBoxField name="РабочиеДниДень13" id="102">
+									<DataPath>Объект.РабочиеДни.День13</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="РабочиеДниДень13КонтекстноеМеню" id="103"/>
+									<ExtendedTooltip name="РабочиеДниДень13РасширеннаяПодсказка" id="104"/>
+								</CheckBoxField>
+								<CheckBoxField name="РабочиеДниДень14" id="105">
+									<DataPath>Объект.РабочиеДни.День14</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="РабочиеДниДень14КонтекстноеМеню" id="106"/>
+									<ExtendedTooltip name="РабочиеДниДень14РасширеннаяПодсказка" id="107"/>
+								</CheckBoxField>
+								<CheckBoxField name="РабочиеДниДень15" id="108">
+									<DataPath>Объект.РабочиеДни.День15</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="РабочиеДниДень15КонтекстноеМеню" id="109"/>
+									<ExtendedTooltip name="РабочиеДниДень15РасширеннаяПодсказка" id="110"/>
+								</CheckBoxField>
+								<CheckBoxField name="РабочиеДниДень16" id="111">
+									<DataPath>Объект.РабочиеДни.День16</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="РабочиеДниДень16КонтекстноеМеню" id="112"/>
+									<ExtendedTooltip name="РабочиеДниДень16РасширеннаяПодсказка" id="113"/>
+								</CheckBoxField>
+								<CheckBoxField name="РабочиеДниДень17" id="114">
+									<DataPath>Объект.РабочиеДни.День17</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="РабочиеДниДень17КонтекстноеМеню" id="115"/>
+									<ExtendedTooltip name="РабочиеДниДень17РасширеннаяПодсказка" id="116"/>
+								</CheckBoxField>
+								<CheckBoxField name="РабочиеДниДень18" id="117">
+									<DataPath>Объект.РабочиеДни.День18</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="РабочиеДниДень18КонтекстноеМеню" id="118"/>
+									<ExtendedTooltip name="РабочиеДниДень18РасширеннаяПодсказка" id="119"/>
+								</CheckBoxField>
+								<CheckBoxField name="РабочиеДниДень19" id="120">
+									<DataPath>Объект.РабочиеДни.День19</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="РабочиеДниДень19КонтекстноеМеню" id="121"/>
+									<ExtendedTooltip name="РабочиеДниДень19РасширеннаяПодсказка" id="122"/>
+								</CheckBoxField>
+								<CheckBoxField name="РабочиеДниДень20" id="123">
+									<DataPath>Объект.РабочиеДни.День20</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="РабочиеДниДень20КонтекстноеМеню" id="124"/>
+									<ExtendedTooltip name="РабочиеДниДень20РасширеннаяПодсказка" id="125"/>
+								</CheckBoxField>
+								<CheckBoxField name="РабочиеДниДень21" id="126">
+									<DataPath>Объект.РабочиеДни.День21</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="РабочиеДниДень21КонтекстноеМеню" id="127"/>
+									<ExtendedTooltip name="РабочиеДниДень21РасширеннаяПодсказка" id="128"/>
+								</CheckBoxField>
+								<CheckBoxField name="РабочиеДниДень22" id="129">
+									<DataPath>Объект.РабочиеДни.День22</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="РабочиеДниДень22КонтекстноеМеню" id="130"/>
+									<ExtendedTooltip name="РабочиеДниДень22РасширеннаяПодсказка" id="131"/>
+								</CheckBoxField>
+								<CheckBoxField name="РабочиеДниДень23" id="132">
+									<DataPath>Объект.РабочиеДни.День23</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="РабочиеДниДень23КонтекстноеМеню" id="133"/>
+									<ExtendedTooltip name="РабочиеДниДень23РасширеннаяПодсказка" id="134"/>
+								</CheckBoxField>
+								<CheckBoxField name="РабочиеДниДень24" id="135">
+									<DataPath>Объект.РабочиеДни.День24</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="РабочиеДниДень24КонтекстноеМеню" id="136"/>
+									<ExtendedTooltip name="РабочиеДниДень24РасширеннаяПодсказка" id="137"/>
+								</CheckBoxField>
+								<CheckBoxField name="РабочиеДниДень25" id="138">
+									<DataPath>Объект.РабочиеДни.День25</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="РабочиеДниДень25КонтекстноеМеню" id="139"/>
+									<ExtendedTooltip name="РабочиеДниДень25РасширеннаяПодсказка" id="140"/>
+								</CheckBoxField>
+								<CheckBoxField name="РабочиеДниДень26" id="141">
+									<DataPath>Объект.РабочиеДни.День26</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="РабочиеДниДень26КонтекстноеМеню" id="142"/>
+									<ExtendedTooltip name="РабочиеДниДень26РасширеннаяПодсказка" id="143"/>
+								</CheckBoxField>
+								<CheckBoxField name="РабочиеДниДень27" id="144">
+									<DataPath>Объект.РабочиеДни.День27</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="РабочиеДниДень27КонтекстноеМеню" id="145"/>
+									<ExtendedTooltip name="РабочиеДниДень27РасширеннаяПодсказка" id="146"/>
+								</CheckBoxField>
+								<CheckBoxField name="РабочиеДниДень28" id="147">
+									<DataPath>Объект.РабочиеДни.День28</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="РабочиеДниДень28КонтекстноеМеню" id="148"/>
+									<ExtendedTooltip name="РабочиеДниДень28РасширеннаяПодсказка" id="149"/>
+								</CheckBoxField>
+								<CheckBoxField name="РабочиеДниДень29" id="150">
+									<DataPath>Объект.РабочиеДни.День29</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="РабочиеДниДень29КонтекстноеМеню" id="151"/>
+									<ExtendedTooltip name="РабочиеДниДень29РасширеннаяПодсказка" id="152"/>
+								</CheckBoxField>
+								<CheckBoxField name="РабочиеДниДень30" id="153">
+									<DataPath>Объект.РабочиеДни.День30</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="РабочиеДниДень30КонтекстноеМеню" id="154"/>
+									<ExtendedTooltip name="РабочиеДниДень30РасширеннаяПодсказка" id="155"/>
+								</CheckBoxField>
+								<CheckBoxField name="РабочиеДниДень31" id="156">
+									<DataPath>Объект.РабочиеДни.День31</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="РабочиеДниДень31КонтекстноеМеню" id="157"/>
+									<ExtendedTooltip name="РабочиеДниДень31РасширеннаяПодсказка" id="158"/>
+								</CheckBoxField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
 			</ChildItems>
-		</Table>
-		<LabelField name="Автор" id="51">
-			<DataPath>Объект.Автор</DataPath>
-			<ContextMenu name="АвторКонтекстноеМеню" id="52"/>
-			<ExtendedTooltip name="АвторРасширеннаяПодсказка" id="53"/>
-		</LabelField>
-		<InputField name="Комментарий" id="54">
-			<DataPath>Объект.Комментарий</DataPath>
-			<ContextMenu name="КомментарийКонтекстноеМеню" id="55"/>
-			<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="56"/>
-		</InputField>
+		</Pages>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Объект" id="1">
@@ -246,6 +595,21 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ЗаполнитьТабель</Action>
+		</Command>
+		<Command name="Заполнить" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Заполнить</Action>
 		</Command>
 	</Commands>
 </Form>
