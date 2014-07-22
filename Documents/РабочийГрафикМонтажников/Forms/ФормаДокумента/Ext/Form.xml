@@ -10,6 +10,52 @@
 		<Event name="OnOpen">ПриОткрытии</Event>
 	</Events>
 	<ChildItems>
+		<UsualGroup name="ГруппаНомерДата" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа номер дата</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа номер дата</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаНомерДатаExtendedTooltip" id="31"/>
+			<ChildItems>
+				<InputField name="Номер" id="1">
+					<DataPath>Объект.Number</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="НомерExtendedTooltip" id="32"/>
+				</InputField>
+				<InputField name="Дата" id="3">
+					<DataPath>Объект.Date</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="ДатаКонтекстноеМеню" id="4"/>
+					<ExtendedTooltip name="ДатаExtendedTooltip" id="33"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="Подразделение" id="48">
+			<DataPath>Объект.Подразделение</DataPath>
+			<HorizontalStretch>false</HorizontalStretch>
+			<ContextMenu name="ПодразделениеКонтекстноеМеню" id="49"/>
+			<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="50"/>
+		</InputField>
+		<InputField name="Город" id="45">
+			<DataPath>Объект.Город</DataPath>
+			<HorizontalStretch>false</HorizontalStretch>
+			<ContextMenu name="ГородКонтекстноеМеню" id="46"/>
+			<ExtendedTooltip name="ГородРасширеннаяПодсказка" id="47"/>
+		</InputField>
 		<Pages name="Страницы" id="162">
 			<Title>
 				<v8:item>
@@ -25,67 +71,21 @@
 			</ToolTip>
 			<ExtendedTooltip name="СтраницыРасширеннаяПодсказка" id="163"/>
 			<ChildItems>
-				<Page name="ОсновнаяСтраница" id="166">
+				<Page name="СтраницаТабель" id="166">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>График монтажников</v8:content>
+							<v8:content>Табель</v8:content>
 						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Основная страница</v8:content>
+							<v8:content>Страница табель</v8:content>
 						</v8:item>
 					</ToolTip>
-					<ExtendedTooltip name="ОсновнаяСтраницаРасширеннаяПодсказка" id="167"/>
+					<ExtendedTooltip name="СтраницаТабельРасширеннаяПодсказка" id="167"/>
 					<ChildItems>
-						<UsualGroup name="ГруппаНомерДата" id="12">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа номер дата</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа номер дата</v8:content>
-								</v8:item>
-							</ToolTip>
-							<Group>Horizontal</Group>
-							<Representation>None</Representation>
-							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ГруппаНомерДатаExtendedTooltip" id="31"/>
-							<ChildItems>
-								<InputField name="Номер" id="1">
-									<DataPath>Объект.Number</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<HorizontalStretch>false</HorizontalStretch>
-									<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
-									<ExtendedTooltip name="НомерExtendedTooltip" id="32"/>
-								</InputField>
-								<InputField name="Дата" id="3">
-									<DataPath>Объект.Date</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<HorizontalStretch>false</HorizontalStretch>
-									<ContextMenu name="ДатаКонтекстноеМеню" id="4"/>
-									<ExtendedTooltip name="ДатаExtendedTooltip" id="33"/>
-								</InputField>
-							</ChildItems>
-						</UsualGroup>
-						<InputField name="Подразделение" id="48">
-							<DataPath>Объект.Подразделение</DataPath>
-							<HorizontalStretch>false</HorizontalStretch>
-							<ContextMenu name="ПодразделениеКонтекстноеМеню" id="49"/>
-							<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="50"/>
-						</InputField>
-						<InputField name="Город" id="45">
-							<DataPath>Объект.Город</DataPath>
-							<HorizontalStretch>false</HorizontalStretch>
-							<ContextMenu name="ГородКонтекстноеМеню" id="46"/>
-							<ExtendedTooltip name="ГородРасширеннаяПодсказка" id="47"/>
-						</InputField>
 						<Button name="ТабельЗаполнитьТабель" id="24">
 							<Type>UsualButton</Type>
 							<Representation>PictureAndText</Representation>
@@ -187,19 +187,9 @@
 								</InputField>
 							</ChildItems>
 						</Table>
-						<LabelField name="Автор" id="51">
-							<DataPath>Объект.Автор</DataPath>
-							<ContextMenu name="АвторКонтекстноеМеню" id="52"/>
-							<ExtendedTooltip name="АвторРасширеннаяПодсказка" id="53"/>
-						</LabelField>
-						<InputField name="Комментарий" id="54">
-							<DataPath>Объект.Комментарий</DataPath>
-							<ContextMenu name="КомментарийКонтекстноеМеню" id="55"/>
-							<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="56"/>
-						</InputField>
 					</ChildItems>
 				</Page>
-				<Page name="СтраницыРабочиеДни" id="164">
+				<Page name="СтраницаРабочиеДни" id="164">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -209,10 +199,10 @@
 					<ToolTip>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Страницы рабочие дни</v8:content>
+							<v8:content>Страница рабочие дни</v8:content>
 						</v8:item>
 					</ToolTip>
-					<ExtendedTooltip name="СтраницыРабочиеДниРасширеннаяПодсказка" id="165"/>
+					<ExtendedTooltip name="СтраницаРабочиеДниРасширеннаяПодсказка" id="165"/>
 					<ChildItems>
 						<Button name="Заполнить" id="168">
 							<Type>UsualButton</Type>
@@ -516,6 +506,16 @@
 				</Page>
 			</ChildItems>
 		</Pages>
+		<LabelField name="Автор" id="51">
+			<DataPath>Объект.Автор</DataPath>
+			<ContextMenu name="АвторКонтекстноеМеню" id="52"/>
+			<ExtendedTooltip name="АвторРасширеннаяПодсказка" id="53"/>
+		</LabelField>
+		<InputField name="Комментарий" id="54">
+			<DataPath>Объект.Комментарий</DataPath>
+			<ContextMenu name="КомментарийКонтекстноеМеню" id="55"/>
+			<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="56"/>
+		</InputField>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Объект" id="1">
