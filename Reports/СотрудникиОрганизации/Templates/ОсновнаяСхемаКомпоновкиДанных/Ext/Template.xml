@@ -7,57 +7,65 @@
 	<dataSet xsi:type="DataSetQuery">
 		<name>НаборДанных1</name>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>ФизЛицо</dataPath>
-			<field>ФизЛицо</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>Должность</dataPath>
 			<field>Должность</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Должность</v8:content>
+				</v8:item>
+			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Оклад</dataPath>
 			<field>Оклад</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оклад</v8:content>
+				</v8:item>
+			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Подразделение</dataPath>
 			<field>Подразделение</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подразделение</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ФизЛицо</dataPath>
+			<field>ФизЛицо</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Физ лицо</v8:content>
+				</v8:item>
+			</title>
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
-		<query>ВЫБРАТЬ
-	ДолжностиСотрудниковСрезПоследних.ФизЛицо,
-	ШтатноеРасписаниеСрезПоследних.Оклад,
-	ДолжностиСотрудниковСрезПоследних.Должность,
-	ДолжностиСотрудниковСрезПоследних.Подразделение
+		<query>//RonEXI edit
+ВЫБРАТЬ
+	ФизическиеЛица.Ссылка КАК ФизЛицо,
+	ФизическиеЛица.Оклад КАК Оклад,
+	ФизическиеЛица.Должность КАК Должность,
+	ФизическиеЛица.Подразделение КАК Подразделение
 ИЗ
-	РегистрСведений.ДолжностиСотрудников.СрезПоследних(, ) КАК ДолжностиСотрудниковСрезПоследних
-		ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.ШтатноеРасписание.СрезПоследних КАК ШтатноеРасписаниеСрезПоследних
-		ПО ДолжностиСотрудниковСрезПоследних.Должность = ШтатноеРасписаниеСрезПоследних.Должность
-			И ДолжностиСотрудниковСрезПоследних.Подразделение = ШтатноеРасписаниеСрезПоследних.Подразделение
+	Справочник.ФизическиеЛица КАК ФизическиеЛица
 ГДЕ
-	ДолжностиСотрудниковСрезПоследних.Работает</query>
+	ФизическиеЛица.Активность</query>
 	</dataSet>
-	<parameter>
-		<name>Период</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Период</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>xs:dateTime</v8:Type>
-			<v8:DateQualifiers>
-				<v8:DateFractions>DateTime</v8:DateFractions>
-			</v8:DateQualifiers>
-		</valueType>
-		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-		<useRestriction>false</useRestriction>
-	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
 		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Подразделение</dcsset:field>
+				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>ФизЛицо</dcsset:field>
 				</dcsset:item>
@@ -70,20 +78,11 @@
 			</dcsset:selection>
 			<dcsset:filter>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
-					<dcsset:use>false</dcsset:use>
 					<dcsset:left xsi:type="dcscor:Field">Подразделение</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
 					<dcsset:userSettingID>998b4bd5-0e9b-483a-9fe0-fbb559bcd330</dcsset:userSettingID>
 				</dcsset:item>
 			</dcsset:filter>
-			<dcsset:dataParameters>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:use>false</dcscor:use>
-					<dcscor:parameter>Период</dcscor:parameter>
-					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
-					<dcsset:userSettingID>f42e1e1e-5532-4ec4-a658-f43dd337c5d5</dcsset:userSettingID>
-				</dcscor:item>
-			</dcsset:dataParameters>
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
 				<dcsset:groupItems>
 					<dcsset:item xsi:type="dcsset:GroupItemField">

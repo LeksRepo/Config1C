@@ -15,57 +15,64 @@
 			<field>ФизЛицо</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Телефон</dataPath>
-			<field>ФизЛицоТелефон</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>ТелефонРабочий</dataPath>
-			<field>ФизЛицоТелефонРабочий</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>ЭлектронныйАдрес</dataPath>
-			<field>ФизЛицоЭлектронныйАдрес</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>ДолжностьРуководителя</dataPath>
-			<field>ДолжностьДолжностьРуководителя</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>Подразделение</dataPath>
 			<field>Подразделение</field>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДолжностьРуководителя</dataPath>
+			<field>ДолжностьРуководителя</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Должность руководителя</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Телефон</dataPath>
+			<field>Телефон</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Телефон</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ТелефонРабочий</dataPath>
+			<field>ТелефонРабочий</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Телефон рабочий</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЭлектронныйАдрес</dataPath>
+			<field>ЭлектронныйАдрес</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Электронный адрес</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
-		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
-	ДолжностиСотрудниковСрезПоследних.ФизЛицо,
-	ДолжностиСотрудниковСрезПоследних.Должность,
-	ДолжностиСотрудниковСрезПоследних.Должность.ДолжностьРуководителя,
-	ДолжностиСотрудниковСрезПоследних.ФизЛицо.Телефон,
-	ДолжностиСотрудниковСрезПоследних.ФизЛицо.ТелефонРабочий,
-	ДолжностиСотрудниковСрезПоследних.ФизЛицо.ЭлектронныйАдрес,
-	ДолжностиСотрудниковСрезПоследних.Подразделение
+		<query>//RonEXI edit: почемуто должности пустые стали
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ФизическиеЛица.Ссылка КАК ФизЛицо,
+	ФизическиеЛица.Должность КАК Должность,
+	ФизическиеЛица.Должность.ДолжностьРуководителя КАК ДолжностьРуководителя,
+	ФизическиеЛица.Телефон КАК Телефон,
+	ФизическиеЛица.ТелефонРабочий КАК ТелефонРабочий,
+	ФизическиеЛица.ЭлектронныйАдрес КАК ЭлектронныйАдрес,
+	ФизическиеЛица.Подразделение КАК Подразделение
 ИЗ
-	РегистрСведений.ДолжностиСотрудников.СрезПоследних(, ) КАК ДолжностиСотрудниковСрезПоследних
+	Справочник.ФизическиеЛица КАК ФизическиеЛица
 ГДЕ
-	ДолжностиСотрудниковСрезПоследних.Работает</query>
+	ФизическиеЛица.Активность</query>
 	</dataSet>
-	<parameter>
-		<name>Период</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Период</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>xs:dateTime</v8:Type>
-			<v8:DateQualifiers>
-				<v8:DateFractions>DateTime</v8:DateFractions>
-			</v8:DateQualifiers>
-		</valueType>
-		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-		<useRestriction>false</useRestriction>
-		<availableAsField>false</availableAsField>
-	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
 		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
