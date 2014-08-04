@@ -2,6 +2,10 @@
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
 	<Width>100</Width>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
 	<ChildItems>
 		<UsualGroup name="ГруппаНоменклатура" id="15">
 			<Title>
@@ -22,6 +26,9 @@
 			<ExtendedTooltip name="ГруппаНоменклатураРасширеннаяПодсказка" id="16"/>
 			<ChildItems>
 				<Table name="ВыборНоменклатуры" id="8">
+					<Representation>List</Representation>
+					<SelectionMode>SingleRow</SelectionMode>
+					<RowSelectionMode>Row</RowSelectionMode>
 					<UseAlternationRowColor>true</UseAlternationRowColor>
 					<EnableStartDrag>true</EnableStartDrag>
 					<DataPath>ВыборНоменклатуры</DataPath>
@@ -30,7 +37,7 @@
 					<ViewStatusLocation>None</ViewStatusLocation>
 					<SearchControlLocation>None</SearchControlLocation>
 					<AutoRefresh>false</AutoRefresh>
-					<AutoRefreshPeriod>60</AutoRefreshPeriod>
+					<AutoRefreshPeriod>3</AutoRefreshPeriod>
 					<Period>
 						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
 						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
@@ -100,14 +107,14 @@
 					<SearchStringLocation>None</SearchStringLocation>
 					<ViewStatusLocation>None</ViewStatusLocation>
 					<SearchControlLocation>None</SearchControlLocation>
-					<AutoRefresh>false</AutoRefresh>
-					<AutoRefreshPeriod>60</AutoRefreshPeriod>
+					<AutoRefresh>true</AutoRefresh>
+					<AutoRefreshPeriod>3</AutoRefreshPeriod>
 					<Period>
 						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
 						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
 						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
 					</Period>
-					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+					<ChoiceFoldersAndItems>Folders</ChoiceFoldersAndItems>
 					<RestoreCurrentRow>false</RestoreCurrentRow>
 					<TopLevelParent xsi:nil="true"/>
 					<ShowRoot>true</ShowRoot>
@@ -175,6 +182,11 @@
 				<MainTable>Catalog.Номенклатура</MainTable>
 				<ListSettings>
 					<dcsset:filter>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ЭтоГруппа</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+						</dcsset:item>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
 						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
 					</dcsset:filter>
@@ -201,7 +213,7 @@
 			</Type>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
-				<DynamicDataRead>false</DynamicDataRead>
+				<DynamicDataRead>true</DynamicDataRead>
 				<QueryText>ВЫБРАТЬ
 	Номенклатура.Наименование,
 	Номенклатура.ЕдиницаИзмерения
@@ -209,6 +221,7 @@
 	Справочник.Номенклатура КАК Номенклатура
 ГДЕ
 	Номенклатура.Родитель.Наименование = &amp;ТипНоменклатуры</QueryText>
+				<MainTable>Catalog.Номенклатура</MainTable>
 				<ListSettings>
 					<dcsset:filter>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
