@@ -7,10 +7,6 @@
 	<dataSet xsi:type="DataSetQuery">
 		<name>НаборДанных1</name>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Автор</dataPath>
-			<field>Автор</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>БазоваяСтоимость</dataPath>
 			<field>БазоваяСтоимость</field>
 			<title xsi:type="v8:LocalStringType">
@@ -40,20 +36,27 @@
 				</v8:item>
 			</title>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Дизайнер</dataPath>
+			<field>Дизайнер</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дизайнер</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
-	ДокДоговор.Ссылка КАК Договор,
-	ДокДоговор.Автор,
-	ДокДоговор.СуммаДокумента КАК СуммаДоговора,
-	ДокДоговор.Спецификация.СуммаДокументаБезНаценкиОфиса КАК БазоваяСтоимость
+	ДокАктВыполненияДоговора.Договор.Ссылка КАК Договор,
+	ДокАктВыполненияДоговора.Договор.Автор КАК Дизайнер,
+	ДокАктВыполненияДоговора.Договор.СуммаДокумента КАК СуммаДоговора,
+	ДокАктВыполненияДоговора.Договор.Спецификация.СуммаДокументаБезНаценкиОфиса КАК БазоваяСтоимость
 ИЗ
-	Документ.Договор КАК ДокДоговор
-		ЛЕВОЕ СОЕДИНЕНИЕ Документ.АктВыполненияДоговора КАК ДокАктВыполненияДоговора
-		ПО ДокАктВыполненияДоговора.Договор = ДокДоговор.Ссылка
+	Документ.АктВыполненияДоговора КАК ДокАктВыполненияДоговора
 ГДЕ
-	ДокДоговор.Проведен
-	И ДокДоговор.Дата МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
-	И ДокАктВыполненияДоговора.Проведен
+	ДокАктВыполненияДоговора.Проведен
+	И ДокАктВыполненияДоговора.ДатаПередачи МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
 
 ОБЪЕДИНИТЬ ВСЕ
 
@@ -172,12 +175,13 @@
 					<dcscor:value xsi:type="v8:StandardPeriod">
 						<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
 					</dcscor:value>
+					<dcsset:userSettingID>20693634-7da9-43f1-b4c5-9904108b6e4a</dcsset:userSettingID>
 				</dcscor:item>
 			</dcsset:dataParameters>
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
 				<dcsset:groupItems>
 					<dcsset:item xsi:type="dcsset:GroupItemField">
-						<dcsset:field>Автор</dcsset:field>
+						<dcsset:field>Дизайнер</dcsset:field>
 						<dcsset:groupType>Items</dcsset:groupType>
 						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
