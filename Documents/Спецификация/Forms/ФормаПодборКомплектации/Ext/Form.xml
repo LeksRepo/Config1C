@@ -11,19 +11,6 @@
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
-		<Button name="ПеренестиВДокумент" id="45">
-			<Type>UsualButton</Type>
-			<Representation>PictureAndText</Representation>
-			<DefaultButton>true</DefaultButton>
-			<Height>1</Height>
-			<CommandName>Form.Command.ПеренестиВДокумент</CommandName>
-			<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
-			<Picture>
-				<xr:Ref>StdPicture.GenerateReport</xr:Ref>
-				<xr:LoadTransparent>true</xr:LoadTransparent>
-			</Picture>
-			<ExtendedTooltip name="ПеренестиВДокументРасширеннаяПодсказка" id="46"/>
-		</Button>
 		<UsualGroup name="ГруппаНоменклатура" id="15">
 			<Title>
 				<v8:item>
@@ -55,24 +42,45 @@
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="Группа3РасширеннаяПодсказка" id="85"/>
 							<ChildItems>
-								<InputField name="СтрокаПоиска" id="57">
-									<DataPath>СтрокаПоиска</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Поиск по названию</v8:content>
-										</v8:item>
-									</Title>
-									<TitleTextColor>#278D18</TitleTextColor>
-									<TitleFont ref="sys:DefaultGUIFont" height="11" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
-									<ClearButton>true</ClearButton>
-									<Font ref="sys:DefaultGUIFont" height="11" kind="WindowsFont"/>
-									<ContextMenu name="СтрокаПоискаКонтекстноеМеню" id="58"/>
-									<ExtendedTooltip name="СтрокаПоискаРасширеннаяПодсказка" id="59"/>
-									<Events>
-										<Event name="TextEditEnd">СтрокаПоискаОкончаниеВводаТекста</Event>
-									</Events>
-								</InputField>
+								<UsualGroup name="Группа4" id="89">
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="Группа4РасширеннаяПодсказка" id="90"/>
+									<ChildItems>
+										<Button name="ПеренестиВДокумент" id="45">
+											<Type>UsualButton</Type>
+											<Representation>PictureAndText</Representation>
+											<DefaultButton>true</DefaultButton>
+											<Height>1</Height>
+											<CommandName>Form.Command.ПеренестиВДокумент</CommandName>
+											<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+											<Picture>
+												<xr:Ref>StdPicture.GenerateReport</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</Picture>
+											<ExtendedTooltip name="ПеренестиВДокументРасширеннаяПодсказка" id="46"/>
+										</Button>
+										<InputField name="СтрокаПоиска" id="57">
+											<DataPath>СтрокаПоиска</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Поиск по названию</v8:content>
+												</v8:item>
+											</Title>
+											<TitleTextColor>#278D18</TitleTextColor>
+											<TitleFont ref="sys:DefaultGUIFont" height="11" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+											<ClearButton>true</ClearButton>
+											<Font ref="sys:DefaultGUIFont" height="11" kind="WindowsFont"/>
+											<ContextMenu name="СтрокаПоискаКонтекстноеМеню" id="58"/>
+											<ExtendedTooltip name="СтрокаПоискаРасширеннаяПодсказка" id="59"/>
+											<Events>
+												<Event name="TextEditEnd">СтрокаПоискаОкончаниеВводаТекста</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
 								<Table name="ВыборНоменклатуры" id="60">
 									<UseAlternationRowColor>true</UseAlternationRowColor>
 									<EnableStartDrag>true</EnableStartDrag>
@@ -113,29 +121,29 @@
 										<Autofill>false</Autofill>
 									</AutoCommandBar>
 									<ExtendedTooltip name="ВыборНоменклатурыРасширеннаяПодсказка" id="63"/>
-									<SearchStringAddition name="ВыборНоменклатурыСтрокаПоиска" id="89">
+									<SearchStringAddition name="ВыборНоменклатурыСтрокаПоиска" id="91">
 										<AdditionSource>
 											<Item>ВыборНоменклатуры</Item>
 											<Type>SearchStringRepresentation</Type>
 										</AdditionSource>
-										<ContextMenu name="ВыборНоменклатурыСтрокаПоискаКонтекстноеМеню" id="90"/>
-										<ExtendedTooltip name="ВыборНоменклатурыСтрокаПоискаРасширеннаяПодсказка" id="91"/>
+										<ContextMenu name="ВыборНоменклатурыСтрокаПоискаКонтекстноеМеню" id="92"/>
+										<ExtendedTooltip name="ВыборНоменклатурыСтрокаПоискаРасширеннаяПодсказка" id="93"/>
 									</SearchStringAddition>
-									<ViewStatusAddition name="ВыборНоменклатурыСостояниеПросмотра" id="92">
+									<ViewStatusAddition name="ВыборНоменклатурыСостояниеПросмотра" id="94">
 										<AdditionSource>
 											<Item>ВыборНоменклатуры</Item>
 											<Type>ViewStatusRepresentation</Type>
 										</AdditionSource>
-										<ContextMenu name="ВыборНоменклатурыСостояниеПросмотраКонтекстноеМеню" id="93"/>
-										<ExtendedTooltip name="ВыборНоменклатурыСостояниеПросмотраРасширеннаяПодсказка" id="94"/>
+										<ContextMenu name="ВыборНоменклатурыСостояниеПросмотраКонтекстноеМеню" id="95"/>
+										<ExtendedTooltip name="ВыборНоменклатурыСостояниеПросмотраРасширеннаяПодсказка" id="96"/>
 									</ViewStatusAddition>
-									<SearchControlAddition name="ВыборНоменклатурыУправлениеПоиском" id="95">
+									<SearchControlAddition name="ВыборНоменклатурыУправлениеПоиском" id="97">
 										<AdditionSource>
 											<Item>ВыборНоменклатуры</Item>
 											<Type>SearchControl</Type>
 										</AdditionSource>
-										<ContextMenu name="ВыборНоменклатурыУправлениеПоискомКонтекстноеМеню" id="96"/>
-										<ExtendedTooltip name="ВыборНоменклатурыУправлениеПоискомРасширеннаяПодсказка" id="97"/>
+										<ContextMenu name="ВыборНоменклатурыУправлениеПоискомКонтекстноеМеню" id="98"/>
+										<ExtendedTooltip name="ВыборНоменклатурыУправлениеПоискомРасширеннаяПодсказка" id="99"/>
 									</SearchControlAddition>
 									<Events>
 										<Event name="Selection">ВыборНоменклатурыВыбор</Event>
@@ -224,29 +232,29 @@
 								<Autofill>false</Autofill>
 							</AutoCommandBar>
 							<ExtendedTooltip name="КаталогНоменклатурыРасширеннаяПодсказка" id="4"/>
-							<SearchStringAddition name="КаталогНоменклатурыСтрокаПоиска" id="98">
+							<SearchStringAddition name="КаталогНоменклатурыСтрокаПоиска" id="100">
 								<AdditionSource>
 									<Item>КаталогНоменклатуры</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="КаталогНоменклатурыСтрокаПоискаКонтекстноеМеню" id="99"/>
-								<ExtendedTooltip name="КаталогНоменклатурыСтрокаПоискаРасширеннаяПодсказка" id="100"/>
+								<ContextMenu name="КаталогНоменклатурыСтрокаПоискаКонтекстноеМеню" id="101"/>
+								<ExtendedTooltip name="КаталогНоменклатурыСтрокаПоискаРасширеннаяПодсказка" id="102"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="КаталогНоменклатурыСостояниеПросмотра" id="101">
+							<ViewStatusAddition name="КаталогНоменклатурыСостояниеПросмотра" id="103">
 								<AdditionSource>
 									<Item>КаталогНоменклатуры</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="КаталогНоменклатурыСостояниеПросмотраКонтекстноеМеню" id="102"/>
-								<ExtendedTooltip name="КаталогНоменклатурыСостояниеПросмотраРасширеннаяПодсказка" id="103"/>
+								<ContextMenu name="КаталогНоменклатурыСостояниеПросмотраКонтекстноеМеню" id="104"/>
+								<ExtendedTooltip name="КаталогНоменклатурыСостояниеПросмотраРасширеннаяПодсказка" id="105"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="КаталогНоменклатурыУправлениеПоиском" id="104">
+							<SearchControlAddition name="КаталогНоменклатурыУправлениеПоиском" id="106">
 								<AdditionSource>
 									<Item>КаталогНоменклатуры</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="КаталогНоменклатурыУправлениеПоискомКонтекстноеМеню" id="105"/>
-								<ExtendedTooltip name="КаталогНоменклатурыУправлениеПоискомРасширеннаяПодсказка" id="106"/>
+								<ContextMenu name="КаталогНоменклатурыУправлениеПоискомКонтекстноеМеню" id="107"/>
+								<ExtendedTooltip name="КаталогНоменклатурыУправлениеПоискомРасширеннаяПодсказка" id="108"/>
 							</SearchControlAddition>
 							<Events>
 								<Event name="Selection">КаталогНоменклатурыВыбор</Event>
@@ -326,29 +334,29 @@
 								</ChildItems>
 							</AutoCommandBar>
 							<ExtendedTooltip name="ВыбранныеРасширеннаяПодсказка" id="32"/>
-							<SearchStringAddition name="ВыбранныеСтрокаПоиска" id="107">
+							<SearchStringAddition name="ВыбранныеСтрокаПоиска" id="109">
 								<AdditionSource>
 									<Item>Выбранные</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="ВыбранныеСтрокаПоискаКонтекстноеМеню" id="108"/>
-								<ExtendedTooltip name="ВыбранныеСтрокаПоискаРасширеннаяПодсказка" id="109"/>
+								<ContextMenu name="ВыбранныеСтрокаПоискаКонтекстноеМеню" id="110"/>
+								<ExtendedTooltip name="ВыбранныеСтрокаПоискаРасширеннаяПодсказка" id="111"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="ВыбранныеСостояниеПросмотра" id="110">
+							<ViewStatusAddition name="ВыбранныеСостояниеПросмотра" id="112">
 								<AdditionSource>
 									<Item>Выбранные</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="ВыбранныеСостояниеПросмотраКонтекстноеМеню" id="111"/>
-								<ExtendedTooltip name="ВыбранныеСостояниеПросмотраРасширеннаяПодсказка" id="112"/>
+								<ContextMenu name="ВыбранныеСостояниеПросмотраКонтекстноеМеню" id="113"/>
+								<ExtendedTooltip name="ВыбранныеСостояниеПросмотраРасширеннаяПодсказка" id="114"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="ВыбранныеУправлениеПоиском" id="113">
+							<SearchControlAddition name="ВыбранныеУправлениеПоиском" id="115">
 								<AdditionSource>
 									<Item>Выбранные</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="ВыбранныеУправлениеПоискомКонтекстноеМеню" id="114"/>
-								<ExtendedTooltip name="ВыбранныеУправлениеПоискомРасширеннаяПодсказка" id="115"/>
+								<ContextMenu name="ВыбранныеУправлениеПоискомКонтекстноеМеню" id="116"/>
+								<ExtendedTooltip name="ВыбранныеУправлениеПоискомРасширеннаяПодсказка" id="117"/>
 							</SearchControlAddition>
 							<Events>
 								<Event name="OnActivateRow">ВыбранныеПриАктивизацииСтроки</Event>
