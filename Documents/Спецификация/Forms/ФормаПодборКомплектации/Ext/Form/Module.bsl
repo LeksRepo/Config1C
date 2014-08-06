@@ -241,7 +241,7 @@
 		ФайлНаДиске = Новый Файл(ПутьКИзображению);
 		
 		Если ФайлНаДиске.Существует() Тогда
-			Изображение = "<html><head><META HTTP-EQUIV=""Pragma"" CONTENT=""no-cache""></head><body bottommargin=""0"" topmargin=""0"" leftmargin=""0"" rightmargin=""0""><img src="""+ПутьКИзображению+""" height=100% width=100% /></body></html>";
+			Изображение = "<html><head><META HTTP-EQUIV=""Pragma"" CONTENT=""no-cache""></head><body bottommargin=""0"" topmargin=""0"" leftmargin=""0"" rightmargin=""0""><img src="""+ПутьКИзображению+""" height=100% /></body></html>";
 		Иначе
 			Изображение = "";
 		КонецЕсли;
