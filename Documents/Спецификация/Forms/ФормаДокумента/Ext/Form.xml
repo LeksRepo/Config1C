@@ -187,6 +187,7 @@
 										</v8:item>
 									</Title>
 									<HorizontalStretch>false</HorizontalStretch>
+									<OpenButton>false</OpenButton>
 									<ContextMenu name="КонтрагентКонтекстноеМеню" id="429"/>
 									<ExtendedTooltip name="КонтрагентРасширеннаяПодсказка" id="430"/>
 									<Events>
@@ -201,12 +202,14 @@
 							<Width>24</Width>
 							<HorizontalStretch>false</HorizontalStretch>
 							<VerticalStretch>false</VerticalStretch>
+							<Mask>9-999-999-99-99</Mask>
 							<ContextMenu name="ТелефонКонтекстноеМеню" id="622"/>
 							<ExtendedTooltip name="ТелефонРасширеннаяПодсказка" id="623"/>
 						</InputField>
 						<InputField name="Изделие" id="481">
 							<DataPath>Объект.Изделие</DataPath>
 							<HorizontalStretch>false</HorizontalStretch>
+							<OpenButton>false</OpenButton>
 							<ContextMenu name="ИзделиеКонтекстноеМеню" id="482"/>
 							<ExtendedTooltip name="ИзделиеРасширеннаяПодсказка" id="483"/>
 							<Events>
@@ -216,6 +219,7 @@
 						<InputField name="Офис" id="545">
 							<DataPath>Объект.Офис</DataPath>
 							<HorizontalStretch>false</HorizontalStretch>
+							<OpenButton>false</OpenButton>
 							<ContextMenu name="ОфисКонтекстноеМеню" id="546"/>
 							<ExtendedTooltip name="ОфисРасширеннаяПодсказка" id="547"/>
 							<Events>
@@ -353,6 +357,7 @@
 								</v8:item>
 							</Title>
 							<HorizontalStretch>false</HorizontalStretch>
+							<OpenButton>false</OpenButton>
 							<ContextMenu name="ПодразделениеКонтекстноеМеню" id="116"/>
 							<ExtendedTooltip name="ПодразделениеExtendedTooltip" id="223"/>
 							<Events>
@@ -378,21 +383,24 @@
 						<InputField name="Технолог" id="680">
 							<DataPath>Объект.Технолог</DataPath>
 							<HorizontalStretch>false</HorizontalStretch>
+							<OpenButton>false</OpenButton>
+							<QuickChoice>true</QuickChoice>
+							<ChoiceParameters>
+								<app:item name="Отбор.Активность">
+									<app:value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xs:boolean">true</Value>
+									</app:value>
+								</app:item>
+								<app:item name="Отбор.РасчетСпецификаций">
+									<app:value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xs:boolean">true</Value>
+									</app:value>
+								</app:item>
+							</ChoiceParameters>
 							<ContextMenu name="ТехнологКонтекстноеМеню" id="681"/>
 							<ExtendedTooltip name="ТехнологРасширеннаяПодсказка" id="682"/>
-						</InputField>
-						<InputField name="Виновный" id="591">
-							<DataPath>Объект.Виновный</DataPath>
-							<HorizontalStretch>false</HorizontalStretch>
-							<VerticalStretch>false</VerticalStretch>
-							<ContextMenu name="ВиновныйКонтекстноеМеню" id="592"/>
-							<ExtendedTooltip name="ВиновныйРасширеннаяПодсказка" id="593"/>
-						</InputField>
-						<InputField name="ДовозОсуществил" id="686">
-							<DataPath>Объект.ДовозОсуществил</DataPath>
-							<HorizontalStretch>false</HorizontalStretch>
-							<ContextMenu name="ДовозОсуществилКонтекстноеМеню" id="687"/>
-							<ExtendedTooltip name="ДовозОсуществилРасширеннаяПодсказка" id="688"/>
 						</InputField>
 						<UsualGroup name="ГруппаДаты" id="418">
 							<Title>
@@ -408,7 +416,6 @@
 								</v8:item>
 							</ToolTip>
 							<Group>Vertical</Group>
-							<Representation>StrongSeparation</Representation>
 							<ExtendedTooltip name="ГруппаДатыРасширеннаяПодсказка" id="419"/>
 							<ChildItems>
 								<LabelField name="Дата" id="3">
@@ -445,79 +452,79 @@
 									<ContextMenu name="ДатаОтгрузкиКонтекстноеМеню" id="392"/>
 									<ExtendedTooltip name="ДатаОтгрузкиРасширеннаяПодсказка" id="393"/>
 								</InputField>
-								<InputField name="ДатаМонтажа" id="484">
-									<DataPath>Объект.ДатаМонтажа</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Установка</v8:content>
-										</v8:item>
-									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Если не заполнена -- договор с открытой датой</v8:content>
-										</v8:item>
-									</ToolTip>
-									<ToolTipRepresentation>Button</ToolTipRepresentation>
-									<ContextMenu name="ДатаМонтажаКонтекстноеМеню" id="485"/>
-									<ExtendedTooltip name="ДатаМонтажаРасширеннаяПодсказка" id="486"/>
-									<Events>
-										<Event name="OnChange">ДатаМонтажаПриИзменении</Event>
-										<Event name="StartChoice">ДатаМонтажаНачалоВыбора</Event>
-									</Events>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаПеределка" id="731">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Переделка</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа переделка</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<ExtendedTooltip name="ГруппаПеределкаРасширеннаяПодсказка" id="732"/>
+							<ChildItems>
+								<InputField name="Виновный" id="591">
+									<DataPath>Объект.Виновный</DataPath>
+									<HorizontalStretch>false</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
+									<OpenButton>false</OpenButton>
+									<ContextMenu name="ВиновныйКонтекстноеМеню" id="592"/>
+									<ExtendedTooltip name="ВиновныйРасширеннаяПодсказка" id="593"/>
+								</InputField>
+								<InputField name="ДовозОсуществил" id="686">
+									<DataPath>Объект.ДовозОсуществил</DataPath>
+									<HorizontalStretch>false</HorizontalStretch>
+									<OpenButton>false</OpenButton>
+									<ContextMenu name="ДовозОсуществилКонтекстноеМеню" id="687"/>
+									<ExtendedTooltip name="ДовозОсуществилРасширеннаяПодсказка" id="688"/>
 								</InputField>
 							</ChildItems>
 						</UsualGroup>
-						<InputField name="Монтажник" id="718">
-							<DataPath>Объект.Монтажник</DataPath>
-							<HorizontalStretch>false</HorizontalStretch>
-							<OpenButton>false</OpenButton>
-							<TextEdit>false</TextEdit>
-							<ContextMenu name="МонтажникКонтекстноеМеню" id="719"/>
-							<ExtendedTooltip name="МонтажникРасширеннаяПодсказка" id="720"/>
-							<Events>
-								<Event name="StartChoice">МонтажникНачалоВыбора</Event>
-							</Events>
-						</InputField>
 					</ChildItems>
 				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
-		<UsualGroup name="ГруппаСкидкиУслуги" id="540">
+		<UsualGroup name="ГруппаУслуги" id="451">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Группа скидки услуги</v8:content>
+					<v8:content>Пакет услуг</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Группа скидки услуги</v8:content>
+					<v8:content>Группа услуги</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Group>Horizontal</Group>
-			<Representation>None</Representation>
-			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаСкидкиУслугиРасширеннаяПодсказка" id="541"/>
+			<Group>Vertical</Group>
+			<Representation>StrongSeparation</Representation>
+			<ExtendedTooltip name="ГруппаУслугиРасширеннаяПодсказка" id="452"/>
 			<ChildItems>
-				<UsualGroup name="ГруппаУслуги" id="451">
+				<UsualGroup name="ГруппаПакетУслугУпаковка" id="733">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Пакет услуг</v8:content>
+							<v8:content>Группа пакет услуг упаковка</v8:content>
 						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Группа услуги</v8:content>
+							<v8:content>Группа пакет услуг упаковка</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Group>Horizontal</Group>
-					<Representation>StrongSeparation</Representation>
-					<ExtendedTooltip name="ГруппаУслугиРасширеннаяПодсказка" id="452"/>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаПакетУслугУпаковкаРасширеннаяПодсказка" id="734"/>
 					<ChildItems>
 						<InputField name="ПакетУслуг" id="624">
 							<DataPath>Объект.ПакетУслуг</DataPath>
@@ -537,56 +544,56 @@
 						</CheckBoxField>
 					</ChildItems>
 				</UsualGroup>
-				<UsualGroup name="ГруппаСкидки" id="465">
+				<UsualGroup name="ГруппаМонтаж" id="735">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Скидки (%)</v8:content>
+							<v8:content>Группа монтаж</v8:content>
 						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Группа скидки</v8:content>
+							<v8:content>Группа монтаж</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Group>Horizontal</Group>
-					<Representation>StrongSeparation</Representation>
-					<ExtendedTooltip name="ГруппаСкидкиРасширеннаяПодсказка" id="466"/>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаМонтажРасширеннаяПодсказка" id="736"/>
 					<ChildItems>
-						<LabelField name="СкидкаНаУслуги" id="467">
-							<DataPath>Объект.СкидкаНаУслуги</DataPath>
+						<InputField name="Монтажник" id="718">
+							<DataPath>Объект.Монтажник</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ClearButton>true</ClearButton>
+							<OpenButton>false</OpenButton>
+							<TextEdit>false</TextEdit>
+							<InputHint>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Монтажник</v8:content>
+								</v8:item>
+							</InputHint>
+							<ContextMenu name="МонтажникКонтекстноеМеню" id="719"/>
+							<ExtendedTooltip name="МонтажникРасширеннаяПодсказка" id="720"/>
+							<Events>
+								<Event name="StartChoice">МонтажникНачалоВыбора</Event>
+								<Event name="Clearing">МонтажникОчистка</Event>
+							</Events>
+						</InputField>
+						<LabelField name="ДатаМонтажа" id="484">
+							<DataPath>Объект.ДатаМонтажа</DataPath>
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Услуги</v8:content>
+									<v8:content>Установка</v8:content>
 								</v8:item>
 							</Title>
-							<Format>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>ЧН=0</v8:content>
-								</v8:item>
-							</Format>
-							<ContextMenu name="СкидкаНаУслугиКонтекстноеМеню" id="468"/>
-							<ExtendedTooltip name="СкидкаНаУслугиРасширеннаяПодсказка" id="469"/>
-						</LabelField>
-						<LabelField name="СкидкаНаМатериалы" id="470">
-							<DataPath>Объект.СкидкаНаМатериалы</DataPath>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Материалы</v8:content>
-								</v8:item>
-							</Title>
-							<Format>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>ЧН=0</v8:content>
-								</v8:item>
-							</Format>
-							<ContextMenu name="СкидкаНаМатериалыКонтекстноеМеню" id="471"/>
-							<ExtendedTooltip name="СкидкаНаМатериалыРасширеннаяПодсказка" id="472"/>
+							<TitleLocation>None</TitleLocation>
+							<ToolTipRepresentation>Button</ToolTipRepresentation>
+							<ContextMenu name="ДатаМонтажаКонтекстноеМеню" id="485"/>
+							<ExtendedTooltip name="ДатаМонтажаРасширеннаяПодсказка" id="486"/>
 						</LabelField>
 					</ChildItems>
 				</UsualGroup>
@@ -685,29 +692,29 @@
 								</ChildItems>
 							</AutoCommandBar>
 							<ExtendedTooltip name="СписокМатериалыРасширеннаяПодсказка" id="231"/>
-							<SearchStringAddition name="СписокМатериалыСтрокаПоиска" id="731">
+							<SearchStringAddition name="СписокМатериалыСтрокаПоиска" id="737">
 								<AdditionSource>
 									<Item>СписокМатериалы</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокМатериалыСтрокаПоискаКонтекстноеМеню" id="732"/>
-								<ExtendedTooltip name="СписокМатериалыСтрокаПоискаРасширеннаяПодсказка" id="733"/>
+								<ContextMenu name="СписокМатериалыСтрокаПоискаКонтекстноеМеню" id="738"/>
+								<ExtendedTooltip name="СписокМатериалыСтрокаПоискаРасширеннаяПодсказка" id="739"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="СписокМатериалыСостояниеПросмотра" id="734">
+							<ViewStatusAddition name="СписокМатериалыСостояниеПросмотра" id="740">
 								<AdditionSource>
 									<Item>СписокМатериалы</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокМатериалыСостояниеПросмотраКонтекстноеМеню" id="735"/>
-								<ExtendedTooltip name="СписокМатериалыСостояниеПросмотраРасширеннаяПодсказка" id="736"/>
+								<ContextMenu name="СписокМатериалыСостояниеПросмотраКонтекстноеМеню" id="741"/>
+								<ExtendedTooltip name="СписокМатериалыСостояниеПросмотраРасширеннаяПодсказка" id="742"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="СписокМатериалыУправлениеПоиском" id="737">
+							<SearchControlAddition name="СписокМатериалыУправлениеПоиском" id="743">
 								<AdditionSource>
 									<Item>СписокМатериалы</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокМатериалыУправлениеПоискомКонтекстноеМеню" id="738"/>
-								<ExtendedTooltip name="СписокМатериалыУправлениеПоискомРасширеннаяПодсказка" id="739"/>
+								<ContextMenu name="СписокМатериалыУправлениеПоискомКонтекстноеМеню" id="744"/>
+								<ExtendedTooltip name="СписокМатериалыУправлениеПоискомРасширеннаяПодсказка" id="745"/>
 							</SearchControlAddition>
 							<Events>
 								<Event name="Selection">СписокМатериалыВыбор</Event>
@@ -859,29 +866,29 @@
 								</ChildItems>
 							</AutoCommandBar>
 							<ExtendedTooltip name="СписокЯщикиExtendedTooltip" id="293"/>
-							<SearchStringAddition name="СписокЯщикиСтрокаПоиска" id="740">
+							<SearchStringAddition name="СписокЯщикиСтрокаПоиска" id="746">
 								<AdditionSource>
 									<Item>СписокЯщики</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокЯщикиСтрокаПоискаКонтекстноеМеню" id="741"/>
-								<ExtendedTooltip name="СписокЯщикиСтрокаПоискаРасширеннаяПодсказка" id="742"/>
+								<ContextMenu name="СписокЯщикиСтрокаПоискаКонтекстноеМеню" id="747"/>
+								<ExtendedTooltip name="СписокЯщикиСтрокаПоискаРасширеннаяПодсказка" id="748"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="СписокЯщикиСостояниеПросмотра" id="743">
+							<ViewStatusAddition name="СписокЯщикиСостояниеПросмотра" id="749">
 								<AdditionSource>
 									<Item>СписокЯщики</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокЯщикиСостояниеПросмотраКонтекстноеМеню" id="744"/>
-								<ExtendedTooltip name="СписокЯщикиСостояниеПросмотраРасширеннаяПодсказка" id="745"/>
+								<ContextMenu name="СписокЯщикиСостояниеПросмотраКонтекстноеМеню" id="750"/>
+								<ExtendedTooltip name="СписокЯщикиСостояниеПросмотраРасширеннаяПодсказка" id="751"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="СписокЯщикиУправлениеПоиском" id="746">
+							<SearchControlAddition name="СписокЯщикиУправлениеПоиском" id="752">
 								<AdditionSource>
 									<Item>СписокЯщики</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокЯщикиУправлениеПоискомКонтекстноеМеню" id="747"/>
-								<ExtendedTooltip name="СписокЯщикиУправлениеПоискомРасширеннаяПодсказка" id="748"/>
+								<ContextMenu name="СписокЯщикиУправлениеПоискомКонтекстноеМеню" id="753"/>
+								<ExtendedTooltip name="СписокЯщикиУправлениеПоискомРасширеннаяПодсказка" id="754"/>
 							</SearchControlAddition>
 							<Events>
 								<Event name="Selection">СписокЯщикиВыбор</Event>
@@ -984,29 +991,29 @@
 							<ContextMenu name="СписокНоменклатурыКонтекстноеМеню" id="370"/>
 							<AutoCommandBar name="СписокНоменклатурыКоманднаяПанель" id="371"/>
 							<ExtendedTooltip name="СписокНоменклатурыРасширеннаяПодсказка" id="372"/>
-							<SearchStringAddition name="СписокНоменклатурыСтрокаПоиска" id="749">
+							<SearchStringAddition name="СписокНоменклатурыСтрокаПоиска" id="755">
 								<AdditionSource>
 									<Item>СписокНоменклатуры</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокНоменклатурыСтрокаПоискаКонтекстноеМеню" id="750"/>
-								<ExtendedTooltip name="СписокНоменклатурыСтрокаПоискаРасширеннаяПодсказка" id="751"/>
+								<ContextMenu name="СписокНоменклатурыСтрокаПоискаКонтекстноеМеню" id="756"/>
+								<ExtendedTooltip name="СписокНоменклатурыСтрокаПоискаРасширеннаяПодсказка" id="757"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="СписокНоменклатурыСостояниеПросмотра" id="752">
+							<ViewStatusAddition name="СписокНоменклатурыСостояниеПросмотра" id="758">
 								<AdditionSource>
 									<Item>СписокНоменклатуры</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокНоменклатурыСостояниеПросмотраКонтекстноеМеню" id="753"/>
-								<ExtendedTooltip name="СписокНоменклатурыСостояниеПросмотраРасширеннаяПодсказка" id="754"/>
+								<ContextMenu name="СписокНоменклатурыСостояниеПросмотраКонтекстноеМеню" id="759"/>
+								<ExtendedTooltip name="СписокНоменклатурыСостояниеПросмотраРасширеннаяПодсказка" id="760"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="СписокНоменклатурыУправлениеПоиском" id="755">
+							<SearchControlAddition name="СписокНоменклатурыУправлениеПоиском" id="761">
 								<AdditionSource>
 									<Item>СписокНоменклатуры</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокНоменклатурыУправлениеПоискомКонтекстноеМеню" id="756"/>
-								<ExtendedTooltip name="СписокНоменклатурыУправлениеПоискомРасширеннаяПодсказка" id="757"/>
+								<ContextMenu name="СписокНоменклатурыУправлениеПоискомКонтекстноеМеню" id="762"/>
+								<ExtendedTooltip name="СписокНоменклатурыУправлениеПоискомРасширеннаяПодсказка" id="763"/>
 							</SearchControlAddition>
 							<ChildItems>
 								<LabelField name="СписокНоменклатурыНомерСтроки" id="373">
@@ -1186,29 +1193,29 @@
 								</ChildItems>
 							</AutoCommandBar>
 							<ExtendedTooltip name="КомплектацияРасширеннаяПодсказка" id="402"/>
-							<SearchStringAddition name="КомплектацияСтрокаПоиска" id="758">
+							<SearchStringAddition name="КомплектацияСтрокаПоиска" id="764">
 								<AdditionSource>
 									<Item>Комплектация</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="КомплектацияСтрокаПоискаКонтекстноеМеню" id="759"/>
-								<ExtendedTooltip name="КомплектацияСтрокаПоискаРасширеннаяПодсказка" id="760"/>
+								<ContextMenu name="КомплектацияСтрокаПоискаКонтекстноеМеню" id="765"/>
+								<ExtendedTooltip name="КомплектацияСтрокаПоискаРасширеннаяПодсказка" id="766"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="КомплектацияСостояниеПросмотра" id="761">
+							<ViewStatusAddition name="КомплектацияСостояниеПросмотра" id="767">
 								<AdditionSource>
 									<Item>Комплектация</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="КомплектацияСостояниеПросмотраКонтекстноеМеню" id="762"/>
-								<ExtendedTooltip name="КомплектацияСостояниеПросмотраРасширеннаяПодсказка" id="763"/>
+								<ContextMenu name="КомплектацияСостояниеПросмотраКонтекстноеМеню" id="768"/>
+								<ExtendedTooltip name="КомплектацияСостояниеПросмотраРасширеннаяПодсказка" id="769"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="КомплектацияУправлениеПоиском" id="764">
+							<SearchControlAddition name="КомплектацияУправлениеПоиском" id="770">
 								<AdditionSource>
 									<Item>Комплектация</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="КомплектацияУправлениеПоискомКонтекстноеМеню" id="765"/>
-								<ExtendedTooltip name="КомплектацияУправлениеПоискомРасширеннаяПодсказка" id="766"/>
+								<ContextMenu name="КомплектацияУправлениеПоискомКонтекстноеМеню" id="771"/>
+								<ExtendedTooltip name="КомплектацияУправлениеПоискомРасширеннаяПодсказка" id="772"/>
 							</SearchControlAddition>
 							<Events>
 								<Event name="BeforeEditEnd">КомплектацияПередОкончаниемРедактирования</Event>
@@ -1359,29 +1366,29 @@
 								</ChildItems>
 							</AutoCommandBar>
 							<ExtendedTooltip name="СписокДверейРасширеннаяПодсказка" id="444"/>
-							<SearchStringAddition name="СписокДверейСтрокаПоиска" id="767">
+							<SearchStringAddition name="СписокДверейСтрокаПоиска" id="773">
 								<AdditionSource>
 									<Item>СписокДверей</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокДверейСтрокаПоискаКонтекстноеМеню" id="768"/>
-								<ExtendedTooltip name="СписокДверейСтрокаПоискаРасширеннаяПодсказка" id="769"/>
+								<ContextMenu name="СписокДверейСтрокаПоискаКонтекстноеМеню" id="774"/>
+								<ExtendedTooltip name="СписокДверейСтрокаПоискаРасширеннаяПодсказка" id="775"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="СписокДверейСостояниеПросмотра" id="770">
+							<ViewStatusAddition name="СписокДверейСостояниеПросмотра" id="776">
 								<AdditionSource>
 									<Item>СписокДверей</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокДверейСостояниеПросмотраКонтекстноеМеню" id="771"/>
-								<ExtendedTooltip name="СписокДверейСостояниеПросмотраРасширеннаяПодсказка" id="772"/>
+								<ContextMenu name="СписокДверейСостояниеПросмотраКонтекстноеМеню" id="777"/>
+								<ExtendedTooltip name="СписокДверейСостояниеПросмотраРасширеннаяПодсказка" id="778"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="СписокДверейУправлениеПоиском" id="773">
+							<SearchControlAddition name="СписокДверейУправлениеПоиском" id="779">
 								<AdditionSource>
 									<Item>СписокДверей</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокДверейУправлениеПоискомКонтекстноеМеню" id="774"/>
-								<ExtendedTooltip name="СписокДверейУправлениеПоискомРасширеннаяПодсказка" id="775"/>
+								<ContextMenu name="СписокДверейУправлениеПоискомКонтекстноеМеню" id="780"/>
+								<ExtendedTooltip name="СписокДверейУправлениеПоискомРасширеннаяПодсказка" id="781"/>
 							</SearchControlAddition>
 							<Events>
 								<Event name="Selection">СписокДверейВыбор</Event>
@@ -1474,29 +1481,29 @@
 								</ChildItems>
 							</AutoCommandBar>
 							<ExtendedTooltip name="СписокИзделийПоКаталогуРасширеннаяПодсказка" id="495"/>
-							<SearchStringAddition name="СписокИзделийПоКаталогуСтрокаПоиска" id="776">
+							<SearchStringAddition name="СписокИзделийПоКаталогуСтрокаПоиска" id="782">
 								<AdditionSource>
 									<Item>СписокИзделийПоКаталогу</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокИзделийПоКаталогуСтрокаПоискаКонтекстноеМеню" id="777"/>
-								<ExtendedTooltip name="СписокИзделийПоКаталогуСтрокаПоискаРасширеннаяПодсказка" id="778"/>
+								<ContextMenu name="СписокИзделийПоКаталогуСтрокаПоискаКонтекстноеМеню" id="783"/>
+								<ExtendedTooltip name="СписокИзделийПоКаталогуСтрокаПоискаРасширеннаяПодсказка" id="784"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="СписокИзделийПоКаталогуСостояниеПросмотра" id="779">
+							<ViewStatusAddition name="СписокИзделийПоКаталогуСостояниеПросмотра" id="785">
 								<AdditionSource>
 									<Item>СписокИзделийПоКаталогу</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокИзделийПоКаталогуСостояниеПросмотраКонтекстноеМеню" id="780"/>
-								<ExtendedTooltip name="СписокИзделийПоКаталогуСостояниеПросмотраРасширеннаяПодсказка" id="781"/>
+								<ContextMenu name="СписокИзделийПоКаталогуСостояниеПросмотраКонтекстноеМеню" id="786"/>
+								<ExtendedTooltip name="СписокИзделийПоКаталогуСостояниеПросмотраРасширеннаяПодсказка" id="787"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="СписокИзделийПоКаталогуУправлениеПоиском" id="782">
+							<SearchControlAddition name="СписокИзделийПоКаталогуУправлениеПоиском" id="788">
 								<AdditionSource>
 									<Item>СписокИзделийПоКаталогу</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокИзделийПоКаталогуУправлениеПоискомКонтекстноеМеню" id="783"/>
-								<ExtendedTooltip name="СписокИзделийПоКаталогуУправлениеПоискомРасширеннаяПодсказка" id="784"/>
+								<ContextMenu name="СписокИзделийПоКаталогуУправлениеПоискомКонтекстноеМеню" id="789"/>
+								<ExtendedTooltip name="СписокИзделийПоКаталогуУправлениеПоискомРасширеннаяПодсказка" id="790"/>
 							</SearchControlAddition>
 							<Events>
 								<Event name="Selection">ИзделияПоКаталогуВыбор</Event>
@@ -1590,29 +1597,29 @@
 							<ContextMenu name="СкладГотовойПродукцииКонтекстноеМеню" id="603"/>
 							<AutoCommandBar name="СкладГотовойПродукцииКоманднаяПанель" id="604"/>
 							<ExtendedTooltip name="СкладГотовойПродукцииРасширеннаяПодсказка" id="605"/>
-							<SearchStringAddition name="СкладГотовойПродукцииСтрокаПоиска" id="785">
+							<SearchStringAddition name="СкладГотовойПродукцииСтрокаПоиска" id="791">
 								<AdditionSource>
 									<Item>СкладГотовойПродукции</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="СкладГотовойПродукцииСтрокаПоискаКонтекстноеМеню" id="786"/>
-								<ExtendedTooltip name="СкладГотовойПродукцииСтрокаПоискаРасширеннаяПодсказка" id="787"/>
+								<ContextMenu name="СкладГотовойПродукцииСтрокаПоискаКонтекстноеМеню" id="792"/>
+								<ExtendedTooltip name="СкладГотовойПродукцииСтрокаПоискаРасширеннаяПодсказка" id="793"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="СкладГотовойПродукцииСостояниеПросмотра" id="788">
+							<ViewStatusAddition name="СкладГотовойПродукцииСостояниеПросмотра" id="794">
 								<AdditionSource>
 									<Item>СкладГотовойПродукции</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="СкладГотовойПродукцииСостояниеПросмотраКонтекстноеМеню" id="789"/>
-								<ExtendedTooltip name="СкладГотовойПродукцииСостояниеПросмотраРасширеннаяПодсказка" id="790"/>
+								<ContextMenu name="СкладГотовойПродукцииСостояниеПросмотраКонтекстноеМеню" id="795"/>
+								<ExtendedTooltip name="СкладГотовойПродукцииСостояниеПросмотраРасширеннаяПодсказка" id="796"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="СкладГотовойПродукцииУправлениеПоиском" id="791">
+							<SearchControlAddition name="СкладГотовойПродукцииУправлениеПоиском" id="797">
 								<AdditionSource>
 									<Item>СкладГотовойПродукции</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="СкладГотовойПродукцииУправлениеПоискомКонтекстноеМеню" id="792"/>
-								<ExtendedTooltip name="СкладГотовойПродукцииУправлениеПоискомРасширеннаяПодсказка" id="793"/>
+								<ContextMenu name="СкладГотовойПродукцииУправлениеПоискомКонтекстноеМеню" id="798"/>
+								<ExtendedTooltip name="СкладГотовойПродукцииУправлениеПоискомРасширеннаяПодсказка" id="799"/>
 							</SearchControlAddition>
 							<ChildItems>
 								<LabelField name="СкладГотовойПродукцииНомерСтроки" id="606">
@@ -1702,29 +1709,29 @@
 								<Autofill>false</Autofill>
 							</AutoCommandBar>
 							<ExtendedTooltip name="СписокЛистовНоменклатурыРасширеннаяПодсказка" id="694"/>
-							<SearchStringAddition name="СписокЛистовНоменклатурыСтрокаПоиска" id="794">
+							<SearchStringAddition name="СписокЛистовНоменклатурыСтрокаПоиска" id="800">
 								<AdditionSource>
 									<Item>СписокЛистовНоменклатуры</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокЛистовНоменклатурыСтрокаПоискаКонтекстноеМеню" id="795"/>
-								<ExtendedTooltip name="СписокЛистовНоменклатурыСтрокаПоискаРасширеннаяПодсказка" id="796"/>
+								<ContextMenu name="СписокЛистовНоменклатурыСтрокаПоискаКонтекстноеМеню" id="801"/>
+								<ExtendedTooltip name="СписокЛистовНоменклатурыСтрокаПоискаРасширеннаяПодсказка" id="802"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="СписокЛистовНоменклатурыСостояниеПросмотра" id="797">
+							<ViewStatusAddition name="СписокЛистовНоменклатурыСостояниеПросмотра" id="803">
 								<AdditionSource>
 									<Item>СписокЛистовНоменклатуры</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокЛистовНоменклатурыСостояниеПросмотраКонтекстноеМеню" id="798"/>
-								<ExtendedTooltip name="СписокЛистовНоменклатурыСостояниеПросмотраРасширеннаяПодсказка" id="799"/>
+								<ContextMenu name="СписокЛистовНоменклатурыСостояниеПросмотраКонтекстноеМеню" id="804"/>
+								<ExtendedTooltip name="СписокЛистовНоменклатурыСостояниеПросмотраРасширеннаяПодсказка" id="805"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="СписокЛистовНоменклатурыУправлениеПоиском" id="800">
+							<SearchControlAddition name="СписокЛистовНоменклатурыУправлениеПоиском" id="806">
 								<AdditionSource>
 									<Item>СписокЛистовНоменклатуры</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокЛистовНоменклатурыУправлениеПоискомКонтекстноеМеню" id="801"/>
-								<ExtendedTooltip name="СписокЛистовНоменклатурыУправлениеПоискомРасширеннаяПодсказка" id="802"/>
+								<ContextMenu name="СписокЛистовНоменклатурыУправлениеПоискомКонтекстноеМеню" id="807"/>
+								<ExtendedTooltip name="СписокЛистовНоменклатурыУправлениеПоискомРасширеннаяПодсказка" id="808"/>
 							</SearchControlAddition>
 							<ChildItems>
 								<LabelField name="СписокЛистовНоменклатурыНомерСтроки" id="695">
