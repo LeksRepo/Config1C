@@ -6,6 +6,7 @@
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
 		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="ChoiceProcessing">ОбработкаВыбора</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
@@ -97,28 +98,6 @@
 								</InputField>
 							</ChildItems>
 						</UsualGroup>
-						<InputField name="Организация" id="65">
-							<DataPath>Объект.Организация</DataPath>
-							<ContextMenu name="ОрганизацияКонтекстноеМеню" id="66"/>
-							<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="67"/>
-						</InputField>
-						<InputField name="Контрагент" id="13">
-							<DataPath>Объект.Контрагент</DataPath>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Заказчик</v8:content>
-								</v8:item>
-							</Title>
-							<EditMode>EnterOnInput</EditMode>
-							<ContextMenu name="КонтрагентКонтекстноеМеню" id="14"/>
-							<ExtendedTooltip name="КонтрагентРасширеннаяПодсказка" id="15"/>
-						</InputField>
-						<LabelField name="СпецификацияИзделие" id="30">
-							<DataPath>Объект.Спецификация.Изделие</DataPath>
-							<ContextMenu name="СпецификацияИзделиеКонтекстноеМеню" id="31"/>
-							<ExtendedTooltip name="СпецификацияИзделиеРасширеннаяПодсказка" id="32"/>
-						</LabelField>
 						<InputField name="Спецификация" id="22">
 							<DataPath>Объект.Спецификация</DataPath>
 							<EditMode>EnterOnInput</EditMode>
@@ -128,28 +107,89 @@
 								<Event name="OnChange">СпецификацияПриИзменении</Event>
 							</Events>
 						</InputField>
-						<LabelField name="СпецификацияАдресМонтажа" id="33">
-							<DataPath>Объект.Спецификация.АдресМонтажа</DataPath>
-							<ContextMenu name="СпецификацияАдресМонтажаКонтекстноеМеню" id="34"/>
-							<ExtendedTooltip name="СпецификацияАдресМонтажаРасширеннаяПодсказка" id="35"/>
-						</LabelField>
-						<LabelField name="СпецификацияДатаМонтажа" id="36">
-							<DataPath>Объект.Спецификация.ДатаМонтажа</DataPath>
-							<ContextMenu name="СпецификацияДатаМонтажаКонтекстноеМеню" id="37"/>
-							<ExtendedTooltip name="СпецификацияДатаМонтажаРасширеннаяПодсказка" id="38"/>
-						</LabelField>
-						<InputField name="СуммаДокумента" id="25">
-							<DataPath>Объект.СуммаДокумента</DataPath>
+						<InputField name="Заказчик" id="65">
+							<DataPath>Объект.Заказчик</DataPath>
+							<ContextMenu name="ЗаказчикКонтекстноеМеню" id="66"/>
+							<ExtendedTooltip name="ЗаказчикРасширеннаяПодсказка" id="67"/>
+						</InputField>
+						<InputField name="Изделие" id="74">
+							<DataPath>Объект.Изделие</DataPath>
+							<ContextMenu name="ИзделиеКонтекстноеМеню" id="75"/>
+							<ExtendedTooltip name="ИзделиеРасширеннаяПодсказка" id="76"/>
+						</InputField>
+						<InputField name="АдресДоговора" id="68">
+							<DataPath>Объект.АдресДоговора</DataPath>
+							<ContextMenu name="АдресДоговораКонтекстноеМеню" id="69"/>
+							<ExtendedTooltip name="АдресДоговораРасширеннаяПодсказка" id="70"/>
+						</InputField>
+						<InputField name="ДатаМонтажа" id="71">
+							<DataPath>Объект.ДатаМонтажа</DataPath>
+							<ContextMenu name="ДатаМонтажаКонтекстноеМеню" id="72"/>
+							<ExtendedTooltip name="ДатаМонтажаРасширеннаяПодсказка" id="73"/>
+						</InputField>
+						<UsualGroup name="СуммаСкидка" id="80">
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Сумма договора</v8:content>
+									<v8:content>Сумма скидка</v8:content>
 								</v8:item>
 							</Title>
-							<EditMode>EnterOnInput</EditMode>
-							<ContextMenu name="СуммаДокументаКонтекстноеМеню" id="26"/>
-							<ExtendedTooltip name="СуммаДокументаРасширеннаяПодсказка" id="27"/>
-						</InputField>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сумма скидка</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="СуммаСкидкаРасширеннаяПодсказка" id="81"/>
+							<ChildItems>
+								<InputField name="СуммаДокумента" id="25">
+									<DataPath>Объект.СуммаДокумента</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Сумма договора</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="СуммаДокументаКонтекстноеМеню" id="26"/>
+									<ExtendedTooltip name="СуммаДокументаРасширеннаяПодсказка" id="27"/>
+								</InputField>
+								<LabelDecoration name="Декорация2" id="85">
+									<Visible>false</Visible>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>         </v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="Декорация2КонтекстноеМеню" id="86"/>
+									<ExtendedTooltip name="Декорация2РасширеннаяПодсказка" id="87"/>
+								</LabelDecoration>
+								<InputField name="Скидка" id="77">
+									<DataPath>Скидка</DataPath>
+									<Visible>false</Visible>
+									<ContextMenu name="СкидкаКонтекстноеМеню" id="78"/>
+									<ExtendedTooltip name="СкидкаРасширеннаяПодсказка" id="79"/>
+									<Events>
+										<Event name="OnChange">СкидкаПриИзменении</Event>
+									</Events>
+								</InputField>
+								<LabelDecoration name="Декорация1" id="82">
+									<Visible>false</Visible>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>%</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="Декорация1КонтекстноеМеню" id="83"/>
+									<ExtendedTooltip name="Декорация1РасширеннаяПодсказка" id="84"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
 					</ChildItems>
 				</UsualGroup>
 				<UsualGroup name="ПраваяГруппа" id="41">
@@ -197,30 +237,33 @@
 								<Autofill>false</Autofill>
 							</AutoCommandBar>
 							<ExtendedTooltip name="ИзменениеДоговораРасширеннаяПодсказка" id="48"/>
-							<SearchStringAddition name="ИзменениеДоговораСтрокаПоиска" id="68">
+							<SearchStringAddition name="ИзменениеДоговораСтрокаПоиска" id="88">
 								<AdditionSource>
 									<Item>ИзменениеДоговора</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="ИзменениеДоговораСтрокаПоискаКонтекстноеМеню" id="69"/>
-								<ExtendedTooltip name="ИзменениеДоговораСтрокаПоискаРасширеннаяПодсказка" id="70"/>
+								<ContextMenu name="ИзменениеДоговораСтрокаПоискаКонтекстноеМеню" id="89"/>
+								<ExtendedTooltip name="ИзменениеДоговораСтрокаПоискаРасширеннаяПодсказка" id="90"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="ИзменениеДоговораСостояниеПросмотра" id="71">
+							<ViewStatusAddition name="ИзменениеДоговораСостояниеПросмотра" id="91">
 								<AdditionSource>
 									<Item>ИзменениеДоговора</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="ИзменениеДоговораСостояниеПросмотраКонтекстноеМеню" id="72"/>
-								<ExtendedTooltip name="ИзменениеДоговораСостояниеПросмотраРасширеннаяПодсказка" id="73"/>
+								<ContextMenu name="ИзменениеДоговораСостояниеПросмотраКонтекстноеМеню" id="92"/>
+								<ExtendedTooltip name="ИзменениеДоговораСостояниеПросмотраРасширеннаяПодсказка" id="93"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="ИзменениеДоговораУправлениеПоиском" id="74">
+							<SearchControlAddition name="ИзменениеДоговораУправлениеПоиском" id="94">
 								<AdditionSource>
 									<Item>ИзменениеДоговора</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="ИзменениеДоговораУправлениеПоискомКонтекстноеМеню" id="75"/>
-								<ExtendedTooltip name="ИзменениеДоговораУправлениеПоискомРасширеннаяПодсказка" id="76"/>
+								<ContextMenu name="ИзменениеДоговораУправлениеПоискомКонтекстноеМеню" id="95"/>
+								<ExtendedTooltip name="ИзменениеДоговораУправлениеПоискомРасширеннаяПодсказка" id="96"/>
 							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">ИзменениеДоговораВыбор</Event>
+							</Events>
 							<ChildItems>
 								<LabelField name="ИзменениеДоговораСсылка" id="49">
 									<DataPath>ИзменениеДоговора.Ref</DataPath>
@@ -273,30 +316,33 @@
 								<Autofill>false</Autofill>
 							</AutoCommandBar>
 							<ExtendedTooltip name="ПлатежиДоговораРасширеннаяПодсказка" id="58"/>
-							<SearchStringAddition name="ПлатежиДоговораСтрокаПоиска" id="77">
+							<SearchStringAddition name="ПлатежиДоговораСтрокаПоиска" id="97">
 								<AdditionSource>
 									<Item>ПлатежиДоговора</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="ПлатежиДоговораСтрокаПоискаКонтекстноеМеню" id="78"/>
-								<ExtendedTooltip name="ПлатежиДоговораСтрокаПоискаРасширеннаяПодсказка" id="79"/>
+								<ContextMenu name="ПлатежиДоговораСтрокаПоискаКонтекстноеМеню" id="98"/>
+								<ExtendedTooltip name="ПлатежиДоговораСтрокаПоискаРасширеннаяПодсказка" id="99"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="ПлатежиДоговораСостояниеПросмотра" id="80">
+							<ViewStatusAddition name="ПлатежиДоговораСостояниеПросмотра" id="100">
 								<AdditionSource>
 									<Item>ПлатежиДоговора</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="ПлатежиДоговораСостояниеПросмотраКонтекстноеМеню" id="81"/>
-								<ExtendedTooltip name="ПлатежиДоговораСостояниеПросмотраРасширеннаяПодсказка" id="82"/>
+								<ContextMenu name="ПлатежиДоговораСостояниеПросмотраКонтекстноеМеню" id="101"/>
+								<ExtendedTooltip name="ПлатежиДоговораСостояниеПросмотраРасширеннаяПодсказка" id="102"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="ПлатежиДоговораУправлениеПоиском" id="83">
+							<SearchControlAddition name="ПлатежиДоговораУправлениеПоиском" id="103">
 								<AdditionSource>
 									<Item>ПлатежиДоговора</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="ПлатежиДоговораУправлениеПоискомКонтекстноеМеню" id="84"/>
-								<ExtendedTooltip name="ПлатежиДоговораУправлениеПоискомРасширеннаяПодсказка" id="85"/>
+								<ContextMenu name="ПлатежиДоговораУправлениеПоискомКонтекстноеМеню" id="104"/>
+								<ExtendedTooltip name="ПлатежиДоговораУправлениеПоискомРасширеннаяПодсказка" id="105"/>
 							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">ПлатежиДоговораВыбор</Event>
+							</Events>
 							<ChildItems>
 								<LabelField name="ПлатежиДоговораСсылка" id="59">
 									<DataPath>ПлатежиДоговора.Ref</DataPath>
@@ -370,7 +416,6 @@
 	Документ.ДополнительноеСоглашениеДилера КАК ДополнительноеСоглашениеДилера
 ГДЕ
 	ДополнительноеСоглашениеДилера.Договор = &amp;Договор
-	И ДополнительноеСоглашениеДилера.Проведен
 	И НЕ ДополнительноеСоглашениеДилера.ПометкаУдаления</QueryText>
 				<ListSettings>
 					<dcsset:filter>
@@ -408,7 +453,6 @@
 	Документ.ПлатежДилера КАК ПлатежДилера
 ГДЕ
 	ПлатежДилера.ДоговорДопСоглашение = &amp;Договор
-	И ПлатежДилера.Проведен
 	И НЕ ПлатежДилера.ПометкаУдаления</QueryText>
 				<ListSettings>
 					<dcsset:filter>
@@ -425,6 +469,22 @@
 					</dcsset:conditionalAppearance>
 				</ListSettings>
 			</Settings>
+		</Attribute>
+		<Attribute name="Скидка" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Скидка</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>2</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
 		</Attribute>
 	</Attributes>
 </Form>
