@@ -11,7 +11,12 @@
 			</Button>
 			<Button name="ФормаНесовместимость" id="318">
 				<Type>CommandBarButton</Type>
+				<Representation>PictureAndText</Representation>
 				<CommandName>Form.Command.Несовместимость</CommandName>
+				<Picture>
+					<xr:Ref>CommonPicture.СинхронизацияДанныхКоллизия</xr:Ref>
+					<xr:LoadTransparent>true</xr:LoadTransparent>
+				</Picture>
 				<ExtendedTooltip name="ФормаНесовместимостьРасширеннаяПодсказка" id="319"/>
 			</Button>
 		</ChildItems>
@@ -124,40 +129,9 @@
 					<ContextMenu name="ВидИзделияКонтекстноеМеню" id="300"/>
 					<ExtendedTooltip name="ВидИзделияРасширеннаяПодсказка" id="301"/>
 					<Events>
-						<Event name="OnChange">ВидИзделияПриИзменении</Event>
+						<Event name="OnChange">ВидИзделияПоКаталогуПриИзменении</Event>
 					</Events>
 				</InputField>
-				<CheckBoxField name="НаВсеИзделие" id="312">
-					<DataPath>Объект.НаВсеИзделие</DataPath>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Использовать для крыши</v8:content>
-						</v8:item>
-					</ToolTip>
-					<ToolTipRepresentation>None</ToolTipRepresentation>
-					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="НаВсеИзделиеКонтекстноеМеню" id="313"/>
-					<ExtendedTooltip name="НаВсеИзделиеРасширеннаяПодсказка" id="314"/>
-				</CheckBoxField>
-				<CheckBoxField name="УчитыватьПол" id="315">
-					<DataPath>Объект.УчитыватьПол</DataPath>
-					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="УчитыватьПолКонтекстноеМеню" id="316"/>
-					<ExtendedTooltip name="УчитыватьПолРасширеннаяПодсказка" id="317"/>
-				</CheckBoxField>
-				<CheckBoxField name="НеВлияетНаОсновной" id="320">
-					<DataPath>Объект.НеВлияетНаОсновной</DataPath>
-					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="НеВлияетНаОсновнойКонтекстноеМеню" id="321"/>
-					<ExtendedTooltip name="НеВлияетНаОсновнойРасширеннаяПодсказка" id="322"/>
-				</CheckBoxField>
-				<CheckBoxField name="Угловой" id="326">
-					<DataPath>Объект.Угловой</DataPath>
-					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="УгловойКонтекстноеМеню" id="327"/>
-					<ExtendedTooltip name="УгловойРасширеннаяПодсказка" id="328"/>
-				</CheckBoxField>
 			</ChildItems>
 		</UsualGroup>
 		<UsualGroup name="ОсновнаяГруппа" id="121">
@@ -400,6 +374,289 @@
 								</UsualGroup>
 							</ChildItems>
 						</UsualGroup>
+						<UsualGroup name="ГруппаНастройки" id="329">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Настройки</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа настройки</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>StrongSeparation</Representation>
+							<ExtendedTooltip name="ГруппаНастройкиРасширеннаяПодсказка" id="330"/>
+							<ChildItems>
+								<UsualGroup name="ГруппаНастройкиОсн" id="339">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа настройки осн</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа настройки осн</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаНастройкиОснРасширеннаяПодсказка" id="340"/>
+									<ChildItems>
+										<InputField name="ВидИзделияПоКаталогу" id="331">
+											<DataPath>Объект.ВидИзделияПоКаталогу</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Вид изделия</v8:content>
+												</v8:item>
+											</Title>
+											<HorizontalStretch>false</HorizontalStretch>
+											<ClearButton>false</ClearButton>
+											<OpenButton>false</OpenButton>
+											<ListChoiceMode>true</ListChoiceMode>
+											<ChoiceList>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation/>
+														<Value xsi:type="xr:DesignTimeRef">Catalog.ВидыИзделийПоКаталогу.КухняВерхний</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation/>
+														<Value xsi:type="xr:DesignTimeRef">Catalog.ВидыИзделийПоКаталогу.КухняНижний</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation/>
+														<Value xsi:type="xr:DesignTimeRef">Catalog.ВидыИзделийПоКаталогу.ЗадняяСтенка</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation/>
+														<Value xsi:type="xr:DesignTimeRef">Catalog.ВидыИзделийПоКаталогу.Крыша</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation/>
+														<Value xsi:type="xr:DesignTimeRef">Catalog.ВидыИзделийПоКаталогу.Козырек</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation/>
+														<Value xsi:type="xr:DesignTimeRef">Catalog.ВидыИзделийПоКаталогу.СтенаСверху</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Боковой элемент</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xr:DesignTimeRef">Catalog.ВидыИзделийПоКаталогу.ЛевыйБоковойЭлемент</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Боковая панель через отбойную планку</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xr:DesignTimeRef">Catalog.ВидыИзделийПоКаталогу.БоковаяПанельЧерезОтбойнуюПланкуСлева</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Короб боковой</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xr:DesignTimeRef">Catalog.ВидыИзделийПоКаталогу.КоробБоковойСлева</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Отбойная планка</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xr:DesignTimeRef">Catalog.ВидыИзделийПоКаталогу.ОтбойнаяПланкаСлева</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Фальш панель</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xr:DesignTimeRef">Catalog.ВидыИзделийПоКаталогу.ФальшПанельСлева</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation>
+															<v8:item>
+																<v8:lang>ru</v8:lang>
+																<v8:content>Стена с боку</v8:content>
+															</v8:item>
+														</Presentation>
+														<Value xsi:type="xr:DesignTimeRef">Catalog.ВидыИзделийПоКаталогу.СтенаСлева</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation/>
+														<Value xsi:type="xr:DesignTimeRef">Catalog.ВидыИзделийПоКаталогу.ОсновнойЭлемент</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation/>
+														<Value xsi:type="xr:DesignTimeRef">Catalog.ВидыИзделийПоКаталогу.Пол</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation/>
+														<Value xsi:type="xr:DesignTimeRef">Catalog.ВидыИзделийПоКаталогу.ПолКороб</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation/>
+														<Value xsi:type="xr:DesignTimeRef">Catalog.ВидыИзделийПоКаталогу.ПолПодиум</Value>
+													</xr:Value>
+												</xr:Item>
+												<xr:Item>
+													<xr:Presentation/>
+													<xr:CheckState>0</xr:CheckState>
+													<xr:Value xsi:type="FormChoiceListDesTimeValue">
+														<Presentation/>
+														<Value xsi:type="xr:DesignTimeRef">Catalog.ВидыИзделийПоКаталогу.СтенаСнизу</Value>
+													</xr:Value>
+												</xr:Item>
+											</ChoiceList>
+											<ContextMenu name="ВидИзделияПоКаталогуКонтекстноеМеню" id="332"/>
+											<ExtendedTooltip name="ВидИзделияПоКаталогуРасширеннаяПодсказка" id="333"/>
+											<Events>
+												<Event name="OnChange">ВидИзделияПоКаталогуПриИзменении</Event>
+											</Events>
+										</InputField>
+										<CheckBoxField name="Активный" id="336">
+											<DataPath>Объект.Активный</DataPath>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="АктивныйКонтекстноеМеню" id="337"/>
+											<ExtendedTooltip name="АктивныйРасширеннаяПодсказка" id="338"/>
+										</CheckBoxField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="ГруппаНастройкиВнутр" id="334">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа настройки внутр</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа настройки внутр</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаНастройкиВнутрРасширеннаяПодсказка" id="335"/>
+									<ChildItems>
+										<CheckBoxField name="НаВсеИзделие" id="312">
+											<DataPath>Объект.НаВсеИзделие</DataPath>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Использовать для крыши</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ToolTipRepresentation>None</ToolTipRepresentation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="НаВсеИзделиеКонтекстноеМеню" id="313"/>
+											<ExtendedTooltip name="НаВсеИзделиеРасширеннаяПодсказка" id="314"/>
+										</CheckBoxField>
+										<CheckBoxField name="НеВлияетНаОсновной" id="320">
+											<DataPath>Объект.НеВлияетНаОсновной</DataPath>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="НеВлияетНаОсновнойКонтекстноеМеню" id="321"/>
+											<ExtendedTooltip name="НеВлияетНаОсновнойРасширеннаяПодсказка" id="322"/>
+										</CheckBoxField>
+										<CheckBoxField name="Угловой" id="326">
+											<DataPath>Объект.Угловой</DataPath>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="УгловойКонтекстноеМеню" id="327"/>
+											<ExtendedTooltip name="УгловойРасширеннаяПодсказка" id="328"/>
+										</CheckBoxField>
+									</ChildItems>
+								</UsualGroup>
+								<CheckBoxField name="УчитыватьПол" id="315">
+									<DataPath>Объект.УчитыватьПол</DataPath>
+									<Visible>false</Visible>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="УчитыватьПолКонтекстноеМеню" id="316"/>
+									<ExtendedTooltip name="УчитыватьПолРасширеннаяПодсказка" id="317"/>
+								</CheckBoxField>
+							</ChildItems>
+						</UsualGroup>
 					</ChildItems>
 				</UsualGroup>
 				<UsualGroup name="ГруппаИзображение" id="123">
@@ -512,29 +769,29 @@
 								</ChildItems>
 							</AutoCommandBar>
 							<ExtendedTooltip name="СписокМатериалыРасширеннаяПодсказка" id="131"/>
-							<SearchStringAddition name="СписокМатериалыСтрокаПоиска" id="329">
+							<SearchStringAddition name="СписокМатериалыСтрокаПоиска" id="341">
 								<AdditionSource>
 									<Item>СписокМатериалы</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокМатериалыСтрокаПоискаКонтекстноеМеню" id="330"/>
-								<ExtendedTooltip name="СписокМатериалыСтрокаПоискаРасширеннаяПодсказка" id="331"/>
+								<ContextMenu name="СписокМатериалыСтрокаПоискаКонтекстноеМеню" id="342"/>
+								<ExtendedTooltip name="СписокМатериалыСтрокаПоискаРасширеннаяПодсказка" id="343"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="СписокМатериалыСостояниеПросмотра" id="332">
+							<ViewStatusAddition name="СписокМатериалыСостояниеПросмотра" id="344">
 								<AdditionSource>
 									<Item>СписокМатериалы</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокМатериалыСостояниеПросмотраКонтекстноеМеню" id="333"/>
-								<ExtendedTooltip name="СписокМатериалыСостояниеПросмотраРасширеннаяПодсказка" id="334"/>
+								<ContextMenu name="СписокМатериалыСостояниеПросмотраКонтекстноеМеню" id="345"/>
+								<ExtendedTooltip name="СписокМатериалыСостояниеПросмотраРасширеннаяПодсказка" id="346"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="СписокМатериалыУправлениеПоиском" id="335">
+							<SearchControlAddition name="СписокМатериалыУправлениеПоиском" id="347">
 								<AdditionSource>
 									<Item>СписокМатериалы</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокМатериалыУправлениеПоискомКонтекстноеМеню" id="336"/>
-								<ExtendedTooltip name="СписокМатериалыУправлениеПоискомРасширеннаяПодсказка" id="337"/>
+								<ContextMenu name="СписокМатериалыУправлениеПоискомКонтекстноеМеню" id="348"/>
+								<ExtendedTooltip name="СписокМатериалыУправлениеПоискомРасширеннаяПодсказка" id="349"/>
 							</SearchControlAddition>
 							<Events>
 								<Event name="ChoiceProcessing">СписокМатериалыОбработкаВыбора</Event>
@@ -640,29 +897,29 @@
 								</ChildItems>
 							</AutoCommandBar>
 							<ExtendedTooltip name="СписокЯщикиРасширеннаяПодсказка" id="222"/>
-							<SearchStringAddition name="СписокЯщикиСтрокаПоиска" id="338">
+							<SearchStringAddition name="СписокЯщикиСтрокаПоиска" id="350">
 								<AdditionSource>
 									<Item>СписокЯщики</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокЯщикиСтрокаПоискаКонтекстноеМеню" id="339"/>
-								<ExtendedTooltip name="СписокЯщикиСтрокаПоискаРасширеннаяПодсказка" id="340"/>
+								<ContextMenu name="СписокЯщикиСтрокаПоискаКонтекстноеМеню" id="351"/>
+								<ExtendedTooltip name="СписокЯщикиСтрокаПоискаРасширеннаяПодсказка" id="352"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="СписокЯщикиСостояниеПросмотра" id="341">
+							<ViewStatusAddition name="СписокЯщикиСостояниеПросмотра" id="353">
 								<AdditionSource>
 									<Item>СписокЯщики</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокЯщикиСостояниеПросмотраКонтекстноеМеню" id="342"/>
-								<ExtendedTooltip name="СписокЯщикиСостояниеПросмотраРасширеннаяПодсказка" id="343"/>
+								<ContextMenu name="СписокЯщикиСостояниеПросмотраКонтекстноеМеню" id="354"/>
+								<ExtendedTooltip name="СписокЯщикиСостояниеПросмотраРасширеннаяПодсказка" id="355"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="СписокЯщикиУправлениеПоиском" id="344">
+							<SearchControlAddition name="СписокЯщикиУправлениеПоиском" id="356">
 								<AdditionSource>
 									<Item>СписокЯщики</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокЯщикиУправлениеПоискомКонтекстноеМеню" id="345"/>
-								<ExtendedTooltip name="СписокЯщикиУправлениеПоискомРасширеннаяПодсказка" id="346"/>
+								<ContextMenu name="СписокЯщикиУправлениеПоискомКонтекстноеМеню" id="357"/>
+								<ExtendedTooltip name="СписокЯщикиУправлениеПоискомРасширеннаяПодсказка" id="358"/>
 							</SearchControlAddition>
 							<Events>
 								<Event name="ChoiceProcessing">СписокЯщикиОбработкаВыбора</Event>
@@ -762,29 +1019,29 @@
 							<ContextMenu name="СписокНоменклатурыКонтекстноеМеню" id="191"/>
 							<AutoCommandBar name="СписокНоменклатурыКоманднаяПанель" id="192"/>
 							<ExtendedTooltip name="СписокНоменклатурыРасширеннаяПодсказка" id="193"/>
-							<SearchStringAddition name="СписокНоменклатурыСтрокаПоиска" id="347">
+							<SearchStringAddition name="СписокНоменклатурыСтрокаПоиска" id="359">
 								<AdditionSource>
 									<Item>СписокНоменклатуры</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокНоменклатурыСтрокаПоискаКонтекстноеМеню" id="348"/>
-								<ExtendedTooltip name="СписокНоменклатурыСтрокаПоискаРасширеннаяПодсказка" id="349"/>
+								<ContextMenu name="СписокНоменклатурыСтрокаПоискаКонтекстноеМеню" id="360"/>
+								<ExtendedTooltip name="СписокНоменклатурыСтрокаПоискаРасширеннаяПодсказка" id="361"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="СписокНоменклатурыСостояниеПросмотра" id="350">
+							<ViewStatusAddition name="СписокНоменклатурыСостояниеПросмотра" id="362">
 								<AdditionSource>
 									<Item>СписокНоменклатуры</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокНоменклатурыСостояниеПросмотраКонтекстноеМеню" id="351"/>
-								<ExtendedTooltip name="СписокНоменклатурыСостояниеПросмотраРасширеннаяПодсказка" id="352"/>
+								<ContextMenu name="СписокНоменклатурыСостояниеПросмотраКонтекстноеМеню" id="363"/>
+								<ExtendedTooltip name="СписокНоменклатурыСостояниеПросмотраРасширеннаяПодсказка" id="364"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="СписокНоменклатурыУправлениеПоиском" id="353">
+							<SearchControlAddition name="СписокНоменклатурыУправлениеПоиском" id="365">
 								<AdditionSource>
 									<Item>СписокНоменклатуры</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокНоменклатурыУправлениеПоискомКонтекстноеМеню" id="354"/>
-								<ExtendedTooltip name="СписокНоменклатурыУправлениеПоискомРасширеннаяПодсказка" id="355"/>
+								<ContextMenu name="СписокНоменклатурыУправлениеПоискомКонтекстноеМеню" id="366"/>
+								<ExtendedTooltip name="СписокНоменклатурыУправлениеПоискомРасширеннаяПодсказка" id="367"/>
 							</SearchControlAddition>
 							<ChildItems>
 								<LabelField name="СписокНоменклатурыНомерСтроки" id="194">
@@ -849,29 +1106,29 @@
 							<ContextMenu name="СписокДопЭлементовКонтекстноеМеню" id="290"/>
 							<AutoCommandBar name="СписокДопЭлементовКоманднаяПанель" id="291"/>
 							<ExtendedTooltip name="СписокДопЭлементовРасширеннаяПодсказка" id="292"/>
-							<SearchStringAddition name="СписокДопЭлементовСтрокаПоиска" id="356">
+							<SearchStringAddition name="СписокДопЭлементовСтрокаПоиска" id="368">
 								<AdditionSource>
 									<Item>СписокДопЭлементов</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокДопЭлементовСтрокаПоискаКонтекстноеМеню" id="357"/>
-								<ExtendedTooltip name="СписокДопЭлементовСтрокаПоискаРасширеннаяПодсказка" id="358"/>
+								<ContextMenu name="СписокДопЭлементовСтрокаПоискаКонтекстноеМеню" id="369"/>
+								<ExtendedTooltip name="СписокДопЭлементовСтрокаПоискаРасширеннаяПодсказка" id="370"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="СписокДопЭлементовСостояниеПросмотра" id="359">
+							<ViewStatusAddition name="СписокДопЭлементовСостояниеПросмотра" id="371">
 								<AdditionSource>
 									<Item>СписокДопЭлементов</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокДопЭлементовСостояниеПросмотраКонтекстноеМеню" id="360"/>
-								<ExtendedTooltip name="СписокДопЭлементовСостояниеПросмотраРасширеннаяПодсказка" id="361"/>
+								<ContextMenu name="СписокДопЭлементовСостояниеПросмотраКонтекстноеМеню" id="372"/>
+								<ExtendedTooltip name="СписокДопЭлементовСостояниеПросмотраРасширеннаяПодсказка" id="373"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="СписокДопЭлементовУправлениеПоиском" id="362">
+							<SearchControlAddition name="СписокДопЭлементовУправлениеПоиском" id="374">
 								<AdditionSource>
 									<Item>СписокДопЭлементов</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокДопЭлементовУправлениеПоискомКонтекстноеМеню" id="363"/>
-								<ExtendedTooltip name="СписокДопЭлементовУправлениеПоискомРасширеннаяПодсказка" id="364"/>
+								<ContextMenu name="СписокДопЭлементовУправлениеПоискомКонтекстноеМеню" id="375"/>
+								<ExtendedTooltip name="СписокДопЭлементовУправлениеПоискомРасширеннаяПодсказка" id="376"/>
 							</SearchControlAddition>
 							<ChildItems>
 								<LabelField name="СписокДопЭлементовНомерСтроки" id="293">
