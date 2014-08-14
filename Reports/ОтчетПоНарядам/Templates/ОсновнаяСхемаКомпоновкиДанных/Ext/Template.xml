@@ -39,8 +39,34 @@
 			<field>Субконто3</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
+			<dataPath>Подразделение</dataPath>
+			<field>Подразделение</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СчетДтЧтение</dataPath>
+			<field>СчетДтЧтение</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СчетКтЧтение</dataPath>
+			<field>СчетКтЧтение</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Норматив</dataPath>
+			<field>Норматив</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаДетали</dataPath>
+			<field>СуммаДетали</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Детали</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
 			<dataPath>Дата</dataPath>
-			<field>Период</field>
+			<field>Дата</field>
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -53,122 +79,73 @@
 			</role>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Подразделение</dataPath>
-			<field>Подразделение</field>
-			<role>
-				<dcscom:dimension>true</dcscom:dimension>
-			</role>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>Показатель</dataPath>
-			<field>Показатель</field>
+			<dataPath>СуммаВсего</dataPath>
+			<field>СуммаВсего</field>
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Показатель</v8:content>
+					<v8:content>Всего</v8:content>
 				</v8:item>
 			</title>
-			<role>
-				<dcscom:dimension>true</dcscom:dimension>
-				<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
-			</role>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>Сумма</dataPath>
-			<field>Сумма</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Сумма</v8:content>
-				</v8:item>
-			</title>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>СчетДтЧтение</dataPath>
-			<field>СчетДтЧтение</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>СчетКтЧтение</dataPath>
-			<field>СчетКтЧтение</field>
-		</field>
-		<dataSource>ИсточникДанных1</dataSource>
-		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
-	УправленческийОбороты.Подразделение КАК Подразделение,
-	НАЧАЛОПЕРИОДА(УправленческийОбороты.Период, ДЕНЬ) КАК Период,
-	УправленческийОбороты.Субконто1 КАК Показатель,
-	УправленческийОбороты.СуммаОборот КАК Сумма
-ИЗ
-	РегистрБухгалтерии.Управленческий.Обороты(&amp;НачалоПериода, &amp;КонецПериода, День, Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ПоказателиПодразделения), , Подразделение = &amp;Подразделение, , ) КАК УправленческийОбороты</query>
-	</dataSet>
-	<dataSet xsi:type="DataSetQuery">
-		<name>НаборДанных2</name>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>Дата</dataPath>
-			<field>Дата</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Дата</v8:content>
-				</v8:item>
-			</title>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>Норматив</dataPath>
-			<field>Норматив</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>НормативныйМаксимум</dataPath>
-			<field>НормативныйМаксимум</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>Подразделение</dataPath>
-			<field>Подразделение</field>
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
-	ПлановыйЛимитСрезПоследних.Норматив КАК Норматив,
-	ПлановыйЛимитСрезПоследних.НормативныйМаксимум КАК НормативныйМаксимум,
-	ПлановыйЛимитСрезПоследних.Подразделение,
-	&amp;Дата КАК Дата
-{ВЫБРАТЬ
-	Дата,
-	Норматив,
-	НормативныйМаксимум}
+	УправленческийОбороты.Период КАК Дата,
+	МАКСИМУМ(ПлановыйЛимит.Норматив) КАК Норматив,
+	СУММА(ВЫБОР
+			КОГДА УправленческийОбороты.Субконто1 = ЗНАЧЕНИЕ(Перечисление.ВидыПоказателейПодразделений.СуммаДетали)
+				ТОГДА УправленческийОбороты.СуммаОборот
+			ИНАЧЕ 0
+		КОНЕЦ) КАК СуммаДетали,
+	СУММА(УправленческийОбороты.СуммаОборот) КАК СуммаВсего
 ИЗ
-	РегистрСведений.ПлановыйЛимит.СрезПоследних(&amp;Дата, Подразделение = &amp;Подразделение) КАК ПлановыйЛимитСрезПоследних
-{ГДЕ
-	(&amp;Дата),
-	ПлановыйЛимитСрезПоследних.Норматив,
-	ПлановыйЛимитСрезПоследних.НормативныйМаксимум}</query>
+	РегистрБухгалтерии.Управленческий.Обороты(&amp;НачалоПериода, &amp;КонецПериода, День, Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ПоказателиПодразделения), , Подразделение = &amp;Подразделение, , ) КАК УправленческийОбороты
+		ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.ПлановыйЛимит КАК ПлановыйЛимит
+		ПО (ПлановыйЛимит.Период В
+				(ВЫБРАТЬ ПЕРВЫЕ 1
+					ПлановыйЛимит.Период КАК Период
+				ИЗ
+					РегистрСведений.ПлановыйЛимит КАК ПлановыйЛимит
+				ГДЕ
+					ПлановыйЛимит.Период &lt;= УправленческийОбороты.Период
+					И ПлановыйЛимит.Подразделение = &amp;Подразделение
+				УПОРЯДОЧИТЬ ПО
+					Период УБЫВ))
+			И УправленческийОбороты.Подразделение = ПлановыйЛимит.Подразделение
+
+СГРУППИРОВАТЬ ПО
+	УправленческийОбороты.Период</query>
 	</dataSet>
-	<dataSetLink>
-		<sourceDataSet>НаборДанных1</sourceDataSet>
-		<destinationDataSet>НаборДанных2</destinationDataSet>
-		<sourceExpression>Дата</sourceExpression>
-		<destinationExpression>Дата</destinationExpression>
-		<parameter>Дата</parameter>
-		<parameterListAllowed>false</parameterListAllowed>
-	</dataSetLink>
-	<dataSetLink>
-		<sourceDataSet>НаборДанных1</sourceDataSet>
-		<destinationDataSet>НаборДанных2</destinationDataSet>
-		<sourceExpression>Подразделение</sourceExpression>
-		<destinationExpression>Подразделение</destinationExpression>
-		<parameter>Подразделение</parameter>
-		<parameterListAllowed>false</parameterListAllowed>
-	</dataSetLink>
 	<totalField>
 		<dataPath>Норматив</dataPath>
 		<expression>Сумма(Норматив)</expression>
 	</totalField>
 	<totalField>
-		<dataPath>НормативныйМаксимум</dataPath>
-		<expression>Сумма(НормативныйМаксимум)</expression>
+		<dataPath>СуммаДетали</dataPath>
+		<expression>Сумма(СуммаДетали)</expression>
 	</totalField>
 	<totalField>
-		<dataPath>Сумма</dataPath>
-		<expression>Сумма(Сумма)</expression>
+		<dataPath>СуммаВсего</dataPath>
+		<expression>Сумма(СуммаВсего)</expression>
 	</totalField>
+	<parameter>
+		<name>ПериодОтчета</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
 	<parameter>
 		<name>НачалоПериода</name>
 		<title xsi:type="v8:LocalStringType">
@@ -218,66 +195,6 @@
 		</valueType>
 		<value xsi:nil="true"/>
 		<useRestriction>false</useRestriction>
-		<inputParameters>
-			<dcscor:item>
-				<dcscor:parameter>БыстрыйВыбор</dcscor:parameter>
-				<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
-			</dcscor:item>
-		</inputParameters>
-		<denyIncompleteValues>true</denyIncompleteValues>
-		<use>Always</use>
-	</parameter>
-	<parameter>
-		<name>ПериодОтчета</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Период</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>v8:StandardPeriod</v8:Type>
-		</valueType>
-		<value xsi:type="v8:StandardPeriod">
-			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
-			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
-			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
-		</value>
-		<useRestriction>false</useRestriction>
-	</parameter>
-	<parameter>
-		<name>Период</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Период</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>xs:dateTime</v8:Type>
-			<v8:DateQualifiers>
-				<v8:DateFractions>DateTime</v8:DateFractions>
-			</v8:DateQualifiers>
-		</valueType>
-		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-		<useRestriction>false</useRestriction>
-	</parameter>
-	<parameter>
-		<name>Дата</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Дата</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>xs:dateTime</v8:Type>
-			<v8:DateQualifiers>
-				<v8:DateFractions>DateTime</v8:DateFractions>
-			</v8:DateQualifiers>
-		</valueType>
-		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-		<useRestriction>true</useRestriction>
 	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
@@ -285,22 +202,16 @@
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 			<dcsset:selection>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>НормативныйМаксимум</dcsset:field>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Норматив</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Сумма</dcsset:field>
+					<dcsset:field>СуммаДетали</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СуммаВсего</dcsset:field>
 				</dcsset:item>
 			</dcsset:selection>
 			<dcsset:dataParameters>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:use>false</dcscor:use>
-					<dcscor:parameter>Подразделение</dcscor:parameter>
-					<dcscor:value xsi:nil="true"/>
-					<dcsset:userSettingID>e446b8aa-b2dc-467c-851f-fb0710e6e813</dcsset:userSettingID>
-				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:use>false</dcscor:use>
 					<dcscor:parameter>ПериодОтчета</dcscor:parameter>
@@ -310,6 +221,18 @@
 						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
 					</dcscor:value>
 					<dcsset:userSettingID>0fcaf221-f1c6-4480-a249-4458a26c97fe</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>КонецПериода</dcscor:parameter>
+					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
+					<dcsset:userSettingID>e446b8aa-b2dc-467c-851f-fb0710e6e813</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>Подразделение</dcscor:parameter>
+					<dcscor:value xsi:nil="true"/>
+					<dcsset:userSettingID>60613483-10af-4ae0-8b19-63d3ae266944</dcsset:userSettingID>
 				</dcscor:item>
 			</dcsset:dataParameters>
 			<dcsset:outputParameters>
