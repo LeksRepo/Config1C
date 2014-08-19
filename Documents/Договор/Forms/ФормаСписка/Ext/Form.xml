@@ -32,29 +32,29 @@
 				<Autofill>false</Autofill>
 			</AutoCommandBar>
 			<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="4"/>
-			<SearchStringAddition name="СписокСтрокаПоиска" id="44">
+			<SearchStringAddition name="СписокСтрокаПоиска" id="47">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="45"/>
-				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="46"/>
+				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="48"/>
+				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="49"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокСостояниеПросмотра" id="47">
+			<ViewStatusAddition name="СписокСостояниеПросмотра" id="50">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="48"/>
-				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="49"/>
+				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="51"/>
+				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="52"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокУправлениеПоиском" id="50">
+			<SearchControlAddition name="СписокУправлениеПоиском" id="53">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="51"/>
-				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="52"/>
+				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="54"/>
+				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="55"/>
 			</SearchControlAddition>
 			<ChildItems>
 				<LabelField name="Дата" id="5">
@@ -137,6 +137,11 @@
 					<ContextMenu name="СтатусКонтекстноеМеню" id="36"/>
 					<ExtendedTooltip name="СтатусРасширеннаяПодсказка" id="37"/>
 				</LabelField>
+				<LabelField name="Монтажник" id="44">
+					<DataPath>Список.Монтажник</DataPath>
+					<ContextMenu name="МонтажникКонтекстноеМеню" id="45"/>
+					<ExtendedTooltip name="МонтажникРасширеннаяПодсказка" id="46"/>
+				</LabelField>
 				<LabelField name="Отклонение" id="32">
 					<DataPath>Список.Отклонение</DataPath>
 					<ContextMenu name="ОтклонениеКонтекстноеМеню" id="33"/>
@@ -181,7 +186,8 @@
 		КОГДА ДокументДоговор.Спецификация.Проведен
 			ТОГДА ДокументДоговор.СуммаДокументаБезСкидки - ДокументДоговор.Спецификация.СуммаДокумента
 		ИНАЧЕ 0
-	КОНЕЦ КАК Отклонение
+	КОНЕЦ КАК Отклонение,
+	ДокументДоговор.Спецификация.Монтажник КАК Монтажник
 ИЗ
 	Документ.Договор КАК ДокументДоговор
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СтатусСпецификации.СрезПоследних КАК СтатусСпецификацииСрезПоследних
