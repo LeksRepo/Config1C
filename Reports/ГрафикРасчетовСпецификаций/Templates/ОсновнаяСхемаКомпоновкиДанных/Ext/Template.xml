@@ -47,22 +47,22 @@
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>СпецификацияЗамечанияИнженера</dataPath>
-			<field>СпецификацияЗамечанияИнженера</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Замечания инженера</v8:content>
-				</v8:item>
-			</title>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>СпецификацияИзделие</dataPath>
 			<field>СпецификацияИзделие</field>
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
 					<v8:content>Вид Изделия</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ТекстСодержания</dataPath>
+			<field>ТекстСодержания</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заметка</v8:content>
 				</v8:item>
 			</title>
 		</field>
@@ -73,11 +73,13 @@
 	СтатусСпецификацииСрезПоследних.Спецификация.ДатаИзготовления КАК СпецификацияДатаИзготовления,
 	СтатусСпецификацииСрезПоследних.Спецификация.АдресМонтажа,
 	СтатусСпецификацииСрезПоследних.Спецификация.Изделие,
-	СтатусСпецификацииСрезПоследних.Спецификация.ЗамечанияИнженера
+	Заметки.ТекстСодержания
 ИЗ
 	РегистрСведений.СтатусСпецификации.СрезПоследних КАК СтатусСпецификацииСрезПоследних
 		ЛЕВОЕ СОЕДИНЕНИЕ Документ.Договор КАК Договор
 		ПО СтатусСпецификацииСрезПоследних.Спецификация = Договор.Спецификация
+		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.Заметки КАК Заметки
+		ПО СтатусСпецификацииСрезПоследних.Спецификация = Заметки.Предмет
 ГДЕ
 	СтатусСпецификацииСрезПоследних.Статус = ЗНАЧЕНИЕ(Перечисление.СтатусыСпецификации.Рассчитывается)
 
@@ -122,7 +124,7 @@
 					<dcsset:field>СпецификацияИзделие</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>СпецификацияЗамечанияИнженера</dcsset:field>
+					<dcsset:field>ТекстСодержания</dcsset:field>
 				</dcsset:item>
 			</dcsset:selection>
 			<dcsset:dataParameters>
