@@ -119,8 +119,29 @@
 				<Field>Список.Ref</Field>
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
-				<ManualQuery>false</ManualQuery>
+				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	ДокументПоступлениеМатериаловУслуг.Ссылка,
+	ДокументПоступлениеМатериаловУслуг.ПометкаУдаления,
+	ДокументПоступлениеМатериаловУслуг.Номер,
+	ДокументПоступлениеМатериаловУслуг.Дата,
+	ДокументПоступлениеМатериаловУслуг.Проведен,
+	ДокументПоступлениеМатериаловУслуг.Автор,
+	ДокументПоступлениеМатериаловУслуг.ВидОперации,
+	ДокументПоступлениеМатериаловУслуг.Комментарий,
+	ДокументПоступлениеМатериаловУслуг.Контрагент,
+	ДокументПоступлениеМатериаловУслуг.Подразделение,
+	ДокументПоступлениеМатериаловУслуг.Склад,
+	ДокументПоступлениеМатериаловУслуг.СуммаДокумента,
+	ДокументПоступлениеМатериаловУслуг.Материалы,
+	ДокументПоступлениеМатериаловУслуг.Услуги,
+	ДокументПоступлениеМатериаловУслуг.ОсновныеСредства,
+	ДокументПоступлениеМатериаловУслуг.МоментВремени,
+	ВЫБОР КОГДА ДокументПоступлениеМатериаловУслуг.ВидОперации = ЗНАЧЕНИЕ(Перечисление.ХозяйственнаяОперация.ЗакупкаУПоставщика) ТОГДА 0
+	ИНАЧЕ 1 КОНЕЦ КАК ТипВидаОперации
+ИЗ
+	Документ.ПоступлениеМатериаловУслуг КАК ДокументПоступлениеМатериаловУслуг</QueryText>
 				<MainTable>Document.ПоступлениеМатериаловУслуг</MainTable>
 				<ListSettings>
 					<dcsset:filter>
@@ -128,6 +149,14 @@
 						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
 					</dcsset:filter>
 					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>ТипВидаОперации</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>Дата</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
 						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
 					</dcsset:order>
@@ -137,8 +166,8 @@
 							<dcsset:filter>
 								<dcsset:item xsi:type="dcsset:FilterItemComparison">
 									<dcsset:left xsi:type="dcscor:Field">ВидОперации</dcsset:left>
-									<dcsset:comparisonType>Equal</dcsset:comparisonType>
-									<dcsset:right xsi:type="dcscor:DesignTimeValue">Перечисление.ХозяйственнаяОперация.ОприходованиеКладовщиком</dcsset:right>
+									<dcsset:comparisonType>NotEqual</dcsset:comparisonType>
+									<dcsset:right xsi:type="dcscor:DesignTimeValue">Перечисление.ХозяйственнаяОперация.ЗакупкаУПоставщика</dcsset:right>
 								</dcsset:item>
 							</dcsset:filter>
 							<dcsset:appearance>
