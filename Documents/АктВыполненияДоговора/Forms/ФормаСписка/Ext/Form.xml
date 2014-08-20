@@ -128,8 +128,28 @@
 			</Type>
 			<MainAttribute>true</MainAttribute>
 			<Settings xsi:type="DynamicList">
-				<ManualQuery>false</ManualQuery>
+				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	ДокументАктВыполненияДоговора.Ссылка,
+	ДокументАктВыполненияДоговора.ПометкаУдаления,
+	ДокументАктВыполненияДоговора.Номер,
+	ДокументАктВыполненияДоговора.Дата,
+	ДокументАктВыполненияДоговора.Проведен,
+	ДокументАктВыполненияДоговора.Автор,
+	ДокументАктВыполненияДоговора.ДатаПередачи,
+	ДокументАктВыполненияДоговора.Договор,
+	ДокументАктВыполненияДоговора.Комментарий,
+	ДокументАктВыполненияДоговора.ОтветственныйЗаХранение,
+	ДокументАктВыполненияДоговора.Подразделение,
+	ДокументАктВыполненияДоговора.ОценкаСупервайзера,
+	ДокументАктВыполненияДоговора.КомментарийСупервайзера,
+	ДокументАктВыполненияДоговора.МоментВремени,
+	ВЫБОР КОГДА ДокументАктВыполненияДоговора.ОтветственныйЗаХранение = ЗНАЧЕНИЕ(Справочник.ФизическиеЛица.ПустаяСсылка) ТОГДА 0
+	ИНАЧЕ 1 КОНЕЦ КАК ЕстьОтветственный
+	
+ИЗ
+	Документ.АктВыполненияДоговора КАК ДокументАктВыполненияДоговора</QueryText>
 				<MainTable>Document.АктВыполненияДоговора</MainTable>
 				<ListSettings>
 					<dcsset:filter>
@@ -137,6 +157,14 @@
 						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
 					</dcsset:filter>
 					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>ЕстьОтветственный</dcsset:field>
+							<dcsset:orderType>Desc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>Дата</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
 						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
 					</dcsset:order>
@@ -152,7 +180,7 @@
 							<dcsset:appearance>
 								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 									<dcscor:parameter>ЦветФона</dcscor:parameter>
-									<dcscor:value xsi:type="v8ui:Color">web:Coral</dcscor:value>
+									<dcscor:value xsi:type="v8ui:Color">web:Pink</dcscor:value>
 								</dcscor:item>
 							</dcsset:appearance>
 						</dcsset:item>
@@ -183,7 +211,7 @@
 				</dcsset:selection>
 				<dcsset:filter>
 					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">Список.ПодтверждениеБухгалтера</dcsset:left>
+						<dcsset:left xsi:type="dcscor:Field">Список.ОтветственныйЗаХранение</dcsset:left>
 						<dcsset:comparisonType>Equal</dcsset:comparisonType>
 						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
 					</dcsset:item>
