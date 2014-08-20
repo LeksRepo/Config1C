@@ -404,12 +404,35 @@
 								</LabelDecoration>
 								<InputField name="Подразделение" id="79">
 									<DataPath>Подразделение</DataPath>
+									<QuickChoice>true</QuickChoice>
+									<ChoiceParameters>
+										<app:item name="Отбор.ПометкаУдаления">
+											<app:value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xs:boolean">false</Value>
+											</app:value>
+										</app:item>
+										<app:item name="Отбор.Активность">
+											<app:value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation/>
+												<Value xsi:type="xs:boolean">true</Value>
+											</app:value>
+										</app:item>
+									</ChoiceParameters>
 									<Font ref="sys:DefaultGUIFont" height="10" kind="WindowsFont"/>
 									<ContextMenu name="ПодразделениеКонтекстноеМеню" id="80"/>
 									<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="81"/>
 								</InputField>
 								<InputField name="Офис" id="122">
 									<DataPath>Офис</DataPath>
+									<QuickChoice>true</QuickChoice>
+									<ChoiceParameterLinks>
+										<xr:Link>
+											<xr:Name>Отбор.Владелец</xr:Name>
+											<xr:DataPath xsi:type="xs:string">Подразделение</xr:DataPath>
+											<xr:ValueChange>Clear</xr:ValueChange>
+										</xr:Link>
+									</ChoiceParameterLinks>
 									<ContextMenu name="ОфисКонтекстноеМеню" id="123"/>
 									<ExtendedTooltip name="ОфисРасширеннаяПодсказка" id="124"/>
 								</InputField>
@@ -670,6 +693,17 @@
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.ФизическиеЛица</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПлатежОтДилера" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Платеж от дилера</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 	</Attributes>
