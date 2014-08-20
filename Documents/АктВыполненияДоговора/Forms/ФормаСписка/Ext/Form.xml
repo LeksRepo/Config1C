@@ -145,9 +145,12 @@
 	ДокументАктВыполненияДоговора.ОценкаСупервайзера,
 	ДокументАктВыполненияДоговора.КомментарийСупервайзера,
 	ДокументАктВыполненияДоговора.МоментВремени,
-	ВЫБОР КОГДА ДокументАктВыполненияДоговора.ОтветственныйЗаХранение = ЗНАЧЕНИЕ(Справочник.ФизическиеЛица.ПустаяСсылка) ТОГДА 0
-	ИНАЧЕ 1 КОНЕЦ КАК ЕстьОтветственный
-	
+	ВЫБОР
+		КОГДА ДокументАктВыполненияДоговора.ОтветственныйЗаХранение = ЗНАЧЕНИЕ(Справочник.ФизическиеЛица.ПустаяСсылка)
+				ИЛИ НЕ ДокументАктВыполненияДоговора.Проведен
+			ТОГДА 0
+		ИНАЧЕ 1
+	КОНЕЦ КАК Сортировка
 ИЗ
 	Документ.АктВыполненияДоговора КАК ДокументАктВыполненияДоговора</QueryText>
 				<MainTable>Document.АктВыполненияДоговора</MainTable>
@@ -158,8 +161,8 @@
 					</dcsset:filter>
 					<dcsset:order>
 						<dcsset:item xsi:type="dcsset:OrderItemField">
-							<dcsset:field>ЕстьОтветственный</dcsset:field>
-							<dcsset:orderType>Desc</dcsset:orderType>
+							<dcsset:field>Сортировка</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
 						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:OrderItemField">
 							<dcsset:field>Дата</dcsset:field>
@@ -173,8 +176,8 @@
 							<dcsset:selection/>
 							<dcsset:filter>
 								<dcsset:item xsi:type="dcsset:FilterItemComparison">
-									<dcsset:left xsi:type="dcscor:Field">ОтветственныйЗаХранение</dcsset:left>
-									<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+									<dcsset:left xsi:type="dcscor:Field">Сортировка</dcsset:left>
+									<dcsset:comparisonType>Filled</dcsset:comparisonType>
 								</dcsset:item>
 							</dcsset:filter>
 							<dcsset:appearance>

@@ -134,12 +134,13 @@
 	ДокументПоступлениеМатериаловУслуг.Подразделение,
 	ДокументПоступлениеМатериаловУслуг.Склад,
 	ДокументПоступлениеМатериаловУслуг.СуммаДокумента,
-	ДокументПоступлениеМатериаловУслуг.Материалы,
-	ДокументПоступлениеМатериаловУслуг.Услуги,
-	ДокументПоступлениеМатериаловУслуг.ОсновныеСредства,
 	ДокументПоступлениеМатериаловУслуг.МоментВремени,
-	ВЫБОР КОГДА ДокументПоступлениеМатериаловУслуг.ВидОперации = ЗНАЧЕНИЕ(Перечисление.ХозяйственнаяОперация.ЗакупкаУПоставщика) ТОГДА 0
-	ИНАЧЕ 1 КОНЕЦ КАК ТипВидаОперации
+	ВЫБОР
+		КОГДА ДокументПоступлениеМатериаловУслуг.ВидОперации = ЗНАЧЕНИЕ(Перечисление.ХозяйственнаяОперация.ОприходованиеКладовщиком)
+				ИЛИ НЕ ДокументПоступлениеМатериаловУслуг.Проведен
+			ТОГДА 1
+		ИНАЧЕ 0
+	КОНЕЦ КАК Сортировка
 ИЗ
 	Документ.ПоступлениеМатериаловУслуг КАК ДокументПоступлениеМатериаловУслуг</QueryText>
 				<MainTable>Document.ПоступлениеМатериаловУслуг</MainTable>
@@ -150,7 +151,7 @@
 					</dcsset:filter>
 					<dcsset:order>
 						<dcsset:item xsi:type="dcsset:OrderItemField">
-							<dcsset:field>ТипВидаОперации</dcsset:field>
+							<dcsset:field>Сортировка</dcsset:field>
 							<dcsset:orderType>Asc</dcsset:orderType>
 						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:OrderItemField">
@@ -165,9 +166,8 @@
 							<dcsset:selection/>
 							<dcsset:filter>
 								<dcsset:item xsi:type="dcsset:FilterItemComparison">
-									<dcsset:left xsi:type="dcscor:Field">ВидОперации</dcsset:left>
-									<dcsset:comparisonType>NotEqual</dcsset:comparisonType>
-									<dcsset:right xsi:type="dcscor:DesignTimeValue">Перечисление.ХозяйственнаяОперация.ЗакупкаУПоставщика</dcsset:right>
+									<dcsset:left xsi:type="dcscor:Field">Сортировка</dcsset:left>
+									<dcsset:comparisonType>Filled</dcsset:comparisonType>
 								</dcsset:item>
 							</dcsset:filter>
 							<dcsset:appearance>
