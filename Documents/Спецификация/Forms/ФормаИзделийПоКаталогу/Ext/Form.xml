@@ -520,8 +520,8 @@
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="ГруппаИзображениеРасширеннаяПодсказка" id="307"/>
 					<ChildItems>
-						<RadioButtonField name="ДеталиРасположениеИзделия" id="335">
-							<DataPath>Items.Детали.CurrentData.РасположениеИзделия</DataPath>
+						<RadioButtonField name="ДеталиРасположение" id="335">
+							<DataPath>Items.Детали.CurrentData.Расположение</DataPath>
 							<TitleLocation>None</TitleLocation>
 							<RadioButtonType>Auto</RadioButtonType>
 							<ChoiceList>
@@ -529,7 +529,12 @@
 									<xr:Presentation/>
 									<xr:CheckState>0</xr:CheckState>
 									<xr:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation/>
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Левая</v8:content>
+											</v8:item>
+										</Presentation>
 										<Value xsi:type="xr:DesignTimeRef">Enum.ВидыПрисоединенныхФайлов.EnumValue.КартинкаЛевая</Value>
 									</xr:Value>
 								</xr:Item>
@@ -537,15 +542,20 @@
 									<xr:Presentation/>
 									<xr:CheckState>0</xr:CheckState>
 									<xr:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation/>
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Правая</v8:content>
+											</v8:item>
+										</Presentation>
 										<Value xsi:type="xr:DesignTimeRef">Enum.ВидыПрисоединенныхФайлов.EnumValue.КартинкаПравая</Value>
 									</xr:Value>
 								</xr:Item>
 							</ChoiceList>
-							<ContextMenu name="ДеталиРасположениеИзделияКонтекстноеМеню" id="336"/>
-							<ExtendedTooltip name="ДеталиРасположениеИзделияРасширеннаяПодсказка" id="337"/>
+							<ContextMenu name="ДеталиРасположениеКонтекстноеМеню" id="336"/>
+							<ExtendedTooltip name="ДеталиРасположениеРасширеннаяПодсказка" id="337"/>
 							<Events>
-								<Event name="OnChange">ДеталиРасположениеИзделияПриИзменении</Event>
+								<Event name="OnChange">ДеталиРасположениеПриИзменении</Event>
 							</Events>
 						</RadioButtonField>
 						<PictureField name="Изображение" id="135">
@@ -1759,11 +1769,11 @@
 						</v8:NumberQualifiers>
 					</Type>
 				</Column>
-				<Column name="РасположениеИзделия" id="40">
+				<Column name="Расположение" id="40">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Расположение изделия</v8:content>
+							<v8:content>Расположение</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
