@@ -46,14 +46,21 @@
 				</v8:item>
 			</title>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Замерщик</dataPath>
+			<field>Замерщик</field>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	ДокАктВыполненияДоговора.Договор.Ссылка КАК Договор,
 	ДокАктВыполненияДоговора.Договор.Автор КАК Дизайнер,
 	ДокАктВыполненияДоговора.Договор.СуммаДокумента КАК СуммаДоговора,
-	ДокАктВыполненияДоговора.Договор.Спецификация.СуммаДокументаБезНаценкиОфиса КАК БазоваяСтоимость
+	ДокАктВыполненияДоговора.Договор.Спецификация.СуммаДокументаБезНаценкиОфиса КАК БазоваяСтоимость,
+	Замер.Замерщик
 ИЗ
 	Документ.АктВыполненияДоговора КАК ДокАктВыполненияДоговора
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.Замер КАК Замер
+		ПО ДокАктВыполненияДоговора.Договор.Спецификация.ДокументОснование = Замер.Ссылка
 ГДЕ
 	ДокАктВыполненияДоговора.Проведен
 	И ДокАктВыполненияДоговора.ДатаПередачи МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
@@ -64,7 +71,8 @@
 	ДополнительноеСоглашение.Договор.Ссылка,
 	ДополнительноеСоглашение.Договор.Автор,
 	ДополнительноеСоглашение.СуммаДокумента,
-	Спецификация.СуммаДокументаБезНаценкиОфиса
+	Спецификация.СуммаДокументаБезНаценкиОфиса,
+	NULL
 ИЗ
 	Документ.ДополнительноеСоглашение КАК ДополнительноеСоглашение
 		ЛЕВОЕ СОЕДИНЕНИЕ Документ.Спецификация КАК Спецификация
@@ -99,6 +107,11 @@
 	<totalField>
 		<dataPath>Маржа</dataPath>
 		<expression>Сумма(Маржа)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Замерщик</dataPath>
+		<expression>Минимум(Замерщик)</expression>
+		<group>Договор</group>
 	</totalField>
 	<parameter>
 		<name>КонецПериода</name>
@@ -159,6 +172,9 @@
 		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Замерщик</dcsset:field>
+				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>СуммаДоговора</dcsset:field>
 				</dcsset:item>
