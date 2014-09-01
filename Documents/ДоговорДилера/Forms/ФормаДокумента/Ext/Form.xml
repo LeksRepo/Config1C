@@ -69,7 +69,7 @@
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Номер договора</v8:content>
+											<v8:content>Номер</v8:content>
 										</v8:item>
 									</Title>
 									<EditMode>EnterOnInput</EditMode>
@@ -81,7 +81,7 @@
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Дата заключения</v8:content>
+											<v8:content>Дата</v8:content>
 										</v8:item>
 									</Title>
 									<EditMode>EnterOnInput</EditMode>
@@ -119,6 +119,12 @@
 						</InputField>
 						<InputField name="АдресДоговора" id="68">
 							<DataPath>Объект.АдресДоговора</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Адрес</v8:content>
+								</v8:item>
+							</Title>
 							<ContextMenu name="АдресДоговораКонтекстноеМеню" id="69"/>
 							<ExtendedTooltip name="АдресДоговораРасширеннаяПодсказка" id="70"/>
 						</InputField>
@@ -172,47 +178,24 @@
 								</LabelDecoration>
 								<InputField name="Скидка" id="77">
 									<DataPath>Скидка</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Скидка (%)</v8:content>
+										</v8:item>
+									</Title>
 									<ContextMenu name="СкидкаКонтекстноеМеню" id="78"/>
 									<ExtendedTooltip name="СкидкаРасширеннаяПодсказка" id="79"/>
 									<Events>
 										<Event name="OnChange">СкидкаПриИзменении</Event>
 									</Events>
 								</InputField>
-								<LabelDecoration name="Декорация1" id="82">
-									<Title formatted="false">
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>%</v8:content>
-										</v8:item>
-									</Title>
-									<ContextMenu name="Декорация1КонтекстноеМеню" id="83"/>
-									<ExtendedTooltip name="Декорация1РасширеннаяПодсказка" id="84"/>
-								</LabelDecoration>
 							</ChildItems>
 						</UsualGroup>
-					</ChildItems>
-				</UsualGroup>
-				<UsualGroup name="ПраваяГруппа" id="41">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Правая группа</v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Правая группа</v8:content>
-						</v8:item>
-					</ToolTip>
-					<Group>Vertical</Group>
-					<Representation>None</Representation>
-					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="ПраваяГруппаРасширеннаяПодсказка" id="42"/>
-					<ChildItems>
 						<Table name="ИзменениеДоговора" id="45">
-							<HeightInTableRows>4</HeightInTableRows>
+							<HeightInTableRows>5</HeightInTableRows>
 							<UseAlternationRowColor>true</UseAlternationRowColor>
+							<VerticalStretch>false</VerticalStretch>
 							<EnableStartDrag>true</EnableStartDrag>
 							<DataPath>ИзменениеДоговора</DataPath>
 							<RowPictureDataPath>ИзменениеДоговора.DefaultPicture</RowPictureDataPath>
@@ -289,9 +272,30 @@
 								</LabelField>
 							</ChildItems>
 						</Table>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ПраваяГруппа" id="41">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Правая группа</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Правая группа</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ПраваяГруппаРасширеннаяПодсказка" id="42"/>
+					<ChildItems>
 						<Table name="ПлатежиДоговора" id="55">
-							<HeightInTableRows>4</HeightInTableRows>
+							<HeightInTableRows>5</HeightInTableRows>
 							<UseAlternationRowColor>true</UseAlternationRowColor>
+							<VerticalStretch>false</VerticalStretch>
 							<EnableStartDrag>true</EnableStartDrag>
 							<DataPath>ПлатежиДоговора</DataPath>
 							<RowPictureDataPath>ПлатежиДоговора.DefaultPicture</RowPictureDataPath>
@@ -372,10 +376,15 @@
 							<DataPath>Объект.МесяцевРассрочки</DataPath>
 							<ContextMenu name="МесяцевРассрочкиКонтекстноеМеню" id="102"/>
 							<ExtendedTooltip name="МесяцевРассрочкиРасширеннаяПодсказка" id="103"/>
+							<Events>
+								<Event name="OnChange">МесяцевРассрочкиПриИзменении</Event>
+							</Events>
 						</InputField>
 						<Table name="Рассрочка" id="88">
 							<ReadOnly>true</ReadOnly>
+							<HeightInTableRows>5</HeightInTableRows>
 							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<VerticalStretch>false</VerticalStretch>
 							<EnableStartDrag>true</EnableStartDrag>
 							<EnableDrag>true</EnableDrag>
 							<DataPath>Объект.Рассрочка</DataPath>
