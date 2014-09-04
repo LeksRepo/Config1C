@@ -236,10 +236,10 @@
 ВЫБРАТЬ
 	втМатериалы.Номенклатура,
 	втМатериалы.ПолученоВЦехКоличество,
-	втМатериалы.ПолученоВЦехКоличество * ЦеныНоменклатурыСрезПоследних.Внутренняя КАК ПолученоВЦехСтоимость,
+	втМатериалы.ПолученоВЦехКоличество * ЦеныНоменклатурыСрезПоследних.Розничная КАК ПолученоВЦехСтоимость,
 	втМатериалы.ТребуетсяПоСпецификациямКоличество,
-	втМатериалы.ТребуетсяПоСпецификациямКоличество * ЦеныНоменклатурыСрезПоследних.Внутренняя КАК ТребуетсяПоСпецификациямСтоимость,
-	(втМатериалы.ТребуетсяПоСпецификациямКоличество - втМатериалы.ПолученоВЦехКоличество) * ЦеныНоменклатурыСрезПоследних.Внутренняя КАК Отклонение,
+	втМатериалы.ТребуетсяПоСпецификациямКоличество * ЦеныНоменклатурыСрезПоследних.Розничная КАК ТребуетсяПоСпецификациямСтоимость,
+	(втМатериалы.ТребуетсяПоСпецификациямКоличество - втМатериалы.ПолученоВЦехКоличество) * ЦеныНоменклатурыСрезПоследних.Розничная КАК Отклонение,
 	втМатериалы.Номенклатура.ЕдиницаИзмерения КАК ЕдиницаИзмерения,
 	втМатериалы.ПолученоВЦехСебестоимость,
 	втМатериалы.ПолученоВЦехКоличество * ЦеныНоменклатурыСрезПоследних.ПлановаяЗакупочная КАК ПолученоВЦехСтоимостьПлановая,
@@ -308,6 +308,24 @@
 		<use>Always</use>
 	</parameter>
 	<parameter>
+		<name>Период</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
 		<name>НачалоПериода</name>
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
@@ -360,24 +378,8 @@
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 		<useRestriction>true</useRestriction>
 	</parameter>
-	<parameter>
-		<name>Период</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Период</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>v8:StandardPeriod</v8:Type>
-		</valueType>
-		<value xsi:type="v8:StandardPeriod">
-			<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
-		</value>
-		<useRestriction>false</useRestriction>
-	</parameter>
 	<settingsVariant>
-		<dcsset:name>Плановые цены</dcsset:name>
+		<dcsset:name>ВПлановыхЦенах</dcsset:name>
 		<dcsset:presentation xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>ru</v8:lang>
@@ -454,15 +456,27 @@
 					<dcsset:userSettingID>305b6237-40c4-40ec-bf10-b5d88c6d25a5</dcsset:userSettingID>
 				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Период</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+					</dcscor:value>
+					<dcsset:userSettingID>e89380f7-3dad-409b-a0d5-e435d5baa323</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:use>false</dcscor:use>
 					<dcscor:parameter>КонецПериода</dcscor:parameter>
 					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
 					<dcsset:userSettingID>67299a00-9542-4125-abd1-c633924eafc7</dcsset:userSettingID>
 				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>Период</dcscor:parameter>
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>НеТрогатьНикогда</dcscor:parameter>
 					<dcscor:value xsi:type="v8:StandardPeriod">
-						<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
 					</dcscor:value>
 					<dcsset:userSettingID>f23da4aa-970e-4c32-a6ee-f21da89b9ed2</dcsset:userSettingID>
 				</dcscor:item>
@@ -551,11 +565,11 @@
 		</dcsset:settings>
 	</settingsVariant>
 	<settingsVariant>
-		<dcsset:name>Внутренние цены</dcsset:name>
+		<dcsset:name>Основной</dcsset:name>
 		<dcsset:presentation xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>ru</v8:lang>
-				<v8:content>Внутренние цены</v8:content>
+				<v8:content>Розничные цены</v8:content>
 			</v8:item>
 		</dcsset:presentation>
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
@@ -628,14 +642,28 @@
 					<dcsset:userSettingID>305b6237-40c4-40ec-bf10-b5d88c6d25a5</dcsset:userSettingID>
 				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Период</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+					</dcscor:value>
+					<dcsset:userSettingID>6ded53af-e2c5-4ab1-bda5-155072a2a403</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:use>false</dcscor:use>
 					<dcscor:parameter>КонецПериода</dcscor:parameter>
 					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
 					<dcsset:userSettingID>67299a00-9542-4125-abd1-c633924eafc7</dcsset:userSettingID>
 				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>Период</dcscor:parameter>
-					<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>НеТрогатьНикогда</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+					</dcscor:value>
 					<dcsset:userSettingID>4a8435eb-bbcd-4161-b437-5633931c73ac</dcsset:userSettingID>
 				</dcscor:item>
 			</dcsset:dataParameters>
