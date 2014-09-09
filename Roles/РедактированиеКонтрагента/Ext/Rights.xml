@@ -12582,26 +12582,18 @@
 			<name>Read</name>
 			<value>true</value>
 			<restrictionByCondition>
-				<condition>Контрагенты ГДЕ Контрагенты.Ссылка = &amp;ТекущийПользователь</condition>
+				<condition>Контрагенты ГДЕ Контрагенты.Ссылка В
+			(ВЫБРАТЬ
+				Справочник.ВнешниеПользователи.Ссылка
+			ИЗ
+				Справочник.ВнешниеПользователи
+			ГДЕ
+				Справочник.ВнешниеПользователи.ОбъектАвторизации = &amp;ТекущийПользователь)</condition>
 			</restrictionByCondition>
 		</right>
 		<right>
 			<name>Insert</name>
 			<value>false</value>
-		</right>
-		<right>
-			<name>Update</name>
-			<value>true</value>
-			<restrictionByCondition>
-				<condition>Контрагенты ГДЕ Контрагенты.Ссылка = &amp;ТекущийПользователь</condition>
-			</restrictionByCondition>
-		</right>
-		<right>
-			<name>Delete</name>
-			<value>true</value>
-			<restrictionByCondition>
-				<condition>Контрагенты ГДЕ Контрагенты.Ссылка = &amp;ТекущийПользователь</condition>
-			</restrictionByCondition>
 		</right>
 		<right>
 			<name>InteractiveInsert</name>
