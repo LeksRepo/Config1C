@@ -7,6 +7,9 @@
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<Autofill>false</Autofill>
 	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+	</Events>
 	<ChildItems>
 		<UsualGroup name="НомерДата" id="16">
 			<Title>
@@ -28,12 +31,14 @@
 			<ChildItems>
 				<LabelField name="Номер" id="1">
 					<DataPath>Объект.Number</DataPath>
+					<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 					<EditMode>EnterOnInput</EditMode>
 					<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
 					<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="3"/>
 				</LabelField>
 				<LabelField name="Дата" id="4">
 					<DataPath>Объект.Date</DataPath>
+					<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 					<EditMode>EnterOnInput</EditMode>
 					<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
 					<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="6"/>
@@ -42,31 +47,35 @@
 		</UsualGroup>
 		<LabelField name="Автор" id="7">
 			<DataPath>Объект.Автор</DataPath>
+			<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 			<ContextMenu name="АвторКонтекстноеМеню" id="8"/>
 			<ExtendedTooltip name="АвторРасширеннаяПодсказка" id="9"/>
 		</LabelField>
 		<InputField name="Тема" id="10">
 			<DataPath>Объект.Тема</DataPath>
+			<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 			<ContextMenu name="ТемаКонтекстноеМеню" id="11"/>
 			<ExtendedTooltip name="ТемаРасширеннаяПодсказка" id="12"/>
 		</InputField>
 		<InputField name="Сообщение" id="13">
 			<DataPath>Объект.Сообщение</DataPath>
+			<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 			<Width>50</Width>
 			<Height>6</Height>
+			<MultiLine>true</MultiLine>
 			<ContextMenu name="СообщениеКонтекстноеМеню" id="14"/>
 			<ExtendedTooltip name="СообщениеРасширеннаяПодсказка" id="15"/>
 		</InputField>
-		<Button name="Ознакомиться" id="18">
+		<Button name="Сохранить" id="18">
 			<Type>UsualButton</Type>
 			<CommandName>Form.Command.Ознакомиться</CommandName>
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Ознакомлен</v8:content>
+					<v8:content>Сохранить</v8:content>
 				</v8:item>
 			</Title>
-			<ExtendedTooltip name="ОзнакомитьсяРасширеннаяПодсказка" id="19"/>
+			<ExtendedTooltip name="СохранитьРасширеннаяПодсказка" id="19"/>
 		</Button>
 	</ChildItems>
 	<Attributes>
