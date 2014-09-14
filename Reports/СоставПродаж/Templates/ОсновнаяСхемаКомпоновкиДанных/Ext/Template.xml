@@ -81,20 +81,6 @@
 			</role>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Статья</dataPath>
-			<field>Статья</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Статья</v8:content>
-				</v8:item>
-			</title>
-			<role>
-				<dcscom:dimension>true</dcscom:dimension>
-				<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
-			</role>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>СтоимостьСпецификации</dataPath>
 			<field>СтоимостьСпецификации</field>
 			<title xsi:type="v8:LocalStringType">
@@ -103,27 +89,68 @@
 					<v8:content>Стоимость спецификации</v8:content>
 				</v8:item>
 			</title>
-			<appearance>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>Формат</dcscor:parameter>
-					<dcscor:value xsi:type="xs:string">ЧДЦ=2</dcscor:value>
-				</dcscor:item>
-			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВидИзделия</dataPath>
+			<field>ВидИзделия</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид изделия</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>РеализацияМатериалов</dataPath>
+			<field>РеализацияМатериалов</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Реализация материалов</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДокументРеализации</dataPath>
+			<field>ДокументРеализации</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документ реализации</v8:content>
+				</v8:item>
+			</title>
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
-	УправленческийОбороты.Субконто1 КАК Статья,
+	Изделия.Ссылка КАК ВидИзделия,
 	УправленческийОбороты.Субконто2 КАК Документ,
 	-УправленческийОбороты.СуммаОборот КАК СуммаПродажи,
 	ВЫБОР
 		КОГДА УправленческийОбороты.Субконто2 ССЫЛКА Документ.Спецификация
-			ТОГДА УправленческийОбороты.Субконто2.ВнутренняяСтоимостьСпецификации
-		КОГДА УправленческийОбороты.Субконто2 ССЫЛКА Документ.Договор
-			ТОГДА УправленческийОбороты.Субконто2.Спецификация.ВнутренняяСтоимостьСпецификации
+			ТОГДА УправленческийОбороты.Субконто2.СуммаДокументаБезНаценкиОфиса
 		ИНАЧЕ 0
-	КОНЕЦ КАК СтоимостьСпецификации
+	КОНЕЦ КАК СтоимостьСпецификации,
+	NULL КАК РеализацияМатериалов,
+	NULL КАК ДокументРеализации
 ИЗ
-	РегистрБухгалтерии.Управленческий.Обороты(, , , Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.Доходы), , , , ) КАК УправленческийОбороты</query>
+	Справочник.Изделия КАК Изделия
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрБухгалтерии.Управленческий.Обороты(, , , Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.Доходы), , , , ) КАК УправленческийОбороты
+		ПО Изделия.Ссылка = УправленческийОбороты.Субконто2.Изделие
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	РеализацияМатериалов.СуммаДокумента,
+	РеализацияМатериалов.Ссылка
+ИЗ
+	Документ.РеализацияМатериалов КАК РеализацияМатериалов
+ГДЕ
+	РеализацияМатериалов.Дата МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+	И РеализацияМатериалов.Проведен</query>
 	</dataSet>
 	<calculatedField>
 		<dataPath>Маржа</dataPath>
@@ -131,7 +158,7 @@
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>ru</v8:lang>
-				<v8:content>Маржа</v8:content>
+				<v8:content>Дополнительная маржа</v8:content>
 			</v8:item>
 		</title>
 		<appearance>
@@ -151,7 +178,7 @@
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>ru</v8:lang>
-				<v8:content>Процент маржи</v8:content>
+				<v8:content>Процент доп. маржи</v8:content>
 			</v8:item>
 		</title>
 		<appearance>
@@ -170,16 +197,16 @@
 		<expression>Сумма(Маржа)</expression>
 	</totalField>
 	<totalField>
-		<dataPath>СтоимостьСпецификации</dataPath>
-		<expression>Сумма(СтоимостьСпецификации)</expression>
-	</totalField>
-	<totalField>
 		<dataPath>СуммаПродажи</dataPath>
 		<expression>Сумма(СуммаПродажи)</expression>
 	</totalField>
 	<totalField>
 		<dataPath>ПроцентМаржи</dataPath>
 		<expression>(СУММА(СуммаПродажи) - СУММА(СтоимостьСпецификации)) / СУММА(СуммаПродажи) * 100</expression>
+	</totalField>
+	<totalField>
+		<dataPath>РеализацияМатериалов</dataPath>
+		<expression>Сумма(РеализацияМатериалов)</expression>
 	</totalField>
 	<parameter>
 		<name>НачалоПериода</name>
@@ -243,13 +270,19 @@
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 			<dcsset:selection>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ВидИзделия</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>СуммаПродажи</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>СтоимостьСпецификации</dcsset:field>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>СуммаПродажи.ПроцентВИерархии</dcsset:field>
+					<dcsset:lwsTitle>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Процент от суммы</v8:content>
+						</v8:item>
+					</dcsset:lwsTitle>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Маржа</dcsset:field>
@@ -259,6 +292,9 @@
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>ПроцентМаржи</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>РеализацияМатериалов</dcsset:field>
 				</dcsset:item>
 			</dcsset:selection>
 			<dcsset:filter>
@@ -287,7 +323,7 @@
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
 				<dcsset:groupItems>
 					<dcsset:item xsi:type="dcsset:GroupItemField">
-						<dcsset:field>Статья</dcsset:field>
+						<dcsset:field>ВидИзделия</dcsset:field>
 						<dcsset:groupType>Items</dcsset:groupType>
 						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
@@ -298,7 +334,27 @@
 					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
 				</dcsset:order>
 				<dcsset:selection>
-					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ВидИзделия</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>СуммаПродажи</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>СуммаПродажи.ПроцентВИерархии</dcsset:field>
+						<dcsset:lwsTitle>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Процент от суммы</v8:content>
+							</v8:item>
+						</dcsset:lwsTitle>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Маржа</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ПроцентМаржи</dcsset:field>
+					</dcsset:item>
 				</dcsset:selection>
 				<dcsset:item xsi:type="dcsset:StructureItemGroup">
 					<dcsset:groupItems>
@@ -314,9 +370,51 @@
 						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
 					</dcsset:order>
 					<dcsset:selection>
-						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>Документ</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>СуммаПродажи</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>СуммаПродажи.ПроцентВИерархии</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Процент от суммы</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>Маржа</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>ПроцентМаржи</dcsset:field>
+						</dcsset:item>
 					</dcsset:selection>
 				</dcsset:item>
+			</dcsset:item>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ДокументРеализации</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ДокументРеализации</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>РеализацияМатериалов</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
 			</dcsset:item>
 		</dcsset:settings>
 	</settingsVariant>
