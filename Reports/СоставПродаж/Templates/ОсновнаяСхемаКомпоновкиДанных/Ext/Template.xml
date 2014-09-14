@@ -101,22 +101,32 @@
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>РеализацияМатериалов</dataPath>
-			<field>РеализацияМатериалов</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Реализация материалов</v8:content>
-				</v8:item>
-			</title>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>ДокументРеализации</dataPath>
 			<field>ДокументРеализации</field>
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
 					<v8:content>Документ реализации</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>РеализуемаяНоменклатура</dataPath>
+			<field>РеализуемаяНоменклатура</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Реализуемая номенклатура</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаРеализации</dataPath>
+			<field>СуммаРеализации</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма реализации</v8:content>
 				</v8:item>
 			</title>
 		</field>
@@ -130,8 +140,9 @@
 			ТОГДА УправленческийОбороты.Субконто2.СуммаДокументаБезНаценкиОфиса
 		ИНАЧЕ 0
 	КОНЕЦ КАК СтоимостьСпецификации,
-	NULL КАК РеализацияМатериалов,
-	NULL КАК ДокументРеализации
+	NULL КАК ДокументРеализации,
+	NULL КАК СуммаРеализации,
+	NULL КАК РеализуемаяНоменклатура
 ИЗ
 	Справочник.Изделия КАК Изделия
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрБухгалтерии.Управленческий.Обороты(, , , Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.Доходы), , , , ) КАК УправленческийОбороты
@@ -144,13 +155,14 @@
 	NULL,
 	NULL,
 	NULL,
-	РеализацияМатериалов.СуммаДокумента,
-	РеализацияМатериалов.Ссылка
+	РеализацияМатериаловСписокНоменклатуры.Ссылка,
+	РеализацияМатериаловСписокНоменклатуры.Ссылка.СуммаДокумента,
+	РеализацияМатериаловСписокНоменклатуры.Номенклатура
 ИЗ
-	Документ.РеализацияМатериалов КАК РеализацияМатериалов
+	Документ.РеализацияМатериалов.СписокНоменклатуры КАК РеализацияМатериаловСписокНоменклатуры
 ГДЕ
-	РеализацияМатериалов.Дата МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
-	И РеализацияМатериалов.Проведен</query>
+	РеализацияМатериаловСписокНоменклатуры.Ссылка.Проведен
+	И РеализацияМатериаловСписокНоменклатуры.Ссылка.Дата МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода</query>
 	</dataSet>
 	<calculatedField>
 		<dataPath>Маржа</dataPath>
@@ -205,8 +217,8 @@
 		<expression>(СУММА(СуммаПродажи) - СУММА(СтоимостьСпецификации)) / СУММА(СуммаПродажи) * 100</expression>
 	</totalField>
 	<totalField>
-		<dataPath>РеализацияМатериалов</dataPath>
-		<expression>Сумма(РеализацияМатериалов)</expression>
+		<dataPath>СуммаРеализации</dataPath>
+		<expression>Сумма(СуммаРеализации)</expression>
 	</totalField>
 	<parameter>
 		<name>НачалоПериода</name>
@@ -397,7 +409,7 @@
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
 				<dcsset:groupItems>
 					<dcsset:item xsi:type="dcsset:GroupItemField">
-						<dcsset:field>ДокументРеализации</dcsset:field>
+						<dcsset:field>РеализуемаяНоменклатура</dcsset:field>
 						<dcsset:groupType>Items</dcsset:groupType>
 						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
@@ -409,12 +421,40 @@
 				</dcsset:order>
 				<dcsset:selection>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>ДокументРеализации</dcsset:field>
+						<dcsset:field>РеализуемаяНоменклатура</dcsset:field>
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>РеализацияМатериалов</dcsset:field>
+						<dcsset:field>СуммаРеализации</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>СуммаРеализации.ПроцентВИерархии</dcsset:field>
 					</dcsset:item>
 				</dcsset:selection>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>ДокументРеализации</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>ДокументРеализации</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>СуммаРеализации</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>СуммаРеализации.ПроцентВИерархии</dcsset:field>
+						</dcsset:item>
+					</dcsset:selection>
+				</dcsset:item>
 			</dcsset:item>
 		</dcsset:settings>
 	</settingsVariant>
