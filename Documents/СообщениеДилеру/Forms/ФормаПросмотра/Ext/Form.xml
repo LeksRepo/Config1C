@@ -21,100 +21,28 @@
 		<Event name="OnClose">ПриЗакрытии</Event>
 	</Events>
 	<ChildItems>
-		<UsualGroup name="НомерДата" id="16">
+		<UsualGroup name="Шапка" id="25">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Номер дата</v8:content>
+					<v8:content>Шапка</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Номер дата</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Width>60</Width>
-			<Group>Horizontal</Group>
-			<Representation>None</Representation>
-			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="НомерДатаРасширеннаяПодсказка" id="17"/>
-			<ChildItems>
-				<LabelField name="Номер" id="1">
-					<DataPath>Объект.Number</DataPath>
-					<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
-					<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="3"/>
-				</LabelField>
-				<LabelField name="Дата" id="4">
-					<DataPath>Объект.Date</DataPath>
-					<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
-					<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="6"/>
-				</LabelField>
-			</ChildItems>
-		</UsualGroup>
-		<UsualGroup name="Центр" id="29">
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Центр</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Group>Vertical</Group>
-			<Representation>StrongSeparation</Representation>
-			<ExtendedTooltip name="ЦентрРасширеннаяПодсказка" id="30"/>
-			<ChildItems>
-				<LabelField name="Тема" id="10">
-					<DataPath>Объект.Тема</DataPath>
-					<ReadOnly>true</ReadOnly>
-					<TitleFont ref="sys:DefaultGUIFont" height="12" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
-					<Border width="1">
-						<v8ui:style xsi:type="v8ui:ControlBorderType">Single</v8ui:style>
-					</Border>
-					<BackColor>style:FieldBackColor</BackColor>
-					<Font ref="sys:DefaultGUIFont" height="12" kind="WindowsFont"/>
-					<ContextMenu name="ТемаКонтекстноеМеню" id="11"/>
-					<ExtendedTooltip name="ТемаРасширеннаяПодсказка" id="12"/>
-				</LabelField>
-				<LabelField name="Сообщение" id="13">
-					<DataPath>Объект.Сообщение</DataPath>
-					<ReadOnly>true</ReadOnly>
-					<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
-					<Width>50</Width>
-					<Height>15</Height>
-					<Border width="1">
-						<v8ui:style xsi:type="v8ui:ControlBorderType">Single</v8ui:style>
-					</Border>
-					<BackColor>style:FieldBackColor</BackColor>
-					<ContextMenu name="СообщениеКонтекстноеМеню" id="14"/>
-					<ExtendedTooltip name="СообщениеРасширеннаяПодсказка" id="15"/>
-				</LabelField>
-			</ChildItems>
-		</UsualGroup>
-		<UsualGroup name="Подвал" id="25">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Подвал</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Подвал</v8:content>
+					<v8:content>Шапка</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ПодвалРасширеннаяПодсказка" id="26"/>
+			<ExtendedTooltip name="ШапкаРасширеннаяПодсказка" id="26"/>
 			<ChildItems>
 				<Button name="Закрыть" id="27">
 					<Type>UsualButton</Type>
 					<Representation>PictureAndText</Representation>
+					<DefaultButton>true</DefaultButton>
 					<CommandName>Form.Command.Закрыть</CommandName>
 					<Picture>
 						<xr:Ref>CommonPicture.УстановитьПризнакРассмотреноДляВзамодействия</xr:Ref>
@@ -138,6 +66,58 @@
 					<ContextMenu name="ОзнакомленКонтекстноеМеню" id="23"/>
 					<ExtendedTooltip name="ОзнакомленРасширеннаяПодсказка" id="24"/>
 				</CheckBoxField>
+				<LabelField name="Номер" id="1">
+					<DataPath>Объект.Number</DataPath>
+					<TitleFont ref="sys:DefaultGUIFont" kind="WindowsFont"/>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="3"/>
+				</LabelField>
+				<LabelField name="Дата" id="4">
+					<DataPath>Объект.Date</DataPath>
+					<TitleFont ref="sys:DefaultGUIFont" kind="WindowsFont"/>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
+					<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="6"/>
+				</LabelField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="Центр" id="29">
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Центр</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<Representation>StrongSeparation</Representation>
+			<ExtendedTooltip name="ЦентрРасширеннаяПодсказка" id="30"/>
+			<ChildItems>
+				<LabelField name="Тема" id="10">
+					<DataPath>Объект.Тема</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+					<Border width="1">
+						<v8ui:style xsi:type="v8ui:ControlBorderType">Single</v8ui:style>
+					</Border>
+					<BackColor>style:FieldBackColor</BackColor>
+					<Font ref="sys:DefaultGUIFont" kind="WindowsFont"/>
+					<ContextMenu name="ТемаКонтекстноеМеню" id="11"/>
+					<ExtendedTooltip name="ТемаРасширеннаяПодсказка" id="12"/>
+				</LabelField>
+				<LabelField name="Сообщение" id="13">
+					<DataPath>Объект.Сообщение</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+					<Width>50</Width>
+					<Height>15</Height>
+					<Border width="1">
+						<v8ui:style xsi:type="v8ui:ControlBorderType">Single</v8ui:style>
+					</Border>
+					<BackColor>style:FieldBackColor</BackColor>
+					<ContextMenu name="СообщениеКонтекстноеМеню" id="14"/>
+					<ExtendedTooltip name="СообщениеРасширеннаяПодсказка" id="15"/>
+				</LabelField>
 			</ChildItems>
 		</UsualGroup>
 	</ChildItems>
