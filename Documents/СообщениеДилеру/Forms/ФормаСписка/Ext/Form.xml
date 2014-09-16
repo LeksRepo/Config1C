@@ -57,6 +57,9 @@
 				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="24"/>
 				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="25"/>
 			</SearchControlAddition>
+			<Events>
+				<Event name="Selection">СписокВыбор</Event>
+			</Events>
 			<ChildItems>
 				<LabelField name="Дата" id="5">
 					<DataPath>Список.Date</DataPath>
@@ -68,18 +71,11 @@
 				</LabelField>
 				<LabelField name="Номер" id="8">
 					<DataPath>Список.Number</DataPath>
-					<Width>7</Width>
+					<Width>8</Width>
 					<HorizontalStretch>false</HorizontalStretch>
 					<ContextMenu name="НомерКонтекстноеМеню" id="9"/>
 					<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="10"/>
 				</LabelField>
-				<InputField name="Автор" id="11">
-					<DataPath>Список.Автор</DataPath>
-					<Width>25</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<ContextMenu name="АвторКонтекстноеМеню" id="12"/>
-					<ExtendedTooltip name="АвторРасширеннаяПодсказка" id="13"/>
-				</InputField>
 				<LabelField name="Тема" id="14">
 					<DataPath>Список.Тема</DataPath>
 					<ContextMenu name="ТемаКонтекстноеМеню" id="15"/>
@@ -94,9 +90,19 @@
 				<v8:Type>cfg:DynamicList</v8:Type>
 			</Type>
 			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>Список.Ref</Field>
+			</UseAlways>
 			<Settings xsi:type="DynamicList">
-				<ManualQuery>false</ManualQuery>
+				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	ДокументСообщениеДилеру.Ссылка,
+	ДокументСообщениеДилеру.Номер,
+	ДокументСообщениеДилеру.Дата,
+	ДокументСообщениеДилеру.Тема	
+ИЗ
+	Документ.СообщениеДилеру КАК ДокументСообщениеДилеру</QueryText>
 				<MainTable>Document.СообщениеДилеру</MainTable>
 				<ListSettings>
 					<dcsset:filter>
