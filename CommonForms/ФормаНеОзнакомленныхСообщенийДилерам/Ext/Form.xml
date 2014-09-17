@@ -1,11 +1,14 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Width>80</Width>
+	<Height>15</Height>
 	<AutoTitle>false</AutoTitle>
 	<Customizable>false</Customizable>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<Autofill>false</Autofill>
 	</AutoCommandBar>
 	<Events>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
@@ -13,7 +16,7 @@
 			<Title formatted="true">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>&lt;fontsize 14&gt;&lt;b&gt;&lt;colorstyle -14&gt;Ознакомьтесь с сообщениями:&lt;/&gt;&lt;/&gt;&lt;/&gt;</v8:content>
+					<v8:content>&lt;fontsize 14&gt;&lt;b&gt;&lt;color #5e99c2&gt;Ознакомьтесь с новыми сообщениями:&lt;/&gt;&lt;/&gt;&lt;/&gt;</v8:content>
 				</v8:item>
 			</Title>
 			<ContextMenu name="Декорация1КонтекстноеМеню" id="9"/>
@@ -21,57 +24,76 @@
 		</LabelDecoration>
 		<Table name="СписокСообщений" id="11">
 			<Representation>List</Representation>
-			<Width>70</Width>
-			<Height>10</Height>
-			<Header>false</Header>
-			<HorizontalLines>false</HorizontalLines>
-			<VerticalLines>false</VerticalLines>
+			<ReadOnly>true</ReadOnly>
 			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
 			<DataPath>СписокСообщений</DataPath>
-			<RowPictureDataPath>СписокСообщений.Picture</RowPictureDataPath>
 			<SearchStringLocation>None</SearchStringLocation>
 			<ViewStatusLocation>None</ViewStatusLocation>
 			<SearchControlLocation>None</SearchControlLocation>
+			<RowFilter xsi:nil="true"/>
 			<ContextMenu name="СписокСообщенийКонтекстноеМеню" id="12"/>
 			<AutoCommandBar name="СписокСообщенийКоманднаяПанель" id="13">
 				<Autofill>false</Autofill>
 			</AutoCommandBar>
 			<ExtendedTooltip name="СписокСообщенийРасширеннаяПодсказка" id="14"/>
-			<SearchStringAddition name="СписокСообщенийСтрокаПоиска" id="18">
+			<SearchStringAddition name="СписокСообщенийСтрокаПоиска" id="27">
 				<AdditionSource>
 					<Item>СписокСообщений</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСообщенийСтрокаПоискаКонтекстноеМеню" id="19"/>
-				<ExtendedTooltip name="СписокСообщенийСтрокаПоискаРасширеннаяПодсказка" id="20"/>
+				<ContextMenu name="СписокСообщенийСтрокаПоискаКонтекстноеМеню" id="28"/>
+				<ExtendedTooltip name="СписокСообщенийСтрокаПоискаРасширеннаяПодсказка" id="29"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокСообщенийСостояниеПросмотра" id="21">
+			<ViewStatusAddition name="СписокСообщенийСостояниеПросмотра" id="30">
 				<AdditionSource>
 					<Item>СписокСообщений</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСообщенийСостояниеПросмотраКонтекстноеМеню" id="22"/>
-				<ExtendedTooltip name="СписокСообщенийСостояниеПросмотраРасширеннаяПодсказка" id="23"/>
+				<ContextMenu name="СписокСообщенийСостояниеПросмотраКонтекстноеМеню" id="31"/>
+				<ExtendedTooltip name="СписокСообщенийСостояниеПросмотраРасширеннаяПодсказка" id="32"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокСообщенийУправлениеПоиском" id="24">
+			<SearchControlAddition name="СписокСообщенийУправлениеПоиском" id="33">
 				<AdditionSource>
 					<Item>СписокСообщений</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСообщенийУправлениеПоискомКонтекстноеМеню" id="25"/>
-				<ExtendedTooltip name="СписокСообщенийУправлениеПоискомРасширеннаяПодсказка" id="26"/>
+				<ContextMenu name="СписокСообщенийУправлениеПоискомКонтекстноеМеню" id="34"/>
+				<ExtendedTooltip name="СписокСообщенийУправлениеПоискомРасширеннаяПодсказка" id="35"/>
 			</SearchControlAddition>
 			<Events>
 				<Event name="Selection">СписокСообщенийВыбор</Event>
-				<Event name="BeforeAddRow">СписокСообщенийПередНачаломДобавления</Event>
-				<Event name="BeforeDeleteRow">СписокСообщенийПередУдалением</Event>
 			</Events>
 			<ChildItems>
-				<InputField name="СписокСообщенийЗначение" id="15">
-					<DataPath>СписокСообщений.Value</DataPath>
+				<InputField name="СписокСообщенийДата" id="15">
+					<DataPath>СписокСообщений.Дата</DataPath>
 					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="СписокСообщенийЗначениеКонтекстноеМеню" id="16"/>
-					<ExtendedTooltip name="СписокСообщенийЗначениеРасширеннаяПодсказка" id="17"/>
+					<Width>7</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="СписокСообщенийДатаКонтекстноеМеню" id="16"/>
+					<ExtendedTooltip name="СписокСообщенийДатаРасширеннаяПодсказка" id="17"/>
+				</InputField>
+				<InputField name="СписокСообщенийНомер" id="18">
+					<DataPath>СписокСообщений.Номер</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>7</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="СписокСообщенийНомерКонтекстноеМеню" id="19"/>
+					<ExtendedTooltip name="СписокСообщенийНомерРасширеннаяПодсказка" id="20"/>
+				</InputField>
+				<InputField name="СписокСообщенийТема" id="21">
+					<DataPath>СписокСообщений.Тема</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="СписокСообщенийТемаКонтекстноеМеню" id="22"/>
+					<ExtendedTooltip name="СписокСообщенийТемаРасширеннаяПодсказка" id="23"/>
+				</InputField>
+				<InputField name="СписокСообщенийСсылка" id="24">
+					<DataPath>СписокСообщений.Ссылка</DataPath>
+					<Visible>false</Visible>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="СписокСообщенийСсылкаКонтекстноеМеню" id="25"/>
+					<ExtendedTooltip name="СписокСообщенийСсылкаРасширеннаяПодсказка" id="26"/>
 				</InputField>
 			</ChildItems>
 		</Table>
@@ -85,8 +107,65 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:Type>v8:ValueListType</v8:Type>
+				<v8:Type>v8:ValueTable</v8:Type>
 			</Type>
+			<Columns>
+				<Column name="Дата" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:dateTime</v8:Type>
+						<v8:DateQualifiers>
+							<v8:DateFractions>Date</v8:DateFractions>
+						</v8:DateQualifiers>
+					</Type>
+				</Column>
+				<Column name="Номер" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Тема" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Тема</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Ссылка" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ссылка</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:DocumentRef.СообщениеДилеру</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
 		</Attribute>
 	</Attributes>
 </Form>
