@@ -3,44 +3,17 @@
 	<Width>100</Width>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<Autofill>false</Autofill>
-		<ChildItems>
-			<Button name="ФормаСоздать" id="17">
-				<Type>CommandBarButton</Type>
-				<CommandName>Form.StandardCommand.Create</CommandName>
-				<ExtendedTooltip name="ФормаСоздатьРасширеннаяПодсказка" id="18"/>
-			</Button>
-			<Button name="ФормаИзменить" id="19">
-				<Type>CommandBarButton</Type>
-				<CommandName>Form.StandardCommand.Change</CommandName>
-				<ExtendedTooltip name="ФормаИзменитьРасширеннаяПодсказка" id="20"/>
-			</Button>
-			<Button name="ФормаУстановитьПометкуУдаления" id="21">
-				<Type>CommandBarButton</Type>
-				<CommandName>Form.StandardCommand.SetDeletionMark</CommandName>
-				<ExtendedTooltip name="ФормаУстановитьПометкуУдаленияРасширеннаяПодсказка" id="22"/>
-			</Button>
-			<Button name="ФормаОбновить" id="23">
-				<Type>CommandBarButton</Type>
-				<CommandName>Form.StandardCommand.Refresh</CommandName>
-				<ExtendedTooltip name="ФормаОбновитьРасширеннаяПодсказка" id="24"/>
-			</Button>
-			<Button name="ФормаНайти" id="25">
-				<Type>CommandBarButton</Type>
-				<CommandName>Form.StandardCommand.Find</CommandName>
-				<ExtendedTooltip name="ФормаНайтиРасширеннаяПодсказка" id="26"/>
-			</Button>
-			<Button name="ФормаОтменитьПоиск" id="27">
-				<Type>CommandBarButton</Type>
-				<CommandName>Form.StandardCommand.CancelSearch</CommandName>
-				<ExtendedTooltip name="ФормаОтменитьПоискРасширеннаяПодсказка" id="28"/>
-			</Button>
-		</ChildItems>
 	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
 	<ChildItems>
 		<Table name="Список" id="1">
 			<Representation>List</Representation>
-			<CommandBarLocation>None</CommandBarLocation>
+			<CommandBarLocation>Top</CommandBarLocation>
 			<DefaultItem>true</DefaultItem>
+			<RowSelectionMode>Row</RowSelectionMode>
 			<UseAlternationRowColor>true</UseAlternationRowColor>
 			<InitialTreeView>ExpandTopLevel</InitialTreeView>
 			<EnableStartDrag>true</EnableStartDrag>
@@ -65,29 +38,29 @@
 			<ContextMenu name="СписокКонтекстноеМеню" id="2"/>
 			<AutoCommandBar name="СписокКоманднаяПанель" id="3"/>
 			<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="4"/>
-			<SearchStringAddition name="СписокСтрокаПоиска" id="29">
+			<SearchStringAddition name="СписокСтрокаПоиска" id="17">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="30"/>
-				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="31"/>
+				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="18"/>
+				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="19"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокСостояниеПросмотра" id="32">
+			<ViewStatusAddition name="СписокСостояниеПросмотра" id="20">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="33"/>
-				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="34"/>
+				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="21"/>
+				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="22"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокУправлениеПоиском" id="35">
+			<SearchControlAddition name="СписокУправлениеПоиском" id="23">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="36"/>
-				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="37"/>
+				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="24"/>
+				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="25"/>
 			</SearchControlAddition>
 			<Events>
 				<Event name="Selection">СписокВыбор</Event>
@@ -103,7 +76,7 @@
 					<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="7"/>
 				</LabelField>
 				<LabelField name="Номер" id="8">
-					<DataPath>Список.Number</DataPath>
+					<DataPath>Список.Номер</DataPath>
 					<Width>8</Width>
 					<HorizontalStretch>false</HorizontalStretch>
 					<ContextMenu name="НомерКонтекстноеМеню" id="9"/>
@@ -130,12 +103,26 @@
 				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
 				<QueryText>ВЫБРАТЬ
-	ДокументСообщениеДилеру.Ссылка,
-	ДокументСообщениеДилеру.Номер,
-	ДокументСообщениеДилеру.Дата,
-	ДокументСообщениеДилеру.Тема	
+	СообщениеДилеру.Ссылка,
+	СообщениеДилеру.Номер КАК Номер,
+	СообщениеДилеру.Тема,
+	СообщениеДилеру.Дата,
+	ВЫБОР
+		КОГДА &amp;Дилер = ЛОЖЬ ТОГДА
+			  1
+		ИНАЧЕ ОзнакомленСообщенияДилеру.Дилер
+	КОНЕЦ КАК Дилер,
+	ВЫБОР
+		КОГДА Дилер IS NULL ТОГДА
+			  0
+		ИНАЧЕ 1
+	КОНЕЦ КАК Сорт 
 ИЗ
-	Документ.СообщениеДилеру КАК ДокументСообщениеДилеру</QueryText>
+	Документ.СообщениеДилеру КАК СообщениеДилеру
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ОзнакомленСообщенияДилеру КАК ОзнакомленСообщенияДилеру
+		ПО СообщениеДилеру.Ссылка = ОзнакомленСообщенияДилеру.Сообщение
+			И (ОзнакомленСообщенияДилеру.Дилер = &amp;Дилер)
+			И (ОзнакомленСообщенияДилеру.Ознакомлен)</QueryText>
 				<MainTable>Document.СообщениеДилеру</MainTable>
 				<ListSettings>
 					<dcsset:filter>
@@ -143,10 +130,33 @@
 						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
 					</dcsset:filter>
 					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>Сорт</dcsset:field>
+							<dcsset:orderType>Desc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>Номер</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
 						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
 					</dcsset:order>
 					<dcsset:conditionalAppearance>
+						<dcsset:item>
+							<dcsset:selection/>
+							<dcsset:filter>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">Дилер</dcsset:left>
+									<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+								</dcsset:item>
+							</dcsset:filter>
+							<dcsset:appearance>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:parameter>ЦветФона</dcscor:parameter>
+									<dcscor:value xsi:type="v8ui:Color">web:Pink</dcscor:value>
+								</dcscor:item>
+							</dcsset:appearance>
+						</dcsset:item>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
 						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
 					</dcsset:conditionalAppearance>
