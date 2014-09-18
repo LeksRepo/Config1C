@@ -12,16 +12,39 @@
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
-		<LabelDecoration name="Декорация1" id="8">
-			<Title formatted="true">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>&lt;fontsize 14&gt;&lt;b&gt;&lt;color #5e99c2&gt;Ознакомьтесь с новыми сообщениями:&lt;/&gt;&lt;/&gt;&lt;/&gt;</v8:content>
-				</v8:item>
-			</Title>
-			<ContextMenu name="Декорация1КонтекстноеМеню" id="9"/>
-			<ExtendedTooltip name="Декорация1РасширеннаяПодсказка" id="10"/>
-		</LabelDecoration>
+		<UsualGroup name="Группа1" id="29">
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="30"/>
+			<ChildItems>
+				<LabelDecoration name="Декорация1" id="8">
+					<Title formatted="true">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>&lt;fontsize 14&gt;&lt;b&gt;&lt;bgcolor #fcfaeb&gt;&lt;color #5ac21a&gt;Ознакомьтесь с новыми сообщениями:&lt;/&gt;&lt;/&gt;&lt;/&gt;&lt;/&gt;</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="Декорация1КонтекстноеМеню" id="9"/>
+					<ExtendedTooltip name="Декорация1РасширеннаяПодсказка" id="10"/>
+				</LabelDecoration>
+				<LabelDecoration name="Декорация2" id="31">
+					<Width>8</Width>
+					<ContextMenu name="Декорация2КонтекстноеМеню" id="32"/>
+					<ExtendedTooltip name="Декорация2РасширеннаяПодсказка" id="33"/>
+				</LabelDecoration>
+				<Button name="ПросмотрВсехСообщений" id="27">
+					<Type>UsualButton</Type>
+					<Representation>PictureAndText</Representation>
+					<CommandName>Form.Command.ПросмотрВсехСообщений</CommandName>
+					<Picture>
+						<xr:Ref>CommonPicture.ПереместитьВПапкуПисем</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<ExtendedTooltip name="ПросмотрВсехСообщенийРасширеннаяПодсказка" id="28"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
 		<Table name="СписокСообщений" id="11">
 			<Representation>List</Representation>
 			<ReadOnly>true</ReadOnly>
@@ -38,29 +61,29 @@
 				<Autofill>false</Autofill>
 			</AutoCommandBar>
 			<ExtendedTooltip name="СписокСообщенийРасширеннаяПодсказка" id="14"/>
-			<SearchStringAddition name="СписокСообщенийСтрокаПоиска" id="27">
+			<SearchStringAddition name="СписокСообщенийСтрокаПоиска" id="34">
 				<AdditionSource>
 					<Item>СписокСообщений</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСообщенийСтрокаПоискаКонтекстноеМеню" id="28"/>
-				<ExtendedTooltip name="СписокСообщенийСтрокаПоискаРасширеннаяПодсказка" id="29"/>
+				<ContextMenu name="СписокСообщенийСтрокаПоискаКонтекстноеМеню" id="35"/>
+				<ExtendedTooltip name="СписокСообщенийСтрокаПоискаРасширеннаяПодсказка" id="36"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокСообщенийСостояниеПросмотра" id="30">
+			<ViewStatusAddition name="СписокСообщенийСостояниеПросмотра" id="37">
 				<AdditionSource>
 					<Item>СписокСообщений</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСообщенийСостояниеПросмотраКонтекстноеМеню" id="31"/>
-				<ExtendedTooltip name="СписокСообщенийСостояниеПросмотраРасширеннаяПодсказка" id="32"/>
+				<ContextMenu name="СписокСообщенийСостояниеПросмотраКонтекстноеМеню" id="38"/>
+				<ExtendedTooltip name="СписокСообщенийСостояниеПросмотраРасширеннаяПодсказка" id="39"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокСообщенийУправлениеПоиском" id="33">
+			<SearchControlAddition name="СписокСообщенийУправлениеПоиском" id="40">
 				<AdditionSource>
 					<Item>СписокСообщений</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСообщенийУправлениеПоискомКонтекстноеМеню" id="34"/>
-				<ExtendedTooltip name="СписокСообщенийУправлениеПоискомРасширеннаяПодсказка" id="35"/>
+				<ContextMenu name="СписокСообщенийУправлениеПоискомКонтекстноеМеню" id="41"/>
+				<ExtendedTooltip name="СписокСообщенийУправлениеПоискомРасширеннаяПодсказка" id="42"/>
 			</SearchControlAddition>
 			<Events>
 				<Event name="Selection">СписокСообщенийВыбор</Event>
@@ -168,4 +191,21 @@
 			</Columns>
 		</Attribute>
 	</Attributes>
+	<Commands>
+		<Command name="ПросмотрВсехСообщений" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Показать все сообщения</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Просмотр всех сообщений</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПросмотрВсехСообщений</Action>
+		</Command>
+	</Commands>
 </Form>
