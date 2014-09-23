@@ -35,30 +35,13 @@
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="54"/>
 					<ChildItems>
-						<Button name="ФормаСформироватьОтчет" id="8">
-							<Type>UsualButton</Type>
-							<Representation>PictureAndText</Representation>
-							<DefaultButton>true</DefaultButton>
-							<Height>2</Height>
-							<CommandName>Form.Command.СформироватьОтчет</CommandName>
-							<Picture>
-								<xr:Ref>StdPicture.GenerateReport</xr:Ref>
-								<xr:LoadTransparent>true</xr:LoadTransparent>
-							</Picture>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Сформировать</v8:content>
-								</v8:item>
-							</Title>
-							<ExtendedTooltip name="ФормаСформироватьОтчетExtendedTooltip" id="37"/>
-						</Button>
 						<Button name="Печать" id="24">
 							<Type>UsualButton</Type>
 							<Representation>PictureAndText</Representation>
-							<Width>14</Width>
+							<Width>12</Width>
 							<Height>1</Height>
 							<CommandName>Form.Item.ТабличныйДокумент.StandardCommand.Print</CommandName>
+							<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 							<Picture>
 								<xr:Ref>StdPicture.Print</xr:Ref>
 								<xr:LoadTransparent>true</xr:LoadTransparent>
@@ -70,6 +53,38 @@
 								</v8:item>
 							</Title>
 							<ExtendedTooltip name="ПечатьExtendedTooltip" id="38"/>
+						</Button>
+						<Button name="Свернуть" id="55">
+							<Type>UsualButton</Type>
+							<Representation>PictureAndText</Representation>
+							<CommandName>Form.Command.Свернуть</CommandName>
+							<Picture>
+								<xr:Ref>CommonPicture.ПоказатьТолькоВыбранныеРоли</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</Picture>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Свернуть</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="СвернутьРасширеннаяПодсказка" id="56"/>
+						</Button>
+						<Button name="Развернуть" id="57">
+							<Type>UsualButton</Type>
+							<Representation>PictureAndText</Representation>
+							<CommandName>Form.Command.Развернуть</CommandName>
+							<Picture>
+								<xr:Ref>CommonPicture.ИерархическийСписок</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</Picture>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Развернуть</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="РазвернутьРасширеннаяПодсказка" id="58"/>
 						</Button>
 					</ChildItems>
 				</UsualGroup>
@@ -162,64 +177,61 @@
 						</Button>
 					</ChildItems>
 				</UsualGroup>
-			</ChildItems>
-		</UsualGroup>
-		<UsualGroup name="ГруппаПодразделения" id="29">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Подразделения</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа подразделения</v8:content>
-				</v8:item>
-			</ToolTip>
-			<HorizontalStretch>true</HorizontalStretch>
-			<VerticalStretch>false</VerticalStretch>
-			<Group>Horizontal</Group>
-			<Representation>StrongSeparation</Representation>
-			<ExtendedTooltip name="ГруппаПодразделенияExtendedTooltip" id="39"/>
-			<ChildItems>
-				<Button name="ПодобратьПодразделения" id="30">
-					<Type>UsualButton</Type>
-					<Representation>PictureAndText</Representation>
-					<Height>2</Height>
-					<CommandName>Form.Command.ПодобратьПодразделения</CommandName>
-					<Picture>
-						<xr:Ref>StdPicture.CreateListItem</xr:Ref>
-						<xr:LoadTransparent>true</xr:LoadTransparent>
-					</Picture>
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Подобрать</v8:content>
-						</v8:item>
-					</Title>
-					<ExtendedTooltip name="ПодобратьПодразделенияExtendedTooltip" id="40"/>
-				</Button>
-				<LabelField name="СписокПодразделений" id="25">
-					<DataPath>Отчет.СписокПодразделений</DataPath>
+				<UsualGroup name="ГруппаПодразделения" id="29">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
 							<v8:content>Подразделения</v8:content>
 						</v8:item>
 					</Title>
-					<TitleLocation>None</TitleLocation>
-					<Height>2</Height>
-					<ContextMenu name="СписокПодразделенийКонтекстноеМеню" id="26"/>
-					<ExtendedTooltip name="СписокПодразделенийExtendedTooltip" id="41"/>
-				</LabelField>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа подразделения</v8:content>
+						</v8:item>
+					</ToolTip>
+					<HorizontalStretch>true</HorizontalStretch>
+					<VerticalStretch>false</VerticalStretch>
+					<Group>Horizontal</Group>
+					<ExtendedTooltip name="ГруппаПодразделенияExtendedTooltip" id="39"/>
+					<ChildItems>
+						<Button name="ПодобратьПодразделения" id="30">
+							<Type>UsualButton</Type>
+							<Representation>PictureAndText</Representation>
+							<Height>2</Height>
+							<CommandName>Form.Command.ПодобратьПодразделения</CommandName>
+							<Picture>
+								<xr:Ref>StdPicture.CreateListItem</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</Picture>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Подобрать</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="ПодобратьПодразделенияExtendedTooltip" id="40"/>
+						</Button>
+						<LabelField name="СписокПодразделений" id="25">
+							<DataPath>Отчет.СписокПодразделений</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Подразделения</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>None</TitleLocation>
+							<Height>2</Height>
+							<ContextMenu name="СписокПодразделенийКонтекстноеМеню" id="26"/>
+							<ExtendedTooltip name="СписокПодразделенийExtendedTooltip" id="41"/>
+						</LabelField>
+					</ChildItems>
+				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
 		<SpreadSheetDocumentField name="ТабличныйДокумент" id="15">
 			<DataPath>ТабличныйДокумент</DataPath>
-			<ReadOnly>true</ReadOnly>
 			<TitleLocation>None</TitleLocation>
-			<ShowGroups>false</ShowGroups>
 			<EnableStartDrag>false</EnableStartDrag>
 			<EnableDrag>false</EnableDrag>
 			<ContextMenu name="ТабличныйДокументКонтекстноеМеню" id="16"/>
@@ -309,6 +321,36 @@
 				</v8:item>
 			</ToolTip>
 			<Action>МесяцВперед</Action>
+		</Command>
+		<Command name="Свернуть" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Свернуть</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Свернуть</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Свернуть</Action>
+		</Command>
+		<Command name="Развернуть" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Развернуть</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Развернуть</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Развернуть</Action>
 		</Command>
 	</Commands>
 </Form>
