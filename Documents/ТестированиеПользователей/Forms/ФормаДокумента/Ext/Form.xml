@@ -4,17 +4,33 @@
 	<AutoTime>CurrentOrLast</AutoTime>
 	<UsePostingMode>Auto</UsePostingMode>
 	<RepostOnWrite>true</RepostOnWrite>
-	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="ФормаПровестиИЗакрыть" id="110">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.StandardCommand.PostAndClose</CommandName>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Завершить тестирование</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ФормаПровестиИЗакрытьРасширеннаяПодсказка" id="111"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
 	<Events>
 		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="BeforeWrite">ПередЗаписью</Event>
 		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
 		<UsualGroup name="Группа5" id="49">
-			<Height>50</Height>
 			<HorizontalStretch>true</HorizontalStretch>
-			<VerticalStretch>false</VerticalStretch>
+			<VerticalStretch>true</VerticalStretch>
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
@@ -33,8 +49,7 @@
 							<v8:content>Страницы</v8:content>
 						</v8:item>
 					</ToolTip>
-					<Height>15</Height>
-					<VerticalStretch>false</VerticalStretch>
+					<VerticalStretch>true</VerticalStretch>
 					<PagesRepresentation>None</PagesRepresentation>
 					<ExtendedTooltip name="СтраницыРасширеннаяПодсказка" id="95"/>
 					<ChildItems>
@@ -67,7 +82,7 @@
 										</v8:item>
 									</ToolTip>
 									<Group>Vertical</Group>
-									<Representation>None</Representation>
+									<Representation>StrongSeparation</Representation>
 									<ShowTitle>false</ShowTitle>
 									<ExtendedTooltip name="ПараметрыРасширеннаяПодсказка" id="32"/>
 									<ChildItems>
@@ -122,9 +137,8 @@
 								</v8:item>
 							</ToolTip>
 							<Width>100</Width>
-							<Height>50</Height>
-							<HorizontalStretch>false</HorizontalStretch>
-							<VerticalStretch>false</VerticalStretch>
+							<HorizontalStretch>true</HorizontalStretch>
+							<VerticalStretch>true</VerticalStretch>
 							<ExtendedTooltip name="ТестРасширеннаяПодсказка" id="99"/>
 							<ChildItems>
 								<UsualGroup name="Вопрос" id="40">
@@ -140,9 +154,8 @@
 											<v8:content>Вопрос</v8:content>
 										</v8:item>
 									</ToolTip>
-									<Height>6</Height>
 									<Group>Horizontal</Group>
-									<Representation>None</Representation>
+									<Representation>StrongSeparation</Representation>
 									<ShowTitle>false</ShowTitle>
 									<ExtendedTooltip name="ВопросРасширеннаяПодсказка" id="41"/>
 									<ChildItems>
@@ -157,6 +170,7 @@
 													<v8:content>Текст вопроса</v8:content>
 												</v8:item>
 											</Title>
+											<VerticalAlign>Top</VerticalAlign>
 											<ContextMenu name="ТекстВопросаКонтекстноеМеню" id="88"/>
 											<ExtendedTooltip name="ТекстВопросаРасширеннаяПодсказка" id="89"/>
 										</LabelDecoration>
@@ -165,12 +179,11 @@
 											<ChangeRowSet>false</ChangeRowSet>
 											<ChangeRowOrder>false</ChangeRowOrder>
 											<Width>50</Width>
-											<HeightInTableRows>4</HeightInTableRows>
+											<Height>20</Height>
 											<RowSelectionMode>Row</RowSelectionMode>
 											<Header>false</Header>
 											<VerticalLines>false</VerticalLines>
 											<AutoInsertNewRow>true</AutoInsertNewRow>
-											<HorizontalStretch>false</HorizontalStretch>
 											<DataPath>ОтветПользователя</DataPath>
 											<SearchStringLocation>None</SearchStringLocation>
 											<ViewStatusLocation>None</ViewStatusLocation>
@@ -181,35 +194,38 @@
 												<Autofill>false</Autofill>
 											</AutoCommandBar>
 											<ExtendedTooltip name="ОтветПользователяРасширеннаяПодсказка" id="62"/>
-											<SearchStringAddition name="ОтветПользователяСтрокаПоиска" id="110">
+											<SearchStringAddition name="ОтветПользователяСтрокаПоиска" id="112">
 												<AdditionSource>
 													<Item>ОтветПользователя</Item>
 													<Type>SearchStringRepresentation</Type>
 												</AdditionSource>
-												<ContextMenu name="ОтветПользователяСтрокаПоискаКонтекстноеМеню" id="111"/>
-												<ExtendedTooltip name="ОтветПользователяСтрокаПоискаРасширеннаяПодсказка" id="112"/>
+												<ContextMenu name="ОтветПользователяСтрокаПоискаКонтекстноеМеню" id="113"/>
+												<ExtendedTooltip name="ОтветПользователяСтрокаПоискаРасширеннаяПодсказка" id="114"/>
 											</SearchStringAddition>
-											<ViewStatusAddition name="ОтветПользователяСостояниеПросмотра" id="113">
+											<ViewStatusAddition name="ОтветПользователяСостояниеПросмотра" id="115">
 												<AdditionSource>
 													<Item>ОтветПользователя</Item>
 													<Type>ViewStatusRepresentation</Type>
 												</AdditionSource>
-												<ContextMenu name="ОтветПользователяСостояниеПросмотраКонтекстноеМеню" id="114"/>
-												<ExtendedTooltip name="ОтветПользователяСостояниеПросмотраРасширеннаяПодсказка" id="115"/>
+												<ContextMenu name="ОтветПользователяСостояниеПросмотраКонтекстноеМеню" id="116"/>
+												<ExtendedTooltip name="ОтветПользователяСостояниеПросмотраРасширеннаяПодсказка" id="117"/>
 											</ViewStatusAddition>
-											<SearchControlAddition name="ОтветПользователяУправлениеПоиском" id="116">
+											<SearchControlAddition name="ОтветПользователяУправлениеПоиском" id="118">
 												<AdditionSource>
 													<Item>ОтветПользователя</Item>
 													<Type>SearchControl</Type>
 												</AdditionSource>
-												<ContextMenu name="ОтветПользователяУправлениеПоискомКонтекстноеМеню" id="117"/>
-												<ExtendedTooltip name="ОтветПользователяУправлениеПоискомРасширеннаяПодсказка" id="118"/>
+												<ContextMenu name="ОтветПользователяУправлениеПоискомКонтекстноеМеню" id="119"/>
+												<ExtendedTooltip name="ОтветПользователяУправлениеПоискомРасширеннаяПодсказка" id="120"/>
 											</SearchControlAddition>
 											<ChildItems>
 												<InputField name="ОтветПользователяОтвет" id="63">
 													<DataPath>ОтветПользователя.Ответ</DataPath>
 													<ReadOnly>true</ReadOnly>
 													<EditMode>EnterOnInput</EditMode>
+													<ShowInHeader>false</ShowInHeader>
+													<ShowInFooter>false</ShowInFooter>
+													<Height>4</Height>
 													<Wrap>false</Wrap>
 													<MultiLine>true</MultiLine>
 													<ExtendedEdit>false</ExtendedEdit>
@@ -515,6 +531,17 @@
 					<v8:FractionDigits>0</v8:FractionDigits>
 					<v8:AllowedSign>Nonnegative</v8:AllowedSign>
 				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ОткрытоОбработчиком" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыто обработчиком</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 	</Attributes>
