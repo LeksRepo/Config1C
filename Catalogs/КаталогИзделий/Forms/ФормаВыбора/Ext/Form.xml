@@ -2,6 +2,15 @@
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<Group>Horizontal</Group>
+	<CommandSet>
+		<ExcludedCommand>SetDeletionMark</ExcludedCommand>
+		<ExcludedCommand>Copy</ExcludedCommand>
+		<ExcludedCommand>Delete</ExcludedCommand>
+		<ExcludedCommand>Create</ExcludedCommand>
+		<ExcludedCommand>CancelSearch</ExcludedCommand>
+		<ExcludedCommand>Find</ExcludedCommand>
+		<ExcludedCommand>CreateFolder</ExcludedCommand>
+	</CommandSet>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
 		<Event name="OnOpen">ПриОткрытии</Event>
@@ -22,6 +31,9 @@
 					<v8:content>Группа отбора</v8:content>
 				</v8:item>
 			</ToolTip>
+			<Width>19</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<VerticalStretch>false</VerticalStretch>
 			<Group>Vertical</Group>
 			<Representation>StrongSeparation</Representation>
 			<ExtendedTooltip name="ГруппаОтбораРасширеннаяПодсказка" id="33"/>
@@ -37,59 +49,172 @@
 					<ContextMenu name="ВидОсновногоЭлементаКонтекстноеМеню" id="38"/>
 					<ExtendedTooltip name="ВидОсновногоЭлементаРасширеннаяПодсказка" id="39"/>
 				</InputField>
-				<CheckBoxField name="Полки" id="34">
-					<DataPath>Полки</DataPath>
-					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="ПолкиКонтекстноеМеню" id="35"/>
-					<ExtendedTooltip name="ПолкиРасширеннаяПодсказка" id="36"/>
-				</CheckBoxField>
-				<CheckBoxField name="ГладильнаяДоска" id="40">
-					<DataPath>ГладильнаяДоска</DataPath>
-					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="ГладильнаяДоскаКонтекстноеМеню" id="41"/>
-					<ExtendedTooltip name="ГладильнаяДоскаРасширеннаяПодсказка" id="42"/>
-				</CheckBoxField>
-				<InputField name="КоличествоДверей" id="43">
-					<DataPath>КоличествоДверей</DataPath>
-					<ContextMenu name="КоличествоДверейКонтекстноеМеню" id="44"/>
-					<ExtendedTooltip name="КоличествоДверейРасширеннаяПодсказка" id="45"/>
-				</InputField>
-				<CheckBoxField name="Корзина" id="46">
-					<DataPath>Корзина</DataPath>
-					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="КорзинаКонтекстноеМеню" id="47"/>
-					<ExtendedTooltip name="КорзинаРасширеннаяПодсказка" id="48"/>
-				</CheckBoxField>
-				<CheckBoxField name="Пантограф" id="49">
-					<DataPath>Пантограф</DataPath>
-					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="ПантографКонтекстноеМеню" id="50"/>
-					<ExtendedTooltip name="ПантографРасширеннаяПодсказка" id="51"/>
-				</CheckBoxField>
-				<CheckBoxField name="ПылесосЧемодан" id="52">
-					<DataPath>ПылесосЧемодан</DataPath>
-					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="ПылесосЧемоданКонтекстноеМеню" id="53"/>
-					<ExtendedTooltip name="ПылесосЧемоданРасширеннаяПодсказка" id="54"/>
-				</CheckBoxField>
-				<CheckBoxField name="СотоваяПолка" id="55">
-					<DataPath>СотоваяПолка</DataPath>
-					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="СотоваяПолкаКонтекстноеМеню" id="56"/>
-					<ExtendedTooltip name="СотоваяПолкаРасширеннаяПодсказка" id="57"/>
-				</CheckBoxField>
-				<CheckBoxField name="ТорцевоеВешало" id="58">
-					<DataPath>ТорцевоеВешало</DataPath>
-					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="ТорцевоеВешалоКонтекстноеМеню" id="59"/>
-					<ExtendedTooltip name="ТорцевоеВешалоРасширеннаяПодсказка" id="60"/>
-				</CheckBoxField>
-				<CheckBoxField name="Штанга" id="61">
-					<DataPath>Штанга</DataPath>
-					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="ШтангаКонтекстноеМеню" id="62"/>
-					<ExtendedTooltip name="ШтангаРасширеннаяПодсказка" id="63"/>
-				</CheckBoxField>
+				<UsualGroup name="ГруппаОтборФлаг" id="64">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа отбор флаг</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа отбор флаг</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаОтборФлагРасширеннаяПодсказка" id="65"/>
+					<ChildItems>
+						<InputField name="КоличествоДверей" id="43">
+							<DataPath>КоличествоДверей</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Дверей</v8:content>
+								</v8:item>
+							</Title>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xs:decimal">1</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xs:decimal">2</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xs:decimal">3</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xs:decimal">4</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ChoiceListButton>true</ChoiceListButton>
+							<ContextMenu name="КоличествоДверейКонтекстноеМеню" id="44"/>
+							<ExtendedTooltip name="КоличествоДверейРасширеннаяПодсказка" id="45"/>
+						</InputField>
+						<CheckBoxField name="Полки" id="34">
+							<DataPath>Полки</DataPath>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ПолкиКонтекстноеМеню" id="35"/>
+							<ExtendedTooltip name="ПолкиРасширеннаяПодсказка" id="36"/>
+						</CheckBoxField>
+						<CheckBoxField name="ГладильнаяДоска" id="40">
+							<DataPath>ГладильнаяДоска</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Гладильная доска</v8:content>
+								</v8:item>
+							</Title>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ГладильнаяДоскаКонтекстноеМеню" id="41"/>
+							<ExtendedTooltip name="ГладильнаяДоскаРасширеннаяПодсказка" id="42"/>
+						</CheckBoxField>
+						<CheckBoxField name="Корзина" id="46">
+							<DataPath>Корзина</DataPath>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="КорзинаКонтекстноеМеню" id="47"/>
+							<ExtendedTooltip name="КорзинаРасширеннаяПодсказка" id="48"/>
+						</CheckBoxField>
+						<CheckBoxField name="Пантограф" id="49">
+							<DataPath>Пантограф</DataPath>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ПантографКонтекстноеМеню" id="50"/>
+							<ExtendedTooltip name="ПантографРасширеннаяПодсказка" id="51"/>
+						</CheckBoxField>
+						<CheckBoxField name="ПылесосЧемодан" id="52">
+							<DataPath>ПылесосЧемодан</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Пылесос/чемодан</v8:content>
+								</v8:item>
+							</Title>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ПылесосЧемоданКонтекстноеМеню" id="53"/>
+							<ExtendedTooltip name="ПылесосЧемоданРасширеннаяПодсказка" id="54"/>
+						</CheckBoxField>
+						<CheckBoxField name="СотоваяПолка" id="55">
+							<DataPath>СотоваяПолка</DataPath>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="СотоваяПолкаКонтекстноеМеню" id="56"/>
+							<ExtendedTooltip name="СотоваяПолкаРасширеннаяПодсказка" id="57"/>
+						</CheckBoxField>
+						<CheckBoxField name="ТорцевоеВешало" id="58">
+							<DataPath>ТорцевоеВешало</DataPath>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ТорцевоеВешалоКонтекстноеМеню" id="59"/>
+							<ExtendedTooltip name="ТорцевоеВешалоРасширеннаяПодсказка" id="60"/>
+						</CheckBoxField>
+						<CheckBoxField name="Штанга" id="61">
+							<DataPath>Штанга</DataPath>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ШтангаКонтекстноеМеню" id="62"/>
+							<ExtendedTooltip name="ШтангаРасширеннаяПодсказка" id="63"/>
+						</CheckBoxField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаПоиск" id="70">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа поиск</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа поиск</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаПоискРасширеннаяПодсказка" id="71"/>
+					<ChildItems>
+						<Button name="Поиск" id="66">
+							<Type>UsualButton</Type>
+							<Representation>PictureAndText</Representation>
+							<CommandName>Form.Command.Поиск</CommandName>
+							<Picture>
+								<xr:Ref>StdPicture.Find</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</Picture>
+							<ExtendedTooltip name="ПоискРасширеннаяПодсказка" id="67"/>
+						</Button>
+						<Button name="ОтменитьПоиск" id="68">
+							<Type>UsualButton</Type>
+							<Representation>PictureAndText</Representation>
+							<CommandName>Form.Command.ОтменитьПоиск</CommandName>
+							<Picture>
+								<xr:Ref>StdPicture.CancelSearch</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</Picture>
+							<ExtendedTooltip name="ОтменитьПоискРасширеннаяПодсказка" id="69"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
 		<UsualGroup name="ГруппаСписков" id="17">
@@ -105,6 +230,7 @@
 					<v8:content>Группа списков</v8:content>
 				</v8:item>
 			</ToolTip>
+			<HorizontalStretch>false</HorizontalStretch>
 			<Group>Vertical</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
@@ -119,6 +245,7 @@
 					<SelectionMode>SingleRow</SelectionMode>
 					<UseAlternationRowColor>true</UseAlternationRowColor>
 					<InitialTreeView>ExpandAllLevels</InitialTreeView>
+					<HorizontalStretch>false</HorizontalStretch>
 					<EnableStartDrag>true</EnableStartDrag>
 					<DataPath>Список</DataPath>
 					<RowPictureDataPath>Список.DefaultPicture</RowPictureDataPath>
@@ -143,29 +270,29 @@
 						<Autofill>false</Autofill>
 					</AutoCommandBar>
 					<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="4"/>
-					<SearchStringAddition name="СписокСтрокаПоиска" id="64">
+					<SearchStringAddition name="СписокСтрокаПоиска" id="72">
 						<AdditionSource>
 							<Item>Список</Item>
 							<Type>SearchStringRepresentation</Type>
 						</AdditionSource>
-						<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="65"/>
-						<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="66"/>
+						<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="73"/>
+						<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="74"/>
 					</SearchStringAddition>
-					<ViewStatusAddition name="СписокСостояниеПросмотра" id="67">
+					<ViewStatusAddition name="СписокСостояниеПросмотра" id="75">
 						<AdditionSource>
 							<Item>Список</Item>
 							<Type>ViewStatusRepresentation</Type>
 						</AdditionSource>
-						<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="68"/>
-						<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="69"/>
+						<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="76"/>
+						<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="77"/>
 					</ViewStatusAddition>
-					<SearchControlAddition name="СписокУправлениеПоиском" id="70">
+					<SearchControlAddition name="СписокУправлениеПоиском" id="78">
 						<AdditionSource>
 							<Item>Список</Item>
 							<Type>SearchControl</Type>
 						</AdditionSource>
-						<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="71"/>
-						<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="72"/>
+						<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="79"/>
+						<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="80"/>
 					</SearchControlAddition>
 					<Events>
 						<Event name="ValueChoice">СписокВыборЗначения</Event>
@@ -201,10 +328,13 @@
 				<Table name="СписокДопИзделий" id="19">
 					<Representation>List</Representation>
 					<TitleLocation>Top</TitleLocation>
+					<Width>50</Width>
 					<Height>7</Height>
 					<ChoiceMode>true</ChoiceMode>
 					<SelectionMode>SingleRow</SelectionMode>
 					<UseAlternationRowColor>true</UseAlternationRowColor>
+					<HorizontalStretch>false</HorizontalStretch>
+					<VerticalStretch>false</VerticalStretch>
 					<EnableStartDrag>true</EnableStartDrag>
 					<DataPath>СписокДопИзделий</DataPath>
 					<RowPictureDataPath>СписокДопИзделий.DefaultPicture</RowPictureDataPath>
@@ -237,29 +367,29 @@
 						<Autofill>false</Autofill>
 					</AutoCommandBar>
 					<ExtendedTooltip name="СписокДопИзделийРасширеннаяПодсказка" id="22"/>
-					<SearchStringAddition name="СписокДопИзделийСтрокаПоиска" id="73">
+					<SearchStringAddition name="СписокДопИзделийСтрокаПоиска" id="81">
 						<AdditionSource>
 							<Item>СписокДопИзделий</Item>
 							<Type>SearchStringRepresentation</Type>
 						</AdditionSource>
-						<ContextMenu name="СписокДопИзделийСтрокаПоискаКонтекстноеМеню" id="74"/>
-						<ExtendedTooltip name="СписокДопИзделийСтрокаПоискаРасширеннаяПодсказка" id="75"/>
+						<ContextMenu name="СписокДопИзделийСтрокаПоискаКонтекстноеМеню" id="82"/>
+						<ExtendedTooltip name="СписокДопИзделийСтрокаПоискаРасширеннаяПодсказка" id="83"/>
 					</SearchStringAddition>
-					<ViewStatusAddition name="СписокДопИзделийСостояниеПросмотра" id="76">
+					<ViewStatusAddition name="СписокДопИзделийСостояниеПросмотра" id="84">
 						<AdditionSource>
 							<Item>СписокДопИзделий</Item>
 							<Type>ViewStatusRepresentation</Type>
 						</AdditionSource>
-						<ContextMenu name="СписокДопИзделийСостояниеПросмотраКонтекстноеМеню" id="77"/>
-						<ExtendedTooltip name="СписокДопИзделийСостояниеПросмотраРасширеннаяПодсказка" id="78"/>
+						<ContextMenu name="СписокДопИзделийСостояниеПросмотраКонтекстноеМеню" id="85"/>
+						<ExtendedTooltip name="СписокДопИзделийСостояниеПросмотраРасширеннаяПодсказка" id="86"/>
 					</ViewStatusAddition>
-					<SearchControlAddition name="СписокДопИзделийУправлениеПоиском" id="79">
+					<SearchControlAddition name="СписокДопИзделийУправлениеПоиском" id="87">
 						<AdditionSource>
 							<Item>СписокДопИзделий</Item>
 							<Type>SearchControl</Type>
 						</AdditionSource>
-						<ContextMenu name="СписокДопИзделийУправлениеПоискомКонтекстноеМеню" id="80"/>
-						<ExtendedTooltip name="СписокДопИзделийУправлениеПоискомРасширеннаяПодсказка" id="81"/>
+						<ContextMenu name="СписокДопИзделийУправлениеПоискомКонтекстноеМеню" id="88"/>
+						<ExtendedTooltip name="СписокДопИзделийУправлениеПоискомРасширеннаяПодсказка" id="89"/>
 					</SearchControlAddition>
 					<Events>
 						<Event name="ValueChoice">СписокДопИзделийВыборЗначения</Event>
@@ -309,9 +439,29 @@
 	СправочникКаталогИзделий.Корпусный,
 	СправочникКаталогИзделий.ВидИзделия,
 	СправочникКаталогИзделий.ВидИзделияПоКаталогу,
-	СправочникКаталогИзделий.Базовый
+	СправочникКаталогИзделий.Базовый,
+	КОЛИЧЕСТВО(КаталогИзделийСписокЯщики.ИмяЯщика) КАК КоличествоЯщиков
 ИЗ
-	Справочник.КаталогИзделий КАК СправочникКаталогИзделий</QueryText>
+	Справочник.КаталогИзделий КАК СправочникКаталогИзделий
+		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.КаталогИзделий.СписокЯщики КАК КаталогИзделийСписокЯщики
+		ПО КаталогИзделийСписокЯщики.Ссылка = СправочникКаталогИзделий.Ссылка
+		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.КаталогИзделий.СписокХарактеристик КАК КаталогИзделийСписокХарактеристик
+		ПО КаталогИзделийСписокХарактеристик.Ссылка = СправочникКаталогИзделий.Ссылка
+
+СГРУППИРОВАТЬ ПО
+	СправочникКаталогИзделий.Ссылка,
+	СправочникКаталогИзделий.ПометкаУдаления,
+	СправочникКаталогИзделий.Предопределенный,
+	СправочникКаталогИзделий.Родитель,
+	СправочникКаталогИзделий.ЭтоГруппа,
+	СправочникКаталогИзделий.Код,
+	СправочникКаталогИзделий.Наименование,
+	СправочникКаталогИзделий.Автор,
+	СправочникКаталогИзделий.Активный,
+	СправочникКаталогИзделий.Корпусный,
+	СправочникКаталогИзделий.ВидИзделия,
+	СправочникКаталогИзделий.ВидИзделияПоКаталогу,
+	СправочникКаталогИзделий.Базовый</QueryText>
 				<MainTable>Catalog.КаталогИзделий</MainTable>
 				<ListSettings>
 					<dcsset:filter>
@@ -546,4 +696,35 @@
 			</Type>
 		</Attribute>
 	</Attributes>
+	<Commands>
+		<Command name="Поиск" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поиск</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поиск</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Поиск</Action>
+		</Command>
+		<Command name="ОтменитьПоиск" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отменить поиск</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Отменить поиск</v8:content>
+				</v8:item>
+			</ToolTip>
+		</Command>
+	</Commands>
 </Form>
