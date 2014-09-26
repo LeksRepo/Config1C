@@ -611,18 +611,6 @@
 			</dcsset:selection>
 			<dcsset:filter>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
-					<dcsset:left xsi:type="dcscor:Field">Наценка</dcsset:left>
-					<dcsset:comparisonType>Less</dcsset:comparisonType>
-					<dcsset:right xsi:type="xs:decimal">20</dcsset:right>
-					<dcsset:userSettingID>d3e95730-29ab-44dc-8ac1-92ed4853fc05</dcsset:userSettingID>
-					<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Наценка меньше 20%</v8:content>
-						</v8:item>
-					</dcsset:userSettingPresentation>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:FilterItemComparison">
 					<dcsset:use>false</dcsset:use>
 					<dcsset:left xsi:type="dcscor:Field">Номенклатура</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
@@ -716,14 +704,6 @@
 									<dcsset:comparisonType>Less</dcsset:comparisonType>
 									<dcsset:right xsi:type="xs:decimal">20</dcsset:right>
 								</dcsset:item>
-								<dcsset:item xsi:type="dcsset:FilterItemComparison">
-									<dcsset:left xsi:type="dcscor:Field">Розничная</dcsset:left>
-									<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
-								</dcsset:item>
-								<dcsset:item xsi:type="dcsset:FilterItemComparison">
-									<dcsset:left xsi:type="dcscor:Field">ПлановаяЗакупочная</dcsset:left>
-									<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
-								</dcsset:item>
 							</dcsset:item>
 						</dcsset:item>
 					</dcsset:filter>
@@ -731,6 +711,94 @@
 						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 							<dcscor:parameter>ЦветФона</dcscor:parameter>
 							<dcscor:value xsi:type="v8ui:Color">web:Pink</dcscor:value>
+						</dcscor:item>
+					</dcsset:appearance>
+					<dcsset:useInHierarchicalGroup>DontUse</dcsset:useInHierarchicalGroup>
+					<dcsset:useInOverall>DontUse</dcsset:useInOverall>
+					<dcsset:useInFieldsHeader>DontUse</dcsset:useInFieldsHeader>
+					<dcsset:useInHeader>DontUse</dcsset:useInHeader>
+					<dcsset:useInParameters>DontUse</dcsset:useInParameters>
+					<dcsset:useInFilter>DontUse</dcsset:useInFilter>
+				</dcsset:item>
+				<dcsset:item>
+					<dcsset:selection>
+						<dcsset:item>
+							<dcsset:field>Номенклатура</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>ЕдиницаИзмерения</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>БазовыйЛимитЦеха</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>Внутренняя</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>КоличествоРезерва</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>Наценка</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>ПлановаяНаценка</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>НаценкаЛогистики</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>ОстатокВЦеху</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>ОстатокНаСкладе</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>ПлановаяЗакупочная</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>ПолныйЛимитЦеха</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>ПроцентОтхода</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>Розничная</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>РозничнаяЦенаМинус30</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>Себестоимость</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>ТребуетсяПоСпецификациям</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>ПриобертаемОптом</dcsset:field>
+						</dcsset:item>
+					</dcsset:selection>
+					<dcsset:filter>
+						<dcsset:item xsi:type="dcsset:FilterItemGroup">
+							<dcsset:groupType>AndGroup</dcsset:groupType>
+							<dcsset:item xsi:type="dcsset:FilterItemComparison">
+								<dcsset:left xsi:type="dcscor:Field">Номенклатура.ЭтоГруппа</dcsset:left>
+								<dcsset:comparisonType>Equal</dcsset:comparisonType>
+								<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:FilterItemGroup">
+								<dcsset:groupType>OrGroup</dcsset:groupType>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">Наценка</dcsset:left>
+									<dcsset:comparisonType>Less</dcsset:comparisonType>
+									<dcsset:right xsi:type="xs:decimal">1</dcsset:right>
+								</dcsset:item>
+							</dcsset:item>
+						</dcsset:item>
+					</dcsset:filter>
+					<dcsset:appearance>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>ЦветФона</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:Color">web:Red</dcscor:value>
 						</dcscor:item>
 					</dcsset:appearance>
 					<dcsset:useInHierarchicalGroup>DontUse</dcsset:useInHierarchicalGroup>
