@@ -460,6 +460,9 @@
 									<ListChoiceMode>true</ListChoiceMode>
 									<ContextMenu name="РучкаКонтекстноеМеню" id="144"/>
 									<ExtendedTooltip name="РучкаExtendedTooltip" id="198"/>
+									<Events>
+										<Event name="StartChoice">РучкаНачалоВыбора</Event>
+									</Events>
 								</InputField>
 							</ChildItems>
 						</UsualGroup>
@@ -572,29 +575,29 @@
 								</ChildItems>
 							</AutoCommandBar>
 							<ExtendedTooltip name="ДеталиExtendedTooltip" id="207"/>
-							<SearchStringAddition name="ДеталиСтрокаПоиска" id="246">
+							<SearchStringAddition name="ДеталиСтрокаПоиска" id="248">
 								<AdditionSource>
 									<Item>Детали</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="ДеталиСтрокаПоискаКонтекстноеМеню" id="247"/>
-								<ExtendedTooltip name="ДеталиСтрокаПоискаРасширеннаяПодсказка" id="248"/>
+								<ContextMenu name="ДеталиСтрокаПоискаКонтекстноеМеню" id="249"/>
+								<ExtendedTooltip name="ДеталиСтрокаПоискаРасширеннаяПодсказка" id="250"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="ДеталиСостояниеПросмотра" id="249">
+							<ViewStatusAddition name="ДеталиСостояниеПросмотра" id="251">
 								<AdditionSource>
 									<Item>Детали</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="ДеталиСостояниеПросмотраКонтекстноеМеню" id="250"/>
-								<ExtendedTooltip name="ДеталиСостояниеПросмотраРасширеннаяПодсказка" id="251"/>
+								<ContextMenu name="ДеталиСостояниеПросмотраКонтекстноеМеню" id="252"/>
+								<ExtendedTooltip name="ДеталиСостояниеПросмотраРасширеннаяПодсказка" id="253"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="ДеталиУправлениеПоиском" id="252">
+							<SearchControlAddition name="ДеталиУправлениеПоиском" id="254">
 								<AdditionSource>
 									<Item>Детали</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="ДеталиУправлениеПоискомКонтекстноеМеню" id="253"/>
-								<ExtendedTooltip name="ДеталиУправлениеПоискомРасширеннаяПодсказка" id="254"/>
+								<ContextMenu name="ДеталиУправлениеПоискомКонтекстноеМеню" id="255"/>
+								<ExtendedTooltip name="ДеталиУправлениеПоискомРасширеннаяПодсказка" id="256"/>
 							</SearchControlAddition>
 							<Events>
 								<Event name="OnActivateRow">ДеталиПриАктивизацииСтроки</Event>
@@ -713,6 +716,18 @@
 				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
+		<Button name="ПодборТест" id="246">
+			<Type>UsualButton</Type>
+			<Representation>Picture</Representation>
+			<CommandName>Form.Command.ПодборТест</CommandName>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>т</v8:content>
+				</v8:item>
+			</Title>
+			<ExtendedTooltip name="ПодборТестРасширеннаяПодсказка" id="247"/>
+		</Button>
 		<InputField name="Комментарий" id="124">
 			<DataPath>Items.Детали.CurrentData.Комментарий</DataPath>
 			<ContextMenu name="КомментарийКонтекстноеМеню" id="125"/>
@@ -1211,6 +1226,21 @@
 			</ToolTip>
 			<Action>ДобавитьКДокументу</Action>
 			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ПодборТест" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор тест</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор тест</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПодборТест</Action>
 		</Command>
 	</Commands>
 </Form>
