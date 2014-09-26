@@ -98,6 +98,16 @@
 				<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
 			</role>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Субконто.Сорт</dataPath>
+			<field>Сорт</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Субконто.Сорт</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	УправленческийОбороты.СуммаОборот КАК Сумма,
@@ -105,10 +115,19 @@
     УправленческийОбороты.Подразделение КАК Подразделение,
     УправленческийОбороты.Регистратор КАК Регистратор,
 	УправленческийОбороты.Счет КАК Счет,
-	УправленческийОбороты.Субконто1 КАК Субконто
+	УправленческийОбороты.Субконто1 КАК Субконто,
+	ВЫБОР
+		КОГДА Субконто1 = ЗНАЧЕНИЕ(Перечисление.ВидыПоказателейСотрудников.КоличествоЗамеров) 
+	         ТОГДА 1
+	    КОГДА Субконто1 = ЗНАЧЕНИЕ(Перечисление.ВидыПоказателейСотрудников.КоличествоЗаключенныхДоговоров) 
+	         ТОГДА 2
+	    КОГДА Субконто1 = ЗНАЧЕНИЕ(Перечисление.ВидыПоказателейСотрудников.СтоимостьЗаключенныхДоговоров) 
+	         ТОГДА 3
+	КОНЕЦ КАК Сорт	
 ИЗ
 	РегистрБухгалтерии.Управленческий.Обороты(&amp;НачалоПериода, &amp;КонецПериода, Регистратор, Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ПоказателиСотрудника), , Субконто1 В (ЗНАЧЕНИЕ(Перечисление.ВидыПоказателейСотрудников.КоличествоЗамеров), ЗНАЧЕНИЕ(Перечисление.ВидыПоказателейСотрудников.КоличествоЗаключенныхДоговоров), ЗНАЧЕНИЕ(Перечисление.ВидыПоказателейСотрудников.СтоимостьЗаключенныхДоговоров)), , ) КАК УправленческийОбороты
-</query>
+УПОРЯДОЧИТЬ ПО
+	Сорт</query>
 	</dataSet>
 	<totalField>
 		<dataPath>Сумма</dataPath>
@@ -171,16 +190,6 @@
 					<dcsset:userSettingID>fce057ec-4cf1-4ef1-9e05-178e9876d40a</dcsset:userSettingID>
 				</dcscor:item>
 			</dcsset:dataParameters>
-			<dcsset:order>
-				<dcsset:item xsi:type="dcsset:OrderItemField">
-					<dcsset:field>Офис</dcsset:field>
-					<dcsset:orderType>Asc</dcsset:orderType>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:OrderItemField">
-					<dcsset:field>Субконто</dcsset:field>
-					<dcsset:orderType>Asc</dcsset:orderType>
-				</dcsset:item>
-			</dcsset:order>
 			<dcsset:outputParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>МакетОформления</dcscor:parameter>
@@ -203,7 +212,10 @@
 						</dcsset:item>
 					</dcsset:groupItems>
 					<dcsset:order>
-						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>Субконто.Сорт</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
 					</dcsset:order>
 					<dcsset:selection>
 						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
