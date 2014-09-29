@@ -444,6 +444,7 @@
 								</InputField>
 								<InputField name="ВыбранныеНомерИзделия" id="76">
 									<DataPath>Выбранные.НомерИзделия</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -579,7 +580,7 @@
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
-				<DynamicDataRead>true</DynamicDataRead>
+				<DynamicDataRead>false</DynamicDataRead>
 				<QueryText>ВЫБРАТЬ
 	НоменклатураПодразделений.Номенклатура КАК Номенклатура,
 	НоменклатураПодразделений.Номенклатура.Код КАК Код,
@@ -589,12 +590,12 @@
 	РегистрСведений.НоменклатураПодразделений КАК НоменклатураПодразделений
 ГДЕ
 	ВЫБОР
-			КОГДА &amp;ТипНоменклатуры = ""
+			КОГДА &amp;ТипНоменклатуры = ЗНАЧЕНИЕ(Справочник.Номенклатура.ПустаяСсылка)
 				ТОГДА ИСТИНА
 			ИНАЧЕ НоменклатураПодразделений.Номенклатура.Родитель = &amp;ТипНоменклатуры
 		КОНЕЦ
 	И ВЫБОР
-			КОГДА &amp;Производство = ""
+			КОГДА &amp;Производство = ЗНАЧЕНИЕ(Справочник.Подразделения.ПустаяСсылка)
 				ТОГДА ИСТИНА
 			ИНАЧЕ НоменклатураПодразделений.Подразделение = &amp;Производство
 		КОНЕЦ
@@ -604,15 +605,14 @@
 			ИНАЧЕ НоменклатураПодразделений.Номенклатура.Наименование ПОДОБНО &amp;Поиск
 		КОНЕЦ
 	И ВЫБОР
-			КОГДА &amp;НомГруппа = ""
+			КОГДА &amp;НомГруппы = ЗНАЧЕНИЕ(Справочник.НоменклатурныеГруппы.ПустаяСсылка)
 				ТОГДА ИСТИНА
-			ИНАЧЕ НоменклатураПодразделений.Номенклатура.НоменклатурнаяГруппа В ИЕРАРХИИ(&amp;НомГруппа)
+			ИНАЧЕ НоменклатураПодразделений.Номенклатура.НоменклатурнаяГруппа В ИЕРАРХИИ(&amp;НомГруппы)
 		КОНЕЦ
 	И НЕ НоменклатураПодразделений.Номенклатура.МатериалЗаказчика
 	И НЕ НоменклатураПодразделений.Номенклатура.ЭтоГруппа
 	И НоменклатураПодразделений.Доступность
 	И НоменклатураПодразделений.Номенклатура.Базовый</QueryText>
-				<MainTable>InformationRegister.НоменклатураПодразделений</MainTable>
 				<ListSettings>
 					<dcsset:filter>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
@@ -706,11 +706,12 @@
 						</v8:item>
 					</Title>
 					<Type>
-						<v8:Type>xs:string</v8:Type>
-						<v8:StringQualifiers>
-							<v8:Length>0</v8:Length>
-							<v8:AllowedLength>Variable</v8:AllowedLength>
-						</v8:StringQualifiers>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>0</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
 					</Type>
 				</Column>
 				<Column name="Кратность" id="5">
@@ -854,11 +855,11 @@
 				</v8:NumberQualifiers>
 			</Type>
 		</Attribute>
-		<Attribute name="НомГруппа" id="10">
+		<Attribute name="НомГруппы" id="10">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Ном группа</v8:content>
+					<v8:content>Ном группы</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
