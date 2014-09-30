@@ -580,7 +580,7 @@
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
-				<DynamicDataRead>false</DynamicDataRead>
+				<DynamicDataRead>true</DynamicDataRead>
 				<QueryText>ВЫБРАТЬ
 	НоменклатураПодразделений.Номенклатура КАК Номенклатура,
 	НоменклатураПодразделений.Номенклатура.Код КАК Код,
@@ -605,7 +605,7 @@
 			ИНАЧЕ НоменклатураПодразделений.Номенклатура.Наименование ПОДОБНО &amp;Поиск
 		КОНЕЦ
 	И ВЫБОР
-			КОГДА &amp;НомГруппы = ЗНАЧЕНИЕ(Справочник.НоменклатурныеГруппы.ПустаяСсылка)
+			КОГДА &amp;НомГруппы ЕСТЬ NULL
 				ТОГДА ИСТИНА
 			ИНАЧЕ НоменклатураПодразделений.Номенклатура.НоменклатурнаяГруппа В ИЕРАРХИИ(&amp;НомГруппы)
 		КОНЕЦ
@@ -613,6 +613,7 @@
 	И НЕ НоменклатураПодразделений.Номенклатура.ЭтоГруппа
 	И НоменклатураПодразделений.Доступность
 	И НоменклатураПодразделений.Номенклатура.Базовый</QueryText>
+				<MainTable>InformationRegister.НоменклатураПодразделений</MainTable>
 				<ListSettings>
 					<dcsset:filter>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
@@ -863,7 +864,7 @@
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:Type>cfg:CatalogRef.НоменклатурныеГруппы</v8:Type>
+				<v8:Type>v8:ValueListType</v8:Type>
 			</Type>
 		</Attribute>
 	</Attributes>
