@@ -118,10 +118,10 @@
 									</ChildItems>
 								</UsualGroup>
 								<Table name="ВыборНоменклатуры" id="60">
+									<RowSelectionMode>Row</RowSelectionMode>
 									<UseAlternationRowColor>true</UseAlternationRowColor>
 									<EnableStartDrag>true</EnableStartDrag>
 									<DataPath>ВыборНоменклатуры</DataPath>
-									<RowPictureDataPath>ВыборНоменклатуры.DefaultPicture</RowPictureDataPath>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -585,7 +585,8 @@
 	НоменклатураПодразделений.Номенклатура КАК Номенклатура,
 	НоменклатураПодразделений.Номенклатура.Код КАК Код,
 	НоменклатураПодразделений.Номенклатура.ЕдиницаИзмерения КАК ЕдиницаИзмерения,
-	НоменклатураПодразделений.Номенклатура.Кратность КАК Кратность
+	НоменклатураПодразделений.Номенклатура.Кратность КАК Кратность,
+	НоменклатураПодразделений.ПодЗаказ
 ИЗ
 	РегистрСведений.НоменклатураПодразделений КАК НоменклатураПодразделений
 ГДЕ
@@ -605,9 +606,9 @@
 			ИНАЧЕ НоменклатураПодразделений.Номенклатура.Наименование ПОДОБНО &amp;Поиск
 		КОНЕЦ
 	И ВЫБОР
-			КОГДА &amp;НомГруппы ЕСТЬ NULL
+			КОГДА &amp;НомГруппы ЕСТЬ NULL 
 				ТОГДА ИСТИНА
-			ИНАЧЕ НоменклатураПодразделений.Номенклатура.НоменклатурнаяГруппа В ИЕРАРХИИ(&amp;НомГруппы)
+			ИНАЧЕ НоменклатураПодразделений.Номенклатура.НоменклатурнаяГруппа В ИЕРАРХИИ (&amp;НомГруппы)
 		КОНЕЦ
 	И НЕ НоменклатураПодразделений.Номенклатура.МатериалЗаказчика
 	И НЕ НоменклатураПодразделений.Номенклатура.ЭтоГруппа
@@ -628,6 +629,26 @@
 						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
 					</dcsset:order>
 					<dcsset:conditionalAppearance>
+						<dcsset:item>
+							<dcsset:selection/>
+							<dcsset:filter>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">ПодЗаказ</dcsset:left>
+									<dcsset:comparisonType>Equal</dcsset:comparisonType>
+									<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+								</dcsset:item>
+							</dcsset:filter>
+							<dcsset:appearance>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:parameter>ЦветФона</dcscor:parameter>
+									<dcscor:value xsi:type="v8ui:Color">web:BlanchedAlmond</dcscor:value>
+								</dcscor:item>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:parameter>Шрифт</dcscor:parameter>
+									<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" kind="WindowsFont"/>
+								</dcscor:item>
+							</dcsset:appearance>
+						</dcsset:item>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
 						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
 					</dcsset:conditionalAppearance>
