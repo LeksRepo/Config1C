@@ -287,6 +287,10 @@
 			<dataPath>Кратность</dataPath>
 			<field>Кратность</field>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПодЗаказ</dataPath>
+			<field>ПодЗаказ</field>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	спрНоменклатура.Ссылка КАК Номенклатура,
@@ -295,17 +299,21 @@
 	ЦеныНоменклатурыСрезПоследних.Внутренняя КАК Внутренняя,
 	ЦеныНоменклатурыСрезПоследних.Розничная КАК Розничная,
 	спрНоменклатура.ПриобертаемОптом,
-	спрНоменклатура.Кратность
+	спрНоменклатура.Кратность,
+	НоменклатураПодразделений.ПодЗаказ
 ПОМЕСТИТЬ Список
 ИЗ
-	Справочник.Номенклатура КАК спрНоменклатура
-		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ЦеныНоменклатуры.СрезПоследних({(КОНЕЦПЕРИОДА(&amp;Период, ДЕНЬ)) КАК Период}, Регион = &amp;Регион) КАК ЦеныНоменклатурыСрезПоследних
-		ПО (ЦеныНоменклатурыСрезПоследних.Номенклатура = спрНоменклатура.Ссылка)
+	РегистрСведений.НоменклатураПодразделений КАК НоменклатураПодразделений
+		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.Номенклатура КАК спрНоменклатура
+			ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ЦеныНоменклатуры.СрезПоследних({(КОНЕЦПЕРИОДА(&amp;Период, ДЕНЬ)) КАК Период}, Регион = &amp;Регион) КАК ЦеныНоменклатурыСрезПоследних
+			ПО (ЦеныНоменклатурыСрезПоследних.Номенклатура = спрНоменклатура.Ссылка)
+		ПО НоменклатураПодразделений.Номенклатура = спрНоменклатура.Ссылка
 ГДЕ
 	спрНоменклатура.Базовый
 	И НЕ спрНоменклатура.ПометкаУдаления
 	И НЕ спрНоменклатура.МатериалЗаказчика
 	И спрНоменклатура.НоменклатурнаяГруппа &lt;&gt; ЗНАЧЕНИЕ(Справочник.НоменклатурныеГруппы.Гравировка)
+	И НоменклатураПодразделений.Доступность
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -352,7 +360,8 @@
 	ОстаткиВЦеху.КоличествоОстаток КАК ОстатокВЦеху,
 	ТребуетсяПоСпецификациям.Количество КАК ТребуетсяПоСпецификациям,
 	Список.ПриобертаемОптом,
-	Список.Кратность
+	Список.Кратность,
+	Список.ПодЗаказ
 ИЗ
 	Список КАК Список
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрБухгалтерии.Управленческий.Остатки(
@@ -398,7 +407,8 @@
 	ОстаткиВЦеху.КоличествоОстаток,
 	ТребуетсяПоСпецификациям.Количество,
 	Список.ПриобертаемОптом,
-	Список.Кратность</query>
+	Список.Кратность,
+	Список.ПодЗаказ</query>
 	</dataSet>
 	<calculatedField>
 		<dataPath>ПлановаяНаценка</dataPath>
@@ -608,6 +618,9 @@
 					</dcsset:item>
 					<dcsset:placement>Auto</dcsset:placement>
 				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ПодЗаказ</dcsset:field>
+				</dcsset:item>
 			</dcsset:selection>
 			<dcsset:filter>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
@@ -639,6 +652,9 @@
 						</dcsset:item>
 						<dcsset:item>
 							<dcsset:field>ЕдиницаИзмерения</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>ПодЗаказ</dcsset:field>
 						</dcsset:item>
 						<dcsset:item>
 							<dcsset:field>БазовыйЛимитЦеха</dcsset:field>
@@ -729,6 +745,9 @@
 							<dcsset:field>ЕдиницаИзмерения</dcsset:field>
 						</dcsset:item>
 						<dcsset:item>
+							<dcsset:field>ПодЗаказ</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
 							<dcsset:field>БазовыйЛимитЦеха</dcsset:field>
 						</dcsset:item>
 						<dcsset:item>
@@ -808,6 +827,39 @@
 					<dcsset:useInParameters>DontUse</dcsset:useInParameters>
 					<dcsset:useInFilter>DontUse</dcsset:useInFilter>
 				</dcsset:item>
+				<dcsset:item>
+					<dcsset:selection>
+						<dcsset:item>
+							<dcsset:field>ПодЗаказ</dcsset:field>
+						</dcsset:item>
+					</dcsset:selection>
+					<dcsset:filter/>
+					<dcsset:appearance>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>ГоризонтальноеПоложение</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:HorizontalAlign">Center</dcscor:value>
+						</dcscor:item>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>ВертикальноеПоложение</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:VerticalAlign">Center</dcscor:value>
+						</dcscor:item>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>Формат</dcscor:parameter>
+							<dcscor:value xsi:type="v8:LocalStringType">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>БЛ=; БИ=✔</v8:content>
+								</v8:item>
+							</dcscor:value>
+						</dcscor:item>
+					</dcsset:appearance>
+					<dcsset:useInHierarchicalGroup>DontUse</dcsset:useInHierarchicalGroup>
+					<dcsset:useInOverall>DontUse</dcsset:useInOverall>
+					<dcsset:useInFieldsHeader>DontUse</dcsset:useInFieldsHeader>
+					<dcsset:useInHeader>DontUse</dcsset:useInHeader>
+					<dcsset:useInParameters>DontUse</dcsset:useInParameters>
+					<dcsset:useInFilter>DontUse</dcsset:useInFilter>
+				</dcsset:item>
 			</dcsset:conditionalAppearance>
 			<dcsset:outputParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
@@ -831,12 +883,72 @@
 						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
 						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
 					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ПодЗаказ</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
 				</dcsset:groupItems>
 				<dcsset:order>
 					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
 				</dcsset:order>
 				<dcsset:selection>
-					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Номенклатура</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ЕдиницаИзмерения</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ПодЗаказ</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+						<dcsset:lwsTitle>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Цены</v8:content>
+							</v8:item>
+						</dcsset:lwsTitle>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>Себестоимость</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>ПлановаяЗакупочная</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>Розничная</dcsset:field>
+						</dcsset:item>
+						<dcsset:placement>Auto</dcsset:placement>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+						<dcsset:lwsTitle>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Наценки</v8:content>
+							</v8:item>
+						</dcsset:lwsTitle>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>Наценка</dcsset:field>
+						</dcsset:item>
+						<dcsset:placement>Auto</dcsset:placement>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+						<dcsset:lwsTitle>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Склад</v8:content>
+							</v8:item>
+						</dcsset:lwsTitle>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>ОстатокНаСкладе</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>КоличествоРезерва</dcsset:field>
+						</dcsset:item>
+						<dcsset:placement>Auto</dcsset:placement>
+					</dcsset:item>
 				</dcsset:selection>
 			</dcsset:item>
 		</dcsset:settings>
