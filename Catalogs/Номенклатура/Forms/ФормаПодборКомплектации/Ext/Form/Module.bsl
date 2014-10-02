@@ -303,11 +303,14 @@
 		ФайлНаДиске = Новый Файл(ПутьКИзображению);
 		
 		Если ФайлНаДиске.Существует() Тогда
-			Если Режим = 0 Тогда
-				Изображение = "<html><head><META HTTP-EQUIV=""Pragma"" CONTENT=""no-cache""></head><body bottommargin=""0"" topmargin=""0"" leftmargin=""0"" rightmargin=""0""><img src=""" + ПутьКИзображению + """ height=100% /></body></html>";
-			Иначе
-				Изображение = "<html><head><META HTTP-EQUIV=""Pragma"" CONTENT=""no-cache""></head><body bottommargin=""0"" topmargin=""0"" leftmargin=""0"" rightmargin=""0""><img src=""" + ПутьКИзображению + """ width=100% /></body></html>";
-			КонецЕсли;
+			//Если Режим = 0 Тогда
+			//	Изображение = "<html><head><META HTTP-EQUIV=""Pragma"" CONTENT=""no-cache""></head><body bottommargin=""0"" topmargin=""0"" leftmargin=""0"" rightmargin=""0""><img src=""" + ПутьКИзображению + """ height=100% /></body></html>";
+			//Иначе
+			//	Изображение = "<html><head><META HTTP-EQUIV=""Pragma"" CONTENT=""no-cache""></head><body bottommargin=""0"" topmargin=""0"" leftmargin=""0"" rightmargin=""0""><img src=""" + ПутьКИзображению + """ width=100% /></body></html>";
+			//КонецЕсли;
+			
+			Изображение = ПутьКИзображению;
+			
 		Иначе
 			Изображение = "";
 		КонецЕсли;
