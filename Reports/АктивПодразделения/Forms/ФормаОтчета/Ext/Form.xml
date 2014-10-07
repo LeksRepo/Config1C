@@ -199,25 +199,10 @@
 					<HorizontalStretch>true</HorizontalStretch>
 					<VerticalStretch>false</VerticalStretch>
 					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="ГруппаПодразделенияExtendedTooltip" id="39"/>
 					<ChildItems>
-						<Button name="ПодобратьПодразделения" id="30">
-							<Type>UsualButton</Type>
-							<Representation>PictureAndText</Representation>
-							<Height>2</Height>
-							<CommandName>Form.Command.ПодобратьПодразделения</CommandName>
-							<Picture>
-								<xr:Ref>StdPicture.CreateListItem</xr:Ref>
-								<xr:LoadTransparent>true</xr:LoadTransparent>
-							</Picture>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Подобрать</v8:content>
-								</v8:item>
-							</Title>
-							<ExtendedTooltip name="ПодобратьПодразделенияExtendedTooltip" id="40"/>
-						</Button>
 						<LabelField name="СписокПодразделений" id="25">
 							<DataPath>Отчет.СписокПодразделений</DataPath>
 							<Title>
@@ -226,10 +211,14 @@
 									<v8:content>Подразделения</v8:content>
 								</v8:item>
 							</Title>
-							<TitleLocation>None</TitleLocation>
+							<TitleLocation>Left</TitleLocation>
 							<Height>2</Height>
+							<Hiperlink>true</Hiperlink>
 							<ContextMenu name="СписокПодразделенийКонтекстноеМеню" id="26"/>
 							<ExtendedTooltip name="СписокПодразделенийExtendedTooltip" id="41"/>
+							<Events>
+								<Event name="Click">СписокПодразделенийНажатие</Event>
+							</Events>
 						</LabelField>
 					</ChildItems>
 				</UsualGroup>
