@@ -57,6 +57,77 @@
 				</InputField>
 			</ChildItems>
 		</UsualGroup>
+		<Table name="СписокПравоваяБаза" id="59">
+			<Header>false</Header>
+			<UseAlternationRowColor>true</UseAlternationRowColor>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>СписокПравоваяБаза</DataPath>
+			<RowPictureDataPath>СписокПравоваяБаза.DefaultPicture</RowPictureDataPath>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<AutoRefresh>false</AutoRefresh>
+			<AutoRefreshPeriod>60</AutoRefreshPeriod>
+			<Period>
+				<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+				<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+				<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+			</Period>
+			<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+			<RestoreCurrentRow>false</RestoreCurrentRow>
+			<TopLevelParent xsi:nil="true"/>
+			<ShowRoot>true</ShowRoot>
+			<AllowRootChoice>false</AllowRootChoice>
+			<UpdateOnDataChange>Auto</UpdateOnDataChange>
+			<ContextMenu name="СписокПравоваяБазаКонтекстноеМеню" id="60"/>
+			<AutoCommandBar name="СписокПравоваяБазаКоманднаяПанель" id="61">
+				<Autofill>false</Autofill>
+			</AutoCommandBar>
+			<ExtendedTooltip name="СписокПравоваяБазаРасширеннаяПодсказка" id="62"/>
+			<SearchStringAddition name="СписокПравоваяБазаСтрокаПоиска" id="90">
+				<AdditionSource>
+					<Item>СписокПравоваяБаза</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокПравоваяБазаСтрокаПоискаКонтекстноеМеню" id="91"/>
+				<ExtendedTooltip name="СписокПравоваяБазаСтрокаПоискаРасширеннаяПодсказка" id="92"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="СписокПравоваяБазаСостояниеПросмотра" id="93">
+				<AdditionSource>
+					<Item>СписокПравоваяБаза</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокПравоваяБазаСостояниеПросмотраКонтекстноеМеню" id="94"/>
+				<ExtendedTooltip name="СписокПравоваяБазаСостояниеПросмотраРасширеннаяПодсказка" id="95"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="СписокПравоваяБазаУправлениеПоиском" id="96">
+				<AdditionSource>
+					<Item>СписокПравоваяБаза</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокПравоваяБазаУправлениеПоискомКонтекстноеМеню" id="97"/>
+				<ExtendedTooltip name="СписокПравоваяБазаУправлениеПоискомРасширеннаяПодсказка" id="98"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<LabelField name="СписокПравоваяБазаНаименование" id="69">
+					<DataPath>СписокПравоваяБаза.Description</DataPath>
+					<ContextMenu name="СписокПравоваяБазаНаименованиеКонтекстноеМеню" id="70"/>
+					<ExtendedTooltip name="СписокПравоваяБазаНаименованиеРасширеннаяПодсказка" id="71"/>
+				</LabelField>
+				<LabelField name="СписокПравоваяБазаПроцент" id="87">
+					<DataPath>СписокПравоваяБаза.Процент</DataPath>
+					<Format>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ЧН=Ноль</v8:content>
+						</v8:item>
+					</Format>
+					<ContextMenu name="СписокПравоваяБазаПроцентКонтекстноеМеню" id="88"/>
+					<ExtendedTooltip name="СписокПравоваяБазаПроцентРасширеннаяПодсказка" id="89"/>
+				</LabelField>
+			</ChildItems>
+		</Table>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Объект" id="1">
@@ -79,6 +150,48 @@
 					<v8:AllowedLength>Variable</v8:AllowedLength>
 				</v8:StringQualifiers>
 			</Type>
+		</Attribute>
+		<Attribute name="СписокПравоваяБаза" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список правовая база</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DynamicList</v8:Type>
+			</Type>
+			<Settings xsi:type="DynamicList">
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	СправочникПравоваяБаза.Ссылка,
+	СправочникПравоваяБаза.ПометкаУдаления,
+	СправочникПравоваяБаза.Предопределенный,
+	СправочникПравоваяБаза.Родитель,
+	СправочникПравоваяБаза.ЭтоГруппа,
+	СправочникПравоваяБаза.Код,
+	СправочникПравоваяБаза.Наименование,
+	СправочникПравоваяБаза.ИмяФайла,
+	0 КАК Процент
+ИЗ
+	Справочник.ПравоваяБаза КАК СправочникПравоваяБаза</QueryText>
+				<MainTable>Catalog.ПравоваяБаза</MainTable>
+				<ListSettings>
+					<dcsset:filter>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+					</dcsset:filter>
+					<dcsset:order>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
+					</dcsset:order>
+					<dcsset:conditionalAppearance>
+						<dcsset:viewMode>Normal</dcsset:viewMode>
+						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
+					</dcsset:conditionalAppearance>
+				</ListSettings>
+			</Settings>
 		</Attribute>
 	</Attributes>
 	<Commands>
