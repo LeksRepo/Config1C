@@ -4,32 +4,198 @@
 	<UsePostingMode>Auto</UsePostingMode>
 	<RepostOnWrite>true</RepostOnWrite>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
 	<ChildItems>
-		<InputField name="Номер" id="1">
-			<DataPath>Объект.Number</DataPath>
-			<EditMode>EnterOnInput</EditMode>
-			<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
-			<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="3"/>
-		</InputField>
-		<InputField name="Дата" id="4">
-			<DataPath>Объект.Date</DataPath>
-			<EditMode>EnterOnInput</EditMode>
-			<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
-			<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="6"/>
-		</InputField>
-		<InputField name="ВремяНачалаТестирования" id="10">
-			<DataPath>Объект.ВремяНачалаТестирования</DataPath>
-			<EditMode>EnterOnInput</EditMode>
-			<ContextMenu name="ВремяНачалаТестированияКонтекстноеМеню" id="11"/>
-			<ExtendedTooltip name="ВремяНачалаТестированияРасширеннаяПодсказка" id="12"/>
-		</InputField>
-		<InputField name="ВремяОкончанияТестирования" id="29">
-			<DataPath>Объект.ВремяОкончанияТестирования</DataPath>
-			<ContextMenu name="ВремяОкончанияТестированияКонтекстноеМеню" id="30"/>
-			<ExtendedTooltip name="ВремяОкончанияТестированияРасширеннаяПодсказка" id="31"/>
-		</InputField>
+		<LabelField name="Тема" id="38">
+			<DataPath>Объект.Тема</DataPath>
+			<Hiperlink>true</Hiperlink>
+			<ContextMenu name="ТемаКонтекстноеМеню" id="39"/>
+			<ExtendedTooltip name="ТемаРасширеннаяПодсказка" id="40"/>
+		</LabelField>
+		<UsualGroup name="ГруппаНомерДата" id="47">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа номер дата</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа номер дата</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаНомерДатаРасширеннаяПодсказка" id="48"/>
+			<ChildItems>
+				<LabelField name="Номер" id="1">
+					<DataPath>Объект.Number</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="3"/>
+				</LabelField>
+				<LabelField name="Дата" id="4">
+					<DataPath>Объект.Date</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
+					<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="6"/>
+				</LabelField>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаКолонки" id="56">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа колонки</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа колонки</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ChildItemsWidth>Equal</ChildItemsWidth>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаКолонкиРасширеннаяПодсказка" id="57"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаВремя" id="51">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Время</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа время</v8:content>
+						</v8:item>
+					</ToolTip>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Group>Vertical</Group>
+					<ExtendedTooltip name="ГруппаВремяРасширеннаяПодсказка" id="52"/>
+					<ChildItems>
+						<LabelField name="ВремяНачалаТестирования" id="10">
+							<DataPath>Объект.ВремяНачалаТестирования</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Начало</v8:content>
+								</v8:item>
+							</Title>
+							<HorizontalAlign>Right</HorizontalAlign>
+							<EditMode>EnterOnInput</EditMode>
+							<HorizontalStretch>true</HorizontalStretch>
+							<ContextMenu name="ВремяНачалаТестированияКонтекстноеМеню" id="11"/>
+							<ExtendedTooltip name="ВремяНачалаТестированияРасширеннаяПодсказка" id="12"/>
+						</LabelField>
+						<LabelField name="ВремяОкончанияТестирования" id="29">
+							<DataPath>Объект.ВремяОкончанияТестирования</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Окончание</v8:content>
+								</v8:item>
+							</Title>
+							<HorizontalAlign>Right</HorizontalAlign>
+							<HorizontalStretch>true</HorizontalStretch>
+							<ContextMenu name="ВремяОкончанияТестированияКонтекстноеМеню" id="30"/>
+							<ExtendedTooltip name="ВремяОкончанияТестированияРасширеннаяПодсказка" id="31"/>
+						</LabelField>
+						<LabelField name="Длительность" id="53">
+							<DataPath>Объект.Длительность</DataPath>
+							<HorizontalStretch>true</HorizontalStretch>
+							<ContextMenu name="ДлительностьКонтекстноеМеню" id="54"/>
+							<ExtendedTooltip name="ДлительностьРасширеннаяПодсказка" id="55"/>
+						</LabelField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаКоличество" id="49">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Вопросы</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа количество</v8:content>
+						</v8:item>
+					</ToolTip>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Group>Vertical</Group>
+					<ExtendedTooltip name="ГруппаКоличествоРасширеннаяПодсказка" id="50"/>
+					<ChildItems>
+						<LabelField name="КоличествоВопросов" id="41">
+							<DataPath>Объект.КоличествоВопросов</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Всего вопросов</v8:content>
+								</v8:item>
+							</Title>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Format>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ЧН=Ноль</v8:content>
+								</v8:item>
+							</Format>
+							<ContextMenu name="КоличествоВопросовКонтекстноеМеню" id="42"/>
+							<ExtendedTooltip name="КоличествоВопросовРасширеннаяПодсказка" id="43"/>
+						</LabelField>
+						<LabelField name="КоличествоПравильныхОтветов" id="44">
+							<DataPath>Объект.КоличествоПравильныхОтветов</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Правильных ответов</v8:content>
+								</v8:item>
+							</Title>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Format>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ЧН=Ноль</v8:content>
+								</v8:item>
+							</Format>
+							<ContextMenu name="КоличествоПравильныхОтветовКонтекстноеМеню" id="45"/>
+							<ExtendedTooltip name="КоличествоПравильныхОтветовРасширеннаяПодсказка" id="46"/>
+						</LabelField>
+						<LabelField name="ПроцентПравильныхОтветов" id="64">
+							<DataPath>Объект.ПроцентПравильныхОтветов</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Процент</v8:content>
+								</v8:item>
+							</Title>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Format>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ЧН=Ноль</v8:content>
+								</v8:item>
+							</Format>
+							<ContextMenu name="ПроцентПравильныхОтветовКонтекстноеМеню" id="65"/>
+							<ExtendedTooltip name="ПроцентПравильныхОтветовРасширеннаяПодсказка" id="66"/>
+						</LabelField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
 		<Table name="ВопросыТеста" id="16">
 			<Representation>List</Representation>
+			<ReadOnly>true</ReadOnly>
 			<AutoInsertNewRow>true</AutoInsertNewRow>
 			<EnableStartDrag>true</EnableStartDrag>
 			<EnableDrag>true</EnableDrag>
@@ -43,29 +209,29 @@
 				<Autofill>false</Autofill>
 			</AutoCommandBar>
 			<ExtendedTooltip name="ВопросыТестаРасширеннаяПодсказка" id="19"/>
-			<SearchStringAddition name="ВопросыТестаСтрокаПоиска" id="38">
+			<SearchStringAddition name="ВопросыТестаСтрокаПоиска" id="67">
 				<AdditionSource>
 					<Item>ВопросыТеста</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="ВопросыТестаСтрокаПоискаКонтекстноеМеню" id="39"/>
-				<ExtendedTooltip name="ВопросыТестаСтрокаПоискаРасширеннаяПодсказка" id="40"/>
+				<ContextMenu name="ВопросыТестаСтрокаПоискаКонтекстноеМеню" id="68"/>
+				<ExtendedTooltip name="ВопросыТестаСтрокаПоискаРасширеннаяПодсказка" id="69"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="ВопросыТестаСостояниеПросмотра" id="41">
+			<ViewStatusAddition name="ВопросыТестаСостояниеПросмотра" id="70">
 				<AdditionSource>
 					<Item>ВопросыТеста</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="ВопросыТестаСостояниеПросмотраКонтекстноеМеню" id="42"/>
-				<ExtendedTooltip name="ВопросыТестаСостояниеПросмотраРасширеннаяПодсказка" id="43"/>
+				<ContextMenu name="ВопросыТестаСостояниеПросмотраКонтекстноеМеню" id="71"/>
+				<ExtendedTooltip name="ВопросыТестаСостояниеПросмотраРасширеннаяПодсказка" id="72"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="ВопросыТестаУправлениеПоиском" id="44">
+			<SearchControlAddition name="ВопросыТестаУправлениеПоиском" id="73">
 				<AdditionSource>
 					<Item>ВопросыТеста</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="ВопросыТестаУправлениеПоискомКонтекстноеМеню" id="45"/>
-				<ExtendedTooltip name="ВопросыТестаУправлениеПоискомРасширеннаяПодсказка" id="46"/>
+				<ContextMenu name="ВопросыТестаУправлениеПоискомКонтекстноеМеню" id="74"/>
+				<ExtendedTooltip name="ВопросыТестаУправлениеПоискомРасширеннаяПодсказка" id="75"/>
 			</SearchControlAddition>
 			<ChildItems>
 				<LabelField name="ВопросыТестаНомерСтроки" id="20">
@@ -95,11 +261,11 @@
 			<ContextMenu name="АвторКонтекстноеМеню" id="8"/>
 			<ExtendedTooltip name="АвторРасширеннаяПодсказка" id="9"/>
 		</LabelField>
-		<InputField name="Комментарий" id="35">
+		<LabelField name="Комментарий" id="35">
 			<DataPath>Объект.Комментарий</DataPath>
 			<ContextMenu name="КомментарийКонтекстноеМеню" id="36"/>
 			<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="37"/>
-		</InputField>
+		</LabelField>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Объект" id="1">
