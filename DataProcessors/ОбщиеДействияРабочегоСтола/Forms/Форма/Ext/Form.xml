@@ -1,11 +1,19 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Обучение</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<Autofill>false</Autofill>
 	</AutoCommandBar>
 	<ChildItems>
 		<UsualGroup name="КомандыГруппа" id="40">
+			<Visible>false</Visible>
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -31,6 +39,7 @@
 			</ChildItems>
 		</UsualGroup>
 		<UsualGroup name="ПоискГруппа" id="15">
+			<Visible>false</Visible>
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -57,8 +66,24 @@
 				</InputField>
 			</ChildItems>
 		</UsualGroup>
+		<Button name="СписокПравоваяБазаСправочникПравоваяБазаПройтиТест" id="90">
+			<Type>UsualButton</Type>
+			<DefaultButton>true</DefaultButton>
+			<CommandName>Catalog.ПравоваяБаза.Command.ПройтиТест</CommandName>
+			<DataPath>Items.СписокПравоваяБаза.CurrentData.Ref</DataPath>
+			<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пройти тест по теме</v8:content>
+				</v8:item>
+			</Title>
+			<ExtendedTooltip name="СписокПравоваяБазаСправочникПравоваяБазаПройтиТестРасширеннаяПодсказка" id="91"/>
+		</Button>
 		<Table name="СписокПравоваяБаза" id="59">
+			<Representation>Tree</Representation>
 			<UseAlternationRowColor>true</UseAlternationRowColor>
+			<InitialTreeView>ExpandAllLevels</InitialTreeView>
 			<EnableStartDrag>true</EnableStartDrag>
 			<EnableDrag>true</EnableDrag>
 			<DataPath>СписокПравоваяБаза</DataPath>
@@ -91,14 +116,6 @@
 			</ContextMenu>
 			<AutoCommandBar name="СписокПравоваяБазаКоманднаяПанель" id="61">
 				<Autofill>false</Autofill>
-				<ChildItems>
-					<Button name="СписокПравоваяБазаСправочникПравоваяБазаПройтиТест" id="90">
-						<Type>CommandBarButton</Type>
-						<CommandName>Catalog.ПравоваяБаза.Command.ПройтиТест</CommandName>
-						<DataPath>Items.СписокПравоваяБаза.CurrentData.Ref</DataPath>
-						<ExtendedTooltip name="СписокПравоваяБазаСправочникПравоваяБазаПройтиТестРасширеннаяПодсказка" id="91"/>
-					</Button>
-				</ChildItems>
 			</AutoCommandBar>
 			<ExtendedTooltip name="СписокПравоваяБазаРасширеннаяПодсказка" id="62"/>
 			<SearchStringAddition name="СписокПравоваяБазаСтрокаПоиска" id="94">
@@ -125,6 +142,9 @@
 				<ContextMenu name="СписокПравоваяБазаУправлениеПоискомКонтекстноеМеню" id="101"/>
 				<ExtendedTooltip name="СписокПравоваяБазаУправлениеПоискомРасширеннаяПодсказка" id="102"/>
 			</SearchControlAddition>
+			<Events>
+				<Event name="Selection">СписокПравоваяБазаВыбор</Event>
+			</Events>
 			<ChildItems>
 				<LabelField name="СписокПравоваяБазаНаименование" id="69">
 					<DataPath>СписокПравоваяБаза.Description</DataPath>
@@ -203,7 +223,9 @@
 	СправочникПравоваяБаза.ИмяФайла,
 	0 КАК Процент
 ИЗ
-	Справочник.ПравоваяБаза КАК СправочникПравоваяБаза</QueryText>
+	Справочник.ПравоваяБаза КАК СправочникПравоваяБаза
+ГДЕ
+	НЕ СправочникПравоваяБаза.ПометкаУдаления</QueryText>
 				<MainTable>Catalog.ПравоваяБаза</MainTable>
 				<ListSettings>
 					<dcsset:filter>
@@ -215,6 +237,26 @@
 						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
 					</dcsset:order>
 					<dcsset:conditionalAppearance>
+						<dcsset:item>
+							<dcsset:selection/>
+							<dcsset:filter>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">Процент</dcsset:left>
+									<dcsset:comparisonType>Less</dcsset:comparisonType>
+									<dcsset:right xsi:type="xs:decimal">80</dcsset:right>
+								</dcsset:item>
+							</dcsset:filter>
+							<dcsset:appearance>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:parameter>ЦветФона</dcscor:parameter>
+									<dcscor:value xsi:type="v8ui:Color">web:Red</dcscor:value>
+								</dcscor:item>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:parameter>ЦветТекста</dcscor:parameter>
+									<dcscor:value xsi:type="v8ui:Color">web:White</dcscor:value>
+								</dcscor:item>
+							</dcsset:appearance>
+						</dcsset:item>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
 						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
 					</dcsset:conditionalAppearance>
