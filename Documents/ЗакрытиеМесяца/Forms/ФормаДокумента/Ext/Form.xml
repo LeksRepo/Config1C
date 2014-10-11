@@ -14,6 +14,7 @@
 	<RepostOnWrite>true</RepostOnWrite>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
@@ -68,9 +69,25 @@
 				</InputField>
 			</ChildItems>
 		</UsualGroup>
+		<LabelField name="Сумма" id="36">
+			<DataPath>Объект.Сумма</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Финансовый результат</v8:content>
+				</v8:item>
+			</Title>
+			<HorizontalAlign>Left</HorizontalAlign>
+			<HorizontalStretch>false</HorizontalStretch>
+			<VerticalStretch>false</VerticalStretch>
+			<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+			<ContextMenu name="СуммаКонтекстноеМеню" id="37"/>
+			<ExtendedTooltip name="СуммаРасширеннаяПодсказка" id="38"/>
+		</LabelField>
 		<Table name="Список" id="13">
 			<Representation>List</Representation>
 			<ReadOnly>true</ReadOnly>
+			<Footer>true</Footer>
 			<AutoInsertNewRow>true</AutoInsertNewRow>
 			<EnableStartDrag>true</EnableStartDrag>
 			<EnableDrag>true</EnableDrag>
@@ -103,40 +120,47 @@
 				</ChildItems>
 			</AutoCommandBar>
 			<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="16"/>
-			<SearchStringAddition name="СписокСтрокаПоиска" id="36">
+			<SearchStringAddition name="СписокСтрокаПоиска" id="39">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="37"/>
-				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="38"/>
+				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="40"/>
+				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="41"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокСостояниеПросмотра" id="39">
+			<ViewStatusAddition name="СписокСостояниеПросмотра" id="42">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="40"/>
-				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="41"/>
+				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="43"/>
+				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="44"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокУправлениеПоиском" id="42">
+			<SearchControlAddition name="СписокУправлениеПоиском" id="45">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="43"/>
-				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="44"/>
+				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="46"/>
+				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="47"/>
 			</SearchControlAddition>
 			<ChildItems>
 				<InputField name="СписокСтатья" id="31">
 					<DataPath>Объект.Список.Статья</DataPath>
 					<EditMode>EnterOnInput</EditMode>
+					<FooterText>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Итоги:</v8:content>
+						</v8:item>
+					</FooterText>
 					<ContextMenu name="СписокСтатьяКонтекстноеМеню" id="32"/>
 					<ExtendedTooltip name="СписокСтатьяРасширеннаяПодсказка" id="33"/>
 				</InputField>
 				<InputField name="СписокДоход" id="23">
 					<DataPath>Объект.Список.Доход</DataPath>
 					<EditMode>EnterOnInput</EditMode>
+					<FooterDataPath>Объект.Список.TotalДоход</FooterDataPath>
 					<HorizontalStretch>false</HorizontalStretch>
 					<ContextMenu name="СписокДоходКонтекстноеМеню" id="24"/>
 					<ExtendedTooltip name="СписокДоходРасширеннаяПодсказка" id="25"/>
@@ -144,6 +168,7 @@
 				<InputField name="СписокРасход" id="26">
 					<DataPath>Объект.Список.Расход</DataPath>
 					<EditMode>EnterOnInput</EditMode>
+					<FooterDataPath>Объект.Список.TotalРасход</FooterDataPath>
 					<HorizontalStretch>false</HorizontalStretch>
 					<ContextMenu name="СписокРасходКонтекстноеМеню" id="27"/>
 					<ExtendedTooltip name="СписокРасходРасширеннаяПодсказка" id="28"/>
