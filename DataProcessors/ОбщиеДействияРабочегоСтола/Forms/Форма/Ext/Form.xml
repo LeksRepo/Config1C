@@ -11,6 +11,9 @@
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<Autofill>false</Autofill>
 	</AutoCommandBar>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
 	<ChildItems>
 		<UsualGroup name="КомандыГруппа" id="40">
 			<Visible>false</Visible>
@@ -66,22 +69,9 @@
 				</InputField>
 			</ChildItems>
 		</UsualGroup>
-		<Button name="ПройтиТест" id="90">
-			<Type>UsualButton</Type>
-			<DefaultButton>true</DefaultButton>
-			<CommandName>Catalog.УчебныеЗанятия.Command.ПройтиТест</CommandName>
-			<DataPath>Items.СписокУчебныеЗанятия.CurrentData.Ref</DataPath>
-			<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Пройти тест по теме</v8:content>
-				</v8:item>
-			</Title>
-			<ExtendedTooltip name="ПройтиТестРасширеннаяПодсказка" id="91"/>
-		</Button>
 		<Table name="СписокУчебныеЗанятия" id="59">
 			<Representation>Tree</Representation>
+			<ReadOnly>true</ReadOnly>
 			<UseAlternationRowColor>true</UseAlternationRowColor>
 			<InitialTreeView>ExpandAllLevels</InitialTreeView>
 			<EnableStartDrag>true</EnableStartDrag>
@@ -107,48 +97,69 @@
 			<ContextMenu name="СписокУчебныеЗанятияКонтекстноеМеню" id="60"/>
 			<AutoCommandBar name="СписокУчебныеЗанятияКоманднаяПанель" id="61">
 				<Autofill>false</Autofill>
+				<ChildItems>
+					<Button name="ПройтиТест" id="90">
+						<Type>CommandBarButton</Type>
+						<DefaultButton>true</DefaultButton>
+						<CommandName>Catalog.УчебныеЗанятия.Command.ПройтиТест</CommandName>
+						<DataPath>Items.СписокУчебныеЗанятия.CurrentData.Ref</DataPath>
+						<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Пройти тест по теме</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="ПройтиТестРасширеннаяПодсказка" id="91"/>
+					</Button>
+					<Button name="СписокУчебныеЗанятияОбновить" id="103">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.СписокУчебныеЗанятия.StandardCommand.Refresh</CommandName>
+						<ExtendedTooltip name="СписокУчебныеЗанятияОбновитьРасширеннаяПодсказка" id="104"/>
+					</Button>
+				</ChildItems>
 			</AutoCommandBar>
 			<ExtendedTooltip name="СписокУчебныеЗанятияРасширеннаяПодсказка" id="62"/>
-			<SearchStringAddition name="СписокУчебныеЗанятияСтрокаПоиска" id="97">
+			<SearchStringAddition name="СписокУчебныеЗанятияСтрокаПоиска" id="105">
 				<AdditionSource>
 					<Item>СписокУчебныеЗанятия</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокУчебныеЗанятияСтрокаПоискаКонтекстноеМеню" id="98"/>
-				<ExtendedTooltip name="СписокУчебныеЗанятияСтрокаПоискаРасширеннаяПодсказка" id="99"/>
+				<ContextMenu name="СписокУчебныеЗанятияСтрокаПоискаКонтекстноеМеню" id="106"/>
+				<ExtendedTooltip name="СписокУчебныеЗанятияСтрокаПоискаРасширеннаяПодсказка" id="107"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокУчебныеЗанятияСостояниеПросмотра" id="100">
+			<ViewStatusAddition name="СписокУчебныеЗанятияСостояниеПросмотра" id="108">
 				<AdditionSource>
 					<Item>СписокУчебныеЗанятия</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокУчебныеЗанятияСостояниеПросмотраКонтекстноеМеню" id="101"/>
-				<ExtendedTooltip name="СписокУчебныеЗанятияСостояниеПросмотраРасширеннаяПодсказка" id="102"/>
+				<ContextMenu name="СписокУчебныеЗанятияСостояниеПросмотраКонтекстноеМеню" id="109"/>
+				<ExtendedTooltip name="СписокУчебныеЗанятияСостояниеПросмотраРасширеннаяПодсказка" id="110"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокУчебныеЗанятияУправлениеПоиском" id="103">
+			<SearchControlAddition name="СписокУчебныеЗанятияУправлениеПоиском" id="111">
 				<AdditionSource>
 					<Item>СписокУчебныеЗанятия</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокУчебныеЗанятияУправлениеПоискомКонтекстноеМеню" id="104"/>
-				<ExtendedTooltip name="СписокУчебныеЗанятияУправлениеПоискомРасширеннаяПодсказка" id="105"/>
+				<ContextMenu name="СписокУчебныеЗанятияУправлениеПоискомКонтекстноеМеню" id="112"/>
+				<ExtendedTooltip name="СписокУчебныеЗанятияУправлениеПоискомРасширеннаяПодсказка" id="113"/>
 			</SearchControlAddition>
 			<Events>
 				<Event name="Selection">СписокУчебныеЗанятияВыбор</Event>
 			</Events>
 			<ChildItems>
-				<LabelField name="УчебныеЗанятияНаименование" id="69">
-					<DataPath>СписокУчебныеЗанятия.Description</DataPath>
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Тема</v8:content>
-						</v8:item>
-					</Title>
-					<ContextMenu name="УчебныеЗанятияНаименованиеКонтекстноеМеню" id="70"/>
-					<ExtendedTooltip name="УчебныеЗанятияНаименованиеРасширеннаяПодсказка" id="71"/>
+				<LabelField name="СписокУчебныеЗанятияНаименование" id="100">
+					<DataPath>СписокУчебныеЗанятия.Наименование</DataPath>
+					<ContextMenu name="СписокУчебныеЗанятияНаименованиеКонтекстноеМеню" id="101"/>
+					<ExtendedTooltip name="СписокУчебныеЗанятияНаименованиеРасширеннаяПодсказка" id="102"/>
 				</LabelField>
-				<LabelField name="УчебныеЗанятияПроцент" id="87">
+				<LabelField name="СписокУчебныеЗанятияСсылка" id="97">
+					<DataPath>СписокУчебныеЗанятия.Ref</DataPath>
+					<Visible>false</Visible>
+					<ContextMenu name="СписокУчебныеЗанятияСсылкаКонтекстноеМеню" id="98"/>
+					<ExtendedTooltip name="СписокУчебныеЗанятияСсылкаРасширеннаяПодсказка" id="99"/>
+				</LabelField>
+				<LabelField name="СписокУчебныеЗанятияПроцент" id="87">
 					<DataPath>СписокУчебныеЗанятия.Процент</DataPath>
 					<Title>
 						<v8:item>
@@ -159,17 +170,11 @@
 					<Format>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>ЧН=Ноль</v8:content>
+							<v8:content>ЧДЦ=; ЧН=Ноль</v8:content>
 						</v8:item>
 					</Format>
-					<ContextMenu name="УчебныеЗанятияПроцентКонтекстноеМеню" id="88"/>
-					<ExtendedTooltip name="УчебныеЗанятияПроцентРасширеннаяПодсказка" id="89"/>
-				</LabelField>
-				<LabelField name="УчебныеЗанятияСсылка" id="94">
-					<DataPath>СписокУчебныеЗанятия.Ref</DataPath>
-					<Visible>false</Visible>
-					<ContextMenu name="УчебныеЗанятияСсылкаКонтекстноеМеню" id="95"/>
-					<ExtendedTooltip name="УчебныеЗанятияСсылкаРасширеннаяПодсказка" id="96"/>
+					<ContextMenu name="СписокУчебныеЗанятияПроцентКонтекстноеМеню" id="88"/>
+					<ExtendedTooltip name="СписокУчебныеЗанятияПроцентРасширеннаяПодсказка" id="89"/>
 				</LabelField>
 			</ChildItems>
 		</Table>
@@ -211,21 +216,24 @@
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
-				<DynamicDataRead>true</DynamicDataRead>
+				<DynamicDataRead>false</DynamicDataRead>
 				<QueryText>ВЫБРАТЬ
 	УчебныеЗанятия.Ссылка,
-	УчебныеЗанятия.ПометкаУдаления,
-	УчебныеЗанятия.Предопределенный,
-	УчебныеЗанятия.Родитель,
-	УчебныеЗанятия.ЭтоГруппа,
-	УчебныеЗанятия.Код,
-	УчебныеЗанятия.Наименование,
-	УчебныеЗанятия.ИмяФайла,
-	0 КАК Процент
+	МАКСИМУМ(УчебныеЗанятия.Наименование) КАК Наименование,
+	СРЕДНЕЕ(ТестированиеПользователей.ПроцентПравильныхОтветов) КАК Процент
 ИЗ
 	Справочник.УчебныеЗанятия КАК УчебныеЗанятия
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.ТестированиеПользователей КАК ТестированиеПользователей
+		ПО (ТестированиеПользователей.Тема = УчебныеЗанятия.Ссылка)
 ГДЕ
-	НЕ УчебныеЗанятия.ПометкаУдаления И УчебныеЗанятия.Активность</QueryText>
+	НЕ УчебныеЗанятия.ПометкаУдаления
+	И УчебныеЗанятия.Активность
+	И ТестированиеПользователей.Проведен
+	И ТестированиеПользователей.Автор = &amp;Пользователь
+	И ТестированиеПользователей.Дата МЕЖДУ ДОБАВИТЬКДАТЕ(&amp;ТекущаяДата, ДЕНЬ, -30) И &amp;ТекущаяДата
+
+СГРУППИРОВАТЬ ПО
+	УчебныеЗанятия.Ссылка</QueryText>
 				<MainTable>Catalog.УчебныеЗанятия</MainTable>
 				<ListSettings>
 					<dcsset:filter>
