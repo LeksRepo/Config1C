@@ -156,6 +156,7 @@
 					<ChildItems>
 						<InputField name="ПоложениеРучки" id="445">
 							<DataPath>Items.Детали.CurrentData.ПоложениеРучки</DataPath>
+							<Visible>false</Visible>
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -255,6 +256,14 @@
 							</InputHint>
 							<ContextMenu name="РадиусФасадаКонтекстноеМеню" id="443"/>
 							<ExtendedTooltip name="РадиусФасадаРасширеннаяПодсказка" id="444"/>
+						</InputField>
+						<InputField name="ДеталиРасположениеПазовИРучкиНаФасадах" id="595">
+							<DataPath>Items.Детали.CurrentData.РасположениеПазовИРучкиНаФасадах</DataPath>
+							<ContextMenu name="ДеталиРасположениеПазовИРучкиНаФасадахКонтекстноеМеню" id="596"/>
+							<ExtendedTooltip name="ДеталиРасположениеПазовИРучкиНаФасадахРасширеннаяПодсказка" id="597"/>
+							<Events>
+								<Event name="ChoiceProcessing">ДеталиРасположениеПазовИРучкиНаФасадахОбработкаВыбора</Event>
+							</Events>
 						</InputField>
 					</ChildItems>
 				</UsualGroup>
@@ -756,6 +765,7 @@
 													<ExtendedTooltip name="НоменклатураExtendedTooltip" id="298"/>
 													<Events>
 														<Event name="OnChange">НоменклатураПриИзменении</Event>
+														<Event name="StartChoice">НоменклатураНачалоВыбора</Event>
 													</Events>
 												</InputField>
 												<InputField name="НоменклатураДляСклеивания" id="243">
@@ -1109,6 +1119,7 @@
 										</InputField>
 										<InputField name="РасположениеПазов" id="467">
 											<DataPath>Items.Детали.CurrentData.РасположениеПазов</DataPath>
+											<Visible>false</Visible>
 											<Title>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
@@ -1251,29 +1262,29 @@
 										</ChildItems>
 									</AutoCommandBar>
 									<ExtendedTooltip name="ДеталиExtendedTooltip" id="320"/>
-									<SearchStringAddition name="ДеталиСтрокаПоиска" id="595">
+									<SearchStringAddition name="ДеталиСтрокаПоиска" id="598">
 										<AdditionSource>
 											<Item>Детали</Item>
 											<Type>SearchStringRepresentation</Type>
 										</AdditionSource>
-										<ContextMenu name="ДеталиСтрокаПоискаКонтекстноеМеню" id="596"/>
-										<ExtendedTooltip name="ДеталиСтрокаПоискаРасширеннаяПодсказка" id="597"/>
+										<ContextMenu name="ДеталиСтрокаПоискаКонтекстноеМеню" id="599"/>
+										<ExtendedTooltip name="ДеталиСтрокаПоискаРасширеннаяПодсказка" id="600"/>
 									</SearchStringAddition>
-									<ViewStatusAddition name="ДеталиСостояниеПросмотра" id="598">
+									<ViewStatusAddition name="ДеталиСостояниеПросмотра" id="601">
 										<AdditionSource>
 											<Item>Детали</Item>
 											<Type>ViewStatusRepresentation</Type>
 										</AdditionSource>
-										<ContextMenu name="ДеталиСостояниеПросмотраКонтекстноеМеню" id="599"/>
-										<ExtendedTooltip name="ДеталиСостояниеПросмотраРасширеннаяПодсказка" id="600"/>
+										<ContextMenu name="ДеталиСостояниеПросмотраКонтекстноеМеню" id="602"/>
+										<ExtendedTooltip name="ДеталиСостояниеПросмотраРасширеннаяПодсказка" id="603"/>
 									</ViewStatusAddition>
-									<SearchControlAddition name="ДеталиУправлениеПоиском" id="601">
+									<SearchControlAddition name="ДеталиУправлениеПоиском" id="604">
 										<AdditionSource>
 											<Item>Детали</Item>
 											<Type>SearchControl</Type>
 										</AdditionSource>
-										<ContextMenu name="ДеталиУправлениеПоискомКонтекстноеМеню" id="602"/>
-										<ExtendedTooltip name="ДеталиУправлениеПоискомРасширеннаяПодсказка" id="603"/>
+										<ContextMenu name="ДеталиУправлениеПоискомКонтекстноеМеню" id="605"/>
+										<ExtendedTooltip name="ДеталиУправлениеПоискомРасширеннаяПодсказка" id="606"/>
 									</SearchControlAddition>
 									<Events>
 										<Event name="BeforeAddRow">ДеталиПередНачаломДобавления</Event>
@@ -2973,6 +2984,17 @@
 							<v8:FractionDigits>0</v8:FractionDigits>
 							<v8:AllowedSign>Any</v8:AllowedSign>
 						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="РасположениеПазовИРучкиНаФасадах" id="44">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Расположение пазов и ручки на фасадах</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.РасположениеПазовИРучкиНаФасадах</v8:Type>
 					</Type>
 				</Column>
 			</Columns>
