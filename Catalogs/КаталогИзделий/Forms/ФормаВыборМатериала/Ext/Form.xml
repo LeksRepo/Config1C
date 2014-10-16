@@ -952,6 +952,7 @@
 													<ExtendedTooltip name="Группа2РасширеннаяПодсказка" id="641"/>
 													<ChildItems>
 														<UsualGroup name="Группа3" id="645">
+															<Height>1</Height>
 															<Group>Horizontal</Group>
 															<Representation>None</Representation>
 															<ShowTitle>false</ShowTitle>
@@ -965,6 +966,7 @@
 																	<ChildItems>
 																		<InputField name="ДеталиПоложениеРучки" id="503">
 																			<DataPath>Items.Детали.CurrentData.ПоложениеРучки</DataPath>
+																			<Visible>false</Visible>
 																			<HorizontalStretch>true</HorizontalStretch>
 																			<VerticalStretch>false</VerticalStretch>
 																			<ListChoiceMode>true</ListChoiceMode>
@@ -1014,6 +1016,7 @@
 																		</InputField>
 																		<InputField name="РасположениеПазов" id="467">
 																			<DataPath>Items.Детали.CurrentData.РасположениеПазов</DataPath>
+																			<Visible>false</Visible>
 																			<Title>
 																				<v8:item>
 																					<v8:lang>ru</v8:lang>
@@ -1089,6 +1092,7 @@
 																	<ExtendedTooltip name="Группа5РасширеннаяПодсказка" id="650"/>
 																	<ChildItems>
 																		<PictureDecoration name="Декорация3" id="651">
+																			<Visible>false</Visible>
 																			<Width>1</Width>
 																			<Height>1</Height>
 																			<HorizontalStretch>false</HorizontalStretch>
@@ -1096,6 +1100,7 @@
 																			<ExtendedTooltip name="Декорация3РасширеннаяПодсказка" id="653"/>
 																		</PictureDecoration>
 																		<PictureDecoration name="Декорация4" id="654">
+																			<Visible>false</Visible>
 																			<Width>1</Width>
 																			<Height>1</Height>
 																			<HorizontalStretch>false</HorizontalStretch>
@@ -1106,6 +1111,14 @@
 																</UsualGroup>
 															</ChildItems>
 														</UsualGroup>
+														<InputField name="ДеталиРасположениеПазовИРучкиНаФасадах" id="662">
+															<DataPath>Items.Детали.CurrentData.РасположениеПазовИРучкиНаФасадах</DataPath>
+															<ContextMenu name="ДеталиРасположениеПазовИРучкиНаФасадахКонтекстноеМеню" id="663"/>
+															<ExtendedTooltip name="ДеталиРасположениеПазовИРучкиНаФасадахРасширеннаяПодсказка" id="664"/>
+															<Events>
+																<Event name="ChoiceProcessing">ДеталиРасположениеПазовИРучкиНаФасадахОбработкаВыбора</Event>
+															</Events>
+														</InputField>
 														<InputField name="Петли" id="569">
 															<DataPath>Items.Детали.CurrentData.Петли</DataPath>
 															<HorizontalStretch>true</HorizontalStretch>
@@ -1377,29 +1390,29 @@
 						</ChildItems>
 					</AutoCommandBar>
 					<ExtendedTooltip name="ДеталиExtendedTooltip" id="320"/>
-					<SearchStringAddition name="ДеталиСтрокаПоиска" id="662">
+					<SearchStringAddition name="ДеталиСтрокаПоиска" id="665">
 						<AdditionSource>
 							<Item>Детали</Item>
 							<Type>SearchStringRepresentation</Type>
 						</AdditionSource>
-						<ContextMenu name="ДеталиСтрокаПоискаКонтекстноеМеню" id="663"/>
-						<ExtendedTooltip name="ДеталиСтрокаПоискаРасширеннаяПодсказка" id="664"/>
+						<ContextMenu name="ДеталиСтрокаПоискаКонтекстноеМеню" id="666"/>
+						<ExtendedTooltip name="ДеталиСтрокаПоискаРасширеннаяПодсказка" id="667"/>
 					</SearchStringAddition>
-					<ViewStatusAddition name="ДеталиСостояниеПросмотра" id="665">
+					<ViewStatusAddition name="ДеталиСостояниеПросмотра" id="668">
 						<AdditionSource>
 							<Item>Детали</Item>
 							<Type>ViewStatusRepresentation</Type>
 						</AdditionSource>
-						<ContextMenu name="ДеталиСостояниеПросмотраКонтекстноеМеню" id="666"/>
-						<ExtendedTooltip name="ДеталиСостояниеПросмотраРасширеннаяПодсказка" id="667"/>
+						<ContextMenu name="ДеталиСостояниеПросмотраКонтекстноеМеню" id="669"/>
+						<ExtendedTooltip name="ДеталиСостояниеПросмотраРасширеннаяПодсказка" id="670"/>
 					</ViewStatusAddition>
-					<SearchControlAddition name="ДеталиУправлениеПоиском" id="668">
+					<SearchControlAddition name="ДеталиУправлениеПоиском" id="671">
 						<AdditionSource>
 							<Item>Детали</Item>
 							<Type>SearchControl</Type>
 						</AdditionSource>
-						<ContextMenu name="ДеталиУправлениеПоискомКонтекстноеМеню" id="669"/>
-						<ExtendedTooltip name="ДеталиУправлениеПоискомРасширеннаяПодсказка" id="670"/>
+						<ContextMenu name="ДеталиУправлениеПоискомКонтекстноеМеню" id="672"/>
+						<ExtendedTooltip name="ДеталиУправлениеПоискомРасширеннаяПодсказка" id="673"/>
 					</SearchControlAddition>
 					<Events>
 						<Event name="OnActivateRow">ДеталиПриАктивизацииСтроки</Event>
@@ -1950,6 +1963,17 @@
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="РасположениеПазовИРучкиНаФасадах" id="35">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Расположение пазов и ручки на фасадах</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.РасположениеПазовИРучкиНаФасадах</v8:Type>
 					</Type>
 				</Column>
 			</Columns>
