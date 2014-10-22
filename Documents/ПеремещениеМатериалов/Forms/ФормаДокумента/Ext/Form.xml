@@ -6,6 +6,7 @@
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
 		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="BeforeWrite">ПередЗаписью</Event>
 	</Events>
 	<ChildItems>
@@ -68,6 +69,9 @@
 							<HorizontalStretch>false</HorizontalStretch>
 							<ContextMenu name="ПодразделениеКонтекстноеМеню" id="14"/>
 							<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="15"/>
+							<Events>
+								<Event name="OnChange">ПодразделениеПриИзменении</Event>
+							</Events>
 						</InputField>
 						<InputField name="Склад" id="16">
 							<DataPath>Объект.Склад</DataPath>
@@ -124,6 +128,9 @@
 							<HorizontalStretch>false</HorizontalStretch>
 							<ContextMenu name="ПодразделениеПолучательКонтекстноеМеню" id="50"/>
 							<ExtendedTooltip name="ПодразделениеПолучательРасширеннаяПодсказка" id="51"/>
+							<Events>
+								<Event name="OnChange">ПодразделениеПолучательПриИзменении</Event>
+							</Events>
 						</InputField>
 						<InputField name="СкладПолучатель" id="19">
 							<DataPath>Объект.СкладПолучатель</DataPath>
