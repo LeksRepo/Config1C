@@ -15,10 +15,6 @@
 			<field>Номенклатура</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Сумма</dataPath>
-			<field>Сумма</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>Цена</dataPath>
 			<field>Цена</field>
 		</field>
@@ -34,48 +30,231 @@
 			<dataPath>ПлановаяЗакупочная</dataPath>
 			<field>ПлановаяЗакупочная</field>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Количество</dataPath>
+			<field>Количество</field>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
-		<query>ВЫБРАТЬ ПЕРВЫЕ 100
-	АвансовыйОтчетСписокНоменклатуры.Ссылка,
-	АвансовыйОтчетСписокНоменклатуры.Номенклатура,
-	АвансовыйОтчетСписокНоменклатуры.Цена,
-	АвансовыйОтчетСписокНоменклатуры.Сумма,
-	АвансовыйОтчетСписокНоменклатуры.Контрагент,
-	ЦеныНоменклатуры.Поставщик,
-	ЦеныНоменклатуры.ПлановаяЗакупочная
+		<query>ВЫБРАТЬ
+	СписокНоменклатуры.Ссылка,
+	СписокНоменклатуры.Номенклатура,
+	МАКСИМУМ(ЦеныНоменклатуры.Период) КАК Период
+ПОМЕСТИТЬ ВТ_СписокНоменклатурыПериод
 ИЗ
-	Документ.АвансовыйОтчет.СписокНоменклатуры КАК АвансовыйОтчетСписокНоменклатуры
+	Документ.АвансовыйОтчет.СписокНоменклатуры КАК СписокНоменклатуры
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ЦеныНоменклатуры КАК ЦеныНоменклатуры
-		ПО (ЦеныНоменклатуры.Номенклатура = АвансовыйОтчетСписокНоменклатуры.Номенклатура)
+		ПО СписокНоменклатуры.Ссылка.Дата &gt;= ЦеныНоменклатуры.Период
+			И СписокНоменклатуры.Номенклатура = ЦеныНоменклатуры.Номенклатура
+			И (НЕ СписокНоменклатуры.Контрагент = ЦеныНоменклатуры.Поставщик)
+			И (НЕ ЦеныНоменклатуры.Поставщик = ЗНАЧЕНИЕ(Справочник.Контрагенты.ПустаяСсылка))
+			И СписокНоменклатуры.Ссылка.Подразделение.Регион = ЦеныНоменклатуры.Регион
 ГДЕ
-	НЕ ЦеныНоменклатуры.Поставщик ЕСТЬ NULL 
-	И НЕ ЦеныНоменклатуры.Поставщик = АвансовыйОтчетСписокНоменклатуры.Контрагент
-	И АвансовыйОтчетСписокНоменклатуры.Ссылка.Дата &gt; &amp;Дата
-	И АвансовыйОтчетСписокНоменклатуры.Ссылка.Подразделение.Регион = ЦеныНоменклатуры.Регион
+	НЕ ЦеныНоменклатуры.Период ЕСТЬ NULL 
+	И СписокНоменклатуры.Ссылка.Подразделение = &amp;Подразделение
 
+СГРУППИРОВАТЬ ПО
+	СписокНоменклатуры.Ссылка,
+	СписокНоменклатуры.Номенклатура
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	СписокНоменклатуры.Ссылка,
+	СписокНоменклатуры.Номенклатура,
+	СписокНоменклатуры.Цена,
+	СписокНоменклатуры.Количество,
+	СписокНоменклатуры.Контрагент,
+	ВТ_Период.Период КАК Период
+ПОМЕСТИТЬ ВТ_СписокНоменклатуры
+ИЗ
+	Документ.АвансовыйОтчет.СписокНоменклатуры КАК СписокНоменклатуры
+		ЛЕВОЕ СОЕДИНЕНИЕ ВТ_СписокНоменклатурыПериод КАК ВТ_Период
+		ПО (ВТ_Период.Ссылка = СписокНоменклатуры.Ссылка)
+			И (ВТ_Период.Номенклатура = СписокНоменклатуры.Номенклатура)
+ГДЕ
+	НЕ ВТ_Период.Период ЕСТЬ NULL 
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	СписокНоменклатуры.Ссылка,
+	СписокНоменклатуры.Номенклатура,
+	СписокНоменклатуры.Цена,
+	ЦеныНоменклатуры.ПлановаяЗакупочная,
+	СписокНоменклатуры.Количество,
+	СписокНоменклатуры.Контрагент,
+	ЦеныНоменклатуры.Поставщик
+ИЗ
+	ВТ_СписокНоменклатуры КАК СписокНоменклатуры
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ЦеныНоменклатуры КАК ЦеныНоменклатуры
+		ПО (ЦеныНоменклатуры.Период = СписокНоменклатуры.Период)
+			И (ЦеныНоменклатуры.Номенклатура = СписокНоменклатуры.Номенклатура)
+			И (НЕ ЦеныНоменклатуры.Поставщик = СписокНоменклатуры.Контрагент)
+			И (НЕ ЦеныНоменклатуры.Поставщик = ЗНАЧЕНИЕ(Справочник.Контрагенты.ПустаяСсылка))
+			И СписокНоменклатуры.Ссылка.Подразделение.Регион = ЦеныНоменклатуры.Регион
 УПОРЯДОЧИТЬ ПО
-	АвансовыйОтчетСписокНоменклатуры.Ссылка</query>
+	СписокНоменклатуры.Ссылка.Номер,
+	СписокНоменклатуры.Номенклатура</query>
 	</dataSet>
+	<totalField>
+		<dataPath>Цена</dataPath>
+		<expression>Цена</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ПлановаяЗакупочная</dataPath>
+		<expression>ПлановаяЗакупочная</expression>
+	</totalField>
 	<parameter>
-		<name>Дата</name>
+		<name>Подразделение</name>
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>ru</v8:lang>
-				<v8:content>Дата</v8:content>
+				<v8:content>Подразделение</v8:content>
 			</v8:item>
 		</title>
 		<valueType>
-			<v8:Type>xs:dateTime</v8:Type>
-			<v8:DateQualifiers>
-				<v8:DateFractions>DateTime</v8:DateFractions>
-			</v8:DateQualifiers>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Подразделения</v8:Type>
 		</valueType>
-		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<value xsi:nil="true"/>
 		<useRestriction>true</useRestriction>
+	</parameter>
+	<parameter>
+		<name>НачалоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
+		</title>
+		<value xsi:nil="true"/>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаНачала</expression>
+	</parameter>
+	<parameter>
+		<name>КонецПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конец периода</v8:content>
+			</v8:item>
+		</title>
+		<value xsi:nil="true"/>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаОкончания</expression>
+	</parameter>
+	<parameter>
+		<name>Период</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
 	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
 		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
-		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows"/>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Ссылка</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Номенклатура</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>Подразделение</dcscor:parameter>
+					<dcscor:value xsi:nil="true"/>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Период</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
+					</dcscor:value>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:order>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>Ссылка</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+			</dcsset:order>
+			<dcsset:item xsi:type="dcsset:StructureItemTable">
+				<dcsset:column>
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Цена</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+				</dcsset:column>
+				<dcsset:column>
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>ПлановаяЗакупочная</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+				</dcsset:column>
+				<dcsset:row>
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Ссылка</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+					<dcsset:item>
+						<dcsset:order>
+							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						</dcsset:order>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						</dcsset:selection>
+					</dcsset:item>
+				</dcsset:row>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+			</dcsset:item>
+		</dcsset:settings>
 	</settingsVariant>
 </DataCompositionSchema>
