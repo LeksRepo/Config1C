@@ -169,6 +169,7 @@
 								<ExtendedTooltip name="ДеталиУправлениеПоискомРасширеннаяПодсказка" id="382"/>
 							</SearchControlAddition>
 							<Events>
+								<Event name="BeforeAddRow">ДеталиПередНачаломДобавления</Event>
 								<Event name="OnActivateRow">ДеталиПриАктивизацииСтроки</Event>
 								<Event name="ChoiceProcessing">ДеталиОбработкаВыбора</Event>
 								<Event name="OnChange">ДеталиПриИзменении</Event>
@@ -189,41 +190,6 @@
 									<DropListButton>false</DropListButton>
 									<ChoiceButton>true</ChoiceButton>
 									<OpenButton>false</OpenButton>
-									<ChoiceParameters>
-										<app:item name="Отбор.ВидИзделияПоКаталогу">
-											<app:value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation/>
-												<Value xsi:type="v8:FixedArray">
-													<v8:Value xsi:type="FormChoiceListDesTimeValue">
-														<Presentation/>
-														<Value xsi:type="xr:DesignTimeRef">Catalog.ВидыИзделийПоКаталогу.КухняВерхний</Value>
-													</v8:Value>
-													<v8:Value xsi:type="FormChoiceListDesTimeValue">
-														<Presentation/>
-														<Value xsi:type="xr:DesignTimeRef">Catalog.ВидыИзделийПоКаталогу.КухняНижний</Value>
-													</v8:Value>
-													<v8:Value xsi:type="FormChoiceListDesTimeValue">
-														<Presentation/>
-														<Value xsi:type="xr:DesignTimeRef">Catalog.ВидыИзделийПоКаталогу.КорпуснаяМебель</Value>
-													</v8:Value>
-													<v8:Value xsi:type="FormChoiceListDesTimeValue">
-														<Presentation/>
-														<Value xsi:type="xr:DesignTimeRef">Catalog.ВидыИзделийПоКаталогу.Комод</Value>
-													</v8:Value>
-													<v8:Value xsi:type="FormChoiceListDesTimeValue">
-														<Presentation/>
-														<Value xsi:type="xr:DesignTimeRef">Catalog.ВидыИзделийПоКаталогу.НадстройкаКомода</Value>
-													</v8:Value>
-												</Value>
-											</app:value>
-										</app:item>
-										<app:item name="Отбор.Активный">
-											<app:value xsi:type="FormChoiceListDesTimeValue">
-												<Presentation/>
-												<Value xsi:type="xs:boolean">true</Value>
-											</app:value>
-										</app:item>
-									</ChoiceParameters>
 									<ChoiceListButton>false</ChoiceListButton>
 									<ContextMenu name="ДеталиИзделиеКонтекстноеМеню" id="6"/>
 									<ExtendedTooltip name="ДеталиИзделиеРасширеннаяПодсказка" id="7"/>
@@ -548,6 +514,60 @@
 										</InputField>
 									</ChildItems>
 								</UsualGroup>
+								<UsualGroup name="РучкаНожка" id="359">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Ручка ножка</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Ручка ножка</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Width>42</Width>
+									<Group>Vertical</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="РучкаНожкаРасширеннаяПодсказка" id="360"/>
+									<ChildItems>
+										<InputField name="ДеталиНожки" id="347">
+											<DataPath>Items.Детали.CurrentData.Ножки</DataPath>
+											<HorizontalStretch>false</HorizontalStretch>
+											<OpenButton>false</OpenButton>
+											<ListChoiceMode>true</ListChoiceMode>
+											<ContextMenu name="ДеталиНожкиКонтекстноеМеню" id="348"/>
+											<ExtendedTooltip name="ДеталиНожкиРасширеннаяПодсказка" id="349"/>
+											<Events>
+												<Event name="StartChoice">ДеталиНожкиНачалоВыбора</Event>
+											</Events>
+										</InputField>
+										<InputField name="ДеталиМойка" id="297">
+											<DataPath>Items.Детали.CurrentData.Мойка</DataPath>
+											<HorizontalStretch>false</HorizontalStretch>
+											<OpenButton>false</OpenButton>
+											<ListChoiceMode>true</ListChoiceMode>
+											<ContextMenu name="ДеталиМойкаКонтекстноеМеню" id="298"/>
+											<ExtendedTooltip name="ДеталиМойкаРасширеннаяПодсказка" id="299"/>
+											<Events>
+												<Event name="StartChoice">ДеталиМойкаНачалоВыбора</Event>
+											</Events>
+										</InputField>
+										<InputField name="ДеталиСушка" id="300">
+											<DataPath>Items.Детали.CurrentData.Сушка</DataPath>
+											<HorizontalStretch>false</HorizontalStretch>
+											<OpenButton>false</OpenButton>
+											<ListChoiceMode>true</ListChoiceMode>
+											<ContextMenu name="ДеталиСушкаКонтекстноеМеню" id="301"/>
+											<ExtendedTooltip name="ДеталиСушкаРасширеннаяПодсказка" id="302"/>
+											<Events>
+												<Event name="StartChoice">ДеталиСушкаНачалоВыбора</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
 								<UsualGroup name="Фасад" id="353">
 									<Title>
 										<v8:item>
@@ -646,29 +666,9 @@
 												<Event name="StartChoice">ДеталиКромкаФасадаНачалоВыбора</Event>
 											</Events>
 										</InputField>
-									</ChildItems>
-								</UsualGroup>
-								<UsualGroup name="РучкаНожка" id="359">
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Ручка ножка</v8:content>
-										</v8:item>
-									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Ручка ножка</v8:content>
-										</v8:item>
-									</ToolTip>
-									<Width>42</Width>
-									<Group>Vertical</Group>
-									<Representation>None</Representation>
-									<ShowTitle>false</ShowTitle>
-									<ExtendedTooltip name="РучкаНожкаРасширеннаяПодсказка" id="360"/>
-									<ChildItems>
 										<InputField name="ДеталиРучка" id="132">
 											<DataPath>Items.Детали.CurrentData.Ручка</DataPath>
+											<Width>26</Width>
 											<HorizontalStretch>false</HorizontalStretch>
 											<OpenButton>false</OpenButton>
 											<ListChoiceMode>true</ListChoiceMode>
@@ -677,39 +677,6 @@
 											<Events>
 												<Event name="OnChange">ДеталиРучкаПриИзменении</Event>
 												<Event name="StartChoice">ДеталиРучкаНачалоВыбора</Event>
-											</Events>
-										</InputField>
-										<InputField name="ДеталиНожки" id="347">
-											<DataPath>Items.Детали.CurrentData.Ножки</DataPath>
-											<HorizontalStretch>false</HorizontalStretch>
-											<OpenButton>false</OpenButton>
-											<ListChoiceMode>true</ListChoiceMode>
-											<ContextMenu name="ДеталиНожкиКонтекстноеМеню" id="348"/>
-											<ExtendedTooltip name="ДеталиНожкиРасширеннаяПодсказка" id="349"/>
-											<Events>
-												<Event name="StartChoice">ДеталиНожкиНачалоВыбора</Event>
-											</Events>
-										</InputField>
-										<InputField name="ДеталиМойка" id="297">
-											<DataPath>Items.Детали.CurrentData.Мойка</DataPath>
-											<HorizontalStretch>false</HorizontalStretch>
-											<OpenButton>false</OpenButton>
-											<ListChoiceMode>true</ListChoiceMode>
-											<ContextMenu name="ДеталиМойкаКонтекстноеМеню" id="298"/>
-											<ExtendedTooltip name="ДеталиМойкаРасширеннаяПодсказка" id="299"/>
-											<Events>
-												<Event name="StartChoice">ДеталиМойкаНачалоВыбора</Event>
-											</Events>
-										</InputField>
-										<InputField name="ДеталиСушка" id="300">
-											<DataPath>Items.Детали.CurrentData.Сушка</DataPath>
-											<HorizontalStretch>false</HorizontalStretch>
-											<OpenButton>false</OpenButton>
-											<ListChoiceMode>true</ListChoiceMode>
-											<ContextMenu name="ДеталиСушкаКонтекстноеМеню" id="301"/>
-											<ExtendedTooltip name="ДеталиСушкаРасширеннаяПодсказка" id="302"/>
-											<Events>
-												<Event name="StartChoice">ДеталиСушкаНачалоВыбора</Event>
 											</Events>
 										</InputField>
 									</ChildItems>
@@ -2505,6 +2472,17 @@
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.Подразделения</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ВидИзделияСпецификации" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид изделия спецификации</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:EnumRef.ВидыИзделий</v8:Type>
 			</Type>
 		</Attribute>
 	</Attributes>
