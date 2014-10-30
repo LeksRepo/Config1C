@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Width>120</Width>
 	<AutoTime>CurrentOrLast</AutoTime>
 	<UsePostingMode>Auto</UsePostingMode>
 	<RepostOnWrite>true</RepostOnWrite>
@@ -30,7 +31,7 @@
 				<Button name="ФормаЗаполнить" id="34">
 					<Type>UsualButton</Type>
 					<Representation>PictureAndText</Representation>
-					<Width>12</Width>
+					<Width>13</Width>
 					<CommandName>Form.Command.Заполнить</CommandName>
 					<Picture>
 						<xr:Ref>StdPicture.GenerateReport</xr:Ref>
@@ -43,7 +44,7 @@
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>                  Номер</v8:content>
+							<v8:content>  Номер</v8:content>
 						</v8:item>
 					</Title>
 					<EditMode>EnterOnInput</EditMode>
@@ -51,12 +52,6 @@
 					<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
 					<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="3"/>
 				</LabelField>
-				<InputField name="Дата" id="4">
-					<DataPath>Объект.Date</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
-					<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="6"/>
-				</InputField>
 			</ChildItems>
 		</UsualGroup>
 		<UsualGroup name="ПодразделениеПоставщик" id="84">
@@ -89,6 +84,7 @@
 				</InputField>
 				<InputField name="Поставщик" id="81">
 					<DataPath>Объект.Поставщик</DataPath>
+					<HorizontalStretch>true</HorizontalStretch>
 					<ChoiceButton>true</ChoiceButton>
 					<ClearButton>true</ClearButton>
 					<OpenButton>false</OpenButton>
@@ -105,6 +101,12 @@
 					<Events>
 						<Event name="OnChange">ПоставщикПриИзменении</Event>
 					</Events>
+				</InputField>
+				<InputField name="Дата" id="4">
+					<DataPath>Объект.Date</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
+					<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="6"/>
 				</InputField>
 			</ChildItems>
 		</UsualGroup>
@@ -155,14 +157,14 @@
 				<LabelField name="СписокНоменклатурыНомерСтроки" id="14">
 					<DataPath>Объект.СписокНоменклатуры.LineNumber</DataPath>
 					<EditMode>EnterOnInput</EditMode>
-					<Width>1</Width>
-					<HorizontalStretch>false</HorizontalStretch>
+					<HorizontalStretch>true</HorizontalStretch>
 					<ContextMenu name="СписокНоменклатурыНомерСтрокиКонтекстноеМеню" id="15"/>
 					<ExtendedTooltip name="СписокНоменклатурыНомерСтрокиРасширеннаяПодсказка" id="16"/>
 				</LabelField>
 				<InputField name="СписокНоменклатурыНоменклатура" id="20">
 					<DataPath>Объект.СписокНоменклатуры.Номенклатура</DataPath>
 					<EditMode>EnterOnInput</EditMode>
+					<HorizontalStretch>true</HorizontalStretch>
 					<ContextMenu name="СписокНоменклатурыНоменклатураКонтекстноеМеню" id="21"/>
 					<ExtendedTooltip name="СписокНоменклатурыНоменклатураРасширеннаяПодсказка" id="22"/>
 				</InputField>
@@ -175,15 +177,14 @@
 						</v8:item>
 					</Title>
 					<EditMode>EnterOnInput</EditMode>
-					<Width>10</Width>
+					<HorizontalStretch>true</HorizontalStretch>
 					<ContextMenu name="СписокНоменклатурыЕдиницаИзмеренияКонтекстноеМеню" id="24"/>
 					<ExtendedTooltip name="СписокНоменклатурыЕдиницаИзмеренияРасширеннаяПодсказка" id="25"/>
 				</InputField>
 				<InputField name="СписокНоменклатурыКоличество" id="17">
 					<DataPath>Объект.СписокНоменклатуры.Количество</DataPath>
 					<EditMode>EnterOnInput</EditMode>
-					<Width>1</Width>
-					<HorizontalStretch>false</HorizontalStretch>
+					<HorizontalStretch>true</HorizontalStretch>
 					<ContextMenu name="СписокНоменклатурыКоличествоКонтекстноеМеню" id="18"/>
 					<ExtendedTooltip name="СписокНоменклатурыКоличествоРасширеннаяПодсказка" id="19"/>
 				</InputField>
@@ -196,14 +197,14 @@
 						</v8:item>
 					</Title>
 					<EditMode>EnterOnInput</EditMode>
-					<Width>1</Width>
-					<HorizontalStretch>false</HorizontalStretch>
+					<HorizontalStretch>true</HorizontalStretch>
 					<ContextMenu name="СписокНоменклатурыКоличествоТребуетсяСрочноКонтекстноеМеню" id="74"/>
 					<ExtendedTooltip name="СписокНоменклатурыКоличествоТребуетсяСрочноРасширеннаяПодсказка" id="75"/>
 				</InputField>
 				<InputField name="СписокНоменклатурыПоставщик" id="64">
 					<DataPath>Объект.СписокНоменклатуры.Поставщик</DataPath>
 					<EditMode>EnterOnInput</EditMode>
+					<HorizontalStretch>true</HorizontalStretch>
 					<ContextMenu name="СписокНоменклатурыПоставщикКонтекстноеМеню" id="65"/>
 					<ExtendedTooltip name="СписокНоменклатурыПоставщикРасширеннаяПодсказка" id="66"/>
 				</InputField>
@@ -211,8 +212,7 @@
 					<DataPath>Объект.СписокНоменклатуры.Стоимость</DataPath>
 					<ReadOnly>true</ReadOnly>
 					<EditMode>EnterOnInput</EditMode>
-					<Width>1</Width>
-					<HorizontalStretch>false</HorizontalStretch>
+					<HorizontalStretch>true</HorizontalStretch>
 					<ContextMenu name="СписокНоменклатурыСтоимостьКонтекстноеМеню" id="37"/>
 					<ExtendedTooltip name="СписокНоменклатурыСтоимостьРасширеннаяПодсказка" id="38"/>
 				</InputField>
@@ -271,14 +271,16 @@
 				<LabelField name="СписокНоменклатурыПодЗаказНомерСтроки" id="90">
 					<DataPath>Объект.СписокНоменклатурыПодЗаказ.LineNumber</DataPath>
 					<EditMode>EnterOnInput</EditMode>
-					<Width>1</Width>
-					<HorizontalStretch>false</HorizontalStretch>
+					<HorizontalStretch>true</HorizontalStretch>
+					<VerticalStretch>false</VerticalStretch>
 					<ContextMenu name="СписокНоменклатурыПодЗаказНомерСтрокиКонтекстноеМеню" id="91"/>
 					<ExtendedTooltip name="СписокНоменклатурыПодЗаказНомерСтрокиРасширеннаяПодсказка" id="92"/>
 				</LabelField>
 				<InputField name="СписокНоменклатурыПодЗаказНоменклатура" id="102">
 					<DataPath>Объект.СписокНоменклатурыПодЗаказ.Номенклатура</DataPath>
 					<EditMode>EnterOnInput</EditMode>
+					<HorizontalStretch>true</HorizontalStretch>
+					<VerticalStretch>false</VerticalStretch>
 					<ContextMenu name="СписокНоменклатурыПодЗаказНоменклатураКонтекстноеМеню" id="103"/>
 					<ExtendedTooltip name="СписокНоменклатурыПодЗаказНоменклатураРасширеннаяПодсказка" id="104"/>
 				</InputField>
@@ -291,15 +293,16 @@
 						</v8:item>
 					</Title>
 					<EditMode>EnterOnInput</EditMode>
-					<Width>10</Width>
+					<HorizontalStretch>true</HorizontalStretch>
+					<VerticalStretch>false</VerticalStretch>
 					<ContextMenu name="СписокНоменклатурыПодЗаказЕдиницаИзмеренияКонтекстноеМеню" id="94"/>
 					<ExtendedTooltip name="СписокНоменклатурыПодЗаказЕдиницаИзмеренияРасширеннаяПодсказка" id="95"/>
 				</InputField>
 				<InputField name="СписокНоменклатурыПодЗаказКоличество" id="96">
 					<DataPath>Объект.СписокНоменклатурыПодЗаказ.Количество</DataPath>
 					<EditMode>EnterOnInput</EditMode>
-					<Width>1</Width>
-					<HorizontalStretch>false</HorizontalStretch>
+					<HorizontalStretch>true</HorizontalStretch>
+					<VerticalStretch>false</VerticalStretch>
 					<ContextMenu name="СписокНоменклатурыПодЗаказКоличествоКонтекстноеМеню" id="97"/>
 					<ExtendedTooltip name="СписокНоменклатурыПодЗаказКоличествоРасширеннаяПодсказка" id="98"/>
 				</InputField>
@@ -312,22 +315,24 @@
 						</v8:item>
 					</Title>
 					<EditMode>EnterOnInput</EditMode>
-					<Width>1</Width>
-					<HorizontalStretch>false</HorizontalStretch>
+					<HorizontalStretch>true</HorizontalStretch>
+					<VerticalStretch>false</VerticalStretch>
 					<ContextMenu name="СписокНоменклатурыПодЗаказКоличествоСрочноКонтекстноеМеню" id="100"/>
 					<ExtendedTooltip name="СписокНоменклатурыПодЗаказКоличествоСрочноРасширеннаяПодсказка" id="101"/>
 				</InputField>
 				<InputField name="СписокНоменклатурыПодЗаказПоставщик" id="105">
 					<DataPath>Объект.СписокНоменклатурыПодЗаказ.Поставщик</DataPath>
 					<EditMode>EnterOnInput</EditMode>
+					<HorizontalStretch>true</HorizontalStretch>
+					<VerticalStretch>false</VerticalStretch>
 					<ContextMenu name="СписокНоменклатурыПодЗаказПоставщикКонтекстноеМеню" id="106"/>
 					<ExtendedTooltip name="СписокНоменклатурыПодЗаказПоставщикРасширеннаяПодсказка" id="107"/>
 				</InputField>
 				<InputField name="СписокНоменклатурыПодЗаказСтоимость" id="108">
 					<DataPath>Объект.СписокНоменклатурыПодЗаказ.Стоимость</DataPath>
 					<EditMode>EnterOnInput</EditMode>
-					<Width>1</Width>
-					<HorizontalStretch>false</HorizontalStretch>
+					<HorizontalStretch>true</HorizontalStretch>
+					<VerticalStretch>false</VerticalStretch>
 					<ContextMenu name="СписокНоменклатурыПодЗаказСтоимостьКонтекстноеМеню" id="109"/>
 					<ExtendedTooltip name="СписокНоменклатурыПодЗаказСтоимостьРасширеннаяПодсказка" id="110"/>
 				</InputField>
@@ -337,7 +342,7 @@
 			<Representation>List</Representation>
 			<TitleLocation>Top</TitleLocation>
 			<ReadOnly>true</ReadOnly>
-			<Height>7</Height>
+			<Height>5</Height>
 			<AutoInsertNewRow>true</AutoInsertNewRow>
 			<VerticalStretch>false</VerticalStretch>
 			<EnableStartDrag>true</EnableStartDrag>
