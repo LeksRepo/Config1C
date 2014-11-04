@@ -10,23 +10,23 @@
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
-		<UsualGroup name="ГруппаДата" id="32">
+		<UsualGroup name="ГруппаНомерДата" id="32">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Группа дата</v8:content>
+					<v8:content>Группа номер дата</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Группа дата</v8:content>
+					<v8:content>Группа номер дата</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаДатаРасширеннаяПодсказка" id="33"/>
+			<ExtendedTooltip name="ГруппаНомерДатаРасширеннаяПодсказка" id="33"/>
 			<ChildItems>
 				<Button name="ФормаЗаполнить" id="34">
 					<Type>UsualButton</Type>
@@ -52,6 +52,12 @@
 					<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
 					<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="3"/>
 				</LabelField>
+				<InputField name="Дата" id="4">
+					<DataPath>Объект.Date</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
+					<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="6"/>
+				</InputField>
 			</ChildItems>
 		</UsualGroup>
 		<UsualGroup name="ПодразделениеПоставщик" id="84">
@@ -76,6 +82,7 @@
 					<DataPath>Объект.Подразделение</DataPath>
 					<EditMode>EnterOnInput</EditMode>
 					<HorizontalStretch>false</HorizontalStretch>
+					<OpenButton>false</OpenButton>
 					<ContextMenu name="ПодразделениеКонтекстноеМеню" id="8"/>
 					<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="9"/>
 					<Events>
@@ -84,7 +91,7 @@
 				</InputField>
 				<InputField name="Поставщик" id="81">
 					<DataPath>Объект.Поставщик</DataPath>
-					<HorizontalStretch>true</HorizontalStretch>
+					<HorizontalStretch>false</HorizontalStretch>
 					<ChoiceButton>true</ChoiceButton>
 					<ClearButton>true</ClearButton>
 					<OpenButton>false</OpenButton>
@@ -101,12 +108,6 @@
 					<Events>
 						<Event name="OnChange">ПоставщикПриИзменении</Event>
 					</Events>
-				</InputField>
-				<InputField name="Дата" id="4">
-					<DataPath>Объект.Date</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
-					<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="6"/>
 				</InputField>
 			</ChildItems>
 		</UsualGroup>
