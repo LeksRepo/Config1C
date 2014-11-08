@@ -158,13 +158,18 @@
 			<dataPath>Кратность</dataPath>
 			<field>Кратность</field>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Поставщик</dataPath>
+			<field>Поставщик</field>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	спрНоменклатура.Ссылка КАК Номенклатура,
 	спрНоменклатура.ЕдиницаИзмерения КАК ЕдиницаИзмерения,
 	ЦеныНоменклатурыСрезПоследних.ПлановаяЗакупочная КАК ПлановаяЗакупочная,
 	ЦеныНоменклатурыСрезПоследних.Розничная КАК Розничная,
-	спрНоменклатура.Кратность
+	спрНоменклатура.Кратность,
+	ЦеныНоменклатурыСрезПоследних.Поставщик
 ПОМЕСТИТЬ Список
 ИЗ
 	Справочник.Номенклатура КАК спрНоменклатура
@@ -198,7 +203,8 @@
 		ИНАЧЕ 100
 	КОНЕЦ КАК Наценка,
 	СУММА(ОстаткиНаСкладе.КоличествоОстаток * ОстаткиНаСкладе.Субконто2.КоэффициентБазовых) КАК ОстатокНаСкладе,
-	Список.Кратность
+	Список.Кратность,
+	Список.Поставщик
 ИЗ
 	Список КАК Список
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрБухгалтерии.Управленческий.Остатки(
@@ -229,7 +235,8 @@
 	Список.ЕдиницаИзмерения,
 	Список.ПлановаяЗакупочная,
 	Список.Розничная,
-	Список.Кратность</query>
+	Список.Кратность,
+	Список.Поставщик</query>
 	</dataSet>
 	<totalField>
 		<dataPath>КоличествоРезерва</dataPath>
@@ -302,6 +309,9 @@
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>ЕдиницаИзмерения</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Поставщик</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
 					<dcsset:lwsTitle>
@@ -400,13 +410,7 @@
 							<dcsset:field>ЕдиницаИзмерения</dcsset:field>
 						</dcsset:item>
 						<dcsset:item>
-							<dcsset:field>ПодЗаказ</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:field>БазовыйЛимитЦеха</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:field>Внутренняя</dcsset:field>
+							<dcsset:field>Поставщик</dcsset:field>
 						</dcsset:item>
 						<dcsset:item>
 							<dcsset:field>КоличествоРезерва</dcsset:field>
@@ -415,40 +419,16 @@
 							<dcsset:field>Наценка</dcsset:field>
 						</dcsset:item>
 						<dcsset:item>
-							<dcsset:field>ПлановаяНаценка</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:field>НаценкаЛогистики</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:field>ОстатокВЦеху</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
 							<dcsset:field>ОстатокНаСкладе</dcsset:field>
 						</dcsset:item>
 						<dcsset:item>
 							<dcsset:field>ПлановаяЗакупочная</dcsset:field>
 						</dcsset:item>
 						<dcsset:item>
-							<dcsset:field>ПолныйЛимитЦеха</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:field>ПроцентОтхода</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
 							<dcsset:field>Розничная</dcsset:field>
 						</dcsset:item>
 						<dcsset:item>
-							<dcsset:field>РозничнаяЦенаМинус30</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
 							<dcsset:field>Себестоимость</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:field>ТребуетсяПоСпецификациям</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:field>ПриобертаемОптом</dcsset:field>
 						</dcsset:item>
 					</dcsset:selection>
 					<dcsset:filter>
@@ -491,13 +471,7 @@
 							<dcsset:field>ЕдиницаИзмерения</dcsset:field>
 						</dcsset:item>
 						<dcsset:item>
-							<dcsset:field>ПодЗаказ</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:field>БазовыйЛимитЦеха</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:field>Внутренняя</dcsset:field>
+							<dcsset:field>Поставщик</dcsset:field>
 						</dcsset:item>
 						<dcsset:item>
 							<dcsset:field>КоличествоРезерва</dcsset:field>
@@ -506,40 +480,16 @@
 							<dcsset:field>Наценка</dcsset:field>
 						</dcsset:item>
 						<dcsset:item>
-							<dcsset:field>ПлановаяНаценка</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:field>НаценкаЛогистики</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:field>ОстатокВЦеху</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
 							<dcsset:field>ОстатокНаСкладе</dcsset:field>
 						</dcsset:item>
 						<dcsset:item>
 							<dcsset:field>ПлановаяЗакупочная</dcsset:field>
 						</dcsset:item>
 						<dcsset:item>
-							<dcsset:field>ПолныйЛимитЦеха</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:field>ПроцентОтхода</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
 							<dcsset:field>Розничная</dcsset:field>
 						</dcsset:item>
 						<dcsset:item>
-							<dcsset:field>РозничнаяЦенаМинус30</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
 							<dcsset:field>Себестоимость</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:field>ТребуетсяПоСпецификациям</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:field>ПриобертаемОптом</dcsset:field>
 						</dcsset:item>
 					</dcsset:selection>
 					<dcsset:filter>
@@ -591,6 +541,13 @@
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:GroupItemField">
 						<dcsset:field>ЕдиницаИзмерения</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Поставщик</dcsset:field>
 						<dcsset:groupType>Items</dcsset:groupType>
 						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
