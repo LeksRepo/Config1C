@@ -17,16 +17,6 @@
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Договор</dataPath>
-			<field>Договор</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Договор, спецификация</v8:content>
-				</v8:item>
-			</title>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>Оценка</dataPath>
 			<field>Оценка</field>
 			<title xsi:type="v8:LocalStringType">
@@ -37,185 +27,81 @@
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Количество</dataPath>
-			<field>Количество</field>
+			<dataPath>Комментарий</dataPath>
+			<field>Комментарий</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Документ</dataPath>
+			<field>Документ</field>
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Количество</v8:content>
+					<v8:content>Документ</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Процент</dataPath>
+			<field>Процент</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Процент</v8:content>
 				</v8:item>
 			</title>
 			<appearance>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>Размещение</dcscor:parameter>
-					<dcscor:value xsi:type="dcscor:DataCompositionTextPlacementType">Wrap</dcscor:value>
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧДЦ=</dcscor:value>
 				</dcscor:item>
 			</appearance>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>Дата</dataPath>
-			<field>Дата</field>
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	ОбзвонСписокДоговоров.Договор.Подразделение КАК Подразделение,
-	ВЫБОР
-		КОГДА ОбзвонСписокДоговоров.ОбщаяОценка = ЗНАЧЕНИЕ(Перечисление.Оценки.Благодарность)
-			ТОГДА "Благодарность"
-		КОГДА ОбзвонСписокДоговоров.ОбщаяОценка = ЗНАЧЕНИЕ(Перечисление.Оценки.Претензия)
-			ТОГДА "Претензия"
-		КОГДА ОбзвонСписокДоговоров.ОбщаяОценка = ЗНАЧЕНИЕ(Перечисление.Оценки.Напряжение)
-			ТОГДА "Напряжение"
-	КОНЕЦ КАК Оценка,
-	ОбзвонСписокДоговоров.Договор КАК Договор,
-	МАКСИМУМ(ОбзвонСписокДоговоров.Ссылка.Дата) КАК Дата,
-	ВЫБОР
-		КОГДА ОбзвонСписокДоговоров.ОбщаяОценка = ЗНАЧЕНИЕ(Перечисление.Оценки.Благодарность)
-				ИЛИ ОбзвонСписокДоговоров.ОбщаяОценка = ЗНАЧЕНИЕ(Перечисление.Оценки.Претензия)
-				ИЛИ ОбзвонСписокДоговоров.ОбщаяОценка = ЗНАЧЕНИЕ(Перечисление.Оценки.Напряжение)
-			ТОГДА ОбзвонСписокДоговоров.ОбщийКомментарий
-	КОНЕЦ КАК Количество
+	ОбзвонСписокДоговоров.ОбщаяОценка КАК Оценка,
+	ОбзвонСписокДоговоров.Договор КАК Документ,
+	ОбзвонСписокДоговоров.ОбщийКомментарий КАК Комментарий,
+	1 КАК Процент
 ИЗ
 	Документ.Обзвон.СписокДоговоров КАК ОбзвонСписокДоговоров
 ГДЕ
-	ОбзвонСписокДоговоров.Ссылка.Дата МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания
-	И (ОбзвонСписокДоговоров.ОбщаяОценка = ЗНАЧЕНИЕ(Перечисление.Оценки.Благодарность)
+	(ОбзвонСписокДоговоров.ОбщаяОценка = ЗНАЧЕНИЕ(Перечисление.Оценки.Благодарность)
 			ИЛИ ОбзвонСписокДоговоров.ОбщаяОценка = ЗНАЧЕНИЕ(Перечисление.Оценки.Претензия)
 			ИЛИ ОбзвонСписокДоговоров.ОбщаяОценка = ЗНАЧЕНИЕ(Перечисление.Оценки.Напряжение))
-
-СГРУППИРОВАТЬ ПО
-	ОбзвонСписокДоговоров.Договор.Подразделение,
-	ВЫБОР
-		КОГДА ОбзвонСписокДоговоров.ОбщаяОценка = ЗНАЧЕНИЕ(Перечисление.Оценки.Благодарность)
-			ТОГДА "Благодарность"
-		КОГДА ОбзвонСписокДоговоров.ОбщаяОценка = ЗНАЧЕНИЕ(Перечисление.Оценки.Претензия)
-			ТОГДА "Претензия"
-		КОГДА ОбзвонСписокДоговоров.ОбщаяОценка = ЗНАЧЕНИЕ(Перечисление.Оценки.Напряжение)
-			ТОГДА "Напряжение"
-	КОНЕЦ,
-	ОбзвонСписокДоговоров.Договор,
-	ВЫБОР
-		КОГДА ОбзвонСписокДоговоров.ОбщаяОценка = ЗНАЧЕНИЕ(Перечисление.Оценки.Благодарность)
-				ИЛИ ОбзвонСписокДоговоров.ОбщаяОценка = ЗНАЧЕНИЕ(Перечисление.Оценки.Претензия)
-				ИЛИ ОбзвонСписокДоговоров.ОбщаяОценка = ЗНАЧЕНИЕ(Перечисление.Оценки.Напряжение)
-			ТОГДА ОбзвонСписокДоговоров.ОбщийКомментарий
-	КОНЕЦ
+{ГДЕ
+	(ОбзвонСписокДоговоров.Договор.Дата МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания)}
 
 ОБЪЕДИНИТЬ ВСЕ
 
 ВЫБРАТЬ
 	ОбзвонСпецификацийСписокСпецификаций.Спецификация.Производство,
-	ВЫБОР
-		КОГДА ОбзвонСпецификацийСписокСпецификаций.Оценка = ЗНАЧЕНИЕ(Перечисление.Оценки.НарушеныКачествоИСроки)
-			ТОГДА "Нарушены качество и сроки"
-		КОГДА ОбзвонСпецификацийСписокСпецификаций.Оценка = ЗНАЧЕНИЕ(Перечисление.Оценки.НарушениеСроков)
-			ТОГДА "Нарушение сроков"
-		КОГДА ОбзвонСпецификацийСписокСпецификаций.Оценка = ЗНАЧЕНИЕ(Перечисление.Оценки.ПлохоеКачество)
-			ТОГДА "Плохое качество"
-	КОНЕЦ,
+	ОбзвонСпецификацийСписокСпецификаций.Оценка,
 	ОбзвонСпецификацийСписокСпецификаций.Спецификация,
-	ОбзвонСпецификацийСписокСпецификаций.Спецификация.Дата,
-	ОбзвонСпецификацийСписокСпецификаций.Комментарий
+	ОбзвонСпецификацийСписокСпецификаций.Комментарий,
+	1
 ИЗ
 	Документ.Обзвон.СписокСпецификаций КАК ОбзвонСпецификацийСписокСпецификаций
-ГДЕ                                       
-	ОбзвонСпецификацийСписокСпецификаций.Ссылка.Дата МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания
-	И (ОбзвонСпецификацийСписокСпецификаций.Оценка = ЗНАЧЕНИЕ(Перечисление.Оценки.НарушеныКачествоИСроки)
+ГДЕ
+	(ОбзвонСпецификацийСписокСпецификаций.Оценка = ЗНАЧЕНИЕ(Перечисление.Оценки.НарушеныКачествоИСроки)
 			ИЛИ ОбзвонСпецификацийСписокСпецификаций.Оценка = ЗНАЧЕНИЕ(Перечисление.Оценки.НарушениеСроков)
-			ИЛИ ОбзвонСпецификацийСписокСпецификаций.Оценка = ЗНАЧЕНИЕ(Перечисление.Оценки.ПлохоеКачество))</query>
+			ИЛИ ОбзвонСпецификацийСписокСпецификаций.Оценка = ЗНАЧЕНИЕ(Перечисление.Оценки.ПлохоеКачество))
+{ГДЕ
+	(ОбзвонСпецификацийСписокСпецификаций.Ссылка.Дата МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания)}</query>
 	</dataSet>
-	<dataSet xsi:type="DataSetQuery">
-		<name>НаборДанных2</name>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>Общее</dataPath>
-			<field>Общее</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Общее</v8:content>
-				</v8:item>
-			</title>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>Подразделение</dataPath>
-			<field>Подразделение</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Подразделение</v8:content>
-				</v8:item>
-			</title>
-		</field>
-		<dataSource>ИсточникДанных1</dataSource>
-		<query>ВЫБРАТЬ
-	КОЛИЧЕСТВО(РАЗЛИЧНЫЕ ОбзвонСписокДоговоров.Договор) КАК Общее,
-	ОбзвонСписокДоговоров.Договор.Подразделение КАК Подразделение
-ИЗ
-	Документ.Обзвон.СписокДоговоров КАК ОбзвонСписокДоговоров
-ГДЕ
-	ОбзвонСписокДоговоров.Ссылка.Дата МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания
-	И ОбзвонСписокДоговоров.Договор.Подразделение = &amp;Подразделение
-
-СГРУППИРОВАТЬ ПО
-	ОбзвонСписокДоговоров.Договор.Подразделение
-
-ОБЪЕДИНИТЬ ВСЕ
-
-ВЫБРАТЬ
-	КОЛИЧЕСТВО(РАЗЛИЧНЫЕ ОбзвонСпецификацийСписокСпецификаций.Спецификация),
-	ОбзвонСпецификацийСписокСпецификаций.Спецификация.Производство
-ИЗ
-	Документ.Обзвон.СписокСпецификаций КАК ОбзвонСпецификацийСписокСпецификаций
-ГДЕ
-	ОбзвонСпецификацийСписокСпецификаций.Ссылка.Дата МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания
-	И ОбзвонСпецификацийСписокСпецификаций.Спецификация.Производство = &amp;Подразделение
-
-СГРУППИРОВАТЬ ПО
-	ОбзвонСпецификацийСписокСпецификаций.Спецификация.Производство</query>
-	</dataSet>
-	<dataSetLink>
-		<sourceDataSet>НаборДанных1</sourceDataSet>
-		<destinationDataSet>НаборДанных2</destinationDataSet>
-		<sourceExpression>Подразделение</sourceExpression>
-		<destinationExpression>Подразделение</destinationExpression>
-		<parameter>Подразделение</parameter>
-		<parameterListAllowed>false</parameterListAllowed>
-	</dataSetLink>
-	<calculatedField>
-		<dataPath>Процент</dataPath>
-		<expression>(Количество(Количество)*100)/Общее</expression>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>%</v8:content>
-			</v8:item>
-		</title>
-		<appearance>
-			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-				<dcscor:parameter>Формат</dcscor:parameter>
-				<dcscor:value xsi:type="xs:string">ЧЦ=3; ЧДЦ=0</dcscor:value>
-			</dcscor:item>
-		</appearance>
-	</calculatedField>
 	<totalField>
-		<dataPath>Количество</dataPath>
-		<expression>Количество(Количество)</expression>
+		<dataPath>Комментарий</dataPath>
+		<expression>Количество(Комментарий)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Процент</dataPath>
+		<expression>Сумма(Процент)</expression>
 		<group>Оценка</group>
 	</totalField>
 	<totalField>
 		<dataPath>Процент</dataPath>
-		<expression>Процент</expression>
-		<group>Оценка</group>
-	</totalField>
-	<totalField>
-		<dataPath>Количество</dataPath>
-		<expression>Общее</expression>
+		<expression>100</expression>
 		<group>Подразделение</group>
-	</totalField>
-	<totalField>
-		<dataPath>Количество</dataPath>
-		<expression>Количество</expression>
-		<group>Договор</group>
 	</totalField>
 	<parameter>
 		<name>ДатаНачала</name>
@@ -233,7 +119,7 @@
 		</valueType>
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 		<useRestriction>true</useRestriction>
-		<expression>&amp;Период.ДатаНачала</expression>
+		<expression>&amp;ПериодОтчета.ДатаНачала</expression>
 	</parameter>
 	<parameter>
 		<name>ДатаОкончания</name>
@@ -251,14 +137,14 @@
 		</valueType>
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 		<useRestriction>true</useRestriction>
-		<expression>&amp;Период.ДатаОкончания</expression>
+		<expression>&amp;ПериодОтчета.ДатаОкончания</expression>
 	</parameter>
 	<parameter>
-		<name>Период</name>
+		<name>ПериодОтчета</name>
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>ru</v8:lang>
-				<v8:content>Период</v8:content>
+				<v8:content>Период отчета</v8:content>
 			</v8:item>
 		</title>
 		<valueType>
@@ -271,34 +157,6 @@
 		</value>
 		<useRestriction>false</useRestriction>
 	</parameter>
-	<parameter>
-		<name>Подразделение</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Подразделение</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Подразделения</v8:Type>
-		</valueType>
-		<value xsi:nil="true"/>
-		<useRestriction>true</useRestriction>
-	</parameter>
-	<parameter>
-		<name>Ссылка</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Ссылка</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:DocumentRef.Обзвон</v8:Type>
-		</valueType>
-		<value xsi:nil="true"/>
-		<useRestriction>true</useRestriction>
-	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
 		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
@@ -308,21 +166,21 @@
 					<dcsset:field>Подразделение</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Документ</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Оценка</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Договор</dcsset:field>
+					<dcsset:field>Комментарий</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Количество</dcsset:field>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Процент</dcsset:field>
+					<dcsset:field>Процент.ПроцентВИерархии</dcsset:field>
 				</dcsset:item>
 			</dcsset:selection>
 			<dcsset:dataParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>Период</dcscor:parameter>
+					<dcscor:parameter>ПериодОтчета</dcscor:parameter>
 					<dcscor:value xsi:type="v8:StandardPeriod">
 						<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
 					</dcscor:value>
@@ -366,7 +224,16 @@
 							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
 						</dcsset:order>
 						<dcsset:selection>
-							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>Документ</dcsset:field>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>Комментарий</dcsset:field>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:use>false</dcsset:use>
+								<dcsset:field>Процент.ПроцентВИерархии</dcsset:field>
+							</dcsset:item>
 						</dcsset:selection>
 					</dcsset:item>
 				</dcsset:item>
