@@ -52,36 +52,36 @@
 				<Autofill>false</Autofill>
 			</AutoCommandBar>
 			<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="4"/>
-			<SearchStringAddition name="СписокСтрокаПоиска" id="25">
+			<SearchStringAddition name="СписокSearchString" id="25">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="26"/>
-				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="27"/>
+				<ContextMenu name="СписокSearchStringContextMenu" id="26"/>
+				<ExtendedTooltip name="СписокSearchStringExtendedTooltip" id="27"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокСостояниеПросмотра" id="28">
+			<ViewStatusAddition name="СписокViewStatus" id="28">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="29"/>
-				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="30"/>
+				<ContextMenu name="СписокViewStatusContextMenu" id="29"/>
+				<ExtendedTooltip name="СписокViewStatusExtendedTooltip" id="30"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокУправлениеПоиском" id="31">
+			<SearchControlAddition name="СписокSearchControl" id="31">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="32"/>
-				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="33"/>
+				<ContextMenu name="СписокSearchControlContextMenu" id="32"/>
+				<ExtendedTooltip name="СписокSearchControlExtendedTooltip" id="33"/>
 			</SearchControlAddition>
 			<Events>
 				<Event name="OnActivateRow">СписокПриАктивизацииСтроки</Event>
 			</Events>
 			<ChildItems>
 				<LabelField name="Наименование" id="5">
-					<DataPath>Список.Description</DataPath>
+					<DataPath>Список.Наименование</DataPath>
 					<DefaultItem>true</DefaultItem>
 					<ContextMenu name="НаименованиеКонтекстноеМеню" id="6"/>
 					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="7"/>
@@ -96,6 +96,20 @@
 					</Title>
 					<ContextMenu name="СтатусИзделияПоКаталогуКонтекстноеМеню" id="15"/>
 					<ExtendedTooltip name="СтатусИзделияПоКаталогуРасширеннаяПодсказка" id="16"/>
+				</LabelField>
+				<LabelField name="КоличествоОстаток" id="34">
+					<DataPath>Список.КоличествоBalance</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>В спецификациях</v8:content>
+						</v8:item>
+					</Title>
+					<Width>4</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<VerticalStretch>false</VerticalStretch>
+					<ContextMenu name="КоличествоОстатокКонтекстноеМеню" id="35"/>
+					<ExtendedTooltip name="КоличествоОстатокРасширеннаяПодсказка" id="36"/>
 				</LabelField>
 				<LabelField name="ДатаУстановкиСтатуса" id="20">
 					<DataPath>Список.ДатаУстановкиСтатуса</DataPath>
@@ -120,7 +134,7 @@
 					<ExtendedTooltip name="АвторСменыСтатусаРасширеннаяПодсказка" id="19"/>
 				</LabelField>
 				<LabelField name="Код" id="8">
-					<DataPath>Список.Code</DataPath>
+					<DataPath>Список.Код</DataPath>
 					<ContextMenu name="КодКонтекстноеМеню" id="9"/>
 					<ExtendedTooltip name="КодРасширеннаяПодсказка" id="10"/>
 				</LabelField>
@@ -142,8 +156,22 @@
 			</Type>
 			<MainAttribute>true</MainAttribute>
 			<Settings xsi:type="DynamicList">
-				<ManualQuery>false</ManualQuery>
+				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	СправочникКаталогИзделий.Ссылка КАК Ссылка,
+	СправочникКаталогИзделий.Код КАК Код,
+	СправочникКаталогИзделий.Наименование КАК Наименование,
+	СправочникКаталогИзделий.АвторСменыСтатуса КАК АвторСменыСтатуса,
+	СправочникКаталогИзделий.Активный КАК Активный,
+	СправочникКаталогИзделий.ДатаОплаты КАК ДатаОплаты,
+	СправочникКаталогИзделий.ДатаУстановкиСтатуса КАК ДатаУстановкиСтатуса,
+	СправочникКаталогИзделий.СтатусИзделияПоКаталогу КАК СтатусИзделияПоКаталогу,
+	РеализованныеИзделийПоКаталогуОстатки.КоличествоОстаток
+ИЗ
+	Справочник.КаталогИзделий КАК СправочникКаталогИзделий
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрНакопления.РеализованныеИзделийПоКаталогу.Остатки КАК РеализованныеИзделийПоКаталогуОстатки
+		ПО (СправочникКаталогИзделий.Ссылка = РеализованныеИзделийПоКаталогуОстатки.ИзделиеПоКаталогу)</QueryText>
 				<MainTable>Catalog.КаталогИзделий</MainTable>
 				<ListSettings>
 					<dcsset:filter>
