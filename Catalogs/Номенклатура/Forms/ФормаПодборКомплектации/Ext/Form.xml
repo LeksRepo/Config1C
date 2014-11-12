@@ -65,30 +65,57 @@
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="ВыборСписокРасширеннаяПодсказка" id="85"/>
 							<ChildItems>
-								<Button name="ПеренестиВДокумент" id="45">
-									<Type>UsualButton</Type>
-									<Representation>PictureAndText</Representation>
-									<DefaultButton>true</DefaultButton>
-									<Height>1</Height>
-									<CommandName>Form.Command.ПеренестиВДокумент</CommandName>
-									<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
-									<Picture>
-										<xr:Ref>StdPicture.GenerateReport</xr:Ref>
-										<xr:LoadTransparent>true</xr:LoadTransparent>
-									</Picture>
-									<ExtendedTooltip name="ПеренестиВДокументРасширеннаяПодсказка" id="46"/>
-								</Button>
+								<UsualGroup name="Группа1" id="145">
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="146"/>
+									<ChildItems>
+										<Button name="ПеренестиВДокумент" id="45">
+											<Type>UsualButton</Type>
+											<Representation>PictureAndText</Representation>
+											<DefaultButton>true</DefaultButton>
+											<Height>1</Height>
+											<CommandName>Form.Command.ПеренестиВДокумент</CommandName>
+											<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+											<Picture>
+												<xr:Ref>StdPicture.GenerateReport</xr:Ref>
+												<xr:LoadTransparent>true</xr:LoadTransparent>
+											</Picture>
+											<ExtendedTooltip name="ПеренестиВДокументРасширеннаяПодсказка" id="46"/>
+										</Button>
+										<Button name="ДоступнаяНеДоступнаяНоменклатура" id="143">
+											<Type>UsualButton</Type>
+											<CommandName>Form.Command.ДоступнаяНеДоступнаяНоменклатура</CommandName>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Доступная\Не доступная номенклатура</v8:content>
+												</v8:item>
+											</Title>
+											<ExtendedTooltip name="ДоступнаяНеДоступнаяНоменклатураРасширеннаяПодсказка" id="144"/>
+										</Button>
+									</ChildItems>
+								</UsualGroup>
 								<UsualGroup name="Группа2" id="114">
 									<Group>Vertical</Group>
 									<Representation>None</Representation>
 									<ShowTitle>false</ShowTitle>
 									<ExtendedTooltip name="Группа2РасширеннаяПодсказка" id="115"/>
 									<ChildItems>
-										<LabelField name="Производство" id="106">
-											<DataPath>Производство</DataPath>
-											<ContextMenu name="ПроизводствоКонтекстноеМеню" id="107"/>
-											<ExtendedTooltip name="ПроизводствоРасширеннаяПодсказка" id="108"/>
-										</LabelField>
+										<UsualGroup name="Группа3" id="147">
+											<Group>Horizontal</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="Группа3РасширеннаяПодсказка" id="148"/>
+											<ChildItems>
+												<LabelField name="Производство" id="106">
+													<DataPath>Производство</DataPath>
+													<ContextMenu name="ПроизводствоКонтекстноеМеню" id="107"/>
+													<ExtendedTooltip name="ПроизводствоРасширеннаяПодсказка" id="108"/>
+												</LabelField>
+											</ChildItems>
+										</UsualGroup>
 										<LabelField name="НомГруппы" id="109">
 											<DataPath>НомГруппы</DataPath>
 											<Title>
@@ -100,6 +127,18 @@
 											<ContextMenu name="НомГруппыКонтекстноеМеню" id="110"/>
 											<ExtendedTooltip name="НомГруппыРасширеннаяПодсказка" id="111"/>
 										</LabelField>
+										<LabelDecoration name="Декорация1" id="149">
+											<Visible>false</Visible>
+											<TextColor>style:SpecialTextColor</TextColor>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Выбранную номенклатуру необходимо предоставить самостоятельно</v8:content>
+												</v8:item>
+											</Title>
+											<ContextMenu name="Декорация1КонтекстноеМеню" id="150"/>
+											<ExtendedTooltip name="Декорация1РасширеннаяПодсказка" id="151"/>
+										</LabelDecoration>
 										<InputField name="СтрокаПоиска" id="57">
 											<DataPath>СтрокаПоиска</DataPath>
 											<Title>
@@ -635,7 +674,7 @@
 			ИНАЧЕ НоменклатураПодразделений.Номенклатура.НоменклатурнаяГруппа В ИЕРАРХИИ (&amp;НомГруппы)
 		КОНЕЦ
 	И НЕ НоменклатураПодразделений.Номенклатура.ЭтоГруппа
-	И НоменклатураПодразделений.Доступность
+	И НоменклатураПодразделений.Доступность = &amp;Доступность
 	И НоменклатураПодразделений.Номенклатура.Базовый</QueryText>
 				<MainTable>InformationRegister.НоменклатураПодразделений</MainTable>
 				<ListSettings>
@@ -911,6 +950,17 @@
 				<v8:Type>v8:ValueListType</v8:Type>
 			</Type>
 		</Attribute>
+		<Attribute name="ДоступностьНоменклатуры" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Доступность номенклатуры</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
 	</Attributes>
 	<Commands>
 		<Command name="ПеренестиВДокумент" id="1">
@@ -927,6 +977,21 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ПеренестиВДокумент</Action>
+		</Command>
+		<Command name="ДоступнаяНеДоступнаяНоменклатура" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Доступная не доступная номенклатура</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Доступная не доступная номенклатура</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ДоступнаяНеДоступнаяНоменклатура</Action>
 		</Command>
 	</Commands>
 </Form>
