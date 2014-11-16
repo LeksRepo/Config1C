@@ -130,7 +130,7 @@
 ПОМЕСТИТЬ втОсновныеСредства
 ИЗ
 	РегистрБухгалтерии.Управленческий.Остатки(
-			{(&amp;ПериодОтчета)},
+			{(КОНЕЦПЕРИОДА(ДОБАВИТЬКДАТЕ(&amp;ПериодОтчета, СЕКУНДА, 1), ДЕНЬ))},
 			Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ПервоначальнаяСтоимостьОС)
 				ИЛИ Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.АмортизацияОС),
 			,
@@ -148,14 +148,14 @@
 ВЫБРАТЬ
 	втОсновныеСредства.Подразделение,
 	втОсновныеСредства.ОсновноеСредство,
-	ISNULL(СостояниеОсновныхСредствСрезПоследних.МОЛ, "НЕОПРЕДЕЛЕНО") КАК МОЛ,
+	ЕСТЬNULL(СостояниеОсновныхСредствСрезПоследних.МОЛ, ЗНАЧЕНИЕ(Справочник.ФизическиеЛица.ПустаяСсылка)) КАК МОЛ,
 	втОсновныеСредства.ПервоначальнаяСтоимость КАК Стоимость,
 	втОсновныеСредства.Амортазиация КАК Амортизация,
 	СостояниеОсновныхСредствСрезПоследних.СрокАмортизации КАК Срок,
 	СостояниеОсновныхСредствСрезПоследних.НачислятьАмортизацию КАК Амортизировать
 ИЗ
 	втОсновныеСредства КАК втОсновныеСредства
-		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СостояниеОсновныхСредств.СрезПоследних({(&amp;ПериодОтчета)}, ) КАК СостояниеОсновныхСредствСрезПоследних
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СостояниеОсновныхСредств.СрезПоследних({(КОНЕЦПЕРИОДА(&amp;ПериодОтчета, ДЕНЬ))}, ) КАК СостояниеОсновныхСредствСрезПоследних
 		ПО втОсновныеСредства.ОсновноеСредство = СостояниеОсновныхСредствСрезПоследних.ОсновноеСредство</query>
 	</dataSet>
 	<calculatedField>
@@ -197,7 +197,7 @@
 		<valueType>
 			<v8:Type>xs:dateTime</v8:Type>
 			<v8:DateQualifiers>
-				<v8:DateFractions>DateTime</v8:DateFractions>
+				<v8:DateFractions>Date</v8:DateFractions>
 			</v8:DateQualifiers>
 		</valueType>
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
@@ -233,8 +233,31 @@
 					<dcsset:field>Амортизировать</dcsset:field>
 				</dcsset:item>
 			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Подразделение</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>a584ab15-d570-4721-bf31-9483883328ee</dcsset:userSettingID>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">МОЛ</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>baca5b20-c108-4c10-bbaf-67d668f982dc</dcsset:userSettingID>
+				</dcsset:item>
+			</dcsset:filter>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ПериодОтчета</dcscor:parameter>
+					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
+					<dcsset:userSettingID>812a5b97-3215-435e-9ef9-825b7ba62884</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
 			<dcsset:outputParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
 					<dcscor:parameter>АвтоПозицияРесурсов</dcscor:parameter>
 					<dcscor:value xsi:type="dcsset:DataCompositionResourcesAutoPosition">DontUse</dcscor:value>
 				</dcscor:item>
