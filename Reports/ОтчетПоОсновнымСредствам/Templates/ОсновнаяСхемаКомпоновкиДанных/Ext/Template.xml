@@ -116,7 +116,7 @@
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	УправленческийОстатки.Подразделение,
-	УправленческийОстатки.Субконто1 КАК ОсновноеСредство,
+	ВЫРАЗИТЬ(УправленческийОстатки.Субконто1 КАК Справочник.ОсновныеСредства) КАК ОсновноеСредство,
 	СУММА(ВЫБОР
 			КОГДА УправленческийОстатки.Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ПервоначальнаяСтоимостьОС)
 				ТОГДА УправленческийОстатки.СуммаОстатокДт
@@ -138,7 +138,7 @@
 
 СГРУППИРОВАТЬ ПО
 	УправленческийОстатки.Подразделение,
-	УправленческийОстатки.Субконто1
+	ВЫРАЗИТЬ(УправленческийОстатки.Субконто1 КАК Справочник.ОсновныеСредства)
 
 ИНДЕКСИРОВАТЬ ПО
 	ОсновноеСредство
@@ -218,6 +218,9 @@
 					<dcsset:field>ОсновноеСредство</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ОсновноеСредство.ИнвентарныйНомер</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Стоимость</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
@@ -255,7 +258,17 @@
 					<dcsset:userSettingID>812a5b97-3215-435e-9ef9-825b7ba62884</dcsset:userSettingID>
 				</dcscor:item>
 			</dcsset:dataParameters>
+			<dcsset:order>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>ОсновноеСредство.Наименование</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+			</dcsset:order>
 			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>РасположениеРеквизитов</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionAttributesPlacement">Separately</dcscor:value>
+				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:use>false</dcscor:use>
 					<dcscor:parameter>АвтоПозицияРесурсов</dcscor:parameter>
