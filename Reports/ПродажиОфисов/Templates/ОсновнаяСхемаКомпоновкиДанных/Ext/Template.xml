@@ -132,7 +132,7 @@
 			ТОГДА 3
 	КОНЕЦ КАК Сорт
 ИЗ
-	РегистрБухгалтерии.Управленческий.Обороты(&amp;НачалоПериода, &amp;КонецПериода, Регистратор, Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ПоказателиСотрудника), , Субконто1 В (ЗНАЧЕНИЕ(Перечисление.ВидыПоказателейСотрудников.КоличествоЗамеров), ЗНАЧЕНИЕ(Перечисление.ВидыПоказателейСотрудников.КоличествоЗаключенныхДоговоров), ЗНАЧЕНИЕ(Перечисление.ВидыПоказателейСотрудников.СтоимостьЗаключенныхДоговоров)), , ) КАК УправленческийОбороты</query>
+	РегистрБухгалтерии.Управленческий.Обороты(&amp;НачалоПериода, &amp;КонецПериода, Регистратор, Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ПоказателиСотрудника), , Субконто1 В (&amp;СписокПоказателей), , ) КАК УправленческийОбороты</query>
 	</dataSet>
 	<totalField>
 		<dataPath>Сумма</dataPath>
@@ -191,6 +191,25 @@
 			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
 		</value>
 		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>СписокПоказателей</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Список показателей</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:EnumRef.ВидыПоказателейСотрудников</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ВидыПоказателейСотрудников.Выручка</value>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ВидыПоказателейСотрудников.ВыручкаЗаДетали</value>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ВидыПоказателейСотрудников.КоличествоЗамеров</value>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ВидыПоказателейСотрудников.СтоимостьЗаключенныхДоговоров</value>
+		<value xsi:type="dcscor:DesignTimeValue">Перечисление.ВидыПоказателейСотрудников.КоличествоЗаключенныхДоговоров</value>
+		<useRestriction>true</useRestriction>
+		<valueListAllowed>true</valueListAllowed>
 	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
