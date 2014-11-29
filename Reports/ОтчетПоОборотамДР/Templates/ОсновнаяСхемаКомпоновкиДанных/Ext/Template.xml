@@ -119,8 +119,7 @@
 		ПО (УправленческийОбороты.Субконто1 = СтатьиДоходовРасходов.Ссылка)
 ГДЕ
 	НЕ СтатьиДоходовРасходов.ЭтоГруппа
-	И (&amp;ПоказатьВнутренние
-			ИЛИ НЕ СтатьиДоходовРасходов.Внутрифирменная)</query>
+	И НЕ СтатьиДоходовРасходов.Внутрифирменная</query>
 	</dataSet>
 	<totalField>
 		<dataPath>Сумма</dataPath>
@@ -225,21 +224,6 @@
 		<useRestriction>false</useRestriction>
 		<use>Always</use>
 	</parameter>
-	<parameter>
-		<name>ПоказатьВнутренние</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Показать внутренние</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>xs:boolean</v8:Type>
-		</valueType>
-		<value xsi:type="xs:boolean">false</value>
-		<useRestriction>false</useRestriction>
-		<use>Always</use>
-	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
 		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
@@ -267,7 +251,6 @@
 					<dcsset:use>false</dcsset:use>
 					<dcsset:left xsi:type="dcscor:Field">СтатьяДР</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
-					<dcsset:viewMode>Normal</dcsset:viewMode>
 					<dcsset:userSettingID>cb65eed3-ba5b-4ce5-9759-ef28140c92b0</dcsset:userSettingID>
 				</dcsset:item>
 			</dcsset:filter>
@@ -278,13 +261,6 @@
 				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>ПериодОтчета</dcscor:parameter>
-					<dcscor:value xsi:type="v8:StandardPeriod">
-						<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
-					</dcscor:value>
-					<dcsset:userSettingID>ffed51c6-d554-482f-86ad-c5df2771f5d5</dcsset:userSettingID>
-				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>ПоказатьВнутренние</dcscor:parameter>
 					<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
 					<dcsset:viewMode>Normal</dcsset:viewMode>
 					<dcsset:userSettingID>9d1a9fb7-a7b1-4fb8-9e93-36830125e2fd</dcsset:userSettingID>

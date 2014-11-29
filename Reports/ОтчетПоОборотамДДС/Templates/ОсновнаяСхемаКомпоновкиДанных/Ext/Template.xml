@@ -100,6 +100,8 @@
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
+	СтатьиДвиженияДенежныхСредств.Ссылка КАК СтатьяДДС,
+	СтатьиДвиженияДенежныхСредств.ВидСтатьи КАК ВидСтатьиДДС,
 	УправленческийОбороты.СуммаОборот КАК Сумма,
 	УправленческийОбороты.Регистратор КАК Регистратор,
 	ЕСТЬNULL(ВЫБОР
@@ -110,18 +112,15 @@
 			КОГДА &amp;Периодичность = "МЕСЯЦ"
 				ТОГДА НАЧАЛОПЕРИОДА(УправленческийОбороты.Период, МЕСЯЦ)
 			ИНАЧЕ НАЧАЛОПЕРИОДА(УправленческийОбороты.Период, ДЕНЬ)
-		КОНЕЦ, &amp;НачалоПериода) КАК Период,
-	СтатьиДвиженияДенежныхСредств.Ссылка КАК СтатьяДДС,
-	СтатьиДвиженияДенежныхСредств.ВидСтатьи КАК ВидСтатьиДДС
+		КОНЕЦ, &amp;НачалоПериода) КАК Период
 ИЗ
 	Справочник.СтатьиДвиженияДенежныхСредств КАК СтатьиДвиженияДенежныхСредств
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрБухгалтерии.Управленческий.Обороты({(&amp;НачалоПериода)}, {(&amp;КонецПериода)}, Регистратор, Счет В ИЕРАРХИИ (ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ДенежныеСредства)), , , , ) КАК УправленческийОбороты
 		ПО (УправленческийОбороты.Субконто1 = СтатьиДвиженияДенежныхСредств.Ссылка)
 ГДЕ
 	НЕ СтатьиДвиженияДенежныхСредств.ЭтоГруппа
-	И (&amp;ПоказатьВнутренние
-			ИЛИ НЕ(СтатьиДвиженияДенежныхСредств.Внутрифирменная
-					ИЛИ СтатьиДвиженияДенежныхСредств.МеждуСчетами))</query>
+	И НЕ(СтатьиДвиженияДенежныхСредств.Внутрифирменная
+				ИЛИ СтатьиДвиженияДенежныхСредств.МеждуСчетами)</query>
 	</dataSet>
 	<totalField>
 		<dataPath>Сумма</dataPath>
@@ -226,20 +225,6 @@
 		<useRestriction>false</useRestriction>
 		<use>Always</use>
 	</parameter>
-	<parameter>
-		<name>ПоказатьВнутренние</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Показать внутренние</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>xs:boolean</v8:Type>
-		</valueType>
-		<value xsi:type="xs:boolean">false</value>
-		<useRestriction>false</useRestriction>
-	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
 		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
@@ -267,7 +252,6 @@
 					<dcsset:use>false</dcsset:use>
 					<dcsset:left xsi:type="dcscor:Field">СтатьяДДС</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
-					<dcsset:viewMode>Normal</dcsset:viewMode>
 					<dcsset:userSettingID>60dcfa1b-5335-49da-9453-d8a33643a1d9</dcsset:userSettingID>
 				</dcsset:item>
 			</dcsset:filter>
@@ -281,13 +265,7 @@
 					<dcscor:value xsi:type="v8:StandardPeriod">
 						<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
 					</dcscor:value>
-					<dcsset:userSettingID>3334f509-1cd3-4fd2-9beb-dcac72eb9195</dcsset:userSettingID>
-				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>ПоказатьВнутренние</dcscor:parameter>
-					<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
-					<dcsset:viewMode>Normal</dcsset:viewMode>
-					<dcsset:userSettingID>1817bf7c-4f82-4c93-adf1-8eb202cdd230</dcsset:userSettingID>
+					<dcsset:userSettingID>ee67abe3-4f2c-4391-88aa-77fc87ec786b</dcsset:userSettingID>
 				</dcscor:item>
 			</dcsset:dataParameters>
 			<dcsset:order>
