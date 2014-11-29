@@ -13,6 +13,11 @@
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
+		<LabelField name="Подразделение" id="38">
+			<DataPath>Подразделение</DataPath>
+			<ContextMenu name="ПодразделениеКонтекстноеМеню" id="39"/>
+			<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="40"/>
+		</LabelField>
 		<InputField name="Дилер" id="16">
 			<DataPath>Отчет.Дилер</DataPath>
 			<EditMode>EnterOnInput</EditMode>
@@ -33,13 +38,18 @@
 					<v8:content>Можно нажать для детализации</v8:content>
 				</v8:item>
 			</ToolTip>
-			<ToolTipRepresentation>ShowRight</ToolTipRepresentation>
-			<HorizontalAlign>Right</HorizontalAlign>
+			<ToolTipRepresentation>Button</ToolTipRepresentation>
+			<HorizontalAlign>Left</HorizontalAlign>
 			<EditMode>EnterOnInput</EditMode>
-			<Width>26</Width>
-			<HorizontalStretch>false</HorizontalStretch>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Format>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>ЧН=Отсутствует</v8:content>
+				</v8:item>
+			</Format>
 			<Hiperlink>true</Hiperlink>
-			<TextColor>web:Green</TextColor>
+			<TextColor>web:SteelBlue</TextColor>
 			<Font ref="sys:DefaultGUIFont" height="12" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 			<ContextMenu name="СвободныйАвансКонтекстноеМеню" id="8"/>
 			<ExtendedTooltip name="СвободныйАвансРасширеннаяПодсказка" id="9"/>
@@ -47,135 +57,63 @@
 				<Event name="Click">СвободныйАвансНажатие</Event>
 			</Events>
 		</LabelField>
-		<UsualGroup name="ГруппаДляКрасоты" id="36">
+		<UsualGroup name="Обороты" id="34">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Группа для красоты</v8:content>
+					<v8:content>Оборот (руб.)</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Группа для красоты</v8:content>
+					<v8:content>Обороты</v8:content>
 				</v8:item>
 			</ToolTip>
-			<HorizontalStretch>false</HorizontalStretch>
-			<Group>Horizontal</Group>
-			<Representation>None</Representation>
-			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаДляКрасотыРасширеннаяПодсказка" id="37"/>
+			<HorizontalStretch>true</HorizontalStretch>
+			<Group>Vertical</Group>
+			<ExtendedTooltip name="ОборотыРасширеннаяПодсказка" id="35"/>
 			<ChildItems>
-				<UsualGroup name="Обороты" id="34">
+				<LabelField name="ОборотЗаПрошлыйМесяц" id="1">
+					<DataPath>Отчет.ОборотЗаПрошлыйМесяц</DataPath>
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Обороты (руб.)</v8:content>
+							<v8:content>Прошлый месяц</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Обороты</v8:content>
-						</v8:item>
-					</ToolTip>
-					<Width>30</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<Group>Vertical</Group>
-					<Representation>StrongSeparation</Representation>
-					<ExtendedTooltip name="ОборотыРасширеннаяПодсказка" id="35"/>
-					<ChildItems>
-						<LabelField name="ОборотЗаПрошлыйМесяц" id="1">
-							<DataPath>Отчет.ОборотЗаПрошлыйМесяц</DataPath>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Прошлый месяц</v8:content>
-								</v8:item>
-							</Title>
-							<EditMode>EnterOnInput</EditMode>
-							<ContextMenu name="ОборотЗаПрошлыйМесяцКонтекстноеМеню" id="2"/>
-							<ExtendedTooltip name="ОборотЗаПрошлыйМесяцРасширеннаяПодсказка" id="3"/>
-						</LabelField>
-						<LabelField name="ОборотЗаТекущийМесяц" id="4">
-							<DataPath>Отчет.ОборотЗаТекущийМесяц</DataPath>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Текущий месяц</v8:content>
-								</v8:item>
-							</Title>
-							<EditMode>EnterOnInput</EditMode>
-							<ContextMenu name="ОборотЗаТекущийМесяцКонтекстноеМеню" id="5"/>
-							<ExtendedTooltip name="ОборотЗаТекущийМесяцРасширеннаяПодсказка" id="6"/>
-						</LabelField>
-					</ChildItems>
-				</UsualGroup>
-				<UsualGroup name="Скидки" id="32">
+					<EditMode>EnterOnInput</EditMode>
+					<Width>20</Width>
+					<ContextMenu name="ОборотЗаПрошлыйМесяцКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="ОборотЗаПрошлыйМесяцРасширеннаяПодсказка" id="3"/>
+				</LabelField>
+				<LabelField name="ОборотЗаТекущийМесяц" id="4">
+					<DataPath>Отчет.ОборотЗаТекущийМесяц</DataPath>
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Скидки (%)</v8:content>
+							<v8:content>Текущий месяц</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>20</Width>
+					<ContextMenu name="ОборотЗаТекущийМесяцКонтекстноеМеню" id="5"/>
+					<ExtendedTooltip name="ОборотЗаТекущийМесяцРасширеннаяПодсказка" id="6"/>
+				</LabelField>
+				<LabelField name="ЗаказовВРаботеНаСумму" id="41">
+					<DataPath>ЗаказовВРаботеНаСумму</DataPath>
+					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Скидки</v8:content>
+							<v8:content>В работе на сумму</v8:content>
 						</v8:item>
-					</ToolTip>
-					<Width>30</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<Group>Vertical</Group>
-					<Representation>StrongSeparation</Representation>
-					<ExtendedTooltip name="СкидкиРасширеннаяПодсказка" id="33"/>
-					<ChildItems>
-						<LabelField name="СкидкаНаУслуги" id="13">
-							<DataPath>Отчет.СкидкаНаУслуги</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<HorizontalStretch>true</HorizontalStretch>
-							<Format>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>ЧН=Ноль</v8:content>
-								</v8:item>
-							</Format>
-							<ContextMenu name="СкидкаНаУслугиКонтекстноеМеню" id="14"/>
-							<ExtendedTooltip name="СкидкаНаУслугиРасширеннаяПодсказка" id="15"/>
-						</LabelField>
-						<LabelField name="СкидкаНаМатериалы" id="10">
-							<DataPath>Отчет.СкидкаНаМатериалы</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<HorizontalStretch>true</HorizontalStretch>
-							<Format>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>ЧН=Ноль</v8:content>
-								</v8:item>
-							</Format>
-							<ContextMenu name="СкидкаНаМатериалыКонтекстноеМеню" id="11"/>
-							<ExtendedTooltip name="СкидкаНаМатериалыРасширеннаяПодсказка" id="12"/>
-						</LabelField>
-					</ChildItems>
-				</UsualGroup>
+					</Title>
+					<Width>20</Width>
+					<ContextMenu name="ЗаказовВРаботеНаСуммуКонтекстноеМеню" id="42"/>
+					<ExtendedTooltip name="ЗаказовВРаботеНаСуммуРасширеннаяПодсказка" id="43"/>
+				</LabelField>
 			</ChildItems>
 		</UsualGroup>
-		<LabelField name="Подразделение" id="38">
-			<DataPath>Подразделение</DataPath>
-			<ContextMenu name="ПодразделениеКонтекстноеМеню" id="39"/>
-			<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="40"/>
-		</LabelField>
-		<LabelField name="ЗаказовВРаботеНаСумму" id="41">
-			<DataPath>ЗаказовВРаботеНаСумму</DataPath>
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Заказов в работе на сумму</v8:content>
-				</v8:item>
-			</Title>
-			<ContextMenu name="ЗаказовВРаботеНаСуммуКонтекстноеМеню" id="42"/>
-			<ExtendedTooltip name="ЗаказовВРаботеНаСуммуРасширеннаяПодсказка" id="43"/>
-		</LabelField>
 		<Table name="СпецификацииВРаботе" id="19">
 			<Representation>List</Representation>
 			<ReadOnly>true</ReadOnly>
