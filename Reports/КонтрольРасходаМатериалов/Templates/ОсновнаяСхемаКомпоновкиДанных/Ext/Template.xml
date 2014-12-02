@@ -279,7 +279,9 @@
 ИЗ
 	втМатериалы КАК втМатериалы
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ЦеныНоменклатуры.СрезПоследних({(&amp;НеТрогатьНикогда)}, Регион = &amp;Регион) КАК ЦеныНоменклатурыСрезПоследних
-		ПО втМатериалы.Номенклатура = ЦеныНоменклатурыСрезПоследних.Номенклатура</query>
+		ПО втМатериалы.Номенклатура = ЦеныНоменклатурыСрезПоследних.Номенклатура
+ГДЕ
+	втМатериалы.Номенклатура.МестоОбработки = ЗНАЧЕНИЕ(Перечисление.МестоОбработки.Цех)</query>
 	</dataSet>
 	<totalField>
 		<dataPath>Отклонение</dataPath>
@@ -458,26 +460,6 @@
 					<dcsset:field>ОтклонениеПлановое</dcsset:field>
 				</dcsset:item>
 			</dcsset:selection>
-			<dcsset:filter>
-				<dcsset:item xsi:type="dcsset:FilterItemComparison">
-					<dcsset:left xsi:type="dcscor:Field">Номенклатура.ПроцентОтхода</dcsset:left>
-					<dcsset:comparisonType>NotEqual</dcsset:comparisonType>
-					<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
-					<dcsset:presentation xsi:type="v8:LocalStringType">
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Без процента отхода</v8:content>
-						</v8:item>
-					</dcsset:presentation>
-					<dcsset:userSettingID>2833f9aa-67c4-4a37-b52b-e1589de06750</dcsset:userSettingID>
-					<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Без процента отхода</v8:content>
-						</v8:item>
-					</dcsset:userSettingPresentation>
-				</dcsset:item>
-			</dcsset:filter>
 			<dcsset:dataParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:use>false</dcscor:use>
