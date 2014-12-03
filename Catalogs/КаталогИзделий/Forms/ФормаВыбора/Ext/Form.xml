@@ -3,8 +3,13 @@
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<Group>Horizontal</Group>
 	<CommandSet>
+		<ExcludedCommand>SetDeletionMark</ExcludedCommand>
+		<ExcludedCommand>Copy</ExcludedCommand>
+		<ExcludedCommand>Delete</ExcludedCommand>
+		<ExcludedCommand>Create</ExcludedCommand>
 		<ExcludedCommand>CancelSearch</ExcludedCommand>
 		<ExcludedCommand>Find</ExcludedCommand>
+		<ExcludedCommand>CreateFolder</ExcludedCommand>
 	</CommandSet>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
@@ -307,14 +312,14 @@
 					</Events>
 					<ChildItems>
 						<PictureField name="ЭтоГруппа" id="14">
-							<DataPath>Список.Parent</DataPath>
+							<DataPath>Список.IsFolder</DataPath>
 							<TitleLocation>None</TitleLocation>
 							<Width>1</Width>
 							<ContextMenu name="ЭтоГруппаКонтекстноеМеню" id="15"/>
 							<ExtendedTooltip name="ЭтоГруппаРасширеннаяПодсказка" id="16"/>
 						</PictureField>
 						<LabelField name="Ссылка" id="29">
-							<DataPath>Список.Активный</DataPath>
+							<DataPath>Список.Ref</DataPath>
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -398,12 +403,12 @@
 						<ExtendedTooltip name="СписокДопИзделийУправлениеПоискомРасширеннаяПодсказка" id="95"/>
 					</SearchControlAddition>
 					<Events>
-						<Event name="ValueChoice">СписокДопИзделийВыборЗначения</Event>
+						<Event name="ValueChoice">СписокВыборЗначения</Event>
 						<Event name="OnActivateRow">СписокДопИзделийПриАктивизацииСтроки</Event>
 					</Events>
 					<ChildItems>
 						<LabelField name="СписокДопИзделийСсылка" id="75">
-							<DataPath>5/35</DataPath>
+							<DataPath>СписокДопИзделий.Ref</DataPath>
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -437,7 +442,7 @@
 			<MainAttribute>true</MainAttribute>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
-				<DynamicDataRead>false</DynamicDataRead>
+				<DynamicDataRead>true</DynamicDataRead>
 				<QueryText>ВЫБРАТЬ
 	СправочникКаталогИзделий.Ссылка,
 	СправочникКаталогИзделий.ПометкаУдаления,
@@ -453,6 +458,7 @@
 	СправочникКаталогИзделий.Базовый
 ИЗ
 	Справочник.КаталогИзделий КАК СправочникКаталогИзделий</QueryText>
+				<MainTable>Catalog.КаталогИзделий</MainTable>
 				<ListSettings>
 					<dcsset:filter>
 						<dcsset:item xsi:type="dcsset:FilterItemComparison">
