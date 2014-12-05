@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
-	<Width>100</Width>
+	<Width>110</Width>
 	<AutoTime>CurrentOrLast</AutoTime>
 	<UsePostingMode>Auto</UsePostingMode>
 	<RepostOnWrite>true</RepostOnWrite>
@@ -9,9 +9,20 @@
 		<UsualGroup name="Группа1" id="50">
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
+			<ChildItemsWidth>Equal</ChildItemsWidth>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="51"/>
 			<ChildItems>
+				<Button name="Заполнить" id="54">
+					<Type>UsualButton</Type>
+					<Representation>PictureAndText</Representation>
+					<CommandName>Form.Command.Заполнить</CommandName>
+					<Picture>
+						<xr:Ref>StdPicture.GenerateReport</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<ExtendedTooltip name="ЗаполнитьРасширеннаяПодсказка" id="55"/>
+				</Button>
 				<LabelField name="Номер" id="1">
 					<DataPath>Объект.Number</DataPath>
 					<EditMode>EnterOnInput</EditMode>
@@ -35,6 +46,7 @@
 		<UsualGroup name="Группа2" id="52">
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
+			<ChildItemsWidth>Equal</ChildItemsWidth>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="Группа2РасширеннаяПодсказка" id="53"/>
 			<ChildItems>
@@ -58,65 +70,110 @@
 				</InputField>
 			</ChildItems>
 		</UsualGroup>
-		<Table name="Список" id="19">
+		<Table name="Список" id="56">
 			<AutoInsertNewRow>true</AutoInsertNewRow>
 			<EnableStartDrag>true</EnableStartDrag>
 			<EnableDrag>true</EnableDrag>
 			<DataPath>Объект.Список</DataPath>
 			<RowFilter xsi:nil="true"/>
-			<ContextMenu name="СписокКонтекстноеМеню" id="20"/>
-			<AutoCommandBar name="СписокКоманднаяПанель" id="21">
+			<ContextMenu name="СписокКонтекстноеМеню" id="57"/>
+			<AutoCommandBar name="СписокКоманднаяПанель" id="58">
 				<Autofill>false</Autofill>
 			</AutoCommandBar>
-			<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="22"/>
-			<SearchStringAddition name="СписокСтрокаПоиска" id="23">
+			<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="59"/>
+			<SearchStringAddition name="СписокСтрокаПоиска" id="60">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="26"/>
-				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="27"/>
+				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="63"/>
+				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="64"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокСостояниеПросмотра" id="28">
+			<ViewStatusAddition name="СписокСостояниеПросмотра" id="65">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="31"/>
-				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="32"/>
+				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="68"/>
+				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="69"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокУправлениеПоиском" id="33">
+			<SearchControlAddition name="СписокУправлениеПоиском" id="70">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="36"/>
-				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="37"/>
+				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="73"/>
+				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="74"/>
 			</SearchControlAddition>
 			<ChildItems>
-				<LabelField name="СписокНомерСтроки" id="38">
-					<DataPath>Объект.Список.LineNumber</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="СписокНомерСтрокиКонтекстноеМеню" id="39"/>
-					<ExtendedTooltip name="СписокНомерСтрокиРасширеннаяПодсказка" id="40"/>
-				</LabelField>
-				<InputField name="СписокОсновноеСредство" id="41">
+				<InputField name="СписокОсновноеСредство" id="90">
 					<DataPath>Объект.Список.ОсновноеСредство</DataPath>
+					<ReadOnly>true</ReadOnly>
 					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="СписокОсновноеСредствоКонтекстноеМеню" id="42"/>
-					<ExtendedTooltip name="СписокОсновноеСредствоРасширеннаяПодсказка" id="43"/>
+					<ContextMenu name="СписокОсновноеСредствоКонтекстноеМеню" id="91"/>
+					<ExtendedTooltip name="СписокОсновноеСредствоРасширеннаяПодсказка" id="92"/>
 				</InputField>
-				<InputField name="СписокИнвентарныйНомер" id="44">
+				<InputField name="СписокИнвентарныйНомер" id="84">
 					<DataPath>Объект.Список.ИнвентарныйНомер</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Инв. номер</v8:content>
+						</v8:item>
+					</Title>
 					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="СписокИнвентарныйНомерКонтекстноеМеню" id="45"/>
-					<ExtendedTooltip name="СписокИнвентарныйНомерРасширеннаяПодсказка" id="46"/>
+					<Width>1</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="СписокИнвентарныйНомерКонтекстноеМеню" id="85"/>
+					<ExtendedTooltip name="СписокИнвентарныйНомерРасширеннаяПодсказка" id="86"/>
 				</InputField>
-				<InputField name="СписокДата" id="47">
-					<DataPath>Объект.Список.Дата</DataPath>
+				<InputField name="СписокСрок" id="93">
+					<DataPath>Объект.Список.Срок</DataPath>
+					<ReadOnly>true</ReadOnly>
 					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="СписокДатаКонтекстноеМеню" id="48"/>
-					<ExtendedTooltip name="СписокДатаРасширеннаяПодсказка" id="49"/>
+					<Width>1</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="СписокСрокКонтекстноеМеню" id="94"/>
+					<ExtendedTooltip name="СписокСрокРасширеннаяПодсказка" id="95"/>
+				</InputField>
+				<InputField name="СписокАмортизировать" id="81">
+					<DataPath>Объект.Список.Амортизировать</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<HorizontalAlign>Center</HorizontalAlign>
+					<EditMode>EnterOnInput</EditMode>
+					<HeaderHorizontalAlign>Center</HeaderHorizontalAlign>
+					<Width>1</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="СписокАмортизироватьКонтекстноеМеню" id="82"/>
+					<ExtendedTooltip name="СписокАмортизироватьРасширеннаяПодсказка" id="83"/>
+				</InputField>
+				<InputField name="СписокСтоимость" id="96">
+					<DataPath>Объект.Список.Стоимость</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>1</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="СписокСтоимостьКонтекстноеМеню" id="97"/>
+					<ExtendedTooltip name="СписокСтоимостьРасширеннаяПодсказка" id="98"/>
+				</InputField>
+				<InputField name="СписокАмортизация" id="78">
+					<DataPath>Объект.Список.Амортизация</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>1</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="СписокАмортизацияКонтекстноеМеню" id="79"/>
+					<ExtendedTooltip name="СписокАмортизацияРасширеннаяПодсказка" id="80"/>
+				</InputField>
+				<InputField name="СписокОстаток" id="99">
+					<DataPath>Объект.Список.Остаток</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<Width>1</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="СписокОстатокКонтекстноеМеню" id="100"/>
+					<ExtendedTooltip name="СписокОстатокРасширеннаяПодсказка" id="101"/>
 				</InputField>
 			</ChildItems>
 		</Table>
@@ -139,4 +196,21 @@
 			</UseAlways>
 		</Attribute>
 	</Attributes>
+	<Commands>
+		<Command name="Заполнить" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Заполнить</Action>
+		</Command>
+	</Commands>
 </Form>
