@@ -134,6 +134,16 @@
 				</v8:item>
 			</title>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Заметка</dataPath>
+			<field>Заметка</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заметка</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	Спец.Комментарий,
@@ -170,7 +180,8 @@
 	Спец.Номер КАК НомерСпецификации,
 	Спец.КомплектацияСклад,
 	Спец.КомплектацияЦех,
-	Компл.Проведен КАК Скомплектован
+	Компл.Проведен КАК Скомплектован,
+	СпЗаметки.ТекстСодержания КАК Заметка
 ИЗ
 	Документ.Спецификация КАК Спец
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СтатусСпецификации.СрезПоследних(&amp;ДатаОкончания, ) КАК СтатусСпецификации
@@ -180,6 +191,8 @@
 		ЛЕВОЕ СОЕДИНЕНИЕ Документ.Комплектация КАК Компл
 		ПО (Компл.Спецификация = Спец.Ссылка)
 			И (Компл.Проведен)
+		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.Заметки КАК СпЗаметки
+		ПО (СпЗаметки.Предмет = Спец.Ссылка)
 ГДЕ
 	Спец.ДатаОтгрузки &lt;= &amp;ДатаОкончания
 	И Спец.Проведен
@@ -229,71 +242,104 @@
 					<dcsset:field>ДатаОтгрузки</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
-					<dcsset:lwsTitle>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Статусы</v8:content>
-						</v8:item>
-					</dcsset:lwsTitle>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>СтатусСпецификации</dcsset:field>
+					<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+						<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content> </v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>СтатусСпецификации</dcsset:field>
+								<dcsset:lwsTitle>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Статус</v8:content>
+									</v8:item>
+								</dcsset:lwsTitle>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>Скомплектован</dcsset:field>
+							</dcsset:item>
+							<dcsset:placement>Vertically</dcsset:placement>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>  </v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>НомерСпецификации</dcsset:field>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>Телефон</dcsset:field>
+							</dcsset:item>
+							<dcsset:placement>Vertically</dcsset:placement>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>   </v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>Заказчик</dcsset:field>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>Комментарий</dcsset:field>
+							</dcsset:item>
+							<dcsset:placement>Vertically</dcsset:placement>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>    </v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>Дилерский</dcsset:field>
+								<dcsset:lwsTitle>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Дилерский</v8:content>
+									</v8:item>
+								</dcsset:lwsTitle>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>ЕстьДоставка</dcsset:field>
+							</dcsset:item>
+							<dcsset:placement>Vertically</dcsset:placement>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>     </v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>КомплектацияСклад</dcsset:field>
+								<dcsset:lwsTitle>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>НаСклад</v8:content>
+									</v8:item>
+								</dcsset:lwsTitle>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>КомплектацияЦех</dcsset:field>
+							</dcsset:item>
+							<dcsset:placement>Vertically</dcsset:placement>
+						</dcsset:item>
+						<dcsset:placement>Horizontally</dcsset:placement>
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Скомплектован</dcsset:field>
-					</dcsset:item>
-					<dcsset:placement>Vertically</dcsset:placement>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
-					<dcsset:lwsTitle>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Спец. №/Телефон</v8:content>
-						</v8:item>
-					</dcsset:lwsTitle>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>НомерСпецификации</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Телефон</dcsset:field>
-					</dcsset:item>
-					<dcsset:placement>Vertically</dcsset:placement>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
-					<dcsset:lwsTitle>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Заказчик/Комментарий</v8:content>
-						</v8:item>
-					</dcsset:lwsTitle>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Заказчик</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Комментарий</dcsset:field>
-					</dcsset:item>
-					<dcsset:placement>Vertically</dcsset:placement>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
-					<dcsset:lwsTitle>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Дил./Доставка</v8:content>
-						</v8:item>
-					</dcsset:lwsTitle>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Дилерский</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>ЕстьДоставка</dcsset:field>
-					</dcsset:item>
-					<dcsset:placement>Vertically</dcsset:placement>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>КомплектацияСклад</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>КомплектацияЦех</dcsset:field>
+						<dcsset:field>Заметка</dcsset:field>
 					</dcsset:item>
 					<dcsset:placement>Vertically</dcsset:placement>
 				</dcsset:item>
@@ -327,11 +373,36 @@
 			</dcsset:order>
 			<dcsset:conditionalAppearance>
 				<dcsset:item>
-					<dcsset:selection/>
-					<dcsset:filter/>
+					<dcsset:selection>
+						<dcsset:item>
+							<dcsset:field>Заметка</dcsset:field>
+						</dcsset:item>
+					</dcsset:selection>
+					<dcsset:filter>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ДатаОтгрузки</dcsset:left>
+							<dcsset:comparisonType>Less</dcsset:comparisonType>
+							<dcsset:right xsi:type="v8:StandardBeginningDate">
+								<v8:variant xsi:type="v8:StandardBeginningDateVariant">Custom</v8:variant>
+								<v8:date>2014-12-25T00:00:00</v8:date>
+							</dcsset:right>
+						</dcsset:item>
+					</dcsset:filter>
 					<dcsset:appearance>
 						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>МинимальнаяШирина</dcscor:parameter>
+							<dcscor:value xsi:type="xs:decimal">0</dcscor:value>
+						</dcscor:item>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 							<dcscor:parameter>МаксимальнаяШирина</dcscor:parameter>
+							<dcscor:value xsi:type="xs:decimal">0</dcscor:value>
+						</dcscor:item>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>МинимальнаяВысота</dcscor:parameter>
+							<dcscor:value xsi:type="xs:decimal">0</dcscor:value>
+						</dcscor:item>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>МаксимальнаяВысота</dcscor:parameter>
 							<dcscor:value xsi:type="xs:decimal">0</dcscor:value>
 						</dcscor:item>
 					</dcsset:appearance>
