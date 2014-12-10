@@ -57,6 +57,21 @@
 		<field xsi:type="DataSetFieldField">
 			<dataPath>ДатаОтгрузки</dataPath>
 			<field>ДатаОтгрузки</field>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>СтильГраницы</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:Line" width="0" gap="false">
+						<v8ui:style xsi:type="v8ui:SpreadsheetDocumentCellLineType">None</v8ui:style>
+					</dcscor:value>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>СтильГраницы.Снизу</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Line" width="2" gap="false">
+							<v8ui:style xsi:type="v8ui:SpreadsheetDocumentCellLineType">Solid</v8ui:style>
+						</dcscor:value>
+					</dcscor:item>
+				</dcscor:item>
+			</appearance>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>СтатусСпецификации</dataPath>
@@ -143,6 +158,39 @@
 					<v8:content>Заметка</v8:content>
 				</v8:item>
 			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ЦветФона</dcscor:parameter>
+					<dcscor:value xmlns:d6p1="http://v8.1c.ru/8.1/data/ui/style" xsi:type="v8ui:Color">d6p1:NegativeTextColor</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>СтильГраницы</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:Line" width="0" gap="false">
+						<v8ui:style xsi:type="v8ui:SpreadsheetDocumentCellLineType">None</v8ui:style>
+					</dcscor:value>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>СтильГраницы.Снизу</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Line" width="2" gap="false">
+							<v8ui:style xsi:type="v8ui:SpreadsheetDocumentCellLineType">Solid</v8ui:style>
+						</dcscor:value>
+					</dcscor:item>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ГоризонтальноеПоложение</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:HorizontalAlign">Center</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МинимальнаяВысота</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">0</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>МаксимальнаяВысота</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">0.0001</dcscor:value>
+				</dcscor:item>
+			</appearance>
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
@@ -380,30 +428,29 @@
 					</dcsset:selection>
 					<dcsset:filter>
 						<dcsset:item xsi:type="dcsset:FilterItemComparison">
-							<dcsset:left xsi:type="dcscor:Field">ДатаОтгрузки</dcsset:left>
-							<dcsset:comparisonType>Less</dcsset:comparisonType>
-							<dcsset:right xsi:type="v8:StandardBeginningDate">
-								<v8:variant xsi:type="v8:StandardBeginningDateVariant">Custom</v8:variant>
-								<v8:date>2014-12-25T00:00:00</v8:date>
-							</dcsset:right>
+							<dcsset:left xsi:type="dcscor:Field">Заметка</dcsset:left>
+							<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
 						</dcsset:item>
 					</dcsset:filter>
 					<dcsset:appearance>
 						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-							<dcscor:parameter>МинимальнаяШирина</dcscor:parameter>
-							<dcscor:value xsi:type="xs:decimal">0</dcscor:value>
+							<dcscor:use>false</dcscor:use>
+							<dcscor:parameter>ЦветТекста</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:Color">web:MistyRose</dcscor:value>
 						</dcscor:item>
 						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:use>false</dcscor:use>
 							<dcscor:parameter>МаксимальнаяШирина</dcscor:parameter>
-							<dcscor:value xsi:type="xs:decimal">0</dcscor:value>
-						</dcscor:item>
-						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-							<dcscor:parameter>МинимальнаяВысота</dcscor:parameter>
-							<dcscor:value xsi:type="xs:decimal">0</dcscor:value>
+							<dcscor:value xsi:type="xs:decimal">0.0001</dcscor:value>
 						</dcscor:item>
 						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 							<dcscor:parameter>МаксимальнаяВысота</dcscor:parameter>
-							<dcscor:value xsi:type="xs:decimal">0</dcscor:value>
+							<dcscor:value xsi:type="xs:decimal">0.0001</dcscor:value>
+						</dcscor:item>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:use>false</dcscor:use>
+							<dcscor:parameter>Текст</dcscor:parameter>
+							<dcscor:value xsi:type="v8:LocalStringType"/>
 						</dcscor:item>
 					</dcsset:appearance>
 				</dcsset:item>
