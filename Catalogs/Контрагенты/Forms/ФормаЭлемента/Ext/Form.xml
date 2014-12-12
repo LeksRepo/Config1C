@@ -41,6 +41,9 @@
 					<CheckBoxType>Auto</CheckBoxType>
 					<ContextMenu name="ДилерКонтекстноеМеню" id="136"/>
 					<ExtendedTooltip name="ДилерРасширеннаяПодсказка" id="137"/>
+					<Events>
+						<Event name="OnChange">ДилерПриИзменении</Event>
+					</Events>
 				</CheckBoxField>
 				<CheckBoxField name="Поставщик" id="145">
 					<DataPath>Объект.Поставщик</DataPath>
@@ -99,16 +102,53 @@
 					<ContextMenu name="ГородКонтекстноеМеню" id="152"/>
 					<ExtendedTooltip name="ГородРасширеннаяПодсказка" id="153"/>
 				</InputField>
-				<InputField name="ПроцентНаценки" id="156">
-					<DataPath>Объект.ПроцентНаценки</DataPath>
-					<ContextMenu name="ПроцентНаценкиКонтекстноеМеню" id="157"/>
-					<ExtendedTooltip name="ПроцентНаценкиРасширеннаяПодсказка" id="158"/>
+				<InputField name="Подразделение" id="162">
+					<DataPath>Объект.Подразделение</DataPath>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="ПодразделениеКонтекстноеМеню" id="163"/>
+					<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="164"/>
 				</InputField>
-				<InputField name="СуммаНаценки" id="159">
-					<DataPath>Объект.СуммаНаценки</DataPath>
-					<ContextMenu name="СуммаНаценкиКонтекстноеМеню" id="160"/>
-					<ExtendedTooltip name="СуммаНаценкиРасширеннаяПодсказка" id="161"/>
-				</InputField>
+				<UsualGroup name="ГруппаНаценка" id="165">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наценки</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Добавляется к стоимости спецификации (только на экране)</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+					<Group>Vertical</Group>
+					<ExtendedTooltip name="ГруппаНаценкаРасширеннаяПодсказка" id="166"/>
+					<ChildItems>
+						<InputField name="ПроцентНаценки" id="156">
+							<DataPath>Объект.ПроцентНаценки</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Процент</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ПроцентНаценкиКонтекстноеМеню" id="157"/>
+							<ExtendedTooltip name="ПроцентНаценкиРасширеннаяПодсказка" id="158"/>
+						</InputField>
+						<InputField name="СуммаНаценки" id="159">
+							<DataPath>Объект.СуммаНаценки</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сумма</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="СуммаНаценкиКонтекстноеМеню" id="160"/>
+							<ExtendedTooltip name="СуммаНаценкиРасширеннаяПодсказка" id="161"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
 		<UsualGroup name="ГруппаЮридическоеЛицо" id="87">
@@ -345,151 +385,206 @@
 			<Group>Vertical</Group>
 			<ExtendedTooltip name="ГруппаФизическоеЛицоРасширеннаяПодсказка" id="86"/>
 			<ChildItems>
-				<UsualGroup name="ГруппаФИО" id="95">
+				<UsualGroup name="ГруппаФизлицоТелефоны" id="167">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Фамилия имя отчество</v8:content>
+							<v8:content>Группа физлицо телефоны</v8:content>
 						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Группа ФИО</v8:content>
-						</v8:item>
-					</ToolTip>
-					<Group>Vertical</Group>
-					<ExtendedTooltip name="ГруппаФИОРасширеннаяПодсказка" id="96"/>
-					<ChildItems>
-						<InputField name="Фамилия" id="97">
-							<DataPath>Объект.Фамилия</DataPath>
-							<HorizontalStretch>false</HorizontalStretch>
-							<ContextMenu name="ФамилияКонтекстноеМеню" id="98"/>
-							<ExtendedTooltip name="ФамилияРасширеннаяПодсказка" id="99"/>
-							<Events>
-								<Event name="OnChange">ФамилияПриИзменении</Event>
-							</Events>
-						</InputField>
-						<InputField name="Имя" id="100">
-							<DataPath>Объект.Имя</DataPath>
-							<HorizontalStretch>false</HorizontalStretch>
-							<ContextMenu name="ИмяКонтекстноеМеню" id="101"/>
-							<ExtendedTooltip name="ИмяРасширеннаяПодсказка" id="102"/>
-							<Events>
-								<Event name="OnChange">ИмяПриИзменении</Event>
-							</Events>
-						</InputField>
-						<InputField name="Отчество" id="103">
-							<DataPath>Объект.Отчество</DataPath>
-							<HorizontalStretch>false</HorizontalStretch>
-							<ContextMenu name="ОтчествоКонтекстноеМеню" id="104"/>
-							<ExtendedTooltip name="ОтчествоРасширеннаяПодсказка" id="105"/>
-							<Events>
-								<Event name="OnChange">ОтчествоПриИзменении</Event>
-							</Events>
-						</InputField>
-					</ChildItems>
-				</UsualGroup>
-				<InputField name="ДатаРождения" id="126">
-					<DataPath>Объект.ДатаРождения</DataPath>
-					<ContextMenu name="ДатаРожденияКонтекстноеМеню" id="127"/>
-					<ExtendedTooltip name="ДатаРожденияРасширеннаяПодсказка" id="128"/>
-				</InputField>
-				<InputField name="ФизЛицоТелефон" id="92">
-					<DataPath>Объект.Телефон</DataPath>
-					<HorizontalStretch>false</HorizontalStretch>
-					<Mask>9-999-999-99-99</Mask>
-					<ContextMenu name="ФизЛицоТелефонКонтекстноеМеню" id="93"/>
-					<ExtendedTooltip name="ФизЛицоТелефонРасширеннаяПодсказка" id="94"/>
-				</InputField>
-				<InputField name="ФизЛицоТелефонДополнительный" id="120">
-					<DataPath>Объект.ТелефонДополнительный</DataPath>
-					<Width>42</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<Mask>9-999-999-99-99</Mask>
-					<ContextMenu name="ФизЛицоТелефонДополнительныйКонтекстноеМеню" id="121"/>
-					<ExtendedTooltip name="ФизЛицоТелефонДополнительныйРасширеннаяПодсказка" id="122"/>
-				</InputField>
-				<UsualGroup name="ГруппаПаспорт" id="106">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Паспорт</v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа паспорт</v8:content>
+							<v8:content>Группа физлицо телефоны</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Group>Horizontal</Group>
-					<ExtendedTooltip name="ГруппаПаспортРасширеннаяПодсказка" id="107"/>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаФизлицоТелефоныРасширеннаяПодсказка" id="168"/>
 					<ChildItems>
-						<InputField name="ПаспортСерия" id="117">
-							<DataPath>Объект.ПаспортСерия</DataPath>
+						<UsualGroup name="ГруппаФИО" id="95">
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Серия</v8:content>
+									<v8:content>Фамилия имя отчество</v8:content>
 								</v8:item>
 							</Title>
-							<ContextMenu name="ПаспортСерияКонтекстноеМеню" id="118"/>
-							<ExtendedTooltip name="ПаспортСерияРасширеннаяПодсказка" id="119"/>
-						</InputField>
-						<InputField name="ПаспортНомер" id="111">
-							<DataPath>Объект.ПаспортНомер</DataPath>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа ФИО</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаФИОРасширеннаяПодсказка" id="96"/>
+							<ChildItems>
+								<InputField name="Фамилия" id="97">
+									<DataPath>Объект.Фамилия</DataPath>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ФамилияКонтекстноеМеню" id="98"/>
+									<ExtendedTooltip name="ФамилияРасширеннаяПодсказка" id="99"/>
+									<Events>
+										<Event name="OnChange">ФамилияПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="Имя" id="100">
+									<DataPath>Объект.Имя</DataPath>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ИмяКонтекстноеМеню" id="101"/>
+									<ExtendedTooltip name="ИмяРасширеннаяПодсказка" id="102"/>
+									<Events>
+										<Event name="OnChange">ИмяПриИзменении</Event>
+									</Events>
+								</InputField>
+								<InputField name="Отчество" id="103">
+									<DataPath>Объект.Отчество</DataPath>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ОтчествоКонтекстноеМеню" id="104"/>
+									<ExtendedTooltip name="ОтчествоРасширеннаяПодсказка" id="105"/>
+									<Events>
+										<Event name="OnChange">ОтчествоПриИзменении</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаТелефоны" id="169">
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Номер</v8:content>
+									<v8:content>Группа телефоны</v8:content>
 								</v8:item>
 							</Title>
-							<ContextMenu name="ПаспортНомерКонтекстноеМеню" id="112"/>
-							<ExtendedTooltip name="ПаспортНомерРасширеннаяПодсказка" id="113"/>
-						</InputField>
-						<InputField name="ПаспортКемВыдан" id="108">
-							<DataPath>Объект.ПаспортКемВыдан</DataPath>
-							<ContextMenu name="ПаспортКемВыданКонтекстноеМеню" id="109"/>
-							<ExtendedTooltip name="ПаспортКемВыданРасширеннаяПодсказка" id="110"/>
-						</InputField>
-						<InputField name="ПаспортДатаВыдачи" id="114">
-							<DataPath>Объект.ПаспортДатаВыдачи</DataPath>
-							<Title>
+							<ToolTip>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Когда</v8:content>
+									<v8:content>Группа телефоны</v8:content>
 								</v8:item>
-							</Title>
-							<ContextMenu name="ПаспортДатаВыдачиКонтекстноеМеню" id="115"/>
-							<ExtendedTooltip name="ПаспортДатаВыдачиРасширеннаяПодсказка" id="116"/>
-						</InputField>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаТелефоныРасширеннаяПодсказка" id="170"/>
+							<ChildItems>
+								<InputField name="ДатаРождения" id="126">
+									<DataPath>Объект.ДатаРождения</DataPath>
+									<Width>17</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ДатаРожденияКонтекстноеМеню" id="127"/>
+									<ExtendedTooltip name="ДатаРожденияРасширеннаяПодсказка" id="128"/>
+								</InputField>
+								<InputField name="ФизЛицоТелефон" id="92">
+									<DataPath>Объект.Телефон</DataPath>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Mask>9-999-999-99-99</Mask>
+									<ContextMenu name="ФизЛицоТелефонКонтекстноеМеню" id="93"/>
+									<ExtendedTooltip name="ФизЛицоТелефонРасширеннаяПодсказка" id="94"/>
+								</InputField>
+								<InputField name="ФизЛицоТелефонДополнительный" id="120">
+									<DataPath>Объект.ТелефонДополнительный</DataPath>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Mask>9-999-999-99-99</Mask>
+									<ContextMenu name="ФизЛицоТелефонДополнительныйКонтекстноеМеню" id="121"/>
+									<ExtendedTooltip name="ФизЛицоТелефонДополнительныйРасширеннаяПодсказка" id="122"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
 					</ChildItems>
 				</UsualGroup>
-				<InputField name="ФизЛицоПочтовыйАдрес" id="89">
-					<DataPath>Объект.ПочтовыйАдрес</DataPath>
+				<UsualGroup name="ГруппаПаспортныеДанные" id="106">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Прописка</v8:content>
+							<v8:content>Паспортные данные</v8:content>
 						</v8:item>
 					</Title>
-					<TitleLocation>Left</TitleLocation>
-					<HorizontalStretch>true</HorizontalStretch>
-					<VerticalStretch>false</VerticalStretch>
-					<MultiLine>true</MultiLine>
-					<ContextMenu name="ФизЛицоПочтовыйАдресКонтекстноеМеню" id="90"/>
-					<ExtendedTooltip name="ФизЛицоПочтовыйАдресРасширеннаяПодсказка" id="91"/>
-				</InputField>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа паспортные данные</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ExtendedTooltip name="ГруппаПаспортныеДанныеРасширеннаяПодсказка" id="107"/>
+					<ChildItems>
+						<UsualGroup name="Группа1" id="171">
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="172"/>
+							<ChildItems>
+								<InputField name="ПаспортСерия" id="117">
+									<DataPath>Объект.ПаспортСерия</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Серия</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ПаспортСерияКонтекстноеМеню" id="118"/>
+									<ExtendedTooltip name="ПаспортСерияРасширеннаяПодсказка" id="119"/>
+								</InputField>
+								<InputField name="ПаспортНомер" id="111">
+									<DataPath>Объект.ПаспортНомер</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Номер</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ПаспортНомерКонтекстноеМеню" id="112"/>
+									<ExtendedTooltip name="ПаспортНомерРасширеннаяПодсказка" id="113"/>
+								</InputField>
+								<InputField name="ПаспортДатаВыдачи" id="114">
+									<DataPath>Объект.ПаспортДатаВыдачи</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Дата выдачи</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ПаспортДатаВыдачиКонтекстноеМеню" id="115"/>
+									<ExtendedTooltip name="ПаспортДатаВыдачиРасширеннаяПодсказка" id="116"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="Группа2" id="173">
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Группа2РасширеннаяПодсказка" id="174"/>
+							<ChildItems>
+								<InputField name="ПаспортКемВыдан" id="108">
+									<DataPath>Объект.ПаспортКемВыдан</DataPath>
+									<ContextMenu name="ПаспортКемВыданКонтекстноеМеню" id="109"/>
+									<ExtendedTooltip name="ПаспортКемВыданРасширеннаяПодсказка" id="110"/>
+								</InputField>
+								<InputField name="ФизЛицоПочтовыйАдрес" id="89">
+									<DataPath>Объект.ПочтовыйАдрес</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Прописка</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Left</TitleLocation>
+									<HorizontalStretch>true</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
+									<MultiLine>true</MultiLine>
+									<ContextMenu name="ФизЛицоПочтовыйАдресКонтекстноеМеню" id="90"/>
+									<ExtendedTooltip name="ФизЛицоПочтовыйАдресРасширеннаяПодсказка" id="91"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
 		<InputField name="Комментарий" id="36">
 			<DataPath>Объект.Комментарий</DataPath>
 			<TitleLocation>Left</TitleLocation>
-			<Height>5</Height>
 			<HorizontalStretch>true</HorizontalStretch>
 			<VerticalStretch>false</VerticalStretch>
-			<MultiLine>true</MultiLine>
 			<ContextMenu name="КомментарийКонтекстноеМеню" id="37"/>
 			<ExtendedTooltip name="КомментарийExtendedTooltip" id="81"/>
 		</InputField>
