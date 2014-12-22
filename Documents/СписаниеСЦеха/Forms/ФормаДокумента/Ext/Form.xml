@@ -8,38 +8,66 @@
 		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
 	</Events>
 	<ChildItems>
-		<InputField name="Номер" id="1">
-			<DataPath>Объект.Number</DataPath>
-			<EditMode>EnterOnInput</EditMode>
-			<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
-			<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="3"/>
-		</InputField>
-		<InputField name="Дата" id="4">
-			<DataPath>Объект.Date</DataPath>
-			<EditMode>EnterOnInput</EditMode>
-			<EditFormat>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>ДФ=dd.MM.yyyy</v8:content>
-				</v8:item>
-			</EditFormat>
-			<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
-			<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="6"/>
-		</InputField>
-		<InputField name="Подразделение" id="10">
-			<DataPath>Объект.Подразделение</DataPath>
-			<EditMode>EnterOnInput</EditMode>
-			<ContextMenu name="ПодразделениеКонтекстноеМеню" id="11"/>
-			<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="12"/>
-			<Events>
-				<Event name="OnChange">ПодразделениеПриИзменении</Event>
-			</Events>
-		</InputField>
-		<Button name="Заполнить" id="44">
-			<Type>UsualButton</Type>
-			<CommandName>Form.Command.Заполнить</CommandName>
-			<ExtendedTooltip name="ЗаполнитьРасширеннаяПодсказка" id="45"/>
-		</Button>
+		<UsualGroup name="Группа1" id="51">
+			<HorizontalStretch>false</HorizontalStretch>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="52"/>
+			<ChildItems>
+				<UsualGroup name="НомерДата" id="49">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер дата</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер дата</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="НомерДатаРасширеннаяПодсказка" id="50"/>
+					<ChildItems>
+						<InputField name="Номер" id="1">
+							<DataPath>Объект.Number</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<HorizontalStretch>false</HorizontalStretch>
+							<VerticalStretch>false</VerticalStretch>
+							<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
+							<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="3"/>
+						</InputField>
+						<InputField name="Дата" id="4">
+							<DataPath>Объект.Date</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<EditFormat>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>ДФ=dd.MM.yyyy</v8:content>
+								</v8:item>
+							</EditFormat>
+							<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
+							<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="6"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<InputField name="Подразделение" id="10">
+					<DataPath>Объект.Подразделение</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<HorizontalStretch>true</HorizontalStretch>
+					<VerticalStretch>false</VerticalStretch>
+					<ContextMenu name="ПодразделениеКонтекстноеМеню" id="11"/>
+					<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="12"/>
+					<Events>
+						<Event name="OnChange">ПодразделениеПриИзменении</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
 		<Table name="СписокНоменклатуры" id="13">
 			<Representation>List</Representation>
 			<AutoInsertNewRow>true</AutoInsertNewRow>
@@ -48,7 +76,27 @@
 			<DataPath>Объект.СписокНоменклатуры</DataPath>
 			<RowFilter xsi:nil="true"/>
 			<ContextMenu name="СписокНоменклатурыКонтекстноеМеню" id="14"/>
-			<AutoCommandBar name="СписокНоменклатурыКоманднаяПанель" id="15"/>
+			<AutoCommandBar name="СписокНоменклатурыКоманднаяПанель" id="15">
+				<ChildItems>
+					<Button name="Заполнить" id="44">
+						<Type>CommandBarButton</Type>
+						<Representation>PictureAndText</Representation>
+						<DefaultButton>true</DefaultButton>
+						<CommandName>Form.Command.Заполнить</CommandName>
+						<Picture>
+							<xr:Ref>CommonPicture.Минус</xr:Ref>
+							<xr:LoadTransparent>true</xr:LoadTransparent>
+						</Picture>
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Заполнить отрицательными</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="ЗаполнитьРасширеннаяПодсказка" id="45"/>
+					</Button>
+				</ChildItems>
+			</AutoCommandBar>
 			<ExtendedTooltip name="СписокНоменклатурыРасширеннаяПодсказка" id="16"/>
 			<SearchStringAddition name="СписокНоменклатурыСтрокаПоиска" id="17">
 				<AdditionSource>
