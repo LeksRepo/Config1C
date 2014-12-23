@@ -1312,14 +1312,39 @@
 															<ContextMenu name="ДеталиМеханизмФасадаКонтекстноеМеню" id="585"/>
 															<ExtendedTooltip name="ДеталиМеханизмФасадаРасширеннаяПодсказка" id="586"/>
 														</InputField>
-														<InputField name="ДеталиДиаметрПазов" id="500">
-															<DataPath>Items.Детали.CurrentData.ДиаметрПазов</DataPath>
-															<HorizontalAlign>Left</HorizontalAlign>
-															<Width>8</Width>
-															<ChoiceButton>true</ChoiceButton>
-															<ContextMenu name="ДеталиДиаметрПазовКонтекстноеМеню" id="501"/>
-															<ExtendedTooltip name="ДеталиДиаметрПазовРасширеннаяПодсказка" id="502"/>
-														</InputField>
+														<UsualGroup name="Группа6" id="684">
+															<Group>Horizontal</Group>
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="Группа6РасширеннаяПодсказка" id="685"/>
+															<ChildItems>
+																<InputField name="ДеталиДиаметрПазов" id="500">
+																	<DataPath>Items.Детали.CurrentData.ДиаметрПазов</DataPath>
+																	<HorizontalAlign>Left</HorizontalAlign>
+																	<Width>8</Width>
+																	<ChoiceButton>true</ChoiceButton>
+																	<ContextMenu name="ДеталиДиаметрПазовКонтекстноеМеню" id="501"/>
+																	<ExtendedTooltip name="ДеталиДиаметрПазовРасширеннаяПодсказка" id="502"/>
+																</InputField>
+																<LabelField name="ДеталиРасположениеФасада" id="686">
+																	<DataPath>Items.Детали.CurrentData.РасположениеФасада</DataPath>
+																	<Title>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>РасположениеФасада</v8:content>
+																		</v8:item>
+																	</Title>
+																	<HorizontalAlign>Left</HorizontalAlign>
+																	<Width>6</Width>
+																	<Hiperlink>true</Hiperlink>
+																	<ContextMenu name="ДеталиРасположениеФасадаКонтекстноеМеню" id="687"/>
+																	<ExtendedTooltip name="ДеталиРасположениеФасадаРасширеннаяПодсказка" id="688"/>
+																	<Events>
+																		<Event name="Click">ДеталиРасположениеФасадаНажатие</Event>
+																	</Events>
+																</LabelField>
+															</ChildItems>
+														</UsualGroup>
 													</ChildItems>
 												</UsualGroup>
 												<UsualGroup name="ГруппаКоличество" id="597">
@@ -2156,6 +2181,22 @@
 					</Title>
 					<Type>
 						<v8:Type>cfg:CatalogRef.НоменклатурныеГруппы</v8:Type>
+					</Type>
+				</Column>
+				<Column name="РасположениеФасада" id="38">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Расположение фасада</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>2</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
 					</Type>
 				</Column>
 			</Columns>
