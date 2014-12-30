@@ -20,22 +20,37 @@
 				</v8:item>
 			</ToolTip>
 			<Group>Horizontal</Group>
-			<Representation>None</Representation>
-			<ChildItemsWidth>Equal</ChildItemsWidth>
+			<Representation>StrongSeparation</Representation>
+			<ChildItemsWidth>LeftNarrow</ChildItemsWidth>
 			<ShowTitle>false</ShowTitle>
+			<BackColor>style:ButtonBackColor</BackColor>
 			<ExtendedTooltip name="ПериодаИПодразделениеРасширеннаяПодсказка" id="41"/>
 			<ChildItems>
 				<InputField name="Подразделение" id="1">
 					<DataPath>Объект.Подразделение</DataPath>
+					<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 					<ContextMenu name="ПодразделениеКонтекстноеМеню" id="2"/>
 					<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="3"/>
+					<Events>
+						<Event name="OnChange">ПодразделениеПриИзменении</Event>
+						<Event name="ChoiceProcessing">ПодразделениеОбработкаВыбора</Event>
+					</Events>
 				</InputField>
 				<InputField name="Период" id="4">
 					<DataPath>Объект.Период</DataPath>
+					<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+					<Width>15</Width>
+					<EditFormat>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ДФ=MM.yyy</v8:content>
+						</v8:item>
+					</EditFormat>
 					<ContextMenu name="ПериодКонтекстноеМеню" id="5"/>
 					<ExtendedTooltip name="ПериодРасширеннаяПодсказка" id="6"/>
 					<Events>
 						<Event name="OnChange">ПериодПриИзменении</Event>
+						<Event name="ChoiceProcessing">ПериодОбработкаВыбора</Event>
 					</Events>
 				</InputField>
 			</ChildItems>
@@ -54,12 +69,13 @@
 				</v8:item>
 			</ToolTip>
 			<Group>Horizontal</Group>
-			<Representation>None</Representation>
+			<Representation>StrongSeparation</Representation>
 			<ShowTitle>false</ShowTitle>
+			<BackColor>style:ButtonBackColor</BackColor>
 			<ExtendedTooltip name="ТаблицаИДиаграммаРасширеннаяПодсказка" id="39"/>
 			<ChildItems>
 				<Table name="ТаблицаДней" id="7">
-					<Width>20</Width>
+					<Width>22</Width>
 					<AutoInsertNewRow>true</AutoInsertNewRow>
 					<HorizontalStretch>false</HorizontalStretch>
 					<EnableStartDrag>true</EnableStartDrag>
@@ -150,6 +166,9 @@
 			<UseAlways>
 				<Field>Объект.RegisterRecords</Field>
 			</UseAlways>
+			<Columns>
+				<AdditionalColumns table="Объект.ТаблицаДней"/>
+			</Columns>
 		</Attribute>
 		<Attribute name="Диаграмма" id="2">
 			<Title>
@@ -162,5 +181,30 @@
 				<v8:Type xmlns:d5p1="http://v8.1c.ru/8.2/data/chart">d5p1:Chart</v8:Type>
 			</Type>
 		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ТаблицаДнейДата</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>ТаблицаДнейНорматив</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.ТаблицаДней.Выходной</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветФона</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">style:ОшибкаПолнотекстовыйПоискФон</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
 	</Attributes>
 </Form>
