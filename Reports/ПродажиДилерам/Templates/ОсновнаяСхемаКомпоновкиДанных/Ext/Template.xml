@@ -66,12 +66,14 @@
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>СуммаОборотДт</dataPath>
-			<field>СуммаОборотДт</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>СуммаОборотКт</dataPath>
 			<field>СуммаОборотКт</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма </v8:content>
+				</v8:item>
+			</title>
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
@@ -82,7 +84,6 @@
 	УправленческийОстаткиИОбороты.Подразделение КАК Подразделение,
 	УправленческийОстаткиИОбороты.Регистратор КАК Регистратор,
 	УправленческийОстаткиИОбороты.Регистратор.Субконто1Кт КАК Дилер,
-	УправленческийОстаткиИОбороты.СуммаОборотДт КАК СуммаОборотДт,
 	УправленческийОстаткиИОбороты.СуммаОборотКт КАК СуммаОборотКт
 ИЗ
 	РегистрБухгалтерии.Управленческий.ОстаткиИОбороты(&amp;НачалоПериода, &amp;КонецПериода, Регистратор, , Счет = &amp;Счет, , ) КАК УправленческийОстаткиИОбороты
@@ -95,6 +96,10 @@
 			ГДЕ
 				Контрагенты.Дилер)</query>
 	</dataSet>
+	<totalField>
+		<dataPath>СуммаОборотКт</dataPath>
+		<expression>Сумма(СуммаОборотКт)</expression>
+	</totalField>
 	<parameter>
 		<name>НачалоПериода</name>
 		<title xsi:type="v8:LocalStringType">
@@ -144,10 +149,10 @@
 		<valueType>
 			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:ChartOfAccountsRef.Управленческий</v8:Type>
 		</valueType>
-		<value xsi:type="dcscor:DesignTimeValue">ПланСчетов.Управленческий.ОперационнаяКасса</value>
+		<value xsi:type="dcscor:DesignTimeValue">ПланСчетов.Управленческий.ВзаиморасчетыСПокупателями</value>
 		<useRestriction>true</useRestriction>
 		<availableValue>
-			<value xsi:type="dcscor:DesignTimeValue">ПланСчетов.Управленческий.ОперационнаяКасса</value>
+			<value xsi:type="dcscor:DesignTimeValue">ПланСчетов.Управленческий.ВзаиморасчетыСПокупателями</value>
 		</availableValue>
 		<availableAsField>false</availableAsField>
 	</parameter>
@@ -191,9 +196,6 @@
 		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 			<dcsset:selection>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Подразделение</dcsset:field>
-				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Дилер</dcsset:field>
 				</dcsset:item>
