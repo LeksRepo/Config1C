@@ -19,41 +19,14 @@
 					<v8:content>Периода и подразделение</v8:content>
 				</v8:item>
 			</ToolTip>
+			<Width>79</Width>
+			<HorizontalStretch>false</HorizontalStretch>
 			<Group>Horizontal</Group>
 			<Representation>StrongSeparation</Representation>
-			<ChildItemsWidth>LeftNarrow</ChildItemsWidth>
+			<ChildItemsWidth>Equal</ChildItemsWidth>
 			<ShowTitle>false</ShowTitle>
 			<BackColor>style:ButtonBackColor</BackColor>
 			<ExtendedTooltip name="ПериодаИПодразделениеРасширеннаяПодсказка" id="41"/>
-			<ChildItems>
-				<InputField name="Подразделение" id="1">
-					<DataPath>Объект.Подразделение</DataPath>
-					<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
-					<ContextMenu name="ПодразделениеКонтекстноеМеню" id="2"/>
-					<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="3"/>
-					<Events>
-						<Event name="OnChange">ПодразделениеПриИзменении</Event>
-						<Event name="ChoiceProcessing">ПодразделениеОбработкаВыбора</Event>
-					</Events>
-				</InputField>
-				<InputField name="Период" id="4">
-					<DataPath>Объект.Период</DataPath>
-					<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
-					<Width>15</Width>
-					<EditFormat>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>ДФ=MM.ггг</v8:content>
-						</v8:item>
-					</EditFormat>
-					<ContextMenu name="ПериодКонтекстноеМеню" id="5"/>
-					<ExtendedTooltip name="ПериодРасширеннаяПодсказка" id="6"/>
-					<Events>
-						<Event name="OnChange">ПериодПриИзменении</Event>
-						<Event name="ChoiceProcessing">ПериодОбработкаВыбора</Event>
-					</Events>
-				</InputField>
-			</ChildItems>
 		</UsualGroup>
 		<UsualGroup name="ТаблицаИДиаграмма" id="38">
 			<Title>
@@ -74,78 +47,144 @@
 			<BackColor>style:ButtonBackColor</BackColor>
 			<ExtendedTooltip name="ТаблицаИДиаграммаРасширеннаяПодсказка" id="39"/>
 			<ChildItems>
-				<Table name="ТаблицаДней" id="7">
-					<Width>22</Width>
-					<AutoInsertNewRow>true</AutoInsertNewRow>
-					<HorizontalStretch>false</HorizontalStretch>
-					<EnableStartDrag>true</EnableStartDrag>
-					<EnableDrag>true</EnableDrag>
-					<DataPath>Объект.ТаблицаДней</DataPath>
-					<RowFilter xsi:nil="true"/>
-					<ContextMenu name="ТаблицаДнейКонтекстноеМеню" id="8"/>
-					<AutoCommandBar name="ТаблицаДнейКоманднаяПанель" id="9">
-						<Autofill>false</Autofill>
-					</AutoCommandBar>
-					<ExtendedTooltip name="ТаблицаДнейРасширеннаяПодсказка" id="10"/>
-					<SearchStringAddition name="ТаблицаДнейСтрокаПоиска" id="11">
-						<AdditionSource>
-							<Item>ТаблицаДней</Item>
-							<Type>SearchStringRepresentation</Type>
-						</AdditionSource>
-						<ContextMenu name="ТаблицаДнейСтрокаПоискаКонтекстноеМеню" id="14"/>
-						<ExtendedTooltip name="ТаблицаДнейСтрокаПоискаРасширеннаяПодсказка" id="15"/>
-					</SearchStringAddition>
-					<ViewStatusAddition name="ТаблицаДнейСостояниеПросмотра" id="16">
-						<AdditionSource>
-							<Item>ТаблицаДней</Item>
-							<Type>ViewStatusRepresentation</Type>
-						</AdditionSource>
-						<ContextMenu name="ТаблицаДнейСостояниеПросмотраКонтекстноеМеню" id="19"/>
-						<ExtendedTooltip name="ТаблицаДнейСостояниеПросмотраРасширеннаяПодсказка" id="20"/>
-					</ViewStatusAddition>
-					<SearchControlAddition name="ТаблицаДнейУправлениеПоиском" id="21">
-						<AdditionSource>
-							<Item>ТаблицаДней</Item>
-							<Type>SearchControl</Type>
-						</AdditionSource>
-						<ContextMenu name="ТаблицаДнейУправлениеПоискомКонтекстноеМеню" id="24"/>
-						<ExtendedTooltip name="ТаблицаДнейУправлениеПоискомРасширеннаяПодсказка" id="25"/>
-					</SearchControlAddition>
-					<Events>
-						<Event name="OnActivateRow">ТаблицаДнейПриАктивизацииСтроки</Event>
-					</Events>
+				<UsualGroup name="Группа1" id="47">
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="48"/>
 					<ChildItems>
-						<InputField name="ТаблицаДнейДата" id="29">
-							<DataPath>Объект.ТаблицаДней.Дата</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<Width>1</Width>
+						<InputField name="Подразделение" id="1">
+							<DataPath>Объект.Подразделение</DataPath>
+							<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							<Width>23</Width>
 							<HorizontalStretch>false</HorizontalStretch>
-							<Format>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>ДФ=dd.ММ</v8:content>
-								</v8:item>
-							</Format>
+							<ContextMenu name="ПодразделениеКонтекстноеМеню" id="2"/>
+							<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="3"/>
+							<Events>
+								<Event name="OnChange">ПодразделениеПриИзменении</Event>
+								<Event name="ChoiceProcessing">ПодразделениеОбработкаВыбора</Event>
+							</Events>
+						</InputField>
+						<InputField name="Период" id="4">
+							<DataPath>Объект.Период</DataPath>
+							<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							<Width>23</Width>
+							<HorizontalStretch>false</HorizontalStretch>
 							<EditFormat>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>ДФ=dd.ММ</v8:content>
+									<v8:content>ДФ=MM.ггг</v8:content>
 								</v8:item>
 							</EditFormat>
-							<ContextMenu name="ТаблицаДнейДатаКонтекстноеМеню" id="30"/>
-							<ExtendedTooltip name="ТаблицаДнейДатаРасширеннаяПодсказка" id="31"/>
-						</InputField>
-						<InputField name="ТаблицаДнейНорматив" id="32">
-							<DataPath>Объект.ТаблицаДней.Норматив</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<ContextMenu name="ТаблицаДнейНормативКонтекстноеМеню" id="33"/>
-							<ExtendedTooltip name="ТаблицаДнейНормативРасширеннаяПодсказка" id="34"/>
+							<ContextMenu name="ПериодКонтекстноеМеню" id="5"/>
+							<ExtendedTooltip name="ПериодРасширеннаяПодсказка" id="6"/>
 							<Events>
-								<Event name="OnChange">ТаблицаДнейНормативПриИзменении</Event>
+								<Event name="OnChange">ПериодПриИзменении</Event>
+								<Event name="ChoiceProcessing">ПериодОбработкаВыбора</Event>
 							</Events>
 						</InputField>
+						<Button name="Заполнить" id="42">
+							<Type>UsualButton</Type>
+							<Width>37</Width>
+							<CommandName>Form.Command.Заполнить</CommandName>
+							<TextColor>style:FormTextColor</TextColor>
+							<BackColor>#F0E6B4</BackColor>
+							<BorderColor>style:ToolTipTextColor</BorderColor>
+							<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							<ExtendedTooltip name="ЗаполнитьРасширеннаяПодсказка" id="43"/>
+						</Button>
+						<Table name="ТаблицаДней" id="7">
+							<Width>37</Width>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<HorizontalStretch>false</HorizontalStretch>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Объект.ТаблицаДней</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ТаблицаДнейКонтекстноеМеню" id="8"/>
+							<AutoCommandBar name="ТаблицаДнейКоманднаяПанель" id="9">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ТаблицаДнейРасширеннаяПодсказка" id="10"/>
+							<SearchStringAddition name="ТаблицаДнейСтрокаПоиска" id="11">
+								<AdditionSource>
+									<Item>ТаблицаДней</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаДнейСтрокаПоискаКонтекстноеМеню" id="14"/>
+								<ExtendedTooltip name="ТаблицаДнейСтрокаПоискаРасширеннаяПодсказка" id="15"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ТаблицаДнейСостояниеПросмотра" id="16">
+								<AdditionSource>
+									<Item>ТаблицаДней</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаДнейСостояниеПросмотраКонтекстноеМеню" id="19"/>
+								<ExtendedTooltip name="ТаблицаДнейСостояниеПросмотраРасширеннаяПодсказка" id="20"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ТаблицаДнейУправлениеПоиском" id="21">
+								<AdditionSource>
+									<Item>ТаблицаДней</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаДнейУправлениеПоискомКонтекстноеМеню" id="24"/>
+								<ExtendedTooltip name="ТаблицаДнейУправлениеПоискомРасширеннаяПодсказка" id="25"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="BeforeAddRow">ТаблицаДнейПередНачаломДобавления</Event>
+								<Event name="BeforeDeleteRow">ТаблицаДнейПередУдалением</Event>
+								<Event name="OnActivateRow">ТаблицаДнейПриАктивизацииСтроки</Event>
+								<Event name="DragStart">ТаблицаДнейНачалоПеретаскивания</Event>
+							</Events>
+							<ChildItems>
+								<InputField name="ТаблицаДнейДата" id="29">
+									<DataPath>Объект.ТаблицаДней.Дата</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>1</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Format>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>ДФ=dd.ММ</v8:content>
+										</v8:item>
+									</Format>
+									<EditFormat>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>ДФ=dd.ММ</v8:content>
+										</v8:item>
+									</EditFormat>
+									<ContextMenu name="ТаблицаДнейДатаКонтекстноеМеню" id="30"/>
+									<ExtendedTooltip name="ТаблицаДнейДатаРасширеннаяПодсказка" id="31"/>
+								</InputField>
+								<InputField name="ТаблицаДнейКоличествоКоробов" id="44">
+									<DataPath>Объект.ТаблицаДней.КоличествоКоробов</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Кол. коробов</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>12</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ТаблицаДнейКоличествоКоробовКонтекстноеМеню" id="45"/>
+									<ExtendedTooltip name="ТаблицаДнейКоличествоКоробовРасширеннаяПодсказка" id="46"/>
+								</InputField>
+								<InputField name="ТаблицаДнейНорматив" id="32">
+									<DataPath>Объект.ТаблицаДней.Норматив</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ТаблицаДнейНормативКонтекстноеМеню" id="33"/>
+									<ExtendedTooltip name="ТаблицаДнейНормативРасширеннаяПодсказка" id="34"/>
+									<Events>
+										<Event name="OnChange">ТаблицаДнейНормативПриИзменении</Event>
+									</Events>
+								</InputField>
+							</ChildItems>
+						</Table>
 					</ChildItems>
-				</Table>
+				</UsualGroup>
 				<ChartField name="Диаграмма" id="35">
 					<DataPath>Диаграмма</DataPath>
 					<ReadOnly>true</ReadOnly>
@@ -190,6 +229,9 @@
 					<dcsset:item>
 						<dcsset:field>ТаблицаДнейНорматив</dcsset:field>
 					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>ТаблицаДнейКоличествоКоробов</dcsset:field>
+					</dcsset:item>
 				</dcsset:selection>
 				<dcsset:filter>
 					<dcsset:item xsi:type="dcsset:FilterItemComparison">
@@ -207,4 +249,21 @@
 			</dcsset:item>
 		</ConditionalAppearance>
 	</Attributes>
+	<Commands>
+		<Command name="Заполнить" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Заполнить</Action>
+		</Command>
+	</Commands>
 </Form>
