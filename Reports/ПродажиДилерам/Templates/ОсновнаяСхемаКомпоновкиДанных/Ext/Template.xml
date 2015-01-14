@@ -40,10 +40,6 @@
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Дилер</dataPath>
 			<field>Дилер</field>
-			<role>
-				<dcscom:dimension>true</dcscom:dimension>
-				<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
-			</role>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Период</dataPath>
@@ -94,14 +90,26 @@
 			</role>
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
-		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
-	НАЧАЛОПЕРИОДА(УправленческийОбороты.Период, МЕСЯЦ) КАК Период,
-	УправленческийОбороты.Подразделение КАК Подразделение,
-	УправленческийОбороты.СуммаОборотКт КАК СуммаОборотКт,
-	УправленческийОбороты.Субконто1 КАК Дилер,
-	УправленческийОбороты.Регистратор
+		<query>ВЫБРАТЬ
+	Контрагенты.Ссылка КАК Ссылка
+ПОМЕСТИТЬ СписокДилеров
 ИЗ
-	РегистрБухгалтерии.Управленческий.Обороты(&amp;НачалоПериода, &amp;КонецПериода, Регистратор, Счет = &amp;Счет, , ВЫРАЗИТЬ(Субконто1 КАК Справочник.Контрагенты).Дилер, , ) КАК УправленческийОбороты</query>
+	Справочник.Контрагенты КАК Контрагенты
+ГДЕ
+	Контрагенты.Дилер
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	НАЧАЛОПЕРИОДА(УправленческийОбороты.Период, МЕСЯЦ) КАК Период,
+	ЕСТЬNULL(УправленческийОбороты.Подразделение, СписокДилеров.Ссылка.Подразделение) КАК Подразделение,
+	СписокДилеров.Ссылка КАК Дилер,
+	УправленческийОбороты.СуммаОборотКт КАК СуммаОборотКт,
+	УправленческийОбороты.Регистратор КАК Регистратор
+ИЗ
+	СписокДилеров КАК СписокДилеров
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрБухгалтерии.Управленческий.Обороты(&amp;НачалоПериода, &amp;КонецПериода, Регистратор, Счет = &amp;Счет, , , , ) КАК УправленческийОбороты
+		ПО СписокДилеров.Ссылка.Ссылка = УправленческийОбороты.Субконто1</query>
 	</dataSet>
 	<totalField>
 		<dataPath>СуммаОборотКт</dataPath>
@@ -234,6 +242,13 @@
 					</dcsset:appearance>
 				</dcsset:item>
 			</dcsset:conditionalAppearance>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>РасположениеИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">End</dcscor:value>
+				</dcscor:item>
+			</dcsset:outputParameters>
 			<dcsset:item xsi:type="dcsset:StructureItemTable">
 				<dcsset:column>
 					<dcsset:groupItems>
