@@ -51,10 +51,6 @@
 			<field>СчетКтЧтение</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Норматив</dataPath>
-			<field>Норматив</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>СуммаДетали</dataPath>
 			<field>СуммаДетали</field>
 			<title xsi:type="v8:LocalStringType">
@@ -75,8 +71,14 @@
 			</title>
 			<role>
 				<dcscom:periodNumber>1</dcscom:periodNumber>
-				<dcscom:periodType>Main</dcscom:periodType>
+				<dcscom:periodType>Additional</dcscom:periodType>
 			</role>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ДФ=dd.MM.yy</dcscor:value>
+				</dcscor:item>
+			</appearance>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>СуммаВсего</dataPath>
@@ -88,10 +90,20 @@
 				</v8:item>
 			</title>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Норматив</dataPath>
+			<field>Норматив</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Норматив</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
-	УправленческийОбороты.Период КАК Дата,
-	МАКСИМУМ(ПлановыйЛимит.Норматив) КАК Норматив,
+	ЦеховойЛимит.Период КАК Дата,
+	ЦеховойЛимит.СтоимостьУслугОборот КАК Норматив,
 	СУММА(ВЫБОР
 			КОГДА УправленческийОбороты.Субконто1 = ЗНАЧЕНИЕ(Перечисление.ВидыПоказателейПодразделений.СуммаДетали)
 				ТОГДА УправленческийОбороты.СуммаОборот
@@ -99,36 +111,24 @@
 		КОНЕЦ) КАК СуммаДетали,
 	СУММА(УправленческийОбороты.СуммаОборот) КАК СуммаВсего
 ИЗ
-	РегистрБухгалтерии.Управленческий.Обороты(
-			&amp;НачалоПериода,
-			&amp;КонецПериода,
-			День,
-			Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ПоказателиПодразделения),
-			,
-			Подразделение = &amp;Подразделение
-				И Субконто1 = ЗНАЧЕНИЕ(Перечисление.ВидыПоказателейПодразделений.СуммаДетали),
-			,
-			) КАК УправленческийОбороты
-		ВНУТРЕННЕЕ СОЕДИНЕНИЕ РегистрСведений.ПлановыйЛимит КАК ПлановыйЛимит
-		ПО (ПлановыйЛимит.Период В
-				(ВЫБРАТЬ ПЕРВЫЕ 1
-					ПлановыйЛимит.Период КАК Период
-				ИЗ
-					РегистрСведений.ПлановыйЛимит КАК ПлановыйЛимит
-				ГДЕ
-					ПлановыйЛимит.Период &lt;= УправленческийОбороты.Период
-					И ПлановыйЛимит.Подразделение = &amp;Подразделение
-				УПОРЯДОЧИТЬ ПО
-					Период УБЫВ))
-			И УправленческийОбороты.Подразделение = ПлановыйЛимит.Подразделение
+	РегистрНакопления.ЦеховойЛимит.Обороты(&amp;НачалоПериода, &amp;КонецПериода, День, Подразделение = &amp;Подразделение) КАК ЦеховойЛимит
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрБухгалтерии.Управленческий.Обороты(
+				&amp;НачалоПериода,
+				&amp;КонецПериода,
+				День,
+				Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ПоказателиПодразделения),
+				,
+				Подразделение = &amp;Подразделение
+					И Субконто1 = ЗНАЧЕНИЕ(Перечисление.ВидыПоказателейПодразделений.СуммаДетали),
+				,
+				) КАК УправленческийОбороты
+		ПО (УправленческийОбороты.Период = ЦеховойЛимит.Период)
+			И (УправленческийОбороты.Подразделение = ЦеховойЛимит.Подразделение)
 
 СГРУППИРОВАТЬ ПО
-	УправленческийОбороты.Период</query>
+	ЦеховойЛимит.Период,
+	ЦеховойЛимит.СтоимостьУслугОборот</query>
 	</dataSet>
-	<totalField>
-		<dataPath>Норматив</dataPath>
-		<expression>Сумма(Норматив)</expression>
-	</totalField>
 	<totalField>
 		<dataPath>СуммаДетали</dataPath>
 		<expression>Сумма(СуммаДетали)</expression>
@@ -136,6 +136,10 @@
 	<totalField>
 		<dataPath>СуммаВсего</dataPath>
 		<expression>Сумма(СуммаВсего)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Норматив</dataPath>
+		<expression>Сумма(Норматив)</expression>
 	</totalField>
 	<parameter>
 		<name>ПериодОтчета</name>
@@ -265,7 +269,7 @@
 						<dcsset:item xsi:type="dcsset:GroupItemField">
 							<dcsset:field>Дата</dcsset:field>
 							<dcsset:groupType>Items</dcsset:groupType>
-							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionType>Day</dcsset:periodAdditionType>
 							<dcsset:periodAdditionBegin xsi:type="dcscor:Field">ПараметрыДанных.НачалоПериода</dcsset:periodAdditionBegin>
 							<dcsset:periodAdditionEnd xsi:type="dcscor:Field">ПараметрыДанных.КонецПериода</dcsset:periodAdditionEnd>
 						</dcsset:item>
