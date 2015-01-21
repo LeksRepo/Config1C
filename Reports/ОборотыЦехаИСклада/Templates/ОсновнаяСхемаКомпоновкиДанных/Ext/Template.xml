@@ -51,36 +51,6 @@
 			<field>СчетДтЧтение</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>РасходСЦеха</dataPath>
-			<field>РасходСЦеха</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Расход с цеха</v8:content>
-				</v8:item>
-			</title>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>ПриходСЦеха</dataPath>
-			<field>ПриходСЦеха</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Приход с цеха</v8:content>
-				</v8:item>
-			</title>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>ПриходСклада</dataPath>
-			<field>ПриходСклада</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Приход склада</v8:content>
-				</v8:item>
-			</title>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>Номенклатура</dataPath>
 			<field>Номенклатура</field>
 			<title xsi:type="v8:LocalStringType">
@@ -91,12 +61,64 @@
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>РасходСклада</dataPath>
-			<field>РасходСклада</field>
+			<dataPath>Регистратор1</dataPath>
+			<field>Регистратор1</field>
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Расход склада</v8:content>
+					<v8:content>Регистратор1</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:periodNumber>2</dcscom:periodNumber>
+				<dcscom:periodType>Main</dcscom:periodType>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Регистратор</dataPath>
+			<field>Регистратор</field>
+			<role>
+				<dcscom:periodNumber>1</dcscom:periodNumber>
+				<dcscom:periodType>Main</dcscom:periodType>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>РасходЦех</dataPath>
+			<field>РасходЦех</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Расход цех</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПриходЦех</dataPath>
+			<field>ПриходЦех</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Приход цех</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>РасходСклад</dataPath>
+			<field>РасходСклад</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Расход склад</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПриходСклад</dataPath>
+			<field>ПриходСклад</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Приход склад</v8:content>
 				</v8:item>
 			</title>
 		</field>
@@ -111,15 +133,16 @@
 		КОГДА ВЫРАЗИТЬ(УправленческийОбороты.Субконто1 КАК Справочник.Номенклатура).Базовый
 			ТОГДА УправленческийОбороты.КоличествоОборотДт
 		ИНАЧЕ УправленческийОбороты.КоличествоОборотДт * ВЫРАЗИТЬ(УправленческийОбороты.Субконто2 КАК Справочник.Номенклатура).КоэффициентБазовых
-	КОНЕЦ КАК ПриходСЦеха,
+	КОНЕЦ КАК ПриходЦех,
 	ВЫБОР
 		КОГДА ВЫРАЗИТЬ(УправленческийОбороты.Субконто1 КАК Справочник.Номенклатура).Базовый
 			ТОГДА УправленческийОбороты.КоличествоОборотКт
 		ИНАЧЕ УправленческийОбороты.КоличествоОборотКт * ВЫРАЗИТЬ(УправленческийОбороты.Субконто2 КАК Справочник.Номенклатура).КоэффициентБазовых
-	КОНЕЦ КАК РасходСЦеха
+	КОНЕЦ КАК РасходЦех,
+	УправленческийОбороты.Регистратор
 ПОМЕСТИТЬ ОборотыЦеха
 ИЗ
-	РегистрБухгалтерии.Управленческий.Обороты(&amp;НачалоПериода, &amp;КонецПериода, , Счет = &amp;ОсновноеПроизводство, , , , ) КАК УправленческийОбороты
+	РегистрБухгалтерии.Управленческий.Обороты(&amp;НачалоПериода, &amp;КонецПериода, Регистратор, Счет = &amp;ОсновноеПроизводство, , , , ) КАК УправленческийОбороты
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -133,15 +156,16 @@
 		КОГДА ВЫРАЗИТЬ(УправленческийОбороты.Субконто1 КАК Справочник.Номенклатура).Базовый
 			ТОГДА УправленческийОбороты.КоличествоОборотДт
 		ИНАЧЕ УправленческийОбороты.КоличествоОборотДт * ВЫРАЗИТЬ(УправленческийОбороты.Субконто2 КАК Справочник.Номенклатура).КоэффициентБазовых
-	КОНЕЦ КАК ПриходСклада,
+	КОНЕЦ КАК ПриходСклад,
 	ВЫБОР
 		КОГДА ВЫРАЗИТЬ(УправленческийОбороты.Субконто1 КАК Справочник.Номенклатура).Базовый
 			ТОГДА УправленческийОбороты.КоличествоОборотКт
 		ИНАЧЕ УправленческийОбороты.КоличествоОборотКт * ВЫРАЗИТЬ(УправленческийОбороты.Субконто2 КАК Справочник.Номенклатура).КоэффициентБазовых
-	КОНЕЦ КАК РасходСклада
+	КОНЕЦ КАК РасходСклад,
+	УправленческийОбороты.Регистратор
 ПОМЕСТИТЬ ОборотыСклада
 ИЗ
-	РегистрБухгалтерии.Управленческий.Обороты(&amp;НачалоПериода, &amp;КонецПериода, , Счет = &amp;МатериалыНаСкладе, , , , ) КАК УправленческийОбороты
+	РегистрБухгалтерии.Управленческий.Обороты(&amp;НачалоПериода, &amp;КонецПериода, Регистратор, Счет = &amp;МатериалыНаСкладе, , , , ) КАК УправленческийОбороты
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -151,30 +175,32 @@
 			ТОГДА ОборотыЦеха.Номенклатура
 		ИНАЧЕ ОборотыСклада.НоменклатураСклада
 	КОНЕЦ КАК Номенклатура,
-	ОборотыСклада.ПриходСклада,
-	ОборотыСклада.РасходСклада,
-	ОборотыЦеха.ПриходСЦеха,
-	ОборотыЦеха.РасходСЦеха
+	ОборотыСклада.Регистратор,
+	ОборотыЦеха.Регистратор КАК Регистратор1,
+	ОборотыСклада.ПриходСклад,
+	ОборотыСклада.РасходСклад,
+	ОборотыЦеха.ПриходЦех,
+	ОборотыЦеха.РасходЦех
 ИЗ
 	ОборотыСклада КАК ОборотыСклада
 		ПОЛНОЕ СОЕДИНЕНИЕ ОборотыЦеха КАК ОборотыЦеха
 		ПО ОборотыСклада.НоменклатураСклада = ОборотыЦеха.Номенклатура</query>
 	</dataSet>
 	<totalField>
-		<dataPath>ПриходСклада</dataPath>
-		<expression>Сумма(ПриходСклада)</expression>
+		<dataPath>ПриходСклад</dataPath>
+		<expression>Сумма(ПриходСклад)</expression>
 	</totalField>
 	<totalField>
-		<dataPath>ПриходСЦеха</dataPath>
-		<expression>Сумма(ПриходСЦеха)</expression>
+		<dataPath>ПриходЦех</dataPath>
+		<expression>Сумма(ПриходЦех)</expression>
 	</totalField>
 	<totalField>
-		<dataPath>РасходСклада</dataPath>
-		<expression>Сумма(РасходСклада)</expression>
+		<dataPath>РасходСклад</dataPath>
+		<expression>Сумма(РасходСклад)</expression>
 	</totalField>
 	<totalField>
-		<dataPath>РасходСЦеха</dataPath>
-		<expression>Сумма(РасходСЦеха)</expression>
+		<dataPath>РасходЦех</dataPath>
+		<expression>Сумма(РасходЦех)</expression>
 	</totalField>
 	<parameter>
 		<name>НачалоПериода</name>
@@ -275,16 +301,16 @@
 					<dcsset:field>Номенклатура</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>ПриходСЦеха</dcsset:field>
+					<dcsset:field>ПриходСклад</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>РасходСЦеха</dcsset:field>
+					<dcsset:field>РасходСклад</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>ПриходСклада</dcsset:field>
+					<dcsset:field>ПриходЦех</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>РасходСклада</dcsset:field>
+					<dcsset:field>РасходЦех</dcsset:field>
 				</dcsset:item>
 			</dcsset:selection>
 			<dcsset:filter>
@@ -314,6 +340,12 @@
 					<dcscor:value xsi:nil="true"/>
 				</dcscor:item>
 			</dcsset:dataParameters>
+			<dcsset:order>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>Номенклатура</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+			</dcsset:order>
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
 				<dcsset:groupItems>
 					<dcsset:item xsi:type="dcsset:GroupItemField">
@@ -328,21 +360,7 @@
 					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
 				</dcsset:order>
 				<dcsset:selection>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Номенклатура</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>ПриходСЦеха</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>РасходСЦеха</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>ПриходСклада</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>РасходСклада</dcsset:field>
-					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
 				</dcsset:selection>
 			</dcsset:item>
 		</dcsset:settings>
