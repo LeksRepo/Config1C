@@ -1,0 +1,350 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Счет</dataPath>
+			<field>Счет</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КорСчет</dataPath>
+			<field>КорСчет</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КорСубконто1</dataPath>
+			<field>КорСубконто1</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КорСубконто2</dataPath>
+			<field>КорСубконто2</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КорСубконто3</dataPath>
+			<field>КорСубконто3</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Подразделение</dataPath>
+			<field>Подразделение</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Субконто1</dataPath>
+			<field>Субконто1</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Субконто2</dataPath>
+			<field>Субконто2</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Субконто3</dataPath>
+			<field>Субконто3</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СчетКтЧтение</dataPath>
+			<field>СчетКтЧтение</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СчетДтЧтение</dataPath>
+			<field>СчетДтЧтение</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>РасходСЦеха</dataPath>
+			<field>РасходСЦеха</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Расход с цеха</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПриходСЦеха</dataPath>
+			<field>ПриходСЦеха</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Приход с цеха</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПриходСклада</dataPath>
+			<field>ПриходСклада</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Приход склада</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Номенклатура</dataPath>
+			<field>Номенклатура</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номенклатура</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>РасходСклада</dataPath>
+			<field>РасходСклада</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Расход склада</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ВЫБОР
+		КОГДА ВЫРАЗИТЬ(УправленческийОбороты.Субконто1 КАК Справочник.Номенклатура).Базовый
+			ТОГДА УправленческийОбороты.Субконто1
+		ИНАЧЕ ВЫРАЗИТЬ(УправленческийОбороты.Субконто1 КАК Справочник.Номенклатура).БазоваяНоменклатура
+	КОНЕЦ КАК Номенклатура,
+	ВЫБОР
+		КОГДА ВЫРАЗИТЬ(УправленческийОбороты.Субконто1 КАК Справочник.Номенклатура).Базовый
+			ТОГДА УправленческийОбороты.КоличествоОборотДт
+		ИНАЧЕ УправленческийОбороты.КоличествоОборотДт * ВЫРАЗИТЬ(УправленческийОбороты.Субконто2 КАК Справочник.Номенклатура).КоэффициентБазовых
+	КОНЕЦ КАК ПриходСЦеха,
+	ВЫБОР
+		КОГДА ВЫРАЗИТЬ(УправленческийОбороты.Субконто1 КАК Справочник.Номенклатура).Базовый
+			ТОГДА УправленческийОбороты.КоличествоОборотКт
+		ИНАЧЕ УправленческийОбороты.КоличествоОборотКт * ВЫРАЗИТЬ(УправленческийОбороты.Субконто2 КАК Справочник.Номенклатура).КоэффициентБазовых
+	КОНЕЦ КАК РасходСЦеха
+ПОМЕСТИТЬ ОборотыЦеха
+ИЗ
+	РегистрБухгалтерии.Управленческий.Обороты(&amp;НачалоПериода, &amp;КонецПериода, , Счет = &amp;ОсновноеПроизводство, , , , ) КАК УправленческийОбороты
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	ВЫБОР
+		КОГДА ВЫРАЗИТЬ(УправленческийОбороты.Субконто2 КАК Справочник.Номенклатура).Базовый
+			ТОГДА УправленческийОбороты.Субконто2
+		ИНАЧЕ ВЫРАЗИТЬ(УправленческийОбороты.Субконто2 КАК Справочник.Номенклатура).БазоваяНоменклатура
+	КОНЕЦ КАК НоменклатураСклада,
+	ВЫБОР
+		КОГДА ВЫРАЗИТЬ(УправленческийОбороты.Субконто1 КАК Справочник.Номенклатура).Базовый
+			ТОГДА УправленческийОбороты.КоличествоОборотДт
+		ИНАЧЕ УправленческийОбороты.КоличествоОборотДт * ВЫРАЗИТЬ(УправленческийОбороты.Субконто2 КАК Справочник.Номенклатура).КоэффициентБазовых
+	КОНЕЦ КАК ПриходСклада,
+	ВЫБОР
+		КОГДА ВЫРАЗИТЬ(УправленческийОбороты.Субконто1 КАК Справочник.Номенклатура).Базовый
+			ТОГДА УправленческийОбороты.КоличествоОборотКт
+		ИНАЧЕ УправленческийОбороты.КоличествоОборотКт * ВЫРАЗИТЬ(УправленческийОбороты.Субконто2 КАК Справочник.Номенклатура).КоэффициентБазовых
+	КОНЕЦ КАК РасходСклада
+ПОМЕСТИТЬ ОборотыСклада
+ИЗ
+	РегистрБухгалтерии.Управленческий.Обороты(&amp;НачалоПериода, &amp;КонецПериода, , Счет = &amp;МатериалыНаСкладе, , , , ) КАК УправленческийОбороты
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ВЫБОР
+		КОГДА ОборотыСклада.НоменклатураСклада ЕСТЬ NULL 
+			ТОГДА ОборотыЦеха.Номенклатура
+		ИНАЧЕ ОборотыСклада.НоменклатураСклада
+	КОНЕЦ КАК Номенклатура,
+	ОборотыСклада.ПриходСклада,
+	ОборотыСклада.РасходСклада,
+	ОборотыЦеха.ПриходСЦеха,
+	ОборотыЦеха.РасходСЦеха
+ИЗ
+	ОборотыСклада КАК ОборотыСклада
+		ПОЛНОЕ СОЕДИНЕНИЕ ОборотыЦеха КАК ОборотыЦеха
+		ПО ОборотыСклада.НоменклатураСклада = ОборотыЦеха.Номенклатура</query>
+	</dataSet>
+	<totalField>
+		<dataPath>ПриходСклада</dataPath>
+		<expression>Сумма(ПриходСклада)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ПриходСЦеха</dataPath>
+		<expression>Сумма(ПриходСЦеха)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>РасходСклада</dataPath>
+		<expression>Сумма(РасходСклада)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>РасходСЦеха</dataPath>
+		<expression>Сумма(РасходСЦеха)</expression>
+	</totalField>
+	<parameter>
+		<name>НачалоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;ПериодОтчета.ДатаНачала</expression>
+	</parameter>
+	<parameter>
+		<name>КонецПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конец периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;ПериодОтчета.ДатаОкончания</expression>
+	</parameter>
+	<parameter>
+		<name>ОсновноеПроизводство</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Основное производство</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:ChartOfAccountsRef.Управленческий</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">ПланСчетов.Управленческий.ОсновноеПроизводство</value>
+		<useRestriction>true</useRestriction>
+		<availableValue>
+			<value xsi:type="dcscor:DesignTimeValue">ПланСчетов.Управленческий.ОсновноеПроизводство</value>
+		</availableValue>
+		<denyIncompleteValues>true</denyIncompleteValues>
+	</parameter>
+	<parameter>
+		<name>ПериодОтчета</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период отчета</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>МатериалыНаСкладе</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Материалы на складе</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:ChartOfAccountsRef.Управленческий</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">ПланСчетов.Управленческий.МатериалыНаСкладе</value>
+		<useRestriction>true</useRestriction>
+		<availableValue>
+			<value xsi:type="dcscor:DesignTimeValue">ПланСчетов.Управленческий.МатериалыНаСкладе</value>
+		</availableValue>
+		<denyIncompleteValues>true</denyIncompleteValues>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Номенклатура</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ПриходСЦеха</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>РасходСЦеха</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ПриходСклада</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>РасходСклада</dcsset:field>
+				</dcsset:item>
+			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
+					<dcsset:left xsi:type="dcscor:Field">Подразделение</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:userSettingID>0b124911-a681-43b2-a39c-4bbed1543f0a</dcsset:userSettingID>
+				</dcsset:item>
+			</dcsset:filter>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>ОсновноеПроизводство</dcscor:parameter>
+					<dcscor:value xsi:nil="true"/>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ПериодОтчета</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
+					</dcscor:value>
+					<dcsset:userSettingID>099adfed-192f-4456-9d5d-05469b24e66a</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>МатериалыНаСкладе</dcscor:parameter>
+					<dcscor:value xsi:nil="true"/>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Номенклатура</dcsset:field>
+						<dcsset:groupType>Hierarchy</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Номенклатура</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ПриходСЦеха</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>РасходСЦеха</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ПриходСклада</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>РасходСклада</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>
