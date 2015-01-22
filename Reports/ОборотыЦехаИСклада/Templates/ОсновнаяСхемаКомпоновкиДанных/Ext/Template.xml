@@ -51,30 +51,6 @@
 			<field>СчетДтЧтение</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Номенклатура</dataPath>
-			<field>Номенклатура</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Номенклатура</v8:content>
-				</v8:item>
-			</title>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>Регистратор1</dataPath>
-			<field>Регистратор1</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Регистратор1</v8:content>
-				</v8:item>
-			</title>
-			<role>
-				<dcscom:periodNumber>2</dcscom:periodNumber>
-				<dcscom:periodType>Main</dcscom:periodType>
-			</role>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>Регистратор</dataPath>
 			<field>Регистратор</field>
 			<role>
@@ -91,6 +67,12 @@
 					<v8:content>Расход цех</v8:content>
 				</v8:item>
 			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧДЦ=</dcscor:value>
+				</dcscor:item>
+			</appearance>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>ПриходЦех</dataPath>
@@ -101,6 +83,12 @@
 					<v8:content>Приход цех</v8:content>
 				</v8:item>
 			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧДЦ=</dcscor:value>
+				</dcscor:item>
+			</appearance>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>РасходСклад</dataPath>
@@ -111,6 +99,12 @@
 					<v8:content>Расход склад</v8:content>
 				</v8:item>
 			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧДЦ=</dcscor:value>
+				</dcscor:item>
+			</appearance>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>ПриходСклад</dataPath>
@@ -121,24 +115,32 @@
 					<v8:content>Приход склад</v8:content>
 				</v8:item>
 			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧДЦ=</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Номенклатура</dataPath>
+			<field>Номенклатура</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номенклатура</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+				<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
+			</role>
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
-	ВЫБОР
-		КОГДА ВЫРАЗИТЬ(УправленческийОбороты.Субконто1 КАК Справочник.Номенклатура).Базовый
-			ТОГДА УправленческийОбороты.Субконто1
-		ИНАЧЕ ВЫРАЗИТЬ(УправленческийОбороты.Субконто1 КАК Справочник.Номенклатура).БазоваяНоменклатура
-	КОНЕЦ КАК Номенклатура,
-	ВЫБОР
-		КОГДА ВЫРАЗИТЬ(УправленческийОбороты.Субконто1 КАК Справочник.Номенклатура).Базовый
-			ТОГДА УправленческийОбороты.КоличествоОборотДт
-		ИНАЧЕ УправленческийОбороты.КоличествоОборотДт * ВЫРАЗИТЬ(УправленческийОбороты.Субконто2 КАК Справочник.Номенклатура).КоэффициентБазовых
-	КОНЕЦ КАК ПриходЦех,
-	ВЫБОР
-		КОГДА ВЫРАЗИТЬ(УправленческийОбороты.Субконто1 КАК Справочник.Номенклатура).Базовый
-			ТОГДА УправленческийОбороты.КоличествоОборотКт
-		ИНАЧЕ УправленческийОбороты.КоличествоОборотКт * ВЫРАЗИТЬ(УправленческийОбороты.Субконто2 КАК Справочник.Номенклатура).КоэффициентБазовых
-	КОНЕЦ КАК РасходЦех,
+	УправленческийОбороты.Субконто1 КАК Номенклатура,
+	УправленческийОбороты.КоличествоОборотДт КАК ПриходЦех,
+	УправленческийОбороты.КоличествоОборотКт КАК РасходЦех,
 	УправленческийОбороты.Регистратор
 ПОМЕСТИТЬ ОборотыЦеха
 ИЗ
@@ -170,21 +172,26 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 ВЫБРАТЬ
-	ВЫБОР
-		КОГДА ОборотыСклада.НоменклатураСклада ЕСТЬ NULL 
-			ТОГДА ОборотыЦеха.Номенклатура
-		ИНАЧЕ ОборотыСклада.НоменклатураСклада
-	КОНЕЦ КАК Номенклатура,
 	ОборотыСклада.Регистратор,
-	ОборотыЦеха.Регистратор КАК Регистратор1,
 	ОборотыСклада.ПриходСклад,
 	ОборотыСклада.РасходСклад,
+	ОборотыСклада.НоменклатураСклада КАК Номенклатура,
+	NULL КАК ПриходЦех,
+	NULL КАК РасходЦех
+ИЗ
+	ОборотыСклада КАК ОборотыСклада
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ОборотыЦеха.Регистратор,
+	NULL,
+	NULL,
+	ОборотыЦеха.Номенклатура,
 	ОборотыЦеха.ПриходЦех,
 	ОборотыЦеха.РасходЦех
 ИЗ
-	ОборотыСклада КАК ОборотыСклада
-		ПОЛНОЕ СОЕДИНЕНИЕ ОборотыЦеха КАК ОборотыЦеха
-		ПО ОборотыСклада.НоменклатураСклада = ОборотыЦеха.Номенклатура</query>
+	ОборотыЦеха КАК ОборотыЦеха</query>
 	</dataSet>
 	<totalField>
 		<dataPath>ПриходСклад</dataPath>
