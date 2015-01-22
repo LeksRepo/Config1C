@@ -173,7 +173,7 @@
 ПОМЕСТИТЬ Список
 ИЗ
 	Справочник.Номенклатура КАК спрНоменклатура
-		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ЦеныНоменклатуры.СрезПоследних(, Регион = &amp;Регион) КАК ЦеныНоменклатурыСрезПоследних
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ЦеныНоменклатурыПоПодразделениям.СрезПоследних(, Подразделение = &amp;Подразделение) КАК ЦеныНоменклатурыСрезПоследних
 		ПО (ЦеныНоменклатурыСрезПоследних.Номенклатура = спрНоменклатура.Ссылка)
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.НоменклатураПодразделений КАК НоменклатураПодразделений
 		ПО (НоменклатураПодразделений.Номенклатура = спрНоменклатура.Ссылка)
@@ -296,6 +296,21 @@
 			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Регионы</v8:Type>
 		</valueType>
 		<value xsi:type="dcscor:DesignTimeValue">Справочник.Регионы.ПустаяСсылка</value>
+		<useRestriction>true</useRestriction>
+		<use>Always</use>
+	</parameter>
+	<parameter>
+		<name>Подразделение</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Подразделение</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Подразделения</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">Справочник.Подразделения.ПустаяСсылка</value>
 		<useRestriction>false</useRestriction>
 		<use>Always</use>
 	</parameter>
@@ -391,7 +406,12 @@
 					<dcscor:use>false</dcscor:use>
 					<dcscor:parameter>Регион</dcscor:parameter>
 					<dcscor:value xsi:type="dcscor:DesignTimeValue">Справочник.Регионы.ПустаяСсылка</dcscor:value>
-					<dcsset:userSettingID>3a3e7629-1722-46dc-8c55-26e3d0c43dcc</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>Подразделение</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DesignTimeValue">Справочник.Подразделения.ПустаяСсылка</dcscor:value>
+					<dcsset:userSettingID>3704bd46-8b12-477c-9b4a-fa2447a00f46</dcsset:userSettingID>
 				</dcscor:item>
 			</dcsset:dataParameters>
 			<dcsset:order>
