@@ -212,7 +212,7 @@
 				Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.МатериалыНаСкладе),
 				,
 				Субконто1.ОсновнойСклад = ИСТИНА
-					И Субконто1.Регион = &amp;Регион) КАК ОстаткиНаСкладе
+					И Субконто1.Подразделение = &amp;Подразделение) КАК ОстаткиНаСкладе
 		ПО (Список.Номенклатура = ВЫБОР
 				КОГДА ОстаткиНаСкладе.Субконто2.Базовый
 					ТОГДА ОстаткиНаСкладе.Субконто2.Ссылка
@@ -223,7 +223,7 @@
 				Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.РезервныйЗапасМатериалов),
 				,
 				Субконто1.ОсновнойСклад = ИСТИНА
-					И Субконто1.Регион = &amp;Регион) КАК ОстаткиРезерв
+					И Субконто1.Подразделение = &amp;Подразделение) КАК ОстаткиРезерв
 		ПО (Список.Номенклатура = ВЫБОР
 				КОГДА ОстаткиРезерв.Субконто2.Базовый
 					ТОГДА ОстаткиРезерв.Субконто2.Ссылка
@@ -283,21 +283,6 @@
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 		<useRestriction>false</useRestriction>
 		<availableAsField>false</availableAsField>
-	</parameter>
-	<parameter>
-		<name>Регион</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Регион</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Регионы</v8:Type>
-		</valueType>
-		<value xsi:type="dcscor:DesignTimeValue">Справочник.Регионы.ПустаяСсылка</value>
-		<useRestriction>true</useRestriction>
-		<use>Always</use>
 	</parameter>
 	<parameter>
 		<name>Подразделение</name>
@@ -402,11 +387,6 @@
 				</dcsset:item>
 			</dcsset:filter>
 			<dcsset:dataParameters>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:use>false</dcscor:use>
-					<dcscor:parameter>Регион</dcscor:parameter>
-					<dcscor:value xsi:type="dcscor:DesignTimeValue">Справочник.Регионы.ПустаяСсылка</dcscor:value>
-				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:use>false</dcscor:use>
 					<dcscor:parameter>Подразделение</dcscor:parameter>
