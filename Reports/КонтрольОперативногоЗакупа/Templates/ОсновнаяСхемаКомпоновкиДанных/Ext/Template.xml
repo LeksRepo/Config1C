@@ -90,10 +90,9 @@
 ПОМЕСТИТЬ втЗакупки
 ИЗ
 	Документ.АвансовыйОтчет.СписокНоменклатуры КАК АвансовыйОтчетСписокНоменклатуры
-ГДЕ
-	АвансовыйОтчетСписокНоменклатуры.Ссылка.Склад.Регион = &amp;Регион
 {ГДЕ
-	АвансовыйОтчетСписокНоменклатуры.Ссылка.Дата МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода}
+	(АвансовыйОтчетСписокНоменклатуры.Ссылка.Склад.Подразделение = &amp;Подразделение),
+	(АвансовыйОтчетСписокНоменклатуры.Ссылка.Дата МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода)}
 
 ИНДЕКСИРОВАТЬ ПО
 	Номенклатура
@@ -109,7 +108,7 @@
 	втЗакупки.Количество * ЕСТЬNULL(ЦеныНоменклатурыСрезПоследних.ПлановаяЗакупочная, 0) КАК СуммаПлан
 ИЗ
 	втЗакупки КАК втЗакупки
-		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ЦеныНоменклатуры.СрезПоследних(, Регион = &amp;Регион) КАК ЦеныНоменклатурыСрезПоследних
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ЦеныНоменклатурыПоПодразделениям.СрезПоследних(, {(Подразделение = &amp;Подразделение)}) КАК ЦеныНоменклатурыСрезПоследних
 		ПО втЗакупки.Номенклатура = ЦеныНоменклатурыСрезПоследних.Номенклатура</query>
 	</dataSet>
 	<calculatedField>
@@ -181,21 +180,6 @@
 		<useRestriction>false</useRestriction>
 	</parameter>
 	<parameter>
-		<name>Регион</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Регион</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Регионы</v8:Type>
-		</valueType>
-		<value xsi:nil="true"/>
-		<useRestriction>false</useRestriction>
-		<use>Always</use>
-	</parameter>
-	<parameter>
 		<name>КонецПериода</name>
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
@@ -231,6 +215,21 @@
 		<useRestriction>true</useRestriction>
 		<expression>&amp;ПериодОтчета.ДатаНачала</expression>
 	</parameter>
+	<parameter>
+		<name>Подразделение</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Подразделение</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Подразделения</v8:Type>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>false</useRestriction>
+		<denyIncompleteValues>true</denyIncompleteValues>
+	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
 		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
@@ -258,7 +257,7 @@
 					<dcsset:userSettingID>2caba6a3-d9a0-4dc6-bd32-230b5eb9344b</dcsset:userSettingID>
 				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>Регион</dcscor:parameter>
+					<dcscor:parameter>Подразделение</dcscor:parameter>
 					<dcscor:value xsi:nil="true"/>
 					<dcsset:userSettingID>1eb894c0-fd8e-4c76-a35a-5ea4244f2d83</dcsset:userSettingID>
 				</dcscor:item>
