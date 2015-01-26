@@ -242,7 +242,7 @@
 			,
 			Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ОсновноеПроизводство),
 			,
-			Подразделение.Регион = &amp;Регион
+			Подразделение = &amp;Подразделение
 				И Субконто1.МатериалЗаказчика = ЛОЖЬ,
 			КорСчет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.МатериалыНаСкладе),
 			) КАК ОсновноеПроизводство
@@ -252,7 +252,7 @@
 				,
 				Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ДополнительныйЛимитЦеха),
 				,
-				Подразделение.Регион = &amp;Регион
+				Подразделение = &amp;Подразделение
 					И Субконто1.МатериалЗаказчика = ЛОЖЬ,
 				,
 				) КАК ДополнительныйЛимит
@@ -278,7 +278,7 @@
 	ЦеныНоменклатурыСрезПоследних.ПлановаяЗакупочная
 ИЗ
 	втМатериалы КАК втМатериалы
-		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ЦеныНоменклатуры.СрезПоследних({(&amp;НеТрогатьНикогда)}, Регион = &amp;Регион) КАК ЦеныНоменклатурыСрезПоследних
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ЦеныНоменклатурыПоПодразделениям.СрезПоследних({(&amp;НеТрогатьНикогда)}, Подразделение = &amp;Подразделение) КАК ЦеныНоменклатурыСрезПоследних
 		ПО втМатериалы.Номенклатура = ЦеныНоменклатурыСрезПоследних.Номенклатура
 ГДЕ
 	втМатериалы.Номенклатура.МестоОбработки = ЗНАЧЕНИЕ(Перечисление.МестоОбработки.Цех)
@@ -324,22 +324,6 @@
 		<dataPath>ПлановаяЗакупочная</dataPath>
 		<expression>Минимум(ПлановаяЗакупочная)</expression>
 	</totalField>
-	<parameter>
-		<name>Регион</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Регион</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Регионы</v8:Type>
-		</valueType>
-		<value xsi:nil="true"/>
-		<useRestriction>false</useRestriction>
-		<denyIncompleteValues>true</denyIncompleteValues>
-		<use>Always</use>
-	</parameter>
 	<parameter>
 		<name>Период</name>
 		<title xsi:type="v8:LocalStringType">
@@ -411,6 +395,21 @@
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 		<useRestriction>true</useRestriction>
 	</parameter>
+	<parameter>
+		<name>Подразделение</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Подразделение</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Подразделения</v8:Type>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>false</useRestriction>
+		<denyIncompleteValues>true</denyIncompleteValues>
+	</parameter>
 	<settingsVariant>
 		<dcsset:name>ВПлановыхЦенах</dcsset:name>
 		<dcsset:presentation xsi:type="v8:LocalStringType">
@@ -463,12 +462,6 @@
 			</dcsset:selection>
 			<dcsset:dataParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:use>false</dcscor:use>
-					<dcscor:parameter>Регион</dcscor:parameter>
-					<dcscor:value xsi:nil="true"/>
-					<dcsset:userSettingID>305b6237-40c4-40ec-bf10-b5d88c6d25a5</dcsset:userSettingID>
-				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>Период</dcscor:parameter>
 					<dcscor:value xsi:type="v8:StandardPeriod">
 						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
@@ -492,6 +485,11 @@
 						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
 					</dcscor:value>
 					<dcsset:userSettingID>f23da4aa-970e-4c32-a6ee-f21da89b9ed2</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Подразделение</dcscor:parameter>
+					<dcscor:value xsi:nil="true"/>
+					<dcsset:userSettingID>305b6237-40c4-40ec-bf10-b5d88c6d25a5</dcsset:userSettingID>
 				</dcscor:item>
 			</dcsset:dataParameters>
 			<dcsset:order>
