@@ -1,33 +1,32 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Плановый лимит</v8:content>
+		</v8:item>
+	</Title>
 	<Width>120</Width>
+	<AutoTitle>false</AutoTitle>
+	<ChildItemsWidth>Equal</ChildItemsWidth>
 	<AutoTime>CurrentOrLast</AutoTime>
 	<UsePostingMode>Auto</UsePostingMode>
 	<RepostOnWrite>true</RepostOnWrite>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<ChildItems>
-		<UsualGroup name="ПериодаИПодразделение" id="40">
+		<LabelField name="Номер" id="49">
+			<DataPath>Объект.Number</DataPath>
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Периода и подразделение</v8:content>
+					<v8:content>Номер документа</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Периода и подразделение</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Width>79</Width>
-			<HorizontalStretch>false</HorizontalStretch>
-			<Group>Horizontal</Group>
-			<Representation>StrongSeparation</Representation>
-			<ChildItemsWidth>Equal</ChildItemsWidth>
-			<ShowTitle>false</ShowTitle>
-			<BackColor>style:ButtonBackColor</BackColor>
-			<ExtendedTooltip name="ПериодаИПодразделениеРасширеннаяПодсказка" id="41"/>
-		</UsualGroup>
+			<TitleFont ref="sys:DefaultGUIFont" kind="WindowsFont"/>
+			<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+			<ContextMenu name="НомерКонтекстноеМеню" id="50"/>
+			<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="51"/>
+		</LabelField>
 		<UsualGroup name="ТаблицаИДиаграмма" id="38">
 			<Title>
 				<v8:item>
@@ -58,10 +57,13 @@
 							<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 							<Width>23</Width>
 							<HorizontalStretch>false</HorizontalStretch>
+							<OpenButton>false</OpenButton>
+							<QuickChoice>true</QuickChoice>
 							<ContextMenu name="ПодразделениеКонтекстноеМеню" id="2"/>
 							<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="3"/>
 							<Events>
 								<Event name="OnChange">ПодразделениеПриИзменении</Event>
+								<Event name="StartChoice">ПодразделениеНачалоВыбора</Event>
 								<Event name="ChoiceProcessing">ПодразделениеОбработкаВыбора</Event>
 							</Events>
 						</InputField>
@@ -80,6 +82,7 @@
 							<ExtendedTooltip name="ПериодРасширеннаяПодсказка" id="6"/>
 							<Events>
 								<Event name="OnChange">ПериодПриИзменении</Event>
+								<Event name="StartChoice">ПериодНачалоВыбора</Event>
 								<Event name="ChoiceProcessing">ПериодОбработкаВыбора</Event>
 							</Events>
 						</InputField>
@@ -94,7 +97,10 @@
 							<ExtendedTooltip name="ЗаполнитьРасширеннаяПодсказка" id="43"/>
 						</Button>
 						<Table name="ТаблицаДней" id="7">
+							<ChangeRowSet>false</ChangeRowSet>
+							<ChangeRowOrder>false</ChangeRowOrder>
 							<Width>37</Width>
+							<SelectionMode>SingleRow</SelectionMode>
 							<AutoInsertNewRow>true</AutoInsertNewRow>
 							<HorizontalStretch>false</HorizontalStretch>
 							<DataPath>Объект.ТаблицаДней</DataPath>
@@ -192,6 +198,13 @@
 				</ChartField>
 			</ChildItems>
 		</UsualGroup>
+		<InputField name="Комментарий" id="52">
+			<DataPath>Объект.Комментарий</DataPath>
+			<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+			<HorizontalStretch>true</HorizontalStretch>
+			<ContextMenu name="КомментарийКонтекстноеМеню" id="53"/>
+			<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="54"/>
+		</InputField>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Объект" id="1">
@@ -233,9 +246,14 @@
 				</dcsset:selection>
 				<dcsset:filter>
 					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">Объект.ТаблицаДней.Выходной</dcsset:left>
+						<dcsset:left xsi:type="dcscor:Field">Объект.ТаблицаДней.Норматив</dcsset:left>
 						<dcsset:comparisonType>Equal</dcsset:comparisonType>
-						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+						<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.ТаблицаДней.КоличествоКоробов</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
 					</dcsset:item>
 				</dcsset:filter>
 				<dcsset:appearance>
