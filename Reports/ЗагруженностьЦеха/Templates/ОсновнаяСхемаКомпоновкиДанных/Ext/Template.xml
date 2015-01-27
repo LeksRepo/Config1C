@@ -7,58 +7,8 @@
 	<dataSet xsi:type="DataSetQuery">
 		<name>НаборДанных1</name>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Счет</dataPath>
-			<field>Счет</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>КорСчет</dataPath>
-			<field>КорСчет</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>КорСубконто1</dataPath>
-			<field>КорСубконто1</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>КорСубконто2</dataPath>
-			<field>КорСубконто2</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>КорСубконто3</dataPath>
-			<field>КорСубконто3</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>Субконто1</dataPath>
-			<field>Субконто1</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>Субконто2</dataPath>
-			<field>Субконто2</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>Субконто3</dataPath>
-			<field>Субконто3</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>Подразделение</dataPath>
 			<field>Подразделение</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>СчетДтЧтение</dataPath>
-			<field>СчетДтЧтение</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>СчетКтЧтение</dataPath>
-			<field>СчетКтЧтение</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>СуммаДетали</dataPath>
-			<field>СуммаДетали</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Детали</v8:content>
-				</v8:item>
-			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Дата</dataPath>
@@ -81,16 +31,6 @@
 			</appearance>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>СуммаВсего</dataPath>
-			<field>СуммаВсего</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Всего</v8:content>
-				</v8:item>
-			</title>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>Норматив</dataPath>
 			<field>Норматив</field>
 			<title xsi:type="v8:LocalStringType">
@@ -100,46 +40,31 @@
 				</v8:item>
 			</title>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаВсего</dataPath>
+			<field>СуммаВсего</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма всего</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	ЦеховойЛимит.Период КАК Дата,
 	ЦеховойЛимит.СтоимостьУслугОборот КАК Норматив,
-	СУММА(ВЫБОР
-			КОГДА УправленческийОбороты.Субконто1 = ЗНАЧЕНИЕ(Перечисление.ВидыПоказателейПодразделений.СуммаДетали)
-				ТОГДА УправленческийОбороты.СуммаОборот
-			ИНАЧЕ 0
-		КОНЕЦ) КАК СуммаДетали,
-	СУММА(УправленческийОбороты.СуммаОборот) КАК СуммаВсего
+	ЦеховойЛимит.СтоимостьУслугФактОборот КАК СуммаВсего
 ИЗ
-	РегистрНакопления.ЦеховойЛимит.Обороты(&amp;НачалоПериода, &amp;КонецПериода, День, Подразделение = &amp;Подразделение) КАК ЦеховойЛимит
-		ЛЕВОЕ СОЕДИНЕНИЕ РегистрБухгалтерии.Управленческий.Обороты(
-				&amp;НачалоПериода,
-				&amp;КонецПериода,
-				День,
-				Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ПоказателиПодразделения),
-				,
-				Подразделение = &amp;Подразделение
-					И Субконто1 = ЗНАЧЕНИЕ(Перечисление.ВидыПоказателейПодразделений.СуммаДетали),
-				,
-				) КАК УправленческийОбороты
-		ПО (УправленческийОбороты.Период = ЦеховойЛимит.Период)
-			И (УправленческийОбороты.Подразделение = ЦеховойЛимит.Подразделение)
-
-СГРУППИРОВАТЬ ПО
-	ЦеховойЛимит.Период,
-	ЦеховойЛимит.СтоимостьУслугОборот</query>
+	РегистрНакопления.ЦеховойЛимит.Обороты(&amp;НачалоПериода, &amp;КонецПериода, День, Подразделение = &amp;Подразделение) КАК ЦеховойЛимит</query>
 	</dataSet>
 	<totalField>
-		<dataPath>СуммаДетали</dataPath>
-		<expression>Сумма(СуммаДетали)</expression>
+		<dataPath>Норматив</dataPath>
+		<expression>Сумма(Норматив)</expression>
 	</totalField>
 	<totalField>
 		<dataPath>СуммаВсего</dataPath>
 		<expression>Сумма(СуммаВсего)</expression>
-	</totalField>
-	<totalField>
-		<dataPath>Норматив</dataPath>
-		<expression>Сумма(Норматив)</expression>
 	</totalField>
 	<parameter>
 		<name>ПериодОтчета</name>
@@ -218,10 +143,13 @@
 					<dcsset:field>Норматив</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>СуммаДетали</dcsset:field>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>СуммаВсего</dcsset:field>
+					<dcsset:lwsTitle>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Услуги</v8:content>
+						</v8:item>
+					</dcsset:lwsTitle>
 				</dcsset:item>
 			</dcsset:selection>
 			<dcsset:dataParameters>
@@ -286,9 +214,8 @@
 				</dcsset:selection>
 				<dcsset:outputParameters>
 					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:use>false</dcscor:use>
 						<dcscor:parameter>ТипДиаграммы</dcscor:parameter>
-						<dcscor:value xsi:type="v8ui:ChartType">Column3D</dcscor:value>
+						<dcscor:value xsi:type="v8ui:ChartType">Line</dcscor:value>
 						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 							<dcscor:use>false</dcscor:use>
 							<dcscor:parameter>ТипДиаграммы.ОтображатьТаблицуДанных</dcscor:parameter>
