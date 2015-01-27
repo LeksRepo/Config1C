@@ -14,19 +14,6 @@
 	<RepostOnWrite>true</RepostOnWrite>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<ChildItems>
-		<LabelField name="Номер" id="49">
-			<DataPath>Объект.Number</DataPath>
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Номер документа</v8:content>
-				</v8:item>
-			</Title>
-			<TitleFont ref="sys:DefaultGUIFont" kind="WindowsFont"/>
-			<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
-			<ContextMenu name="НомерКонтекстноеМеню" id="50"/>
-			<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="51"/>
-		</LabelField>
 		<UsualGroup name="ТаблицаИДиаграмма" id="38">
 			<Title>
 				<v8:item>
@@ -52,6 +39,22 @@
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="48"/>
 					<ChildItems>
+						<InputField name="Номер" id="49">
+							<DataPath>Объект.Number</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Номер документа</v8:content>
+								</v8:item>
+							</Title>
+							<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							<Width>23</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Font ref="sys:DefaultGUIFont" kind="WindowsFont"/>
+							<ContextMenu name="НомерКонтекстноеМеню" id="50"/>
+							<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="51"/>
+						</InputField>
 						<InputField name="Подразделение" id="1">
 							<DataPath>Объект.Подразделение</DataPath>
 							<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
@@ -68,7 +71,13 @@
 							</Events>
 						</InputField>
 						<InputField name="Период" id="4">
-							<DataPath>Объект.Период</DataPath>
+							<DataPath>Объект.Date</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Период</v8:content>
+								</v8:item>
+							</Title>
 							<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 							<Width>23</Width>
 							<HorizontalStretch>false</HorizontalStretch>
