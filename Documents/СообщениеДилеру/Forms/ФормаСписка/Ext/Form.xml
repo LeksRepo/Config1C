@@ -113,7 +113,12 @@
 			</Type>
 			<MainAttribute>true</MainAttribute>
 			<UseAlways>
+				<Field>Список.Тема</Field>
+				<Field>Список.Сорт</Field>
+				<Field>Список.Номер</Field>
+				<Field>Список.Дилер</Field>
 				<Field>Список.Ref</Field>
+				<Field>Список.Date</Field>
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
@@ -129,7 +134,7 @@
 		ИНАЧЕ ОзнакомленСообщенияДилеру.Дилер
 	КОНЕЦ КАК Дилер,
 	ВЫБОР
-		КОГДА Дилер IS NULL ТОГДА
+		КОГДА (Дилер IS NULL) И (НЕ &amp;Дилер = ЛОЖЬ) ТОГДА
 			  0
 		ИНАЧЕ 1
 	КОНЕЦ КАК Сорт 
@@ -157,7 +162,7 @@
 							<dcsset:orderType>Desc</dcsset:orderType>
 						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:OrderItemField">
-							<dcsset:field>Номер</dcsset:field>
+							<dcsset:field>Дата</dcsset:field>
 							<dcsset:orderType>Asc</dcsset:orderType>
 						</dcsset:item>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
@@ -165,11 +170,22 @@
 					</dcsset:order>
 					<dcsset:conditionalAppearance>
 						<dcsset:item>
-							<dcsset:selection/>
+							<dcsset:selection>
+								<dcsset:item>
+									<dcsset:field>Дата</dcsset:field>
+								</dcsset:item>
+								<dcsset:item>
+									<dcsset:field>Номер</dcsset:field>
+								</dcsset:item>
+								<dcsset:item>
+									<dcsset:field>Тема</dcsset:field>
+								</dcsset:item>
+							</dcsset:selection>
 							<dcsset:filter>
 								<dcsset:item xsi:type="dcsset:FilterItemComparison">
-									<dcsset:left xsi:type="dcscor:Field">Дилер</dcsset:left>
-									<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+									<dcsset:left xsi:type="dcscor:Field">Сорт</dcsset:left>
+									<dcsset:comparisonType>Equal</dcsset:comparisonType>
+									<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
 								</dcsset:item>
 							</dcsset:filter>
 							<dcsset:appearance>
