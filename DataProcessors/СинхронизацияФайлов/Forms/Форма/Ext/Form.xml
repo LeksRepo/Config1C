@@ -80,7 +80,6 @@
 			<Events>
 				<Event name="BeforeAddRow">ВидимаяТаблицаПередНачаломДобавления</Event>
 				<Event name="BeforeDeleteRow">ВидимаяТаблицаПередУдалением</Event>
-				<Event name="OnChange">ВидимаяТаблицаПриИзменении</Event>
 			</Events>
 			<ChildItems>
 				<CheckBoxField name="ВидимаяТаблицаОбновить" id="90">
@@ -97,12 +96,12 @@
 					<ExtendedTooltip name="ВидимаяТаблицаОбновитьРасширеннаяПодсказка" id="92"/>
 				</CheckBoxField>
 				<InputField name="ВидимаяТаблицаИмя" id="93">
-					<DataPath>ВидимаяТаблица.Имя</DataPath>
+					<DataPath>ВидимаяТаблица.Группа</DataPath>
 					<ReadOnly>true</ReadOnly>
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Тип</v8:content>
+							<v8:content>Группа</v8:content>
 						</v8:item>
 					</Title>
 					<EditMode>EnterOnInput</EditMode>
@@ -480,11 +479,23 @@
 						</v8:item>
 					</Title>
 					<Type>
-						<v8:Type>xs:string</v8:Type>
-						<v8:StringQualifiers>
-							<v8:Length>0</v8:Length>
-							<v8:AllowedLength>Variable</v8:AllowedLength>
-						</v8:StringQualifiers>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>0</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Группа" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Номенклатура</v8:Type>
 					</Type>
 				</Column>
 			</Columns>
@@ -543,14 +554,15 @@
 						<v8:Type>xs:boolean</v8:Type>
 					</Type>
 				</Column>
-				<Column name="Имя" id="2">
+				<Column name="Группа" id="2">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Имя</v8:content>
+							<v8:content>Группа</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
+						<v8:Type>cfg:CatalogRef.Номенклатура</v8:Type>
 						<v8:Type>xs:string</v8:Type>
 						<v8:StringQualifiers>
 							<v8:Length>0</v8:Length>
@@ -585,7 +597,7 @@
 						<v8:Type>xs:decimal</v8:Type>
 						<v8:NumberQualifiers>
 							<v8:Digits>6</v8:Digits>
-							<v8:FractionDigits>1</v8:FractionDigits>
+							<v8:FractionDigits>2</v8:FractionDigits>
 							<v8:AllowedSign>Any</v8:AllowedSign>
 						</v8:NumberQualifiers>
 					</Type>
@@ -598,11 +610,12 @@
 						</v8:item>
 					</Title>
 					<Type>
-						<v8:Type>xs:string</v8:Type>
-						<v8:StringQualifiers>
-							<v8:Length>0</v8:Length>
-							<v8:AllowedLength>Variable</v8:AllowedLength>
-						</v8:StringQualifiers>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>0</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
 					</Type>
 				</Column>
 			</Columns>
