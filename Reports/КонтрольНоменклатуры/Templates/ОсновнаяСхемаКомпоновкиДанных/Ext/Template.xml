@@ -152,6 +152,16 @@
 				</v8:item>
 			</title>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ОстатокНаСкладе</dataPath>
+			<field>ОстатокНаСкладе</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Остаток на складе</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	спрНоменклатура.Ссылка КАК Номенклатура,
@@ -217,7 +227,8 @@
 		ИНАЧЕ 100
 	КОНЕЦ КАК Наценка,
 	Список.Поставщик,
-	Список.ЦенаПоставщиков КАК ЦенаПоставщика
+	Список.ЦенаПоставщиков КАК ЦенаПоставщика,
+	ОстаткиНаСкладе.Количество КАК ОстатокНаСкладе
 ИЗ
 	Список КАК Список
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрБухгалтерии.Управленческий.Остатки(
@@ -240,23 +251,27 @@
 	</totalField>
 	<totalField>
 		<dataPath>Наценка</dataPath>
-		<expression>Среднее(Наценка)</expression>
+		<expression>Сумма(Наценка)</expression>
 	</totalField>
 	<totalField>
 		<dataPath>ПлановаяЗакупочная</dataPath>
-		<expression>Среднее(ПлановаяЗакупочная)</expression>
+		<expression>Сумма(ПлановаяЗакупочная)</expression>
 	</totalField>
 	<totalField>
 		<dataPath>Розничная</dataPath>
-		<expression>Среднее(Розничная)</expression>
+		<expression>Сумма(Розничная)</expression>
 	</totalField>
 	<totalField>
 		<dataPath>Себестоимость</dataPath>
-		<expression>Среднее(Себестоимость)</expression>
+		<expression>Сумма(Себестоимость)</expression>
 	</totalField>
 	<totalField>
 		<dataPath>ЦенаПоставщика</dataPath>
 		<expression>Сумма(ЦенаПоставщика)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ОстатокНаСкладе</dataPath>
+		<expression>Сумма(ОстатокНаСкладе)</expression>
 	</totalField>
 	<parameter>
 		<name>Период</name>
@@ -431,7 +446,7 @@
 							<dcsset:field>Себестоимость</dcsset:field>
 						</dcsset:item>
 						<dcsset:item>
-							<dcsset:field>ЦенаПоставщиков</dcsset:field>
+							<dcsset:field>ЦенаПоставщика</dcsset:field>
 						</dcsset:item>
 					</dcsset:selection>
 					<dcsset:filter>
@@ -495,7 +510,7 @@
 							<dcsset:field>Себестоимость</dcsset:field>
 						</dcsset:item>
 						<dcsset:item>
-							<dcsset:field>ЦенаПоставщиков</dcsset:field>
+							<dcsset:field>ЦенаПоставщика</dcsset:field>
 						</dcsset:item>
 					</dcsset:selection>
 					<dcsset:filter>
