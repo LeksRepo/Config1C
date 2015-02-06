@@ -76,6 +76,9 @@
 			<EnableStartDrag>true</EnableStartDrag>
 			<DataPath>Список</DataPath>
 			<RowPictureDataPath>Список.DefaultPicture</RowPictureDataPath>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
 			<AutoRefresh>false</AutoRefresh>
 			<AutoRefreshPeriod>60</AutoRefreshPeriod>
 			<Period>
@@ -92,29 +95,29 @@
 			<ContextMenu name="СписокКонтекстноеМеню" id="45"/>
 			<AutoCommandBar name="СписокКоманднаяПанель" id="46"/>
 			<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="47"/>
-			<SearchStringAddition name="СписокСтрокаПоиска" id="48">
+			<SearchStringAddition name="СписокСтрокаПоиска" id="93">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="51"/>
-				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="52"/>
+				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="94"/>
+				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="95"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокСостояниеПросмотра" id="53">
+			<ViewStatusAddition name="СписокСостояниеПросмотра" id="96">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="56"/>
-				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="57"/>
+				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="97"/>
+				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="98"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокУправлениеПоиском" id="58">
+			<SearchControlAddition name="СписокУправлениеПоиском" id="99">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="61"/>
-				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="62"/>
+				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="100"/>
+				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="101"/>
 			</SearchControlAddition>
 			<Events>
 				<Event name="Selection">СписокВыбор</Event>
@@ -202,7 +205,7 @@
 			<MainAttribute>true</MainAttribute>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
-				<DynamicDataRead>true</DynamicDataRead>
+				<DynamicDataRead>false</DynamicDataRead>
 				<QueryText>ВЫБРАТЬ
 	СпрНоменклатура.Ссылка КАК Номенклатура,
 	СпрНоменклатура.НоменклатурнаяГруппа КАК НоменклатурнаяГруппа,
@@ -222,17 +225,16 @@
 		ПО (РегистрСведенийНоменклатураПодразделений.Подразделение = &amp;Подразделение)
 			И СпрНоменклатура.Ссылка = РегистрСведенийНоменклатураПодразделений.Номенклатура
 ГДЕ
-	(ВЫБОР
-					КОГДА &amp;ГруппаНоменклатуры = ЗНАЧЕНИЕ(Справочник.Номенклатура.ПустаяСсылка)
-						ТОГДА ИСТИНА
-					ИНАЧЕ СпрНоменклатура.Ссылка В ИЕРАРХИИ (&amp;ГруппаНоменклатуры)
-				КОНЕЦ
-				И СпрНоменклатура.Базовый
-				И (СпрНоменклатура.ВидНоменклатуры = ЗНАЧЕНИЕ(Перечисление.ВидыНоменклатуры.Материал)
-					ИЛИ СпрНоменклатура.ВидНоменклатуры = ЗНАЧЕНИЕ(Перечисление.ВидыНоменклатуры.Услуга)
-						И СпрНоменклатура.НоменклатурнаяГруппа = ЗНАЧЕНИЕ(Справочник.НоменклатурныеГруппы.Гравировка))
-			ИЛИ СпрНоменклатура.ВидНоменклатуры = ЗНАЧЕНИЕ(Перечисление.ВидыНоменклатуры.Комплект))</QueryText>
-				<MainTable>InformationRegister.НоменклатураПодразделений</MainTable>
+	ВЫБОР
+			КОГДА &amp;ГруппаНоменклатуры = ЗНАЧЕНИЕ(Справочник.Номенклатура.ПустаяСсылка)
+				ТОГДА ИСТИНА
+			ИНАЧЕ СпрНоменклатура.Ссылка В ИЕРАРХИИ (&amp;ГруппаНоменклатуры)
+		КОНЕЦ
+	И (СпрНоменклатура.Базовый
+			ИЛИ СпрНоменклатура.ВидНоменклатуры = ЗНАЧЕНИЕ(Перечисление.ВидыНоменклатуры.Комплект))
+	И (СпрНоменклатура.ВидНоменклатуры = ЗНАЧЕНИЕ(Перечисление.ВидыНоменклатуры.Материал)
+			ИЛИ СпрНоменклатура.ВидНоменклатуры = ЗНАЧЕНИЕ(Перечисление.ВидыНоменклатуры.Услуга)
+				И СпрНоменклатура.НоменклатурнаяГруппа = ЗНАЧЕНИЕ(Справочник.НоменклатурныеГруппы.Гравировка))</QueryText>
 				<ListSettings>
 					<dcsset:filter>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
