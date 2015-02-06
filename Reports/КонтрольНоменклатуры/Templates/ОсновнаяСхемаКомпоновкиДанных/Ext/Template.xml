@@ -115,6 +115,10 @@
 			</title>
 			<appearance>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧДЦ=2</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>МаксимальнаяШирина</dcscor:parameter>
 					<dcscor:value xsi:type="xs:decimal">7.5</dcscor:value>
 				</dcscor:item>
@@ -151,6 +155,12 @@
 					<v8:content>Цена поставщика</v8:content>
 				</v8:item>
 			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧДЦ=2</dcscor:value>
+				</dcscor:item>
+			</appearance>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>ОстатокНаСкладе</dataPath>
@@ -161,6 +171,12 @@
 					<v8:content>Остаток на складе</v8:content>
 				</v8:item>
 			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧДЦ=2</dcscor:value>
+				</dcscor:item>
+			</appearance>
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
@@ -223,7 +239,7 @@
 	КОНЕЦ КАК Себестоимость,
 	ВЫБОР
 		КОГДА Список.ЦенаПоставщиков &gt; 0
-			ТОГДА 100 * ((Список.Розничная - Список.ЦенаПоставщиков) / Список.ЦенаПоставщиков)
+			ТОГДА 100 * (Список.Розничная / Список.ЦенаПоставщиков)
 		ИНАЧЕ 100
 	КОНЕЦ КАК Наценка,
 	Список.Поставщик,
@@ -247,27 +263,31 @@
 	</dataSet>
 	<totalField>
 		<dataPath>КоличествоРезерва</dataPath>
-		<expression>Сумма(КоличествоРезерва)</expression>
+		<expression>Среднее(КоличествоРезерва)</expression>
 	</totalField>
 	<totalField>
 		<dataPath>ПлановаяЗакупочная</dataPath>
-		<expression>Сумма(ПлановаяЗакупочная)</expression>
+		<expression>Среднее(ПлановаяЗакупочная)</expression>
 	</totalField>
 	<totalField>
 		<dataPath>Розничная</dataPath>
-		<expression>Сумма(Розничная)</expression>
+		<expression>Среднее(Розничная)</expression>
 	</totalField>
 	<totalField>
 		<dataPath>Себестоимость</dataPath>
-		<expression>Сумма(Себестоимость)</expression>
+		<expression>Среднее(Себестоимость)</expression>
 	</totalField>
 	<totalField>
 		<dataPath>ЦенаПоставщика</dataPath>
-		<expression>Сумма(ЦенаПоставщика)</expression>
+		<expression>Среднее(ЦенаПоставщика)</expression>
 	</totalField>
 	<totalField>
 		<dataPath>ОстатокНаСкладе</dataPath>
-		<expression>Сумма(ОстатокНаСкладе)</expression>
+		<expression>Среднее(ОстатокНаСкладе)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Наценка</dataPath>
+		<expression>Среднее(Наценка)</expression>
 	</totalField>
 	<parameter>
 		<name>Период</name>
