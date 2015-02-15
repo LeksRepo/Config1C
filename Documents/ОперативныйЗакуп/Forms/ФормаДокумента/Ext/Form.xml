@@ -5,7 +5,38 @@
 	<AutoTime>CurrentOrLast</AutoTime>
 	<UsePostingMode>Auto</UsePostingMode>
 	<RepostOnWrite>true</RepostOnWrite>
-	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Popup name="СоздатьНаОсновании" id="248">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Создать на основании</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Создать на основании</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="СоздатьНаОснованииРасширеннаяПодсказка" id="249"/>
+				<ChildItems>
+					<Button name="ФормаДокументАвансовыйОтчетСоздатьНаОсновании" id="250">
+						<Type>CommandBarButton</Type>
+						<CommandName>Document.АвансовыйОтчет.StandardCommand.CreateBasedOn</CommandName>
+						<DataPath>Объект.Ref</DataPath>
+						<ExtendedTooltip name="ФормаДокументАвансовыйОтчетСоздатьНаОснованииРасширеннаяПодсказка" id="251"/>
+					</Button>
+					<Button name="ФормаПоступлениеМатериаловУслуг" id="246">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ПоступлениеМатериаловУслуг</CommandName>
+						<ExtendedTooltip name="ФормаПоступлениеМатериаловУслугРасширеннаяПодсказка" id="247"/>
+					</Button>
+				</ChildItems>
+			</Popup>
+		</ChildItems>
+	</AutoCommandBar>
 	<Events>
 		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
 		<Event name="OnOpen">ПриОткрытии</Event>
@@ -182,6 +213,28 @@
 					<ContextMenu name="ЛегендаОптомКонтекстноеМеню" id="234"/>
 					<ExtendedTooltip name="ЛегендаОптомРасширеннаяПодсказка" id="235"/>
 				</LabelField>
+				<LabelField name="СуммаДокумента" id="39">
+					<DataPath>Объект.СписокНоменклатуры.TotalСтоимость</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма документа</v8:content>
+						</v8:item>
+					</Title>
+					<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+					<HorizontalAlign>Left</HorizontalAlign>
+					<Width>9</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Format>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ЧДЦ=</v8:content>
+						</v8:item>
+					</Format>
+					<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+					<ContextMenu name="СуммаДокументаКонтекстноеМеню" id="40"/>
+					<ExtendedTooltip name="СуммаДокументаРасширеннаяПодсказка" id="41"/>
+				</LabelField>
 			</ChildItems>
 		</UsualGroup>
 		<Table name="СписокНоменклатуры" id="157">
@@ -209,29 +262,29 @@
 				</ChildItems>
 			</AutoCommandBar>
 			<ExtendedTooltip name="СписокНоменклатурыРасширеннаяПодсказка" id="160"/>
-			<SearchStringAddition name="СписокНоменклатурыСтрокаПоиска" id="243">
+			<SearchStringAddition name="СписокНоменклатурыСтрокаПоиска" id="252">
 				<AdditionSource>
 					<Item>СписокНоменклатуры</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокНоменклатурыСтрокаПоискаКонтекстноеМеню" id="244"/>
-				<ExtendedTooltip name="СписокНоменклатурыСтрокаПоискаРасширеннаяПодсказка" id="245"/>
+				<ContextMenu name="СписокНоменклатурыСтрокаПоискаКонтекстноеМеню" id="253"/>
+				<ExtendedTooltip name="СписокНоменклатурыСтрокаПоискаРасширеннаяПодсказка" id="254"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокНоменклатурыСостояниеПросмотра" id="246">
+			<ViewStatusAddition name="СписокНоменклатурыСостояниеПросмотра" id="255">
 				<AdditionSource>
 					<Item>СписокНоменклатуры</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокНоменклатурыСостояниеПросмотраКонтекстноеМеню" id="247"/>
-				<ExtendedTooltip name="СписокНоменклатурыСостояниеПросмотраРасширеннаяПодсказка" id="248"/>
+				<ContextMenu name="СписокНоменклатурыСостояниеПросмотраКонтекстноеМеню" id="256"/>
+				<ExtendedTooltip name="СписокНоменклатурыСостояниеПросмотраРасширеннаяПодсказка" id="257"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокНоменклатурыУправлениеПоиском" id="249">
+			<SearchControlAddition name="СписокНоменклатурыУправлениеПоиском" id="258">
 				<AdditionSource>
 					<Item>СписокНоменклатуры</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокНоменклатурыУправлениеПоискомКонтекстноеМеню" id="250"/>
-				<ExtendedTooltip name="СписокНоменклатурыУправлениеПоискомРасширеннаяПодсказка" id="251"/>
+				<ContextMenu name="СписокНоменклатурыУправлениеПоискомКонтекстноеМеню" id="259"/>
+				<ExtendedTooltip name="СписокНоменклатурыУправлениеПоискомРасширеннаяПодсказка" id="260"/>
 			</SearchControlAddition>
 			<Events>
 				<Event name="BeforeAddRow">СписокНоменклатурыПередНачаломДобавления</Event>
@@ -316,18 +369,17 @@
 				</InputField>
 				<InputField name="СписокНоменклатурыПоставщик" id="206">
 					<DataPath>Объект.СписокНоменклатуры.Поставщик</DataPath>
-					<ReadOnly>true</ReadOnly>
 					<EditMode>EnterOnInput</EditMode>
 					<Width>15</Width>
 					<ContextMenu name="СписокНоменклатурыПоставщикКонтекстноеМеню" id="207"/>
 					<ExtendedTooltip name="СписокНоменклатурыПоставщикРасширеннаяПодсказка" id="208"/>
 				</InputField>
-				<InputField name="СписокНоменклатурыРучнойВвод" id="218">
-					<DataPath>Объект.СписокНоменклатуры.РучнойВвод</DataPath>
+				<InputField name="СписокНоменклатурыКоличествоАвансовый" id="218">
+					<DataPath>Объект.СписокНоменклатуры.КоличествоАвансовый</DataPath>
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Кол-во ручной ввод</v8:content>
+							<v8:content>Купить самим</v8:content>
 						</v8:item>
 					</Title>
 					<EditMode>EnterOnInput</EditMode>
@@ -336,11 +388,23 @@
 					<ChoiceButton>true</ChoiceButton>
 					<OpenButton>false</OpenButton>
 					<CreateButton>false</CreateButton>
-					<ContextMenu name="СписокНоменклатурыРучнойВводКонтекстноеМеню" id="219"/>
-					<ExtendedTooltip name="СписокНоменклатурыРучнойВводРасширеннаяПодсказка" id="220"/>
+					<ContextMenu name="СписокНоменклатурыКоличествоАвансовыйКонтекстноеМеню" id="219"/>
+					<ExtendedTooltip name="СписокНоменклатурыКоличествоАвансовыйРасширеннаяПодсказка" id="220"/>
 					<Events>
-						<Event name="OnChange">СписокНоменклатурыРучнойВводПриИзменении</Event>
+						<Event name="OnChange">СписокНоменклатурыКоличествоАваносвыйПриИзменении</Event>
 					</Events>
+				</InputField>
+				<InputField name="СписокНоменклатурыКоличествоПоставщик" id="243">
+					<DataPath>Объект.СписокНоменклатуры.КоличествоПоставщик</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Привезет поставщик</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="СписокНоменклатурыКоличествоПоставщикКонтекстноеМеню" id="244"/>
+					<ExtendedTooltip name="СписокНоменклатурыКоличествоПоставщикРасширеннаяПодсказка" id="245"/>
 				</InputField>
 				<InputField name="СписокНоменклатурыСтоимость" id="209">
 					<DataPath>Объект.СписокНоменклатуры.Стоимость</DataPath>
@@ -379,29 +443,29 @@
 				<Autofill>false</Autofill>
 			</AutoCommandBar>
 			<ExtendedTooltip name="ТаблицаРасшифровкиРасширеннаяПодсказка" id="51"/>
-			<SearchStringAddition name="ТаблицаРасшифровкиСтрокаПоиска" id="252">
+			<SearchStringAddition name="ТаблицаРасшифровкиСтрокаПоиска" id="261">
 				<AdditionSource>
 					<Item>ТаблицаРасшифровки</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="ТаблицаРасшифровкиСтрокаПоискаКонтекстноеМеню" id="253"/>
-				<ExtendedTooltip name="ТаблицаРасшифровкиСтрокаПоискаРасширеннаяПодсказка" id="254"/>
+				<ContextMenu name="ТаблицаРасшифровкиСтрокаПоискаКонтекстноеМеню" id="262"/>
+				<ExtendedTooltip name="ТаблицаРасшифровкиСтрокаПоискаРасширеннаяПодсказка" id="263"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="ТаблицаРасшифровкиСостояниеПросмотра" id="255">
+			<ViewStatusAddition name="ТаблицаРасшифровкиСостояниеПросмотра" id="264">
 				<AdditionSource>
 					<Item>ТаблицаРасшифровки</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="ТаблицаРасшифровкиСостояниеПросмотраКонтекстноеМеню" id="256"/>
-				<ExtendedTooltip name="ТаблицаРасшифровкиСостояниеПросмотраРасширеннаяПодсказка" id="257"/>
+				<ContextMenu name="ТаблицаРасшифровкиСостояниеПросмотраКонтекстноеМеню" id="265"/>
+				<ExtendedTooltip name="ТаблицаРасшифровкиСостояниеПросмотраРасширеннаяПодсказка" id="266"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="ТаблицаРасшифровкиУправлениеПоиском" id="258">
+			<SearchControlAddition name="ТаблицаРасшифровкиУправлениеПоиском" id="267">
 				<AdditionSource>
 					<Item>ТаблицаРасшифровки</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="ТаблицаРасшифровкиУправлениеПоискомКонтекстноеМеню" id="259"/>
-				<ExtendedTooltip name="ТаблицаРасшифровкиУправлениеПоискомРасширеннаяПодсказка" id="260"/>
+				<ContextMenu name="ТаблицаРасшифровкиУправлениеПоискомКонтекстноеМеню" id="268"/>
+				<ExtendedTooltip name="ТаблицаРасшифровкиУправлениеПоискомРасширеннаяПодсказка" id="269"/>
 			</SearchControlAddition>
 			<Events>
 				<Event name="Selection">ТаблицаРасшифровкиВыбор</Event>
@@ -455,79 +519,6 @@
 				</InputField>
 			</ChildItems>
 		</Table>
-		<UsualGroup name="ГруппаСуммыДокумента" id="79">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа суммы документа</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа суммы документа</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Group>Horizontal</Group>
-			<Representation>None</Representation>
-			<ChildItemsWidth>Equal</ChildItemsWidth>
-			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаСуммыДокументаРасширеннаяПодсказка" id="80"/>
-			<ChildItems>
-				<LabelField name="СуммаДокумента" id="39">
-					<DataPath>Объект.СуммаДокумента</DataPath>
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Сумма закупа (руб.)</v8:content>
-						</v8:item>
-					</Title>
-					<TitleFont ref="sys:DefaultGUIFont" kind="WindowsFont"/>
-					<HorizontalAlign>Left</HorizontalAlign>
-					<Width>9</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<Format>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>ЧДЦ=</v8:content>
-						</v8:item>
-					</Format>
-					<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
-					<ContextMenu name="СуммаДокументаКонтекстноеМеню" id="40"/>
-					<ExtendedTooltip name="СуммаДокументаРасширеннаяПодсказка" id="41"/>
-				</LabelField>
-				<LabelField name="СуммаДокументаСрочно" id="76">
-					<DataPath>Объект.СуммаДокументаСрочно</DataPath>
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>из них срочно</v8:content>
-						</v8:item>
-					</Title>
-					<TitleFont ref="sys:DefaultGUIFont" kind="WindowsFont"/>
-					<HorizontalAlign>Left</HorizontalAlign>
-					<Width>9</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<Format>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>ЧДЦ=</v8:content>
-						</v8:item>
-					</Format>
-					<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
-					<ContextMenu name="СуммаДокументаСрочноКонтекстноеМеню" id="77"/>
-					<ExtendedTooltip name="СуммаДокументаСрочноРасширеннаяПодсказка" id="78"/>
-				</LabelField>
-			</ChildItems>
-		</UsualGroup>
-		<LabelField name="СуммаЗаявленная" id="224">
-			<DataPath>Объект.СуммаЗаявленная</DataPath>
-			<TitleFont ref="sys:DefaultGUIFont" kind="WindowsFont"/>
-			<Width>9</Width>
-			<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
-			<ContextMenu name="СуммаЗаявленнаяКонтекстноеМеню" id="225"/>
-			<ExtendedTooltip name="СуммаЗаявленнаяРасширеннаяПодсказка" id="226"/>
-		</LabelField>
 		<LabelField name="Автор" id="42">
 			<DataPath>Объект.Автор</DataPath>
 			<ContextMenu name="АвторКонтекстноеМеню" id="43"/>
@@ -677,7 +668,10 @@
 						<dcsset:field>СписокНоменклатурыПоставщик</dcsset:field>
 					</dcsset:item>
 					<dcsset:item>
-						<dcsset:field>СписокНоменклатурыРучнойВвод</dcsset:field>
+						<dcsset:field>СписокНоменклатурыКоличествоАвансовый</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>СписокНоменклатурыКоличествоПоставщик</dcsset:field>
 					</dcsset:item>
 					<dcsset:item>
 						<dcsset:field>СписокНоменклатурыСтоимость</dcsset:field>
@@ -721,7 +715,10 @@
 						<dcsset:field>СписокНоменклатурыПоставщик</dcsset:field>
 					</dcsset:item>
 					<dcsset:item>
-						<dcsset:field>СписокНоменклатурыРучнойВвод</dcsset:field>
+						<dcsset:field>СписокНоменклатурыКоличествоАвансовый</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>СписокНоменклатурыКоличествоПоставщик</dcsset:field>
 					</dcsset:item>
 					<dcsset:item>
 						<dcsset:field>СписокНоменклатурыСтоимость</dcsset:field>
@@ -760,5 +757,32 @@
 			<Action>Заполнить</Action>
 			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>
+		<Command name="ПоступлениеМатериаловУслуг" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поступление материалов услуг</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поступление материалов услуг</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПоступлениеМатериаловУслуг</Action>
+		</Command>
 	</Commands>
+	<CommandInterface>
+		<CommandBar>
+			<Item>
+				<Command>Document.АвансовыйОтчет.StandardCommand.CreateBasedOn</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+		</CommandBar>
+	</CommandInterface>
 </Form>
