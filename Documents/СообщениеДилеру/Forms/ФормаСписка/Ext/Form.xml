@@ -54,29 +54,29 @@
 				</ChildItems>
 			</AutoCommandBar>
 			<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="4"/>
-			<SearchStringAddition name="СписокСтрокаПоиска" id="19">
+			<SearchStringAddition name="СписокСтрокаПоиска" id="25">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="20"/>
-				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="21"/>
+				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="26"/>
+				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="27"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокСостояниеПросмотра" id="22">
+			<ViewStatusAddition name="СписокСостояниеПросмотра" id="28">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="23"/>
-				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="24"/>
+				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="29"/>
+				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="30"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокУправлениеПоиском" id="25">
+			<SearchControlAddition name="СписокУправлениеПоиском" id="31">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="26"/>
-				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="27"/>
+				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="32"/>
+				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="33"/>
 			</SearchControlAddition>
 			<Events>
 				<Event name="Selection">СписокВыбор</Event>
@@ -86,8 +86,12 @@
 				<LabelField name="Дата" id="5">
 					<DataPath>Список.Date</DataPath>
 					<DefaultItem>true</DefaultItem>
-					<Width>14</Width>
-					<HorizontalStretch>false</HorizontalStretch>
+					<Format>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ДФ=dd.MM.yyyy</v8:content>
+						</v8:item>
+					</Format>
 					<ContextMenu name="ДатаКонтекстноеМеню" id="6"/>
 					<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="7"/>
 				</LabelField>
@@ -102,6 +106,16 @@
 					<DataPath>Список.Тема</DataPath>
 					<ContextMenu name="ТемаКонтекстноеМеню" id="15"/>
 					<ExtendedTooltip name="ТемаРасширеннаяПодсказка" id="16"/>
+				</LabelField>
+				<LabelField name="Автор" id="19">
+					<DataPath>Список.Автор</DataPath>
+					<ContextMenu name="АвторКонтекстноеМеню" id="20"/>
+					<ExtendedTooltip name="АвторРасширеннаяПодсказка" id="21"/>
+				</LabelField>
+				<LabelField name="Подразделение" id="22">
+					<DataPath>Список.Подразделение</DataPath>
+					<ContextMenu name="ПодразделениеКонтекстноеМеню" id="23"/>
+					<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="24"/>
 				</LabelField>
 			</ChildItems>
 		</Table>
@@ -129,27 +143,30 @@
 	СообщениеДилеру.Тема,
 	СообщениеДилеру.Дата,
 	ВЫБОР
-		КОГДА &amp;Дилер = ЛОЖЬ ТОГДА
-			  1
+		КОГДА &amp;Дилер = ЛОЖЬ
+			ТОГДА 1
 		ИНАЧЕ ОзнакомленСообщенияДилеру.Дилер
 	КОНЕЦ КАК Дилер,
 	ВЫБОР
-		КОГДА (Дилер IS NULL) И (НЕ &amp;Дилер = ЛОЖЬ) ТОГДА
-			  0
+		КОГДА ОзнакомленСообщенияДилеру.Дилер ЕСТЬ NULL 
+				И НЕ &amp;Дилер = ЛОЖЬ
+			ТОГДА 0
 		ИНАЧЕ 1
-	КОНЕЦ КАК Сорт 
+	КОНЕЦ КАК Сорт,
+	СообщениеДилеру.Автор,
+	СообщениеДилеру.Подразделение
 ИЗ
 	Документ.СообщениеДилеру КАК СообщениеДилеру
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ОзнакомленСообщенияДилеру КАК ОзнакомленСообщенияДилеру
 		ПО СообщениеДилеру.Ссылка = ОзнакомленСообщенияДилеру.Сообщение
 			И (ОзнакомленСообщенияДилеру.Дилер = &amp;Дилер)
 			И (ОзнакомленСообщенияДилеру.Ознакомлен)
-ГДЕ	
-	ВЫБОР КОГДА &amp;Подразделение = ЛОЖЬ
-	ТОГДА ИСТИНА
-	ИНАЧЕ СообщениеДилеру.Подразделение = &amp;Подразделение
-	КОНЕЦ
-</QueryText>
+ГДЕ
+	ВЫБОР
+			КОГДА &amp;Подразделение = ЛОЖЬ
+				ТОГДА ИСТИНА
+			ИНАЧЕ СообщениеДилеру.Подразделение = &amp;Подразделение
+		КОНЕЦ</QueryText>
 				<MainTable>Document.СообщениеДилеру</MainTable>
 				<ListSettings>
 					<dcsset:filter>
