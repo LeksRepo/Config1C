@@ -7,10 +7,6 @@
 	<dataSet xsi:type="DataSetQuery">
 		<name>НаборДанных1</name>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Ссылка</dataPath>
-			<field>Ссылка</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>Пользователь</dataPath>
 			<field>Пользователь</field>
 		</field>
@@ -18,9 +14,19 @@
 			<dataPath>Роль</dataPath>
 			<field>Роль</field>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Профиль</dataPath>
+			<field>Профиль</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Профиль</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
-	ПрофилиГруппДоступаРоли.Ссылка,
+	ПрофилиГруппДоступаРоли.Ссылка КАК Профиль,
 	ПрофилиГруппДоступаРоли.Роль,
 	ГруппыДоступаПользователи.Пользователь
 ИЗ
@@ -37,7 +43,7 @@
 					<dcsset:field>Роль</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Ссылка</dcsset:field>
+					<dcsset:field>Профиль</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Пользователь</dcsset:field>
@@ -62,7 +68,7 @@
 				<dcsset:item xsi:type="dcsset:StructureItemGroup">
 					<dcsset:groupItems>
 						<dcsset:item xsi:type="dcsset:GroupItemField">
-							<dcsset:field>Ссылка</dcsset:field>
+							<dcsset:field>Профиль</dcsset:field>
 							<dcsset:groupType>Items</dcsset:groupType>
 							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
