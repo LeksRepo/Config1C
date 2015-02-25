@@ -183,6 +183,8 @@
 			<ChildItems>
 				<LabelField name="СписокНоменклатурыНомерСтроки" id="26">
 					<DataPath>Объект.СписокНоменклатуры.LineNumber</DataPath>
+					<Enabled>false</Enabled>
+					<ReadOnly>true</ReadOnly>
 					<EditMode>EnterOnInput</EditMode>
 					<ContextMenu name="СписокНоменклатурыНомерСтрокиКонтекстноеМеню" id="27"/>
 					<ExtendedTooltip name="СписокНоменклатурыНомерСтрокиExtendedTooltip" id="88"/>
@@ -193,11 +195,13 @@
 					<ContextMenu name="СписокНоменклатурыНоменклатураКонтекстноеМеню" id="29"/>
 					<ExtendedTooltip name="СписокНоменклатурыНоменклатураExtendedTooltip" id="89"/>
 					<Events>
-						<Event name="OnChange">СписокНоменклатурыНоменклатураПриИзменении</Event>
+						<Event name="OnChange">СписокНоменклатурыПриИзменении</Event>
 					</Events>
 				</InputField>
 				<LabelField name="СписокНоменклатурыНоменклатураЕдиницаИзмерения" id="111">
 					<DataPath>Объект.СписокНоменклатуры.Номенклатура.ЕдиницаИзмерения</DataPath>
+					<Enabled>false</Enabled>
+					<ReadOnly>true</ReadOnly>
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -216,27 +220,25 @@
 					<ContextMenu name="СписокНоменклатурыКоличествоКонтекстноеМеню" id="33"/>
 					<ExtendedTooltip name="СписокНоменклатурыКоличествоExtendedTooltip" id="91"/>
 					<Events>
-						<Event name="OnChange">СписокНоменклатурыКоличествоПриИзменении</Event>
+						<Event name="OnChange">СписокНоменклатурыПриИзменении</Event>
 					</Events>
 				</InputField>
 				<InputField name="СписокНоменклатурыЦена" id="34">
 					<DataPath>Объект.СписокНоменклатуры.Цена</DataPath>
+					<Enabled>false</Enabled>
+					<ReadOnly>true</ReadOnly>
 					<EditMode>EnterOnInput</EditMode>
 					<ContextMenu name="СписокНоменклатурыЦенаКонтекстноеМеню" id="35"/>
 					<ExtendedTooltip name="СписокНоменклатурыЦенаExtendedTooltip" id="92"/>
-					<Events>
-						<Event name="OnChange">СписокНоменклатурыЦенаПриИзменении</Event>
-					</Events>
 				</InputField>
 				<InputField name="СписокНоменклатурыСумма" id="36">
 					<DataPath>Объект.СписокНоменклатуры.Сумма</DataPath>
+					<Enabled>false</Enabled>
+					<ReadOnly>true</ReadOnly>
 					<EditMode>EnterOnInput</EditMode>
 					<FooterDataPath>Объект.СписокНоменклатуры.TotalСумма</FooterDataPath>
 					<ContextMenu name="СписокНоменклатурыСуммаКонтекстноеМеню" id="37"/>
 					<ExtendedTooltip name="СписокНоменклатурыСуммаExtendedTooltip" id="93"/>
-					<Events>
-						<Event name="OnChange">СписокНоменклатурыСуммаПриИзменении</Event>
-					</Events>
 				</InputField>
 			</ChildItems>
 		</Table>
@@ -261,6 +263,26 @@
 			<UseAlways>
 				<Field>Объект.RegisterRecords</Field>
 			</UseAlways>
+			<Columns>
+				<AdditionalColumns table="Объект.СписокНоменклатуры">
+					<Column name="Кратность" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Кратность</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:decimal</v8:Type>
+							<v8:NumberQualifiers>
+								<v8:Digits>10</v8:Digits>
+								<v8:FractionDigits>4</v8:FractionDigits>
+								<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+							</v8:NumberQualifiers>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+			</Columns>
 		</Attribute>
 	</Attributes>
 	<CommandInterface>
