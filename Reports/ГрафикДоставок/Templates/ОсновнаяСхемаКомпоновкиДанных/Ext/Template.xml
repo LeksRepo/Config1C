@@ -36,10 +36,6 @@
 			</appearance>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Производство</dataPath>
-			<field>Производство</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>АдресДоставки</dataPath>
 			<field>АдресДоставки</field>
 			<title xsi:type="v8:LocalStringType">
@@ -168,13 +164,23 @@
 				</dcscor:item>
 			</appearance>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Подразделение</dataPath>
+			<field>Подразделение</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подразделение</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	ДокСпецификация.АдресМонтажа КАК АдресДоставки,
 	ДокСпецификация.Комментарий,
 	ДокСпецификация.Ссылка,
 	ДокСпецификация.Номер КАК НомерСпецификации,
-	ДокСпецификация.Производство,
+	ДокСпецификация.Подразделение,
 	ВЫБОР
 		КОГДА ДокДоговор.Ссылка ЕСТЬ NULL 
 			ТОГДА ДокСпецификация.Контрагент
@@ -353,10 +359,9 @@
 			</dcsset:selection>
 			<dcsset:filter>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
-					<dcsset:left xsi:type="dcscor:Field">Производство</dcsset:left>
+					<dcsset:left xsi:type="dcscor:Field">Подразделение</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
-					<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.Подразделения.ПустаяСсылка</dcsset:right>
-					<dcsset:userSettingID>96f4be23-a2a5-45ea-a5fe-65f406f25a3c</dcsset:userSettingID>
+					<dcsset:userSettingID>c2d31667-fc0f-4b46-bd7c-ccf0ef8c68b5</dcsset:userSettingID>
 				</dcsset:item>
 			</dcsset:filter>
 			<dcsset:dataParameters>
