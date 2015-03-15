@@ -178,29 +178,78 @@
 				</dcscor:item>
 			</appearance>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Доступность</dataPath>
+			<field>Доступность</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Доступность</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ГоризонтальноеПоложение</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:HorizontalAlign">Center</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">БЛ=; БИ=V</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПроцентОтхода</dataPath>
+			<field>ПроцентОтхода</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Процент отхода</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
-		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+		<query>ВЫБРАТЬ
+	НоменклатураПодразделений.Номенклатура КАК Номенклатура,
+	НоменклатураПодразделений.Доступность,
+	НоменклатураПодразделений.ЗакупОптом,
+	НоменклатураПодразделений.ОкруглятьДоЛистов,
+	НоменклатураПодразделений.ПодЗаказ,
+	НоменклатураПодразделений.ПроцентОтхода
+ПОМЕСТИТЬ втНоменклатураПодразделений
+ИЗ
+	РегистрСведений.НоменклатураПодразделений КАК НоменклатураПодразделений
+ГДЕ
+	НоменклатураПодразделений.Подразделение = &amp;Подразделение
+
+ИНДЕКСИРОВАТЬ ПО
+	Номенклатура
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	спрНоменклатура.Ссылка КАК Номенклатура,
-	спрНоменклатура.ЕдиницаИзмерения КАК ЕдиницаИзмерения,
+	спрНоменклатура.Ссылка.ЕдиницаИзмерения КАК ЕдиницаИзмерения,
 	ЦеныНоменклатурыСрезПоследних.ПлановаяЗакупочная КАК ПлановаяЗакупочная,
 	ЦеныНоменклатурыСрезПоследних.Розничная КАК Розничная,
 	ЦеныНоменклатурыСрезПоследних.Поставщик,
-	ЦеныПоставщиковСрезПоследних.Сумма КАК ЦенаПоставщиков
+	ЦеныПоставщиковСрезПоследних.Сумма КАК ЦенаПоставщиков,
+	ЕСТЬNULL(втНоменклатураПодразделений.Доступность, ЛОЖЬ) КАК Доступность,
+	ЕСТЬNULL(втНоменклатураПодразделений.ПроцентОтхода, 0) КАК ПроцентОтхода
 ПОМЕСТИТЬ Список
 ИЗ
 	Справочник.Номенклатура КАК спрНоменклатура
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ЦеныНоменклатурыПоПодразделениям.СрезПоследних(, Подразделение = &amp;Подразделение) КАК ЦеныНоменклатурыСрезПоследних
 		ПО (ЦеныНоменклатурыСрезПоследних.Номенклатура = спрНоменклатура.Ссылка)
-		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.НоменклатураПодразделений КАК НоменклатураПодразделений
-		ПО (НоменклатураПодразделений.Номенклатура = спрНоменклатура.Ссылка)
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ЦеныПоставщиков.СрезПоследних(, Подразделение = &amp;Подразделение) КАК ЦеныПоставщиковСрезПоследних
 		ПО (ЦеныПоставщиковСрезПоследних.Номенклатура = спрНоменклатура.Ссылка)
+		ЛЕВОЕ СОЕДИНЕНИЕ втНоменклатураПодразделений КАК втНоменклатураПодразделений
+		ПО (втНоменклатураПодразделений.Номенклатура = спрНоменклатура.Ссылка)
 ГДЕ
 	спрНоменклатура.Базовый
 	И НЕ спрНоменклатура.ПометкаУдаления
 	И НЕ спрНоменклатура.МатериалЗаказчика
 	И спрНоменклатура.НоменклатурнаяГруппа &lt;&gt; ЗНАЧЕНИЕ(Справочник.НоменклатурныеГруппы.Гравировка)
-	И (НоменклатураПодразделений.Подразделение = &amp;Подразделение ИЛИ НоменклатураПодразделений.Подразделение ЕСТЬ NULL)
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -245,7 +294,9 @@
 	КОНЕЦ КАК Наценка,
 	Список.Поставщик,
 	Список.ЦенаПоставщиков КАК ЦенаПоставщика,
-	ОстаткиНаСкладе.Количество КАК ОстатокНаСкладе
+	ОстаткиНаСкладе.Количество КАК ОстатокНаСкладе,
+	Список.Доступность,
+	Список.ПроцентОтхода
 ИЗ
 	Список КАК Список
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрБухгалтерии.Управленческий.Остатки(
@@ -289,6 +340,14 @@
 	<totalField>
 		<dataPath>Наценка</dataPath>
 		<expression>Среднее(Наценка)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ПроцентОтхода</dataPath>
+		<expression>ПроцентОтхода</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Доступность</dataPath>
+		<expression>Доступность</expression>
 	</totalField>
 	<parameter>
 		<name>Период</name>
@@ -369,6 +428,9 @@
 						</v8:item>
 					</dcsset:lwsTitle>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Доступность</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
 						<dcsset:field>Себестоимость</dcsset:field>
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
@@ -391,6 +453,9 @@
 					</dcsset:lwsTitle>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
 						<dcsset:field>Наценка</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ПроцентОтхода</dcsset:field>
 					</dcsset:item>
 					<dcsset:placement>Auto</dcsset:placement>
 				</dcsset:item>
@@ -484,6 +549,12 @@
 						<dcsset:item>
 							<dcsset:field>ЦенаПоставщика</dcsset:field>
 						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>Доступность</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>ПроцентОтхода</dcsset:field>
+						</dcsset:item>
 					</dcsset:selection>
 					<dcsset:filter>
 						<dcsset:item xsi:type="dcsset:FilterItemGroup">
@@ -547,6 +618,12 @@
 						</dcsset:item>
 						<dcsset:item>
 							<dcsset:field>ЦенаПоставщика</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>Доступность</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>ПроцентОтхода</dcsset:field>
 						</dcsset:item>
 					</dcsset:selection>
 					<dcsset:filter>
@@ -615,63 +692,7 @@
 					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
 				</dcsset:order>
 				<dcsset:selection>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Номенклатура</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>ЕдиницаИзмерения</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Поставщик</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemFolder">
-						<dcsset:lwsTitle>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Цены</v8:content>
-							</v8:item>
-						</dcsset:lwsTitle>
-						<dcsset:item xsi:type="dcsset:SelectedItemField">
-							<dcsset:field>Себестоимость</dcsset:field>
-						</dcsset:item>
-						<dcsset:item xsi:type="dcsset:SelectedItemField">
-							<dcsset:field>ЦенаПоставщика</dcsset:field>
-						</dcsset:item>
-						<dcsset:item xsi:type="dcsset:SelectedItemField">
-							<dcsset:field>ПлановаяЗакупочная</dcsset:field>
-						</dcsset:item>
-						<dcsset:item xsi:type="dcsset:SelectedItemField">
-							<dcsset:field>Розничная</dcsset:field>
-						</dcsset:item>
-						<dcsset:placement>Auto</dcsset:placement>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemFolder">
-						<dcsset:lwsTitle>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Наценки</v8:content>
-							</v8:item>
-						</dcsset:lwsTitle>
-						<dcsset:item xsi:type="dcsset:SelectedItemField">
-							<dcsset:field>Наценка</dcsset:field>
-						</dcsset:item>
-						<dcsset:placement>Auto</dcsset:placement>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemFolder">
-						<dcsset:lwsTitle>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Склад</v8:content>
-							</v8:item>
-						</dcsset:lwsTitle>
-						<dcsset:item xsi:type="dcsset:SelectedItemField">
-							<dcsset:field>ОстатокНаСкладе</dcsset:field>
-						</dcsset:item>
-						<dcsset:item xsi:type="dcsset:SelectedItemField">
-							<dcsset:field>КоличествоРезерва</dcsset:field>
-						</dcsset:item>
-						<dcsset:placement>Auto</dcsset:placement>
-					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
 				</dcsset:selection>
 			</dcsset:item>
 		</dcsset:settings>
