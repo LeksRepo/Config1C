@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
 	<Width>120</Width>
-	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
 	<Events>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
@@ -93,31 +95,45 @@
 			<AllowRootChoice>false</AllowRootChoice>
 			<UpdateOnDataChange>Auto</UpdateOnDataChange>
 			<ContextMenu name="СписокКонтекстноеМеню" id="45"/>
-			<AutoCommandBar name="СписокКоманднаяПанель" id="46"/>
+			<AutoCommandBar name="СписокКоманднаяПанель" id="46">
+				<Autofill>false</Autofill>
+				<ChildItems>
+					<Button name="СписокНайти" id="96">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.StandardCommand.Find</CommandName>
+						<ExtendedTooltip name="СписокНайтиРасширеннаяПодсказка" id="97"/>
+					</Button>
+					<Button name="СписокОтменитьПоиск" id="98">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.StandardCommand.CancelSearch</CommandName>
+						<ExtendedTooltip name="СписокОтменитьПоискРасширеннаяПодсказка" id="99"/>
+					</Button>
+				</ChildItems>
+			</AutoCommandBar>
 			<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="47"/>
-			<SearchStringAddition name="СписокСтрокаПоиска" id="93">
+			<SearchStringAddition name="СписокСтрокаПоиска" id="100">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="94"/>
-				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="95"/>
+				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="101"/>
+				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="102"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокСостояниеПросмотра" id="96">
+			<ViewStatusAddition name="СписокСостояниеПросмотра" id="103">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="97"/>
-				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="98"/>
+				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="104"/>
+				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="105"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокУправлениеПоиском" id="99">
+			<SearchControlAddition name="СписокУправлениеПоиском" id="106">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="100"/>
-				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="101"/>
+				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="107"/>
+				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="108"/>
 			</SearchControlAddition>
 			<Events>
 				<Event name="Selection">СписокВыбор</Event>
@@ -155,6 +171,12 @@
 					<CheckBoxType>Auto</CheckBoxType>
 					<ContextMenu name="ПодЗаказКонтекстноеМеню" id="82"/>
 					<ExtendedTooltip name="ПодЗаказРасширеннаяПодсказка" id="83"/>
+				</CheckBoxField>
+				<CheckBoxField name="ОкруглятьДоЛистов" id="93">
+					<DataPath>Список.ОкруглятьДоЛистов</DataPath>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ОкруглятьДоЛистовКонтекстноеМеню" id="94"/>
+					<ExtendedTooltip name="ОкруглятьДоЛистовРасширеннаяПодсказка" id="95"/>
 				</CheckBoxField>
 				<CheckBoxField name="ЗакупОптом" id="69">
 					<DataPath>Список.ЗакупОптом</DataPath>
@@ -205,7 +227,7 @@
 			<MainAttribute>true</MainAttribute>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
-				<DynamicDataRead>false</DynamicDataRead>
+				<DynamicDataRead>true</DynamicDataRead>
 				<QueryText>ВЫБРАТЬ
 	СпрНоменклатура.Ссылка КАК Номенклатура,
 	СпрНоменклатура.НоменклатурнаяГруппа КАК НоменклатурнаяГруппа,
@@ -216,7 +238,8 @@
 	ЦеныНоменклатурыПоПодразделениямСрезПоследних.Розничная,
 	ЦеныНоменклатурыПоПодразделениямСрезПоследних.Поставщик,
 	РегистрСведенийНоменклатураПодразделений.ПроцентОтхода,
-	РегистрСведенийНоменклатураПодразделений.ЗакупОптом
+	РегистрСведенийНоменклатураПодразделений.ЗакупОптом,
+	РегистрСведенийНоменклатураПодразделений.ОкруглятьДоЛистов
 ИЗ
 	Справочник.Номенклатура КАК СпрНоменклатура
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ЦеныНоменклатурыПоПодразделениям.СрезПоследних(, Подразделение = &amp;Подразделение) КАК ЦеныНоменклатурыПоПодразделениямСрезПоследних
@@ -226,15 +249,16 @@
 			И СпрНоменклатура.Ссылка = РегистрСведенийНоменклатураПодразделений.Номенклатура
 ГДЕ
 	ВЫБОР
-				КОГДА &amp;ГруппаНоменклатуры = ЗНАЧЕНИЕ(Справочник.Номенклатура.ПустаяСсылка)
-					ТОГДА ИСТИНА
-				ИНАЧЕ СпрНоменклатура.Ссылка В ИЕРАРХИИ (&amp;ГруппаНоменклатуры)
-			КОНЕЦ
-			И (СпрНоменклатура.Базовый
-					И (СпрНоменклатура.ВидНоменклатуры = ЗНАЧЕНИЕ(Перечисление.ВидыНоменклатуры.Материал)
-						ИЛИ СпрНоменклатура.ВидНоменклатуры = ЗНАЧЕНИЕ(Перечисление.ВидыНоменклатуры.Комплект))
-				ИЛИ СпрНоменклатура.ВидНоменклатуры = ЗНАЧЕНИЕ(Перечисление.ВидыНоменклатуры.Услуга)
-					И СпрНоменклатура.НоменклатурнаяГруппа = ЗНАЧЕНИЕ(Справочник.НоменклатурныеГруппы.Гравировка))</QueryText>
+			КОГДА &amp;ГруппаНоменклатуры = ЗНАЧЕНИЕ(Справочник.Номенклатура.ПустаяСсылка)
+				ТОГДА ИСТИНА
+			ИНАЧЕ СпрНоменклатура.Ссылка В ИЕРАРХИИ (&amp;ГруппаНоменклатуры)
+		КОНЕЦ
+	И (СпрНоменклатура.Базовый
+				И (СпрНоменклатура.ВидНоменклатуры = ЗНАЧЕНИЕ(Перечисление.ВидыНоменклатуры.Материал)
+					ИЛИ СпрНоменклатура.ВидНоменклатуры = ЗНАЧЕНИЕ(Перечисление.ВидыНоменклатуры.Комплект))
+			ИЛИ СпрНоменклатура.ВидНоменклатуры = ЗНАЧЕНИЕ(Перечисление.ВидыНоменклатуры.Услуга)
+				И СпрНоменклатура.НоменклатурнаяГруппа = ЗНАЧЕНИЕ(Справочник.НоменклатурныеГруппы.Гравировка))</QueryText>
+				<MainTable>InformationRegister.НоменклатураПодразделений</MainTable>
 				<ListSettings>
 					<dcsset:filter>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
