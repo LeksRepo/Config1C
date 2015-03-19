@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<AutoTime>CurrentOrLast</AutoTime>
+	<UsePostingMode>Auto</UsePostingMode>
+	<RepostOnWrite>true</RepostOnWrite>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="Группа1" id="29">
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="30"/>
+			<ChildItems>
+				<UsualGroup name="Группа2" id="31">
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Группа2РасширеннаяПодсказка" id="32"/>
+					<ChildItems>
+						<InputField name="Дата" id="4">
+							<DataPath>Объект.Date</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
+							<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="6"/>
+						</InputField>
+						<InputField name="Номер" id="1">
+							<DataPath>Объект.Number</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>17</Width>
+							<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
+							<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="3"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="Группа3" id="33">
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Группа3РасширеннаяПодсказка" id="34"/>
+					<ChildItems>
+						<InputField name="Подразделение" id="7">
+							<DataPath>Объект.Подразделение</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="ПодразделениеКонтекстноеМеню" id="8"/>
+							<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="9"/>
+						</InputField>
+						<InputField name="Период" id="43">
+							<DataPath>Объект.Период</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Период планирования</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ПериодКонтекстноеМеню" id="44"/>
+							<ExtendedTooltip name="ПериодРасширеннаяПодсказка" id="45"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="Группа4" id="35">
+			<Enabled>false</Enabled>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="Группа4РасширеннаяПодсказка" id="36"/>
+			<ChildItems>
+				<InputField name="СуммаНачислений" id="37">
+					<DataPath>Объект.СуммаПоступлений</DataPath>
+					<ContextMenu name="СуммаНачисленийКонтекстноеМеню" id="38"/>
+					<ExtendedTooltip name="СуммаНачисленийРасширеннаяПодсказка" id="39"/>
+				</InputField>
+				<InputField name="СуммаВыплат" id="40">
+					<DataPath>Объект.СуммаВыплат</DataPath>
+					<ContextMenu name="СуммаВыплатКонтекстноеМеню" id="41"/>
+					<ExtendedTooltip name="СуммаВыплатРасширеннаяПодсказка" id="42"/>
+				</InputField>
+				<InputField name="Сумма" id="10">
+					<DataPath>Объект.СуммаДокумента</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="СуммаКонтекстноеМеню" id="11"/>
+					<ExtendedTooltip name="СуммаРасширеннаяПодсказка" id="12"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<Table name="ОбластиРаспеределения" id="13">
+			<Representation>List</Representation>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>Объект.ОбластиРаспеределения</DataPath>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ОбластиРаспеределенияКонтекстноеМеню" id="14"/>
+			<AutoCommandBar name="ОбластиРаспеределенияКоманднаяПанель" id="15"/>
+			<ExtendedTooltip name="ОбластиРаспеределенияРасширеннаяПодсказка" id="16"/>
+			<SearchStringAddition name="ОбластиРаспеределенияСтрокаПоиска" id="49">
+				<AdditionSource>
+					<Item>ОбластиРаспеределения</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ОбластиРаспеределенияСтрокаПоискаКонтекстноеМеню" id="50"/>
+				<ExtendedTooltip name="ОбластиРаспеределенияСтрокаПоискаРасширеннаяПодсказка" id="51"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ОбластиРаспеределенияСостояниеПросмотра" id="52">
+				<AdditionSource>
+					<Item>ОбластиРаспеределения</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ОбластиРаспеределенияСостояниеПросмотраКонтекстноеМеню" id="53"/>
+				<ExtendedTooltip name="ОбластиРаспеределенияСостояниеПросмотраРасширеннаяПодсказка" id="54"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ОбластиРаспеределенияУправлениеПоиском" id="55">
+				<AdditionSource>
+					<Item>ОбластиРаспеределения</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ОбластиРаспеределенияУправлениеПоискомКонтекстноеМеню" id="56"/>
+				<ExtendedTooltip name="ОбластиРаспеределенияУправлениеПоискомРасширеннаяПодсказка" id="57"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<LabelField name="ОбластиРаспеределенияНомерСтроки" id="17">
+					<DataPath>Объект.ОбластиРаспеределения.LineNumber</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ОбластиРаспеределенияНомерСтрокиКонтекстноеМеню" id="18"/>
+					<ExtendedTooltip name="ОбластиРаспеределенияНомерСтрокиРасширеннаяПодсказка" id="19"/>
+				</LabelField>
+				<InputField name="ОбластиРаспеределенияСтатья" id="20">
+					<DataPath>Объект.ОбластиРаспеределения.Статья</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ОбластиРаспеределенияСтатьяКонтекстноеМеню" id="21"/>
+					<ExtendedTooltip name="ОбластиРаспеределенияСтатьяРасширеннаяПодсказка" id="22"/>
+				</InputField>
+				<InputField name="ОбластиРаспеределенияСумма" id="23">
+					<DataPath>Объект.ОбластиРаспеределения.СуммаПоступления</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ОбластиРаспеределенияСуммаКонтекстноеМеню" id="24"/>
+					<ExtendedTooltip name="ОбластиРаспеределенияСуммаРасширеннаяПодсказка" id="25"/>
+				</InputField>
+				<InputField name="ОбластиРаспеределенияСуммаВыплаты" id="46">
+					<DataPath>Объект.ОбластиРаспеределения.СуммаВыплаты</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ОбластиРаспеределенияСуммаВыплатыКонтекстноеМеню" id="47"/>
+					<ExtendedTooltip name="ОбластиРаспеределенияСуммаВыплатыРасширеннаяПодсказка" id="48"/>
+				</InputField>
+				<InputField name="ОбластиРаспеределенияКомментарий" id="26">
+					<DataPath>Объект.ОбластиРаспеределения.Описание</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ОбластиРаспеределенияКомментарийКонтекстноеМеню" id="27"/>
+					<ExtendedTooltip name="ОбластиРаспеределенияКомментарийРасширеннаяПодсказка" id="28"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DocumentObject.БюджетированиеДвиженийДенежныхСредств</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<UseAlways>
+				<Field>Объект.RegisterRecords</Field>
+			</UseAlways>
+		</Attribute>
+	</Attributes>
+</Form>
