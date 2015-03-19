@@ -5,9 +5,6 @@
 	<UsePostingMode>Auto</UsePostingMode>
 	<RepostOnWrite>true</RepostOnWrite>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
-	<Events>
-		<Event name="OnOpen">ПриОткрытии</Event>
-	</Events>
 	<ChildItems>
 		<UsualGroup name="Шапка" id="33">
 			<Title>
@@ -28,56 +25,46 @@
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ШапкаExtendedTooltip" id="61"/>
 			<ChildItems>
-				<UsualGroup name="ЛеваяКолонка" id="40">
+				<UsualGroup name="НомерДатаГруппа" id="30">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Левая колонка</v8:content>
+							<v8:content>Номер дата группа</v8:content>
 						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Левая колонка</v8:content>
+							<v8:content>Номер дата группа</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Group>Vertical</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="ЛеваяКолонкаExtendedTooltip" id="62"/>
+					<ExtendedTooltip name="НомерДатаГруппаExtendedTooltip" id="63"/>
 					<ChildItems>
-						<UsualGroup name="НомерДатаГруппа" id="30">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Номер дата группа</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Номер дата группа</v8:content>
-								</v8:item>
-							</ToolTip>
-							<Group>Horizontal</Group>
-							<Representation>None</Representation>
-							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="НомерДатаГруппаExtendedTooltip" id="63"/>
-							<ChildItems>
-								<InputField name="Номер" id="1">
-									<DataPath>Объект.Number</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
-									<ExtendedTooltip name="НомерExtendedTooltip" id="64"/>
-								</InputField>
-								<InputField name="Дата" id="3">
-									<DataPath>Объект.Date</DataPath>
-									<EditMode>EnterOnInput</EditMode>
-									<ContextMenu name="ДатаКонтекстноеМеню" id="4"/>
-									<ExtendedTooltip name="ДатаExtendedTooltip" id="65"/>
-								</InputField>
-							</ChildItems>
-						</UsualGroup>
+						<InputField name="Номер" id="1">
+							<DataPath>Объект.Number</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>17</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
+							<ExtendedTooltip name="НомерExtendedTooltip" id="64"/>
+						</InputField>
+						<InputField name="Дата" id="3">
+							<DataPath>Объект.Date</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="ДатаКонтекстноеМеню" id="4"/>
+							<ExtendedTooltip name="ДатаExtendedTooltip" id="65"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="Группа1" id="83">
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="84"/>
+					<ChildItems>
 						<InputField name="Подразделение" id="7">
 							<DataPath>Объект.Подразделение</DataPath>
 							<EditMode>EnterOnInput</EditMode>
@@ -85,81 +72,11 @@
 							<ContextMenu name="ПодразделениеКонтекстноеМеню" id="8"/>
 							<ExtendedTooltip name="ПодразделениеExtendedTooltip" id="66"/>
 						</InputField>
-					</ChildItems>
-				</UsualGroup>
-				<UsualGroup name="ПраваяКолонка" id="39">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Правая колонка</v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Правая колонка</v8:content>
-						</v8:item>
-					</ToolTip>
-					<Group>Vertical</Group>
-					<Representation>None</Representation>
-					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="ПраваяКолонкаExtendedTooltip" id="67"/>
-					<ChildItems>
-						<InputField name="ХозяйственнаяОперация" id="31">
-							<DataPath>Объект.ХозяйственнаяОперация</DataPath>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Операция</v8:content>
-								</v8:item>
-							</Title>
-							<HorizontalStretch>false</HorizontalStretch>
-							<ListChoiceMode>true</ListChoiceMode>
-							<ChoiceList>
-								<xr:Item>
-									<xr:Presentation/>
-									<xr:CheckState>0</xr:CheckState>
-									<xr:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Закупка у контрагента</v8:content>
-											</v8:item>
-										</Presentation>
-										<Value xsi:type="xr:DesignTimeRef">Enum.ХозяйственнаяОперация.EnumValue.ЗакупкаУПоставщика</Value>
-									</xr:Value>
-								</xr:Item>
-								<xr:Item>
-									<xr:Presentation/>
-									<xr:CheckState>0</xr:CheckState>
-									<xr:Value xsi:type="FormChoiceListDesTimeValue">
-										<Presentation>
-											<v8:item>
-												<v8:lang>ru</v8:lang>
-												<v8:content>Оприходование от подотчетника</v8:content>
-											</v8:item>
-										</Presentation>
-										<Value xsi:type="xr:DesignTimeRef">Enum.ХозяйственнаяОперация.EnumValue.ОприходованиеБухгалтером</Value>
-									</xr:Value>
-								</xr:Item>
-							</ChoiceList>
-							<ContextMenu name="ХозяйственнаяОперацияКонтекстноеМеню" id="32"/>
-							<ExtendedTooltip name="ХозяйственнаяОперацияExtendedTooltip" id="68"/>
-							<Events>
-								<Event name="OnChange">ХозяйственнаяОперацияПриИзменении</Event>
-							</Events>
-						</InputField>
 						<InputField name="Контрагент" id="43">
 							<DataPath>Объект.Контрагент</DataPath>
 							<HorizontalStretch>false</HorizontalStretch>
 							<ContextMenu name="КонтрагентКонтекстноеМеню" id="44"/>
 							<ExtendedTooltip name="КонтрагентExtendedTooltip" id="69"/>
-						</InputField>
-						<InputField name="Подотчетник" id="45">
-							<DataPath>Объект.Подотчетник</DataPath>
-							<HorizontalStretch>false</HorizontalStretch>
-							<ContextMenu name="ПодотчетникКонтекстноеМеню" id="46"/>
-							<ExtendedTooltip name="ПодотчетникExtendedTooltip" id="70"/>
 						</InputField>
 					</ChildItems>
 				</UsualGroup>
@@ -179,29 +96,29 @@
 			<ContextMenu name="ОсновныеСредстваКонтекстноеМеню" id="16"/>
 			<AutoCommandBar name="ОсновныеСредстваКоманднаяПанель" id="17"/>
 			<ExtendedTooltip name="ОсновныеСредстваExtendedTooltip" id="71"/>
-			<SearchStringAddition name="ОсновныеСредстваСтрокаПоиска" id="83">
+			<SearchStringAddition name="ОсновныеСредстваСтрокаПоиска" id="85">
 				<AdditionSource>
 					<Item>ОсновныеСредства</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="ОсновныеСредстваСтрокаПоискаКонтекстноеМеню" id="84"/>
-				<ExtendedTooltip name="ОсновныеСредстваСтрокаПоискаРасширеннаяПодсказка" id="85"/>
+				<ContextMenu name="ОсновныеСредстваСтрокаПоискаКонтекстноеМеню" id="86"/>
+				<ExtendedTooltip name="ОсновныеСредстваСтрокаПоискаРасширеннаяПодсказка" id="87"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="ОсновныеСредстваСостояниеПросмотра" id="86">
+			<ViewStatusAddition name="ОсновныеСредстваСостояниеПросмотра" id="88">
 				<AdditionSource>
 					<Item>ОсновныеСредства</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="ОсновныеСредстваСостояниеПросмотраКонтекстноеМеню" id="87"/>
-				<ExtendedTooltip name="ОсновныеСредстваСостояниеПросмотраРасширеннаяПодсказка" id="88"/>
+				<ContextMenu name="ОсновныеСредстваСостояниеПросмотраКонтекстноеМеню" id="89"/>
+				<ExtendedTooltip name="ОсновныеСредстваСостояниеПросмотраРасширеннаяПодсказка" id="90"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="ОсновныеСредстваУправлениеПоиском" id="89">
+			<SearchControlAddition name="ОсновныеСредстваУправлениеПоиском" id="91">
 				<AdditionSource>
 					<Item>ОсновныеСредства</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="ОсновныеСредстваУправлениеПоискомКонтекстноеМеню" id="90"/>
-				<ExtendedTooltip name="ОсновныеСредстваУправлениеПоискомРасширеннаяПодсказка" id="91"/>
+				<ContextMenu name="ОсновныеСредстваУправлениеПоискомКонтекстноеМеню" id="92"/>
+				<ExtendedTooltip name="ОсновныеСредстваУправлениеПоискомРасширеннаяПодсказка" id="93"/>
 			</SearchControlAddition>
 			<ChildItems>
 				<LabelField name="ОсновныеСредстваНомерСтроки" id="18">
@@ -223,7 +140,7 @@
 					<ExtendedTooltip name="ОсновныеСредстваСтатьяExtendedTooltip" id="74"/>
 				</InputField>
 				<InputField name="ОсновныеСредстваДетализация" id="55">
-					<DataPath>Объект.ОсновныеСредства.Детализация</DataPath>
+					<DataPath>1/0:708a7e6a-3ee4-4233-8125-1b7539066b95/0:b3336aa4-165c-4ca2-9d56-f5ece17d8852</DataPath>
 					<EditMode>EnterOnInput</EditMode>
 					<Width>20</Width>
 					<HorizontalStretch>false</HorizontalStretch>
@@ -231,7 +148,7 @@
 					<ExtendedTooltip name="ОсновныеСредстваДетализацияExtendedTooltip" id="75"/>
 				</InputField>
 				<InputField name="ОсновныеСредстваКоличество" id="57">
-					<DataPath>Объект.ОсновныеСредства.Количество</DataPath>
+					<DataPath>1/0:708a7e6a-3ee4-4233-8125-1b7539066b95/0:2fce038c-f5a9-4bab-ae57-82ec3414f19d</DataPath>
 					<EditMode>EnterOnInput</EditMode>
 					<Width>5</Width>
 					<HorizontalStretch>false</HorizontalStretch>
@@ -266,13 +183,13 @@
 					<ExtendedTooltip name="ОсновныеСредстваСрокАмортизацииExtendedTooltip" id="78"/>
 				</InputField>
 				<InputField name="ОсновныеСредстваНомерПервичногоДокумента" id="47">
-					<DataPath>Объект.ОсновныеСредства.НомерПервичногоДокумента</DataPath>
+					<DataPath>1/0:708a7e6a-3ee4-4233-8125-1b7539066b95/0:4f29b3b4-0599-4985-8ef3-808a1085258c</DataPath>
 					<EditMode>EnterOnInput</EditMode>
 					<ContextMenu name="ОсновныеСредстваНомерПервичногоДокументаКонтекстноеМеню" id="48"/>
 					<ExtendedTooltip name="ОсновныеСредстваНомерПервичногоДокументаExtendedTooltip" id="79"/>
 				</InputField>
 				<InputField name="ОсновныеСредстваДатаПервичногоДокумента" id="49">
-					<DataPath>Объект.ОсновныеСредства.ДатаПервичногоДокумента</DataPath>
+					<DataPath>1/0:708a7e6a-3ee4-4233-8125-1b7539066b95/0:2e135de7-bdf5-4ce3-9567-90cdc9608da2</DataPath>
 					<EditMode>EnterOnInput</EditMode>
 					<ContextMenu name="ОсновныеСредстваДатаПервичногоДокументаКонтекстноеМеню" id="50"/>
 					<ExtendedTooltip name="ОсновныеСредстваДатаПервичногоДокументаExtendedTooltip" id="80"/>
