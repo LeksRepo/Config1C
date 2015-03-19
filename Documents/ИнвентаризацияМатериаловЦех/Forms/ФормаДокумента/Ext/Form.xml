@@ -27,39 +27,6 @@
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ШапкаExtendedTooltip" id="65"/>
 			<ChildItems>
-				<UsualGroup name="ГруппаЛеваяКолонка" id="57">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа левая колонка</v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа левая колонка</v8:content>
-						</v8:item>
-					</ToolTip>
-					<Group>Vertical</Group>
-					<Representation>None</Representation>
-					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="ГруппаЛеваяКолонкаРасширеннаяПодсказка" id="66"/>
-					<ChildItems>
-						<InputField name="Подразделение" id="52">
-							<DataPath>Объект.Подразделение</DataPath>
-							<HorizontalStretch>false</HorizontalStretch>
-							<ContextMenu name="ПодразделениеКонтекстноеМеню" id="53"/>
-							<ExtendedTooltip name="ПодразделениеExtendedTooltip" id="72"/>
-						</InputField>
-						<InputField name="Склад" id="7">
-							<DataPath>1/0:993c401c-a5e6-44cc-94a2-6ae6236a5ceb</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<HorizontalStretch>false</HorizontalStretch>
-							<ContextMenu name="СкладКонтекстноеМеню" id="8"/>
-							<ExtendedTooltip name="СкладExtendedTooltip" id="69"/>
-						</InputField>
-					</ChildItems>
-				</UsualGroup>
 				<UsualGroup name="ГруппаПраваяКолонка" id="58">
 					<Title>
 						<v8:item>
@@ -117,24 +84,36 @@
 								</InputField>
 							</ChildItems>
 						</UsualGroup>
-						<CheckBoxField name="ПоЦеху" id="143">
-							<DataPath>1/0:ce5d3287-e1aa-47df-8326-71ae5cb006fa</DataPath>
-							<CheckBoxType>Auto</CheckBoxType>
-							<ContextMenu name="ПоЦехуКонтекстноеМеню" id="144"/>
-							<ExtendedTooltip name="ПоЦехуРасширеннаяПодсказка" id="145"/>
-							<Events>
-								<Event name="OnChange">ПоЦехуПриИзменении</Event>
-							</Events>
-						</CheckBoxField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаЛеваяКолонка" id="57">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа левая колонка</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа левая колонка</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаЛеваяКолонкаРасширеннаяПодсказка" id="66"/>
+					<ChildItems>
+						<InputField name="Подразделение" id="52">
+							<DataPath>Объект.Подразделение</DataPath>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="ПодразделениеКонтекстноеМеню" id="53"/>
+							<ExtendedTooltip name="ПодразделениеExtendedTooltip" id="72"/>
+						</InputField>
 					</ChildItems>
 				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
-		<LabelField name="Автор" id="136">
-			<DataPath>Объект.Автор</DataPath>
-			<ContextMenu name="АвторКонтекстноеМеню" id="137"/>
-			<ExtendedTooltip name="АвторРасширеннаяПодсказка" id="138"/>
-		</LabelField>
 		<Table name="СписокНоменклатуры" id="146">
 			<Footer>true</Footer>
 			<AutoInsertNewRow>true</AutoInsertNewRow>
@@ -148,7 +127,7 @@
 			<ContextMenu name="СписокНоменклатурыКонтекстноеМеню" id="147"/>
 			<AutoCommandBar name="СписокНоменклатурыКоманднаяПанель" id="148">
 				<ChildItems>
-					<Popup name="Заполнить1" id="180">
+					<Popup name="Заполнить" id="180">
 						<Title>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
@@ -161,27 +140,27 @@
 								<v8:content>Заполнить</v8:content>
 							</v8:item>
 						</ToolTip>
-						<ExtendedTooltip name="Заполнить1РасширеннаяПодсказка" id="181"/>
+						<ExtendedTooltip name="ЗаполнитьРасширеннаяПодсказка" id="181"/>
 						<ChildItems>
-							<Button name="СписокНоменклатурыЗаполнитьОстаткамиПоСкладу1" id="182">
+							<Button name="СписокНоменклатурыЗаполнитьОстаткамиПоСкладу" id="182">
 								<Type>CommandBarButton</Type>
 								<CommandName>Form.Command.ЗаполнитьУчетнымиДанными</CommandName>
-								<ExtendedTooltip name="СписокНоменклатурыЗаполнитьОстаткамиПоСкладу1РасширеннаяПодсказка" id="183"/>
+								<ExtendedTooltip name="СписокНоменклатурыЗаполнитьОстаткамиПоСкладуРасширеннаяПодсказка" id="183"/>
 							</Button>
-							<Button name="СписокНоменклатурыЗаполнитьУчетнымиДаннымиГруппой1" id="184">
+							<Button name="СписокНоменклатурыЗаполнитьУчетнымиДаннымиГруппой" id="184">
 								<Type>CommandBarButton</Type>
 								<CommandName>Form.Command.ЗаполнитьУчетнымиДаннымиГруппой</CommandName>
-								<ExtendedTooltip name="СписокНоменклатурыЗаполнитьУчетнымиДаннымиГруппой1РасширеннаяПодсказка" id="185"/>
+								<ExtendedTooltip name="СписокНоменклатурыЗаполнитьУчетнымиДаннымиГруппойРасширеннаяПодсказка" id="185"/>
 							</Button>
-							<Button name="СписокНоменклатурыЗаполнитьФактическиеДанныеУчетными1" id="186">
+							<Button name="СписокНоменклатурыЗаполнитьФактическиеДанныеУчетными" id="186">
 								<Type>CommandBarButton</Type>
 								<CommandName>Form.Command.ЗаполнитьФактическиеДанныеУчетными</CommandName>
-								<ExtendedTooltip name="СписокНоменклатурыЗаполнитьФактическиеДанныеУчетными1РасширеннаяПодсказка" id="187"/>
+								<ExtendedTooltip name="СписокНоменклатурыЗаполнитьФактическиеДанныеУчетнымиРасширеннаяПодсказка" id="187"/>
 							</Button>
-							<Button name="СписокНоменклатурыПерезаполнитьУчетныеДанные1" id="188">
+							<Button name="СписокНоменклатурыПерезаполнитьУчетныеДанные" id="188">
 								<Type>CommandBarButton</Type>
 								<CommandName>Form.Command.ПерезаполнитьУчетныеДанные</CommandName>
-								<ExtendedTooltip name="СписокНоменклатурыПерезаполнитьУчетныеДанные1РасширеннаяПодсказка" id="189"/>
+								<ExtendedTooltip name="СписокНоменклатурыПерезаполнитьУчетныеДанныеРасширеннаяПодсказка" id="189"/>
 							</Button>
 						</ChildItems>
 					</Popup>
@@ -312,6 +291,11 @@
 				</LabelField>
 			</ChildItems>
 		</Table>
+		<LabelField name="Автор" id="136">
+			<DataPath>Объект.Автор</DataPath>
+			<ContextMenu name="АвторКонтекстноеМеню" id="137"/>
+			<ExtendedTooltip name="АвторРасширеннаяПодсказка" id="138"/>
+		</LabelField>
 		<InputField name="Комментарий" id="133">
 			<DataPath>Объект.Комментарий</DataPath>
 			<ContextMenu name="КомментарийКонтекстноеМеню" id="134"/>
