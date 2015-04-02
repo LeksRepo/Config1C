@@ -21,41 +21,66 @@
 			<ContextMenu name="НоменклатураКонтекстноеМеню" id="2"/>
 			<ExtendedTooltip name="НоменклатураРасширеннаяПодсказка" id="3"/>
 		</InputField>
-		<InputField name="Кромка045х19мм" id="21">
-			<DataPath>Кромка045х19мм</DataPath>
-			<ContextMenu name="Кромка045х19ммКонтекстноеМеню" id="22"/>
-			<ExtendedTooltip name="Кромка045х19ммРасширеннаяПодсказка" id="23"/>
-		</InputField>
-		<InputField name="Кромка2х19мм" id="24">
-			<DataPath>Кромка2х19мм</DataPath>
-			<ContextMenu name="Кромка2х19ммКонтекстноеМеню" id="25"/>
-			<ExtendedTooltip name="Кромка2х19ммРасширеннаяПодсказка" id="26"/>
-		</InputField>
-		<InputField name="Кромка2х35мм" id="27">
-			<DataPath>Кромка2х35мм</DataPath>
-			<ContextMenu name="Кромка2х35ммКонтекстноеМеню" id="28"/>
-			<ExtendedTooltip name="Кромка2х35ммРасширеннаяПодсказка" id="29"/>
-		</InputField>
-		<InputField name="Кант" id="39">
-			<DataPath>Кант</DataPath>
-			<ContextMenu name="КантКонтекстноеМеню" id="40"/>
-			<ExtendedTooltip name="КантРасширеннаяПодсказка" id="41"/>
-		</InputField>
-		<InputField name="ЗаглушкаПодЕвровинт" id="30">
-			<DataPath>ЗаглушкаПодЕвровинт</DataPath>
-			<ContextMenu name="ЗаглушкаПодЕвровинтКонтекстноеМеню" id="31"/>
-			<ExtendedTooltip name="ЗаглушкаПодЕвровинтРасширеннаяПодсказка" id="32"/>
-		</InputField>
-		<InputField name="ЗаглушкаПодЭксцентриковуюСтяжку" id="33">
-			<DataPath>ЗаглушкаПодЭксцентриковуюСтяжку</DataPath>
-			<ContextMenu name="ЗаглушкаПодЭксцентриковуюСтяжкуКонтекстноеМеню" id="34"/>
-			<ExtendedTooltip name="ЗаглушкаПодЭксцентриковуюСтяжкуРасширеннаяПодсказка" id="35"/>
-		</InputField>
-		<InputField name="МонтажныйУголок" id="36">
-			<DataPath>МонтажныйУголок</DataPath>
-			<ContextMenu name="МонтажныйУголокКонтекстноеМеню" id="37"/>
-			<ExtendedTooltip name="МонтажныйУголокРасширеннаяПодсказка" id="38"/>
-		</InputField>
+		<Table name="ТаблицаСоответсвий" id="44">
+			<Representation>List</Representation>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>ТаблицаСоответсвий</DataPath>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ТаблицаСоответсвийКонтекстноеМеню" id="45"/>
+			<AutoCommandBar name="ТаблицаСоответсвийКоманднаяПанель" id="46"/>
+			<ExtendedTooltip name="ТаблицаСоответсвийРасширеннаяПодсказка" id="47"/>
+			<SearchStringAddition name="ТаблицаСоответсвийСтрокаПоиска" id="54">
+				<AdditionSource>
+					<Item>ТаблицаСоответсвий</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ТаблицаСоответсвийСтрокаПоискаКонтекстноеМеню" id="55"/>
+				<ExtendedTooltip name="ТаблицаСоответсвийСтрокаПоискаРасширеннаяПодсказка" id="56"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ТаблицаСоответсвийСостояниеПросмотра" id="57">
+				<AdditionSource>
+					<Item>ТаблицаСоответсвий</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ТаблицаСоответсвийСостояниеПросмотраКонтекстноеМеню" id="58"/>
+				<ExtendedTooltip name="ТаблицаСоответсвийСостояниеПросмотраРасширеннаяПодсказка" id="59"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ТаблицаСоответсвийУправлениеПоиском" id="60">
+				<AdditionSource>
+					<Item>ТаблицаСоответсвий</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ТаблицаСоответсвийУправлениеПоискомКонтекстноеМеню" id="61"/>
+				<ExtendedTooltip name="ТаблицаСоответсвийУправлениеПоискомРасширеннаяПодсказка" id="62"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="BeforeDeleteRow">ТаблицаСоответсвийПередУдалением</Event>
+			</Events>
+			<ChildItems>
+				<InputField name="ТаблицаСоответсвийНоменклатурнаяГруппа" id="51">
+					<DataPath>ТаблицаСоответсвий.НоменклатурнаяГруппа</DataPath>
+					<Enabled>false</Enabled>
+					<EditMode>EnterOnInput</EditMode>
+					<HorizontalStretch>false</HorizontalStretch>
+					<ContextMenu name="ТаблицаСоответсвийНоменклатурнаяГруппаКонтекстноеМеню" id="52"/>
+					<ExtendedTooltip name="ТаблицаСоответсвийНоменклатурнаяГруппаРасширеннаяПодсказка" id="53"/>
+				</InputField>
+				<InputField name="ТаблицаСоответсвийНоменклатура" id="48">
+					<DataPath>ТаблицаСоответсвий.Номенклатура</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ТаблицаСоответсвийНоменклатураКонтекстноеМеню" id="49"/>
+					<ExtendedTooltip name="ТаблицаСоответсвийНоменклатураРасширеннаяПодсказка" id="50"/>
+					<Events>
+						<Event name="ChoiceProcessing">ТаблицаСоответсвийНоменклатураОбработкаВыбора</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</Table>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Запись" id="1">
@@ -65,88 +90,51 @@
 			<MainAttribute>true</MainAttribute>
 			<SavedData>true</SavedData>
 		</Attribute>
-		<Attribute name="Кромка2х19мм" id="2">
+		<Attribute name="ТаблицаСоответсвий" id="9">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Кромка 2 х 19 мм</v8:content>
+					<v8:content>Таблица соответсвий</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
-				<v8:Type>cfg:CatalogRef.Номенклатура</v8:Type>
+				<v8:Type>v8:ValueTable</v8:Type>
 			</Type>
-			<FillCheck>ShowError</FillCheck>
-		</Attribute>
-		<Attribute name="Кромка045х19мм" id="3">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Кромка 045 х 19 мм</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>cfg:CatalogRef.Номенклатура</v8:Type>
-			</Type>
-			<FillCheck>ShowError</FillCheck>
-		</Attribute>
-		<Attribute name="Кант" id="4">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Кант</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>cfg:CatalogRef.Номенклатура</v8:Type>
-			</Type>
-		</Attribute>
-		<Attribute name="ЗаглушкаПодЕвровинт" id="5">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Заглушка под евровинт</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>cfg:CatalogRef.Номенклатура</v8:Type>
-			</Type>
-			<FillCheck>ShowError</FillCheck>
-		</Attribute>
-		<Attribute name="МонтажныйУголок" id="6">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Монтажный уголок</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>cfg:CatalogRef.Номенклатура</v8:Type>
-			</Type>
-			<FillCheck>ShowError</FillCheck>
-		</Attribute>
-		<Attribute name="Кромка2х35мм" id="7">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Кромка 2 х 35 мм</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>cfg:CatalogRef.Номенклатура</v8:Type>
-			</Type>
-			<FillCheck>ShowError</FillCheck>
-		</Attribute>
-		<Attribute name="ЗаглушкаПодЭксцентриковуюСтяжку" id="8">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Заглушка под эксцентриковую стяжку</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>cfg:CatalogRef.Номенклатура</v8:Type>
-			</Type>
-			<FillCheck>ShowError</FillCheck>
+			<Columns>
+				<Column name="Номенклатура" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номенклатура</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Номенклатура</v8:Type>
+					</Type>
+				</Column>
+				<Column name="НоменклатурнаяГруппа" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номенклатурная группа</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.НоменклатурныеГруппы</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ОбязательноСоответствие" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Обязательно соответствие</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
 		</Attribute>
 	</Attributes>
 	<Commands>
