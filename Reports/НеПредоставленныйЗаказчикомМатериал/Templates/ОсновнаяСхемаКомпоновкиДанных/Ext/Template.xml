@@ -15,16 +15,6 @@
 			<field>Номенклатура</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Предоставлен</dataPath>
-			<field>Предоставлен</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Предоставлен</v8:content>
-				</v8:item>
-			</title>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>Подразделение</dataPath>
 			<field>Подразделение</field>
 		</field>
@@ -43,7 +33,6 @@
 	СпецСписок.Ссылка КАК Спецификация,
 	СпецСписок.Номенклатура,
 	СпецСписок.Количество,
-	ЕСТЬNULL(ПриходСписок.Предоставлен, ЛОЖЬ) КАК Предоставлен,
 	СпецСписок.Ссылка.Подразделение КАК Подразделение
 ИЗ
 	Документ.Спецификация.СписокМатериаловЗаказчика КАК СпецСписок
@@ -54,15 +43,12 @@
 			И СпецСписок.Номенклатура = ПриходСписок.Номенклатура
 ГДЕ
 	СпецСписок.Ссылка.Проведен
-	И СтатусыСпец.Статус = ЗНАЧЕНИЕ(Перечисление.СтатусыСпецификации.Размещен)</query>
+	И СтатусыСпец.Статус = ЗНАЧЕНИЕ(Перечисление.СтатусыСпецификации.Размещен)
+	И НЕ ЕСТЬNULL(ПриходСписок.Предоставлен, ЛОЖЬ)</query>
 	</dataSet>
 	<totalField>
 		<dataPath>Количество</dataPath>
 		<expression>Сумма(Количество)</expression>
-	</totalField>
-	<totalField>
-		<dataPath>Предоставлен</dataPath>
-		<expression>Минимум(Предоставлен)</expression>
 	</totalField>
 	<parameter>
 		<name>Период</name>
@@ -103,9 +89,6 @@
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Количество</dcsset:field>
 				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Предоставлен</dcsset:field>
-				</dcsset:item>
 			</dcsset:selection>
 			<dcsset:order>
 				<dcsset:item xsi:type="dcsset:OrderItemField">
@@ -117,40 +100,6 @@
 					<dcsset:orderType>Asc</dcsset:orderType>
 				</dcsset:item>
 			</dcsset:order>
-			<dcsset:conditionalAppearance>
-				<dcsset:item>
-					<dcsset:selection>
-						<dcsset:item>
-							<dcsset:field>Номенклатура</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:field>Количество</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:field>Предоставлен</dcsset:field>
-						</dcsset:item>
-					</dcsset:selection>
-					<dcsset:filter>
-						<dcsset:item xsi:type="dcsset:FilterItemComparison">
-							<dcsset:left xsi:type="dcscor:Field">Предоставлен</dcsset:left>
-							<dcsset:comparisonType>Equal</dcsset:comparisonType>
-							<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
-						</dcsset:item>
-					</dcsset:filter>
-					<dcsset:appearance>
-						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-							<dcscor:parameter>ЦветФона</dcscor:parameter>
-							<dcscor:value xsi:type="v8ui:Color">web:Pink</dcscor:value>
-						</dcscor:item>
-					</dcsset:appearance>
-					<dcsset:useInHierarchicalGroup>DontUse</dcsset:useInHierarchicalGroup>
-					<dcsset:useInOverall>DontUse</dcsset:useInOverall>
-					<dcsset:useInFieldsHeader>DontUse</dcsset:useInFieldsHeader>
-					<dcsset:useInHeader>DontUse</dcsset:useInHeader>
-					<dcsset:useInParameters>DontUse</dcsset:useInParameters>
-					<dcsset:useInFilter>DontUse</dcsset:useInFilter>
-				</dcsset:item>
-			</dcsset:conditionalAppearance>
 			<dcsset:outputParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>РасположениеИтогов</dcscor:parameter>
