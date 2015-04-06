@@ -9,17 +9,41 @@
 		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
 	</Events>
 	<ChildItems>
-		<UsualGroup name="Группа1" id="29">
+		<UsualGroup name="Шапка" id="29">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Шапка</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Шапка</v8:content>
+				</v8:item>
+			</ToolTip>
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="30"/>
+			<ExtendedTooltip name="ШапкаРасширеннаяПодсказка" id="30"/>
 			<ChildItems>
-				<UsualGroup name="Группа2" id="31">
+				<UsualGroup name="ДатаНомер" id="31">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата номер</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата номер</v8:content>
+						</v8:item>
+					</ToolTip>
 					<Group>Vertical</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="Группа2РасширеннаяПодсказка" id="32"/>
+					<ExtendedTooltip name="ДатаНомерРасширеннаяПодсказка" id="32"/>
 					<ChildItems>
 						<InputField name="Дата" id="4">
 							<DataPath>Объект.Date</DataPath>
@@ -36,11 +60,23 @@
 						</InputField>
 					</ChildItems>
 				</UsualGroup>
-				<UsualGroup name="Группа3" id="33">
+				<UsualGroup name="ПодразделениеСумма" id="33">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подразделение сумма</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подразделение сумма</v8:content>
+						</v8:item>
+					</ToolTip>
 					<Group>Vertical</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="Группа3РасширеннаяПодсказка" id="34"/>
+					<ExtendedTooltip name="ПодразделениеСуммаРасширеннаяПодсказка" id="34"/>
 					<ChildItems>
 						<InputField name="Подразделение" id="7">
 							<DataPath>Объект.Подразделение</DataPath>
@@ -49,48 +85,19 @@
 							<ContextMenu name="ПодразделениеКонтекстноеМеню" id="8"/>
 							<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="9"/>
 						</InputField>
-						<InputField name="Период" id="43">
-							<DataPath>Объект.Период</DataPath>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Период планирования</v8:content>
-								</v8:item>
-							</Title>
-							<ContextMenu name="ПериодКонтекстноеМеню" id="44"/>
-							<ExtendedTooltip name="ПериодРасширеннаяПодсказка" id="45"/>
-						</InputField>
+						<LabelField name="Сумма" id="10">
+							<DataPath>Объект.СуммаДокумента</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="СуммаКонтекстноеМеню" id="11"/>
+							<ExtendedTooltip name="СуммаРасширеннаяПодсказка" id="12"/>
+						</LabelField>
 					</ChildItems>
 				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
-		<UsualGroup name="Группа4" id="35">
-			<Enabled>false</Enabled>
-			<Group>Horizontal</Group>
-			<Representation>None</Representation>
-			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="Группа4РасширеннаяПодсказка" id="36"/>
-			<ChildItems>
-				<LabelField name="СуммаНачислений" id="37">
-					<DataPath>Объект.СуммаПоступлений</DataPath>
-					<ContextMenu name="СуммаНачисленийКонтекстноеМеню" id="38"/>
-					<ExtendedTooltip name="СуммаНачисленийРасширеннаяПодсказка" id="39"/>
-				</LabelField>
-				<LabelField name="СуммаВыплат" id="40">
-					<DataPath>Объект.СуммаВыплат</DataPath>
-					<ContextMenu name="СуммаВыплатКонтекстноеМеню" id="41"/>
-					<ExtendedTooltip name="СуммаВыплатРасширеннаяПодсказка" id="42"/>
-				</LabelField>
-				<LabelField name="Сумма" id="10">
-					<DataPath>Объект.СуммаДокумента</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="СуммаКонтекстноеМеню" id="11"/>
-					<ExtendedTooltip name="СуммаРасширеннаяПодсказка" id="12"/>
-				</LabelField>
-			</ChildItems>
-		</UsualGroup>
 		<Table name="ОбластиРаспеределения" id="13">
 			<Representation>List</Representation>
+			<Footer>true</Footer>
 			<AutoInsertNewRow>true</AutoInsertNewRow>
 			<EnableStartDrag>true</EnableStartDrag>
 			<EnableDrag>true</EnableDrag>
@@ -142,12 +149,14 @@
 				<InputField name="ОбластиРаспеределенияСумма" id="23">
 					<DataPath>Объект.ОбластиРаспеределения.СуммаПоступления</DataPath>
 					<EditMode>EnterOnInput</EditMode>
+					<FooterDataPath>Объект.ОбластиРаспеределения.TotalСуммаПоступления</FooterDataPath>
 					<ContextMenu name="ОбластиРаспеределенияСуммаКонтекстноеМеню" id="24"/>
 					<ExtendedTooltip name="ОбластиРаспеределенияСуммаРасширеннаяПодсказка" id="25"/>
 				</InputField>
 				<InputField name="ОбластиРаспеределенияСуммаВыплаты" id="46">
 					<DataPath>Объект.ОбластиРаспеределения.СуммаВыплаты</DataPath>
 					<EditMode>EnterOnInput</EditMode>
+					<FooterDataPath>Объект.ОбластиРаспеределения.TotalСуммаВыплаты</FooterDataPath>
 					<ContextMenu name="ОбластиРаспеределенияСуммаВыплатыКонтекстноеМеню" id="47"/>
 					<ExtendedTooltip name="ОбластиРаспеределенияСуммаВыплатыРасширеннаяПодсказка" id="48"/>
 				</InputField>
