@@ -147,12 +147,22 @@
 											<ContextMenu name="Декорация4КонтекстноеМеню" id="265"/>
 											<ExtendedTooltip name="Декорация4РасширеннаяПодсказка" id="266"/>
 										</PictureDecoration>
-										<Button name="ДоступнаяНоменклатура" id="260">
-											<Type>UsualButton</Type>
-											<Width>35</Width>
-											<CommandName>Form.Command.ДоступнаяНоменклатура</CommandName>
-											<ExtendedTooltip name="ДоступнаяНоменклатураРасширеннаяПодсказка" id="261"/>
-										</Button>
+										<CheckBoxField name="ДоступностьНоменклатуры" id="272">
+											<DataPath>ДоступностьНоменклатуры</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Показывать недоступный материал</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="ДоступностьНоменклатурыКонтекстноеМеню" id="273"/>
+											<ExtendedTooltip name="ДоступностьНоменклатурыРасширеннаяПодсказка" id="274"/>
+											<Events>
+												<Event name="OnChange">ДоступностьНоменклатурыПриИзменении</Event>
+											</Events>
+										</CheckBoxField>
 									</ChildItems>
 								</UsualGroup>
 								<LabelDecoration name="НадписьПредоставитьСамостоятельно" id="269">
@@ -160,7 +170,7 @@
 									<Title formatted="true">
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Выбранную номенклатуру необходимо предоставить самостоятельно</v8:content>
+											<v8:content>      Выбранный материал необходимо предоставить самостоятельно</v8:content>
 										</v8:item>
 									</Title>
 									<ContextMenu name="НадписьПредоставитьСамостоятельноКонтекстноеМеню" id="270"/>
@@ -568,29 +578,29 @@
 								</ChildItems>
 							</AutoCommandBar>
 							<ExtendedTooltip name="СписокНоменклатурыРасширеннаяПодсказка" id="176"/>
-							<SearchStringAddition name="СписокНоменклатурыСтрокаПоиска" id="272">
+							<SearchStringAddition name="СписокНоменклатурыСтрокаПоиска" id="275">
 								<AdditionSource>
 									<Item>СписокНоменклатуры</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокНоменклатурыСтрокаПоискаКонтекстноеМеню" id="273"/>
-								<ExtendedTooltip name="СписокНоменклатурыСтрокаПоискаРасширеннаяПодсказка" id="274"/>
+								<ContextMenu name="СписокНоменклатурыСтрокаПоискаКонтекстноеМеню" id="276"/>
+								<ExtendedTooltip name="СписокНоменклатурыСтрокаПоискаРасширеннаяПодсказка" id="277"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="СписокНоменклатурыСостояниеПросмотра" id="275">
+							<ViewStatusAddition name="СписокНоменклатурыСостояниеПросмотра" id="278">
 								<AdditionSource>
 									<Item>СписокНоменклатуры</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокНоменклатурыСостояниеПросмотраКонтекстноеМеню" id="276"/>
-								<ExtendedTooltip name="СписокНоменклатурыСостояниеПросмотраРасширеннаяПодсказка" id="277"/>
+								<ContextMenu name="СписокНоменклатурыСостояниеПросмотраКонтекстноеМеню" id="279"/>
+								<ExtendedTooltip name="СписокНоменклатурыСостояниеПросмотраРасширеннаяПодсказка" id="280"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="СписокНоменклатурыУправлениеПоиском" id="278">
+							<SearchControlAddition name="СписокНоменклатурыУправлениеПоиском" id="281">
 								<AdditionSource>
 									<Item>СписокНоменклатуры</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокНоменклатурыУправлениеПоискомКонтекстноеМеню" id="279"/>
-								<ExtendedTooltip name="СписокНоменклатурыУправлениеПоискомРасширеннаяПодсказка" id="280"/>
+								<ContextMenu name="СписокНоменклатурыУправлениеПоискомКонтекстноеМеню" id="282"/>
+								<ExtendedTooltip name="СписокНоменклатурыУправлениеПоискомРасширеннаяПодсказка" id="283"/>
 							</SearchControlAddition>
 							<Events>
 								<Event name="BeforeAddRow">СписокНоменклатурыПередНачаломДобавления</Event>
@@ -912,21 +922,6 @@
 				</v8:item>
 			</ToolTip>
 			<Action>Перезаполнить</Action>
-		</Command>
-		<Command name="ДоступнаяНоменклатура" id="3">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Доступная \ Не Доступная Номенклатура</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Доступная номенклатура</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Action>ДоступнаяНоменклатура</Action>
 		</Command>
 	</Commands>
 </Form>
