@@ -326,19 +326,12 @@
 		
 		Код=Элемент.Код;
 		Код = СокрЛП(Код);
-		ПутьКИзображению = РабочийКаталог + Код;// + ".jpg";
+		ПутьКИзображению = РабочийКаталог + Код;
 		ФайлНаДиске = Новый Файл(ПутьКИзображению);
 		
-		Если ФайлНаДиске.Существует() Тогда
+		Если ЗначениеЗаполнено(Код) И ФайлНаДиске.Существует() Тогда
 			
 			Изображение = "<html><head><META HTTP-EQUIV=""Pragma"" CONTENT=""no-cache""></head><body bottommargin=""0"" topmargin=""0"" leftmargin=""0"" rightmargin=""0""><img src=""" + ПутьКИзображению + """ /></body></html>";
-			
-			//Если Режим = 0 Тогда
-			//	Изображение = "<html><head><META HTTP-EQUIV=""Pragma"" CONTENT=""no-cache""></head><body bottommargin=""0"" topmargin=""0"" leftmargin=""0"" rightmargin=""0""><img src=""" + ПутьКИзображению + """ height=100% /></body></html>";
-			//Иначе
-			//	Изображение = "<html><head><META HTTP-EQUIV=""Pragma"" CONTENT=""no-cache""></head><body bottommargin=""0"" topmargin=""0"" leftmargin=""0"" rightmargin=""0""><img src=""" + ПутьКИзображению + """ width=100% /></body></html>";
-			//КонецЕсли;
-			
 			Изображение = ПутьКИзображению;
 			
 		Иначе
