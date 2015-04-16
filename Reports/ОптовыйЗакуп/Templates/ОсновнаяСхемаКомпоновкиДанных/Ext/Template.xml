@@ -55,20 +55,6 @@
 			<field>СубконтоДт3</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Номенклатура</dataPath>
-			<field>Номенклатура</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Номенклатура</v8:content>
-				</v8:item>
-			</title>
-			<role>
-				<dcscom:dimension>true</dcscom:dimension>
-				<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
-			</role>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>Подразделение</dataPath>
 			<field>Подразделение</field>
 		</field>
@@ -81,14 +67,18 @@
 			<field>СчетКтЧтение</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>КоличествоОстаток</dataPath>
-			<field>КоличествоОстаток</field>
+			<dataPath>Номенклатура</dataPath>
+			<field>Номенклатура</field>
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Количество остаток</v8:content>
+					<v8:content>Номенклатура</v8:content>
 				</v8:item>
 			</title>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+				<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
+			</role>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>РасходЗаПериод</dataPath>
@@ -109,21 +99,87 @@
 					<v8:content>Расход среднемесячный</v8:content>
 				</v8:item>
 			</title>
-			<appearance>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>Формат</dcscor:parameter>
-					<dcscor:value xsi:type="xs:string">ЧДЦ=3</dcscor:value>
-				</dcscor:item>
-			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоОстаток</dataPath>
+			<field>КоличествоОстаток</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>РасходЗаПоследнийМесяц</dataPath>
+			<field>РасходЗаПоследнийМесяц</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Расход за последний месяц</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>БазоваяНоменклатура</dataPath>
+			<field>БазоваяНоменклатура</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Базовая номенклатура</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЗакупОптом</dataPath>
+			<field>ЗакупОптом</field>
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
-	УправленческийОборотыДтКт.СубконтоКт2 КАК Номенклатура,
-	УправленческийОборотыДтКт.КоличествоОборотКт КАК РасходЗаПериод,
-	УправленческийОборотыДтКт.КоличествоОборотКт / &amp;Месяцев КАК РасходСреднемесячный
-ПОМЕСТИТЬ втРасходНоменклатуры
+	втТаблицы.Номенклатура КАК Номенклатура,
+	ВЫБОР
+		КОГДА втТаблицы.Номенклатура.Базовый
+			ТОГДА втТаблицы.Номенклатура
+		ИНАЧЕ втТаблицы.Номенклатура.БазоваяНоменклатура
+	КОНЕЦ КАК БазоваяНоменклатура,
+	СУММА(втТаблицы.РасходЗаПериод) КАК РасходЗаПериод,
+	СУММА(втТаблицы.РасходСреднемесячный) КАК РасходСреднемесячный,
+	СУММА(втТаблицы.КоличествоОстаток) КАК КоличествоОстаток,
+	СУММА(втТаблицы.РасходЗаПоследнийМесяц) КАК РасходЗаПоследнийМесяц
+ПОМЕСТИТЬ втДанные
 ИЗ
-	РегистрБухгалтерии.Управленческий.ОборотыДтКт(ДОБАВИТЬКДАТЕ(НАЧАЛОПЕРИОДА(&amp;ДатаОтчета, МЕСЯЦ), МЕСЯЦ, -&amp;Месяцев), ДОБАВИТЬКДАТЕ(&amp;ДатаОтчета, ДЕНЬ, 1), , , , СчетКт = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.МатериалыНаСкладе), , Подразделение = &amp;Подразделение) КАК УправленческийОборотыДтКт
+	(ВЫБРАТЬ
+		УправленческийОборотыДтКт.СубконтоКт2 КАК Номенклатура,
+		УправленческийОборотыДтКт.КоличествоОборотКт КАК РасходЗаПериод,
+		УправленческийОборотыДтКт.КоличествоОборотКт / &amp;Месяцев КАК РасходСреднемесячный,
+		0 КАК КоличествоОстаток,
+		0 КАК РасходЗаПоследнийМесяц
+	ИЗ
+		РегистрБухгалтерии.Управленческий.ОборотыДтКт(ДОБАВИТЬКДАТЕ(НАЧАЛОПЕРИОДА(&amp;ДатаОтчета, МЕСЯЦ), МЕСЯЦ, -&amp;Месяцев), ДОБАВИТЬКДАТЕ(&amp;ДатаОтчета, ДЕНЬ, 1), , , , СчетКт = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.МатериалыНаСкладе), , Подразделение = &amp;Подразделение) КАК УправленческийОборотыДтКт
+	
+	ОБЪЕДИНИТЬ ВСЕ
+	
+	ВЫБРАТЬ
+		УправленческийОстатки.Субконто2,
+		0,
+		0,
+		УправленческийОстатки.КоличествоОстаток,
+		0
+	ИЗ
+		РегистрБухгалтерии.Управленческий.Остатки(ДОБАВИТЬКДАТЕ(&amp;ДатаОтчета, ДЕНЬ, 1), Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.МатериалыНаСкладе), , Подразделение = &amp;Подразделение) КАК УправленческийОстатки
+	
+	ОБЪЕДИНИТЬ ВСЕ
+	
+	ВЫБРАТЬ
+		УправленческийОборотыДтКт.СубконтоКт2,
+		0,
+		0,
+		0,
+		УправленческийОборотыДтКт.КоличествоОборотКт
+	ИЗ
+		РегистрБухгалтерии.Управленческий.ОборотыДтКт(ДОБАВИТЬКДАТЕ(НАЧАЛОПЕРИОДА(&amp;ДатаОтчета, МЕСЯЦ), МЕСЯЦ, -1), ДОБАВИТЬКДАТЕ(&amp;ДатаОтчета, ДЕНЬ, 1), , , , СчетКт = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.МатериалыНаСкладе), , Подразделение = &amp;Подразделение) КАК УправленческийОборотыДтКт) КАК втТаблицы
+
+СГРУППИРОВАТЬ ПО
+	втТаблицы.Номенклатура,
+	ВЫБОР
+		КОГДА втТаблицы.Номенклатура.Базовый
+			ТОГДА втТаблицы.Номенклатура
+		ИНАЧЕ втТаблицы.Номенклатура.БазоваяНоменклатура
+	КОНЕЦ
 
 ИНДЕКСИРОВАТЬ ПО
 	Номенклатура
@@ -131,14 +187,33 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 ВЫБРАТЬ
-	УправленческийОстатки.КоличествоОстаток,
-	втРасходНоменклатуры.Номенклатура,
-	втРасходНоменклатуры.РасходЗаПериод,
-	втРасходНоменклатуры.РасходСреднемесячный
+	НоменклатураПодразделений.Номенклатура КАК Номенклатура,
+	НоменклатураПодразделений.ЗакупОптом
+ПОМЕСТИТЬ втНоменклатураПодразделений
 ИЗ
-	втРасходНоменклатуры КАК втРасходНоменклатуры
-		ЛЕВОЕ СОЕДИНЕНИЕ РегистрБухгалтерии.Управленческий.Остатки(ДОБАВИТЬКДАТЕ(&amp;ДатаОтчета, ДЕНЬ, 1), Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.МатериалыНаСкладе), , Подразделение = &amp;Подразделение) КАК УправленческийОстатки
-		ПО втРасходНоменклатуры.Номенклатура = УправленческийОстатки.Субконто2</query>
+	РегистрСведений.НоменклатураПодразделений КАК НоменклатураПодразделений
+ГДЕ
+	НоменклатураПодразделений.Подразделение = &amp;Подразделение
+
+ИНДЕКСИРОВАТЬ ПО
+	Номенклатура
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	втДанные.Номенклатура,
+	втДанные.БазоваяНоменклатура,
+	втДанные.РасходЗаПериод,
+	втДанные.РасходСреднемесячный,
+	втДанные.КоличествоОстаток,
+	втДанные.РасходЗаПоследнийМесяц,
+	втНоменклатураПодразделений.ЗакупОптом
+ИЗ
+	втДанные КАК втДанные
+		ЛЕВОЕ СОЕДИНЕНИЕ втНоменклатураПодразделений КАК втНоменклатураПодразделений
+		ПО втДанные.БазоваяНоменклатура = втНоменклатураПодразделений.Номенклатура
+{ГДЕ
+	втНоменклатураПодразделений.ЗакупОптом}</query>
 	</dataSet>
 	<totalField>
 		<dataPath>КоличествоОстаток</dataPath>
@@ -147,6 +222,10 @@
 	<totalField>
 		<dataPath>РасходЗаПериод</dataPath>
 		<expression>Сумма(РасходЗаПериод)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>РасходЗаПоследнийМесяц</dataPath>
+		<expression>Сумма(РасходЗаПоследнийМесяц)</expression>
 	</totalField>
 	<totalField>
 		<dataPath>РасходСреднемесячный</dataPath>
@@ -311,6 +390,21 @@
 		</valueType>
 		<value xsi:nil="true"/>
 		<useRestriction>false</useRestriction>
+		<inputParameters>
+			<dcscor:item>
+				<dcscor:parameter>ПараметрыВыбора</dcscor:parameter>
+				<dcscor:value xsi:type="dcscor:ChoiceParameters">
+					<dcscor:item>
+						<dcscor:choiceParameter>Отбор.ВидПодразделения</dcscor:choiceParameter>
+						<dcscor:value xsi:type="dcscor:DesignTimeValue">Перечисление.ВидыПодразделений.Производство</dcscor:value>
+					</dcscor:item>
+				</dcscor:value>
+			</dcscor:item>
+			<dcscor:item>
+				<dcscor:parameter>БыстрыйВыбор</dcscor:parameter>
+				<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+			</dcscor:item>
+		</inputParameters>
 		<use>Always</use>
 	</parameter>
 	<parameter>
@@ -376,6 +470,9 @@
 					<dcsset:field>Номенклатура</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ЗакупОптом</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>РасходЗаПериод</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
@@ -384,7 +481,30 @@
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>КоличествоОстаток</dcsset:field>
 				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>РасходЗаПоследнийМесяц</dcsset:field>
+				</dcsset:item>
 			</dcsset:selection>
+			<dcsset:filter>
+				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:left xsi:type="dcscor:Field">ЗакупОптом</dcsset:left>
+					<dcsset:comparisonType>Equal</dcsset:comparisonType>
+					<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					<dcsset:presentation xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Только оптовые</v8:content>
+						</v8:item>
+					</dcsset:presentation>
+					<dcsset:userSettingID>42e70bad-90dc-4d2c-bb49-5f2a1d158f77</dcsset:userSettingID>
+					<dcsset:userSettingPresentation xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Только оптовые</v8:content>
+						</v8:item>
+					</dcsset:userSettingPresentation>
+				</dcsset:item>
+			</dcsset:filter>
 			<dcsset:dataParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>ДатаОтчета</dcscor:parameter>
@@ -411,6 +531,13 @@
 					<dcsset:item xsi:type="dcsset:GroupItemField">
 						<dcsset:field>Номенклатура</dcsset:field>
 						<dcsset:groupType>Hierarchy</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ЗакупОптом</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
 						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
 						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
