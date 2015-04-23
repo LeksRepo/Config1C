@@ -1,38 +1,151 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Сетка остатков</v8:content>
+		</v8:item>
+	</Title>
+	<AutoTitle>false</AutoTitle>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<Autofill>false</Autofill>
 	</AutoCommandBar>
 	<ChildItems>
-		<UsualGroup name="ГруппаОсновная" id="10">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа основная</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа основная</v8:content>
-				</v8:item>
-			</ToolTip>
+		<UsualGroup name="Группа1" id="22">
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаОсновнаяРасширеннаяПодсказка" id="11"/>
+			<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="23"/>
 			<ChildItems>
-				<InputField name="НоменклатурнаяГруппа" id="1">
-					<DataPath>НоменклатурнаяГруппа</DataPath>
-					<ContextMenu name="НоменклатурнаяГруппаКонтекстноеМеню" id="2"/>
-					<ExtendedTooltip name="НоменклатурнаяГруппаРасширеннаяПодсказка" id="3"/>
-					<Events>
-						<Event name="OnChange">НоменклатурнаяГруппаПодразделениеПриИзменении</Event>
-					</Events>
+				<UsualGroup name="ГруппаОсновная" id="10">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Текущие данные</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа основная</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<Representation>StrongSeparation</Representation>
+					<BackColor>style:ButtonBackColor</BackColor>
+					<ExtendedTooltip name="ГруппаОсновнаяРасширеннаяПодсказка" id="11"/>
+					<ChildItems>
+						<InputField name="НоменклатурнаяГруппа" id="1">
+							<DataPath>НоменклатурнаяГруппа</DataPath>
+							<ChoiceParameters>
+								<app:item name="Отбор.ЛистовойМатериал">
+									<app:value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xs:boolean">true</Value>
+									</app:value>
+								</app:item>
+							</ChoiceParameters>
+							<ContextMenu name="НоменклатурнаяГруппаКонтекстноеМеню" id="2"/>
+							<ExtendedTooltip name="НоменклатурнаяГруппаРасширеннаяПодсказка" id="3"/>
+							<Events>
+								<Event name="OnChange">НоменклатурнаяГруппаПодразделениеПриИзменении</Event>
+							</Events>
+						</InputField>
+						<InputField name="Подразделение" id="7">
+							<DataPath>Подразделение</DataPath>
+							<QuickChoice>true</QuickChoice>
+							<ChoiceParameters>
+								<app:item name="Отбор.ВидПодразделения">
+									<app:value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xr:DesignTimeRef">Enum.ВидыПодразделений.EnumValue.Производство</Value>
+									</app:value>
+								</app:item>
+								<app:item name="Отбор.Активность">
+									<app:value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation/>
+										<Value xsi:type="xs:boolean">true</Value>
+									</app:value>
+								</app:item>
+							</ChoiceParameters>
+							<ContextMenu name="ПодразделениеКонтекстноеМеню" id="8"/>
+							<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="9"/>
+							<Events>
+								<Event name="OnChange">НоменклатурнаяГруппаПодразделениеПриИзменении</Event>
+							</Events>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<SpreadSheetDocumentField name="ТабДок" id="4">
+			<DataPath>ТабДок</DataPath>
+			<TitleLocation>None</TitleLocation>
+			<HorizontalScrollBar>false</HorizontalScrollBar>
+			<ContextMenu name="ТабДокКонтекстноеМеню" id="5"/>
+			<ExtendedTooltip name="ТабДокРасширеннаяПодсказка" id="6"/>
+			<Events>
+				<Event name="DetailProcessing">ТабДокОбработкаРасшифровки</Event>
+			</Events>
+		</SpreadSheetDocumentField>
+		<UsualGroup name="ГруппаКопирование" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Скопировать данные из другой номенклатурной группы</v8:content>
+				</v8:item>
+			</Title>
+			<TitleTextColor>web:Maroon</TitleTextColor>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа копирование</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>StrongSeparation</Representation>
+			<BackColor>#E7DEAD</BackColor>
+			<ExtendedTooltip name="ГруппаКопированиеРасширеннаяПодсказка" id="13"/>
+			<ChildItems>
+				<Button name="КопироватьДанные" id="24">
+					<Type>UsualButton</Type>
+					<CommandName>Form.Command.КопироватьДанные</CommandName>
+					<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Копировать</v8:content>
+						</v8:item>
+					</Title>
+					<ExtendedTooltip name="КопироватьДанныеРасширеннаяПодсказка" id="25"/>
+				</Button>
+				<InputField name="ИсточникНоменклатурнаяГруппа" id="17">
+					<DataPath>ИсточникНоменклатурнаяГруппа</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ном. группа</v8:content>
+						</v8:item>
+					</Title>
+					<ChoiceParameters>
+						<app:item name="Отбор.ЛистовойМатериал">
+							<app:value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xs:boolean">true</Value>
+							</app:value>
+						</app:item>
+					</ChoiceParameters>
+					<ContextMenu name="ИсточникНоменклатурнаяГруппаКонтекстноеМеню" id="18"/>
+					<ExtendedTooltip name="ИсточникНоменклатурнаяГруппаРасширеннаяПодсказка" id="19"/>
 				</InputField>
-				<InputField name="Подразделение" id="7">
-					<DataPath>Подразделение</DataPath>
-					<QuickChoice>true</QuickChoice>
+				<InputField name="ИсточникПодразделение" id="14">
+					<DataPath>ИсточникПодразделение</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подразделение</v8:content>
+						</v8:item>
+					</Title>
 					<ChoiceParameters>
 						<app:item name="Отбор.ВидПодразделения">
 							<app:value xsi:type="FormChoiceListDesTimeValue">
@@ -47,23 +160,11 @@
 							</app:value>
 						</app:item>
 					</ChoiceParameters>
-					<ContextMenu name="ПодразделениеКонтекстноеМеню" id="8"/>
-					<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="9"/>
-					<Events>
-						<Event name="OnChange">НоменклатурнаяГруппаПодразделениеПриИзменении</Event>
-					</Events>
+					<ContextMenu name="ИсточникПодразделениеКонтекстноеМеню" id="15"/>
+					<ExtendedTooltip name="ИсточникПодразделениеРасширеннаяПодсказка" id="16"/>
 				</InputField>
 			</ChildItems>
 		</UsualGroup>
-		<SpreadSheetDocumentField name="ТабДок" id="4">
-			<DataPath>ТабДок</DataPath>
-			<TitleLocation>None</TitleLocation>
-			<ContextMenu name="ТабДокКонтекстноеМеню" id="5"/>
-			<ExtendedTooltip name="ТабДокРасширеннаяПодсказка" id="6"/>
-			<Events>
-				<Event name="DetailProcessing">ТабДокОбработкаРасшифровки</Event>
-			</Events>
-		</SpreadSheetDocumentField>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="НоменклатурнаяГруппа" id="1">
@@ -99,5 +200,44 @@
 				<v8:Type>cfg:CatalogRef.Подразделения</v8:Type>
 			</Type>
 		</Attribute>
+		<Attribute name="ИсточникПодразделение" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Источник подразделение</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Подразделения</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИсточникНоменклатурнаяГруппа" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Источник номенклатурная группа</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.НоменклатурныеГруппы</v8:Type>
+			</Type>
+		</Attribute>
 	</Attributes>
+	<Commands>
+		<Command name="КопироватьДанные" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Копировать данные</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Копировать данные</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>КопироватьДанные</Action>
+		</Command>
+	</Commands>
 </Form>
