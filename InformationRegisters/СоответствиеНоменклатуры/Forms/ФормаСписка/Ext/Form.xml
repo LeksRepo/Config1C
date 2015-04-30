@@ -32,7 +32,7 @@
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Список</v8:content>
+							<v8:content>Список соответствий</v8:content>
 						</v8:item>
 					</Title>
 					<ToolTip>
@@ -273,6 +273,7 @@
 						<xr:Value name="Role.ПросмотрОстаткиЦеныНоменклатуры">false</xr:Value>
 						<xr:Value name="Role.ПросмотрРезультатовТестирования">false</xr:Value>
 						<xr:Value name="Role.ПросмотрСообщенийДилера">false</xr:Value>
+						<xr:Value name="Role.ПросмотрСоответствияНоменклатуры">true</xr:Value>
 						<xr:Value name="Role.ПросмотрСпецификаций">false</xr:Value>
 						<xr:Value name="Role.ПросмотрУчебныхЗаданий">false</xr:Value>
 						<xr:Value name="Role.ПросмотрУчебныхЗаданийДилер">false</xr:Value>
@@ -353,7 +354,7 @@
 								<ChildItems>
 									<Button name="СписокРегистрКопироватьПодразделение" id="38">
 										<Type>CommandBarButton</Type>
-										<CommandName>Form.Command.КопироватьПодразделение</CommandName>
+										<CommandName>Form.Command.Скопировать</CommandName>
 										<ExtendedTooltip name="СписокРегистрКопироватьПодразделениеРасширеннаяПодсказка" id="39"/>
 									</Button>
 								</ChildItems>
@@ -416,11 +417,10 @@
 			<Type>
 				<v8:Type>cfg:DynamicList</v8:Type>
 			</Type>
-			<MainAttribute>true</MainAttribute>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>false</DynamicDataRead>
-				<QueryText>ВЫБРАТЬ
+				<QueryText>ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	РегистрСведенийСоответствиеНоменклатуры.Номенклатура,
 	КОЛИЧЕСТВО(РАЗЛИЧНЫЕ РегистрСведенийСоответствиеНоменклатуры.НоменклатурнаяГруппа) КАК Количество,
 	РегистрСведенийСоответствиеНоменклатуры.Подразделение
@@ -495,23 +495,29 @@
 				<xr:Ref>StdPicture.CreateListItem</xr:Ref>
 				<xr:LoadTransparent>true</xr:LoadTransparent>
 			</Picture>
+			<Action>Создать</Action>
 			<Representation>TextPicture</Representation>
 			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>
-		<Command name="КопироватьПодразделение" id="2">
+		<Command name="Скопировать" id="2">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Копировать подразделение</v8:content>
+					<v8:content>Скопировать</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Копировать подразделение</v8:content>
+					<v8:content>Скопировать</v8:content>
 				</v8:item>
 			</ToolTip>
+			<Picture>
+				<xr:Ref>CommonPicture.ВосклицательныйЗнакСерый</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
 			<Action>КопироватьПодразделение</Action>
+			<Representation>TextPicture</Representation>
 		</Command>
 	</Commands>
 </Form>
