@@ -6,10 +6,14 @@
 			<v8:content>Сетка остатков</v8:content>
 		</v8:item>
 	</Title>
+	<Width>120</Width>
 	<AutoTitle>false</AutoTitle>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<Autofill>false</Autofill>
 	</AutoCommandBar>
+	<Events>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+	</Events>
 	<ChildItems>
 		<UsualGroup name="Группа1" id="22">
 			<Group>Horizontal</Group>
@@ -32,11 +36,13 @@
 					</ToolTip>
 					<Group>Horizontal</Group>
 					<Representation>StrongSeparation</Representation>
+					<ShowTitle>false</ShowTitle>
 					<BackColor>style:ButtonBackColor</BackColor>
 					<ExtendedTooltip name="ГруппаОсновнаяРасширеннаяПодсказка" id="11"/>
 					<ChildItems>
 						<InputField name="НоменклатурнаяГруппа" id="1">
 							<DataPath>НоменклатурнаяГруппа</DataPath>
+							<QuickChoice>true</QuickChoice>
 							<ChoiceParameters>
 								<app:item name="Отбор.ЛистовойМатериал">
 									<app:value xsi:type="FormChoiceListDesTimeValue">
@@ -78,6 +84,18 @@
 				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
+		<Button name="КопироватьДанные" id="24">
+			<Type>UsualButton</Type>
+			<CommandName>Form.Command.КопироватьДанные</CommandName>
+			<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить данными из другой номенклатурной группы</v8:content>
+				</v8:item>
+			</Title>
+			<ExtendedTooltip name="КопироватьДанныеРасширеннаяПодсказка" id="25"/>
+		</Button>
 		<SpreadSheetDocumentField name="ТабДок" id="4">
 			<DataPath>ТабДок</DataPath>
 			<TitleLocation>None</TitleLocation>
@@ -88,83 +106,6 @@
 				<Event name="DetailProcessing">ТабДокОбработкаРасшифровки</Event>
 			</Events>
 		</SpreadSheetDocumentField>
-		<UsualGroup name="ГруппаКопирование" id="12">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Скопировать данные из другой номенклатурной группы</v8:content>
-				</v8:item>
-			</Title>
-			<TitleTextColor>web:Maroon</TitleTextColor>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа копирование</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Group>Horizontal</Group>
-			<Representation>StrongSeparation</Representation>
-			<BackColor>#E7DEAD</BackColor>
-			<ExtendedTooltip name="ГруппаКопированиеРасширеннаяПодсказка" id="13"/>
-			<ChildItems>
-				<Button name="КопироватьДанные" id="24">
-					<Type>UsualButton</Type>
-					<CommandName>Form.Command.КопироватьДанные</CommandName>
-					<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Копировать</v8:content>
-						</v8:item>
-					</Title>
-					<ExtendedTooltip name="КопироватьДанныеРасширеннаяПодсказка" id="25"/>
-				</Button>
-				<InputField name="ИсточникНоменклатурнаяГруппа" id="17">
-					<DataPath>ИсточникНоменклатурнаяГруппа</DataPath>
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Ном. группа</v8:content>
-						</v8:item>
-					</Title>
-					<ChoiceParameters>
-						<app:item name="Отбор.ЛистовойМатериал">
-							<app:value xsi:type="FormChoiceListDesTimeValue">
-								<Presentation/>
-								<Value xsi:type="xs:boolean">true</Value>
-							</app:value>
-						</app:item>
-					</ChoiceParameters>
-					<ContextMenu name="ИсточникНоменклатурнаяГруппаКонтекстноеМеню" id="18"/>
-					<ExtendedTooltip name="ИсточникНоменклатурнаяГруппаРасширеннаяПодсказка" id="19"/>
-				</InputField>
-				<InputField name="ИсточникПодразделение" id="14">
-					<DataPath>ИсточникПодразделение</DataPath>
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Подразделение</v8:content>
-						</v8:item>
-					</Title>
-					<ChoiceParameters>
-						<app:item name="Отбор.ВидПодразделения">
-							<app:value xsi:type="FormChoiceListDesTimeValue">
-								<Presentation/>
-								<Value xsi:type="xr:DesignTimeRef">Enum.ВидыПодразделений.EnumValue.Производство</Value>
-							</app:value>
-						</app:item>
-						<app:item name="Отбор.Активность">
-							<app:value xsi:type="FormChoiceListDesTimeValue">
-								<Presentation/>
-								<Value xsi:type="xs:boolean">true</Value>
-							</app:value>
-						</app:item>
-					</ChoiceParameters>
-					<ContextMenu name="ИсточникПодразделениеКонтекстноеМеню" id="15"/>
-					<ExtendedTooltip name="ИсточникПодразделениеРасширеннаяПодсказка" id="16"/>
-				</InputField>
-			</ChildItems>
-		</UsualGroup>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="НоменклатурнаяГруппа" id="1">
