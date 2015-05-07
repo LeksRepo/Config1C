@@ -15,6 +15,10 @@
 					<v8:content>Виновный</v8:content>
 				</v8:item>
 			</title>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+				<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
+			</role>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>НарушенияВРаботе</dataPath>
@@ -35,6 +39,9 @@
 					<v8:content>Подразделение</v8:content>
 				</v8:item>
 			</title>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Документ</dataPath>
@@ -45,6 +52,10 @@
 					<v8:content>Документ</v8:content>
 				</v8:item>
 			</title>
+			<role>
+				<dcscom:periodNumber>1</dcscom:periodNumber>
+				<dcscom:periodType>Main</dcscom:periodType>
+			</role>
 			<appearance>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>Размещение</dcscor:parameter>
@@ -125,6 +136,46 @@
 					<v8:content>Довоз осуществил</v8:content>
 				</v8:item>
 			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Счет</dataPath>
+			<field>Счет</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КорСчет</dataPath>
+			<field>КорСчет</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КорСубконто1</dataPath>
+			<field>КорСубконто1</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КорСубконто2</dataPath>
+			<field>КорСубконто2</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КорСубконто3</dataPath>
+			<field>КорСубконто3</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Субконто1</dataPath>
+			<field>Субконто1</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Субконто2</dataPath>
+			<field>Субконто2</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Субконто3</dataPath>
+			<field>Субконто3</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СчетДтЧтение</dataPath>
+			<field>СчетДтЧтение</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СчетКтЧтение</dataPath>
+			<field>СчетКтЧтение</field>
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
@@ -272,22 +323,26 @@
 ОБЪЕДИНИТЬ ВСЕ
 
 ВЫБРАТЬ
-	СписокВиновных.Виновный,
+	УправленческийОбороты.Субконто2 КАК Виновный,
 	NULL,
-	СписокВиновных.Сумма,
-	СписокВиновных.Виновный.Подразделение,
-	СписокВиновных.Ссылка,
+	УправленческийОбороты.СуммаОборот КАК Сумма,
+	УправленческийОбороты.Подразделение КАК Подразделение,
+	УправленческийОбороты.Регистратор КАК Документ,
 	NULL,
 	NULL,
 	NULL,
 	NULL
 ИЗ
-	Документ.Спецификация.СписокВиновных КАК СписокВиновных
-ГДЕ
-	СписокВиновных.Ссылка.Дата МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания
-	И СписокВиновных.Ссылка.Изделие = ЗНАЧЕНИЕ(Справочник.Изделия.Переделка)
-	И СписокВиновных.Ссылка.Проведен
-
+	РегистрБухгалтерии.Управленческий.Обороты(
+						&amp;ДатаНачала,
+						&amp;ДатаОкончания,
+						Регистратор,
+						Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ПоказателиСотрудника),
+						,
+						Субконто1 = ЗНАЧЕНИЕ(Перечисление.ВидыПоказателейСотрудников.УщербОтПеределок),
+						,
+						) КАК УправленческийОбороты
+						
 ОБЪЕДИНИТЬ ВСЕ
 
 ВЫБРАТЬ
@@ -442,6 +497,40 @@
 			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
 			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
 		</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>НачалоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>КонецПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конец периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 		<useRestriction>false</useRestriction>
 	</parameter>
 	<settingsVariant>
