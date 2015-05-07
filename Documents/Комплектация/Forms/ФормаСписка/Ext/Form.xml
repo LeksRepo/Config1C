@@ -32,56 +32,87 @@
 				<Autofill>false</Autofill>
 			</AutoCommandBar>
 			<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="4"/>
-			<SearchStringAddition name="СписокСтрокаПоиска" id="20">
+			<SearchStringAddition name="СписокСтрокаПоиска" id="32">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="21"/>
-				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="22"/>
+				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="33"/>
+				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="34"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокСостояниеПросмотра" id="23">
+			<ViewStatusAddition name="СписокСостояниеПросмотра" id="35">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="24"/>
-				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="25"/>
+				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="36"/>
+				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="37"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокУправлениеПоиском" id="26">
+			<SearchControlAddition name="СписокУправлениеПоиском" id="38">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="27"/>
-				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="28"/>
+				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="39"/>
+				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="40"/>
 			</SearchControlAddition>
 			<ChildItems>
 				<LabelField name="Дата" id="5">
 					<DataPath>Список.Date</DataPath>
-					<DefaultItem>true</DefaultItem>
+					<FixingInTable>Left</FixingInTable>
+					<Width>8</Width>
+					<Format>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ДФ=dd.MM.yyyy</v8:content>
+						</v8:item>
+					</Format>
 					<ContextMenu name="ДатаКонтекстноеМеню" id="6"/>
 					<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="7"/>
 				</LabelField>
 				<LabelField name="Номер" id="8">
 					<DataPath>Список.Number</DataPath>
+					<DefaultItem>true</DefaultItem>
+					<FixingInTable>Left</FixingInTable>
+					<Width>9</Width>
 					<ContextMenu name="НомерКонтекстноеМеню" id="9"/>
 					<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="10"/>
-				</LabelField>
-				<LabelField name="Комментарий" id="11">
-					<DataPath>Список.Комментарий</DataPath>
-					<ContextMenu name="КомментарийКонтекстноеМеню" id="12"/>
-					<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="13"/>
 				</LabelField>
 				<LabelField name="Склад" id="14">
 					<DataPath>Список.Склад</DataPath>
 					<ContextMenu name="СкладКонтекстноеМеню" id="15"/>
 					<ExtendedTooltip name="СкладРасширеннаяПодсказка" id="16"/>
 				</LabelField>
-				<LabelField name="Спецификация" id="17">
-					<DataPath>Список.Спецификация</DataPath>
-					<ContextMenu name="СпецификацияКонтекстноеМеню" id="18"/>
-					<ExtendedTooltip name="СпецификацияРасширеннаяПодсказка" id="19"/>
+				<LabelField name="СпецификацияНомер" id="29">
+					<DataPath>Список.Спецификация.Number</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер спец.</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="СпецификацияНомерКонтекстноеМеню" id="30"/>
+					<ExtendedTooltip name="СпецификацияНомерРасширеннаяПодсказка" id="31"/>
+				</LabelField>
+				<LabelField name="СпецификацияКонтрагент" id="26">
+					<DataPath>Список.Спецификация.Контрагент</DataPath>
+					<ContextMenu name="СпецификацияКонтрагентКонтекстноеМеню" id="27"/>
+					<ExtendedTooltip name="СпецификацияКонтрагентРасширеннаяПодсказка" id="28"/>
+				</LabelField>
+				<LabelField name="СпецификацияИзделие" id="23">
+					<DataPath>Список.Спецификация.Изделие</DataPath>
+					<ContextMenu name="СпецификацияИзделиеКонтекстноеМеню" id="24"/>
+					<ExtendedTooltip name="СпецификацияИзделиеРасширеннаяПодсказка" id="25"/>
+				</LabelField>
+				<LabelField name="Подразделение" id="20">
+					<DataPath>Список.Подразделение</DataPath>
+					<ContextMenu name="ПодразделениеКонтекстноеМеню" id="21"/>
+					<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="22"/>
+				</LabelField>
+				<LabelField name="Комментарий" id="11">
+					<DataPath>Список.Комментарий</DataPath>
+					<ContextMenu name="КомментарийКонтекстноеМеню" id="12"/>
+					<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="13"/>
 				</LabelField>
 			</ChildItems>
 		</Table>

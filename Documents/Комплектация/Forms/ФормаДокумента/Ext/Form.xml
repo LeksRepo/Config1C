@@ -23,8 +23,10 @@
 					<v8:content>Группа шапка</v8:content>
 				</v8:item>
 			</ToolTip>
+			<HorizontalStretch>false</HorizontalStretch>
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
+			<ChildItemsWidth>Equal</ChildItemsWidth>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ГруппаШапкаРасширеннаяПодсказка" id="38"/>
 			<ChildItems>
@@ -79,16 +81,11 @@
 								</InputField>
 							</ChildItems>
 						</UsualGroup>
-						<InputField name="Спецификация" id="16">
-							<DataPath>Объект.Спецификация</DataPath>
+						<InputField name="Подразделение" id="13">
+							<DataPath>Объект.Подразделение</DataPath>
 							<EditMode>EnterOnInput</EditMode>
-							<Width>36</Width>
-							<HorizontalStretch>false</HorizontalStretch>
-							<ContextMenu name="СпецификацияКонтекстноеМеню" id="17"/>
-							<ExtendedTooltip name="СпецификацияРасширеннаяПодсказка" id="18"/>
-							<Events>
-								<Event name="OnChange">СпецификацияПриИзменении</Event>
-							</Events>
+							<ContextMenu name="ПодразделениеКонтекстноеМеню" id="14"/>
+							<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="15"/>
 						</InputField>
 					</ChildItems>
 				</UsualGroup>
@@ -110,27 +107,34 @@
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="ШапкаПравоРасширеннаяПодсказка" id="42"/>
 					<ChildItems>
-						<InputField name="Подразделение" id="13">
-							<DataPath>Объект.Подразделение</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<HorizontalStretch>false</HorizontalStretch>
-							<ContextMenu name="ПодразделениеКонтекстноеМеню" id="14"/>
-							<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="15"/>
-						</InputField>
 						<InputField name="Склад" id="54">
 							<DataPath>Объект.Склад</DataPath>
-							<HorizontalStretch>false</HorizontalStretch>
 							<ContextMenu name="СкладКонтекстноеМеню" id="55"/>
 							<ExtendedTooltip name="СкладРасширеннаяПодсказка" id="56"/>
+						</InputField>
+						<InputField name="Спецификация" id="16">
+							<DataPath>Объект.Спецификация</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="СпецификацияКонтекстноеМеню" id="17"/>
+							<ExtendedTooltip name="СпецификацияРасширеннаяПодсказка" id="18"/>
+							<Events>
+								<Event name="OnChange">СпецификацияПриИзменении</Event>
+							</Events>
 						</InputField>
 					</ChildItems>
 				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
-		<LabelField name="ОсновнойЦвет" id="60">
-			<DataPath>ОсновнойЦвет</DataPath>
-			<ContextMenu name="ОсновнойЦветКонтекстноеМеню" id="61"/>
-			<ExtendedTooltip name="ОсновнойЦветРасширеннаяПодсказка" id="62"/>
+		<LabelField name="ОсновнойЦветЛДСП" id="60">
+			<DataPath>Объект.Спецификация.ЦветЛДСПОсновной</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Основной цвет ЛДСП</v8:content>
+				</v8:item>
+			</Title>
+			<ContextMenu name="ОсновнойЦветЛДСПКонтекстноеМеню" id="61"/>
+			<ExtendedTooltip name="ОсновнойЦветЛДСПРасширеннаяПодсказка" id="62"/>
 		</LabelField>
 		<Table name="СписокНоменклатуры" id="19">
 			<Representation>List</Representation>
@@ -229,7 +233,6 @@
 		<InputField name="Комментарий" id="10">
 			<DataPath>Объект.Комментарий</DataPath>
 			<EditMode>EnterOnInput</EditMode>
-			<MultiLine>true</MultiLine>
 			<ContextMenu name="КомментарийКонтекстноеМеню" id="11"/>
 			<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="12"/>
 		</InputField>
@@ -244,21 +247,6 @@
 			<UseAlways>
 				<Field>Объект.RegisterRecords</Field>
 			</UseAlways>
-		</Attribute>
-		<Attribute name="ОсновнойЦвет" id="2">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Основной цвет</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:string</v8:Type>
-				<v8:StringQualifiers>
-					<v8:Length>0</v8:Length>
-					<v8:AllowedLength>Variable</v8:AllowedLength>
-				</v8:StringQualifiers>
-			</Type>
 		</Attribute>
 	</Attributes>
 	<Commands>
