@@ -85,6 +85,16 @@
 							<Group>Vertical</Group>
 							<ExtendedTooltip name="ЯщикExtendedTooltip" id="181"/>
 							<ChildItems>
+								<InputField name="СхемаЯщика" id="249">
+									<DataPath>Items.Детали.CurrentData.СхемаЯщика</DataPath>
+									<HorizontalStretch>false</HorizontalStretch>
+									<OpenButton>false</OpenButton>
+									<ContextMenu name="СхемаЯщикаКонтекстноеМеню" id="250"/>
+									<ExtendedTooltip name="СхемаЯщикаРасширеннаяПодсказка" id="251"/>
+									<Events>
+										<Event name="OnChange">СхемаЯщикаПриИзменении</Event>
+									</Events>
+								</InputField>
 								<InputField name="ВыборЯщикаИзКаталога" id="243">
 									<DataPath>ВыборЯщикаИзКаталога</DataPath>
 									<Visible>false</Visible>
@@ -107,17 +117,6 @@
 									<ExtendedTooltip name="ВыборЯщикаИзКаталогаРасширеннаяПодсказка" id="245"/>
 									<Events>
 										<Event name="OnChange">ВыборЯщикаИзКаталогаПриИзменении</Event>
-									</Events>
-								</InputField>
-								<InputField name="ВидЯщика" id="151">
-									<DataPath>Items.Детали.CurrentData.ВидЯщика</DataPath>
-									<HorizontalStretch>false</HorizontalStretch>
-									<VerticalStretch>false</VerticalStretch>
-									<TextEdit>false</TextEdit>
-									<ContextMenu name="ВидЯщикаКонтекстноеМеню" id="152"/>
-									<ExtendedTooltip name="ВидЯщикаExtendedTooltip" id="182"/>
-									<Events>
-										<Event name="OnChange">ВидЯщикаПриИзменении</Event>
 									</Events>
 								</InputField>
 								<InputField name="Наименование" id="82">
@@ -598,29 +597,29 @@
 								</ChildItems>
 							</AutoCommandBar>
 							<ExtendedTooltip name="ДеталиExtendedTooltip" id="207"/>
-							<SearchStringAddition name="ДеталиСтрокаПоиска" id="246">
+							<SearchStringAddition name="ДеталиСтрокаПоиска" id="252">
 								<AdditionSource>
 									<Item>Детали</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="ДеталиСтрокаПоискаКонтекстноеМеню" id="247"/>
-								<ExtendedTooltip name="ДеталиСтрокаПоискаРасширеннаяПодсказка" id="248"/>
+								<ContextMenu name="ДеталиСтрокаПоискаКонтекстноеМеню" id="253"/>
+								<ExtendedTooltip name="ДеталиСтрокаПоискаРасширеннаяПодсказка" id="254"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="ДеталиСостояниеПросмотра" id="249">
+							<ViewStatusAddition name="ДеталиСостояниеПросмотра" id="255">
 								<AdditionSource>
 									<Item>Детали</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="ДеталиСостояниеПросмотраКонтекстноеМеню" id="250"/>
-								<ExtendedTooltip name="ДеталиСостояниеПросмотраРасширеннаяПодсказка" id="251"/>
+								<ContextMenu name="ДеталиСостояниеПросмотраКонтекстноеМеню" id="256"/>
+								<ExtendedTooltip name="ДеталиСостояниеПросмотраРасширеннаяПодсказка" id="257"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="ДеталиУправлениеПоиском" id="252">
+							<SearchControlAddition name="ДеталиУправлениеПоиском" id="258">
 								<AdditionSource>
 									<Item>Детали</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="ДеталиУправлениеПоискомКонтекстноеМеню" id="253"/>
-								<ExtendedTooltip name="ДеталиУправлениеПоискомРасширеннаяПодсказка" id="254"/>
+								<ContextMenu name="ДеталиУправлениеПоискомКонтекстноеМеню" id="259"/>
+								<ExtendedTooltip name="ДеталиУправлениеПоискомРасширеннаяПодсказка" id="260"/>
 							</SearchControlAddition>
 							<Events>
 								<Event name="OnActivateRow">ДеталиПриАктивизацииСтроки</Event>
@@ -1152,6 +1151,17 @@
 							<v8:FractionDigits>0</v8:FractionDigits>
 							<v8:AllowedSign>Any</v8:AllowedSign>
 						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="СхемаЯщика" id="20">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Схема ящика</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ВидыЯщиков</v8:Type>
 					</Type>
 				</Column>
 			</Columns>
