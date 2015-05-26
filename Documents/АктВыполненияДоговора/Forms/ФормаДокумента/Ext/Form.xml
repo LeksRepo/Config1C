@@ -8,6 +8,7 @@
 	<Events>
 		<Event name="AfterWrite">ПослеЗаписи</Event>
 		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="BeforeWrite">ПередЗаписью</Event>
 	</Events>
 	<ChildItems>
 		<UsualGroup name="ГруппаШапка" id="44">
@@ -23,6 +24,7 @@
 					<v8:content>Группа шапка</v8:content>
 				</v8:item>
 			</ToolTip>
+			<HorizontalStretch>false</HorizontalStretch>
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
@@ -45,38 +47,6 @@
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="ГруппаШапкаЛеваяКолонкаРасширеннаяПодсказка" id="47"/>
-					<ChildItems>
-						<InputField name="Подразделение" id="41">
-							<DataPath>Объект.Подразделение</DataPath>
-							<HorizontalStretch>false</HorizontalStretch>
-							<ContextMenu name="ПодразделениеКонтекстноеМеню" id="42"/>
-							<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="43"/>
-						</InputField>
-						<InputField name="Договор" id="17">
-							<DataPath>Объект.Договор</DataPath>
-							<HorizontalStretch>false</HorizontalStretch>
-							<ContextMenu name="ДоговорКонтекстноеМеню" id="18"/>
-							<ExtendedTooltip name="ДоговорExtendedTooltip" id="29"/>
-						</InputField>
-					</ChildItems>
-				</UsualGroup>
-				<UsualGroup name="ГруппаШапкаПраваяКолонка" id="48">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа шапка правая колонка</v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа шапка правая колонка</v8:content>
-						</v8:item>
-					</ToolTip>
-					<Group>Vertical</Group>
-					<Representation>None</Representation>
-					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="ГруппаШапкаПраваяКолонкаРасширеннаяПодсказка" id="49"/>
 					<ChildItems>
 						<UsualGroup name="ГруппаНомерДата" id="14">
 							<Title>
@@ -111,6 +81,70 @@
 								</InputField>
 							</ChildItems>
 						</UsualGroup>
+						<InputField name="Подразделение" id="41">
+							<DataPath>Объект.Подразделение</DataPath>
+							<ContextMenu name="ПодразделениеКонтекстноеМеню" id="42"/>
+							<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="43"/>
+						</InputField>
+						<InputField name="Договор" id="17">
+							<DataPath>Объект.Договор</DataPath>
+							<ContextMenu name="ДоговорКонтекстноеМеню" id="18"/>
+							<ExtendedTooltip name="ДоговорExtendedTooltip" id="29"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаШапкаПраваяКолонка" id="48">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Монтаж</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Монтаж</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ExtendedTooltip name="ГруппаШапкаПраваяКолонкаРасширеннаяПодсказка" id="49"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаДатаМонтажаМонтажник" id="78">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа дата монтажа монтажник</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа дата монтажа монтажник</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаДатаМонтажаМонтажникРасширеннаяПодсказка" id="79"/>
+							<ChildItems>
+								<LabelField name="ДоговорСпецификацияДатаМонтажа" id="72">
+									<DataPath>Объект.Договор.Спецификация.ДатаМонтажа</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Дата</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ДоговорСпецификацияДатаМонтажаКонтекстноеМеню" id="73"/>
+									<ExtendedTooltip name="ДоговорСпецификацияДатаМонтажаРасширеннаяПодсказка" id="74"/>
+								</LabelField>
+								<LabelField name="ДоговорСпецификацияМонтажник" id="75">
+									<DataPath>Объект.Договор.Спецификация.Монтажник</DataPath>
+									<ContextMenu name="ДоговорСпецификацияМонтажникКонтекстноеМеню" id="76"/>
+									<ExtendedTooltip name="ДоговорСпецификацияМонтажникРасширеннаяПодсказка" id="77"/>
+								</LabelField>
+							</ChildItems>
+						</UsualGroup>
 						<LabelField name="ДоговорСпецификацияАдресМонтажа" id="50">
 							<DataPath>Объект.Договор.Спецификация.АдресМонтажа</DataPath>
 							<Title>
@@ -119,6 +153,7 @@
 									<v8:content>Адрес</v8:content>
 								</v8:item>
 							</Title>
+							<TitleLocation>Left</TitleLocation>
 							<Height>2</Height>
 							<VerticalStretch>false</VerticalStretch>
 							<ContextMenu name="ДоговорСпецификацияАдресМонтажаКонтекстноеМеню" id="51"/>
@@ -128,87 +163,109 @@
 				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
-		<UsualGroup name="ГруппаПередан" id="56">
+		<UsualGroup name="ГруппаОценкаАкт" id="80">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Акт сдан в бухгалтерию</v8:content>
+					<v8:content>Группа оценка акт</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Группа передан</v8:content>
+					<v8:content>Группа оценка акт</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Group>Vertical</Group>
-			<Representation>StrongSeparation</Representation>
-			<ExtendedTooltip name="ГруппаПереданРасширеннаяПодсказка" id="57"/>
+			<HorizontalStretch>false</HorizontalStretch>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ChildItemsWidth>Equal</ChildItemsWidth>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаОценкаАктРасширеннаяПодсказка" id="81"/>
 			<ChildItems>
-				<InputField name="ДатаПередачи" id="61">
-					<DataPath>Объект.ДатаПередачи</DataPath>
+				<UsualGroup name="ГруппаСупервайзера" id="64">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Когда</v8:content>
+							<v8:content>Оценка супервайзера</v8:content>
 						</v8:item>
 					</Title>
-					<ContextMenu name="ДатаПередачиКонтекстноеМеню" id="62"/>
-					<ExtendedTooltip name="ДатаПередачиРасширеннаяПодсказка" id="63"/>
-				</InputField>
-				<InputField name="ОтветственныйЗаХранение" id="58">
-					<DataPath>Объект.ОтветственныйЗаХранение</DataPath>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа супервайзера</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>StrongSeparation</Representation>
+					<ExtendedTooltip name="ГруппаСупервайзераРасширеннаяПодсказка" id="65"/>
+					<ChildItems>
+						<InputField name="ОценкаСупервайзера" id="66">
+							<DataPath>Объект.ОценкаСупервайзера</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Оценка</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ОценкаСупервайзераКонтекстноеМеню" id="67"/>
+							<ExtendedTooltip name="ОценкаСупервайзераРасширеннаяПодсказка" id="68"/>
+						</InputField>
+						<InputField name="КомментарийСупервайзера" id="69">
+							<DataPath>Объект.КомментарийСупервайзера</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Описание</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="КомментарийСупервайзераКонтекстноеМеню" id="70"/>
+							<ExtendedTooltip name="КомментарийСупервайзераРасширеннаяПодсказка" id="71"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаПередан" id="56">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Кому</v8:content>
+							<v8:content>Акт сдан в бухгалтерию</v8:content>
 						</v8:item>
 					</Title>
-					<Width>28</Width>
-					<ContextMenu name="ОтветственныйЗаХранениеКонтекстноеМеню" id="59"/>
-					<ExtendedTooltip name="ОтветственныйЗаХранениеРасширеннаяПодсказка" id="60"/>
-				</InputField>
-			</ChildItems>
-		</UsualGroup>
-		<UsualGroup name="ГруппаСупервайзера" id="64">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Оценка супервайзера</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа супервайзера</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Group>Vertical</Group>
-			<Representation>StrongSeparation</Representation>
-			<ExtendedTooltip name="ГруппаСупервайзераРасширеннаяПодсказка" id="65"/>
-			<ChildItems>
-				<InputField name="ОценкаСупервайзера" id="66">
-					<DataPath>Объект.ОценкаСупервайзера</DataPath>
-					<Title>
+					<ToolTip>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Оценка</v8:content>
+							<v8:content>Группа передан</v8:content>
 						</v8:item>
-					</Title>
-					<ContextMenu name="ОценкаСупервайзераКонтекстноеМеню" id="67"/>
-					<ExtendedTooltip name="ОценкаСупервайзераРасширеннаяПодсказка" id="68"/>
-				</InputField>
-				<InputField name="КомментарийСупервайзера" id="69">
-					<DataPath>Объект.КомментарийСупервайзера</DataPath>
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Комментарий</v8:content>
-						</v8:item>
-					</Title>
-					<ContextMenu name="КомментарийСупервайзераКонтекстноеМеню" id="70"/>
-					<ExtendedTooltip name="КомментарийСупервайзераРасширеннаяПодсказка" id="71"/>
-				</InputField>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>StrongSeparation</Representation>
+					<ExtendedTooltip name="ГруппаПереданРасширеннаяПодсказка" id="57"/>
+					<ChildItems>
+						<InputField name="ДатаПередачи" id="61">
+							<DataPath>Объект.ДатаПередачи</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Когда</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ДатаПередачиКонтекстноеМеню" id="62"/>
+							<ExtendedTooltip name="ДатаПередачиРасширеннаяПодсказка" id="63"/>
+						</InputField>
+						<InputField name="ОтветственныйЗаХранение" id="58">
+							<DataPath>Объект.ОтветственныйЗаХранение</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Кому</v8:content>
+								</v8:item>
+							</Title>
+							<Width>28</Width>
+							<ContextMenu name="ОтветственныйЗаХранениеКонтекстноеМеню" id="59"/>
+							<ExtendedTooltip name="ОтветственныйЗаХранениеРасширеннаяПодсказка" id="60"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
 		<LabelField name="Автор" id="35">
