@@ -1,0 +1,43 @@
+﻿<package xmlns="http://v8.1c.ru/8.1/xdto" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" targetNamespace="CuttingPlans">
+	<property xmlns:d2p1="CuttingPlans" name="Раскрой" type="d2p1:Листы"/>
+	<objectType name="Деталь">
+		<property name="Название" type="xs:string"/>
+		<property name="Абцисса" type="xs:integer"/>
+		<property name="Ордината" type="xs:integer"/>
+		<property name="ШиринаДетали" type="xs:integer"/>
+		<property name="ВысотаДетали" type="xs:integer"/>
+		<property xmlns:d3p1="CuttingPlans" name="Верх" type="d3p1:Сторона"/>
+		<property xmlns:d3p1="CuttingPlans" name="Право" type="d3p1:Сторона"/>
+		<property xmlns:d3p1="CuttingPlans" name="Низ" type="d3p1:Сторона"/>
+		<property xmlns:d3p1="CuttingPlans" name="Лево" type="d3p1:Сторона"/>
+		<property xmlns:d3p1="CuttingPlans" name="ЛевыйВерхнийУгол" type="d3p1:Угол"/>
+		<property xmlns:d3p1="CuttingPlans" name="ПравыйВерхнийУгол" type="d3p1:Угол"/>
+		<property xmlns:d3p1="CuttingPlans" name="ПравыйНижнийУгол" type="d3p1:Угол"/>
+		<property xmlns:d3p1="CuttingPlans" name="ЛевыйНижнийУгол" type="d3p1:Угол"/>
+	</objectType>
+	<objectType name="Лист">
+		<property name="Логотип" type="xs:string"/>
+		<property name="Номенклатура" type="xs:string"/>
+		<property name="СтрокаСлева1" type="xs:string"/>
+		<property name="СтрокаСлева2" type="xs:string"/>
+		<property name="СтрокаСправа1" type="xs:string"/>
+		<property name="СтрокаСправа2" type="xs:string"/>
+		<property name="ВысотаЛиста" type="xs:integer"/>
+		<property name="ШиринаЛиста" type="xs:integer"/>
+		<property xmlns:d3p1="CuttingPlans" name="Деталь" type="d3p1:Деталь" upperBound="-1"/>
+	</objectType>
+	<objectType name="Листы">
+		<property xmlns:d3p1="CuttingPlans" name="Лист" type="d3p1:Лист" upperBound="-1"/>
+	</objectType>
+	<objectType name="Сторона">
+		<property name="Европаз" type="xs:integer"/>
+		<property name="КривойПил" type="xs:boolean"/>
+		<property name="Столешница" type="xs:boolean"/>
+	</objectType>
+	<objectType name="Угол">
+		<property name="Радиус" type="xs:integer"/>
+		<property name="РадиусСтрелка" type="xs:integer"/>
+		<property name="Срез" type="xs:integer"/>
+		<property name="СрезСтрелка" type="xs:integer"/>
+	</objectType>
+</package>
