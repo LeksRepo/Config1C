@@ -50,31 +50,39 @@
 				<Autofill>false</Autofill>
 			</AutoCommandBar>
 			<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="4"/>
-			<SearchStringAddition name="СписокСтрокаПоиска" id="175">
+			<SearchStringAddition name="СписокСтрокаПоиска" id="178">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="176"/>
-				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="177"/>
+				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="179"/>
+				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="180"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокСостояниеПросмотра" id="178">
+			<ViewStatusAddition name="СписокСостояниеПросмотра" id="181">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="179"/>
-				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="180"/>
+				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="182"/>
+				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="183"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокУправлениеПоиском" id="181">
+			<SearchControlAddition name="СписокУправлениеПоиском" id="184">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="182"/>
-				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="183"/>
+				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="185"/>
+				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="186"/>
 			</SearchControlAddition>
 			<ChildItems>
+				<LabelField name="Ссылка" id="175">
+					<DataPath>Список.Ссылка</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="СсылкаКонтекстноеМеню" id="176"/>
+					<ExtendedTooltip name="СсылкаРасширеннаяПодсказка" id="177"/>
+				</LabelField>
 				<LabelField name="Номер" id="170">
 					<DataPath>Список.Номер</DataPath>
 					<FixingInTable>Left</FixingInTable>
@@ -114,11 +122,6 @@
 					<ContextMenu name="ДатаМонтажаКонтекстноеМеню" id="159"/>
 					<ExtendedTooltip name="ДатаМонтажаРасширеннаяПодсказка" id="160"/>
 				</LabelField>
-				<LabelField name="Статус" id="23">
-					<DataPath>Список.Статус</DataPath>
-					<ContextMenu name="СтатусКонтекстноеМеню" id="24"/>
-					<ExtendedTooltip name="СтатусРасширеннаяПодсказка" id="25"/>
-				</LabelField>
 				<PictureField name="ЕстьЗаметка" id="155">
 					<DataPath>Список.ЕстьЗаметка</DataPath>
 					<TitleLocation>None</TitleLocation>
@@ -156,18 +159,6 @@
 					<ContextMenu name="ИзделиеКонтекстноеМеню" id="153"/>
 					<ExtendedTooltip name="ИзделиеРасширеннаяПодсказка" id="154"/>
 				</LabelField>
-				<LabelField name="АдресМонтажа" id="14">
-					<DataPath>Список.АдресМонтажа</DataPath>
-					<Visible>false</Visible>
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Адрес</v8:content>
-						</v8:item>
-					</Title>
-					<ContextMenu name="АдресМонтажаКонтекстноеМеню" id="15"/>
-					<ExtendedTooltip name="АдресМонтажаРасширеннаяПодсказка" id="16"/>
-				</LabelField>
 				<LabelField name="Контрагент" id="17">
 					<DataPath>Список.Контрагент</DataPath>
 					<Title>
@@ -189,6 +180,11 @@
 					<ContextMenu name="АвторКонтекстноеМеню" id="21"/>
 					<ExtendedTooltip name="АвторРасширеннаяПодсказка" id="22"/>
 				</LabelField>
+				<LabelField name="Статус" id="23">
+					<DataPath>Список.Статус</DataPath>
+					<ContextMenu name="СтатусКонтекстноеМеню" id="24"/>
+					<ExtendedTooltip name="СтатусРасширеннаяПодсказка" id="25"/>
+				</LabelField>
 			</ChildItems>
 		</Table>
 	</ChildItems>
@@ -198,6 +194,9 @@
 				<v8:Type>cfg:DynamicList</v8:Type>
 			</Type>
 			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>Список.Ссылка</Field>
+			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
