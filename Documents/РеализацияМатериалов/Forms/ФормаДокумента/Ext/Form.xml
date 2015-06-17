@@ -198,7 +198,43 @@
 			<RowFilter xsi:nil="true"/>
 			<ContextMenu name="СписокНоменклатурыКонтекстноеМеню" id="24"/>
 			<AutoCommandBar name="СписокНоменклатурыКоманднаяПанель" id="25">
+				<Autofill>false</Autofill>
 				<ChildItems>
+					<Button name="СписокНоменклатурыДобавить" id="134">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.СписокНоменклатуры.StandardCommand.Add</CommandName>
+						<ExtendedTooltip name="СписокНоменклатурыДобавитьРасширеннаяПодсказка" id="135"/>
+					</Button>
+					<Button name="СписокНоменклатурыПодобрать" id="132">
+						<Type>CommandBarButton</Type>
+						<Representation>PictureAndText</Representation>
+						<CommandName>Form.Command.Подобрать</CommandName>
+						<Picture>
+							<xr:Ref>StdPicture.Change</xr:Ref>
+							<xr:LoadTransparent>true</xr:LoadTransparent>
+						</Picture>
+						<ExtendedTooltip name="СписокНоменклатурыПодобратьРасширеннаяПодсказка" id="133"/>
+					</Button>
+					<Button name="СписокНоменклатурыСкопировать" id="136">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.СписокНоменклатуры.StandardCommand.Copy</CommandName>
+						<ExtendedTooltip name="СписокНоменклатурыСкопироватьРасширеннаяПодсказка" id="137"/>
+					</Button>
+					<Button name="СписокНоменклатурыУдалить" id="142">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.СписокНоменклатуры.StandardCommand.Delete</CommandName>
+						<ExtendedTooltip name="СписокНоменклатурыУдалитьРасширеннаяПодсказка" id="143"/>
+					</Button>
+					<Button name="СписокНоменклатурыПереместитьВниз" id="140">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.СписокНоменклатуры.StandardCommand.MoveDown</CommandName>
+						<ExtendedTooltip name="СписокНоменклатурыПереместитьВнизРасширеннаяПодсказка" id="141"/>
+					</Button>
+					<Button name="СписокНоменклатурыПереместитьВверх" id="138">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.СписокНоменклатуры.StandardCommand.MoveUp</CommandName>
+						<ExtendedTooltip name="СписокНоменклатурыПереместитьВверхРасширеннаяПодсказка" id="139"/>
+					</Button>
 					<Button name="ИзменитьЦеныНаПроцент" id="130">
 						<Type>CommandBarButton</Type>
 						<CommandName>Form.Command.ИзменитьЦеныНаПроцент</CommandName>
@@ -213,30 +249,33 @@
 				</ChildItems>
 			</AutoCommandBar>
 			<ExtendedTooltip name="СписокНоменклатурыExtendedTooltip" id="87"/>
-			<SearchStringAddition name="СписокНоменклатурыСтрокаПоиска" id="132">
+			<SearchStringAddition name="СписокНоменклатурыСтрокаПоиска" id="144">
 				<AdditionSource>
 					<Item>СписокНоменклатуры</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокНоменклатурыСтрокаПоискаКонтекстноеМеню" id="133"/>
-				<ExtendedTooltip name="СписокНоменклатурыСтрокаПоискаРасширеннаяПодсказка" id="134"/>
+				<ContextMenu name="СписокНоменклатурыСтрокаПоискаКонтекстноеМеню" id="145"/>
+				<ExtendedTooltip name="СписокНоменклатурыСтрокаПоискаРасширеннаяПодсказка" id="146"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокНоменклатурыСостояниеПросмотра" id="135">
+			<ViewStatusAddition name="СписокНоменклатурыСостояниеПросмотра" id="147">
 				<AdditionSource>
 					<Item>СписокНоменклатуры</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокНоменклатурыСостояниеПросмотраКонтекстноеМеню" id="136"/>
-				<ExtendedTooltip name="СписокНоменклатурыСостояниеПросмотраРасширеннаяПодсказка" id="137"/>
+				<ContextMenu name="СписокНоменклатурыСостояниеПросмотраКонтекстноеМеню" id="148"/>
+				<ExtendedTooltip name="СписокНоменклатурыСостояниеПросмотраРасширеннаяПодсказка" id="149"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокНоменклатурыУправлениеПоиском" id="138">
+			<SearchControlAddition name="СписокНоменклатурыУправлениеПоиском" id="150">
 				<AdditionSource>
 					<Item>СписокНоменклатуры</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокНоменклатурыУправлениеПоискомКонтекстноеМеню" id="139"/>
-				<ExtendedTooltip name="СписокНоменклатурыУправлениеПоискомРасширеннаяПодсказка" id="140"/>
+				<ContextMenu name="СписокНоменклатурыУправлениеПоискомКонтекстноеМеню" id="151"/>
+				<ExtendedTooltip name="СписокНоменклатурыУправлениеПоискомРасширеннаяПодсказка" id="152"/>
 			</SearchControlAddition>
+			<Events>
+				<Event name="ChoiceProcessing">СписокНоменклатурыОбработкаВыбора</Event>
+			</Events>
 			<ChildItems>
 				<LabelField name="СписокНоменклатурыНомерСтроки" id="26">
 					<DataPath>Объект.СписокНоменклатуры.LineNumber</DataPath>
@@ -253,7 +292,6 @@
 					<ExtendedTooltip name="СписокНоменклатурыНоменклатураExtendedTooltip" id="89"/>
 					<Events>
 						<Event name="OnChange">СписокНоменклатурыНоменклатураПриИзменении</Event>
-						<Event name="StartChoice">СписокНоменклатурыНоменклатураНачалоВыбора</Event>
 					</Events>
 				</InputField>
 				<LabelField name="СписокНоменклатурыНоменклатураЕдиницаИзмерения" id="111">
@@ -362,6 +400,21 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ИзменитьЦеныНаПроцент</Action>
+		</Command>
+		<Command name="Подобрать" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобрать</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобрать</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Подобрать</Action>
 		</Command>
 	</Commands>
 	<CommandInterface>
