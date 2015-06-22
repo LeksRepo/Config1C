@@ -92,7 +92,7 @@
 								<InputField name="СхемаЯщика" id="249">
 									<DataPath>Items.Детали.CurrentData.СхемаЯщика</DataPath>
 									<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
-									<Width>24</Width>
+									<Width>30</Width>
 									<HorizontalStretch>false</HorizontalStretch>
 									<OpenButton>false</OpenButton>
 									<ContextMenu name="СхемаЯщикаКонтекстноеМеню" id="250"/>
@@ -133,7 +133,7 @@
 											<v8:content>ЛДСП</v8:content>
 										</v8:item>
 									</Title>
-									<Width>24</Width>
+									<Width>30</Width>
 									<HorizontalStretch>false</HorizontalStretch>
 									<VerticalStretch>false</VerticalStretch>
 									<OpenButton>false</OpenButton>
@@ -153,7 +153,7 @@
 											<v8:content>Кромка</v8:content>
 										</v8:item>
 									</Title>
-									<Width>24</Width>
+									<Width>30</Width>
 									<HorizontalStretch>false</HorizontalStretch>
 									<VerticalStretch>false</VerticalStretch>
 									<OpenButton>false</OpenButton>
@@ -191,7 +191,7 @@
 													<v8:content>Направляющие</v8:content>
 												</v8:item>
 											</Title>
-											<Width>24</Width>
+											<Width>30</Width>
 											<HorizontalStretch>false</HorizontalStretch>
 											<VerticalStretch>false</VerticalStretch>
 											<OpenButton>false</OpenButton>
@@ -203,29 +203,6 @@
 												<Event name="StartChoice">НаправляющиеНачалоВыбора</Event>
 											</Events>
 										</InputField>
-										<CheckBoxField name="ДеталиБезНаправляющих" id="238">
-											<DataPath>Items.Детали.CurrentData.БезНаправляющих</DataPath>
-											<Title>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Без</v8:content>
-												</v8:item>
-											</Title>
-											<TitleLocation>Right</TitleLocation>
-											<ToolTip>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Без направляющих</v8:content>
-												</v8:item>
-											</ToolTip>
-											<ToolTipRepresentation>Balloon</ToolTipRepresentation>
-											<CheckBoxType>Auto</CheckBoxType>
-											<ContextMenu name="ДеталиБезНаправляющихКонтекстноеМеню" id="239"/>
-											<ExtendedTooltip name="ДеталиБезНаправляющихРасширеннаяПодсказка" id="240"/>
-											<Events>
-												<Event name="OnChange">ДеталиБезНаправляющихПриИзменении</Event>
-											</Events>
-										</CheckBoxField>
 									</ChildItems>
 								</UsualGroup>
 								<InputField name="ПроемЯщика" id="109">
@@ -662,6 +639,7 @@
 								<ExtendedTooltip name="ДеталиУправлениеПоискомРасширеннаяПодсказка" id="264"/>
 							</SearchControlAddition>
 							<Events>
+								<Event name="OnEditEnd">ДеталиПриОкончанииРедактирования</Event>
 								<Event name="OnActivateRow">ДеталиПриАктивизацииСтроки</Event>
 							</Events>
 							<ChildItems>
