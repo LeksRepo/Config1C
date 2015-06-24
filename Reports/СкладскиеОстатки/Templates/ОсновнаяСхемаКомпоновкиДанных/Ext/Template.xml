@@ -1,0 +1,325 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Счет</dataPath>
+			<field>Счет</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КорСчет</dataPath>
+			<field>КорСчет</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КорСубконто1</dataPath>
+			<field>КорСубконто1</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КорСубконто2</dataPath>
+			<field>КорСубконто2</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КорСубконто3</dataPath>
+			<field>КорСубконто3</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Субконто1</dataPath>
+			<field>Субконто1</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Субконто2</dataPath>
+			<field>Субконто2</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Субконто3</dataPath>
+			<field>Субконто3</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Номенклатура</dataPath>
+			<field>Номенклатура</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номенклатура</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Подразделение</dataPath>
+			<field>Подразделение</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СчетДтЧтение</dataPath>
+			<field>СчетДтЧтение</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СчетКтЧтение</dataPath>
+			<field>СчетКтЧтение</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>МаксимальныйОстаток</dataPath>
+			<field>МаксимальныйОстаток</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Максимальный остаток</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>МинимальныйОстаток</dataPath>
+			<field>МинимальныйОстаток</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Минимальный остаток</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ТекущийОстаток</dataPath>
+			<field>ТекущийОстаток</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Текущий остаток</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	ВЫБОР
+		КОГДА ОсновноеПроизводство.Субконто1.Базовый
+			ТОГДА ОсновноеПроизводство.Субконто1
+		ИНАЧЕ ОсновноеПроизводство.Субконто1.БазоваяНоменклатура
+	КОНЕЦ КАК Номенклатура,
+	ВЫБОР
+		КОГДА ОсновноеПроизводство.Субконто1.Базовый
+			ТОГДА ОсновноеПроизводство.КоличествоОборотДт
+		ИНАЧЕ ОсновноеПроизводство.КоличествоОборотДт * ОсновноеПроизводство.Субконто1.КоэффициентБазовых
+	КОНЕЦ КАК Количество,
+	спрПодразделения.КоэффициентСкладскиеОстатки КАК Коэффициент
+ПОМЕСТИТЬ втОбороты
+ИЗ
+	РегистрБухгалтерии.Управленческий.Обороты(ДОБАВИТЬКДАТЕ(&amp;Период, МЕСЯЦ, -3), &amp;Период, , Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ОсновноеПроизводство), , Подразделение = &amp;Подразделение, КорСчет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.МатериалыНаСкладе), ) КАК ОсновноеПроизводство
+		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.Подразделения КАК спрПодразделения
+		ПО (спрПодразделения.Ссылка = &amp;Подразделение)
+
+ИНДЕКСИРОВАТЬ ПО
+	Номенклатура
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	УправленческийОстатки.СуммаОстаток,
+	ВЫБОР
+		КОГДА УправленческийОстатки.Субконто2.Базовый
+			ТОГДА УправленческийОстатки.Субконто2
+		ИНАЧЕ УправленческийОстатки.Субконто2.БазоваяНоменклатура
+	КОНЕЦ КАК Номенклатура,
+	ВЫБОР
+		КОГДА УправленческийОстатки.Субконто2.Базовый
+			ТОГДА УправленческийОстатки.КоличествоОстаток
+		ИНАЧЕ УправленческийОстатки.КоличествоОстаток * УправленческийОстатки.Субконто2.КоэффициентБазовых
+	КОНЕЦ КАК Количество
+ПОМЕСТИТЬ втОстатки
+ИЗ
+	РегистрБухгалтерии.Управленческий.Остатки(
+			,
+			Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.МатериалыНаСкладе),
+			,
+			Субконто1.ОсновнойСклад = ИСТИНА
+				И Подразделение = &amp;Подразделение) КАК УправленческийОстатки
+
+ИНДЕКСИРОВАТЬ ПО
+	Номенклатура
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	спрНоменклатура.Ссылка КАК Номенклатура,
+	ВЫРАЗИТЬ(втОбороты.Количество / 3 * втОбороты.Коэффициент КАК ЧИСЛО(15, 2)) КАК МинимальныйОстаток,
+	ВЫРАЗИТЬ(втОбороты.Количество / 3 * втОбороты.Коэффициент + втОбороты.Количество / 3 КАК ЧИСЛО(15, 2)) КАК МаксимальныйОстаток,
+	втОстатки.Количество КАК ТекущийОстаток
+ИЗ
+	Справочник.Номенклатура КАК спрНоменклатура
+		ЛЕВОЕ СОЕДИНЕНИЕ втОбороты КАК втОбороты
+		ПО спрНоменклатура.Ссылка = втОбороты.Номенклатура
+		ЛЕВОЕ СОЕДИНЕНИЕ втОстатки КАК втОстатки
+		ПО спрНоменклатура.Ссылка = втОстатки.Номенклатура
+ГДЕ
+	спрНоменклатура.Базовый</query>
+	</dataSet>
+	<totalField>
+		<dataPath>МинимальныйОстаток</dataPath>
+		<expression>Сумма(МинимальныйОстаток)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>МаксимальныйОстаток</dataPath>
+		<expression>Сумма(МаксимальныйОстаток)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ТекущийОстаток</dataPath>
+		<expression>Сумма(ТекущийОстаток)</expression>
+	</totalField>
+	<parameter>
+		<name>Подразделение</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Подразделение</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Подразделения</v8:Type>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>false</useRestriction>
+		<inputParameters>
+			<dcscor:item>
+				<dcscor:parameter>ПараметрыВыбора</dcscor:parameter>
+				<dcscor:value xsi:type="dcscor:ChoiceParameters">
+					<dcscor:item>
+						<dcscor:choiceParameter>Отбор.ВидПодразделения</dcscor:choiceParameter>
+						<dcscor:value xsi:type="dcscor:DesignTimeValue">Перечисление.ВидыПодразделений.Производство</dcscor:value>
+					</dcscor:item>
+				</dcscor:value>
+			</dcscor:item>
+			<dcscor:item>
+				<dcscor:parameter>БыстрыйВыбор</dcscor:parameter>
+				<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+			</dcscor:item>
+		</inputParameters>
+		<use>Always</use>
+	</parameter>
+	<parameter>
+		<name>Период</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+		<expression>ТекущаяДата()</expression>
+	</parameter>
+	<parameter>
+		<name>НачалоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>КонецПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конец периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Подразделение</dcscor:parameter>
+					<dcscor:value xsi:nil="true"/>
+					<dcsset:userSettingID>3f3fc8b7-b434-4cb8-8f15-e8d965d40bb3</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:order>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>Номенклатура</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+			</dcsset:order>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Номенклатура</dcsset:field>
+						<dcsset:groupType>Hierarchy</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Номенклатура</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+						<dcsset:lwsTitle>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Остатки</v8:content>
+							</v8:item>
+						</dcsset:lwsTitle>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>МинимальныйОстаток</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Минимальный</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>МаксимальныйОстаток</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Максимальный</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>ТекущийОстаток</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Текущий</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+						</dcsset:item>
+						<dcsset:placement>Horizontally</dcsset:placement>
+					</dcsset:item>
+				</dcsset:selection>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>
