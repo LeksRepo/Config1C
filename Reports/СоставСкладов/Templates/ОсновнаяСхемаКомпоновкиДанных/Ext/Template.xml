@@ -95,95 +95,82 @@
 			<field>ПодЗаказ</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>КоэффициентРезерва</dataPath>
-			<field>КоэффициентРезерва</field>
+			<dataPath>СуммаОборот</dataPath>
+			<field>СуммаОборот</field>
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Коэффициент резерва</v8:content>
+					<v8:content>Сумма оборот</v8:content>
 				</v8:item>
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>ОбМесяц</dataPath>
-			<field>ОбМесяц</field>
+			<dataPath>Излишки</dataPath>
+			<field>Излишки</field>
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Об месяц</v8:content>
+					<v8:content>Излишки</v8:content>
 				</v8:item>
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>ОбШесть</dataPath>
-			<field>ОбШесть</field>
+			<dataPath>Себестоимость</dataPath>
+			<field>Себестоимость</field>
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Об шесть</v8:content>
+					<v8:content>Себестоимость</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаИзлишков</dataPath>
+			<field>СуммаИзлишков</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма излишков</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Докупить</dataPath>
+			<field>Докупить</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Докупить</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДокупитьКоличество</dataPath>
+			<field>ДокупитьКоличество</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Докупить количество</v8:content>
 				</v8:item>
 			</title>
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	ВЫБОР
-		КОГДА ОсновноеПроизводство.Субконто1.Базовый
-			ТОГДА ОсновноеПроизводство.Субконто1
-		ИНАЧЕ ОсновноеПроизводство.Субконто1.БазоваяНоменклатура
+		КОГДА Обороты.Субконто2.Базовый
+			ТОГДА Обороты.Субконто2
+		ИНАЧЕ Обороты.Субконто2.БазоваяНоменклатура
 	КОНЕЦ КАК Номенклатура,
 	ВЫБОР
-		КОГДА ОсновноеПроизводство.Субконто1.Базовый
-			ТОГДА ОсновноеПроизводство.КоличествоОборотДт
-		ИНАЧЕ ОсновноеПроизводство.КоличествоОборотДт * ОсновноеПроизводство.Субконто1.КоэффициентБазовых
-	КОНЕЦ КАК Количество
-ПОМЕСТИТЬ втОборотыШестьМесяцев
-ИЗ
-	РегистрБухгалтерии.Управленческий.Обороты(ДОБАВИТЬКДАТЕ(&amp;Период, МЕСЯЦ, -6), &amp;Период, , Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ОсновноеПроизводство), , Подразделение = &amp;Подразделение, КорСчет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.МатериалыНаСкладе), ) КАК ОсновноеПроизводство
-		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.Подразделения КАК спрПодразделения
-		ПО (спрПодразделения.Ссылка = &amp;Подразделение)
-
-ИНДЕКСИРОВАТЬ ПО
-	Номенклатура
-;
-
-////////////////////////////////////////////////////////////////////////////////
-ВЫБРАТЬ
-	ВЫБОР
-		КОГДА ОсновноеПроизводство.Субконто1.Базовый
-			ТОГДА ОсновноеПроизводство.Субконто1
-		ИНАЧЕ ОсновноеПроизводство.Субконто1.БазоваяНоменклатура
-	КОНЕЦ КАК Номенклатура,
-	ВЫБОР
-		КОГДА ОсновноеПроизводство.Субконто1.Базовый
-			ТОГДА ОсновноеПроизводство.КоличествоОборотДт
-		ИНАЧЕ ОсновноеПроизводство.КоличествоОборотДт * ОсновноеПроизводство.Субконто1.КоэффициентБазовых
-	КОНЕЦ КАК Количество
-ПОМЕСТИТЬ втОборотыМесяц
-ИЗ
-	РегистрБухгалтерии.Управленческий.Обороты(ДОБАВИТЬКДАТЕ(&amp;Период, МЕСЯЦ, -1), &amp;Период, , Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ОсновноеПроизводство), , Подразделение = &amp;Подразделение, КорСчет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.МатериалыНаСкладе), ) КАК ОсновноеПроизводство
-		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.Подразделения КАК спрПодразделения
-		ПО (спрПодразделения.Ссылка = &amp;Подразделение)
-
-ИНДЕКСИРОВАТЬ ПО
-	Номенклатура
-;
-
-////////////////////////////////////////////////////////////////////////////////
-ВЫБРАТЬ
-	ВЫБОР
-		КОГДА ОсновноеПроизводство.Субконто1.Базовый
-			ТОГДА ОсновноеПроизводство.Субконто1
-		ИНАЧЕ ОсновноеПроизводство.Субконто1.БазоваяНоменклатура
-	КОНЕЦ КАК Номенклатура,
-	ВЫБОР
-		КОГДА ОсновноеПроизводство.Субконто1.Базовый
-			ТОГДА ОсновноеПроизводство.КоличествоОборотДт
-		ИНАЧЕ ОсновноеПроизводство.КоличествоОборотДт * ОсновноеПроизводство.Субконто1.КоэффициентБазовых
+		КОГДА Обороты.Субконто2.Базовый
+			ТОГДА ВЫРАЗИТЬ(Обороты.КоличествоОборотКт / 6 КАК ЧИСЛО(15, 2))
+		ИНАЧЕ ВЫРАЗИТЬ(Обороты.КоличествоОборотКт * Обороты.Субконто2.КоэффициентБазовых / 6 КАК ЧИСЛО(15, 2))
 	КОНЕЦ КАК Количество,
+	ВЫРАЗИТЬ(Обороты.СуммаОборотКт / 6 КАК ЧИСЛО(15, 2)) КАК СуммаОборот,
 	спрПодразделения.КоэффициентСкладскиеОстатки КАК Коэффициент
 ПОМЕСТИТЬ втОбороты
 ИЗ
-	РегистрБухгалтерии.Управленческий.Обороты(ДОБАВИТЬКДАТЕ(&amp;Период, МЕСЯЦ, -3), &amp;Период, , Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ОсновноеПроизводство), , Подразделение = &amp;Подразделение, КорСчет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.МатериалыНаСкладе), ) КАК ОсновноеПроизводство
+	РегистрБухгалтерии.Управленческий.Обороты(ДОБАВИТЬКДАТЕ(&amp;Период, МЕСЯЦ, -6), &amp;Период, , Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.МатериалыНаСкладе), , Подразделение = &amp;Подразделение, КорСчет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ОсновноеПроизводство), ) КАК Обороты
 		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.Подразделения КАК спрПодразделения
 		ПО (спрПодразделения.Ссылка = &amp;Подразделение)
 
@@ -193,17 +180,26 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 ВЫБРАТЬ
-	УправленческийОстатки.СуммаОстаток,
+	Остатки.СуммаОстаток,
 	ВЫБОР
-		КОГДА УправленческийОстатки.Субконто2.Базовый
-			ТОГДА УправленческийОстатки.Субконто2
-		ИНАЧЕ УправленческийОстатки.Субконто2.БазоваяНоменклатура
+		КОГДА Остатки.Субконто2.Базовый
+			ТОГДА Остатки.Субконто2
+		ИНАЧЕ Остатки.Субконто2.БазоваяНоменклатура
 	КОНЕЦ КАК Номенклатура,
 	ВЫБОР
-		КОГДА УправленческийОстатки.Субконто2.Базовый
-			ТОГДА УправленческийОстатки.КоличествоОстаток
-		ИНАЧЕ УправленческийОстатки.КоличествоОстаток * УправленческийОстатки.Субконто2.КоэффициентБазовых
-	КОНЕЦ КАК Количество
+		КОГДА Остатки.Субконто2.Базовый
+			ТОГДА Остатки.КоличествоОстаток
+		ИНАЧЕ Остатки.КоличествоОстаток * Остатки.Субконто2.КоэффициентБазовых
+	КОНЕЦ КАК Количество,
+	ВЫБОР
+		КОГДА Остатки.КоличествоОстаток &gt; 0
+			ТОГДА ВЫБОР
+					КОГДА Остатки.Субконто2.Базовый
+						ТОГДА Остатки.СуммаОстаток / Остатки.КоличествоОстаток
+					ИНАЧЕ Остатки.СуммаОстаток / (Остатки.КоличествоОстаток * Остатки.Субконто2.КоэффициентБазовых)
+				КОНЕЦ
+		ИНАЧЕ 0
+	КОНЕЦ КАК Себестоимость
 ПОМЕСТИТЬ втОстатки
 ИЗ
 	РегистрБухгалтерии.Управленческий.Остатки(
@@ -211,7 +207,27 @@
 			Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.МатериалыНаСкладе),
 			,
 			Субконто1.ОсновнойСклад = ИСТИНА
-				И Подразделение = &amp;Подразделение) КАК УправленческийОстатки
+				И Подразделение = &amp;Подразделение) КАК Остатки
+
+ИНДЕКСИРОВАТЬ ПО
+	Номенклатура
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ВЫБОР
+		КОГДА ДопЛимит.Субконто1.Базовый
+			ТОГДА ДопЛимит.Субконто1
+		ИНАЧЕ ДопЛимит.Субконто1.БазоваяНоменклатура
+	КОНЕЦ КАК Номенклатура,
+	ВЫБОР
+		КОГДА ДопЛимит.Субконто1.Базовый
+			ТОГДА ВЫРАЗИТЬ(ДопЛимит.КоличествоОстатокДт КАК ЧИСЛО(15, 2))
+		ИНАЧЕ ВЫРАЗИТЬ(ДопЛимит.КоличествоОстатокДт * ДопЛимит.Субконто1.КоэффициентБазовых КАК ЧИСЛО(15, 2))
+	КОНЕЦ КАК Количество
+ПОМЕСТИТЬ втДопЛимит
+ИЗ
+	РегистрБухгалтерии.Управленческий.Остатки(&amp;Период, Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ДополнительныйЛимитЦеха), , Подразделение = &amp;Подразделение) КАК ДопЛимит
 
 ИНДЕКСИРОВАТЬ ПО
 	Номенклатура
@@ -220,37 +236,87 @@
 ////////////////////////////////////////////////////////////////////////////////
 ВЫБРАТЬ
 	спрНоменклатура.Ссылка КАК Номенклатура,
-	ВЫРАЗИТЬ(втОбороты.Количество / 3 * втОбороты.Коэффициент КАК ЧИСЛО(15, 2)) КАК МинимальныйОстаток,
-	ВЫРАЗИТЬ(втОбороты.Количество / 3 * втОбороты.Коэффициент + втОбороты.Количество / 3 КАК ЧИСЛО(15, 2)) КАК МаксимальныйОстаток,
-	ВЫРАЗИТЬ(втОстатки.Количество КАК ЧИСЛО(15, 2)) КАК ТекущийОстаток,
-	втОборотыМесяц.Количество КАК ОбМесяц,
-	втОборотыШестьМесяцев.Количество / 6 КАК ОбШесть,
-	ВЫБОР
-		КОГДА втОборотыМесяц.Количество / (втОборотыШестьМесяцев.Количество / 6) &gt; 1.5
-			ТОГДА 1
-		ИНАЧЕ 0.5
-	КОНЕЦ КАК КоэффициентРезерва,
+	ВЫРАЗИТЬ(втОбороты.Количество * втОбороты.Коэффициент КАК ЧИСЛО(15, 2)) КАК МинимальныйОстаток,
 	ВЫБОР
 		КОГДА номПодраздел.ПодЗаказ
+			ТОГДА ЕСТЬNULL(втДопЛимит.Количество, 0)
+		ИНАЧЕ ВЫРАЗИТЬ(втОбороты.Количество * втОбороты.Коэффициент + втОбороты.Количество КАК ЧИСЛО(15, 2))
+	КОНЕЦ КАК МаксимальныйОстаток,
+	ВЫРАЗИТЬ(втОбороты.СуммаОборот КАК ЧИСЛО(15, 2)) КАК СуммаОборот,
+	ВЫБОР
+		КОГДА втОстатки.Себестоимость &gt; 0
+			ТОГДА ВЫРАЗИТЬ(втОстатки.Себестоимость КАК ЧИСЛО(15, 2))
+		ИНАЧЕ ВЫРАЗИТЬ(Цены.ПлановаяЗакупочная КАК ЧИСЛО(15, 2))
+	КОНЕЦ КАК Себестоимость,
+	ВЫБОР
+		КОГДА втОстатки.Количество ЕСТЬ NULL 
+			ТОГДА 0
+		ИНАЧЕ ВЫРАЗИТЬ(втОстатки.Количество КАК ЧИСЛО(15, 2))
+	КОНЕЦ КАК ТекущийОстаток,
+	ВЫБОР
+		КОГДА номПодраздел.ПодЗаказ
+				И НЕ спрНоменклатура.ЭтоГруппа
 			ТОГДА "✓"
 		ИНАЧЕ ""
 	КОНЕЦ КАК ПодЗаказ
+ПОМЕСТИТЬ втДанные
 ИЗ
 	Справочник.Номенклатура КАК спрНоменклатура
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.НоменклатураПодразделений КАК номПодраздел
 		ПО спрНоменклатура.Ссылка = номПодраздел.Номенклатура
 			И (номПодраздел.Подразделение = &amp;Подразделение)
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ЦеныНоменклатурыПоПодразделениям.СрезПоследних(, Подразделение = &amp;Подразделение) КАК Цены
+		ПО спрНоменклатура.Ссылка = Цены.Номенклатура
 		ЛЕВОЕ СОЕДИНЕНИЕ втОбороты КАК втОбороты
 		ПО спрНоменклатура.Ссылка = втОбороты.Номенклатура
 		ЛЕВОЕ СОЕДИНЕНИЕ втОстатки КАК втОстатки
 		ПО спрНоменклатура.Ссылка = втОстатки.Номенклатура
-		ЛЕВОЕ СОЕДИНЕНИЕ втОборотыМесяц КАК втОборотыМесяц
-		ПО спрНоменклатура.Ссылка = втОборотыМесяц.Номенклатура
-		ЛЕВОЕ СОЕДИНЕНИЕ втОборотыШестьМесяцев КАК втОборотыШестьМесяцев
-		ПО спрНоменклатура.Ссылка = втОборотыШестьМесяцев.Номенклатура
+		ЛЕВОЕ СОЕДИНЕНИЕ втДопЛимит КАК втДопЛимит
+		ПО спрНоменклатура.Ссылка = втДопЛимит.Номенклатура
 ГДЕ
-	спрНоменклатура.Базовый
-	И НЕ спрНоменклатура.НоменклатурнаяГруппа.ИгнорироватьВОтчетах</query>
+	(втОбороты.СуммаОборот &gt; 0
+			ИЛИ втОстатки.Количество &gt; 0)
+	И спрНоменклатура.Базовый
+	И НЕ спрНоменклатура.НоменклатурнаяГруппа.ИгнорироватьВОтчетах
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	втДанные.Номенклатура КАК Номенклатура,
+	ВЫБОР
+		КОГДА втДанные.ПодЗаказ = "✓"
+			ТОГДА 0
+		ИНАЧЕ втДанные.МинимальныйОстаток
+	КОНЕЦ КАК МинимальныйОстаток,
+	втДанные.МаксимальныйОстаток КАК МаксимальныйОстаток,
+	втДанные.СуммаОборот КАК СуммаОборот,
+	втДанные.Себестоимость КАК Себестоимость,
+	втДанные.ТекущийОстаток КАК ТекущийОстаток,
+	втДанные.ПодЗаказ КАК ПодЗаказ,
+	ВЫБОР
+		КОГДА втДанные.ТекущийОстаток - втДанные.МаксимальныйОстаток &gt; 0
+			ТОГДА ВЫРАЗИТЬ(втДанные.ТекущийОстаток - втДанные.МаксимальныйОстаток КАК ЧИСЛО(15, 2))
+		ИНАЧЕ 0
+	КОНЕЦ КАК Излишки,
+	ВЫБОР
+		КОГДА втДанные.ТекущийОстаток - втДанные.МаксимальныйОстаток &gt; 0
+			ТОГДА ВЫРАЗИТЬ((втДанные.ТекущийОстаток - втДанные.МаксимальныйОстаток) * втДанные.Себестоимость КАК ЧИСЛО(15, 2))
+		ИНАЧЕ 0
+	КОНЕЦ КАК СуммаИзлишков,
+	ВЫБОР
+		КОГДА втДанные.ТекущийОстаток - втДанные.МаксимальныйОстаток &lt; 0
+				И втДанные.ПодЗаказ &lt;&gt; "✓"
+			ТОГДА ВЫРАЗИТЬ((втДанные.ТекущийОстаток - втДанные.МаксимальныйОстаток) * -1 КАК ЧИСЛО(15, 2))
+		ИНАЧЕ 0
+	КОНЕЦ КАК ДокупитьКоличество,
+	ВЫБОР
+		КОГДА втДанные.ТекущийОстаток - втДанные.МаксимальныйОстаток &lt; 0
+				И втДанные.ПодЗаказ &lt;&gt; "✓"
+			ТОГДА ВЫРАЗИТЬ((втДанные.ТекущийОстаток - втДанные.МаксимальныйОстаток) * втДанные.Себестоимость * -1 КАК ЧИСЛО(15, 2))
+		ИНАЧЕ 0
+	КОНЕЦ КАК Докупить
+ИЗ
+	втДанные КАК втДанные</query>
 	</dataSet>
 	<totalField>
 		<dataPath>МинимальныйОстаток</dataPath>
@@ -265,20 +331,32 @@
 		<expression>Сумма(ТекущийОстаток)</expression>
 	</totalField>
 	<totalField>
+		<dataPath>СуммаОборот</dataPath>
+		<expression>Сумма(СуммаОборот)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Излишки</dataPath>
+		<expression>Сумма(Излишки)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Себестоимость</dataPath>
+		<expression>Максимум(Себестоимость)</expression>
+	</totalField>
+	<totalField>
 		<dataPath>ПодЗаказ</dataPath>
-		<expression>ПодЗаказ</expression>
+		<expression>Минимум(ПодЗаказ)</expression>
 	</totalField>
 	<totalField>
-		<dataPath>КоэффициентРезерва</dataPath>
-		<expression>КоэффициентРезерва</expression>
+		<dataPath>СуммаИзлишков</dataPath>
+		<expression>Сумма(СуммаИзлишков)</expression>
 	</totalField>
 	<totalField>
-		<dataPath>ОбМесяц</dataPath>
-		<expression>ОбМесяц</expression>
+		<dataPath>Докупить</dataPath>
+		<expression>Сумма(Докупить)</expression>
 	</totalField>
 	<totalField>
-		<dataPath>ОбШесть</dataPath>
-		<expression>ОбШесть</expression>
+		<dataPath>ДокупитьКоличество</dataPath>
+		<expression>Сумма(ДокупитьКоличество)</expression>
 	</totalField>
 	<parameter>
 		<name>Подразделение</name>
@@ -390,7 +468,22 @@
 					</dcsset:item>
 				</dcsset:groupItems>
 				<dcsset:order>
-					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					<dcsset:item xsi:type="dcsset:OrderItemField">
+						<dcsset:field>Номенклатура.Родитель.Родитель.Родитель</dcsset:field>
+						<dcsset:orderType>Asc</dcsset:orderType>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:OrderItemField">
+						<dcsset:field>Номенклатура.Родитель.Родитель</dcsset:field>
+						<dcsset:orderType>Asc</dcsset:orderType>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:OrderItemField">
+						<dcsset:field>Номенклатура.Родитель</dcsset:field>
+						<dcsset:orderType>Asc</dcsset:orderType>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:OrderItemField">
+						<dcsset:field>СуммаОборот</dcsset:field>
+						<dcsset:orderType>Desc</dcsset:orderType>
+					</dcsset:item>
 				</dcsset:order>
 				<dcsset:selection>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
@@ -402,6 +495,15 @@
 							<v8:item>
 								<v8:lang>ru</v8:lang>
 								<v8:content>Под заказ</v8:content>
+							</v8:item>
+						</dcsset:lwsTitle>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>СуммаОборот</dcsset:field>
+						<dcsset:lwsTitle>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Средний оборот</v8:content>
 							</v8:item>
 						</dcsset:lwsTitle>
 					</dcsset:item>
@@ -417,7 +519,7 @@
 							<dcsset:lwsTitle>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Минимальный</v8:content>
+									<v8:content>Мин.</v8:content>
 								</v8:item>
 							</dcsset:lwsTitle>
 						</dcsset:item>
@@ -426,7 +528,7 @@
 							<dcsset:lwsTitle>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Максимальный</v8:content>
+									<v8:content>Макс.</v8:content>
 								</v8:item>
 							</dcsset:lwsTitle>
 						</dcsset:item>
@@ -442,21 +544,169 @@
 						<dcsset:placement>Horizontally</dcsset:placement>
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>КоэффициентРезерва</dcsset:field>
+						<dcsset:field>Себестоимость</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Излишки</dcsset:field>
 						<dcsset:lwsTitle>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
-								<v8:content>Коэф. резерва</v8:content>
+								<v8:content>Излишки количество</v8:content>
 							</v8:item>
 						</dcsset:lwsTitle>
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>ОбМесяц</dcsset:field>
+						<dcsset:field>СуммаИзлишков</dcsset:field>
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>ОбШесть</dcsset:field>
+						<dcsset:field>Докупить</dcsset:field>
+						<dcsset:lwsTitle>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Докупить сумма</v8:content>
+							</v8:item>
+						</dcsset:lwsTitle>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ДокупитьКоличество</dcsset:field>
 					</dcsset:item>
 				</dcsset:selection>
+				<dcsset:conditionalAppearance>
+					<dcsset:item>
+						<dcsset:selection>
+							<dcsset:item>
+								<dcsset:field>Номенклатура</dcsset:field>
+							</dcsset:item>
+							<dcsset:item>
+								<dcsset:field>Докупить</dcsset:field>
+							</dcsset:item>
+							<dcsset:item>
+								<dcsset:field>Излишки</dcsset:field>
+							</dcsset:item>
+							<dcsset:item>
+								<dcsset:field>МаксимальныйОстаток</dcsset:field>
+							</dcsset:item>
+							<dcsset:item>
+								<dcsset:field>МинимальныйОстаток</dcsset:field>
+							</dcsset:item>
+							<dcsset:item>
+								<dcsset:field>ПодЗаказ</dcsset:field>
+							</dcsset:item>
+							<dcsset:item>
+								<dcsset:field>Себестоимость</dcsset:field>
+							</dcsset:item>
+							<dcsset:item>
+								<dcsset:field>СуммаИзлишков</dcsset:field>
+							</dcsset:item>
+							<dcsset:item>
+								<dcsset:field>СуммаОборот</dcsset:field>
+							</dcsset:item>
+							<dcsset:item>
+								<dcsset:field>ТекущийОстаток</dcsset:field>
+							</dcsset:item>
+							<dcsset:item>
+								<dcsset:field>ДокупитьКоличество</dcsset:field>
+							</dcsset:item>
+						</dcsset:selection>
+						<dcsset:filter>
+							<dcsset:item xsi:type="dcsset:FilterItemComparison">
+								<dcsset:left xsi:type="dcscor:Field">ТекущийОстаток</dcsset:left>
+								<dcsset:comparisonType>Less</dcsset:comparisonType>
+								<dcsset:right xsi:type="dcscor:Field">МинимальныйОстаток</dcsset:right>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:FilterItemComparison">
+								<dcsset:left xsi:type="dcscor:Field">ПодЗаказ</dcsset:left>
+								<dcsset:comparisonType>Equal</dcsset:comparisonType>
+								<dcsset:right xsi:type="xs:string"/>
+							</dcsset:item>
+						</dcsset:filter>
+						<dcsset:appearance>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>ЦветФона</dcscor:parameter>
+								<dcscor:value xsi:type="v8ui:Color">web:Pink</dcscor:value>
+							</dcscor:item>
+						</dcsset:appearance>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:selection>
+							<dcsset:item>
+								<dcsset:field>Номенклатура</dcsset:field>
+							</dcsset:item>
+							<dcsset:item>
+								<dcsset:field>Докупить</dcsset:field>
+							</dcsset:item>
+							<dcsset:item>
+								<dcsset:field>Излишки</dcsset:field>
+							</dcsset:item>
+							<dcsset:item>
+								<dcsset:field>МаксимальныйОстаток</dcsset:field>
+							</dcsset:item>
+							<dcsset:item>
+								<dcsset:field>МинимальныйОстаток</dcsset:field>
+							</dcsset:item>
+							<dcsset:item>
+								<dcsset:field>ПодЗаказ</dcsset:field>
+							</dcsset:item>
+							<dcsset:item>
+								<dcsset:field>Себестоимость</dcsset:field>
+							</dcsset:item>
+							<dcsset:item>
+								<dcsset:field>СуммаИзлишков</dcsset:field>
+							</dcsset:item>
+							<dcsset:item>
+								<dcsset:field>СуммаОборот</dcsset:field>
+							</dcsset:item>
+							<dcsset:item>
+								<dcsset:field>ТекущийОстаток</dcsset:field>
+							</dcsset:item>
+							<dcsset:item>
+								<dcsset:field>ДокупитьКоличество</dcsset:field>
+							</dcsset:item>
+						</dcsset:selection>
+						<dcsset:filter>
+							<dcsset:item xsi:type="dcsset:FilterItemComparison">
+								<dcsset:left xsi:type="dcscor:Field">ТекущийОстаток</dcsset:left>
+								<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:FilterItemComparison">
+								<dcsset:left xsi:type="dcscor:Field">ПодЗаказ</dcsset:left>
+								<dcsset:comparisonType>Equal</dcsset:comparisonType>
+								<dcsset:right xsi:type="xs:string"/>
+							</dcsset:item>
+						</dcsset:filter>
+						<dcsset:appearance>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>ЦветФона</dcscor:parameter>
+								<dcscor:value xsi:type="v8ui:Color">web:Pink</dcscor:value>
+							</dcscor:item>
+						</dcsset:appearance>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:selection>
+							<dcsset:item>
+								<dcsset:field>ДокупитьКоличество</dcsset:field>
+							</dcsset:item>
+						</dcsset:selection>
+						<dcsset:filter/>
+						<dcsset:appearance>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>Шрифт</dcscor:parameter>
+								<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							</dcscor:item>
+						</dcsset:appearance>
+					</dcsset:item>
+				</dcsset:conditionalAppearance>
+				<dcsset:outputParameters>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:use>false</dcscor:use>
+						<dcscor:parameter>РасположениеИтогов</dcscor:parameter>
+						<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ВертикальноеРасположениеОбщихИтогов</dcscor:parameter>
+						<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">Begin</dcscor:value>
+					</dcscor:item>
+				</dcsset:outputParameters>
 			</dcsset:item>
 		</dcsset:settings>
 	</settingsVariant>
