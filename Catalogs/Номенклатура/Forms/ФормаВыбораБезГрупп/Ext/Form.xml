@@ -7,8 +7,6 @@
 			<CommandBarLocation>None</CommandBarLocation>
 			<DefaultItem>true</DefaultItem>
 			<ChoiceMode>true</ChoiceMode>
-			<SelectionMode>SingleRow</SelectionMode>
-			<RowSelectionMode>Row</RowSelectionMode>
 			<UseAlternationRowColor>true</UseAlternationRowColor>
 			<InitialTreeView>ExpandTopLevel</InitialTreeView>
 			<EnableStartDrag>true</EnableStartDrag>
@@ -36,30 +34,33 @@
 				<Autofill>false</Autofill>
 			</AutoCommandBar>
 			<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="4"/>
-			<SearchStringAddition name="СписокСтрокаПоиска" id="20">
+			<SearchStringAddition name="СписокСтрокаПоиска" id="26">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="21"/>
-				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="22"/>
+				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="27"/>
+				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="28"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокСостояниеПросмотра" id="23">
+			<ViewStatusAddition name="СписокСостояниеПросмотра" id="29">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="24"/>
-				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="25"/>
+				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="30"/>
+				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="31"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокУправлениеПоиском" id="26">
+			<SearchControlAddition name="СписокУправлениеПоиском" id="32">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="27"/>
-				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="28"/>
+				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="33"/>
+				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="34"/>
 			</SearchControlAddition>
+			<Events>
+				<Event name="Selection">СписокВыбор</Event>
+			</Events>
 			<ChildItems>
 				<LabelField name="Наименование" id="5">
 					<DataPath>Список.Description</DataPath>
@@ -73,7 +74,7 @@
 					<ContextMenu name="НаименованиеКонтекстноеМеню" id="6"/>
 					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="7"/>
 				</LabelField>
-				<LabelField name="ЕдиницаИзмерения" id="17">
+				<LabelField name="ЕдиницаИзмерения" id="11">
 					<DataPath>Список.ЕдиницаИзмерения</DataPath>
 					<Title>
 						<v8:item>
@@ -81,36 +82,30 @@
 							<v8:content>Ед. изм.</v8:content>
 						</v8:item>
 					</Title>
-					<ContextMenu name="ЕдиницаИзмеренияКонтекстноеМеню" id="18"/>
-					<ExtendedTooltip name="ЕдиницаИзмеренияРасширеннаяПодсказка" id="19"/>
+					<ContextMenu name="ЕдиницаИзмеренияКонтекстноеМеню" id="12"/>
+					<ExtendedTooltip name="ЕдиницаИзмеренияРасширеннаяПодсказка" id="13"/>
 				</LabelField>
-				<CheckBoxField name="Базовая" id="11">
-					<DataPath>Список.Базовый</DataPath>
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Базовая</v8:content>
-						</v8:item>
-					</Title>
-					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="БазоваяКонтекстноеМеню" id="12"/>
-					<ExtendedTooltip name="БазоваяРасширеннаяПодсказка" id="13"/>
-				</CheckBoxField>
-				<LabelField name="КоэффициентБазовых" id="14">
+				<LabelField name="КоэффициентБазовых" id="17">
 					<DataPath>Список.КоэффициентБазовых</DataPath>
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Коэффициент</v8:content>
-						</v8:item>
-					</Title>
-					<ContextMenu name="КоэффициентБазовыхКонтекстноеМеню" id="15"/>
-					<ExtendedTooltip name="КоэффициентБазовыхРасширеннаяПодсказка" id="16"/>
+					<ContextMenu name="КоэффициентБазовыхКонтекстноеМеню" id="18"/>
+					<ExtendedTooltip name="КоэффициентБазовыхРасширеннаяПодсказка" id="19"/>
 				</LabelField>
 				<LabelField name="Код" id="8">
 					<DataPath>Список.Code</DataPath>
 					<ContextMenu name="КодКонтекстноеМеню" id="9"/>
 					<ExtendedTooltip name="КодРасширеннаяПодсказка" id="10"/>
+				</LabelField>
+				<LabelField name="Ссылка" id="20">
+					<DataPath>Список.Ref</DataPath>
+					<Visible>false</Visible>
+					<ContextMenu name="СсылкаКонтекстноеМеню" id="21"/>
+					<ExtendedTooltip name="СсылкаРасширеннаяПодсказка" id="22"/>
+				</LabelField>
+				<LabelField name="БазоваяНоменклатура" id="23">
+					<DataPath>Список.БазоваяНоменклатура</DataPath>
+					<Visible>false</Visible>
+					<ContextMenu name="БазоваяНоменклатураКонтекстноеМеню" id="24"/>
+					<ExtendedTooltip name="БазоваяНоменклатураРасширеннаяПодсказка" id="25"/>
 				</LabelField>
 			</ChildItems>
 		</Table>
@@ -122,12 +117,21 @@
 			</Type>
 			<MainAttribute>true</MainAttribute>
 			<UseAlways>
+				<Field>Список.БазоваяНоменклатура</Field>
 				<Field>Список.Ref</Field>
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
-				<ManualQuery>false</ManualQuery>
-				<DynamicDataRead>true</DynamicDataRead>
-				<MainTable>Catalog.Номенклатура</MainTable>
+				<ManualQuery>true</ManualQuery>
+				<DynamicDataRead>false</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	СправочникНоменклатура.Наименование,
+	СправочникНоменклатура.ЕдиницаИзмерения,
+	СправочникНоменклатура.КоэффициентБазовых,
+	СправочникНоменклатура.Код,
+	СправочникНоменклатура.Ссылка,
+	СправочникНоменклатура.БазоваяНоменклатура
+ИЗ
+	Справочник.Номенклатура КАК СправочникНоменклатура</QueryText>
 				<ListSettings>
 					<dcsset:filter>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
