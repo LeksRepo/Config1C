@@ -1,5 +1,11 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<Title>
+		<v8:item>
+			<v8:lang>ru</v8:lang>
+			<v8:content>Подбор номенклатуры</v8:content>
+		</v8:item>
+	</Title>
 	<Width>115</Width>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<Autofill>false</Autofill>
@@ -746,7 +752,7 @@
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
-				<DynamicDataRead>true</DynamicDataRead>
+				<DynamicDataRead>false</DynamicDataRead>
 				<QueryText>ВЫБРАТЬ
 	СпрНоменклатура.Ссылка КАК Номенклатура,
 	СпрНоменклатура.Наименование КАК Наименование,
@@ -758,7 +764,7 @@
 	СпрНоменклатура.ЕдиницаИзмерения КАК ЕдиницаИзмерения,
 	СпрНоменклатура.Кратность КАК Кратность,
 	ЕСТЬNULL(НоменклатураПодразделений.ПодЗаказ, ЛОЖЬ) КАК ПодЗаказ,
-	ЕСТЬNULL(НоменклатураПодразделений.Номенклатура.ОсновнойПоставщик, ЗНАЧЕНИЕ(Справочник.Контрагенты.ПустаяСсылка)) КАК Поставщик,
+	СпрНоменклатура.ОсновнойПоставщик КАК Поставщик,
 	ВЫБОР
 		КОГДА НоменклатураПодразделений.ПодЗаказ
 			ТОГДА 0
@@ -773,24 +779,23 @@
 	Справочник.Номенклатура КАК СпрНоменклатура
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.НоменклатураПодразделений КАК НоменклатураПодразделений
 		ПО СпрНоменклатура.Ссылка = НоменклатураПодразделений.Номенклатура
+			И (ВЫБОР
+				КОГДА &amp;Подразделение = ЗНАЧЕНИЕ(Справочник.Подразделения.ПустаяСсылка)
+					ТОГДА ИСТИНА
+				ИНАЧЕ НоменклатураПодразделений.Подразделение = &amp;Подразделение
+			КОНЕЦ)
 ГДЕ
-	ВЫБОР
+	НЕ СпрНоменклатура.ЭтоГруппа
+	И ВЫБОР
 			КОГДА НЕ &amp;ТолькоБазовая
 				ТОГДА НЕ НоменклатураПодразделений.ПодЗаказ
 						ИЛИ НоменклатураПодразделений.ПодЗаказ ЕСТЬ NULL 
 			ИНАЧЕ ИСТИНА
 		КОНЕЦ
-	И НЕ СпрНоменклатура.ЭтоГруппа
 	И ВЫБОР
 			КОГДА &amp;РодительНоменклатуры = ЗНАЧЕНИЕ(Справочник.Номенклатура.ПустаяСсылка)
 				ТОГДА ИСТИНА
 			ИНАЧЕ СпрНоменклатура.Ссылка В ИЕРАРХИИ (&amp;РодительНоменклатуры)
-		КОНЕЦ
-	И ВЫБОР
-			КОГДА &amp;Подразделение = ЗНАЧЕНИЕ(Справочник.Подразделения.ПустаяСсылка)
-				ТОГДА ИСТИНА
-			ИНАЧЕ НоменклатураПодразделений.Подразделение = &amp;Подразделение
-					ИЛИ НЕ СпрНоменклатура.Базовый
 		КОНЕЦ
 	И ВЫБОР
 			КОГДА &amp;Поиск = ""
@@ -804,15 +809,9 @@
 		КОНЕЦ
 	И ВЫБОР
 			КОГДА &amp;ТолькоБазовая
-				ТОГДА ИСТИНА
-			ИНАЧЕ ИСТИНА
-		КОНЕЦ
-	И ВЫБОР
-			КОГДА &amp;ТолькоБазовая
 				ТОГДА СпрНоменклатура.Базовый
 			ИНАЧЕ ИСТИНА
 		КОНЕЦ</QueryText>
-				<MainTable>InformationRegister.НоменклатураПодразделений</MainTable>
 				<ListSettings>
 					<dcsset:filter>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
