@@ -105,26 +105,6 @@
 			</appearance>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>КоличествоРезерва</dataPath>
-			<field>КоличествоРезерва</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Резерв склада</v8:content>
-				</v8:item>
-			</title>
-			<appearance>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>Формат</dcscor:parameter>
-					<dcscor:value xsi:type="xs:string">ЧДЦ=2</dcscor:value>
-				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>МаксимальнаяШирина</dcscor:parameter>
-					<dcscor:value xsi:type="xs:decimal">7.5</dcscor:value>
-				</dcscor:item>
-			</appearance>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>СчетДтЧтение</dataPath>
 			<field>СчетДтЧтение</field>
 		</field>
@@ -338,7 +318,6 @@
 	Список.ПлановаяЗакупочная,
 	Список.Розничная,
 	ЕСТЬNULL(втОбороты.СуммаОборот, 0) КАК СреднийОборот,
-	ОстаткиРезерв.Количество * ОстаткиРезерв.Номенклатура.КоэффициентБазовых КАК КоличествоРезерва,
 	ВЫБОР
 		КОГДА ОстаткиНаСкладе.Количество &gt; 0
 			ТОГДА ОстаткиНаСкладе.СуммаОстаток / ОстаткиНаСкладе.Количество
@@ -357,24 +336,11 @@
 	Список.ПроцентОтхода
 ИЗ
 	Список КАК Список
-		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.РезервныйЗапасМатериалов.СрезПоследних(
-				,
-				Подразделение = &amp;Подразделение
-					И Склад.ОсновнойСклад) КАК ОстаткиРезерв
-		ПО (Список.Номенклатура = ВЫБОР
-				КОГДА ОстаткиРезерв.Номенклатура.Базовый
-					ТОГДА ОстаткиРезерв.Номенклатура.Ссылка
-				ИНАЧЕ ОстаткиРезерв.Номенклатура.БазоваяНоменклатура
-			КОНЕЦ)
 		ЛЕВОЕ СОЕДИНЕНИЕ ОстаткиНаСкладе КАК ОстаткиНаСкладе
 		ПО Список.Номенклатура = ОстаткиНаСкладе.Номенклатура
 		ЛЕВОЕ СОЕДИНЕНИЕ втОбороты КАК втОбороты
 		ПО Список.Номенклатура = втОбороты.Номенклатура</query>
 	</dataSet>
-	<totalField>
-		<dataPath>КоличествоРезерва</dataPath>
-		<expression>Среднее(КоличествоРезерва)</expression>
-	</totalField>
 	<totalField>
 		<dataPath>ПлановаяЗакупочная</dataPath>
 		<expression>Среднее(ПлановаяЗакупочная)</expression>
@@ -595,9 +561,6 @@
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
 						<dcsset:field>ОстатокНаСкладе</dcsset:field>
 					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>КоличествоРезерва</dcsset:field>
-					</dcsset:item>
 					<dcsset:placement>Auto</dcsset:placement>
 				</dcsset:item>
 			</dcsset:selection>
@@ -634,9 +597,6 @@
 						</dcsset:item>
 						<dcsset:item>
 							<dcsset:field>Поставщик</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:field>КоличествоРезерва</dcsset:field>
 						</dcsset:item>
 						<dcsset:item>
 							<dcsset:field>Наценка</dcsset:field>
@@ -710,9 +670,6 @@
 						</dcsset:item>
 						<dcsset:item>
 							<dcsset:field>Поставщик</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:field>КоличествоРезерва</dcsset:field>
 						</dcsset:item>
 						<dcsset:item>
 							<dcsset:field>Наценка</dcsset:field>
