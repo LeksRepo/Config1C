@@ -73,15 +73,38 @@
 			<field>ЕдиницаИзмерения</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Доступность</dataPath>
-			<field>Доступность</field>
+			<dataPath>Округлять</dataPath>
+			<field>Округлять</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Округлять</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">БЛ=; БИ=V</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПодЗаказ</dataPath>
+			<field>ПодЗаказ</field>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">БЛ=; БИ=V</dcscor:value>
+				</dcscor:item>
+			</appearance>
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	спрНоменклатура.Ссылка КАК Номенклатура,
 	ЦеныНоменклатурыСрезПоследних.Розничная КАК Розничная,
 	спрНоменклатура.ЕдиницаИзмерения,
-	НоменклатураПодразделений.Доступность
+	НоменклатураПодразделений.ПодЗаказ КАК ПодЗаказ,
+	НоменклатураПодразделений.ОкруглятьДоЛистов КАК Округлять
 ПОМЕСТИТЬ Список
 ИЗ
 	Справочник.Номенклатура КАК спрНоменклатура
@@ -107,7 +130,8 @@
 	Список.Розничная КАК Цена,
 	ЕСТЬNULL(УправленческийОстатки.КоличествоОстаток * ВЫРАЗИТЬ(УправленческийОстатки.Субконто2 КАК Справочник.Номенклатура).КоэффициентБазовых, 0) КАК Количество,
 	Список.ЕдиницаИзмерения,
-	Список.Доступность
+	Список.ПодЗаказ,
+	Список.Округлять
 ИЗ
 	Список КАК Список
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрБухгалтерии.Управленческий.Остатки(
@@ -131,8 +155,12 @@
 		<expression>Максимум(Цена)</expression>
 	</totalField>
 	<totalField>
-		<dataPath>Доступность</dataPath>
-		<expression>Максимум(Доступность)</expression>
+		<dataPath>Округлять</dataPath>
+		<expression>Округлять</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ПодЗаказ</dataPath>
+		<expression>ПодЗаказ</expression>
 	</totalField>
 	<parameter>
 		<name>Период</name>
@@ -177,14 +205,16 @@
 					<dcsset:field>ЕдиницаИзмерения</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:use>false</dcsset:use>
-					<dcsset:field>Доступность</dcsset:field>
+					<dcsset:field>Цена</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Количество</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Цена</dcsset:field>
+					<dcsset:field>ПодЗаказ</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Округлять</dcsset:field>
 				</dcsset:item>
 			</dcsset:selection>
 			<dcsset:dataParameters>
@@ -217,39 +247,16 @@
 							<dcsset:field>Номенклатура</dcsset:field>
 						</dcsset:item>
 						<dcsset:item>
-							<dcsset:field>Цена</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:field>Количество</dcsset:field>
-						</dcsset:item>
-					</dcsset:selection>
-					<dcsset:filter>
-						<dcsset:item xsi:type="dcsset:FilterItemComparison">
-							<dcsset:left xsi:type="dcscor:Field">Доступность</dcsset:left>
-							<dcsset:comparisonType>Equal</dcsset:comparisonType>
-							<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
-						</dcsset:item>
-					</dcsset:filter>
-					<dcsset:appearance>
-						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-							<dcscor:parameter>ЦветФона</dcscor:parameter>
-							<dcscor:value xsi:type="v8ui:Color">web:Violet</dcscor:value>
-						</dcscor:item>
-					</dcsset:appearance>
-				</dcsset:item>
-				<dcsset:item>
-					<dcsset:selection>
-						<dcsset:item>
-							<dcsset:field>ЕдиницаИзмерения</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
-							<dcsset:field>Номенклатура</dcsset:field>
-						</dcsset:item>
-						<dcsset:item>
 							<dcsset:field>Количество</dcsset:field>
 						</dcsset:item>
 						<dcsset:item>
 							<dcsset:field>Цена</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>ПодЗаказ</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>Округлять</dcsset:field>
 						</dcsset:item>
 					</dcsset:selection>
 					<dcsset:filter>
@@ -257,11 +264,6 @@
 							<dcsset:left xsi:type="dcscor:Field">Количество</dcsset:left>
 							<dcsset:comparisonType>LessOrEqual</dcsset:comparisonType>
 							<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
-						</dcsset:item>
-						<dcsset:item xsi:type="dcsset:FilterItemComparison">
-							<dcsset:left xsi:type="dcscor:Field">Доступность</dcsset:left>
-							<dcsset:comparisonType>Equal</dcsset:comparisonType>
-							<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
 						</dcsset:item>
 					</dcsset:filter>
 					<dcsset:appearance>
