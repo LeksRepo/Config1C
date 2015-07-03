@@ -71,16 +71,6 @@
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>МинимальныйОстаток</dataPath>
-			<field>МинимальныйОстаток</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Минимальный остаток</v8:content>
-				</v8:item>
-			</title>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>ТекущийОстаток</dataPath>
 			<field>ТекущийОстаток</field>
 			<title xsi:type="v8:LocalStringType">
@@ -93,6 +83,12 @@
 		<field xsi:type="DataSetFieldField">
 			<dataPath>ПодЗаказ</dataPath>
 			<field>ПодЗаказ</field>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">БЛ=; БИ=✓</dcscor:value>
+				</dcscor:item>
+			</appearance>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>СуммаОборот</dataPath>
@@ -151,6 +147,26 @@
 				<v8:item>
 					<v8:lang>ru</v8:lang>
 					<v8:content>Докупить количество</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>МинимальныйОстаток</dataPath>
+			<field>МинимальныйОстаток</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Минимальный остаток</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Резерв</dataPath>
+			<field>Резерв</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Резерв</v8:content>
 				</v8:item>
 			</title>
 		</field>
@@ -253,12 +269,8 @@
 			ТОГДА 0
 		ИНАЧЕ ВЫРАЗИТЬ(втОстатки.Количество КАК ЧИСЛО(15, 2))
 	КОНЕЦ КАК ТекущийОстаток,
-	ВЫБОР
-		КОГДА номПодраздел.ПодЗаказ
-				И НЕ спрНоменклатура.ЭтоГруппа
-			ТОГДА "✓"
-		ИНАЧЕ ""
-	КОНЕЦ КАК ПодЗаказ
+	номПодраздел.ПодЗаказ КАК ПодЗаказ,
+	ОстаткиРезерв.Количество * ОстаткиРезерв.Номенклатура.КоэффициентБазовых КАК Резерв
 ПОМЕСТИТЬ втДанные
 ИЗ
 	Справочник.Номенклатура КАК спрНоменклатура
@@ -273,6 +285,15 @@
 		ПО спрНоменклатура.Ссылка = втОстатки.Номенклатура
 		ЛЕВОЕ СОЕДИНЕНИЕ втДопЛимит КАК втДопЛимит
 		ПО спрНоменклатура.Ссылка = втДопЛимит.Номенклатура
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.РезервныйЗапасМатериалов.СрезПоследних(
+				,
+				Подразделение = &amp;Подразделение
+					И Склад.ОсновнойСклад) КАК ОстаткиРезерв
+		ПО (спрНоменклатура.Ссылка = ВЫБОР
+				КОГДА ОстаткиРезерв.Номенклатура.Базовый
+					ТОГДА ОстаткиРезерв.Номенклатура.Ссылка
+				ИНАЧЕ ОстаткиРезерв.Номенклатура.БазоваяНоменклатура
+			КОНЕЦ)
 ГДЕ
 	(втОбороты.СуммаОборот &gt; 0
 			ИЛИ втОстатки.Количество &gt; 0)
@@ -284,7 +305,7 @@
 ВЫБРАТЬ
 	втДанные.Номенклатура КАК Номенклатура,
 	ВЫБОР
-		КОГДА втДанные.ПодЗаказ = "✓"
+		КОГДА втДанные.ПодЗаказ
 			ТОГДА 0
 		ИНАЧЕ втДанные.МинимальныйОстаток
 	КОНЕЦ КАК МинимальныйОстаток,
@@ -305,23 +326,20 @@
 	КОНЕЦ КАК СуммаИзлишков,
 	ВЫБОР
 		КОГДА втДанные.ТекущийОстаток - втДанные.МаксимальныйОстаток &lt; 0
-				И втДанные.ПодЗаказ &lt;&gt; "✓"
+				И НЕ втДанные.ПодЗаказ
 			ТОГДА ВЫРАЗИТЬ((втДанные.ТекущийОстаток - втДанные.МаксимальныйОстаток) * -1 КАК ЧИСЛО(15, 2))
 		ИНАЧЕ 0
 	КОНЕЦ КАК ДокупитьКоличество,
 	ВЫБОР
 		КОГДА втДанные.ТекущийОстаток - втДанные.МаксимальныйОстаток &lt; 0
-				И втДанные.ПодЗаказ &lt;&gt; "✓"
+				И НЕ втДанные.ПодЗаказ
 			ТОГДА ВЫРАЗИТЬ((втДанные.ТекущийОстаток - втДанные.МаксимальныйОстаток) * втДанные.Себестоимость * -1 КАК ЧИСЛО(15, 2))
 		ИНАЧЕ 0
-	КОНЕЦ КАК Докупить
+	КОНЕЦ КАК Докупить,
+	втДанные.Резерв КАК Резерв
 ИЗ
 	втДанные КАК втДанные</query>
 	</dataSet>
-	<totalField>
-		<dataPath>МинимальныйОстаток</dataPath>
-		<expression>Сумма(МинимальныйОстаток)</expression>
-	</totalField>
 	<totalField>
 		<dataPath>МаксимальныйОстаток</dataPath>
 		<expression>Сумма(МаксимальныйОстаток)</expression>
@@ -357,6 +375,14 @@
 	<totalField>
 		<dataPath>ДокупитьКоличество</dataPath>
 		<expression>Сумма(ДокупитьКоличество)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>МинимальныйОстаток</dataPath>
+		<expression>Сумма(МинимальныйОстаток)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Резерв</dataPath>
+		<expression>Сумма(Резерв)</expression>
 	</totalField>
 	<parameter>
 		<name>Подразделение</name>
@@ -515,6 +541,9 @@
 							</v8:item>
 						</dcsset:lwsTitle>
 						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>Резерв</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
 							<dcsset:field>МинимальныйОстаток</dcsset:field>
 							<dcsset:lwsTitle>
 								<v8:item>
@@ -607,6 +636,9 @@
 							<dcsset:item>
 								<dcsset:field>ДокупитьКоличество</dcsset:field>
 							</dcsset:item>
+							<dcsset:item>
+								<dcsset:field>Резерв</dcsset:field>
+							</dcsset:item>
 						</dcsset:selection>
 						<dcsset:filter>
 							<dcsset:item xsi:type="dcsset:FilterItemComparison">
@@ -617,7 +649,7 @@
 							<dcsset:item xsi:type="dcsset:FilterItemComparison">
 								<dcsset:left xsi:type="dcscor:Field">ПодЗаказ</dcsset:left>
 								<dcsset:comparisonType>Equal</dcsset:comparisonType>
-								<dcsset:right xsi:type="xs:string"/>
+								<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
 							</dcsset:item>
 						</dcsset:filter>
 						<dcsset:appearance>
@@ -662,6 +694,9 @@
 							<dcsset:item>
 								<dcsset:field>ДокупитьКоличество</dcsset:field>
 							</dcsset:item>
+							<dcsset:item>
+								<dcsset:field>Резерв</dcsset:field>
+							</dcsset:item>
 						</dcsset:selection>
 						<dcsset:filter>
 							<dcsset:item xsi:type="dcsset:FilterItemComparison">
@@ -671,7 +706,7 @@
 							<dcsset:item xsi:type="dcsset:FilterItemComparison">
 								<dcsset:left xsi:type="dcscor:Field">ПодЗаказ</dcsset:left>
 								<dcsset:comparisonType>Equal</dcsset:comparisonType>
-								<dcsset:right xsi:type="xs:string"/>
+								<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
 							</dcsset:item>
 						</dcsset:filter>
 						<dcsset:appearance>
