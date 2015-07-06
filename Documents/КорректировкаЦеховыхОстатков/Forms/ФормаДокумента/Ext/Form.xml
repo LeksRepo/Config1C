@@ -68,9 +68,6 @@
 					<VerticalStretch>false</VerticalStretch>
 					<ContextMenu name="ПодразделениеКонтекстноеМеню" id="11"/>
 					<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="12"/>
-					<Events>
-						<Event name="OnChange">ПодразделениеПриИзменении</Event>
-					</Events>
 				</InputField>
 			</ChildItems>
 		</UsualGroup>
@@ -87,48 +84,59 @@
 			<ContextMenu name="СписокНоменклатурыКонтекстноеМеню" id="14"/>
 			<AutoCommandBar name="СписокНоменклатурыКоманднаяПанель" id="15">
 				<ChildItems>
-					<Button name="Заполнить" id="44">
-						<Type>CommandBarButton</Type>
-						<Representation>PictureAndText</Representation>
-						<CommandName>Form.Command.Заполнить</CommandName>
-						<Picture>
-							<xr:Ref>CommonPicture.Минус</xr:Ref>
-							<xr:LoadTransparent>true</xr:LoadTransparent>
-						</Picture>
+					<Popup name="ГруппаЗаполнить" id="65">
 						<Title>
 							<v8:item>
 								<v8:lang>ru</v8:lang>
-								<v8:content>Заполнить отрицательными</v8:content>
+								<v8:content>Заполнить</v8:content>
 							</v8:item>
 						</Title>
-						<ExtendedTooltip name="ЗаполнитьРасширеннаяПодсказка" id="45"/>
-					</Button>
+						<ToolTip>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Группа заполнить</v8:content>
+							</v8:item>
+						</ToolTip>
+						<ExtendedTooltip name="ГруппаЗаполнитьРасширеннаяПодсказка" id="66"/>
+						<ChildItems>
+							<Button name="СписокНоменклатурыЗаполнитьОтрицательными" id="67">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ЗаполнитьОтрицательными</CommandName>
+								<ExtendedTooltip name="СписокНоменклатурыЗаполнитьОтрицательнымиРасширеннаяПодсказка" id="68"/>
+							</Button>
+							<Button name="СписокНоменклатурыСписатьБезСпецификаций" id="69">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.СписатьБезСпецификаций</CommandName>
+								<ExtendedTooltip name="СписокНоменклатурыСписатьБезСпецификацийРасширеннаяПодсказка" id="70"/>
+							</Button>
+						</ChildItems>
+					</Popup>
 				</ChildItems>
 			</AutoCommandBar>
 			<ExtendedTooltip name="СписокНоменклатурыРасширеннаяПодсказка" id="16"/>
-			<SearchStringAddition name="СписокНоменклатурыСтрокаПоиска" id="65">
+			<SearchStringAddition name="СписокНоменклатурыСтрокаПоиска" id="71">
 				<AdditionSource>
 					<Item>СписокНоменклатуры</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокНоменклатурыСтрокаПоискаКонтекстноеМеню" id="66"/>
-				<ExtendedTooltip name="СписокНоменклатурыСтрокаПоискаРасширеннаяПодсказка" id="67"/>
+				<ContextMenu name="СписокНоменклатурыСтрокаПоискаКонтекстноеМеню" id="72"/>
+				<ExtendedTooltip name="СписокНоменклатурыСтрокаПоискаРасширеннаяПодсказка" id="73"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокНоменклатурыСостояниеПросмотра" id="68">
+			<ViewStatusAddition name="СписокНоменклатурыСостояниеПросмотра" id="74">
 				<AdditionSource>
 					<Item>СписокНоменклатуры</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокНоменклатурыСостояниеПросмотраКонтекстноеМеню" id="69"/>
-				<ExtendedTooltip name="СписокНоменклатурыСостояниеПросмотраРасширеннаяПодсказка" id="70"/>
+				<ContextMenu name="СписокНоменклатурыСостояниеПросмотраКонтекстноеМеню" id="75"/>
+				<ExtendedTooltip name="СписокНоменклатурыСостояниеПросмотраРасширеннаяПодсказка" id="76"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокНоменклатурыУправлениеПоиском" id="71">
+			<SearchControlAddition name="СписокНоменклатурыУправлениеПоиском" id="77">
 				<AdditionSource>
 					<Item>СписокНоменклатуры</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокНоменклатурыУправлениеПоискомКонтекстноеМеню" id="72"/>
-				<ExtendedTooltip name="СписокНоменклатурыУправлениеПоискомРасширеннаяПодсказка" id="73"/>
+				<ContextMenu name="СписокНоменклатурыУправлениеПоискомКонтекстноеМеню" id="78"/>
+				<ExtendedTooltip name="СписокНоменклатурыУправлениеПоискомРасширеннаяПодсказка" id="79"/>
 			</SearchControlAddition>
 			<ChildItems>
 				<LabelField name="СписокНоменклатурыНомерСтроки" id="32">
@@ -204,20 +212,35 @@
 		</Attribute>
 	</Attributes>
 	<Commands>
-		<Command name="Заполнить" id="1">
+		<Command name="ЗаполнитьОтрицательными" id="1">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Заполнить</v8:content>
+					<v8:content>Обнулить отрицательные остатки</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Заполнить</v8:content>
+					<v8:content>Заполнить отрицательными</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Action>Заполнить</Action>
+			<Action>ЗаполнитьОтрицательными</Action>
+		</Command>
+		<Command name="СписатьБезСпецификаций" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Остатками цеха без спецификаций</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Списать без спецификаций</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СписатьБезСпецификаций</Action>
 		</Command>
 	</Commands>
 </Form>
