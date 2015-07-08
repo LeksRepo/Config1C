@@ -99,9 +99,19 @@
 			</appearance>
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
-		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+		<query>ВЫБРАТЬ
+	Офисы.КоэффициентМатериалы КАК НаценкаОфиса
+ПОМЕСТИТЬ втОфис
+ИЗ
+	Справочник.Офисы КАК Офисы
+ГДЕ
+	Офисы.Ссылка = &amp;Офис
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	спрНоменклатура.Ссылка КАК Номенклатура,
-	ЦеныНоменклатурыСрезПоследних.Розничная КАК Розничная,
+	ЦеныНоменклатурыСрезПоследних.Розничная * ЕСТЬNULL(втОФис.НаценкаОфиса, 1) КАК Розничная,
 	спрНоменклатура.ЕдиницаИзмерения,
 	НоменклатураПодразделений.ПодЗаказ КАК ПодЗаказ,
 	НоменклатураПодразделений.ОкруглятьДоЛистов КАК Округлять
@@ -112,6 +122,8 @@
 		ПО (ЦеныНоменклатурыСрезПоследних.Номенклатура = спрНоменклатура.Ссылка)
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.НоменклатураПодразделений КАК НоменклатураПодразделений
 		ПО (НоменклатураПодразделений.Номенклатура = спрНоменклатура.Ссылка)
+		ЛЕВОЕ СОЕДИНЕНИЕ втОфис КАК втОФис
+		ПО (ИСТИНА)
 ГДЕ
 	спрНоменклатура.Базовый
 	И НЕ спрНоменклатура.ПометкаУдаления
@@ -211,6 +223,49 @@
 				<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
 			</dcscor:item>
 		</inputParameters>
+		<denyIncompleteValues>true</denyIncompleteValues>
+		<use>Always</use>
+	</parameter>
+	<parameter>
+		<name>Офис</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Офис</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Офисы</v8:Type>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>false</useRestriction>
+		<inputParameters>
+			<dcscor:item>
+				<dcscor:parameter>СвязиПараметровВыбора</dcscor:parameter>
+				<dcscor:value xsi:type="dcscor:ChoiceParameterLinks">
+					<dcscor:item>
+						<dcscor:choiceParameter>Отбор.Владелец</dcscor:choiceParameter>
+						<dcscor:value>ПараметрыДанных.Подразделение</dcscor:value>
+						<dcscor:mode xmlns:d7p1="http://v8.1c.ru/8.1/data/enterprise" xsi:type="d7p1:LinkedValueChangeMode">Clear</dcscor:mode>
+					</dcscor:item>
+				</dcscor:value>
+			</dcscor:item>
+			<dcscor:item>
+				<dcscor:parameter>ПараметрыВыбора</dcscor:parameter>
+				<dcscor:value xsi:type="dcscor:ChoiceParameters">
+					<dcscor:item>
+						<dcscor:choiceParameter>Отбор.Активность</dcscor:choiceParameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcscor:value>
+			</dcscor:item>
+			<dcscor:item>
+				<dcscor:parameter>БыстрыйВыбор</dcscor:parameter>
+				<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+			</dcscor:item>
+		</inputParameters>
+		<denyIncompleteValues>true</denyIncompleteValues>
+		<use>Always</use>
 	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
@@ -254,6 +309,12 @@
 					<dcscor:parameter>Подразделение</dcscor:parameter>
 					<dcscor:value xsi:nil="true"/>
 					<dcsset:userSettingID>fbe03a3d-0cc2-4174-a98a-6e8068a9bea7</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>Офис</dcscor:parameter>
+					<dcscor:value xsi:nil="true"/>
+					<dcsset:userSettingID>d89c15eb-8df0-4058-9336-6871df30fb7b</dcsset:userSettingID>
 				</dcscor:item>
 			</dcsset:dataParameters>
 			<dcsset:order>
