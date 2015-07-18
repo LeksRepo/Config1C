@@ -99,13 +99,23 @@
 			</appearance>
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
-		<query>ВЫБРАТЬ
-	Офисы.КоэффициентМатериалы КАК НаценкаОфиса
+		<query>ВЫБРАТЬ ПЕРВЫЕ 1
+	ВЫБОР
+		КОГДА &amp;ЭтоДилер
+				ИЛИ &amp;ОФис = ЗНАЧЕНИЕ(Справочник.Офисы.ПустаяСсылка)
+			ТОГДА 1
+		ИНАЧЕ Офисы.КоэффициентМатериалы
+	КОНЕЦ КАК НаценкаОфиса
 ПОМЕСТИТЬ втОфис
 ИЗ
 	Справочник.Офисы КАК Офисы
 ГДЕ
-	Офисы.Ссылка = &amp;Офис
+	ВЫБОР
+			КОГДА &amp;ЭтоДилер
+					ИЛИ &amp;ОФис = ЗНАЧЕНИЕ(Справочник.Офисы.ПустаяСсылка)
+				ТОГДА ИСТИНА
+			ИНАЧЕ Офисы.Ссылка = &amp;Офис
+		КОНЕЦ
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -264,8 +274,35 @@
 				<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
 			</dcscor:item>
 		</inputParameters>
-		<denyIncompleteValues>true</denyIncompleteValues>
 		<use>Always</use>
+	</parameter>
+	<parameter>
+		<name>ВнешнийПользователь</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Внешний пользователь</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.ВнешниеПользователи</v8:Type>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>ЭтоДилер</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Это дилер</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:boolean</v8:Type>
+		</valueType>
+		<value xsi:type="xs:boolean">false</value>
+		<useRestriction>true</useRestriction>
 	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
