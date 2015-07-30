@@ -7,38 +7,6 @@
 	<dataSet xsi:type="DataSetQuery">
 		<name>НаборДанных1</name>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Счет</dataPath>
-			<field>Счет</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>КорСчет</dataPath>
-			<field>КорСчет</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>КорСубконто1</dataPath>
-			<field>КорСубконто1</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>КорСубконто2</dataPath>
-			<field>КорСубконто2</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>КорСубконто3</dataPath>
-			<field>КорСубконто3</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>Субконто1</dataPath>
-			<field>Субконто1</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>Субконто2</dataPath>
-			<field>Субконто2</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>Субконто3</dataPath>
-			<field>Субконто3</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>Подразделение</dataPath>
 			<field>Подразделение</field>
 		</field>
@@ -128,6 +96,38 @@
 				</v8:item>
 			</title>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СчетКт</dataPath>
+			<field>СчетКт</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СчетДт</dataPath>
+			<field>СчетДт</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СубконтоКт1</dataPath>
+			<field>СубконтоКт1</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СубконтоКт2</dataPath>
+			<field>СубконтоКт2</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СубконтоКт3</dataPath>
+			<field>СубконтоКт3</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СубконтоДт1</dataPath>
+			<field>СубконтоДт1</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СубконтоДт2</dataPath>
+			<field>СубконтоДт2</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СубконтоДт3</dataPath>
+			<field>СубконтоДт3</field>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	СписокПодЗаказ.Номенклатура,
@@ -169,25 +169,26 @@
 ////////////////////////////////////////////////////////////////////////////////
 ВЫБРАТЬ
 	УправленческийОбороты.Регистратор,
-	УправленческийОбороты.Субконто2 КАК Номенклатура,
+	УправленческийОбороты.СубконтоДт2 КАК Номенклатура,
 	УправленческийОбороты.КоличествоОборотДт КАК Количество,
-	УправленческийОбороты.СуммаОборотДт КАК Сумма
+	УправленческийОбороты.СуммаОборот КАК Сумма
 ПОМЕСТИТЬ втОбороты
 ИЗ
-	РегистрБухгалтерии.Управленческий.Обороты(
+	РегистрБухгалтерии.Управленческий.ОборотыДтКт(
 			&amp;НачалоПериода,
 			&amp;КонецПериода,
 			Регистратор,
-			Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.МатериалыНаСкладе),
+			СчетДт = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.МатериалыНаСкладе),
+			,
+			СчетКт = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ВзаиморасчетыСПоставщиками)
+				ИЛИ СчетКт = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.Подотчет),
 			,
 			Подразделение = &amp;Подразделение
-				И Субконто2 В
+				И СубконтоДт2 В
 					(ВЫБРАТЬ
 						т.Номенклатура
 					ИЗ
-						втНоменклатура КАК т),
-			,
-			) КАК УправленческийОбороты
+						втНоменклатура КАК т)) КАК УправленческийОбороты
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
