@@ -43,6 +43,7 @@
 			И СпецСписок.Номенклатура = ПриходСписок.Номенклатура
 ГДЕ
 	СпецСписок.ПредоставитЗаказчик
+	И СпецСписок.Ссылка.Подразделение = &amp;Подразделение
 	И СпецСписок.Ссылка.Проведен
 	И СтатусыСпец.Статус = ЗНАЧЕНИЕ(Перечисление.СтатусыСпецификации.Размещен)
 	И НЕ ЕСТЬNULL(ПриходСписок.Предоставлен, ЛОЖЬ)</query>
@@ -76,11 +77,55 @@
 			</dcscor:item>
 		</inputParameters>
 	</parameter>
+	<parameter>
+		<name>Подразделение</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Подразделение</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Подразделения</v8:Type>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>false</useRestriction>
+		<inputParameters>
+			<dcscor:item>
+				<dcscor:parameter>ПараметрыВыбора</dcscor:parameter>
+				<dcscor:value xsi:type="dcscor:ChoiceParameters">
+					<dcscor:item>
+						<dcscor:choiceParameter>Отбор.Активность</dcscor:choiceParameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+					<dcscor:item>
+						<dcscor:choiceParameter>Отбор.ВидПодразделения</dcscor:choiceParameter>
+						<dcscor:value xsi:type="dcscor:DesignTimeValue">Перечисление.ВидыПодразделений.Производство</dcscor:value>
+					</dcscor:item>
+				</dcscor:value>
+			</dcscor:item>
+			<dcscor:item>
+				<dcscor:parameter>БыстрыйВыбор</dcscor:parameter>
+				<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+			</dcscor:item>
+		</inputParameters>
+		<denyIncompleteValues>true</denyIncompleteValues>
+		<use>Always</use>
+	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
 		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 			<dcsset:selection>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Подразделение</dcsset:field>
+					<dcsset:lwsTitle>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Подразделение</v8:content>
+						</v8:item>
+					</dcsset:lwsTitle>
+				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Спецификация</dcsset:field>
 				</dcsset:item>
@@ -91,9 +136,16 @@
 					<dcsset:field>Количество</dcsset:field>
 				</dcsset:item>
 			</dcsset:selection>
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Подразделение</dcscor:parameter>
+					<dcscor:value xsi:nil="true"/>
+					<dcsset:userSettingID>6f1901ba-10c0-49cd-a3f3-720fa5daa14b</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
 			<dcsset:order>
 				<dcsset:item xsi:type="dcsset:OrderItemField">
-					<dcsset:field>Ссылка</dcsset:field>
+					<dcsset:field>Спецификация</dcsset:field>
 					<dcsset:orderType>Asc</dcsset:orderType>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:OrderItemField">
@@ -120,7 +172,7 @@
 				<dcsset:row>
 					<dcsset:groupItems>
 						<dcsset:item xsi:type="dcsset:GroupItemField">
-							<dcsset:field>Спецификация</dcsset:field>
+							<dcsset:field>Подразделение</dcsset:field>
 							<dcsset:groupType>Items</dcsset:groupType>
 							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
@@ -136,7 +188,7 @@
 					<dcsset:item>
 						<dcsset:groupItems>
 							<dcsset:item xsi:type="dcsset:GroupItemField">
-								<dcsset:field>Номенклатура</dcsset:field>
+								<dcsset:field>Спецификация</dcsset:field>
 								<dcsset:groupType>Items</dcsset:groupType>
 								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
@@ -149,6 +201,23 @@
 						<dcsset:selection>
 							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
 						</dcsset:selection>
+						<dcsset:item>
+							<dcsset:groupItems>
+								<dcsset:item xsi:type="dcsset:GroupItemField">
+									<dcsset:field>Номенклатура</dcsset:field>
+									<dcsset:groupType>Items</dcsset:groupType>
+									<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+									<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+									<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+								</dcsset:item>
+							</dcsset:groupItems>
+							<dcsset:order>
+								<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+							</dcsset:order>
+							<dcsset:selection>
+								<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+							</dcsset:selection>
+						</dcsset:item>
 					</dcsset:item>
 				</dcsset:row>
 				<dcsset:selection>
