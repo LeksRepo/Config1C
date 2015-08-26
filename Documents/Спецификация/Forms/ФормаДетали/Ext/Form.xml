@@ -311,6 +311,7 @@
 							<v8:content>Группа верх</v8:content>
 						</v8:item>
 					</ToolTip>
+					<VerticalStretch>true</VerticalStretch>
 					<Group>Horizontal</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
@@ -375,23 +376,29 @@
 											<ShowTitle>false</ShowTitle>
 											<ExtendedTooltip name="ГруппаМатериалРасширеннаяПодсказка" id="586"/>
 											<ChildItems>
-												<InputField name="МатериалНов" id="611">
-													<DataPath>Items.Детали.CurrentData.МатериалНов</DataPath>
-													<Visible>false</Visible>
+												<InputField name="ВидДетали" id="611">
+													<DataPath>Items.Детали.CurrentData.ВидДетали</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Материал</v8:content>
+														</v8:item>
+													</Title>
 													<OpenButton>false</OpenButton>
 													<QuickChoice>true</QuickChoice>
-													<ContextMenu name="МатериалНовКонтекстноеМеню" id="612"/>
-													<ExtendedTooltip name="МатериалНовРасширеннаяПодсказка" id="613"/>
+													<ContextMenu name="ВидДеталиКонтекстноеМеню" id="612"/>
+													<ExtendedTooltip name="ВидДеталиРасширеннаяПодсказка" id="613"/>
 													<Events>
 														<Event name="OnChange">МатериалПриИзменении</Event>
 													</Events>
 												</InputField>
 												<InputField name="Материал" id="186">
 													<DataPath>Items.Детали.CurrentData.Материал</DataPath>
+													<Visible>false</Visible>
 													<Title>
 														<v8:item>
 															<v8:lang>ru</v8:lang>
-															<v8:content>Материал</v8:content>
+															<v8:content>МатСтар</v8:content>
 														</v8:item>
 													</Title>
 													<TitleLocation>Left</TitleLocation>
@@ -664,9 +671,6 @@
 													<ChoiceListButton>false</ChoiceListButton>
 													<ContextMenu name="МатериалКонтекстноеМеню" id="187"/>
 													<ExtendedTooltip name="МатериалРасширеннаяПодсказка" id="297"/>
-													<Events>
-														<Event name="OnChange">МатериалПриИзменении</Event>
-													</Events>
 												</InputField>
 												<InputField name="Номенклатура" id="188">
 													<DataPath>Items.Детали.CurrentData.Номенклатура</DataPath>
@@ -704,7 +708,7 @@
 													<InputHint>
 														<v8:item>
 															<v8:lang>ru</v8:lang>
-															<v8:content>Ручка, склейка</v8:content>
+															<v8:content>Склейка, ручка, кожа</v8:content>
 														</v8:item>
 													</InputHint>
 													<ContextMenu name="НоменклатураДляСклеиванияКонтекстноеМеню" id="244"/>
@@ -893,46 +897,119 @@
 											<v8:content>Группа радиусы</v8:content>
 										</v8:item>
 									</ToolTip>
-									<VerticalStretch>false</VerticalStretch>
+									<HorizontalStretch>true</HorizontalStretch>
+									<VerticalStretch>true</VerticalStretch>
 									<Group>Vertical</Group>
 									<Representation>StrongSeparation</Representation>
 									<BackColor>style:ButtonBackColor</BackColor>
 									<ExtendedTooltip name="ГруппаРадиусыРасширеннаяПодсказка" id="424"/>
 									<ChildItems>
-										<InputField name="РадиусЛевоВерх" id="202">
-											<DataPath>Items.Детали.CurrentData.РадиусЛевоВерх</DataPath>
+										<UsualGroup name="ГруппаR1" id="616">
 											<Title>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>R1 (Слева - сверху)</v8:content>
+													<v8:content>Группа r1</v8:content>
 												</v8:item>
 											</Title>
-											<TitleLocation>Left</TitleLocation>
-											<Width>7</Width>
-											<HorizontalStretch>false</HorizontalStretch>
-											<ContextMenu name="РадиусЛевоВерхКонтекстноеМеню" id="203"/>
-											<ExtendedTooltip name="РадиусЛевоВерхExtendedTooltip" id="355"/>
-											<Events>
-												<Event name="OnChange">РадиусЛевоВерхПриИзменении</Event>
-											</Events>
-										</InputField>
-										<InputField name="РадиусПравоВерх" id="222">
-											<DataPath>Items.Детали.CurrentData.РадиусПравоВерх</DataPath>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа r1</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Horizontal</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="ГруппаR1РасширеннаяПодсказка" id="617"/>
+											<ChildItems>
+												<PictureDecoration name="ДекорацияR1" id="618">
+													<Width>2</Width>
+													<Height>1</Height>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Декорация r1</v8:content>
+														</v8:item>
+													</Title>
+													<Picture>
+														<xr:Ref>CommonPicture.РадиусR1</xr:Ref>
+														<xr:LoadTransparent>true</xr:LoadTransparent>
+													</Picture>
+													<ContextMenu name="ДекорацияR1КонтекстноеМеню" id="619"/>
+													<ExtendedTooltip name="ДекорацияR1РасширеннаяПодсказка" id="620"/>
+												</PictureDecoration>
+												<InputField name="РадиусЛевоВерх" id="202">
+													<DataPath>Items.Детали.CurrentData.РадиусЛевоВерх</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>R1</v8:content>
+														</v8:item>
+													</Title>
+													<TitleLocation>Left</TitleLocation>
+													<Width>7</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<ContextMenu name="РадиусЛевоВерхКонтекстноеМеню" id="203"/>
+													<ExtendedTooltip name="РадиусЛевоВерхExtendedTooltip" id="355"/>
+													<Events>
+														<Event name="OnChange">РадиусЛевоВерхПриИзменении</Event>
+													</Events>
+												</InputField>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="ГруппаR2" id="621">
 											<Title>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>R2 (Справа - сверху)</v8:content>
+													<v8:content>Группа r2</v8:content>
 												</v8:item>
 											</Title>
-											<TitleLocation>Left</TitleLocation>
-											<Width>7</Width>
-											<HorizontalStretch>false</HorizontalStretch>
-											<ContextMenu name="РадиусПравоВерхКонтекстноеМеню" id="223"/>
-											<ExtendedTooltip name="РадиусПравоВерхExtendedTooltip" id="369"/>
-											<Events>
-												<Event name="OnChange">РадиусПравоВерхПриИзменении</Event>
-											</Events>
-										</InputField>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа r2</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Horizontal</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="ГруппаR2РасширеннаяПодсказка" id="622"/>
+											<ChildItems>
+												<PictureDecoration name="ДекорацияR2" id="623">
+													<Width>2</Width>
+													<Height>1</Height>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Декорация r2</v8:content>
+														</v8:item>
+													</Title>
+													<Picture>
+														<xr:Ref>CommonPicture.РадиусR2</xr:Ref>
+														<xr:LoadTransparent>true</xr:LoadTransparent>
+													</Picture>
+													<ContextMenu name="ДекорацияR2КонтекстноеМеню" id="624"/>
+													<ExtendedTooltip name="ДекорацияR2РасширеннаяПодсказка" id="625"/>
+												</PictureDecoration>
+												<InputField name="РадиусПравоВерх" id="222">
+													<DataPath>Items.Детали.CurrentData.РадиусПравоВерх</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>R2</v8:content>
+														</v8:item>
+													</Title>
+													<TitleLocation>Left</TitleLocation>
+													<Width>7</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<ContextMenu name="РадиусПравоВерхКонтекстноеМеню" id="223"/>
+													<ExtendedTooltip name="РадиусПравоВерхExtendedTooltip" id="369"/>
+													<Events>
+														<Event name="OnChange">РадиусПравоВерхПриИзменении</Event>
+													</Events>
+												</InputField>
+											</ChildItems>
+										</UsualGroup>
 										<UsualGroup name="ГруппаРадиусПравоНизСрез" id="583">
 											<Title>
 												<v8:item>
@@ -951,12 +1028,28 @@
 											<ShowTitle>false</ShowTitle>
 											<ExtendedTooltip name="ГруппаРадиусПравоНизСрезРасширеннаяПодсказка" id="584"/>
 											<ChildItems>
+												<PictureDecoration name="ДекорацияR3" id="626">
+													<Width>2</Width>
+													<Height>1</Height>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Декорация r3</v8:content>
+														</v8:item>
+													</Title>
+													<Picture>
+														<xr:Ref>CommonPicture.РадиусR3</xr:Ref>
+														<xr:LoadTransparent>true</xr:LoadTransparent>
+													</Picture>
+													<ContextMenu name="ДекорацияR3КонтекстноеМеню" id="627"/>
+													<ExtendedTooltip name="ДекорацияR3РасширеннаяПодсказка" id="628"/>
+												</PictureDecoration>
 												<InputField name="РадиусПравоНиз" id="220">
 													<DataPath>Items.Детали.CurrentData.РадиусПравоНиз</DataPath>
 													<Title>
 														<v8:item>
 															<v8:lang>ru</v8:lang>
-															<v8:content>R3 (Справа - снизу)</v8:content>
+															<v8:content>R3</v8:content>
 														</v8:item>
 													</Title>
 													<TitleLocation>Left</TitleLocation>
@@ -973,7 +1066,7 @@
 													<Title>
 														<v8:item>
 															<v8:lang>ru</v8:lang>
-															<v8:content>Срез (R3)</v8:content>
+															<v8:content>    Срез</v8:content>
 														</v8:item>
 													</Title>
 													<TitleLocation>Left</TitleLocation>
@@ -984,25 +1077,77 @@
 														<Event name="OnChange">СрезПриИзменении</Event>
 													</Events>
 												</CheckBoxField>
+												<PictureDecoration name="ДекорацияS3" id="629">
+													<Width>2</Width>
+													<Height>1</Height>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Декорация s3</v8:content>
+														</v8:item>
+													</Title>
+													<Picture>
+														<xr:Ref>CommonPicture.РадиусS3</xr:Ref>
+														<xr:LoadTransparent>true</xr:LoadTransparent>
+													</Picture>
+													<ContextMenu name="ДекорацияS3КонтекстноеМеню" id="630"/>
+													<ExtendedTooltip name="ДекорацияS3РасширеннаяПодсказка" id="631"/>
+												</PictureDecoration>
 											</ChildItems>
 										</UsualGroup>
-										<InputField name="РадиусЛевоНиз" id="212">
-											<DataPath>Items.Детали.CurrentData.РадиусЛевоНиз</DataPath>
+										<UsualGroup name="ГруппаR4" id="632">
 											<Title>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>R4 (Слева - снизу)</v8:content>
+													<v8:content>Группа r4</v8:content>
 												</v8:item>
 											</Title>
-											<TitleLocation>Left</TitleLocation>
-											<Width>7</Width>
-											<HorizontalStretch>false</HorizontalStretch>
-											<ContextMenu name="РадиусЛевоНизКонтекстноеМеню" id="213"/>
-											<ExtendedTooltip name="РадиусЛевоНизExtendedTooltip" id="359"/>
-											<Events>
-												<Event name="OnChange">РадиусЛевоНизПриИзменении</Event>
-											</Events>
-										</InputField>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа r4</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Horizontal</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="ГруппаR4РасширеннаяПодсказка" id="633"/>
+											<ChildItems>
+												<PictureDecoration name="ДекорацияR4" id="634">
+													<Width>2</Width>
+													<Height>1</Height>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Декорация r4</v8:content>
+														</v8:item>
+													</Title>
+													<Picture>
+														<xr:Ref>CommonPicture.РадиусR4</xr:Ref>
+														<xr:LoadTransparent>true</xr:LoadTransparent>
+													</Picture>
+													<ContextMenu name="ДекорацияR4КонтекстноеМеню" id="635"/>
+													<ExtendedTooltip name="ДекорацияR4РасширеннаяПодсказка" id="636"/>
+												</PictureDecoration>
+												<InputField name="РадиусЛевоНиз" id="212">
+													<DataPath>Items.Детали.CurrentData.РадиусЛевоНиз</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>R4</v8:content>
+														</v8:item>
+													</Title>
+													<TitleLocation>Left</TitleLocation>
+													<Width>7</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<ContextMenu name="РадиусЛевоНизКонтекстноеМеню" id="213"/>
+													<ExtendedTooltip name="РадиусЛевоНизExtendedTooltip" id="359"/>
+													<Events>
+														<Event name="OnChange">РадиусЛевоНизПриИзменении</Event>
+													</Events>
+												</InputField>
+											</ChildItems>
+										</UsualGroup>
 									</ChildItems>
 								</UsualGroup>
 								<UsualGroup name="ГруппаПетли" id="534">
@@ -1019,7 +1164,7 @@
 											<v8:content>Группа петли</v8:content>
 										</v8:item>
 									</ToolTip>
-									<VerticalStretch>false</VerticalStretch>
+									<VerticalStretch>true</VerticalStretch>
 									<Group>Vertical</Group>
 									<Representation>StrongSeparation</Representation>
 									<BackColor>style:ButtonBackColor</BackColor>
@@ -1036,9 +1181,11 @@
 											<TitleLocation>None</TitleLocation>
 											<HorizontalStretch>true</HorizontalStretch>
 											<OpenButton>false</OpenButton>
-											<ListChoiceMode>true</ListChoiceMode>
 											<ContextMenu name="ПетлиКонтекстноеМеню" id="456"/>
 											<ExtendedTooltip name="ПетлиРасширеннаяПодсказка" id="457"/>
+											<Events>
+												<Event name="StartChoice">ПетлиНачалоВыбора</Event>
+											</Events>
 										</InputField>
 										<InputField name="КоличествоПетель" id="458">
 											<DataPath>Items.Детали.CurrentData.КоличествоПетель</DataPath>
@@ -1052,77 +1199,6 @@
 											<SpinButton>true</SpinButton>
 											<ContextMenu name="КоличествоПетельКонтекстноеМеню" id="459"/>
 											<ExtendedTooltip name="КоличествоПетельРасширеннаяПодсказка" id="460"/>
-										</InputField>
-										<InputField name="РасположениеПазов" id="467">
-											<DataPath>Items.Детали.CurrentData.РасположениеПазов</DataPath>
-											<Visible>false</Visible>
-											<Title>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Расположение</v8:content>
-												</v8:item>
-											</Title>
-											<HorizontalStretch>true</HorizontalStretch>
-											<ListChoiceMode>true</ListChoiceMode>
-											<ChoiceList>
-												<xr:Item>
-													<xr:Presentation/>
-													<xr:CheckState>0</xr:CheckState>
-													<xr:Value xsi:type="FormChoiceListDesTimeValue">
-														<Presentation>
-															<v8:item>
-																<v8:lang>ru</v8:lang>
-																<v8:content>Сверху</v8:content>
-															</v8:item>
-														</Presentation>
-														<Value xsi:type="xr:DesignTimeRef">Enum.Стороны.EnumValue.Сверху</Value>
-													</xr:Value>
-												</xr:Item>
-												<xr:Item>
-													<xr:Presentation/>
-													<xr:CheckState>0</xr:CheckState>
-													<xr:Value xsi:type="FormChoiceListDesTimeValue">
-														<Presentation>
-															<v8:item>
-																<v8:lang>ru</v8:lang>
-																<v8:content>Снизу</v8:content>
-															</v8:item>
-														</Presentation>
-														<Value xsi:type="xr:DesignTimeRef">Enum.Стороны.EnumValue.Снизу</Value>
-													</xr:Value>
-												</xr:Item>
-												<xr:Item>
-													<xr:Presentation/>
-													<xr:CheckState>0</xr:CheckState>
-													<xr:Value xsi:type="FormChoiceListDesTimeValue">
-														<Presentation>
-															<v8:item>
-																<v8:lang>ru</v8:lang>
-																<v8:content>Слева</v8:content>
-															</v8:item>
-														</Presentation>
-														<Value xsi:type="xr:DesignTimeRef">Enum.Стороны.EnumValue.Слева</Value>
-													</xr:Value>
-												</xr:Item>
-												<xr:Item>
-													<xr:Presentation/>
-													<xr:CheckState>0</xr:CheckState>
-													<xr:Value xsi:type="FormChoiceListDesTimeValue">
-														<Presentation>
-															<v8:item>
-																<v8:lang>ru</v8:lang>
-																<v8:content>Справа</v8:content>
-															</v8:item>
-														</Presentation>
-														<Value xsi:type="xr:DesignTimeRef">Enum.Стороны.EnumValue.Справа</Value>
-													</xr:Value>
-												</xr:Item>
-											</ChoiceList>
-											<ContextMenu name="РасположениеПазовКонтекстноеМеню" id="468"/>
-											<ExtendedTooltip name="РасположениеПазовРасширеннаяПодсказка" id="469"/>
-											<Events>
-												<Event name="OnChange">РасположениеПазовПриИзменении</Event>
-											</Events>
 										</InputField>
 										<InputField name="ДиаметрПазов" id="461">
 											<DataPath>Items.Детали.CurrentData.ДиаметрПазов</DataPath>
@@ -1276,6 +1352,24 @@
 										</InputField>
 									</ChildItems>
 								</UsualGroup>
+								<UsualGroup name="ГруппаДляРастяжения" id="614">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа для растяжения</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа для растяжения</v8:content>
+										</v8:item>
+									</ToolTip>
+									<HorizontalStretch>false</HorizontalStretch>
+									<VerticalStretch>true</VerticalStretch>
+									<Group>Vertical</Group>
+									<ExtendedTooltip name="ГруппаДляРастяженияРасширеннаяПодсказка" id="615"/>
+								</UsualGroup>
 							</ChildItems>
 						</UsualGroup>
 						<UsualGroup name="ВерхКолонка2" id="555">
@@ -1393,29 +1487,29 @@
 										</ChildItems>
 									</AutoCommandBar>
 									<ExtendedTooltip name="ДеталиExtendedTooltip" id="320"/>
-									<SearchStringAddition name="ДеталиСтрокаПоиска" id="614">
+									<SearchStringAddition name="ДеталиСтрокаПоиска" id="637">
 										<AdditionSource>
 											<Item>Детали</Item>
 											<Type>SearchStringRepresentation</Type>
 										</AdditionSource>
-										<ContextMenu name="ДеталиСтрокаПоискаКонтекстноеМеню" id="615"/>
-										<ExtendedTooltip name="ДеталиСтрокаПоискаРасширеннаяПодсказка" id="616"/>
+										<ContextMenu name="ДеталиСтрокаПоискаКонтекстноеМеню" id="638"/>
+										<ExtendedTooltip name="ДеталиСтрокаПоискаРасширеннаяПодсказка" id="639"/>
 									</SearchStringAddition>
-									<ViewStatusAddition name="ДеталиСостояниеПросмотра" id="617">
+									<ViewStatusAddition name="ДеталиСостояниеПросмотра" id="640">
 										<AdditionSource>
 											<Item>Детали</Item>
 											<Type>ViewStatusRepresentation</Type>
 										</AdditionSource>
-										<ContextMenu name="ДеталиСостояниеПросмотраКонтекстноеМеню" id="618"/>
-										<ExtendedTooltip name="ДеталиСостояниеПросмотраРасширеннаяПодсказка" id="619"/>
+										<ContextMenu name="ДеталиСостояниеПросмотраКонтекстноеМеню" id="641"/>
+										<ExtendedTooltip name="ДеталиСостояниеПросмотраРасширеннаяПодсказка" id="642"/>
 									</ViewStatusAddition>
-									<SearchControlAddition name="ДеталиУправлениеПоиском" id="620">
+									<SearchControlAddition name="ДеталиУправлениеПоиском" id="643">
 										<AdditionSource>
 											<Item>Детали</Item>
 											<Type>SearchControl</Type>
 										</AdditionSource>
-										<ContextMenu name="ДеталиУправлениеПоискомКонтекстноеМеню" id="621"/>
-										<ExtendedTooltip name="ДеталиУправлениеПоискомРасширеннаяПодсказка" id="622"/>
+										<ContextMenu name="ДеталиУправлениеПоискомКонтекстноеМеню" id="644"/>
+										<ExtendedTooltip name="ДеталиУправлениеПоискомРасширеннаяПодсказка" id="645"/>
 									</SearchControlAddition>
 									<Events>
 										<Event name="BeforeAddRow">ДеталиПередНачаломДобавления</Event>
@@ -1444,6 +1538,7 @@
 										</InputField>
 										<InputField name="ДеталиНомерИзделия" id="592">
 											<DataPath>Детали.НомерИзделия</DataPath>
+											<ReadOnly>true</ReadOnly>
 											<Title>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
@@ -1613,7 +1708,7 @@
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="ВерхнийПереключательРасширеннаяПодсказка" id="564"/>
 							<ChildItems>
-								<LabelDecoration name="Декорация1" id="571">
+								<LabelDecoration name="ДекорацияКромкаСверху" id="571">
 									<TextColor>style:ВидДняПредпраздничныйЦвет</TextColor>
 									<Title formatted="false">
 										<v8:item>
@@ -1621,8 +1716,8 @@
 											<v8:content>Сверху:</v8:content>
 										</v8:item>
 									</Title>
-									<ContextMenu name="Декорация1КонтекстноеМеню" id="572"/>
-									<ExtendedTooltip name="Декорация1РасширеннаяПодсказка" id="573"/>
+									<ContextMenu name="ДекорацияКромкаСверхуКонтекстноеМеню" id="572"/>
+									<ExtendedTooltip name="ДекорацияКромкаСверхуРасширеннаяПодсказка" id="573"/>
 								</LabelDecoration>
 								<RadioButtonField name="ПереключательКромкаСверху" id="208">
 									<DataPath>Items.Детали.CurrentData.ПереключательКромкаСверху</DataPath>
@@ -1735,8 +1830,8 @@
 										</v8:item>
 									</Title>
 									<TitleLocation>None</TitleLocation>
-									<Width>32</Width>
 									<HorizontalStretch>true</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
 									<OpenButton>false</OpenButton>
 									<TextEdit>false</TextEdit>
 									<DropListWidth>50</DropListWidth>
@@ -1768,7 +1863,7 @@
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="НижнийПереключательРасширеннаяПодсказка" id="568"/>
 							<ChildItems>
-								<LabelDecoration name="Декорация3" id="577">
+								<LabelDecoration name="ДекорацияКромкаСнизу" id="577">
 									<TextColor>style:ВидДняПредпраздничныйЦвет</TextColor>
 									<Title formatted="false">
 										<v8:item>
@@ -1776,8 +1871,8 @@
 											<v8:content>Снизу:</v8:content>
 										</v8:item>
 									</Title>
-									<ContextMenu name="Декорация3КонтекстноеМеню" id="578"/>
-									<ExtendedTooltip name="Декорация3РасширеннаяПодсказка" id="579"/>
+									<ContextMenu name="ДекорацияКромкаСнизуКонтекстноеМеню" id="578"/>
+									<ExtendedTooltip name="ДекорацияКромкаСнизуРасширеннаяПодсказка" id="579"/>
 								</LabelDecoration>
 								<RadioButtonField name="ПереключательКромкаСнизу" id="214">
 									<DataPath>Items.Детали.CurrentData.ПереключательКромкаСнизу</DataPath>
@@ -1884,8 +1979,8 @@
 									<DataPath>Items.Детали.CurrentData.ВыборМебельнойКромкиСнизу</DataPath>
 									<SkipOnInput>true</SkipOnInput>
 									<TitleLocation>None</TitleLocation>
-									<Width>32</Width>
 									<HorizontalStretch>true</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
 									<OpenButton>false</OpenButton>
 									<TextEdit>false</TextEdit>
 									<DropListWidth>50</DropListWidth>
@@ -1917,7 +2012,7 @@
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="ЛевыйПереключательРасширеннаяПодсказка" id="570"/>
 							<ChildItems>
-								<LabelDecoration name="Декорация4" id="580">
+								<LabelDecoration name="ДекорацияКромкаСлева" id="580">
 									<TextColor>style:ВидДняПредпраздничныйЦвет</TextColor>
 									<Title formatted="false">
 										<v8:item>
@@ -1925,8 +2020,8 @@
 											<v8:content>Слева:</v8:content>
 										</v8:item>
 									</Title>
-									<ContextMenu name="Декорация4КонтекстноеМеню" id="581"/>
-									<ExtendedTooltip name="Декорация4РасширеннаяПодсказка" id="582"/>
+									<ContextMenu name="ДекорацияКромкаСлеваКонтекстноеМеню" id="581"/>
+									<ExtendedTooltip name="ДекорацияКромкаСлеваРасширеннаяПодсказка" id="582"/>
 								</LabelDecoration>
 								<RadioButtonField name="ПереключательКромкаСлева" id="204">
 									<DataPath>Items.Детали.CurrentData.ПереключательКромкаСлева</DataPath>
@@ -2039,8 +2134,8 @@
 										</v8:item>
 									</Title>
 									<TitleLocation>None</TitleLocation>
-									<Width>32</Width>
 									<HorizontalStretch>true</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
 									<OpenButton>false</OpenButton>
 									<TextEdit>false</TextEdit>
 									<DropListWidth>50</DropListWidth>
@@ -2072,7 +2167,7 @@
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="ПравыйПереключательРасширеннаяПодсказка" id="566"/>
 							<ChildItems>
-								<LabelDecoration name="Декорация2" id="574">
+								<LabelDecoration name="ДекорацияКромкаСправа" id="574">
 									<TextColor>style:ВидДняПредпраздничныйЦвет</TextColor>
 									<Title formatted="false">
 										<v8:item>
@@ -2080,8 +2175,8 @@
 											<v8:content>Справа:</v8:content>
 										</v8:item>
 									</Title>
-									<ContextMenu name="Декорация2КонтекстноеМеню" id="575"/>
-									<ExtendedTooltip name="Декорация2РасширеннаяПодсказка" id="576"/>
+									<ContextMenu name="ДекорацияКромкаСправаКонтекстноеМеню" id="575"/>
+									<ExtendedTooltip name="ДекорацияКромкаСправаРасширеннаяПодсказка" id="576"/>
 								</LabelDecoration>
 								<RadioButtonField name="ПереключательКромкаСправа" id="224">
 									<DataPath>Items.Детали.CurrentData.ПереключательКромкаСправа</DataPath>
@@ -2194,8 +2289,8 @@
 										</v8:item>
 									</Title>
 									<TitleLocation>None</TitleLocation>
-									<Width>32</Width>
 									<HorizontalStretch>true</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
 									<OpenButton>false</OpenButton>
 									<TextEdit>false</TextEdit>
 									<DropListWidth>50</DropListWidth>
@@ -3157,11 +3252,11 @@
 						</v8:NumberQualifiers>
 					</Type>
 				</Column>
-				<Column name="МатериалНов" id="65">
+				<Column name="ВидДетали" id="65">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Материал нов</v8:content>
+							<v8:content>Вид детали</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
@@ -3228,11 +3323,11 @@
 			</Type>
 			<SavedData>true</SavedData>
 		</Attribute>
-		<Attribute name="СтруктураМатериала" id="5">
+		<Attribute name="ЭлементыФормы" id="5">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Структура материала</v8:content>
+					<v8:content>Элементы формы</v8:content>
 				</v8:item>
 			</Title>
 			<Type/>
@@ -3349,11 +3444,11 @@
 				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
-		<Attribute name="НовыеДетали" id="14">
+		<Attribute name="Обновлять" id="14">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Новые детали</v8:content>
+					<v8:content>Обновлять</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
