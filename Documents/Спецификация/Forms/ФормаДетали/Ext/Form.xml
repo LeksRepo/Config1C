@@ -384,6 +384,7 @@
 															<v8:content>Материал</v8:content>
 														</v8:item>
 													</Title>
+													<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 													<OpenButton>false</OpenButton>
 													<QuickChoice>true</QuickChoice>
 													<ContextMenu name="ВидДеталиКонтекстноеМеню" id="612"/>
@@ -680,6 +681,7 @@
 															<v8:content>Текстура</v8:content>
 														</v8:item>
 													</Title>
+													<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 													<TitleLocation>Left</TitleLocation>
 													<HorizontalStretch>true</HorizontalStretch>
 													<OpenButton>false</OpenButton>
@@ -700,6 +702,7 @@
 															<v8:content>Доп. ном.</v8:content>
 														</v8:item>
 													</Title>
+													<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 													<TitleLocation>Left</TitleLocation>
 													<HorizontalStretch>true</HorizontalStretch>
 													<OpenButton>false</OpenButton>
@@ -724,18 +727,20 @@
 											<Title>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Группа размеры флаги</v8:content>
+													<v8:content>Размеры</v8:content>
 												</v8:item>
 											</Title>
+											<TitleTextColor>style:РольБезИсполнителей</TitleTextColor>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
 													<v8:content>Группа размеры флаги</v8:content>
 												</v8:item>
 											</ToolTip>
+											<VerticalStretch>false</VerticalStretch>
 											<Group>Horizontal</Group>
-											<Representation>None</Representation>
-											<ShowTitle>false</ShowTitle>
+											<Representation>StrongSeparation</Representation>
+											<BackColor>style:ButtonBackColor</BackColor>
 											<ExtendedTooltip name="ГруппаРазмерыФлагиРасширеннаяПодсказка" id="558"/>
 											<ChildItems>
 												<UsualGroup name="ГруппаРазмеры" id="559">
@@ -965,7 +970,7 @@
 																</v8:item>
 															</Title>
 															<TitleLocation>Left</TitleLocation>
-															<Width>5</Width>
+															<Width>6</Width>
 															<HorizontalStretch>false</HorizontalStretch>
 															<ContextMenu name="РадиусЛевоВерхКонтекстноеМеню" id="203"/>
 															<ExtendedTooltip name="РадиусЛевоВерхExtendedTooltip" id="355"/>
@@ -1002,7 +1007,7 @@
 																</v8:item>
 															</Title>
 															<TitleLocation>Left</TitleLocation>
-															<Width>5</Width>
+															<Width>6</Width>
 															<HorizontalStretch>false</HorizontalStretch>
 															<ContextMenu name="РадиусПравоВерхКонтекстноеМеню" id="223"/>
 															<ExtendedTooltip name="РадиусПравоВерхExtendedTooltip" id="369"/>
@@ -1091,7 +1096,7 @@
 																</v8:item>
 															</Title>
 															<TitleLocation>Left</TitleLocation>
-															<Width>5</Width>
+															<Width>6</Width>
 															<HorizontalStretch>false</HorizontalStretch>
 															<ContextMenu name="РадиусЛевоНизКонтекстноеМеню" id="213"/>
 															<ExtendedTooltip name="РадиусЛевоНизExtendedTooltip" id="359"/>
@@ -1128,7 +1133,7 @@
 																</v8:item>
 															</Title>
 															<TitleLocation>Left</TitleLocation>
-															<Width>5</Width>
+															<Width>6</Width>
 															<HorizontalStretch>false</HorizontalStretch>
 															<ContextMenu name="РадиусПравоНизКонтекстноеМеню" id="221"/>
 															<ExtendedTooltip name="РадиусПравоНизExtendedTooltip" id="401"/>
@@ -1152,40 +1157,65 @@
 															<ContextMenu name="ДекорацияR3КонтекстноеМеню" id="627"/>
 															<ExtendedTooltip name="ДекорацияR3РасширеннаяПодсказка" id="628"/>
 														</PictureDecoration>
-														<CheckBoxField name="Срез" id="218">
-															<DataPath>Items.Детали.CurrentData.Срез</DataPath>
-															<Title>
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>    Срез</v8:content>
-																</v8:item>
-															</Title>
-															<TitleLocation>Left</TitleLocation>
-															<CheckBoxType>Auto</CheckBoxType>
-															<ContextMenu name="СрезКонтекстноеМеню" id="219"/>
-															<ExtendedTooltip name="СрезExtendedTooltip" id="402"/>
-															<Events>
-																<Event name="OnChange">СрезПриИзменении</Event>
-															</Events>
-														</CheckBoxField>
-														<PictureDecoration name="ДекорацияS3" id="629">
-															<Width>2</Width>
-															<Height>1</Height>
-															<Title formatted="false">
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>Декорация s3</v8:content>
-																</v8:item>
-															</Title>
-															<Picture>
-																<xr:Ref>CommonPicture.РадиусS3</xr:Ref>
-																<xr:LoadTransparent>true</xr:LoadTransparent>
-															</Picture>
-															<ContextMenu name="ДекорацияS3КонтекстноеМеню" id="630"/>
-															<ExtendedTooltip name="ДекорацияS3РасширеннаяПодсказка" id="631"/>
-														</PictureDecoration>
 													</ChildItems>
 												</UsualGroup>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="ГруппаРадиусыСрез" id="645">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа радиусы срез</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа радиусы срез</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Horizontal</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="ГруппаРадиусыСрезРасширеннаяПодсказка" id="646"/>
+											<ChildItems>
+												<LabelDecoration name="Декорация2" id="650">
+													<Width>12</Width>
+													<ContextMenu name="Декорация2КонтекстноеМеню" id="651"/>
+													<ExtendedTooltip name="Декорация2РасширеннаяПодсказка" id="652"/>
+												</LabelDecoration>
+												<CheckBoxField name="Срез" id="218">
+													<DataPath>Items.Детали.CurrentData.Срез</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>    Срез</v8:content>
+														</v8:item>
+													</Title>
+													<TitleLocation>Left</TitleLocation>
+													<CheckBoxType>Auto</CheckBoxType>
+													<ContextMenu name="СрезКонтекстноеМеню" id="219"/>
+													<ExtendedTooltip name="СрезExtendedTooltip" id="402"/>
+													<Events>
+														<Event name="OnChange">СрезПриИзменении</Event>
+													</Events>
+												</CheckBoxField>
+												<PictureDecoration name="ДекорацияS3" id="629">
+													<Width>2</Width>
+													<Height>1</Height>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Декорация s3</v8:content>
+														</v8:item>
+													</Title>
+													<Picture>
+														<xr:Ref>CommonPicture.РадиусS3</xr:Ref>
+														<xr:LoadTransparent>true</xr:LoadTransparent>
+													</Picture>
+													<ContextMenu name="ДекорацияS3КонтекстноеМеню" id="630"/>
+													<ExtendedTooltip name="ДекорацияS3РасширеннаяПодсказка" id="631"/>
+												</PictureDecoration>
 											</ChildItems>
 										</UsualGroup>
 									</ChildItems>
@@ -1527,29 +1557,29 @@
 										</ChildItems>
 									</AutoCommandBar>
 									<ExtendedTooltip name="ДеталиExtendedTooltip" id="320"/>
-									<SearchStringAddition name="ДеталиСтрокаПоиска" id="641">
+									<SearchStringAddition name="ДеталиСтрокаПоиска" id="653">
 										<AdditionSource>
 											<Item>Детали</Item>
 											<Type>SearchStringRepresentation</Type>
 										</AdditionSource>
-										<ContextMenu name="ДеталиСтрокаПоискаКонтекстноеМеню" id="642"/>
-										<ExtendedTooltip name="ДеталиСтрокаПоискаРасширеннаяПодсказка" id="643"/>
+										<ContextMenu name="ДеталиСтрокаПоискаКонтекстноеМеню" id="654"/>
+										<ExtendedTooltip name="ДеталиСтрокаПоискаРасширеннаяПодсказка" id="655"/>
 									</SearchStringAddition>
-									<ViewStatusAddition name="ДеталиСостояниеПросмотра" id="644">
+									<ViewStatusAddition name="ДеталиСостояниеПросмотра" id="656">
 										<AdditionSource>
 											<Item>Детали</Item>
 											<Type>ViewStatusRepresentation</Type>
 										</AdditionSource>
-										<ContextMenu name="ДеталиСостояниеПросмотраКонтекстноеМеню" id="645"/>
-										<ExtendedTooltip name="ДеталиСостояниеПросмотраРасширеннаяПодсказка" id="646"/>
+										<ContextMenu name="ДеталиСостояниеПросмотраКонтекстноеМеню" id="657"/>
+										<ExtendedTooltip name="ДеталиСостояниеПросмотраРасширеннаяПодсказка" id="658"/>
 									</ViewStatusAddition>
-									<SearchControlAddition name="ДеталиУправлениеПоиском" id="647">
+									<SearchControlAddition name="ДеталиУправлениеПоиском" id="659">
 										<AdditionSource>
 											<Item>Детали</Item>
 											<Type>SearchControl</Type>
 										</AdditionSource>
-										<ContextMenu name="ДеталиУправлениеПоискомКонтекстноеМеню" id="648"/>
-										<ExtendedTooltip name="ДеталиУправлениеПоискомРасширеннаяПодсказка" id="649"/>
+										<ContextMenu name="ДеталиУправлениеПоискомКонтекстноеМеню" id="660"/>
+										<ExtendedTooltip name="ДеталиУправлениеПоискомРасширеннаяПодсказка" id="661"/>
 									</SearchControlAddition>
 									<Events>
 										<Event name="BeforeAddRow">ДеталиПередНачаломДобавления</Event>
