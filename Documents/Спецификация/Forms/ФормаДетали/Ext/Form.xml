@@ -17,6 +17,30 @@
 				</Picture>
 				<ExtendedTooltip name="ПеренестиВДокументExtendedTooltip" id="293"/>
 			</Button>
+			<Button name="РедактироватьДеталь" id="532">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.РедактироватьДеталь</CommandName>
+				<ExtendedTooltip name="РедактироватьДетальРасширеннаяПодсказка" id="533"/>
+			</Button>
+			<Button name="УдалитьРедактированиеДетали" id="255">
+				<Type>CommandBarButton</Type>
+				<Representation>Picture</Representation>
+				<SkipOnInput>true</SkipOnInput>
+				<Width>3</Width>
+				<CommandName>Form.Command.УдалитьРедактированиеДетали</CommandName>
+				<Picture>
+					<xr:Ref>StdPicture.DeleteDirectly</xr:Ref>
+					<xr:LoadTransparent>true</xr:LoadTransparent>
+				</Picture>
+				<ExtendedTooltip name="УдалитьРедактированиеДеталиРасширеннаяПодсказка" id="315">
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Удалить редактирование детали</v8:content>
+						</v8:item>
+					</Title>
+				</ExtendedTooltip>
+			</Button>
 			<Button name="ЗаполнитьОтверстия" id="504">
 				<Type>CommandBarButton</Type>
 				<CommandName>Form.Command.ЗаполнитьОтверстия</CommandName>
@@ -27,30 +51,6 @@
 					</v8:item>
 				</Title>
 				<ExtendedTooltip name="ЗаполнитьОтверстияРасширеннаяПодсказка" id="505"/>
-			</Button>
-			<Button name="РедактироватьДеталь" id="532">
-				<Type>CommandBarButton</Type>
-				<CommandName>Form.Command.РедактироватьДеталь</CommandName>
-				<ExtendedTooltip name="РедактироватьДетальРасширеннаяПодсказка" id="533"/>
-			</Button>
-			<Button name="УдалитьСтрокуДляФлэш" id="255">
-				<Type>CommandBarButton</Type>
-				<Representation>Picture</Representation>
-				<SkipOnInput>true</SkipOnInput>
-				<Width>3</Width>
-				<CommandName>Form.Command.УдалитьСтрокуДляФлэш</CommandName>
-				<Picture>
-					<xr:Ref>StdPicture.DeleteDirectly</xr:Ref>
-					<xr:LoadTransparent>true</xr:LoadTransparent>
-				</Picture>
-				<ExtendedTooltip name="УдалитьСтрокуДляФлэшExtendedTooltip" id="315">
-					<Title formatted="false">
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Удалить редактирование детали</v8:content>
-						</v8:item>
-					</Title>
-				</ExtendedTooltip>
 			</Button>
 			<Button name="Развернуть" id="480">
 				<Type>CommandBarButton</Type>
@@ -77,7 +77,7 @@
 				<Title>
 					<v8:item>
 						<v8:lang>ru</v8:lang>
-						<v8:content>Заменить цвет номенклатуры</v8:content>
+						<v8:content>Заменить номенклатуру</v8:content>
 					</v8:item>
 				</Title>
 				<ExtendedTooltip name="ДеталиЗаменитьНоменклатуруРасширеннаяПодсказка" id="510"/>
@@ -369,10 +369,13 @@
 											<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 											<OpenButton>false</OpenButton>
 											<QuickChoice>true</QuickChoice>
+											<TextEdit>false</TextEdit>
+											<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
 											<ContextMenu name="ВидДеталиКонтекстноеМеню" id="612"/>
 											<ExtendedTooltip name="ВидДеталиРасширеннаяПодсказка" id="613"/>
 											<Events>
 												<Event name="OnChange">МатериалПриИзменении</Event>
+												<Event name="Opening">ВидДеталиОткрытие</Event>
 											</Events>
 										</InputField>
 										<InputField name="Номенклатура" id="188">
@@ -965,11 +968,17 @@
 											</Title>
 											<TitleLocation>None</TitleLocation>
 											<HorizontalStretch>true</HorizontalStretch>
+											<DropListButton>false</DropListButton>
 											<OpenButton>false</OpenButton>
+											<QuickChoice>false</QuickChoice>
+											<TextEdit>false</TextEdit>
+											<ChoiceHistoryOnInput>DontUse</ChoiceHistoryOnInput>
 											<ContextMenu name="ПетлиКонтекстноеМеню" id="456"/>
 											<ExtendedTooltip name="ПетлиРасширеннаяПодсказка" id="457"/>
 											<Events>
+												<Event name="AutoComplete">ПетлиАвтоПодбор</Event>
 												<Event name="StartChoice">ПетлиНачалоВыбора</Event>
+												<Event name="TextEditEnd">ПетлиОкончаниеВводаТекста</Event>
 											</Events>
 										</InputField>
 										<InputField name="КоличествоПетель" id="458">
@@ -1272,29 +1281,29 @@
 										</ChildItems>
 									</AutoCommandBar>
 									<ExtendedTooltip name="ДеталиExtendedTooltip" id="320"/>
-									<SearchStringAddition name="ДеталиСтрокаПоиска" id="659">
+									<SearchStringAddition name="ДеталиСтрокаПоиска" id="665">
 										<AdditionSource>
 											<Item>Детали</Item>
 											<Type>SearchStringRepresentation</Type>
 										</AdditionSource>
-										<ContextMenu name="ДеталиСтрокаПоискаКонтекстноеМеню" id="660"/>
-										<ExtendedTooltip name="ДеталиСтрокаПоискаРасширеннаяПодсказка" id="661"/>
+										<ContextMenu name="ДеталиСтрокаПоискаКонтекстноеМеню" id="666"/>
+										<ExtendedTooltip name="ДеталиСтрокаПоискаРасширеннаяПодсказка" id="667"/>
 									</SearchStringAddition>
-									<ViewStatusAddition name="ДеталиСостояниеПросмотра" id="662">
+									<ViewStatusAddition name="ДеталиСостояниеПросмотра" id="668">
 										<AdditionSource>
 											<Item>Детали</Item>
 											<Type>ViewStatusRepresentation</Type>
 										</AdditionSource>
-										<ContextMenu name="ДеталиСостояниеПросмотраКонтекстноеМеню" id="663"/>
-										<ExtendedTooltip name="ДеталиСостояниеПросмотраРасширеннаяПодсказка" id="664"/>
+										<ContextMenu name="ДеталиСостояниеПросмотраКонтекстноеМеню" id="669"/>
+										<ExtendedTooltip name="ДеталиСостояниеПросмотраРасширеннаяПодсказка" id="670"/>
 									</ViewStatusAddition>
-									<SearchControlAddition name="ДеталиУправлениеПоиском" id="665">
+									<SearchControlAddition name="ДеталиУправлениеПоиском" id="671">
 										<AdditionSource>
 											<Item>Детали</Item>
 											<Type>SearchControl</Type>
 										</AdditionSource>
-										<ContextMenu name="ДеталиУправлениеПоискомКонтекстноеМеню" id="666"/>
-										<ExtendedTooltip name="ДеталиУправлениеПоискомРасширеннаяПодсказка" id="667"/>
+										<ContextMenu name="ДеталиУправлениеПоискомКонтекстноеМеню" id="672"/>
+										<ExtendedTooltip name="ДеталиУправлениеПоискомРасширеннаяПодсказка" id="673"/>
 									</SearchControlAddition>
 									<Events>
 										<Event name="BeforeAddRow">ДеталиПередНачаломДобавления</Event>
@@ -1496,16 +1505,16 @@
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="ВерхнийПереключательРасширеннаяПодсказка" id="564"/>
 							<ChildItems>
-								<LabelDecoration name="ДекорацияКромкаСверху" id="571">
+								<LabelDecoration name="ДекорацияКромкаСверху" id="662">
 									<TextColor>style:ВидДняПредпраздничныйЦвет</TextColor>
 									<Title formatted="false">
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Сверху:</v8:content>
+											<v8:content>Сверху</v8:content>
 										</v8:item>
 									</Title>
-									<ContextMenu name="ДекорацияКромкаСверхуКонтекстноеМеню" id="572"/>
-									<ExtendedTooltip name="ДекорацияКромкаСверхуРасширеннаяПодсказка" id="573"/>
+									<ContextMenu name="ДекорацияКромкаСверхуКонтекстноеМеню" id="663"/>
+									<ExtendedTooltip name="ДекорацияКромкаСверхуРасширеннаяПодсказка" id="664"/>
 								</LabelDecoration>
 								<RadioButtonField name="ПереключательКромкаСверху" id="208">
 									<DataPath>Items.Детали.CurrentData.ПереключательКромкаСверху</DataPath>
@@ -3051,6 +3060,21 @@
 						<v8:Type>cfg:CatalogRef.ВидыДеталей</v8:Type>
 					</Type>
 				</Column>
+				<Column name="СтрокаОтверстий" id="66">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Строка отверстий</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
 			</Columns>
 		</Attribute>
 		<Attribute name="ШапкаОсновныхНастроек" id="3">
@@ -3282,20 +3306,20 @@
 			<Action>ДобавитьКДокументу</Action>
 			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>
-		<Command name="УдалитьСтрокуДляФлэш" id="1">
+		<Command name="УдалитьРедактированиеДетали" id="1">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Удалить строку для флэш</v8:content>
+					<v8:content>Удалить редактирование детали</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Удалить строку для флэш</v8:content>
+					<v8:content>Удалить редактирование детали</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Action>УдалитьСтрокуДляФлэш</Action>
+			<Action>УдалитьРедактированиеДетали</Action>
 			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>
 		<Command name="Развернуть" id="5">
