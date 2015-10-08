@@ -229,30 +229,33 @@
 					<ContextMenu name="ТЗКонтекстноеМеню" id="2"/>
 					<AutoCommandBar name="ТЗКоманднаяПанель" id="3"/>
 					<ExtendedTooltip name="ТЗExtendedTooltip" id="21"/>
-					<SearchStringAddition name="ТЗСтрокаПоиска" id="68">
+					<SearchStringAddition name="ТЗСтрокаПоиска" id="71">
 						<AdditionSource>
 							<Item>ТЗ</Item>
 							<Type>SearchStringRepresentation</Type>
 						</AdditionSource>
-						<ContextMenu name="ТЗСтрокаПоискаКонтекстноеМеню" id="69"/>
-						<ExtendedTooltip name="ТЗСтрокаПоискаРасширеннаяПодсказка" id="70"/>
+						<ContextMenu name="ТЗСтрокаПоискаКонтекстноеМеню" id="72"/>
+						<ExtendedTooltip name="ТЗСтрокаПоискаРасширеннаяПодсказка" id="73"/>
 					</SearchStringAddition>
-					<ViewStatusAddition name="ТЗСостояниеПросмотра" id="71">
+					<ViewStatusAddition name="ТЗСостояниеПросмотра" id="74">
 						<AdditionSource>
 							<Item>ТЗ</Item>
 							<Type>ViewStatusRepresentation</Type>
 						</AdditionSource>
-						<ContextMenu name="ТЗСостояниеПросмотраКонтекстноеМеню" id="72"/>
-						<ExtendedTooltip name="ТЗСостояниеПросмотраРасширеннаяПодсказка" id="73"/>
+						<ContextMenu name="ТЗСостояниеПросмотраКонтекстноеМеню" id="75"/>
+						<ExtendedTooltip name="ТЗСостояниеПросмотраРасширеннаяПодсказка" id="76"/>
 					</ViewStatusAddition>
-					<SearchControlAddition name="ТЗУправлениеПоиском" id="74">
+					<SearchControlAddition name="ТЗУправлениеПоиском" id="77">
 						<AdditionSource>
 							<Item>ТЗ</Item>
 							<Type>SearchControl</Type>
 						</AdditionSource>
-						<ContextMenu name="ТЗУправлениеПоискомКонтекстноеМеню" id="75"/>
-						<ExtendedTooltip name="ТЗУправлениеПоискомРасширеннаяПодсказка" id="76"/>
+						<ContextMenu name="ТЗУправлениеПоискомКонтекстноеМеню" id="78"/>
+						<ExtendedTooltip name="ТЗУправлениеПоискомРасширеннаяПодсказка" id="79"/>
 					</SearchControlAddition>
+					<Events>
+						<Event name="Selection">ТЗВыбор</Event>
+					</Events>
 					<ChildItems>
 						<CheckBoxField name="ТЗПометка" id="4">
 							<DataPath>ТЗ.Пометка</DataPath>
@@ -281,6 +284,14 @@
 							<ContextMenu name="ТЗЕстьЗаметкаКонтекстноеМеню" id="66"/>
 							<ExtendedTooltip name="ТЗЕстьЗаметкаРасширеннаяПодсказка" id="67"/>
 						</PictureField>
+						<CheckBoxField name="ТЗСрочный" id="68">
+							<DataPath>ТЗ.Срочный</DataPath>
+							<ReadOnly>true</ReadOnly>
+							<EditMode>EnterOnInput</EditMode>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ТЗСрочныйКонтекстноеМеню" id="69"/>
+							<ExtendedTooltip name="ТЗСрочныйРасширеннаяПодсказка" id="70"/>
+						</CheckBoxField>
 						<InputField name="ТЗСпецификация" id="6">
 							<DataPath>ТЗ.Спецификация</DataPath>
 							<ReadOnly>true</ReadOnly>
@@ -484,6 +495,17 @@
 						<v8:item>
 							<v8:lang>ru</v8:lang>
 							<v8:content>Есть заметка</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Срочный" id="11">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Срочный</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
