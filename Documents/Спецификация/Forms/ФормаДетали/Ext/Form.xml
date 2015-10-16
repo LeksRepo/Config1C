@@ -545,7 +545,7 @@
 													<Title>
 														<v8:item>
 															<v8:lang>ru</v8:lang>
-															<v8:content>Обтачивать/Скруглять</v8:content>
+															<v8:content>Обтачивать</v8:content>
 														</v8:item>
 													</Title>
 													<TitleFont ref="sys:DefaultGUIFont" kind="WindowsFont"/>
@@ -555,6 +555,16 @@
 													<ExtendedTooltip name="ОбтачиватьРасширеннаяПодсказка" id="420"/>
 													<Events>
 														<Event name="OnChange">ОбтачиватьПриИзменении</Event>
+													</Events>
+												</CheckBoxField>
+												<CheckBoxField name="Постформинг" id="677">
+													<DataPath>Items.Детали.CurrentData.Постформинг</DataPath>
+													<TitleLocation>Right</TitleLocation>
+													<CheckBoxType>Auto</CheckBoxType>
+													<ContextMenu name="ПостформингКонтекстноеМеню" id="678"/>
+													<ExtendedTooltip name="ПостформингРасширеннаяПодсказка" id="679"/>
+													<Events>
+														<Event name="OnChange">ПостформингПриИзменении</Event>
 													</Events>
 												</CheckBoxField>
 												<CheckBoxField name="НеТорцевать" id="437">
@@ -1285,29 +1295,29 @@
 										</ChildItems>
 									</AutoCommandBar>
 									<ExtendedTooltip name="ДеталиExtendedTooltip" id="320"/>
-									<SearchStringAddition name="ДеталиСтрокаПоиска" id="677">
+									<SearchStringAddition name="ДеталиСтрокаПоиска" id="680">
 										<AdditionSource>
 											<Item>Детали</Item>
 											<Type>SearchStringRepresentation</Type>
 										</AdditionSource>
-										<ContextMenu name="ДеталиСтрокаПоискаКонтекстноеМеню" id="678"/>
-										<ExtendedTooltip name="ДеталиСтрокаПоискаРасширеннаяПодсказка" id="679"/>
+										<ContextMenu name="ДеталиСтрокаПоискаКонтекстноеМеню" id="681"/>
+										<ExtendedTooltip name="ДеталиСтрокаПоискаРасширеннаяПодсказка" id="682"/>
 									</SearchStringAddition>
-									<ViewStatusAddition name="ДеталиСостояниеПросмотра" id="680">
+									<ViewStatusAddition name="ДеталиСостояниеПросмотра" id="683">
 										<AdditionSource>
 											<Item>Детали</Item>
 											<Type>ViewStatusRepresentation</Type>
 										</AdditionSource>
-										<ContextMenu name="ДеталиСостояниеПросмотраКонтекстноеМеню" id="681"/>
-										<ExtendedTooltip name="ДеталиСостояниеПросмотраРасширеннаяПодсказка" id="682"/>
+										<ContextMenu name="ДеталиСостояниеПросмотраКонтекстноеМеню" id="684"/>
+										<ExtendedTooltip name="ДеталиСостояниеПросмотраРасширеннаяПодсказка" id="685"/>
 									</ViewStatusAddition>
-									<SearchControlAddition name="ДеталиУправлениеПоиском" id="683">
+									<SearchControlAddition name="ДеталиУправлениеПоиском" id="686">
 										<AdditionSource>
 											<Item>Детали</Item>
 											<Type>SearchControl</Type>
 										</AdditionSource>
-										<ContextMenu name="ДеталиУправлениеПоискомКонтекстноеМеню" id="684"/>
-										<ExtendedTooltip name="ДеталиУправлениеПоискомРасширеннаяПодсказка" id="685"/>
+										<ContextMenu name="ДеталиУправлениеПоискомКонтекстноеМеню" id="687"/>
+										<ExtendedTooltip name="ДеталиУправлениеПоискомРасширеннаяПодсказка" id="688"/>
 									</SearchControlAddition>
 									<Events>
 										<Event name="BeforeAddRow">ДеталиПередНачаломДобавления</Event>
@@ -2627,21 +2637,6 @@
 						</v8:StringQualifiers>
 					</Type>
 				</Column>
-				<Column name="СтрокаДляОтверстий" id="34">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Строка для отверстий</v8:content>
-						</v8:item>
-					</Title>
-					<Type>
-						<v8:Type>xs:string</v8:Type>
-						<v8:StringQualifiers>
-							<v8:Length>0</v8:Length>
-							<v8:AllowedLength>Variable</v8:AllowedLength>
-						</v8:StringQualifiers>
-					</Type>
-				</Column>
 				<Column name="КоличествоОтверстийСверху" id="35">
 					<Title>
 						<v8:item>
@@ -3096,6 +3091,17 @@
 							<v8:Length>0</v8:Length>
 							<v8:AllowedLength>Variable</v8:AllowedLength>
 						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Постформинг" id="34">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Постформинг</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
 					</Type>
 				</Column>
 			</Columns>
