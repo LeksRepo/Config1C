@@ -82,6 +82,8 @@
 						<Table name="Детали" id="1">
 							<Representation>List</Representation>
 							<TitleLocation>Auto</TitleLocation>
+							<SelectionMode>SingleRow</SelectionMode>
+							<RowSelectionMode>Row</RowSelectionMode>
 							<Header>false</Header>
 							<AutoInsertNewRow>true</AutoInsertNewRow>
 							<EnableStartDrag>true</EnableStartDrag>
@@ -116,11 +118,6 @@
 										<CommandName>Form.Item.Детали.StandardCommand.Add</CommandName>
 										<ExtendedTooltip name="ДеталиДобавитьРасширеннаяПодсказка" id="288"/>
 									</Button>
-									<Button name="ДеталиСкопировать" id="289">
-										<Type>CommandBarButton</Type>
-										<CommandName>Form.Item.Детали.StandardCommand.Copy</CommandName>
-										<ExtendedTooltip name="ДеталиСкопироватьРасширеннаяПодсказка" id="290"/>
-									</Button>
 									<Button name="ДеталиУдалить" id="291">
 										<Type>CommandBarButton</Type>
 										<CommandName>Form.Item.Детали.StandardCommand.Delete</CommandName>
@@ -139,32 +136,33 @@
 								</ChildItems>
 							</AutoCommandBar>
 							<ExtendedTooltip name="ДеталиРасширеннаяПодсказка" id="4"/>
-							<SearchStringAddition name="ДеталиСтрокаПоиска" id="560">
+							<SearchStringAddition name="ДеталиСтрокаПоиска" id="609">
 								<AdditionSource>
 									<Item>Детали</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="ДеталиСтрокаПоискаКонтекстноеМеню" id="561"/>
-								<ExtendedTooltip name="ДеталиСтрокаПоискаРасширеннаяПодсказка" id="562"/>
+								<ContextMenu name="ДеталиСтрокаПоискаКонтекстноеМеню" id="610"/>
+								<ExtendedTooltip name="ДеталиСтрокаПоискаРасширеннаяПодсказка" id="611"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="ДеталиСостояниеПросмотра" id="563">
+							<ViewStatusAddition name="ДеталиСостояниеПросмотра" id="612">
 								<AdditionSource>
 									<Item>Детали</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="ДеталиСостояниеПросмотраКонтекстноеМеню" id="564"/>
-								<ExtendedTooltip name="ДеталиСостояниеПросмотраРасширеннаяПодсказка" id="565"/>
+								<ContextMenu name="ДеталиСостояниеПросмотраКонтекстноеМеню" id="613"/>
+								<ExtendedTooltip name="ДеталиСостояниеПросмотраРасширеннаяПодсказка" id="614"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="ДеталиУправлениеПоиском" id="566">
+							<SearchControlAddition name="ДеталиУправлениеПоиском" id="615">
 								<AdditionSource>
 									<Item>Детали</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="ДеталиУправлениеПоискомКонтекстноеМеню" id="567"/>
-								<ExtendedTooltip name="ДеталиУправлениеПоискомРасширеннаяПодсказка" id="568"/>
+								<ContextMenu name="ДеталиУправлениеПоискомКонтекстноеМеню" id="616"/>
+								<ExtendedTooltip name="ДеталиУправлениеПоискомРасширеннаяПодсказка" id="617"/>
 							</SearchControlAddition>
 							<Events>
 								<Event name="BeforeAddRow">ДеталиПередНачаломДобавления</Event>
+								<Event name="BeforeDeleteRow">ДеталиПередУдалением</Event>
 								<Event name="OnActivateRow">ДеталиПриАктивизацииСтроки</Event>
 								<Event name="ChoiceProcessing">ДеталиОбработкаВыбора</Event>
 								<Event name="OnChange">ДеталиПриИзменении</Event>
@@ -859,78 +857,70 @@
 			<BackColor>#F0F4F5</BackColor>
 			<ExtendedTooltip name="ГруппаДеталиФасадыРасширеннаяПодсказка" id="474"/>
 			<ChildItems>
-				<Table name="ДеталиТаблицаФасадов" id="219">
+				<Table name="ТаблицаФасадов" id="560">
 					<Representation>List</Representation>
 					<Width>23</Width>
+					<SelectionMode>SingleRow</SelectionMode>
+					<RowSelectionMode>Row</RowSelectionMode>
 					<AutoInsertNewRow>true</AutoInsertNewRow>
 					<HorizontalStretch>false</HorizontalStretch>
-					<EnableStartDrag>true</EnableStartDrag>
-					<EnableDrag>true</EnableDrag>
-					<DataPath>Items.Детали.CurrentData.ТаблицаФасадов</DataPath>
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Фасады</v8:content>
-						</v8:item>
-					</Title>
-					<TitleTextColor>style:FieldSelectionBackColor</TitleTextColor>
-					<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+					<DataPath>ТаблицаФасадов</DataPath>
 					<SearchStringLocation>None</SearchStringLocation>
 					<ViewStatusLocation>None</ViewStatusLocation>
 					<SearchControlLocation>None</SearchControlLocation>
 					<RowFilter xsi:nil="true"/>
-					<ContextMenu name="ДеталиТаблицаФасадовКонтекстноеМеню" id="220"/>
-					<AutoCommandBar name="ДеталиТаблицаФасадовКоманднаяПанель" id="221">
+					<ContextMenu name="ТаблицаФасадовКонтекстноеМеню" id="561"/>
+					<AutoCommandBar name="ТаблицаФасадовКоманднаяПанель" id="562">
 						<Autofill>false</Autofill>
 					</AutoCommandBar>
-					<ExtendedTooltip name="ДеталиТаблицаФасадовРасширеннаяПодсказка" id="222"/>
-					<SearchStringAddition name="ДеталиТаблицаФасадовСтрокаПоиска" id="569">
+					<ExtendedTooltip name="ТаблицаФасадовРасширеннаяПодсказка" id="563"/>
+					<SearchStringAddition name="ТаблицаФасадовСтрокаПоиска" id="618">
 						<AdditionSource>
-							<Item>ДеталиТаблицаФасадов</Item>
+							<Item>ТаблицаФасадов</Item>
 							<Type>SearchStringRepresentation</Type>
 						</AdditionSource>
-						<ContextMenu name="ДеталиТаблицаФасадовСтрокаПоискаКонтекстноеМеню" id="570"/>
-						<ExtendedTooltip name="ДеталиТаблицаФасадовСтрокаПоискаРасширеннаяПодсказка" id="571"/>
+						<ContextMenu name="ТаблицаФасадовСтрокаПоискаКонтекстноеМеню" id="619"/>
+						<ExtendedTooltip name="ТаблицаФасадовСтрокаПоискаРасширеннаяПодсказка" id="620"/>
 					</SearchStringAddition>
-					<ViewStatusAddition name="ДеталиТаблицаФасадовСостояниеПросмотра" id="572">
+					<ViewStatusAddition name="ТаблицаФасадовСостояниеПросмотра" id="621">
 						<AdditionSource>
-							<Item>ДеталиТаблицаФасадов</Item>
+							<Item>ТаблицаФасадов</Item>
 							<Type>ViewStatusRepresentation</Type>
 						</AdditionSource>
-						<ContextMenu name="ДеталиТаблицаФасадовСостояниеПросмотраКонтекстноеМеню" id="573"/>
-						<ExtendedTooltip name="ДеталиТаблицаФасадовСостояниеПросмотраРасширеннаяПодсказка" id="574"/>
+						<ContextMenu name="ТаблицаФасадовСостояниеПросмотраКонтекстноеМеню" id="622"/>
+						<ExtendedTooltip name="ТаблицаФасадовСостояниеПросмотраРасширеннаяПодсказка" id="623"/>
 					</ViewStatusAddition>
-					<SearchControlAddition name="ДеталиТаблицаФасадовУправлениеПоиском" id="575">
+					<SearchControlAddition name="ТаблицаФасадовУправлениеПоиском" id="624">
 						<AdditionSource>
-							<Item>ДеталиТаблицаФасадов</Item>
+							<Item>ТаблицаФасадов</Item>
 							<Type>SearchControl</Type>
 						</AdditionSource>
-						<ContextMenu name="ДеталиТаблицаФасадовУправлениеПоискомКонтекстноеМеню" id="576"/>
-						<ExtendedTooltip name="ДеталиТаблицаФасадовУправлениеПоискомРасширеннаяПодсказка" id="577"/>
+						<ContextMenu name="ТаблицаФасадовУправлениеПоискомКонтекстноеМеню" id="625"/>
+						<ExtendedTooltip name="ТаблицаФасадовУправлениеПоискомРасширеннаяПодсказка" id="626"/>
 					</SearchControlAddition>
 					<Events>
-						<Event name="BeforeDeleteRow">ДеталиТабличныеЧастиПередУдалением</Event>
-						<Event name="OnActivateRow">ДеталиТаблицаФасадовПриАктивизацииСтроки</Event>
+						<Event name="BeforeDeleteRow">ТаблицаФасадовПередУдалением</Event>
+						<Event name="OnActivateRow">ТаблицаФасадовПриАктивизацииСтроки</Event>
 					</Events>
 					<ChildItems>
-						<InputField name="ДеталиТаблицаФасадовНомерСтроки" id="284">
-							<DataPath>Items.Детали.CurrentData.ТаблицаФасадов.НомерСтроки</DataPath>
+						<InputField name="ТаблицаФасадовНомерСтроки" id="606">
+							<DataPath>ТаблицаФасадов.НомерСтр</DataPath>
+							<ReadOnly>true</ReadOnly>
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
 									<v8:content>№</v8:content>
 								</v8:item>
 							</Title>
-							<HorizontalAlign>Center</HorizontalAlign>
 							<EditMode>EnterOnInput</EditMode>
 							<Width>1</Width>
 							<HorizontalStretch>false</HorizontalStretch>
 							<VerticalStretch>false</VerticalStretch>
-							<ContextMenu name="ДеталиТаблицаФасадовНомерСтрокиКонтекстноеМеню" id="285"/>
-							<ExtendedTooltip name="ДеталиТаблицаФасадовНомерСтрокиРасширеннаяПодсказка" id="286"/>
+							<ContextMenu name="ТаблицаФасадовНомерСтрокиКонтекстноеМеню" id="607"/>
+							<ExtendedTooltip name="ТаблицаФасадовНомерСтрокиРасширеннаяПодсказка" id="608"/>
 						</InputField>
-						<InputField name="ДеталиТаблицаФасадовИмяФасада" id="223">
-							<DataPath>Items.Детали.CurrentData.ТаблицаФасадов.ИмяФасада</DataPath>
+						<InputField name="ТаблицаФасадовИмяФасада" id="564">
+							<DataPath>ТаблицаФасадов.ИмяФасада</DataPath>
 							<ReadOnly>true</ReadOnly>
 							<Title>
 								<v8:item>
@@ -942,8 +932,8 @@
 							<Width>1</Width>
 							<HorizontalStretch>false</HorizontalStretch>
 							<VerticalStretch>false</VerticalStretch>
-							<ContextMenu name="ДеталиТаблицаФасадовИмяФасадаКонтекстноеМеню" id="224"/>
-							<ExtendedTooltip name="ДеталиТаблицаФасадовИмяФасадаРасширеннаяПодсказка" id="225"/>
+							<ContextMenu name="ТаблицаФасадовИмяФасадаКонтекстноеМеню" id="565"/>
+							<ExtendedTooltip name="ТаблицаФасадовИмяФасадаРасширеннаяПодсказка" id="566"/>
 						</InputField>
 					</ChildItems>
 				</Table>
@@ -1005,8 +995,8 @@
 									<ShowTitle>false</ShowTitle>
 									<ExtendedTooltip name="Группа11РасширеннаяПодсказка" id="472"/>
 									<ChildItems>
-										<InputField name="ДеталиТаблицаФасадовВидФасада" id="445">
-											<DataPath>Items.ДеталиТаблицаФасадов.CurrentData.ВидДеталиФасад</DataPath>
+										<InputField name="ТаблицаФасадовВидФасада" id="445">
+											<DataPath>Items.ТаблицаФасадов.CurrentData.ВидДеталиФасад</DataPath>
 											<Title>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
@@ -1016,10 +1006,10 @@
 											<HorizontalStretch>true</HorizontalStretch>
 											<OpenButton>false</OpenButton>
 											<ListChoiceMode>true</ListChoiceMode>
-											<ContextMenu name="ДеталиТаблицаФасадовВидФасадаКонтекстноеМеню" id="446"/>
-											<ExtendedTooltip name="ДеталиТаблицаФасадовВидФасадаРасширеннаяПодсказка" id="447"/>
+											<ContextMenu name="ТаблицаФасадовВидФасадаКонтекстноеМеню" id="446"/>
+											<ExtendedTooltip name="ТаблицаФасадовВидФасадаРасширеннаяПодсказка" id="447"/>
 											<Events>
-												<Event name="OnChange">ДеталиТаблицаФасадовВидФасадаПриИзменении</Event>
+												<Event name="OnChange">ТаблицаФасадовВидФасадаПриИзменении</Event>
 											</Events>
 										</InputField>
 										<UsualGroup name="Группа10" id="466">
@@ -1040,19 +1030,22 @@
 													<ContextMenu name="Декорация1КонтекстноеМеню" id="469"/>
 													<ExtendedTooltip name="Декорация1РасширеннаяПодсказка" id="470"/>
 												</PictureDecoration>
-												<CheckBoxField name="ДеталиТаблицаФасадовПовернутьФасад" id="433">
-													<DataPath>Items.ДеталиТаблицаФасадов.CurrentData.ПовернутьФасад</DataPath>
+												<CheckBoxField name="ТаблицаФасадовПовернутьФасад" id="433">
+													<DataPath>Items.ТаблицаФасадов.CurrentData.ПовернутьФасад</DataPath>
 													<TitleLocation>None</TitleLocation>
 													<CheckBoxType>Auto</CheckBoxType>
-													<ContextMenu name="ДеталиТаблицаФасадовПовернутьФасадКонтекстноеМеню" id="434"/>
-													<ExtendedTooltip name="ДеталиТаблицаФасадовПовернутьФасадРасширеннаяПодсказка" id="435"/>
+													<ContextMenu name="ТаблицаФасадовПовернутьФасадКонтекстноеМеню" id="434"/>
+													<ExtendedTooltip name="ТаблицаФасадовПовернутьФасадРасширеннаяПодсказка" id="435"/>
+													<Events>
+														<Event name="OnChange">ТаблицаФасадовПовернутьФасадПриИзменении</Event>
+													</Events>
 												</CheckBoxField>
 											</ChildItems>
 										</UsualGroup>
 									</ChildItems>
 								</UsualGroup>
-								<InputField name="ДеталиТаблицаФасадовНоменклатураФасада" id="385">
-									<DataPath>Items.ДеталиТаблицаФасадов.CurrentData.НоменклатураФасада</DataPath>
+								<InputField name="ТаблицаФасадовНоменклатураФасада" id="385">
+									<DataPath>Items.ТаблицаФасадов.CurrentData.НоменклатураФасада</DataPath>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -1061,14 +1054,14 @@
 									</Title>
 									<HorizontalStretch>true</HorizontalStretch>
 									<OpenButton>false</OpenButton>
-									<ContextMenu name="ДеталиТаблицаФасадовНоменклатураФасадаКонтекстноеМеню" id="386"/>
-									<ExtendedTooltip name="ДеталиТаблицаФасадовНоменклатураФасадаРасширеннаяПодсказка" id="387"/>
+									<ContextMenu name="ТаблицаФасадовНоменклатураФасадаКонтекстноеМеню" id="386"/>
+									<ExtendedTooltip name="ТаблицаФасадовНоменклатураФасадаРасширеннаяПодсказка" id="387"/>
 									<Events>
-										<Event name="StartChoice">ДеталиТаблицаФасадовНоменклатураФасадаНачалоВыбора</Event>
+										<Event name="StartChoice">ТаблицаФасадовНоменклатураФасадаНачалоВыбора</Event>
 									</Events>
 								</InputField>
-								<InputField name="ДеталиТаблицаФасадовОбрамлениеФасада" id="388">
-									<DataPath>Items.ДеталиТаблицаФасадов.CurrentData.ОбрамлениеФасада</DataPath>
+								<InputField name="ТаблицаФасадовОбрамлениеФасада" id="388">
+									<DataPath>Items.ТаблицаФасадов.CurrentData.ОбрамлениеФасада</DataPath>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -1077,10 +1070,10 @@
 									</Title>
 									<HorizontalStretch>true</HorizontalStretch>
 									<OpenButton>false</OpenButton>
-									<ContextMenu name="ДеталиТаблицаФасадовОбрамлениеФасадаКонтекстноеМеню" id="389"/>
-									<ExtendedTooltip name="ДеталиТаблицаФасадовОбрамлениеФасадаРасширеннаяПодсказка" id="390"/>
+									<ContextMenu name="ТаблицаФасадовОбрамлениеФасадаКонтекстноеМеню" id="389"/>
+									<ExtendedTooltip name="ТаблицаФасадовОбрамлениеФасадаРасширеннаяПодсказка" id="390"/>
 									<Events>
-										<Event name="StartChoice">ДеталиТаблицаФасадовОбрамлениеФасадаНачалоВыбора</Event>
+										<Event name="StartChoice">ТаблицаФасадовОбрамлениеФасадаНачалоВыбора</Event>
 									</Events>
 								</InputField>
 							</ChildItems>
@@ -1106,8 +1099,8 @@
 							<BackColor>style:ButtonBackColor</BackColor>
 							<ExtendedTooltip name="ГруппаФасадыРучкиПетлиРасширеннаяПодсказка" id="451"/>
 							<ChildItems>
-								<InputField name="ДеталиТаблицаФасадовНоменклатураРучки" id="391">
-									<DataPath>Items.ДеталиТаблицаФасадов.CurrentData.НоменклатураРучки</DataPath>
+								<InputField name="ТаблицаФасадовНоменклатураРучки" id="391">
+									<DataPath>Items.ТаблицаФасадов.CurrentData.НоменклатураРучки</DataPath>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -1116,10 +1109,10 @@
 									</Title>
 									<HorizontalStretch>true</HorizontalStretch>
 									<OpenButton>false</OpenButton>
-									<ContextMenu name="ДеталиТаблицаФасадовНоменклатураРучкиКонтекстноеМеню" id="392"/>
-									<ExtendedTooltip name="ДеталиТаблицаФасадовНоменклатураРучкиРасширеннаяПодсказка" id="393"/>
+									<ContextMenu name="ТаблицаФасадовНоменклатураРучкиКонтекстноеМеню" id="392"/>
+									<ExtendedTooltip name="ТаблицаФасадовНоменклатураРучкиРасширеннаяПодсказка" id="393"/>
 									<Events>
-										<Event name="StartChoice">ДеталиТаблицаФасадовНоменклатураРучкиНачалоВыбора</Event>
+										<Event name="StartChoice">ТаблицаФасадовНоменклатураРучкиНачалоВыбора</Event>
 									</Events>
 								</InputField>
 								<UsualGroup name="Группа3" id="452">
@@ -1128,18 +1121,18 @@
 									<ShowTitle>false</ShowTitle>
 									<ExtendedTooltip name="Группа3РасширеннаяПодсказка" id="453"/>
 									<ChildItems>
-										<InputField name="ДеталиТаблицаФасадовПетли" id="424">
-											<DataPath>Items.ДеталиТаблицаФасадов.CurrentData.Петли</DataPath>
+										<InputField name="ТаблицаФасадовПетли" id="424">
+											<DataPath>Items.ТаблицаФасадов.CurrentData.Петли</DataPath>
 											<HorizontalStretch>true</HorizontalStretch>
 											<OpenButton>false</OpenButton>
-											<ContextMenu name="ДеталиТаблицаФасадовПетлиКонтекстноеМеню" id="425"/>
-											<ExtendedTooltip name="ДеталиТаблицаФасадовПетлиРасширеннаяПодсказка" id="426"/>
+											<ContextMenu name="ТаблицаФасадовПетлиКонтекстноеМеню" id="425"/>
+											<ExtendedTooltip name="ТаблицаФасадовПетлиРасширеннаяПодсказка" id="426"/>
 											<Events>
-												<Event name="StartChoice">ДеталиТаблицаФасадовПетлиНачалоВыбора</Event>
+												<Event name="StartChoice">ТаблицаФасадовПетлиНачалоВыбора</Event>
 											</Events>
 										</InputField>
-										<InputField name="ДеталиТаблицаФасадовКоличествоПетель" id="427">
-											<DataPath>Items.ДеталиТаблицаФасадов.CurrentData.КоличествоПетель</DataPath>
+										<InputField name="ТаблицаФасадовКоличествоПетель" id="427">
+											<DataPath>Items.ТаблицаФасадов.CurrentData.КоличествоПетель</DataPath>
 											<Title>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
@@ -1147,13 +1140,13 @@
 												</v8:item>
 											</Title>
 											<Width>2</Width>
-											<ContextMenu name="ДеталиТаблицаФасадовКоличествоПетельКонтекстноеМеню" id="428"/>
-											<ExtendedTooltip name="ДеталиТаблицаФасадовКоличествоПетельРасширеннаяПодсказка" id="429"/>
+											<ContextMenu name="ТаблицаФасадовКоличествоПетельКонтекстноеМеню" id="428"/>
+											<ExtendedTooltip name="ТаблицаФасадовКоличествоПетельРасширеннаяПодсказка" id="429"/>
 										</InputField>
 									</ChildItems>
 								</UsualGroup>
-								<InputField name="ДеталиТаблицаФасадовРасположениеПазовИРучкиНаФасадах" id="436">
-									<DataPath>Items.ДеталиТаблицаФасадов.CurrentData.РасположениеПазовИРучкиНаФасадах</DataPath>
+								<InputField name="ТаблицаФасадовРасположениеПазовИРучкиНаФасадах" id="436">
+									<DataPath>Items.ТаблицаФасадов.CurrentData.РасположениеПазовИРучкиНаФасадах</DataPath>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -1162,10 +1155,10 @@
 									</Title>
 									<HorizontalStretch>true</HorizontalStretch>
 									<OpenButton>false</OpenButton>
-									<ContextMenu name="ДеталиТаблицаФасадовРасположениеПазовИРучкиНаФасадахКонтекстноеМеню" id="437"/>
-									<ExtendedTooltip name="ДеталиТаблицаФасадовРасположениеПазовИРучкиНаФасадахРасширеннаяПодсказка" id="438"/>
+									<ContextMenu name="ТаблицаФасадовРасположениеПазовИРучкиНаФасадахКонтекстноеМеню" id="437"/>
+									<ExtendedTooltip name="ТаблицаФасадовРасположениеПазовИРучкиНаФасадахРасширеннаяПодсказка" id="438"/>
 									<Events>
-										<Event name="ChoiceProcessing">ДеталиТаблицаФасадовРасположениеПазовИРучкиНаФасадахОбработкаВыбора</Event>
+										<Event name="ChoiceProcessing">ТаблицаФасадовРасположениеПазовИРучкиНаФасадахОбработкаВыбора</Event>
 									</Events>
 								</InputField>
 							</ChildItems>
@@ -1191,8 +1184,8 @@
 							<BackColor>style:ButtonBackColor</BackColor>
 							<ExtendedTooltip name="ГруппаФасадыЯщикРасширеннаяПодсказка" id="455"/>
 							<ChildItems>
-								<InputField name="ДеталиТаблицаФасадовВыдвижнойЭлемент" id="442">
-									<DataPath>Items.ДеталиТаблицаФасадов.CurrentData.СхемаЯщика</DataPath>
+								<InputField name="ТаблицаФасадовВыдвижнойЭлемент" id="442">
+									<DataPath>Items.ТаблицаФасадов.CurrentData.СхемаЯщика</DataPath>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -1201,15 +1194,15 @@
 									</Title>
 									<HorizontalStretch>true</HorizontalStretch>
 									<OpenButton>false</OpenButton>
-									<ContextMenu name="ДеталиТаблицаФасадовВыдвижнойЭлементКонтекстноеМеню" id="443"/>
-									<ExtendedTooltip name="ДеталиТаблицаФасадовВыдвижнойЭлементРасширеннаяПодсказка" id="444"/>
+									<ContextMenu name="ТаблицаФасадовВыдвижнойЭлементКонтекстноеМеню" id="443"/>
+									<ExtendedTooltip name="ТаблицаФасадовВыдвижнойЭлементРасширеннаяПодсказка" id="444"/>
 									<Events>
-										<Event name="OnChange">ДеталиТаблицаФасадовВыдвижнойЭлементПриИзменении</Event>
-										<Event name="StartChoice">ДеталиТаблицаФасадовВыдвижнойЭлементНачалоВыбора</Event>
+										<Event name="OnChange">ТаблицаФасадовВыдвижнойЭлементПриИзменении</Event>
+										<Event name="StartChoice">ТаблицаФасадовВыдвижнойЭлементНачалоВыбора</Event>
 									</Events>
 								</InputField>
-								<InputField name="ДеталиТаблицаФасадовМеханизмЭлемента" id="403">
-									<DataPath>Items.ДеталиТаблицаФасадов.CurrentData.МеханизмЭлемента</DataPath>
+								<InputField name="ТаблицаФасадовМеханизмЭлемента" id="403">
+									<DataPath>Items.ТаблицаФасадов.CurrentData.МеханизмЭлемента</DataPath>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -1218,14 +1211,14 @@
 									</Title>
 									<HorizontalStretch>true</HorizontalStretch>
 									<OpenButton>false</OpenButton>
-									<ContextMenu name="ДеталиТаблицаФасадовМеханизмЭлементаКонтекстноеМеню" id="404"/>
-									<ExtendedTooltip name="ДеталиТаблицаФасадовМеханизмЭлементаРасширеннаяПодсказка" id="405"/>
+									<ContextMenu name="ТаблицаФасадовМеханизмЭлементаКонтекстноеМеню" id="404"/>
+									<ExtendedTooltip name="ТаблицаФасадовМеханизмЭлементаРасширеннаяПодсказка" id="405"/>
 									<Events>
-										<Event name="StartChoice">ДеталиТаблицаФасадовМеханизмЭлементаНачалоВыбора</Event>
+										<Event name="StartChoice">ТаблицаФасадовМеханизмЭлементаНачалоВыбора</Event>
 									</Events>
 								</InputField>
-								<InputField name="ДеталиТаблицаФасадовНоменклатураЭлемента" id="406">
-									<DataPath>Items.ДеталиТаблицаФасадов.CurrentData.НоменклатураЭлемента</DataPath>
+								<InputField name="ТаблицаФасадовНоменклатураЭлемента" id="406">
+									<DataPath>Items.ТаблицаФасадов.CurrentData.НоменклатураЭлемента</DataPath>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -1234,14 +1227,14 @@
 									</Title>
 									<HorizontalStretch>true</HorizontalStretch>
 									<OpenButton>false</OpenButton>
-									<ContextMenu name="ДеталиТаблицаФасадовНоменклатураЭлементаКонтекстноеМеню" id="407"/>
-									<ExtendedTooltip name="ДеталиТаблицаФасадовНоменклатураЭлементаРасширеннаяПодсказка" id="408"/>
+									<ContextMenu name="ТаблицаФасадовНоменклатураЭлементаКонтекстноеМеню" id="407"/>
+									<ExtendedTooltip name="ТаблицаФасадовНоменклатураЭлементаРасширеннаяПодсказка" id="408"/>
 									<Events>
-										<Event name="StartChoice">ДеталиТаблицаФасадовНоменклатураЭлементаНачалоВыбора</Event>
+										<Event name="StartChoice">ТаблицаФасадовНоменклатураЭлементаНачалоВыбора</Event>
 									</Events>
 								</InputField>
-								<InputField name="ДеталиТаблицаФасадовТорцовкаЭлемента" id="409">
-									<DataPath>Items.ДеталиТаблицаФасадов.CurrentData.ТорцовкаЭлемента</DataPath>
+								<InputField name="ТаблицаФасадовТорцовкаЭлемента" id="409">
+									<DataPath>Items.ТаблицаФасадов.CurrentData.ТорцовкаЭлемента</DataPath>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -1250,10 +1243,10 @@
 									</Title>
 									<HorizontalStretch>true</HorizontalStretch>
 									<OpenButton>false</OpenButton>
-									<ContextMenu name="ДеталиТаблицаФасадовТорцовкаЭлементаКонтекстноеМеню" id="410"/>
-									<ExtendedTooltip name="ДеталиТаблицаФасадовТорцовкаЭлементаРасширеннаяПодсказка" id="411"/>
+									<ContextMenu name="ТаблицаФасадовТорцовкаЭлементаКонтекстноеМеню" id="410"/>
+									<ExtendedTooltip name="ТаблицаФасадовТорцовкаЭлементаРасширеннаяПодсказка" id="411"/>
 									<Events>
-										<Event name="StartChoice">ДеталиТаблицаФасадовТорцовкаЭлементаНачалоВыбора</Event>
+										<Event name="StartChoice">ТаблицаФасадовТорцовкаЭлементаНачалоВыбора</Event>
 									</Events>
 								</InputField>
 							</ChildItems>
@@ -1286,8 +1279,8 @@
 									<ShowTitle>false</ShowTitle>
 									<ExtendedTooltip name="Группа6РасширеннаяПодсказка" id="459"/>
 									<ChildItems>
-										<InputField name="ДеталиТаблицаФасадовМеханизмФасада" id="397">
-											<DataPath>Items.ДеталиТаблицаФасадов.CurrentData.МеханизмФасада</DataPath>
+										<InputField name="ТаблицаФасадовМеханизмФасада" id="397">
+											<DataPath>Items.ТаблицаФасадов.CurrentData.МеханизмФасада</DataPath>
 											<Title>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
@@ -1296,14 +1289,14 @@
 											</Title>
 											<HorizontalStretch>true</HorizontalStretch>
 											<OpenButton>false</OpenButton>
-											<ContextMenu name="ДеталиТаблицаФасадовМеханизмФасадаКонтекстноеМеню" id="398"/>
-											<ExtendedTooltip name="ДеталиТаблицаФасадовМеханизмФасадаРасширеннаяПодсказка" id="399"/>
+											<ContextMenu name="ТаблицаФасадовМеханизмФасадаКонтекстноеМеню" id="398"/>
+											<ExtendedTooltip name="ТаблицаФасадовМеханизмФасадаРасширеннаяПодсказка" id="399"/>
 											<Events>
-												<Event name="StartChoice">ДеталиТаблицаФасадовМеханизмФасадаНачалоВыбора</Event>
+												<Event name="StartChoice">ТаблицаФасадовМеханизмФасадаНачалоВыбора</Event>
 											</Events>
 										</InputField>
-										<InputField name="ДеталиТаблицаФасадовКоличествоМеханизмФасада" id="412">
-											<DataPath>Items.ДеталиТаблицаФасадов.CurrentData.КоличествоМеханизмФасада</DataPath>
+										<InputField name="ТаблицаФасадовКоличествоМеханизмФасада" id="412">
+											<DataPath>Items.ТаблицаФасадов.CurrentData.КоличествоМеханизмФасада</DataPath>
 											<Title>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
@@ -1312,8 +1305,8 @@
 											</Title>
 											<Width>2</Width>
 											<HorizontalStretch>false</HorizontalStretch>
-											<ContextMenu name="ДеталиТаблицаФасадовКоличествоМеханизмФасадаКонтекстноеМеню" id="413"/>
-											<ExtendedTooltip name="ДеталиТаблицаФасадовКоличествоМеханизмФасадаРасширеннаяПодсказка" id="414"/>
+											<ContextMenu name="ТаблицаФасадовКоличествоМеханизмФасадаКонтекстноеМеню" id="413"/>
+											<ExtendedTooltip name="ТаблицаФасадовКоличествоМеханизмФасадаРасширеннаяПодсказка" id="414"/>
 										</InputField>
 									</ChildItems>
 								</UsualGroup>
@@ -1323,18 +1316,18 @@
 									<ShowTitle>false</ShowTitle>
 									<ExtendedTooltip name="Группа7РасширеннаяПодсказка" id="461"/>
 									<ChildItems>
-										<InputField name="ДеталиТаблицаФасадовДемпфер" id="400">
-											<DataPath>Items.ДеталиТаблицаФасадов.CurrentData.Демпфер</DataPath>
+										<InputField name="ТаблицаФасадовДемпфер" id="400">
+											<DataPath>Items.ТаблицаФасадов.CurrentData.Демпфер</DataPath>
 											<HorizontalStretch>true</HorizontalStretch>
 											<OpenButton>false</OpenButton>
-											<ContextMenu name="ДеталиТаблицаФасадовДемпферКонтекстноеМеню" id="401"/>
-											<ExtendedTooltip name="ДеталиТаблицаФасадовДемпферРасширеннаяПодсказка" id="402"/>
+											<ContextMenu name="ТаблицаФасадовДемпферКонтекстноеМеню" id="401"/>
+											<ExtendedTooltip name="ТаблицаФасадовДемпферРасширеннаяПодсказка" id="402"/>
 											<Events>
-												<Event name="StartChoice">ДеталиТаблицаФасадовДемпферНачалоВыбора</Event>
+												<Event name="StartChoice">ТаблицаФасадовДемпферНачалоВыбора</Event>
 											</Events>
 										</InputField>
-										<InputField name="ДеталиТаблицаФасадовКоличествоДемпфер" id="415">
-											<DataPath>Items.ДеталиТаблицаФасадов.CurrentData.КоличествоДемпфер</DataPath>
+										<InputField name="ТаблицаФасадовКоличествоДемпфер" id="415">
+											<DataPath>Items.ТаблицаФасадов.CurrentData.КоличествоДемпфер</DataPath>
 											<Title>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
@@ -1343,17 +1336,17 @@
 											</Title>
 											<Width>2</Width>
 											<HorizontalStretch>false</HorizontalStretch>
-											<ContextMenu name="ДеталиТаблицаФасадовКоличествоДемпферКонтекстноеМеню" id="416"/>
-											<ExtendedTooltip name="ДеталиТаблицаФасадовКоличествоДемпферРасширеннаяПодсказка" id="417"/>
+											<ContextMenu name="ТаблицаФасадовКоличествоДемпферКонтекстноеМеню" id="416"/>
+											<ExtendedTooltip name="ТаблицаФасадовКоличествоДемпферРасширеннаяПодсказка" id="417"/>
 										</InputField>
 									</ChildItems>
 								</UsualGroup>
-								<InputField name="ДеталиТаблицаФасадовДопЭлемент" id="418">
-									<DataPath>Items.ДеталиТаблицаФасадов.CurrentData.ДопЭлемент</DataPath>
+								<InputField name="ТаблицаФасадовДопЭлемент" id="418">
+									<DataPath>Items.ТаблицаФасадов.CurrentData.ДопЭлемент</DataPath>
 									<HorizontalStretch>true</HorizontalStretch>
 									<OpenButton>false</OpenButton>
-									<ContextMenu name="ДеталиТаблицаФасадовДопЭлементКонтекстноеМеню" id="419"/>
-									<ExtendedTooltip name="ДеталиТаблицаФасадовДопЭлементРасширеннаяПодсказка" id="420"/>
+									<ContextMenu name="ТаблицаФасадовДопЭлементКонтекстноеМеню" id="419"/>
+									<ExtendedTooltip name="ТаблицаФасадовДопЭлементРасширеннаяПодсказка" id="420"/>
 								</InputField>
 							</ChildItems>
 						</UsualGroup>
@@ -1361,204 +1354,6 @@
 				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
-		<Table name="ТаблицаФасадов" id="478">
-			<Representation>List</Representation>
-			<AutoInsertNewRow>true</AutoInsertNewRow>
-			<EnableStartDrag>true</EnableStartDrag>
-			<EnableDrag>true</EnableDrag>
-			<DataPath>ТаблицаФасадов</DataPath>
-			<SearchStringLocation>None</SearchStringLocation>
-			<ViewStatusLocation>None</ViewStatusLocation>
-			<SearchControlLocation>None</SearchControlLocation>
-			<RowFilter xsi:nil="true"/>
-			<ContextMenu name="ТаблицаФасадовКонтекстноеМеню" id="479"/>
-			<AutoCommandBar name="ТаблицаФасадовКоманднаяПанель" id="480"/>
-			<ExtendedTooltip name="ТаблицаФасадовРасширеннаяПодсказка" id="481"/>
-			<SearchStringAddition name="ТаблицаФасадовСтрокаПоиска" id="578">
-				<AdditionSource>
-					<Item>ТаблицаФасадов</Item>
-					<Type>SearchStringRepresentation</Type>
-				</AdditionSource>
-				<ContextMenu name="ТаблицаФасадовСтрокаПоискаКонтекстноеМеню" id="579"/>
-				<ExtendedTooltip name="ТаблицаФасадовСтрокаПоискаРасширеннаяПодсказка" id="580"/>
-			</SearchStringAddition>
-			<ViewStatusAddition name="ТаблицаФасадовСостояниеПросмотра" id="581">
-				<AdditionSource>
-					<Item>ТаблицаФасадов</Item>
-					<Type>ViewStatusRepresentation</Type>
-				</AdditionSource>
-				<ContextMenu name="ТаблицаФасадовСостояниеПросмотраКонтекстноеМеню" id="582"/>
-				<ExtendedTooltip name="ТаблицаФасадовСостояниеПросмотраРасширеннаяПодсказка" id="583"/>
-			</ViewStatusAddition>
-			<SearchControlAddition name="ТаблицаФасадовУправлениеПоиском" id="584">
-				<AdditionSource>
-					<Item>ТаблицаФасадов</Item>
-					<Type>SearchControl</Type>
-				</AdditionSource>
-				<ContextMenu name="ТаблицаФасадовУправлениеПоискомКонтекстноеМеню" id="585"/>
-				<ExtendedTooltip name="ТаблицаФасадовУправлениеПоискомРасширеннаяПодсказка" id="586"/>
-			</SearchControlAddition>
-			<ChildItems>
-				<InputField name="ТаблицаФасадовИмяФасада" id="482">
-					<DataPath>ТаблицаФасадов.ИмяФасада</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ТаблицаФасадовИмяФасадаКонтекстноеМеню" id="483"/>
-					<ExtendedTooltip name="ТаблицаФасадовИмяФасадаРасширеннаяПодсказка" id="484"/>
-				</InputField>
-				<InputField name="ТаблицаФасадовВидФасада" id="485">
-					<DataPath>ТаблицаФасадов.ВидФасада</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ТаблицаФасадовВидФасадаКонтекстноеМеню" id="486"/>
-					<ExtendedTooltip name="ТаблицаФасадовВидФасадаРасширеннаяПодсказка" id="487"/>
-				</InputField>
-				<InputField name="ТаблицаФасадовНоменклатураФасада" id="488">
-					<DataPath>ТаблицаФасадов.НоменклатураФасада</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ТаблицаФасадовНоменклатураФасадаКонтекстноеМеню" id="489"/>
-					<ExtendedTooltip name="ТаблицаФасадовНоменклатураФасадаРасширеннаяПодсказка" id="490"/>
-				</InputField>
-				<InputField name="ТаблицаФасадовОбрамлениеФасада" id="491">
-					<DataPath>ТаблицаФасадов.ОбрамлениеФасада</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ТаблицаФасадовОбрамлениеФасадаКонтекстноеМеню" id="492"/>
-					<ExtendedTooltip name="ТаблицаФасадовОбрамлениеФасадаРасширеннаяПодсказка" id="493"/>
-				</InputField>
-				<InputField name="ТаблицаФасадовНоменклатураРучки" id="494">
-					<DataPath>ТаблицаФасадов.НоменклатураРучки</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ТаблицаФасадовНоменклатураРучкиКонтекстноеМеню" id="495"/>
-					<ExtendedTooltip name="ТаблицаФасадовНоменклатураРучкиРасширеннаяПодсказка" id="496"/>
-				</InputField>
-				<InputField name="ТаблицаФасадовРасположениеРучки" id="497">
-					<DataPath>ТаблицаФасадов.РасположениеРучки</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ТаблицаФасадовРасположениеРучкиКонтекстноеМеню" id="498"/>
-					<ExtendedTooltip name="ТаблицаФасадовРасположениеРучкиРасширеннаяПодсказка" id="499"/>
-				</InputField>
-				<InputField name="ТаблицаФасадовМеханизмФасада" id="500">
-					<DataPath>ТаблицаФасадов.МеханизмФасада</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ТаблицаФасадовМеханизмФасадаКонтекстноеМеню" id="501"/>
-					<ExtendedTooltip name="ТаблицаФасадовМеханизмФасадаРасширеннаяПодсказка" id="502"/>
-				</InputField>
-				<InputField name="ТаблицаФасадовДемпфер" id="503">
-					<DataPath>ТаблицаФасадов.Демпфер</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ТаблицаФасадовДемпферКонтекстноеМеню" id="504"/>
-					<ExtendedTooltip name="ТаблицаФасадовДемпферРасширеннаяПодсказка" id="505"/>
-				</InputField>
-				<InputField name="ТаблицаФасадовМеханизмЭлемента" id="506">
-					<DataPath>ТаблицаФасадов.МеханизмЭлемента</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ТаблицаФасадовМеханизмЭлементаКонтекстноеМеню" id="507"/>
-					<ExtendedTooltip name="ТаблицаФасадовМеханизмЭлементаРасширеннаяПодсказка" id="508"/>
-				</InputField>
-				<InputField name="ТаблицаФасадовНоменклатураЭлемента" id="509">
-					<DataPath>ТаблицаФасадов.НоменклатураЭлемента</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ТаблицаФасадовНоменклатураЭлементаКонтекстноеМеню" id="510"/>
-					<ExtendedTooltip name="ТаблицаФасадовНоменклатураЭлементаРасширеннаяПодсказка" id="511"/>
-				</InputField>
-				<InputField name="ТаблицаФасадовТорцовкаЭлемента" id="512">
-					<DataPath>ТаблицаФасадов.ТорцовкаЭлемента</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ТаблицаФасадовТорцовкаЭлементаКонтекстноеМеню" id="513"/>
-					<ExtendedTooltip name="ТаблицаФасадовТорцовкаЭлементаРасширеннаяПодсказка" id="514"/>
-				</InputField>
-				<InputField name="ТаблицаФасадовКоличествоМеханизмФасада" id="515">
-					<DataPath>ТаблицаФасадов.КоличествоМеханизмФасада</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ТаблицаФасадовКоличествоМеханизмФасадаКонтекстноеМеню" id="516"/>
-					<ExtendedTooltip name="ТаблицаФасадовКоличествоМеханизмФасадаРасширеннаяПодсказка" id="517"/>
-				</InputField>
-				<InputField name="ТаблицаФасадовКоличествоДемпфер" id="518">
-					<DataPath>ТаблицаФасадов.КоличествоДемпфер</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ТаблицаФасадовКоличествоДемпферКонтекстноеМеню" id="519"/>
-					<ExtendedTooltip name="ТаблицаФасадовКоличествоДемпферРасширеннаяПодсказка" id="520"/>
-				</InputField>
-				<InputField name="ТаблицаФасадовДопЭлемент" id="521">
-					<DataPath>ТаблицаФасадов.ДопЭлемент</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ТаблицаФасадовДопЭлементКонтекстноеМеню" id="522"/>
-					<ExtendedTooltip name="ТаблицаФасадовДопЭлементРасширеннаяПодсказка" id="523"/>
-				</InputField>
-				<InputField name="ТаблицаФасадовНомерСтроки" id="524">
-					<DataPath>ТаблицаФасадов.НомерСтроки</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ТаблицаФасадовНомерСтрокиКонтекстноеМеню" id="525"/>
-					<ExtendedTooltip name="ТаблицаФасадовНомерСтрокиРасширеннаяПодсказка" id="526"/>
-				</InputField>
-				<InputField name="ТаблицаФасадовВидЭлемента" id="527">
-					<DataPath>ТаблицаФасадов.ВидЭлемента</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ТаблицаФасадовВидЭлементаКонтекстноеМеню" id="528"/>
-					<ExtendedTooltip name="ТаблицаФасадовВидЭлементаРасширеннаяПодсказка" id="529"/>
-				</InputField>
-				<InputField name="ТаблицаФасадовНомерДетали" id="530">
-					<DataPath>ТаблицаФасадов.НомерДетали</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ТаблицаФасадовНомерДеталиКонтекстноеМеню" id="531"/>
-					<ExtendedTooltip name="ТаблицаФасадовНомерДеталиРасширеннаяПодсказка" id="532"/>
-				</InputField>
-				<InputField name="ТаблицаФасадовПетли" id="533">
-					<DataPath>ТаблицаФасадов.Петли</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ТаблицаФасадовПетлиКонтекстноеМеню" id="534"/>
-					<ExtendedTooltip name="ТаблицаФасадовПетлиРасширеннаяПодсказка" id="535"/>
-				</InputField>
-				<InputField name="ТаблицаФасадовКоличествоПетель" id="536">
-					<DataPath>ТаблицаФасадов.КоличествоПетель</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ТаблицаФасадовКоличествоПетельКонтекстноеМеню" id="537"/>
-					<ExtendedTooltip name="ТаблицаФасадовКоличествоПетельРасширеннаяПодсказка" id="538"/>
-				</InputField>
-				<InputField name="ТаблицаФасадовРасположениеПазов" id="539">
-					<DataPath>ТаблицаФасадов.РасположениеПазов</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ТаблицаФасадовРасположениеПазовКонтекстноеМеню" id="540"/>
-					<ExtendedTooltip name="ТаблицаФасадовРасположениеПазовРасширеннаяПодсказка" id="541"/>
-				</InputField>
-				<CheckBoxField name="ТаблицаФасадовПовернутьФасад" id="542">
-					<DataPath>ТаблицаФасадов.ПовернутьФасад</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="ТаблицаФасадовПовернутьФасадКонтекстноеМеню" id="543"/>
-					<ExtendedTooltip name="ТаблицаФасадовПовернутьФасадРасширеннаяПодсказка" id="544"/>
-				</CheckBoxField>
-				<InputField name="ТаблицаФасадовРасположениеПазовИРучкиНаФасадах" id="545">
-					<DataPath>ТаблицаФасадов.РасположениеПазовИРучкиНаФасадах</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ТаблицаФасадовРасположениеПазовИРучкиНаФасадахКонтекстноеМеню" id="546"/>
-					<ExtendedTooltip name="ТаблицаФасадовРасположениеПазовИРучкиНаФасадахРасширеннаяПодсказка" id="547"/>
-				</InputField>
-				<CheckBoxField name="ТаблицаФасадовЕстьРучка" id="548">
-					<DataPath>ТаблицаФасадов.ЕстьРучка</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="ТаблицаФасадовЕстьРучкаКонтекстноеМеню" id="549"/>
-					<ExtendedTooltip name="ТаблицаФасадовЕстьРучкаРасширеннаяПодсказка" id="550"/>
-				</CheckBoxField>
-				<InputField name="ТаблицаФасадовСхемаЯщика" id="551">
-					<DataPath>ТаблицаФасадов.СхемаЯщика</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ТаблицаФасадовСхемаЯщикаКонтекстноеМеню" id="552"/>
-					<ExtendedTooltip name="ТаблицаФасадовСхемаЯщикаРасширеннаяПодсказка" id="553"/>
-				</InputField>
-				<InputField name="ТаблицаФасадовВидДеталиФасад" id="554">
-					<DataPath>ТаблицаФасадов.ВидДеталиФасад</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ТаблицаФасадовВидДеталиФасадКонтекстноеМеню" id="555"/>
-					<ExtendedTooltip name="ТаблицаФасадовВидДеталиФасадРасширеннаяПодсказка" id="556"/>
-				</InputField>
-				<LabelField name="ТаблицаФасадовsUID" id="557">
-					<DataPath>ТаблицаФасадов.sUID</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ТаблицаФасадовsUIDКонтекстноеМеню" id="558"/>
-					<ExtendedTooltip name="ТаблицаФасадовsUIDРасширеннаяПодсказка" id="559"/>
-				</LabelField>
-			</ChildItems>
-		</Table>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Детали" id="1">
@@ -2806,11 +2601,11 @@
 						<v8:Type>cfg:CatalogRef.Номенклатура</v8:Type>
 					</Type>
 				</Column>
-				<Column name="НомерСтроки" id="15">
+				<Column name="НомерСтр" id="15">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Номер строки</v8:content>
+							<v8:content>Номер стр</v8:content>
 						</v8:item>
 					</Title>
 					<Type>
