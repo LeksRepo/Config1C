@@ -15,6 +15,14 @@
 					<v8:content>Спецификация</v8:content>
 				</v8:item>
 			</title>
+			<presentationExpression>
+ПрефиксацияОбъектовКлиентСервер.ПолучитьНомерНаПечать([Спецификация №])</presentationExpression>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ГоризонтальноеПоложение</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:HorizontalAlign">Center</dcscor:value>
+				</dcscor:item>
+			</appearance>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Комментарий</dataPath>
@@ -167,12 +175,6 @@
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Подразделение</dataPath>
 			<field>Подразделение</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Подразделение</v8:content>
-				</v8:item>
-			</title>
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
@@ -214,17 +216,21 @@
 		ПО (ДокДоговор.Спецификация = ДокСпецификация.Ссылка)
 		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.Заметки КАК СпЗаметки
 		ПО (СпЗаметки.Предмет = ДокСпецификация.Ссылка)
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.РеализацияГотовойПродукции.СписокСпецификаций КАК РеализацияГотовойПродукцииСписокСпецификаций
+		ПО (РеализацияГотовойПродукцииСписокСпецификаций.Спецификация = ДокСпецификация.Ссылка)
+			И (РеализацияГотовойПродукцииСписокСпецификаций.Ссылка.Проведен)
 ГДЕ
-	ДокСпецификация.ДатаОтгрузки МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания
+	ДокСпецификация.ДатаОтгрузки &lt; &amp;ДатаОтчета
 	И ДокСпецификация.ПакетУслуг &lt;&gt; ЗНАЧЕНИЕ(Перечисление.ПакетыУслуг.СамовывозОтПроизводителя)
-	И ДокСпецификация.Проведен</query>
+	И ДокСпецификация.Проведен
+	И РеализацияГотовойПродукцииСписокСпецификаций.Ссылка ЕСТЬ NULL </query>
 	</dataSet>
 	<parameter>
-		<name>ДатаНачала</name>
+		<name>ДатаОтчета</name>
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>ru</v8:lang>
-				<v8:content>Дата начала</v8:content>
+				<v8:content>Дата отчета</v8:content>
 			</v8:item>
 		</title>
 		<valueType>
@@ -234,43 +240,6 @@
 			</v8:DateQualifiers>
 		</valueType>
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-		<useRestriction>true</useRestriction>
-		<expression>&amp;СтандартныйПериод.ДатаНачала</expression>
-	</parameter>
-	<parameter>
-		<name>ДатаОкончания</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Дата окончания</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>xs:dateTime</v8:Type>
-			<v8:DateQualifiers>
-				<v8:DateFractions>Date</v8:DateFractions>
-			</v8:DateQualifiers>
-		</valueType>
-		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-		<useRestriction>true</useRestriction>
-		<expression>&amp;СтандартныйПериод.ДатаОкончания</expression>
-	</parameter>
-	<parameter>
-		<name>СтандартныйПериод</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Стандартный период</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>v8:StandardPeriod</v8:Type>
-		</valueType>
-		<value xsi:type="v8:StandardPeriod">
-			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
-			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
-			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
-		</value>
 		<useRestriction>false</useRestriction>
 	</parameter>
 	<settingsVariant>
@@ -293,7 +262,7 @@
 										</v8:item>
 									</dcsset:lwsTitle>
 									<dcsset:item xsi:type="dcsset:SelectedItemField">
-										<dcsset:field>[Спецификация №]</dcsset:field>
+										<dcsset:field>Ссылка</dcsset:field>
 									</dcsset:item>
 									<dcsset:item xsi:type="dcsset:SelectedItemField">
 										<dcsset:field>Телефон</dcsset:field>
@@ -359,16 +328,20 @@
 			</dcsset:selection>
 			<dcsset:filter>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
+					<dcsset:use>false</dcsset:use>
 					<dcsset:left xsi:type="dcscor:Field">Подразделение</dcsset:left>
 					<dcsset:comparisonType>Equal</dcsset:comparisonType>
-					<dcsset:userSettingID>c2d31667-fc0f-4b46-bd7c-ccf0ef8c68b5</dcsset:userSettingID>
+					<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.Подразделения.ПустаяСсылка</dcsset:right>
+					<dcsset:userSettingID>96f4be23-a2a5-45ea-a5fe-65f406f25a3c</dcsset:userSettingID>
 				</dcsset:item>
 			</dcsset:filter>
 			<dcsset:dataParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>СтандартныйПериод</dcscor:parameter>
-					<dcscor:value xsi:nil="true"/>
-					<dcsset:userSettingID>24904d3d-74ba-46c4-a12f-db41e4cabc31</dcsset:userSettingID>
+					<dcscor:parameter>ДатаОтчета</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardBeginningDate">
+						<v8:variant xsi:type="v8:StandardBeginningDateVariant">BeginningOfNextMonth</v8:variant>
+					</dcscor:value>
+					<dcsset:userSettingID>256120e5-6ebf-45a3-a548-cd879117a1aa</dcsset:userSettingID>
 				</dcscor:item>
 			</dcsset:dataParameters>
 			<dcsset:order>
