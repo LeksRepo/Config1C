@@ -56,35 +56,73 @@
 					<v8:content>Группа шапка</v8:content>
 				</v8:item>
 			</ToolTip>
+			<HorizontalStretch>false</HorizontalStretch>
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ГруппаШапкаРасширеннаяПодсказка" id="239"/>
 			<ChildItems>
-				<UsualGroup name="ПодразделениеПоставщик" id="84">
+				<UsualGroup name="ШапкаЛеваяКолонка" id="252">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Подразделение поставщик</v8:content>
+							<v8:content>Шапка левая колонка</v8:content>
 						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Подразделение поставщик</v8:content>
+							<v8:content>Шапка левая колонка</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Group>Vertical</Group>
 					<Representation>None</Representation>
-					<ChildItemsWidth>Equal</ChildItemsWidth>
 					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="ПодразделениеПоставщикРасширеннаяПодсказка" id="85"/>
+					<ExtendedTooltip name="ШапкаЛеваяКолонкаРасширеннаяПодсказка" id="253"/>
 					<ChildItems>
+						<UsualGroup name="ГруппаНомерДата" id="32">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа номер дата</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа номер дата</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаНомерДатаРасширеннаяПодсказка" id="33"/>
+							<ChildItems>
+								<InputField name="Номер" id="1">
+									<DataPath>Объект.Number</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Номер</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
+									<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="3"/>
+								</InputField>
+								<InputField name="Дата" id="4">
+									<DataPath>Объект.Date</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
+									<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="6"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
 						<InputField name="Подразделение" id="7">
 							<DataPath>Объект.Подразделение</DataPath>
 							<EditMode>EnterOnInput</EditMode>
 							<Width>35</Width>
-							<HorizontalStretch>false</HorizontalStretch>
 							<OpenButton>false</OpenButton>
 							<ContextMenu name="ПодразделениеКонтекстноеМеню" id="8"/>
 							<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="9"/>
@@ -92,10 +130,34 @@
 								<Event name="OnChange">ПодразделениеПриИзменении</Event>
 							</Events>
 						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ШапкаПраваяКолонка" id="84">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Шапка правая колонка</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Шапка правая колонка</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ШапкаПраваяКолонкаРасширеннаяПодсказка" id="85"/>
+					<ChildItems>
+						<InputField name="НарядЗадание" id="254">
+							<DataPath>Объект.НарядЗадание</DataPath>
+							<ContextMenu name="НарядЗаданиеКонтекстноеМеню" id="255"/>
+							<ExtendedTooltip name="НарядЗаданиеРасширеннаяПодсказка" id="256"/>
+						</InputField>
 						<InputField name="Поставщик" id="81">
 							<DataPath>Объект.Поставщик</DataPath>
 							<Width>35</Width>
-							<HorizontalStretch>false</HorizontalStretch>
 							<ChoiceButton>true</ChoiceButton>
 							<ClearButton>true</ClearButton>
 							<OpenButton>false</OpenButton>
@@ -112,46 +174,6 @@
 							<Events>
 								<Event name="OnChange">ПоставщикПриИзменении</Event>
 							</Events>
-						</InputField>
-					</ChildItems>
-				</UsualGroup>
-				<UsualGroup name="ГруппаНомерДата" id="32">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа номер дата</v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа номер дата</v8:content>
-						</v8:item>
-					</ToolTip>
-					<Group>Horizontal</Group>
-					<Representation>None</Representation>
-					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="ГруппаНомерДатаРасширеннаяПодсказка" id="33"/>
-					<ChildItems>
-						<InputField name="Номер" id="1">
-							<DataPath>Объект.Number</DataPath>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Номер</v8:content>
-								</v8:item>
-							</Title>
-							<EditMode>EnterOnInput</EditMode>
-							<HorizontalStretch>false</HorizontalStretch>
-							<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
-							<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="3"/>
-						</InputField>
-						<InputField name="Дата" id="4">
-							<DataPath>Объект.Date</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<HorizontalStretch>false</HorizontalStretch>
-							<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
-							<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="6"/>
 						</InputField>
 					</ChildItems>
 				</UsualGroup>
@@ -262,29 +284,29 @@
 				</ChildItems>
 			</AutoCommandBar>
 			<ExtendedTooltip name="СписокНоменклатурыРасширеннаяПодсказка" id="160"/>
-			<SearchStringAddition name="СписокНоменклатурыСтрокаПоиска" id="252">
+			<SearchStringAddition name="СписокНоменклатурыСтрокаПоиска" id="257">
 				<AdditionSource>
 					<Item>СписокНоменклатуры</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокНоменклатурыСтрокаПоискаКонтекстноеМеню" id="253"/>
-				<ExtendedTooltip name="СписокНоменклатурыСтрокаПоискаРасширеннаяПодсказка" id="254"/>
+				<ContextMenu name="СписокНоменклатурыСтрокаПоискаКонтекстноеМеню" id="258"/>
+				<ExtendedTooltip name="СписокНоменклатурыСтрокаПоискаРасширеннаяПодсказка" id="259"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокНоменклатурыСостояниеПросмотра" id="255">
+			<ViewStatusAddition name="СписокНоменклатурыСостояниеПросмотра" id="260">
 				<AdditionSource>
 					<Item>СписокНоменклатуры</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокНоменклатурыСостояниеПросмотраКонтекстноеМеню" id="256"/>
-				<ExtendedTooltip name="СписокНоменклатурыСостояниеПросмотраРасширеннаяПодсказка" id="257"/>
+				<ContextMenu name="СписокНоменклатурыСостояниеПросмотраКонтекстноеМеню" id="261"/>
+				<ExtendedTooltip name="СписокНоменклатурыСостояниеПросмотраРасширеннаяПодсказка" id="262"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокНоменклатурыУправлениеПоиском" id="258">
+			<SearchControlAddition name="СписокНоменклатурыУправлениеПоиском" id="263">
 				<AdditionSource>
 					<Item>СписокНоменклатуры</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокНоменклатурыУправлениеПоискомКонтекстноеМеню" id="259"/>
-				<ExtendedTooltip name="СписокНоменклатурыУправлениеПоискомРасширеннаяПодсказка" id="260"/>
+				<ContextMenu name="СписокНоменклатурыУправлениеПоискомКонтекстноеМеню" id="264"/>
+				<ExtendedTooltip name="СписокНоменклатурыУправлениеПоискомРасширеннаяПодсказка" id="265"/>
 			</SearchControlAddition>
 			<Events>
 				<Event name="BeforeAddRow">СписокНоменклатурыПередНачаломДобавления</Event>
@@ -443,29 +465,29 @@
 				<Autofill>false</Autofill>
 			</AutoCommandBar>
 			<ExtendedTooltip name="ТаблицаРасшифровкиРасширеннаяПодсказка" id="51"/>
-			<SearchStringAddition name="ТаблицаРасшифровкиСтрокаПоиска" id="261">
+			<SearchStringAddition name="ТаблицаРасшифровкиСтрокаПоиска" id="266">
 				<AdditionSource>
 					<Item>ТаблицаРасшифровки</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="ТаблицаРасшифровкиСтрокаПоискаКонтекстноеМеню" id="262"/>
-				<ExtendedTooltip name="ТаблицаРасшифровкиСтрокаПоискаРасширеннаяПодсказка" id="263"/>
+				<ContextMenu name="ТаблицаРасшифровкиСтрокаПоискаКонтекстноеМеню" id="267"/>
+				<ExtendedTooltip name="ТаблицаРасшифровкиСтрокаПоискаРасширеннаяПодсказка" id="268"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="ТаблицаРасшифровкиСостояниеПросмотра" id="264">
+			<ViewStatusAddition name="ТаблицаРасшифровкиСостояниеПросмотра" id="269">
 				<AdditionSource>
 					<Item>ТаблицаРасшифровки</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="ТаблицаРасшифровкиСостояниеПросмотраКонтекстноеМеню" id="265"/>
-				<ExtendedTooltip name="ТаблицаРасшифровкиСостояниеПросмотраРасширеннаяПодсказка" id="266"/>
+				<ContextMenu name="ТаблицаРасшифровкиСостояниеПросмотраКонтекстноеМеню" id="270"/>
+				<ExtendedTooltip name="ТаблицаРасшифровкиСостояниеПросмотраРасширеннаяПодсказка" id="271"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="ТаблицаРасшифровкиУправлениеПоиском" id="267">
+			<SearchControlAddition name="ТаблицаРасшифровкиУправлениеПоиском" id="272">
 				<AdditionSource>
 					<Item>ТаблицаРасшифровки</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="ТаблицаРасшифровкиУправлениеПоискомКонтекстноеМеню" id="268"/>
-				<ExtendedTooltip name="ТаблицаРасшифровкиУправлениеПоискомРасширеннаяПодсказка" id="269"/>
+				<ContextMenu name="ТаблицаРасшифровкиУправлениеПоискомКонтекстноеМеню" id="273"/>
+				<ExtendedTooltip name="ТаблицаРасшифровкиУправлениеПоискомРасширеннаяПодсказка" id="274"/>
 			</SearchControlAddition>
 			<Events>
 				<Event name="Selection">ТаблицаРасшифровкиВыбор</Event>
