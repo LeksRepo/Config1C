@@ -539,7 +539,7 @@
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Страница хлыстовой материал</v8:content>
+							<v8:content>Хлыстовой материал</v8:content>
 						</v8:item>
 					</Title>
 					<ToolTip>
@@ -548,6 +548,7 @@
 							<v8:content>Страница хлыстовой материал</v8:content>
 						</v8:item>
 					</ToolTip>
+					<TitleDataPath>Объект.СписокХлыстовыхМатериалов.RowsCount</TitleDataPath>
 					<ExtendedTooltip name="СтраницаХлыстовойМатериалРасширеннаяПодсказка" id="291"/>
 					<ChildItems>
 						<Table name="СписокХлыстовыхМатериалов" id="324">
@@ -589,6 +590,9 @@
 								<ContextMenu name="СписокХлыстовыхМатериаловУправлениеПоискомКонтекстноеМеню" id="374"/>
 								<ExtendedTooltip name="СписокХлыстовыхМатериаловУправлениеПоискомРасширеннаяПодсказка" id="375"/>
 							</SearchControlAddition>
+							<Events>
+								<Event name="OnActivateRow">СписокХлыстовыхМатериаловПриАктивизацииСтроки</Event>
+							</Events>
 							<ChildItems>
 								<LabelField name="СписокХлыстовыхМатериаловНомерСтроки" id="328">
 									<DataPath>Объект.СписокХлыстовыхМатериалов.LineNumber</DataPath>
@@ -621,68 +625,79 @@
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="ГруппаХлыстыРаскройРасширеннаяПодсказка" id="335"/>
 							<ChildItems>
-								<Table name="ХлыстыДляПередачи" id="292">
+								<Table name="ОстаткиХлыстов" id="292">
 									<AutoInsertNewRow>true</AutoInsertNewRow>
 									<EnableStartDrag>true</EnableStartDrag>
 									<EnableDrag>true</EnableDrag>
-									<DataPath>Объект.ХлыстыДляПередачи</DataPath>
+									<DataPath>Объект.ОстаткиХлыстов</DataPath>
+									<CommandSet>
+										<ExcludedCommand>SortListAsc</ExcludedCommand>
+										<ExcludedCommand>MoveUp</ExcludedCommand>
+										<ExcludedCommand>CancelSearch</ExcludedCommand>
+										<ExcludedCommand>OutputList</ExcludedCommand>
+										<ExcludedCommand>SortListDesc</ExcludedCommand>
+										<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+										<ExcludedCommand>EndEdit</ExcludedCommand>
+										<ExcludedCommand>Change</ExcludedCommand>
+										<ExcludedCommand>Find</ExcludedCommand>
+										<ExcludedCommand>MoveDown</ExcludedCommand>
+									</CommandSet>
 									<SearchStringLocation>None</SearchStringLocation>
 									<ViewStatusLocation>None</ViewStatusLocation>
 									<SearchControlLocation>None</SearchControlLocation>
 									<RowFilter xsi:nil="true"/>
-									<ContextMenu name="ХлыстыДляПередачиКонтекстноеМеню" id="293"/>
-									<AutoCommandBar name="ХлыстыДляПередачиКоманднаяПанель" id="294">
-										<Autofill>false</Autofill>
+									<ContextMenu name="ОстаткиХлыстовКонтекстноеМеню" id="293"/>
+									<AutoCommandBar name="ОстаткиХлыстовКоманднаяПанель" id="294">
 										<ChildItems>
-											<Button name="ХлыстыДляПередачиСформироватьРаскройНаХлысты" id="338">
+											<Button name="ОстаткиХлыстовСформироватьРаскройНаХлысты" id="338">
 												<Type>CommandBarButton</Type>
 												<CommandName>Form.Command.СформироватьРаскройНаХлысты</CommandName>
-												<ExtendedTooltip name="ХлыстыДляПередачиСформироватьРаскройНаХлыстыРасширеннаяПодсказка" id="339"/>
+												<ExtendedTooltip name="ОстаткиХлыстовСформироватьРаскройНаХлыстыРасширеннаяПодсказка" id="339"/>
 											</Button>
-											<Button name="ХлыстыДляПередачиОчиститьСписокХлыстов" id="336">
+											<Button name="ОстаткиХлыстовОчиститьСписокХлыстов" id="336">
 												<Type>CommandBarButton</Type>
 												<CommandName>Form.Command.ОчиститьСписокХлыстов</CommandName>
-												<ExtendedTooltip name="ХлыстыДляПередачиОчиститьСписокХлыстовРасширеннаяПодсказка" id="337"/>
+												<ExtendedTooltip name="ОстаткиХлыстовОчиститьСписокХлыстовРасширеннаяПодсказка" id="337"/>
 											</Button>
 										</ChildItems>
 									</AutoCommandBar>
-									<ExtendedTooltip name="ХлыстыДляПередачиРасширеннаяПодсказка" id="295"/>
-									<SearchStringAddition name="ХлыстыДляПередачиСтрокаПоиска" id="376">
+									<ExtendedTooltip name="ОстаткиХлыстовРасширеннаяПодсказка" id="295"/>
+									<SearchStringAddition name="ОстаткиХлыстовСтрокаПоиска" id="376">
 										<AdditionSource>
-											<Item>ХлыстыДляПередачи</Item>
+											<Item>ОстаткиХлыстов</Item>
 											<Type>SearchStringRepresentation</Type>
 										</AdditionSource>
-										<ContextMenu name="ХлыстыДляПередачиСтрокаПоискаКонтекстноеМеню" id="377"/>
-										<ExtendedTooltip name="ХлыстыДляПередачиСтрокаПоискаРасширеннаяПодсказка" id="378"/>
+										<ContextMenu name="ОстаткиХлыстовСтрокаПоискаКонтекстноеМеню" id="377"/>
+										<ExtendedTooltip name="ОстаткиХлыстовСтрокаПоискаРасширеннаяПодсказка" id="378"/>
 									</SearchStringAddition>
-									<ViewStatusAddition name="ХлыстыДляПередачиСостояниеПросмотра" id="379">
+									<ViewStatusAddition name="ОстаткиХлыстовСостояниеПросмотра" id="379">
 										<AdditionSource>
-											<Item>ХлыстыДляПередачи</Item>
+											<Item>ОстаткиХлыстов</Item>
 											<Type>ViewStatusRepresentation</Type>
 										</AdditionSource>
-										<ContextMenu name="ХлыстыДляПередачиСостояниеПросмотраКонтекстноеМеню" id="380"/>
-										<ExtendedTooltip name="ХлыстыДляПередачиСостояниеПросмотраРасширеннаяПодсказка" id="381"/>
+										<ContextMenu name="ОстаткиХлыстовСостояниеПросмотраКонтекстноеМеню" id="380"/>
+										<ExtendedTooltip name="ОстаткиХлыстовСостояниеПросмотраРасширеннаяПодсказка" id="381"/>
 									</ViewStatusAddition>
-									<SearchControlAddition name="ХлыстыДляПередачиУправлениеПоиском" id="382">
+									<SearchControlAddition name="ОстаткиХлыстовУправлениеПоиском" id="382">
 										<AdditionSource>
-											<Item>ХлыстыДляПередачи</Item>
+											<Item>ОстаткиХлыстов</Item>
 											<Type>SearchControl</Type>
 										</AdditionSource>
-										<ContextMenu name="ХлыстыДляПередачиУправлениеПоискомКонтекстноеМеню" id="383"/>
-										<ExtendedTooltip name="ХлыстыДляПередачиУправлениеПоискомРасширеннаяПодсказка" id="384"/>
+										<ContextMenu name="ОстаткиХлыстовУправлениеПоискомКонтекстноеМеню" id="383"/>
+										<ExtendedTooltip name="ОстаткиХлыстовУправлениеПоискомРасширеннаяПодсказка" id="384"/>
 									</SearchControlAddition>
 									<ChildItems>
-										<LabelField name="ХлыстыДляПередачиНомерСтроки" id="296">
-											<DataPath>Объект.ХлыстыДляПередачи.LineNumber</DataPath>
+										<LabelField name="ОстаткиХлыстовНомерСтроки" id="296">
+											<DataPath>Объект.ОстаткиХлыстов.LineNumber</DataPath>
 											<EditMode>EnterOnInput</EditMode>
-											<ContextMenu name="ХлыстыДляПередачиНомерСтрокиКонтекстноеМеню" id="297"/>
-											<ExtendedTooltip name="ХлыстыДляПередачиНомерСтрокиРасширеннаяПодсказка" id="298"/>
+											<ContextMenu name="ОстаткиХлыстовНомерСтрокиКонтекстноеМеню" id="297"/>
+											<ExtendedTooltip name="ОстаткиХлыстовНомерСтрокиРасширеннаяПодсказка" id="298"/>
 										</LabelField>
-										<InputField name="ХлыстыДляПередачиКоличество" id="302">
-											<DataPath>Объект.ХлыстыДляПередачи.Количество</DataPath>
+										<InputField name="ОстаткиХлыстовКоличество" id="302">
+											<DataPath>Объект.ОстаткиХлыстов.Количество</DataPath>
 											<EditMode>EnterOnInput</EditMode>
-											<ContextMenu name="ХлыстыДляПередачиКоличествоКонтекстноеМеню" id="303"/>
-											<ExtendedTooltip name="ХлыстыДляПередачиКоличествоРасширеннаяПодсказка" id="304"/>
+											<ContextMenu name="ОстаткиХлыстовКоличествоКонтекстноеМеню" id="303"/>
+											<ExtendedTooltip name="ОстаткиХлыстовКоличествоРасширеннаяПодсказка" id="304"/>
 										</InputField>
 									</ChildItems>
 								</Table>
@@ -1196,7 +1211,7 @@
 				</v8:item>
 			</ToolTip>
 			<Picture>
-				<xr:Ref>StdPicture.Delete</xr:Ref>
+				<xr:Ref>StdPicture.DeleteDirectly</xr:Ref>
 				<xr:LoadTransparent>true</xr:LoadTransparent>
 			</Picture>
 			<Representation>TextPicture</Representation>
@@ -1219,6 +1234,7 @@
 				<xr:Ref>CommonPicture.ИерархическийСписок</xr:Ref>
 				<xr:LoadTransparent>true</xr:LoadTransparent>
 			</Picture>
+			<Action>СформироватьРаскройНаХлысты</Action>
 			<Representation>TextPicture</Representation>
 			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>
