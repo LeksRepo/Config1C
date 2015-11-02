@@ -14,6 +14,10 @@
 			</Button>
 		</ChildItems>
 	</AutoCommandBar>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
 	<ChildItems>
 		<Pages name="СтраницыСписков" id="30">
 			<Title>
@@ -91,7 +95,7 @@
 											<Button name="АктивныеДокументСлужебнаяЗапискаАктОбОказанныхУслугах" id="145">
 												<Type>CommandBarButton</Type>
 												<CommandName>Document.СлужебнаяЗаписка.Command.АктОбОказанныхУслугах</CommandName>
-												<DataPath>36:02023637-7868-4a5f-8576-835a76e0c9ba/23</DataPath>
+												<DataPath>Items.Активные.CurrentData.Ref</DataPath>
 												<ExtendedTooltip name="АктивныеДокументСлужебнаяЗапискаАктОбОказанныхУслугахРасширеннаяПодсказка" id="146"/>
 											</Button>
 										</ChildItems>
@@ -125,7 +129,7 @@
 							</SearchControlAddition>
 							<ChildItems>
 								<LabelField name="Дата" id="40">
-									<DataPath>2/1</DataPath>
+									<DataPath>Активные.Date</DataPath>
 									<Width>6</Width>
 									<HorizontalStretch>false</HorizontalStretch>
 									<Format>
@@ -138,7 +142,7 @@
 									<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="42"/>
 								</LabelField>
 								<LabelField name="Номер" id="134">
-									<DataPath>2/25</DataPath>
+									<DataPath>Активные.Номер</DataPath>
 									<Width>1</Width>
 									<HorizontalStretch>false</HorizontalStretch>
 									<VerticalStretch>false</VerticalStretch>
@@ -146,7 +150,7 @@
 									<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="136"/>
 								</LabelField>
 								<CheckBoxField name="ВАрхив" id="147">
-									<DataPath>2/24</DataPath>
+									<DataPath>Активные.Архив</DataPath>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -158,14 +162,14 @@
 									<ExtendedTooltip name="ВАрхивРасширеннаяПодсказка" id="149"/>
 								</CheckBoxField>
 								<LabelField name="Адресат" id="49">
-									<DataPath>2/8</DataPath>
+									<DataPath>Активные.Адресат</DataPath>
 									<Width>25</Width>
 									<HorizontalStretch>false</HorizontalStretch>
 									<ContextMenu name="АдресатКонтекстноеМеню" id="50"/>
 									<ExtendedTooltip name="АдресатРасширеннаяПодсказка" id="51"/>
 								</LabelField>
 								<LabelField name="ВидСлужебнойЗаписки" id="52">
-									<DataPath>2/9</DataPath>
+									<DataPath>Активные.ВидСлужебнойЗаписки</DataPath>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -178,12 +182,12 @@
 									<ExtendedTooltip name="ВидСлужебнойЗапискиРасширеннаяПодсказка" id="54"/>
 								</LabelField>
 								<LabelField name="Тема" id="125">
-									<DataPath>2/18</DataPath>
+									<DataPath>Активные.Тема</DataPath>
 									<ContextMenu name="ТемаКонтекстноеМеню" id="126"/>
 									<ExtendedTooltip name="ТемаРасширеннаяПодсказка" id="127"/>
 								</LabelField>
 								<LabelField name="Автор" id="46">
-									<DataPath>2/7</DataPath>
+									<DataPath>Активные.Автор</DataPath>
 									<Width>25</Width>
 									<HorizontalStretch>false</HorizontalStretch>
 									<ContextMenu name="АвторКонтекстноеМеню" id="47"/>
@@ -425,7 +429,7 @@
 							</SearchControlAddition>
 							<ChildItems>
 								<LabelField name="SMARTДата" id="201">
-									<DataPath>1/1</DataPath>
+									<DataPath>SMART.Date</DataPath>
 									<Width>6</Width>
 									<HorizontalStretch>false</HorizontalStretch>
 									<Format>
@@ -438,7 +442,7 @@
 									<ExtendedTooltip name="SMARTДатаРасширеннаяПодсказка" id="203"/>
 								</LabelField>
 								<LabelField name="SMARTНомер" id="204">
-									<DataPath>1/16</DataPath>
+									<DataPath>SMART.Номер</DataPath>
 									<Width>1</Width>
 									<HorizontalStretch>false</HorizontalStretch>
 									<VerticalStretch>false</VerticalStretch>
@@ -446,20 +450,20 @@
 									<ExtendedTooltip name="SMARTНомерРасширеннаяПодсказка" id="206"/>
 								</LabelField>
 								<CheckBoxField name="SMARTАрхив" id="216">
-									<DataPath>1/6</DataPath>
+									<DataPath>SMART.Архив</DataPath>
 									<CheckBoxType>Auto</CheckBoxType>
 									<ContextMenu name="SMARTАрхивКонтекстноеМеню" id="217"/>
 									<ExtendedTooltip name="SMARTАрхивРасширеннаяПодсказка" id="218"/>
 								</CheckBoxField>
 								<LabelField name="SMARTАдресат" id="213">
-									<DataPath>1/5</DataPath>
+									<DataPath>SMART.Адресат</DataPath>
 									<Width>25</Width>
 									<HorizontalStretch>false</HorizontalStretch>
 									<ContextMenu name="SMARTАдресатКонтекстноеМеню" id="214"/>
 									<ExtendedTooltip name="SMARTАдресатРасширеннаяПодсказка" id="215"/>
 								</LabelField>
 								<LabelField name="SMARTВидСлужебнойЗаписки" id="219">
-									<DataPath>1/7</DataPath>
+									<DataPath>SMART.ВидСлужебнойЗаписки</DataPath>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -472,12 +476,12 @@
 									<ExtendedTooltip name="SMARTВидСлужебнойЗапискиРасширеннаяПодсказка" id="221"/>
 								</LabelField>
 								<LabelField name="SMARTТема" id="228">
-									<DataPath>1/14</DataPath>
+									<DataPath>SMART.Тема</DataPath>
 									<ContextMenu name="SMARTТемаКонтекстноеМеню" id="229"/>
 									<ExtendedTooltip name="SMARTТемаРасширеннаяПодсказка" id="230"/>
 								</LabelField>
 								<LabelField name="SMARTАвтор" id="210">
-									<DataPath>1/4</DataPath>
+									<DataPath>SMART.Автор</DataPath>
 									<Width>25</Width>
 									<HorizontalStretch>false</HorizontalStretch>
 									<ContextMenu name="SMARTАвторКонтекстноеМеню" id="211"/>
@@ -506,24 +510,38 @@
 				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
 				<QueryText>ВЫБРАТЬ
-	ДокументСлужебнаяЗаписка.Ссылка,
-	ПОДСТРОКА(ДокументСлужебнаяЗаписка.Номер,7,5) КАК Номер,
-	ДокументСлужебнаяЗаписка.Дата,
-	ДокументСлужебнаяЗаписка.Автор.ФизическоеЛицо.Фамилия + " " + ПОДСТРОКА(ДокументСлужебнаяЗаписка.Автор.ФизическоеЛицо.Имя, 1, 1) + ". " + ПОДСТРОКА(ДокументСлужебнаяЗаписка.Автор.ФизическоеЛицо.Отчество, 1, 1) + "." КАК Автор,
-	ДокументСлужебнаяЗаписка.Адресат.ФизическоеЛицо.Фамилия + " " + ПОДСТРОКА(ДокументСлужебнаяЗаписка.Адресат.ФизическоеЛицо.Имя, 1, 1) + ". " + ПОДСТРОКА(ДокументСлужебнаяЗаписка.Адресат.ФизическоеЛицо.Отчество, 1, 1) + "." КАК Адресат,
-	ДокументСлужебнаяЗаписка.ВидСлужебнойЗаписки,
-	ДокументСлужебнаяЗаписка.Документ,
-	ДокументСлужебнаяЗаписка.Тема,
-	ДокументСлужебнаяЗаписка.Ознакомлен,
-	ДокументСлужебнаяЗаписка.Архив,
-	СтатусыСлужебныхЗаписок.Статус
+	Записка.Ссылка,
+	ПОДСТРОКА(Записка.Номер,7,5) КАК Номер,
+	Записка.Дата,
+	ВЫБОР
+		 КОГДА Записка.Автор ССЫЛКА Справочник.ВнешниеПользователи
+		 ТОГДА ВЫРАЗИТЬ(Записка.Автор КАК Справочник.ВнешниеПользователи).ОбъектАвторизации.Наименование
+		 ИНАЧЕ ВЫРАЗИТЬ(Записка.Автор КАК Справочник.Пользователи).ФизическоеЛицо.Фамилия + " " + ПОДСТРОКА(ВЫРАЗИТЬ(Записка.Автор КАК Справочник.Пользователи).ФизическоеЛицо.Имя, 1, 1) + ". " + ПОДСТРОКА(ВЫРАЗИТЬ(Записка.Автор КАК Справочник.Пользователи).ФизическоеЛицо.Отчество, 1, 1) + "."
+	КОНЕЦ КАК Автор,
+	ВЫБОР
+		 КОГДА Записка.Адресат ССЫЛКА Справочник.ВнешниеПользователи
+		 ТОГДА ВЫРАЗИТЬ(Записка.Адресат КАК Справочник.ВнешниеПользователи).ОбъектАвторизации.Наименование
+		 ИНАЧЕ ВЫРАЗИТЬ(Записка.Адресат КАК Справочник.Пользователи).ФизическоеЛицо.Фамилия + " " + ПОДСТРОКА(ВЫРАЗИТЬ(Записка.Адресат КАК Справочник.Пользователи).ФизическоеЛицо.Имя, 1, 1) + ". " + ПОДСТРОКА(ВЫРАЗИТЬ(Записка.Адресат КАК Справочник.Пользователи).ФизическоеЛицо.Отчество, 1, 1) + "."
+	КОНЕЦ КАК Адресат,
+	Записка.ВидСлужебнойЗаписки,
+	Записка.Документ,
+	Записка.Тема,
+	ВЫБОР
+		 КОГДА НЕ Записка.Ознакомлен И Записка.Адресат = &amp;Пользователь
+		 ТОГДА ЛОЖЬ
+		 ИНАЧЕ ИСТИНА
+	КОНЕЦ КАК Ознакомлен,
+	Записка.Архив
 ИЗ
-	Документ.СлужебнаяЗаписка КАК ДокументСлужебнаяЗаписка
-		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СтатусыСлужебныхЗаписок КАК СтатусыСлужебныхЗаписок
-		ПО ДокументСлужебнаяЗаписка.Ссылка = СтатусыСлужебныхЗаписок.СлужебнаяЗаписка
+	Документ.СлужебнаяЗаписка КАК Записка
 ГДЕ
-	НЕ ДокументСлужебнаяЗаписка.Проведен
-	И ДокументСлужебнаяЗаписка.ВидСлужебнойЗаписки &lt;&gt; ЗНАЧЕНИЕ(Перечисление.ВидыСлужебнойЗаписки.Поручение)</QueryText>
+	НЕ Записка.Проведен
+	И Записка.ВидСлужебнойЗаписки &lt;&gt; ЗНАЧЕНИЕ(Перечисление.ВидыСлужебнойЗаписки.Поручение)
+	И ВЫБОР
+		   КОГДА &amp;ДилерскийДоступ 
+		   ТОГДА ВЫРАЗИТЬ(Записка.Автор КАК Справочник.ВнешниеПользователи) = &amp;Пользователь 
+		   ИНАЧЕ ИСТИНА
+	  КОНЕЦ</QueryText>
 				<MainTable>Document.СлужебнаяЗаписка</MainTable>
 				<ListSettings>
 					<dcsset:filter>
@@ -547,22 +565,13 @@
 									<dcsset:field>ВидСлужебнойЗаписки</dcsset:field>
 								</dcsset:item>
 								<dcsset:item>
-									<dcsset:field>Виновный</dcsset:field>
-								</dcsset:item>
-								<dcsset:item>
 									<dcsset:field>Дата</dcsset:field>
 								</dcsset:item>
 								<dcsset:item>
 									<dcsset:field>Тема</dcsset:field>
 								</dcsset:item>
 								<dcsset:item>
-									<dcsset:field>НеСогласен</dcsset:field>
-								</dcsset:item>
-								<dcsset:item>
 									<dcsset:field>Номер</dcsset:field>
-								</dcsset:item>
-								<dcsset:item>
-									<dcsset:field>ДатаКонтроля</dcsset:field>
 								</dcsset:item>
 								<dcsset:item>
 									<dcsset:field>Архив</dcsset:field>
@@ -605,19 +614,10 @@
 									<dcsset:field>ВидСлужебнойЗаписки</dcsset:field>
 								</dcsset:item>
 								<dcsset:item>
-									<dcsset:field>Виновный</dcsset:field>
-								</dcsset:item>
-								<dcsset:item>
 									<dcsset:field>Дата</dcsset:field>
 								</dcsset:item>
 								<dcsset:item>
-									<dcsset:field>ДатаКонтроля</dcsset:field>
-								</dcsset:item>
-								<dcsset:item>
 									<dcsset:field>Документ</dcsset:field>
-								</dcsset:item>
-								<dcsset:item>
-									<dcsset:field>НеСогласен</dcsset:field>
 								</dcsset:item>
 								<dcsset:item>
 									<dcsset:field>Номер</dcsset:field>
@@ -633,9 +633,6 @@
 								</dcsset:item>
 								<dcsset:item>
 									<dcsset:field>Тема</dcsset:field>
-								</dcsset:item>
-								<dcsset:item>
-									<dcsset:field>Утверждаю</dcsset:field>
 								</dcsset:item>
 								<dcsset:item>
 									<dcsset:field>Архив</dcsset:field>
@@ -661,13 +658,6 @@
 											<dcsset:left xsi:type="dcscor:Field">ВидСлужебнойЗаписки</dcsset:left>
 											<dcsset:comparisonType>Equal</dcsset:comparisonType>
 											<dcsset:right xsi:type="dcscor:DesignTimeValue">Перечисление.ВидыСлужебнойЗаписки.Поручение</dcsset:right>
-										</dcsset:item>
-										<dcsset:item xsi:type="dcsset:FilterItemComparison">
-											<dcsset:left xsi:type="dcscor:Field">ДатаКонтроля</dcsset:left>
-											<dcsset:comparisonType>Less</dcsset:comparisonType>
-											<dcsset:right xsi:type="v8:StandardBeginningDate">
-												<v8:variant xsi:type="v8:StandardBeginningDateVariant">BeginningOfThisDay</v8:variant>
-											</dcsset:right>
 										</dcsset:item>
 									</dcsset:item>
 								</dcsset:item>
@@ -699,18 +689,31 @@
 				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
 				<QueryText>ВЫБРАТЬ
-	ДокументСлужебнаяЗаписка.Ссылка,
-	ПОДСТРОКА(ДокументСлужебнаяЗаписка.Номер,7,5) КАК Номер,
-	ДокументСлужебнаяЗаписка.Дата,
-	ДокументСлужебнаяЗаписка.Автор.ФизическоеЛицо.Фамилия + " " + ПОДСТРОКА(ДокументСлужебнаяЗаписка.Автор.ФизическоеЛицо.Имя, 1, 1) + ". " + ПОДСТРОКА(ДокументСлужебнаяЗаписка.Автор.ФизическоеЛицо.Отчество, 1, 1) + "." КАК Автор,
-	ДокументСлужебнаяЗаписка.Адресат.ФизическоеЛицо.Фамилия + " " + ПОДСТРОКА(ДокументСлужебнаяЗаписка.Адресат.ФизическоеЛицо.Имя, 1, 1) + ". " + ПОДСТРОКА(ДокументСлужебнаяЗаписка.Адресат.ФизическоеЛицо.Отчество, 1, 1) + "." КАК Адресат,
-	ДокументСлужебнаяЗаписка.ВидСлужебнойЗаписки,
-	ДокументСлужебнаяЗаписка.Документ,
-	ДокументСлужебнаяЗаписка.Тема
+	Записка.Ссылка,
+	ПОДСТРОКА(Записка.Номер,7,5) КАК Номер,
+	Записка.Дата,
+	ВЫБОР
+		 КОГДА Записка.Автор ССЫЛКА Справочник.ВнешниеПользователи
+		 ТОГДА ВЫРАЗИТЬ(Записка.Автор КАК Справочник.ВнешниеПользователи).ОбъектАвторизации.Наименование
+		 ИНАЧЕ ВЫРАЗИТЬ(Записка.Автор КАК Справочник.Пользователи).ФизическоеЛицо.Фамилия + " " + ПОДСТРОКА(ВЫРАЗИТЬ(Записка.Автор КАК Справочник.Пользователи).ФизическоеЛицо.Имя, 1, 1) + ". " + ПОДСТРОКА(ВЫРАЗИТЬ(Записка.Автор КАК Справочник.Пользователи).ФизическоеЛицо.Отчество, 1, 1) + "."
+	КОНЕЦ КАК Автор,
+	ВЫБОР
+		 КОГДА Записка.Адресат ССЫЛКА Справочник.ВнешниеПользователи
+		 ТОГДА ВЫРАЗИТЬ(Записка.Адресат КАК Справочник.ВнешниеПользователи).ОбъектАвторизации.Наименование
+		 ИНАЧЕ ВЫРАЗИТЬ(Записка.Адресат КАК Справочник.Пользователи).ФизическоеЛицо.Фамилия + " " + ПОДСТРОКА(ВЫРАЗИТЬ(Записка.Адресат КАК Справочник.Пользователи).ФизическоеЛицо.Имя, 1, 1) + ". " + ПОДСТРОКА(ВЫРАЗИТЬ(Записка.Адресат КАК Справочник.Пользователи).ФизическоеЛицо.Отчество, 1, 1) + "."
+	КОНЕЦ КАК Адресат,
+	Записка.ВидСлужебнойЗаписки,
+	Записка.Документ,
+	Записка.Тема
 ИЗ
-	Документ.СлужебнаяЗаписка КАК ДокументСлужебнаяЗаписка
+	Документ.СлужебнаяЗаписка КАК Записка
 ГДЕ
-	ДокументСлужебнаяЗаписка.Проведен</QueryText>
+	Записка.Проведен
+	И ВЫБОР
+		   КОГДА &amp;ДилерскийДоступ 
+		   ТОГДА ВЫРАЗИТЬ(Записка.Автор КАК Справочник.ВнешниеПользователи) = &amp;Пользователь 
+		   ИНАЧЕ ИСТИНА
+	  КОНЕЦ</QueryText>
 				<MainTable>Document.СлужебнаяЗаписка</MainTable>
 				<ListSettings>
 					<dcsset:filter>
@@ -751,12 +754,9 @@
 	ДокументСлужебнаяЗаписка.Документ,
 	ДокументСлужебнаяЗаписка.Тема,
 	ДокументСлужебнаяЗаписка.Ознакомлен,
-	ДокументСлужебнаяЗаписка.Архив,
-	СтатусыСлужебныхЗаписок.Статус
+	ДокументСлужебнаяЗаписка.Архив
 ИЗ
 	Документ.СлужебнаяЗаписка КАК ДокументСлужебнаяЗаписка
-		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СтатусыСлужебныхЗаписок КАК СтатусыСлужебныхЗаписок
-		ПО ДокументСлужебнаяЗаписка.Ссылка = СтатусыСлужебныхЗаписок.СлужебнаяЗаписка
 ГДЕ
 	НЕ ДокументСлужебнаяЗаписка.Проведен
 	И ДокументСлужебнаяЗаписка.ВидСлужебнойЗаписки = ЗНАЧЕНИЕ(Перечисление.ВидыСлужебнойЗаписки.Поручение)</QueryText>
@@ -776,6 +776,28 @@
 					</dcsset:conditionalAppearance>
 				</ListSettings>
 			</Settings>
+		</Attribute>
+		<Attribute name="ДилерскийДоступ" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дилерский доступ</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Пользователь" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пользователь</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.ВнешниеПользователи</v8:Type>
+			</Type>
 		</Attribute>
 	</Attributes>
 </Form>
