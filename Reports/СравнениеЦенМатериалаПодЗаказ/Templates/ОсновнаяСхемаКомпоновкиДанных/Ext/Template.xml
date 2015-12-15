@@ -69,14 +69,6 @@
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Регистратор</dataPath>
-			<field>Регистратор</field>
-			<role>
-				<dcscom:periodNumber>1</dcscom:periodNumber>
-				<dcscom:periodType>Main</dcscom:periodType>
-			</role>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>ЦенаФакт</dataPath>
 			<field>ЦенаФакт</field>
 			<title xsi:type="v8:LocalStringType">
@@ -127,6 +119,20 @@
 		<field xsi:type="DataSetFieldField">
 			<dataPath>СубконтоДт3</dataPath>
 			<field>СубконтоДт3</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДокументЗакупа</dataPath>
+			<field>ДокументЗакупа</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документ закупа</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:periodNumber>1</dcscom:periodNumber>
+				<dcscom:periodType>Main</dcscom:periodType>
+			</role>
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
@@ -223,7 +229,7 @@
 	втНоменклатураПодЗаказ.Номенклатура,
 	втНоменклатураПодЗаказ.Количество КАК КоличествоПлан,
 	втНоменклатураПодЗаказ.Сумма КАК СуммаПлан,
-	втОборотыБазовые.Регистратор,
+	втОборотыБазовые.Регистратор КАК ДокументЗакупа,
 	втОборотыБазовые.Количество КАК КоличествоФакт,
 	втОборотыБазовые.Сумма КАК СуммаФакт,
 	ВЫБОР
@@ -385,7 +391,7 @@
 				<dcscor:parameter>ПараметрыВыбора</dcscor:parameter>
 				<dcscor:value xsi:type="dcscor:ChoiceParameters">
 					<dcscor:item>
-						<dcscor:choiceParameter>Отбор.Активоность</dcscor:choiceParameter>
+						<dcscor:choiceParameter>Отбор.Активность</dcscor:choiceParameter>
 						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
 					</dcscor:item>
 					<dcscor:item>
