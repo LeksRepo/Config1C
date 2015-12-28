@@ -3,6 +3,9 @@
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnOpen">ПриОткрытии</Event>
+	</Events>
 	<ChildItems>
 		<InputField name="Наименование" id="4">
 			<DataPath>Объект.Description</DataPath>
@@ -79,7 +82,7 @@
 			<ContextMenu name="ТабДокКонтекстноеМеню" id="22"/>
 			<ExtendedTooltip name="ТабДокРасширеннаяПодсказка" id="23"/>
 			<Events>
-				<Event name="DetailProcessing">ТабДокОбработкаРасшифровки</Event>
+				<Event name="Selection">ТабДокВыбор</Event>
 			</Events>
 		</SpreadSheetDocumentField>
 	</ChildItems>
@@ -132,6 +135,7 @@
 					<v8:content>Выбрать все</v8:content>
 				</v8:item>
 			</ToolTip>
+			<Action>ВыбратьВсе</Action>
 		</Command>
 		<Command name="Очистить" id="3">
 			<Title>
@@ -146,6 +150,7 @@
 					<v8:content>Очистить</v8:content>
 				</v8:item>
 			</ToolTip>
+			<Action>Очистить</Action>
 		</Command>
 	</Commands>
 </Form>
