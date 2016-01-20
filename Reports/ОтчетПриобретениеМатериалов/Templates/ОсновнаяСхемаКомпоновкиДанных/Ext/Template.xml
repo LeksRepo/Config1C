@@ -108,21 +108,30 @@
 		<query>ВЫБРАТЬ
 	СпецификацияСписокНоменклатуры.Ссылка КАК Спецификация,
 	СпецификацияСписокНоменклатуры.Номенклатура КАК Номенклатура,
-	СпецификацияСписокНоменклатуры.Количество КАК КоличествоВСпецификации
+	СУММА(СпецификацияСписокНоменклатуры.Количество) КАК КоличествоВСпецификации,
+	НарядЗаданиеСписокСпецификаций.Ссылка.Подразделение
 ПОМЕСТИТЬ втНоменклатураСпецификаций
 ИЗ
 	Документ.Спецификация.СписокНоменклатуры КАК СпецификацияСписокНоменклатуры
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.НарядЗадание.СписокСпецификаций КАК НарядЗаданиеСписокСпецификаций
+		ПО СпецификацияСписокНоменклатуры.Ссылка = НарядЗаданиеСписокСпецификаций.Спецификация
 ГДЕ
-	СпецификацияСписокНоменклатуры.Ссылка.Проведен
+	НарядЗаданиеСписокСпецификаций.Ссылка.Проведен
 	И СпецификацияСписокНоменклатуры.Ссылка.Подразделение = &amp;Подразделение
 	И СпецификацияСписокНоменклатуры.Номенклатура.ВидНоменклатуры = ЗНАЧЕНИЕ(Перечисление.ВидыНоменклатуры.Материал)
 {ГДЕ
-	(СпецификацияСписокНоменклатуры.Ссылка.Дата МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода)}
+	(НарядЗаданиеСписокСпецификаций.Ссылка.Дата МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода)}
+
+СГРУППИРОВАТЬ ПО
+	СпецификацияСписокНоменклатуры.Ссылка,
+	СпецификацияСписокНоменклатуры.Номенклатура,
+	НарядЗаданиеСписокСпецификаций.Ссылка.Подразделение
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
 ВЫБРАТЬ
 	УправленческийОборотыДтКт.Регистратор,
+	УправленческийОборотыДтКт.Подразделение,
 	ВЫБОР
 		КОГДА ВЫРАЗИТЬ(УправленческийОборотыДтКт.СубконтоДт1 КАК Справочник.Номенклатура).Базовый
 			ТОГДА УправленческийОборотыДтКт.СубконтоДт1
@@ -141,6 +150,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 ВЫБРАТЬ
+	втНоменклатураСпецификаций.Подразделение КАК Подразделение,
 	втНоменклатураСпецификаций.Номенклатура КАК Номенклатура,
 	втНоменклатураСпецификаций.Спецификация КАК Регистратор,
 	втНоменклатураСпецификаций.КоличествоВСпецификации КАК КоличествоВСпецификации,
@@ -152,6 +162,7 @@
 ОБЪЕДИНИТЬ ВСЕ
 
 ВЫБРАТЬ
+	втЗакупленоРегистр.Подразделение,
 	втЗакупленоРегистр.Номенклатура,
 	втЗакупленоРегистр.Регистратор,
 	0,
@@ -160,6 +171,126 @@
 ИЗ
 	втЗакупленоРегистр КАК втЗакупленоРегистр</query>
 	</dataSet>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных2</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Номенклатура</dataPath>
+			<field>Номенклатура</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Подразделение</dataPath>
+			<field>Подразделение</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПлановаяЗакупочная</dataPath>
+			<field>ПлановаяЗакупочная</field>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	ЦеныНоменклатурыПоПодразделениямСрезПоследних.Подразделение,
+	ЦеныНоменклатурыПоПодразделениямСрезПоследних.Номенклатура,
+	ЦеныНоменклатурыПоПодразделениямСрезПоследних.ПлановаяЗакупочная
+ИЗ
+	РегистрСведений.ЦеныНоменклатурыПоПодразделениям.СрезПоследних КАК ЦеныНоменклатурыПоПодразделениямСрезПоследних</query>
+	</dataSet>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных3</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Номенклатура</dataPath>
+			<field>Номенклатура</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Подразделение</dataPath>
+			<field>Подразделение</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПодЗаказ</dataPath>
+			<field>ПодЗаказ</field>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ГоризонтальноеПоложение</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:HorizontalAlign">Center</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">БЛ=; БИ=V</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	НоменклатураПодразделений.Подразделение,
+	НоменклатураПодразделений.Номенклатура,
+	НоменклатураПодразделений.ПодЗаказ
+ИЗ
+	РегистрСведений.НоменклатураПодразделений КАК НоменклатураПодразделений</query>
+	</dataSet>
+	<dataSetLink>
+		<sourceDataSet>НаборДанных1</sourceDataSet>
+		<destinationDataSet>НаборДанных2</destinationDataSet>
+		<sourceExpression>Номенклатура</sourceExpression>
+		<destinationExpression>Номенклатура</destinationExpression>
+	</dataSetLink>
+	<dataSetLink>
+		<sourceDataSet>НаборДанных1</sourceDataSet>
+		<destinationDataSet>НаборДанных2</destinationDataSet>
+		<sourceExpression>Подразделение</sourceExpression>
+		<destinationExpression>Подразделение</destinationExpression>
+	</dataSetLink>
+	<dataSetLink>
+		<sourceDataSet>НаборДанных1</sourceDataSet>
+		<destinationDataSet>НаборДанных3</destinationDataSet>
+		<sourceExpression>Номенклатура</sourceExpression>
+		<destinationExpression>Номенклатура</destinationExpression>
+	</dataSetLink>
+	<dataSetLink>
+		<sourceDataSet>НаборДанных1</sourceDataSet>
+		<destinationDataSet>НаборДанных3</destinationDataSet>
+		<sourceExpression>Подразделение</sourceExpression>
+		<destinationExpression>Подразделение</destinationExpression>
+	</dataSetLink>
+	<calculatedField>
+		<dataPath>ЦенаЗакуплено</dataPath>
+		<expression>ВЫБОР КОГДА КоличествоЗакуплено &gt; 0 ТОГДА СуммаЗакуплено / КоличествоЗакуплено ИНАЧЕ 0 КОНЕЦ</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Цена закуплено</v8:content>
+			</v8:item>
+		</title>
+		<appearance>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>Формат</dcscor:parameter>
+				<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2</dcscor:value>
+			</dcscor:item>
+		</appearance>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>Отклонение</dataPath>
+		<expression>ПлановаяЗакупочная - ВЫБОР КОГДА КоличествоЗакуплено &gt; 0 ТОГДА СуммаЗакуплено / КоличествоЗакуплено ИНАЧЕ 0 КОНЕЦ</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Отклонение</v8:content>
+			</v8:item>
+		</title>
+		<appearance>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>Формат</dcscor:parameter>
+				<dcscor:value xsi:type="xs:string">ЧЦ=15; ЧДЦ=2</dcscor:value>
+			</dcscor:item>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>ВыделятьОтрицательные</dcscor:parameter>
+				<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+			</dcscor:item>
+		</appearance>
+	</calculatedField>
 	<totalField>
 		<dataPath>КоличествоВСпецификации</dataPath>
 		<expression>Сумма(КоличествоВСпецификации)</expression>
@@ -171,6 +302,21 @@
 	<totalField>
 		<dataPath>СуммаЗакуплено</dataPath>
 		<expression>Сумма(СуммаЗакуплено)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ЦенаЗакуплено</dataPath>
+		<expression>ВЫБОР КОГДА Сумма(КоличествоЗакуплено) &gt; 0 ТОГДА Сумма(СуммаЗакуплено) / Сумма(КоличествоЗакуплено) ИНАЧЕ 0 КОНЕЦ</expression>
+		<group>Номенклатура</group>
+	</totalField>
+	<totalField>
+		<dataPath>ПлановаяЗакупочная</dataPath>
+		<expression>Среднее(ПлановаяЗакупочная)</expression>
+		<group>Номенклатура</group>
+	</totalField>
+	<totalField>
+		<dataPath>Отклонение</dataPath>
+		<expression>ВЫБОР КОГДА Сумма(СуммаЗакуплено) &gt; 0 ТОГДА Среднее(ПлановаяЗакупочная) - ВЫБОР КОГДА Сумма(КоличествоЗакуплено) &gt; 0 ТОГДА Сумма(СуммаЗакуплено) / Сумма(КоличествоЗакуплено) ИНАЧЕ 0 КОНЕЦ ИНАЧЕ 0 КОНЕЦ</expression>
+		<group>Номенклатура</group>
 	</totalField>
 	<parameter>
 		<name>НачалоПериода</name>
@@ -276,6 +422,23 @@
 		<value xsi:type="dcscor:DesignTimeValue">ПланВидовХарактеристик.ВидыСубконто.Номенклатура</value>
 		<useRestriction>true</useRestriction>
 	</parameter>
+	<parameter>
+		<name>Период</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
 		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
@@ -285,10 +448,22 @@
 					<dcsset:field>Номенклатура</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ПодЗаказ</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>КоличествоВСпецификации</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ПлановаяЗакупочная</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>КоличествоЗакуплено</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ЦенаЗакуплено</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Отклонение</dcsset:field>
 				</dcsset:item>
 			</dcsset:selection>
 			<dcsset:dataParameters>
@@ -312,6 +487,13 @@
 					<dcsset:item xsi:type="dcsset:GroupItemField">
 						<dcsset:field>Номенклатура</dcsset:field>
 						<dcsset:groupType>Hierarchy</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ПодЗаказ</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
 						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
 						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
