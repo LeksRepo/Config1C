@@ -193,6 +193,7 @@
 									<ExtendedTooltip name="ДеталиИзделиеРасширеннаяПодсказка" id="7"/>
 									<Events>
 										<Event name="OnChange">ИзделиеПриИзменении</Event>
+										<Event name="StartChoice">ДеталиИзделиеНачалоВыбора</Event>
 									</Events>
 								</InputField>
 							</ChildItems>
@@ -232,65 +233,138 @@
 										</v8:item>
 									</ToolTip>
 									<HorizontalStretch>true</HorizontalStretch>
-									<Group>Horizontal</Group>
+									<Group>Vertical</Group>
 									<Representation>StrongSeparation</Representation>
 									<BackColor>style:ButtonBackColor</BackColor>
 									<ExtendedTooltip name="РазмерыРасширеннаяПодсказка" id="356"/>
 									<ChildItems>
-										<InputField name="ШиринаИзделия" id="23">
-											<DataPath>Items.Детали.CurrentData.ШиринаИзделия</DataPath>
+										<UsualGroup name="РазмерыОсновное" id="632">
 											<Title>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Ширина</v8:content>
+													<v8:content>Размеры основное</v8:content>
 												</v8:item>
 											</Title>
-											<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
-											<TitleLocation>Top</TitleLocation>
-											<ToolTipRepresentation>Balloon</ToolTipRepresentation>
-											<Width>7</Width>
-											<HorizontalStretch>false</HorizontalStretch>
-											<ChoiceButton>true</ChoiceButton>
-											<ContextMenu name="ШиринаИзделияКонтекстноеМеню" id="24"/>
-											<ExtendedTooltip name="ШиринаИзделияРасширеннаяПодсказка" id="25"/>
-											<Events>
-												<Event name="OnChange">ШиринаИзделияПриИзменении</Event>
-											</Events>
-										</InputField>
-										<InputField name="ВысотаИзделия" id="26">
-											<DataPath>Items.Детали.CurrentData.ВысотаИзделия</DataPath>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Размеры основное</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Horizontal</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="РазмерыОсновноеРасширеннаяПодсказка" id="633"/>
+											<ChildItems>
+												<InputField name="ШиринаИзделия" id="23">
+													<DataPath>Items.Детали.CurrentData.ШиринаИзделия</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Ширина</v8:content>
+														</v8:item>
+													</Title>
+													<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+													<TitleLocation>Top</TitleLocation>
+													<ToolTipRepresentation>Balloon</ToolTipRepresentation>
+													<Width>8</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<ChoiceButton>true</ChoiceButton>
+													<ContextMenu name="ШиринаИзделияКонтекстноеМеню" id="24"/>
+													<ExtendedTooltip name="ШиринаИзделияРасширеннаяПодсказка" id="25"/>
+													<Events>
+														<Event name="OnChange">ШиринаИзделияПриИзменении</Event>
+													</Events>
+												</InputField>
+												<InputField name="ВысотаИзделия" id="26">
+													<DataPath>Items.Детали.CurrentData.ВысотаИзделия</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Высота</v8:content>
+														</v8:item>
+													</Title>
+													<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+													<TitleLocation>Top</TitleLocation>
+													<ToolTipRepresentation>Balloon</ToolTipRepresentation>
+													<Width>7</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<ChoiceButton>true</ChoiceButton>
+													<ContextMenu name="ВысотаИзделияКонтекстноеМеню" id="27"/>
+													<ExtendedTooltip name="ВысотаИзделияРасширеннаяПодсказка" id="28"/>
+												</InputField>
+												<InputField name="ГлубинаИзделия" id="20">
+													<DataPath>Items.Детали.CurrentData.ГлубинаИзделия</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Глубина</v8:content>
+														</v8:item>
+													</Title>
+													<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+													<TitleLocation>Top</TitleLocation>
+													<ToolTipRepresentation>Balloon</ToolTipRepresentation>
+													<Width>7</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<ChoiceButton>true</ChoiceButton>
+													<ContextMenu name="ГлубинаИзделияКонтекстноеМеню" id="21"/>
+													<ExtendedTooltip name="ГлубинаИзделияРасширеннаяПодсказка" id="22"/>
+												</InputField>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="РазмерыДоп" id="634">
 											<Title>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Высота</v8:content>
+													<v8:content>Размеры доп</v8:content>
 												</v8:item>
 											</Title>
-											<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
-											<TitleLocation>Top</TitleLocation>
-											<ToolTipRepresentation>Balloon</ToolTipRepresentation>
-											<Width>7</Width>
-											<HorizontalStretch>false</HorizontalStretch>
-											<ChoiceButton>true</ChoiceButton>
-											<ContextMenu name="ВысотаИзделияКонтекстноеМеню" id="27"/>
-											<ExtendedTooltip name="ВысотаИзделияРасширеннаяПодсказка" id="28"/>
-										</InputField>
-										<InputField name="ГлубинаИзделия" id="20">
-											<DataPath>Items.Детали.CurrentData.ГлубинаИзделия</DataPath>
-											<Title>
+											<ToolTip>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Глубина</v8:content>
+													<v8:content>Размеры доп</v8:content>
 												</v8:item>
-											</Title>
-											<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
-											<TitleLocation>Top</TitleLocation>
-											<ToolTipRepresentation>Balloon</ToolTipRepresentation>
-											<Width>7</Width>
-											<HorizontalStretch>false</HorizontalStretch>
-											<ChoiceButton>true</ChoiceButton>
-											<ContextMenu name="ГлубинаИзделияКонтекстноеМеню" id="21"/>
-											<ExtendedTooltip name="ГлубинаИзделияРасширеннаяПодсказка" id="22"/>
-										</InputField>
+											</ToolTip>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="РазмерыДопРасширеннаяПодсказка" id="635"/>
+											<ChildItems>
+												<InputField name="ШиринаИзделияДоп" id="639">
+													<DataPath>Items.Детали.CurrentData.ШиринаДоп</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Ширина дополнительно</v8:content>
+														</v8:item>
+													</Title>
+													<TitleFont ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+													<Width>7</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<ChoiceButton>true</ChoiceButton>
+													<ContextMenu name="ШиринаИзделияДопКонтекстноеМеню" id="640"/>
+													<ExtendedTooltip name="ШиринаИзделияДопРасширеннаяПодсказка" id="641"/>
+													<Events>
+														<Event name="OnChange">ШиринаИзделияДопПриИзменении</Event>
+													</Events>
+												</InputField>
+												<InputField name="ГлубинаИзделияДоп" id="636">
+													<DataPath>Items.Детали.CurrentData.ГлубинаДоп</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Глубина дополнительно</v8:content>
+														</v8:item>
+													</Title>
+													<TitleFont ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+													<Width>7</Width>
+													<HorizontalStretch>false</HorizontalStretch>
+													<ChoiceButton>true</ChoiceButton>
+													<ContextMenu name="ГлубинаИзделияДопКонтекстноеМеню" id="637"/>
+													<ExtendedTooltip name="ГлубинаИзделияДопРасширеннаяПодсказка" id="638"/>
+												</InputField>
+											</ChildItems>
+										</UsualGroup>
 									</ChildItems>
 								</UsualGroup>
 								<UsualGroup name="ГруппаНоменклатура" id="361">
@@ -2039,6 +2113,161 @@
 						<v8:Type>xs:boolean</v8:Type>
 					</Type>
 				</Column>
+				<Column name="ШиринаДоп" id="27">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ширина доп</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ГлубинаДоп" id="54">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Глубина доп</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ШиринаДопМин" id="55">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ширина доп мин</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ШиринаДопМакс" id="56">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ширина доп макс</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ГлубинаДопМин" id="57">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Глубина доп мин</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ГлубинаДопМакс" id="58">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Глубина доп мин</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="УгловоеИзделие" id="59">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Угловое изделие</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ШиринаФактическая" id="60">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ширина фактическая</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ГлубинаФактическая" id="61">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Глубина фактическая</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ВысотаФактическая" id="62">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Высота фактическая</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>10</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
 			</Columns>
 		</Attribute>
 		<Attribute name="Изображение" id="2">
@@ -2478,6 +2707,17 @@
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Изделие" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изделие</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Изделия</v8:Type>
 			</Type>
 		</Attribute>
 	</Attributes>
