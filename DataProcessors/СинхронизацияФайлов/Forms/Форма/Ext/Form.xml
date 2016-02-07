@@ -6,6 +6,7 @@
 			<v8:content>Синхронизация файлов</v8:content>
 		</v8:item>
 	</Title>
+	<Width>70</Width>
 	<AutoTitle>false</AutoTitle>
 	<Customizable>false</Customizable>
 	<CommandBarLocation>None</CommandBarLocation>
@@ -17,6 +18,7 @@
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
 		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
@@ -33,26 +35,6 @@
 			<ContextMenu name="ВидимаяТаблицаКонтекстноеМеню" id="72"/>
 			<AutoCommandBar name="ВидимаяТаблицаКоманднаяПанель" id="73">
 				<Autofill>false</Autofill>
-				<ChildItems>
-					<Button name="ТаблицаЗначенийВыделитьВсе" id="33">
-						<Type>CommandBarButton</Type>
-						<CommandName>Form.Command.ВыделитьВсе</CommandName>
-						<Picture>
-							<xr:Ref>StdPicture.CheckAll</xr:Ref>
-							<xr:LoadTransparent>true</xr:LoadTransparent>
-						</Picture>
-						<ExtendedTooltip name="ТаблицаЗначенийВыделитьВсеРасширеннаяПодсказка" id="34"/>
-					</Button>
-					<Button name="ТаблицаЗначенийОтменитьВсе" id="35">
-						<Type>CommandBarButton</Type>
-						<CommandName>Form.Command.ОтменитьВсе</CommandName>
-						<Picture>
-							<xr:Ref>StdPicture.UncheckAll</xr:Ref>
-							<xr:LoadTransparent>true</xr:LoadTransparent>
-						</Picture>
-						<ExtendedTooltip name="ТаблицаЗначенийОтменитьВсеРасширеннаяПодсказка" id="36"/>
-					</Button>
-				</ChildItems>
 			</AutoCommandBar>
 			<ExtendedTooltip name="ВидимаяТаблицаРасширеннаяПодсказка" id="74"/>
 			<SearchStringAddition name="ВидимаяТаблицаСтрокаПоиска" id="133">
@@ -84,19 +66,6 @@
 				<Event name="BeforeDeleteRow">ВидимаяТаблицаПередУдалением</Event>
 			</Events>
 			<ChildItems>
-				<CheckBoxField name="ВидимаяТаблицаОбновить" id="90">
-					<DataPath>ВидимаяТаблица.Обновить</DataPath>
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content> </v8:content>
-						</v8:item>
-					</Title>
-					<EditMode>EnterOnInput</EditMode>
-					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="ВидимаяТаблицаОбновитьКонтекстноеМеню" id="91"/>
-					<ExtendedTooltip name="ВидимаяТаблицаОбновитьРасширеннаяПодсказка" id="92"/>
-				</CheckBoxField>
 				<InputField name="ВидимаяТаблицаИмя" id="93">
 					<DataPath>ВидимаяТаблица.Группа</DataPath>
 					<ReadOnly>true</ReadOnly>
@@ -113,6 +82,13 @@
 				<InputField name="ВидимаяТаблицаКоличество" id="96">
 					<DataPath>ВидимаяТаблица.Количество</DataPath>
 					<ReadOnly>true</ReadOnly>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Количество файлов
+</v8:content>
+						</v8:item>
+					</Title>
 					<EditMode>EnterOnInput</EditMode>
 					<ContextMenu name="ВидимаяТаблицаКоличествоКонтекстноеМеню" id="97"/>
 					<ExtendedTooltip name="ВидимаяТаблицаКоличествоРасширеннаяПодсказка" id="98"/>
@@ -123,7 +99,7 @@
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Размер, МБайт</v8:content>
+							<v8:content>Размер, КБайт</v8:content>
 						</v8:item>
 					</Title>
 					<EditMode>EnterOnInput</EditMode>
@@ -132,83 +108,46 @@
 				</InputField>
 			</ChildItems>
 		</Table>
-		<UsualGroup name="ГруппаИтог" id="42">
+		<UsualGroup name="ГруппаИтоги" id="160">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Группа итог</v8:content>
+					<v8:content>Группа итоги</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Группа итог</v8:content>
+					<v8:content>Группа итоги</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаИтогРасширеннаяПодсказка" id="43"/>
+			<ExtendedTooltip name="ГруппаИтогиРасширеннаяПодсказка" id="161"/>
 			<ChildItems>
-				<LabelDecoration name="Заглушка" id="44">
-					<HorizontalStretch>true</HorizontalStretch>
-					<ContextMenu name="ЗаглушкаКонтекстноеМеню" id="45"/>
-					<ExtendedTooltip name="ЗаглушкаРасширеннаяПодсказка" id="46"/>
-				</LabelDecoration>
-				<LabelDecoration name="НадписьИтого" id="53">
-					<Title formatted="false">
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Итого:</v8:content>
-						</v8:item>
-					</Title>
-					<ContextMenu name="НадписьИтогоКонтекстноеМеню" id="54"/>
-					<ExtendedTooltip name="НадписьИтогоРасширеннаяПодсказка" id="55"/>
-				</LabelDecoration>
-				<LabelField name="ИтогКоличество" id="50">
+				<LabelField name="ИтогКоличество" id="157">
 					<DataPath>ИтогКоличество</DataPath>
-					<TitleLocation>None</TitleLocation>
-					<Width>5</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<Format>
+					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>ЧРГ=</v8:content>
-						</v8:item>
-					</Format>
-					<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
-					<ContextMenu name="ИтогКоличествоКонтекстноеМеню" id="51"/>
-					<ExtendedTooltip name="ИтогКоличествоРасширеннаяПодсказка" id="52"/>
-				</LabelField>
-				<LabelDecoration name="НадписьШт" id="56">
-					<Title formatted="false">
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>шт.</v8:content>
+							<v8:content>Всего файлов</v8:content>
 						</v8:item>
 					</Title>
-					<ContextMenu name="НадписьШтКонтекстноеМеню" id="57"/>
-					<ExtendedTooltip name="НадписьШтРасширеннаяПодсказка" id="58"/>
-				</LabelDecoration>
-				<LabelField name="ИтогРазмер" id="47">
+					<ContextMenu name="ИтогКоличествоКонтекстноеМеню" id="158"/>
+					<ExtendedTooltip name="ИтогКоличествоРасширеннаяПодсказка" id="159"/>
+				</LabelField>
+				<LabelField name="ИтогРазмер" id="154">
 					<DataPath>ИтогРазмер</DataPath>
-					<TitleLocation>None</TitleLocation>
-					<Width>6</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
-					<ContextMenu name="ИтогРазмерКонтекстноеМеню" id="48"/>
-					<ExtendedTooltip name="ИтогРазмерРасширеннаяПодсказка" id="49"/>
-				</LabelField>
-				<LabelDecoration name="НадписьМбайт" id="59">
-					<Title formatted="false">
+					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>МБайт</v8:content>
+							<v8:content>объемом (МБайт)</v8:content>
 						</v8:item>
 					</Title>
-					<ContextMenu name="НадписьМбайтКонтекстноеМеню" id="60"/>
-					<ExtendedTooltip name="НадписьМбайтРасширеннаяПодсказка" id="61"/>
-				</LabelDecoration>
+					<ContextMenu name="ИтогРазмерКонтекстноеМеню" id="155"/>
+					<ExtendedTooltip name="ИтогРазмерРасширеннаяПодсказка" id="156"/>
+				</LabelField>
 			</ChildItems>
 		</UsualGroup>
 		<UsualGroup name="ГруппаКнопки" id="15">
@@ -246,7 +185,7 @@
 				</Button>
 				<Button name="Пропустить" id="13">
 					<Type>UsualButton</Type>
-					<Width>20</Width>
+					<Width>10</Width>
 					<Height>2</Height>
 					<CommandName>Form.Command.Пропустить</CommandName>
 					<ExtendedTooltip name="ПропуститьРасширеннаяПодсказка" id="14"/>
@@ -254,74 +193,13 @@
 				<Button name="ПолноеОбновление" id="37">
 					<Type>UsualButton</Type>
 					<Representation>PictureAndText</Representation>
-					<Width>20</Width>
+					<Width>10</Width>
 					<Height>2</Height>
 					<CommandName>Form.Command.ПолноеОбновление</CommandName>
 					<ExtendedTooltip name="ПолноеОбновлениеРасширеннаяПодсказка" id="38"/>
 				</Button>
 			</ChildItems>
 		</UsualGroup>
-		<Table name="ТаблицаЗначений" id="102">
-			<Representation>List</Representation>
-			<AutoInsertNewRow>true</AutoInsertNewRow>
-			<EnableStartDrag>true</EnableStartDrag>
-			<EnableDrag>true</EnableDrag>
-			<DataPath>ТаблицаЗначений</DataPath>
-			<SearchStringLocation>None</SearchStringLocation>
-			<ViewStatusLocation>None</ViewStatusLocation>
-			<SearchControlLocation>None</SearchControlLocation>
-			<RowFilter xsi:nil="true"/>
-			<ContextMenu name="ТаблицаЗначенийКонтекстноеМеню" id="103"/>
-			<AutoCommandBar name="ТаблицаЗначенийКоманднаяПанель" id="104">
-				<Autofill>false</Autofill>
-			</AutoCommandBar>
-			<ExtendedTooltip name="ТаблицаЗначенийРасширеннаяПодсказка" id="105"/>
-			<SearchStringAddition name="ТаблицаЗначенийСтрокаПоиска" id="142">
-				<AdditionSource>
-					<Item>ТаблицаЗначений</Item>
-					<Type>SearchStringRepresentation</Type>
-				</AdditionSource>
-				<ContextMenu name="ТаблицаЗначенийСтрокаПоискаКонтекстноеМеню" id="143"/>
-				<ExtendedTooltip name="ТаблицаЗначенийСтрокаПоискаРасширеннаяПодсказка" id="144"/>
-			</SearchStringAddition>
-			<ViewStatusAddition name="ТаблицаЗначенийСостояниеПросмотра" id="145">
-				<AdditionSource>
-					<Item>ТаблицаЗначений</Item>
-					<Type>ViewStatusRepresentation</Type>
-				</AdditionSource>
-				<ContextMenu name="ТаблицаЗначенийСостояниеПросмотраКонтекстноеМеню" id="146"/>
-				<ExtendedTooltip name="ТаблицаЗначенийСостояниеПросмотраРасширеннаяПодсказка" id="147"/>
-			</ViewStatusAddition>
-			<SearchControlAddition name="ТаблицаЗначенийУправлениеПоиском" id="148">
-				<AdditionSource>
-					<Item>ТаблицаЗначений</Item>
-					<Type>SearchControl</Type>
-				</AdditionSource>
-				<ContextMenu name="ТаблицаЗначенийУправлениеПоискомКонтекстноеМеню" id="149"/>
-				<ExtendedTooltip name="ТаблицаЗначенийУправлениеПоискомРасширеннаяПодсказка" id="150"/>
-			</SearchControlAddition>
-			<ChildItems>
-				<CheckBoxField name="ТаблицаЗначенийОбновить" id="130">
-					<DataPath>ТаблицаЗначений.Обновить</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="ТаблицаЗначенийОбновитьКонтекстноеМеню" id="131"/>
-					<ExtendedTooltip name="ТаблицаЗначенийОбновитьРасширеннаяПодсказка" id="132"/>
-				</CheckBoxField>
-				<InputField name="ТаблицаЗначенийИмя" id="121">
-					<DataPath>ТаблицаЗначений.Имя</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ТаблицаЗначенийИмяКонтекстноеМеню" id="122"/>
-					<ExtendedTooltip name="ТаблицаЗначенийИмяРасширеннаяПодсказка" id="123"/>
-				</InputField>
-				<InputField name="ТаблицаЗначенийРазмер" id="127">
-					<DataPath>ТаблицаЗначений.Размер</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ТаблицаЗначенийРазмерКонтекстноеМеню" id="128"/>
-					<ExtendedTooltip name="ТаблицаЗначенийРазмерРасширеннаяПодсказка" id="129"/>
-				</InputField>
-			</ChildItems>
-		</Table>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Объект" id="1">
@@ -329,17 +207,6 @@
 				<v8:Type>cfg:DataProcessorObject.СинхронизацияФайлов</v8:Type>
 			</Type>
 			<MainAttribute>true</MainAttribute>
-		</Attribute>
-		<Attribute name="ВсегдаОткрывать" id="3">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Всегда открывать</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:boolean</v8:Type>
-			</Type>
 		</Attribute>
 		<Attribute name="РабочийКаталог" id="4">
 			<Title>
@@ -408,21 +275,10 @@
 					<Type>
 						<v8:Type>xs:decimal</v8:Type>
 						<v8:NumberQualifiers>
-							<v8:Digits>10</v8:Digits>
-							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:Digits>20</v8:Digits>
+							<v8:FractionDigits>1</v8:FractionDigits>
 							<v8:AllowedSign>Any</v8:AllowedSign>
 						</v8:NumberQualifiers>
-					</Type>
-				</Column>
-				<Column name="Обновить" id="4">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Обновить</v8:content>
-						</v8:item>
-					</Title>
-					<Type>
-						<v8:Type>xs:boolean</v8:Type>
 					</Type>
 				</Column>
 				<Column name="Данные" id="6">
@@ -433,21 +289,6 @@
 						</v8:item>
 					</Title>
 					<Type/>
-				</Column>
-				<Column name="КодФайла" id="8">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Код файла</v8:content>
-						</v8:item>
-					</Title>
-					<Type>
-						<v8:Type>xs:string</v8:Type>
-						<v8:StringQualifiers>
-							<v8:Length>0</v8:Length>
-							<v8:AllowedLength>Variable</v8:AllowedLength>
-						</v8:StringQualifiers>
-					</Type>
 				</Column>
 				<Column name="ХэшКаталога" id="5">
 					<Title>
@@ -465,7 +306,18 @@
 						</v8:NumberQualifiers>
 					</Type>
 				</Column>
-				<Column name="ВладелецФайла" id="7">
+				<Column name="ВерсияФайла" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Версия файла</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ВерсииФайлов</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ВладелецФайла" id="4">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -473,69 +325,10 @@
 						</v8:item>
 					</Title>
 					<Type>
-						<v8:TypeSet>cfg:CatalogRef</v8:TypeSet>
-					</Type>
-				</Column>
-				<Column name="Тип" id="9">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Тип</v8:content>
-						</v8:item>
-					</Title>
-					<Type>
-						<v8:Type>xs:decimal</v8:Type>
-						<v8:NumberQualifiers>
-							<v8:Digits>0</v8:Digits>
-							<v8:FractionDigits>0</v8:FractionDigits>
-							<v8:AllowedSign>Any</v8:AllowedSign>
-						</v8:NumberQualifiers>
-					</Type>
-				</Column>
-				<Column name="Группа" id="10">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа</v8:content>
-						</v8:item>
-					</Title>
-					<Type>
-						<v8:Type>cfg:CatalogRef.НоменклатурныеГруппы</v8:Type>
+						<v8:TypeSet>cfg:AnyRef</v8:TypeSet>
 					</Type>
 				</Column>
 			</Columns>
-		</Attribute>
-		<Attribute name="ИтогРазмер" id="2">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Итого (МБайт)</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:decimal</v8:Type>
-				<v8:NumberQualifiers>
-					<v8:Digits>6</v8:Digits>
-					<v8:FractionDigits>1</v8:FractionDigits>
-					<v8:AllowedSign>Any</v8:AllowedSign>
-				</v8:NumberQualifiers>
-			</Type>
-		</Attribute>
-		<Attribute name="ИтогКоличество" id="6">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Итог количество</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:decimal</v8:Type>
-				<v8:NumberQualifiers>
-					<v8:Digits>5</v8:Digits>
-					<v8:FractionDigits>0</v8:FractionDigits>
-					<v8:AllowedSign>Any</v8:AllowedSign>
-				</v8:NumberQualifiers>
-			</Type>
 		</Attribute>
 		<Attribute name="ВидимаяТаблица" id="7">
 			<Title>
@@ -548,17 +341,6 @@
 				<v8:Type>v8:ValueTable</v8:Type>
 			</Type>
 			<Columns>
-				<Column name="Обновить" id="1">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Обновить</v8:content>
-						</v8:item>
-					</Title>
-					<Type>
-						<v8:Type>xs:boolean</v8:Type>
-					</Type>
-				</Column>
 				<Column name="Группа" id="2">
 					<Title>
 						<v8:item>
@@ -568,11 +350,7 @@
 					</Title>
 					<Type>
 						<v8:Type>cfg:CatalogRef.НоменклатурныеГруппы</v8:Type>
-						<v8:Type>xs:string</v8:Type>
-						<v8:StringQualifiers>
-							<v8:Length>0</v8:Length>
-							<v8:AllowedLength>Variable</v8:AllowedLength>
-						</v8:StringQualifiers>
+						<v8:Type>cfg:CatalogRef.ВидыИзделийПоКаталогу</v8:Type>
 					</Type>
 				</Column>
 				<Column name="Количество" id="3">
@@ -601,8 +379,8 @@
 					<Type>
 						<v8:Type>xs:decimal</v8:Type>
 						<v8:NumberQualifiers>
-							<v8:Digits>6</v8:Digits>
-							<v8:FractionDigits>2</v8:FractionDigits>
+							<v8:Digits>20</v8:Digits>
+							<v8:FractionDigits>1</v8:FractionDigits>
 							<v8:AllowedSign>Any</v8:AllowedSign>
 						</v8:NumberQualifiers>
 					</Type>
@@ -621,6 +399,183 @@
 							<v8:FractionDigits>0</v8:FractionDigits>
 							<v8:AllowedSign>Any</v8:AllowedSign>
 						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="Таймер" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Таймер</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>2</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ЗапускПрограммы" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Запуск программы</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИтогКоличество" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Итог количество</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>5</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ИтогРазмер" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Итог размер</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>5</v8:Digits>
+					<v8:FractionDigits>1</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ФайлыОбновлены" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Файлы обновлены</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ТаблицаОбязательныхФайлов" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Таблица обязательных файлов</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Имя" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ХэшБазы" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Хэш базы</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>20</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Размер" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Размер</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>20</v8:Digits>
+							<v8:FractionDigits>1</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Данные" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Данные</v8:content>
+						</v8:item>
+					</Title>
+					<Type/>
+				</Column>
+				<Column name="ХэшКаталога" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Хэш каталога</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>20</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Any</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="ВерсияФайла" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Версия файла</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.ВерсииФайлов</v8:Type>
+					</Type>
+				</Column>
+				<Column name="ВладелецФайла" id="7">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Владелец файла</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:TypeSet>cfg:AnyRef</v8:TypeSet>
 					</Type>
 				</Column>
 			</Columns>
@@ -657,36 +612,6 @@
 			</ToolTip>
 			<Action>Пропустить</Action>
 		</Command>
-		<Command name="ВыделитьВсе" id="3">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Выделить все</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Выделить все</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Action>ВыделитьВсе</Action>
-		</Command>
-		<Command name="ОтменитьВсе" id="4">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Отменить все</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Отменить все</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Action>ОтменитьВсе</Action>
-		</Command>
 		<Command name="ПолноеОбновление" id="5">
 			<Title>
 				<v8:item>
@@ -697,7 +622,7 @@
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Полное обновление</v8:content>
+					<v8:content>Обновление всех файлов требующихся для работы программы</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>ПолноеОбновление</Action>
