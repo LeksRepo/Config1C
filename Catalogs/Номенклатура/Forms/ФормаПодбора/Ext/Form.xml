@@ -807,7 +807,11 @@
 			ТОГДА 0
 		ИНАЧЕ 1
 	КОНЕЦ КАК ИндексКартинкиОкруглять,
-	Цены.Розничная КАК РозничнаяЦена,
+	ВЫБОР
+		 КОГДА Цены.Розничная  ЕСТЬ NULL
+		 ТОГДА NULL
+		 ИНАЧЕ Цены.Розничная * &amp;НаценкаОфиса 
+	КОНЕЦ КАК РозничнаяЦена,
 	Остатки.Количество КАК ОстатокНаСкладе
 ИЗ
 	Справочник.Номенклатура КАК СпрНоменклатура
@@ -1217,6 +1221,22 @@
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="НаценкаОфиса" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Наценка офиса</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>3</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
 			</Type>
 		</Attribute>
 	</Attributes>
