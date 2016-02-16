@@ -103,8 +103,29 @@
 			</Type>
 			<MainAttribute>true</MainAttribute>
 			<Settings xsi:type="DynamicList">
-				<ManualQuery>false</ManualQuery>
+				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	ДокументРеализацияГотовойПродукции.Ссылка,
+	ДокументРеализацияГотовойПродукции.ПометкаУдаления,
+	ДокументРеализацияГотовойПродукции.Номер,
+	ДокументРеализацияГотовойПродукции.Дата,
+	ДокументРеализацияГотовойПродукции.Проведен,
+	ДокументРеализацияГотовойПродукции.Автор,
+	ДокументРеализацияГотовойПродукции.ДатаПередачи,
+	ДокументРеализацияГотовойПродукции.Комментарий,
+	ДокументРеализацияГотовойПродукции.ОтветственныйЗаХранение,
+	ДокументРеализацияГотовойПродукции.Подразделение,
+	ДокументРеализацияГотовойПродукции.СписокСпецификаций,
+	ДокументРеализацияГотовойПродукции.МоментВремени,
+	ВЫБОР
+		КОГДА ДокументРеализацияГотовойПродукции.ОтветственныйЗаХранение = ЗНАЧЕНИЕ(Справочник.ФизическиеЛица.ПустаяСсылка)
+				ИЛИ НЕ ДокументРеализацияГотовойПродукции.Проведен
+			ТОГДА 1
+		ИНАЧЕ 0
+	КОНЕЦ КАК Сортировка
+ИЗ
+	Документ.РеализацияГотовойПродукции КАК ДокументРеализацияГотовойПродукции</QueryText>
 				<MainTable>Document.РеализацияГотовойПродукции</MainTable>
 				<ListSettings>
 					<dcsset:filter>
@@ -112,6 +133,14 @@
 						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
 					</dcsset:filter>
 					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>Сортировка</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>Дата</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
 						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
 					</dcsset:order>
