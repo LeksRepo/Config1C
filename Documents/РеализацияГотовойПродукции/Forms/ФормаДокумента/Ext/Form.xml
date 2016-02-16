@@ -9,67 +9,115 @@
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
-		<UsualGroup name="Шапка" id="19">
+		<UsualGroup name="ГруппаВерх" id="61">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Шапка</v8:content>
+					<v8:content>Группа верх</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Шапка</v8:content>
+					<v8:content>Группа верх</v8:content>
 				</v8:item>
 			</ToolTip>
-			<HorizontalStretch>false</HorizontalStretch>
-			<Group>Vertical</Group>
+			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ШапкаРасширеннаяПодсказка" id="20"/>
+			<ExtendedTooltip name="ГруппаВерхРасширеннаяПодсказка" id="62"/>
 			<ChildItems>
-				<UsualGroup name="ГруппаНомерДата" id="42">
+				<UsualGroup name="Шапка" id="19">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Группа номер дата</v8:content>
+							<v8:content>Шапка</v8:content>
 						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Группа номер дата</v8:content>
+							<v8:content>Шапка</v8:content>
 						</v8:item>
 					</ToolTip>
-					<Group>Horizontal</Group>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Group>Vertical</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="ГруппаНомерДатаРасширеннаяПодсказка" id="43"/>
+					<ExtendedTooltip name="ШапкаРасширеннаяПодсказка" id="20"/>
 					<ChildItems>
-						<InputField name="Номер" id="1">
-							<DataPath>Объект.Number</DataPath>
+						<UsualGroup name="ГруппаНомерДата" id="42">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа номер дата</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа номер дата</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаНомерДатаРасширеннаяПодсказка" id="43"/>
+							<ChildItems>
+								<InputField name="Номер" id="1">
+									<DataPath>Объект.Number</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
+									<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="3"/>
+								</InputField>
+								<InputField name="Дата" id="4">
+									<DataPath>Объект.Date</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
+									<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="6"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<InputField name="Подразделение" id="7">
+							<DataPath>Объект.Подразделение</DataPath>
 							<EditMode>EnterOnInput</EditMode>
-							<HorizontalStretch>false</HorizontalStretch>
-							<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
-							<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="3"/>
-						</InputField>
-						<InputField name="Дата" id="4">
-							<DataPath>Объект.Date</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
-							<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="6"/>
+							<ContextMenu name="ПодразделениеКонтекстноеМеню" id="8"/>
+							<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="9"/>
+							<Events>
+								<Event name="ChoiceProcessing">ПодразделениеОбработкаВыбора</Event>
+							</Events>
 						</InputField>
 					</ChildItems>
 				</UsualGroup>
-				<InputField name="Подразделение" id="7">
-					<DataPath>Объект.Подразделение</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ПодразделениеКонтекстноеМеню" id="8"/>
-					<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="9"/>
-					<Events>
-						<Event name="ChoiceProcessing">ПодразделениеОбработкаВыбора</Event>
-					</Events>
-				</InputField>
+				<UsualGroup name="ГруппаПринятие" id="53">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Документ сдан в бухгалтерию</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа принятие</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Representation>StrongSeparation</Representation>
+					<ExtendedTooltip name="ГруппаПринятиеРасширеннаяПодсказка" id="54"/>
+					<ChildItems>
+						<InputField name="ДатаПередачи" id="55">
+							<DataPath>Объект.ДатаПередачи</DataPath>
+							<ContextMenu name="ДатаПередачиКонтекстноеМеню" id="56"/>
+							<ExtendedTooltip name="ДатаПередачиРасширеннаяПодсказка" id="57"/>
+						</InputField>
+						<InputField name="ОтветственныйЗаХранение" id="58">
+							<DataPath>Объект.ОтветственныйЗаХранение</DataPath>
+							<ContextMenu name="ОтветственныйЗаХранениеКонтекстноеМеню" id="59"/>
+							<ExtendedTooltip name="ОтветственныйЗаХранениеРасширеннаяПодсказка" id="60"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
 		<Table name="СписокСпецификаций" id="24">
