@@ -43,8 +43,16 @@
 			<EditMode>EnterOnInput</EditMode>
 			<Width>36</Width>
 			<HorizontalStretch>false</HorizontalStretch>
+			<OpenButton>false</OpenButton>
 			<ContextMenu name="ПодразделениеКонтекстноеМеню" id="11"/>
 			<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="12"/>
+		</InputField>
+		<InputField name="МОЛ" id="77">
+			<DataPath>Объект.МОЛ</DataPath>
+			<Width>36</Width>
+			<HorizontalStretch>false</HorizontalStretch>
+			<ContextMenu name="МОЛКонтекстноеМеню" id="78"/>
+			<ExtendedTooltip name="МОЛРасширеннаяПодсказка" id="79"/>
 		</InputField>
 		<InputField name="СтатьяЗатрат" id="13">
 			<DataPath>1/0:a2798d19-16d6-4d1d-be67-bcf201d42bdf</DataPath>
@@ -59,7 +67,47 @@
 			<DataPath>Объект.ОсновныеСредства</DataPath>
 			<RowFilter xsi:nil="true"/>
 			<ContextMenu name="ОсновныеСредстваКонтекстноеМеню" id="47"/>
-			<AutoCommandBar name="ОсновныеСредстваКоманднаяПанель" id="48"/>
+			<AutoCommandBar name="ОсновныеСредстваКоманднаяПанель" id="48">
+				<Autofill>false</Autofill>
+				<ChildItems>
+					<Button name="ОсновныеСредстваЗаполнить" id="80">
+						<Type>CommandBarButton</Type>
+						<Representation>PictureAndText</Representation>
+						<DefaultButton>true</DefaultButton>
+						<CommandName>Form.Command.Заполнить</CommandName>
+						<Picture>
+							<xr:Ref>StdPicture.GenerateReport</xr:Ref>
+							<xr:LoadTransparent>true</xr:LoadTransparent>
+						</Picture>
+						<ExtendedTooltip name="ОсновныеСредстваЗаполнитьРасширеннаяПодсказка" id="81"/>
+					</Button>
+					<Button name="ОсновныеСредстваДобавить" id="82">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.ОсновныеСредства.StandardCommand.Add</CommandName>
+						<ExtendedTooltip name="ОсновныеСредстваДобавитьРасширеннаяПодсказка" id="83"/>
+					</Button>
+					<Button name="ОсновныеСредстваСкопировать" id="84">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.ОсновныеСредства.StandardCommand.Copy</CommandName>
+						<ExtendedTooltip name="ОсновныеСредстваСкопироватьРасширеннаяПодсказка" id="85"/>
+					</Button>
+					<Button name="ОсновныеСредстваУдалить" id="86">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.ОсновныеСредства.StandardCommand.Delete</CommandName>
+						<ExtendedTooltip name="ОсновныеСредстваУдалитьРасширеннаяПодсказка" id="87"/>
+					</Button>
+					<Button name="ОсновныеСредстваПереместитьВверх" id="88">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.ОсновныеСредства.StandardCommand.MoveUp</CommandName>
+						<ExtendedTooltip name="ОсновныеСредстваПереместитьВверхРасширеннаяПодсказка" id="89"/>
+					</Button>
+					<Button name="ОсновныеСредстваПереместитьВниз" id="90">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.ОсновныеСредства.StandardCommand.MoveDown</CommandName>
+						<ExtendedTooltip name="ОсновныеСредстваПереместитьВнизРасширеннаяПодсказка" id="91"/>
+					</Button>
+				</ChildItems>
+			</AutoCommandBar>
 			<ExtendedTooltip name="ОсновныеСредстваРасширеннаяПодсказка" id="49"/>
 			<SearchStringAddition name="ОсновныеСредстваСтрокаПоиска" id="50">
 				<AdditionSource>
@@ -139,4 +187,21 @@
 			</UseAlways>
 		</Attribute>
 	</Attributes>
+	<Commands>
+		<Command name="Заполнить" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Заполнить</Action>
+		</Command>
+	</Commands>
 </Form>
