@@ -123,6 +123,7 @@
 							<EditMode>EnterOnInput</EditMode>
 							<Width>36</Width>
 							<HorizontalStretch>false</HorizontalStretch>
+							<OpenButton>false</OpenButton>
 							<ContextMenu name="ПодразделениеКонтекстноеМеню" id="11"/>
 							<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="12"/>
 						</InputField>
@@ -139,7 +140,47 @@
 			<DataPath>Объект.ОсновныеСредства</DataPath>
 			<RowFilter xsi:nil="true"/>
 			<ContextMenu name="ОсновныеСредстваКонтекстноеМеню" id="17"/>
-			<AutoCommandBar name="ОсновныеСредстваКоманднаяПанель" id="18"/>
+			<AutoCommandBar name="ОсновныеСредстваКоманднаяПанель" id="18">
+				<Autofill>false</Autofill>
+				<ChildItems>
+					<Button name="Заполнить" id="64">
+						<Type>CommandBarButton</Type>
+						<Representation>PictureAndText</Representation>
+						<DefaultButton>true</DefaultButton>
+						<CommandName>Form.Command.Заполнить</CommandName>
+						<Picture>
+							<xr:Ref>StdPicture.GenerateReport</xr:Ref>
+							<xr:LoadTransparent>true</xr:LoadTransparent>
+						</Picture>
+						<ExtendedTooltip name="ЗаполнитьРасширеннаяПодсказка" id="65"/>
+					</Button>
+					<Button name="ОсновныеСредстваДобавить" id="66">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.ОсновныеСредства.StandardCommand.Add</CommandName>
+						<ExtendedTooltip name="ОсновныеСредстваДобавитьРасширеннаяПодсказка" id="67"/>
+					</Button>
+					<Button name="ОсновныеСредстваСкопировать" id="68">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.ОсновныеСредства.StandardCommand.Copy</CommandName>
+						<ExtendedTooltip name="ОсновныеСредстваСкопироватьРасширеннаяПодсказка" id="69"/>
+					</Button>
+					<Button name="ОсновныеСредстваПереместитьВверх" id="72">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.ОсновныеСредства.StandardCommand.MoveUp</CommandName>
+						<ExtendedTooltip name="ОсновныеСредстваПереместитьВверхРасширеннаяПодсказка" id="73"/>
+					</Button>
+					<Button name="ОсновныеСредстваПереместитьВниз" id="74">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.ОсновныеСредства.StandardCommand.MoveDown</CommandName>
+						<ExtendedTooltip name="ОсновныеСредстваПереместитьВнизРасширеннаяПодсказка" id="75"/>
+					</Button>
+					<Button name="ОсновныеСредстваУдалить" id="70">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.ОсновныеСредства.StandardCommand.Delete</CommandName>
+						<ExtendedTooltip name="ОсновныеСредстваУдалитьРасширеннаяПодсказка" id="71"/>
+					</Button>
+				</ChildItems>
+			</AutoCommandBar>
 			<ExtendedTooltip name="ОсновныеСредстваРасширеннаяПодсказка" id="19"/>
 			<SearchStringAddition name="ОсновныеСредстваСтрокаПоиска" id="20">
 				<AdditionSource>
@@ -213,4 +254,21 @@
 			</UseAlways>
 		</Attribute>
 	</Attributes>
+	<Commands>
+		<Command name="Заполнить" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Заполнить</Action>
+		</Command>
+	</Commands>
 </Form>
