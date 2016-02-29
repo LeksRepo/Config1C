@@ -112,12 +112,28 @@
 		ПО втЗакупки.Номенклатура = ЦеныНоменклатурыСрезПоследних.Номенклатура</query>
 	</dataSet>
 	<calculatedField>
-		<dataPath>Отклонение</dataPath>
-		<expression>СуммаПлан - СуммаФакт</expression>
+		<dataPath>ОтклонениеПлюс</dataPath>
+		<expression>ВЫБОР КОГДА СуммаПлан &gt; СуммаФакт ТОГДА СуммаПлан - СуммаФакт ИНАЧЕ 0 КОНЕЦ</expression>
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>ru</v8:lang>
-				<v8:content>Отклонение</v8:content>
+				<v8:content>Отклонение плюс</v8:content>
+			</v8:item>
+		</title>
+		<appearance>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>Формат</dcscor:parameter>
+				<dcscor:value xsi:type="xs:string">ЧДЦ=2</dcscor:value>
+			</dcscor:item>
+		</appearance>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>ОтклонениеМинус</dataPath>
+		<expression>ВЫБОР КОГДА СуммаФакт &gt; СуммаПлан ТОГДА СуммаФакт - СуммаПлан ИНАЧЕ 0 КОНЕЦ</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Отклонение минус</v8:content>
 			</v8:item>
 		</title>
 		<appearance>
@@ -132,16 +148,20 @@
 		<expression>Сумма(Количество)</expression>
 	</totalField>
 	<totalField>
-		<dataPath>Отклонение</dataPath>
-		<expression>Сумма(Отклонение)</expression>
-	</totalField>
-	<totalField>
 		<dataPath>СуммаПлан</dataPath>
 		<expression>Сумма(СуммаПлан)</expression>
 	</totalField>
 	<totalField>
 		<dataPath>СуммаФакт</dataPath>
 		<expression>Сумма(СуммаФакт)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ОтклонениеМинус</dataPath>
+		<expression>Сумма(ОтклонениеМинус)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ОтклонениеПлюс</dataPath>
+		<expression>Сумма(ОтклонениеПлюс)</expression>
 	</totalField>
 	<parameter>
 		<name>Период</name>
@@ -245,7 +265,10 @@
 					<dcsset:field>СуммаПлан</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Отклонение</dcsset:field>
+					<dcsset:field>ОтклонениеПлюс</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ОтклонениеМинус</dcsset:field>
 				</dcsset:item>
 			</dcsset:selection>
 			<dcsset:dataParameters>
@@ -263,6 +286,10 @@
 				</dcscor:item>
 			</dcsset:dataParameters>
 			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВертикальноеРасположениеОбщихИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">BeginAndEnd</dcscor:value>
+				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>Заголовок</dcscor:parameter>
 					<dcscor:value xsi:type="v8:LocalStringType">
