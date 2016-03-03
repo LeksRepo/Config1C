@@ -2,15 +2,8 @@
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<Group>Horizontal</Group>
-	<CommandSet>
-		<ExcludedCommand>SetDeletionMark</ExcludedCommand>
-		<ExcludedCommand>Copy</ExcludedCommand>
-		<ExcludedCommand>Delete</ExcludedCommand>
-		<ExcludedCommand>Create</ExcludedCommand>
-		<ExcludedCommand>CancelSearch</ExcludedCommand>
-		<ExcludedCommand>Find</ExcludedCommand>
-		<ExcludedCommand>CreateFolder</ExcludedCommand>
-	</CommandSet>
+	<Customizable>false</Customizable>
+	<CommandSet/>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
 		<Event name="OnOpen">ПриОткрытии</Event>
@@ -247,112 +240,70 @@
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ГруппаСписковРасширеннаяПодсказка" id="18"/>
 			<ChildItems>
-				<Table name="Список" id="1">
-					<CommandBarLocation>None</CommandBarLocation>
-					<DefaultItem>true</DefaultItem>
+				<Table name="ДеревоИзделий" id="117">
+					<Representation>Tree</Representation>
+					<ReadOnly>true</ReadOnly>
+					<ChangeRowSet>false</ChangeRowSet>
+					<ChangeRowOrder>false</ChangeRowOrder>
 					<Width>50</Width>
-					<ChoiceMode>true</ChoiceMode>
-					<SelectionMode>SingleRow</SelectionMode>
-					<UseAlternationRowColor>true</UseAlternationRowColor>
-					<InitialTreeView>ExpandAllLevels</InitialTreeView>
+					<AutoInsertNewRow>true</AutoInsertNewRow>
 					<HorizontalStretch>false</HorizontalStretch>
-					<EnableStartDrag>true</EnableStartDrag>
-					<DataPath>Список</DataPath>
-					<RowPictureDataPath>Список.DefaultPicture</RowPictureDataPath>
-					<SearchStringLocation>None</SearchStringLocation>
-					<ViewStatusLocation>None</ViewStatusLocation>
-					<SearchControlLocation>None</SearchControlLocation>
-					<AutoRefresh>false</AutoRefresh>
-					<AutoRefreshPeriod>60</AutoRefreshPeriod>
-					<Period>
-						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
-						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
-						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
-					</Period>
-					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
-					<RestoreCurrentRow>false</RestoreCurrentRow>
-					<TopLevelParent xsi:nil="true"/>
-					<ShowRoot>false</ShowRoot>
-					<AllowRootChoice>false</AllowRootChoice>
-					<UpdateOnDataChange>Auto</UpdateOnDataChange>
-					<ContextMenu name="СписокКонтекстноеМеню" id="2"/>
-					<AutoCommandBar name="СписокКоманднаяПанель" id="3">
+					<DataPath>ДеревоИзделий</DataPath>
+					<ContextMenu name="ДеревоИзделийКонтекстноеМеню" id="118"/>
+					<AutoCommandBar name="ДеревоИзделийКоманднаяПанель" id="119">
 						<Autofill>false</Autofill>
 					</AutoCommandBar>
-					<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="4"/>
-					<SearchStringAddition name="СписокСтрокаПоиска" id="99">
+					<ExtendedTooltip name="ДеревоИзделийРасширеннаяПодсказка" id="120"/>
+					<SearchStringAddition name="ДеревоИзделийСтрокаПоиска" id="121">
 						<AdditionSource>
-							<Item>Список</Item>
+							<Item>ДеревоИзделий</Item>
 							<Type>SearchStringRepresentation</Type>
 						</AdditionSource>
-						<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="100"/>
-						<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="101"/>
+						<ContextMenu name="ДеревоИзделийСтрокаПоискаКонтекстноеМеню" id="122"/>
+						<ExtendedTooltip name="ДеревоИзделийСтрокаПоискаРасширеннаяПодсказка" id="123"/>
 					</SearchStringAddition>
-					<ViewStatusAddition name="СписокСостояниеПросмотра" id="102">
+					<ViewStatusAddition name="ДеревоИзделийСостояниеПросмотра" id="124">
 						<AdditionSource>
-							<Item>Список</Item>
+							<Item>ДеревоИзделий</Item>
 							<Type>ViewStatusRepresentation</Type>
 						</AdditionSource>
-						<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="103"/>
-						<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="104"/>
+						<ContextMenu name="ДеревоИзделийСостояниеПросмотраКонтекстноеМеню" id="125"/>
+						<ExtendedTooltip name="ДеревоИзделийСостояниеПросмотраРасширеннаяПодсказка" id="126"/>
 					</ViewStatusAddition>
-					<SearchControlAddition name="СписокУправлениеПоиском" id="105">
+					<SearchControlAddition name="ДеревоИзделийУправлениеПоиском" id="127">
 						<AdditionSource>
-							<Item>Список</Item>
+							<Item>ДеревоИзделий</Item>
 							<Type>SearchControl</Type>
 						</AdditionSource>
-						<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="106"/>
-						<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="107"/>
+						<ContextMenu name="ДеревоИзделийУправлениеПоискомКонтекстноеМеню" id="128"/>
+						<ExtendedTooltip name="ДеревоИзделийУправлениеПоискомРасширеннаяПодсказка" id="129"/>
 					</SearchControlAddition>
 					<Events>
-						<Event name="ValueChoice">СписокВыборЗначения</Event>
-						<Event name="Selection">СписокВыбор</Event>
-						<Event name="OnActivateRow">СписокПриАктивизацииСтроки</Event>
+						<Event name="Selection">ДеревоИзделийВыбор</Event>
+						<Event name="OnActivateRow">ДеревоИзделийПриАктивизацииСтроки</Event>
 					</Events>
 					<ChildItems>
-						<PictureField name="ЭтоГруппа" id="14">
-							<DataPath>Список.IsFolder</DataPath>
-							<TitleLocation>None</TitleLocation>
-							<Width>1</Width>
-							<ContextMenu name="ЭтоГруппаКонтекстноеМеню" id="15"/>
-							<ExtendedTooltip name="ЭтоГруппаРасширеннаяПодсказка" id="16"/>
-						</PictureField>
-						<LabelField name="Ссылка" id="29">
-							<DataPath>Список.Ref</DataPath>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Наименование</v8:content>
-								</v8:item>
-							</Title>
-							<ContextMenu name="СсылкаКонтекстноеМеню" id="30"/>
-							<ExtendedTooltip name="СсылкаРасширеннаяПодсказка" id="31"/>
-						</LabelField>
-						<LabelField name="Код" id="8">
-							<DataPath>Список.Code</DataPath>
-							<ContextMenu name="КодКонтекстноеМеню" id="9"/>
-							<ExtendedTooltip name="КодРасширеннаяПодсказка" id="10"/>
-						</LabelField>
-						<LabelField name="Колво" id="96">
-							<DataPath>1/20</DataPath>
-							<ContextMenu name="КолвоКонтекстноеМеню" id="97"/>
-							<ExtendedTooltip name="КолвоРасширеннаяПодсказка" id="98"/>
-						</LabelField>
+						<InputField name="ДеревоИзделийНаименование" id="133">
+							<DataPath>ДеревоИзделий.Наименование</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="ДеревоИзделийНаименованиеКонтекстноеМеню" id="134"/>
+							<ExtendedTooltip name="ДеревоИзделийНаименованиеРасширеннаяПодсказка" id="135"/>
+						</InputField>
 					</ChildItems>
 				</Table>
-				<Table name="СписокДопИзделий" id="19">
-					<Representation>List</Representation>
+				<Table name="ДеревоДопИзделий" id="136">
+					<Representation>Tree</Representation>
 					<TitleLocation>Top</TitleLocation>
+					<ReadOnly>true</ReadOnly>
+					<ChangeRowSet>false</ChangeRowSet>
+					<ChangeRowOrder>false</ChangeRowOrder>
 					<Width>50</Width>
-					<Height>7</Height>
-					<ChoiceMode>true</ChoiceMode>
+					<Height>6</Height>
 					<SelectionMode>SingleRow</SelectionMode>
-					<UseAlternationRowColor>true</UseAlternationRowColor>
+					<RowSelectionMode>Row</RowSelectionMode>
 					<HorizontalStretch>false</HorizontalStretch>
 					<VerticalStretch>false</VerticalStretch>
-					<EnableStartDrag>true</EnableStartDrag>
-					<DataPath>СписокДопИзделий</DataPath>
-					<RowPictureDataPath>СписокДопИзделий.DefaultPicture</RowPictureDataPath>
+					<DataPath>ДеревоДопИзделий</DataPath>
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -360,73 +311,48 @@
 						</v8:item>
 					</Title>
 					<TitleTextColor>style:FieldSelectionBackColor</TitleTextColor>
-					<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
-					<SearchStringLocation>None</SearchStringLocation>
-					<ViewStatusLocation>None</ViewStatusLocation>
-					<SearchControlLocation>None</SearchControlLocation>
-					<AutoRefresh>false</AutoRefresh>
-					<AutoRefreshPeriod>60</AutoRefreshPeriod>
-					<Period>
-						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
-						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
-						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
-					</Period>
-					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
-					<RestoreCurrentRow>false</RestoreCurrentRow>
-					<TopLevelParent xsi:nil="true"/>
-					<ShowRoot>false</ShowRoot>
-					<AllowRootChoice>false</AllowRootChoice>
-					<UpdateOnDataChange>Auto</UpdateOnDataChange>
-					<ContextMenu name="СписокДопИзделийКонтекстноеМеню" id="20"/>
-					<AutoCommandBar name="СписокДопИзделийКоманднаяПанель" id="21">
+					<TitleFont ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+					<ContextMenu name="ДеревоДопИзделийКонтекстноеМеню" id="137"/>
+					<AutoCommandBar name="ДеревоДопИзделийКоманднаяПанель" id="138">
 						<Autofill>false</Autofill>
 					</AutoCommandBar>
-					<ExtendedTooltip name="СписокДопИзделийРасширеннаяПодсказка" id="22"/>
-					<SearchStringAddition name="СписокДопИзделийСтрокаПоиска" id="108">
+					<ExtendedTooltip name="ДеревоДопИзделийРасширеннаяПодсказка" id="139"/>
+					<SearchStringAddition name="ДеревоДопИзделийСтрокаПоиска" id="140">
 						<AdditionSource>
-							<Item>СписокДопИзделий</Item>
+							<Item>ДеревоДопИзделий</Item>
 							<Type>SearchStringRepresentation</Type>
 						</AdditionSource>
-						<ContextMenu name="СписокДопИзделийСтрокаПоискаКонтекстноеМеню" id="109"/>
-						<ExtendedTooltip name="СписокДопИзделийСтрокаПоискаРасширеннаяПодсказка" id="110"/>
+						<ContextMenu name="ДеревоДопИзделийСтрокаПоискаКонтекстноеМеню" id="141"/>
+						<ExtendedTooltip name="ДеревоДопИзделийСтрокаПоискаРасширеннаяПодсказка" id="142"/>
 					</SearchStringAddition>
-					<ViewStatusAddition name="СписокДопИзделийСостояниеПросмотра" id="111">
+					<ViewStatusAddition name="ДеревоДопИзделийСостояниеПросмотра" id="143">
 						<AdditionSource>
-							<Item>СписокДопИзделий</Item>
+							<Item>ДеревоДопИзделий</Item>
 							<Type>ViewStatusRepresentation</Type>
 						</AdditionSource>
-						<ContextMenu name="СписокДопИзделийСостояниеПросмотраКонтекстноеМеню" id="112"/>
-						<ExtendedTooltip name="СписокДопИзделийСостояниеПросмотраРасширеннаяПодсказка" id="113"/>
+						<ContextMenu name="ДеревоДопИзделийСостояниеПросмотраКонтекстноеМеню" id="144"/>
+						<ExtendedTooltip name="ДеревоДопИзделийСостояниеПросмотраРасширеннаяПодсказка" id="145"/>
 					</ViewStatusAddition>
-					<SearchControlAddition name="СписокДопИзделийУправлениеПоиском" id="114">
+					<SearchControlAddition name="ДеревоДопИзделийУправлениеПоиском" id="146">
 						<AdditionSource>
-							<Item>СписокДопИзделий</Item>
+							<Item>ДеревоДопИзделий</Item>
 							<Type>SearchControl</Type>
 						</AdditionSource>
-						<ContextMenu name="СписокДопИзделийУправлениеПоискомКонтекстноеМеню" id="115"/>
-						<ExtendedTooltip name="СписокДопИзделийУправлениеПоискомРасширеннаяПодсказка" id="116"/>
+						<ContextMenu name="ДеревоДопИзделийУправлениеПоискомКонтекстноеМеню" id="147"/>
+						<ExtendedTooltip name="ДеревоДопИзделийУправлениеПоискомРасширеннаяПодсказка" id="148"/>
 					</SearchControlAddition>
 					<Events>
-						<Event name="ValueChoice">СписокВыборЗначения</Event>
-						<Event name="OnActivateRow">СписокДопИзделийПриАктивизацииСтроки</Event>
+						<Event name="Selection">ДеревоДопИзделийВыбор</Event>
+						<Event name="OnActivateRow">ДеревоДопИзделийПриАктивизацииСтроки</Event>
+						<Event name="OnActivateCell">ДеревоДопИзделийПриАктивизацииЯчейки</Event>
 					</Events>
 					<ChildItems>
-						<LabelField name="СписокДопИзделийСсылка" id="75">
-							<DataPath>СписокДопИзделий.Ref</DataPath>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Наименование</v8:content>
-								</v8:item>
-							</Title>
-							<ContextMenu name="СписокДопИзделийСсылкаКонтекстноеМеню" id="76"/>
-							<ExtendedTooltip name="СписокДопИзделийСсылкаРасширеннаяПодсказка" id="77"/>
-						</LabelField>
-						<LabelField name="СписокДопИзделийКод" id="26">
-							<DataPath>СписокДопИзделий.Code</DataPath>
-							<ContextMenu name="СписокДопИзделийКодКонтекстноеМеню" id="27"/>
-							<ExtendedTooltip name="СписокДопИзделийКодРасширеннаяПодсказка" id="28"/>
-						</LabelField>
+						<InputField name="ДеревоДопИзделийНаименование" id="152">
+							<DataPath>ДеревоДопИзделий.Наименование</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="ДеревоДопИзделийНаименованиеКонтекстноеМеню" id="153"/>
+							<ExtendedTooltip name="ДеревоДопИзделийНаименованиеРасширеннаяПодсказка" id="154"/>
+						</InputField>
 					</ChildItems>
 				</Table>
 			</ChildItems>
@@ -439,64 +365,6 @@
 		</HTMLDocumentField>
 	</ChildItems>
 	<Attributes>
-		<Attribute name="Список" id="1">
-			<Type>
-				<v8:Type>cfg:DynamicList</v8:Type>
-			</Type>
-			<MainAttribute>true</MainAttribute>
-			<Settings xsi:type="DynamicList">
-				<ManualQuery>true</ManualQuery>
-				<DynamicDataRead>true</DynamicDataRead>
-				<QueryText>ВЫБРАТЬ
-	СправочникКаталогИзделий.Ссылка,
-	СправочникКаталогИзделий.ПометкаУдаления,
-	СправочникКаталогИзделий.Предопределенный,
-	СправочникКаталогИзделий.Родитель,
-	СправочникКаталогИзделий.ЭтоГруппа,
-	СправочникКаталогИзделий.Код,
-	СправочникКаталогИзделий.Наименование,
-	СправочникКаталогИзделий.Автор,
-	СправочникКаталогИзделий.Активный,
-	СправочникКаталогИзделий.АктивныйДляДилера,
-	СправочникКаталогИзделий.Корпусный,
-	СправочникКаталогИзделий.ВидИзделияПоКаталогу,
-	СправочникКаталогИзделий.Базовый
-ИЗ
-	Справочник.КаталогИзделий КАК СправочникКаталогИзделий
-ГДЕ
-	СправочникКаталогИзделий.ВидИзделияПоКаталогу В ИЕРАРХИИ (&amp;ДоступныеВидыИзделий)</QueryText>
-				<MainTable>Catalog.КаталогИзделий</MainTable>
-				<ListSettings>
-					<dcsset:filter>
-						<dcsset:item xsi:type="dcsset:FilterItemComparison">
-							<dcsset:left xsi:type="dcscor:Field">Предопределенный</dcsset:left>
-							<dcsset:comparisonType>Equal</dcsset:comparisonType>
-							<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
-						</dcsset:item>
-						<dcsset:item xsi:type="dcsset:FilterItemComparison">
-							<dcsset:left xsi:type="dcscor:Field">ПометкаУдаления</dcsset:left>
-							<dcsset:comparisonType>Equal</dcsset:comparisonType>
-							<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
-						</dcsset:item>
-						<dcsset:item xsi:type="dcsset:FilterItemComparison">
-							<dcsset:left xsi:type="dcscor:Field">Базовый</dcsset:left>
-							<dcsset:comparisonType>Equal</dcsset:comparisonType>
-							<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.КаталогИзделий.ПустаяСсылка</dcsset:right>
-						</dcsset:item>
-						<dcsset:viewMode>Normal</dcsset:viewMode>
-						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
-					</dcsset:filter>
-					<dcsset:order>
-						<dcsset:viewMode>Normal</dcsset:viewMode>
-						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
-					</dcsset:order>
-					<dcsset:conditionalAppearance>
-						<dcsset:viewMode>Normal</dcsset:viewMode>
-						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
-					</dcsset:conditionalAppearance>
-				</ListSettings>
-			</Settings>
-		</Attribute>
 		<Attribute name="АдресКартинки" id="2">
 			<Title>
 				<v8:item>
@@ -537,50 +405,6 @@
 			<Type>
 				<v8:Type>cfg:EnumRef.ВидыПрисоединенныхФайлов</v8:Type>
 			</Type>
-		</Attribute>
-		<Attribute name="СписокДопИзделий" id="5">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Список доп изделий</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>cfg:DynamicList</v8:Type>
-			</Type>
-			<Settings xsi:type="DynamicList">
-				<ManualQuery>true</ManualQuery>
-				<DynamicDataRead>false</DynamicDataRead>
-				<QueryText>ВЫБРАТЬ
-	СправочникКаталогИзделий.Ссылка,
-	СправочникКаталогИзделий.Родитель,
-	СправочникКаталогИзделий.ЭтоГруппа,
-	СправочникКаталогИзделий.Код,
-	СправочникКаталогИзделий.Наименование,
-	СправочникКаталогИзделий.Автор,
-	СправочникКаталогИзделий.Активный,
-	СправочникКаталогИзделий.Базовый,
-	СправочникКаталогИзделий.ВидИзделияПоКаталогу
-ИЗ
-	Справочник.КаталогИзделий КАК СправочникКаталогИзделий
-ГДЕ
-	СправочникКаталогИзделий.Базовый = &amp;Базовый
-	И СправочникКаталогИзделий.СтатусИзделияПоКаталогу = ЗНАЧЕНИЕ(Перечисление.СтатусыИзделийПоКаталогу.Активен)</QueryText>
-				<ListSettings>
-					<dcsset:filter>
-						<dcsset:viewMode>Normal</dcsset:viewMode>
-						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
-					</dcsset:filter>
-					<dcsset:order>
-						<dcsset:viewMode>Normal</dcsset:viewMode>
-						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
-					</dcsset:order>
-					<dcsset:conditionalAppearance>
-						<dcsset:viewMode>Normal</dcsset:viewMode>
-						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
-					</dcsset:conditionalAppearance>
-				</ListSettings>
-			</Settings>
 		</Attribute>
 		<Attribute name="Полки" id="6">
 			<Title>
@@ -708,6 +532,254 @@
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
+		<Attribute name="ДеревоИзделий" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дерево изделий</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTree</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Ссылка" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ссылка</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.КаталогИзделий</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Наименование" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наименование</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Код" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Код</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="ЭтоГруппа" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Это группа</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Несовместимость" id="6">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Несовместимость</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ДеревоДопИзделий" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Дерево доп изделий</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTree</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Ссылка" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ссылка</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.КаталогИзделий</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Наименование" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наименование</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Код" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Код</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Несовместимость" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Несовместимость</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ТаблицаДопИзделий" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Таблица доп изделий</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueTable</v8:Type>
+			</Type>
+			<Columns>
+				<Column name="Ссылка" id="1">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ссылка</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.КаталогИзделий</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Наименование" id="2">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Наименование</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Код" id="3">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Код</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:string</v8:Type>
+						<v8:StringQualifiers>
+							<v8:Length>0</v8:Length>
+							<v8:AllowedLength>Variable</v8:AllowedLength>
+						</v8:StringQualifiers>
+					</Type>
+				</Column>
+				<Column name="Базовый" id="4">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Базовый</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.КаталогИзделий</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Несовместимость" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Несовместимость</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+			</Columns>
+		</Attribute>
+		<Attribute name="ПараметрыФормы" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры формы</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ДеревоИзделийНаименование</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">ДеревоИзделий.Несовместимость</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветФона</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">web:Pink</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
 	</Attributes>
 	<Commands>
 		<Command name="Поиск" id="1">
