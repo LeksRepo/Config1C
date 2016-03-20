@@ -15,8 +15,7 @@
 					<v8:content>Спецификация</v8:content>
 				</v8:item>
 			</title>
-			<presentationExpression>
-ПрефиксацияОбъектовКлиентСервер.ПолучитьНомерНаПечать([Спецификация №])</presentationExpression>
+			<presentationExpression>Ссылка.Номер</presentationExpression>
 			<appearance>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>ГоризонтальноеПоложение</dcscor:parameter>
@@ -138,14 +137,8 @@
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>[Спецификация №]</dataPath>
+			<dataPath/>
 			<field>НомерСпецификации</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Спецификация №</v8:content>
-				</v8:item>
-			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Заметка</dataPath>
@@ -220,10 +213,11 @@
 		ПО (РеализацияГотовойПродукцииСписокСпецификаций.Спецификация = ДокСпецификация.Ссылка)
 			И (РеализацияГотовойПродукцииСписокСпецификаций.Ссылка.Проведен)
 ГДЕ
-	ДокСпецификация.ДатаОтгрузки &lt; &amp;ДатаОтчета
-	И ДокСпецификация.ПакетУслуг &lt;&gt; ЗНАЧЕНИЕ(Перечисление.ПакетыУслуг.СамовывозОтПроизводителя)
+	ДокСпецификация.ПакетУслуг &lt;&gt; ЗНАЧЕНИЕ(Перечисление.ПакетыУслуг.СамовывозОтПроизводителя)
 	И ДокСпецификация.Проведен
-	И РеализацияГотовойПродукцииСписокСпецификаций.Ссылка ЕСТЬ NULL </query>
+	И РеализацияГотовойПродукцииСписокСпецификаций.Ссылка ЕСТЬ NULL 
+{ГДЕ
+	(ДокСпецификация.ДатаОтгрузки &lt; &amp;ДатаОтчета)}</query>
 	</dataSet>
 	<parameter>
 		<name>ДатаОтчета</name>
