@@ -169,6 +169,10 @@
 			<dataPath>Подразделение</dataPath>
 			<field>Подразделение</field>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Статус</dataPath>
+			<field>Статус</field>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	ДокСпецификация.АдресМонтажа КАК АдресДоставки,
@@ -202,7 +206,8 @@
 		ИНАЧЕ ""
 	КОНЕЦ КАК ДТК,
 	"" КАК Доставлен,
-	СпЗаметки.ТекстСодержания КАК Заметка
+	СпЗаметки.ТекстСодержания КАК Заметка,
+	СтатусСпецификацииСрезПоследних.Статус
 ИЗ
 	Документ.Спецификация КАК ДокСпецификация
 		ЛЕВОЕ СОЕДИНЕНИЕ Документ.Договор КАК ДокДоговор
@@ -212,6 +217,8 @@
 		ЛЕВОЕ СОЕДИНЕНИЕ Документ.РеализацияГотовойПродукции.СписокСпецификаций КАК РеализацияГотовойПродукцииСписокСпецификаций
 		ПО (РеализацияГотовойПродукцииСписокСпецификаций.Спецификация = ДокСпецификация.Ссылка)
 			И (РеализацияГотовойПродукцииСписокСпецификаций.Ссылка.Проведен)
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СтатусСпецификации.СрезПоследних КАК СтатусСпецификацииСрезПоследних
+		ПО (СтатусСпецификацииСрезПоследних.Спецификация = ДокСпецификация.Ссылка)
 ГДЕ
 	ДокСпецификация.ПакетУслуг &lt;&gt; ЗНАЧЕНИЕ(Перечисление.ПакетыУслуг.СамовывозОтПроизводителя)
 	И ДокСпецификация.Проведен
@@ -236,52 +243,66 @@
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 		<useRestriction>false</useRestriction>
 	</parameter>
+	<parameter>
+		<name>Период</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
 		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 			<dcsset:selection>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>ДатаДоставки</dcsset:field>
-				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
 					<dcsset:item xsi:type="dcsset:SelectedItemFolder">
 						<dcsset:item xsi:type="dcsset:SelectedItemFolder">
-							<dcsset:item xsi:type="dcsset:SelectedItemFolder">
-								<dcsset:item xsi:type="dcsset:SelectedItemFolder">
-									<dcsset:lwsTitle>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content> </v8:content>
-										</v8:item>
-									</dcsset:lwsTitle>
-									<dcsset:item xsi:type="dcsset:SelectedItemField">
-										<dcsset:field>Ссылка</dcsset:field>
-									</dcsset:item>
-									<dcsset:item xsi:type="dcsset:SelectedItemField">
-										<dcsset:field>Телефон</dcsset:field>
-									</dcsset:item>
-									<dcsset:placement>Vertically</dcsset:placement>
-								</dcsset:item>
-								<dcsset:item xsi:type="dcsset:SelectedItemFolder">
-									<dcsset:lwsTitle>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>   </v8:content>
-										</v8:item>
-									</dcsset:lwsTitle>
-									<dcsset:item xsi:type="dcsset:SelectedItemField">
-										<dcsset:field>Заказчик</dcsset:field>
-									</dcsset:item>
-									<dcsset:item xsi:type="dcsset:SelectedItemField">
-										<dcsset:field>АдресДоставки</dcsset:field>
-									</dcsset:item>
-									<dcsset:placement>Vertically</dcsset:placement>
-								</dcsset:item>
-								<dcsset:placement>Horizontally</dcsset:placement>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>ДатаДоставки</dcsset:field>
 							</dcsset:item>
 							<dcsset:item xsi:type="dcsset:SelectedItemField">
-								<dcsset:field>Заметка</dcsset:field>
+								<dcsset:field>Статус</dcsset:field>
+							</dcsset:item>
+							<dcsset:placement>Vertically</dcsset:placement>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content> </v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>Ссылка</dcsset:field>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>Телефон</dcsset:field>
+							</dcsset:item>
+							<dcsset:placement>Vertically</dcsset:placement>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>    </v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>Доставлен</dcsset:field>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>Комментарий</dcsset:field>
 							</dcsset:item>
 							<dcsset:placement>Vertically</dcsset:placement>
 						</dcsset:item>
@@ -304,18 +325,21 @@
 							<dcsset:lwsTitle>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>    </v8:content>
+									<v8:content>   </v8:content>
 								</v8:item>
 							</dcsset:lwsTitle>
 							<dcsset:item xsi:type="dcsset:SelectedItemField">
-								<dcsset:field>Доставлен</dcsset:field>
+								<dcsset:field>Заказчик</dcsset:field>
 							</dcsset:item>
 							<dcsset:item xsi:type="dcsset:SelectedItemField">
-								<dcsset:field>Комментарий</dcsset:field>
+								<dcsset:field>АдресДоставки</dcsset:field>
 							</dcsset:item>
 							<dcsset:placement>Vertically</dcsset:placement>
 						</dcsset:item>
 						<dcsset:placement>Horizontally</dcsset:placement>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Заметка</dcsset:field>
 					</dcsset:item>
 					<dcsset:placement>Vertically</dcsset:placement>
 				</dcsset:item>
