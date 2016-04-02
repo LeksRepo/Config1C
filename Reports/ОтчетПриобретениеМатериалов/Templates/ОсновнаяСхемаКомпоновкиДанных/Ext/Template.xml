@@ -41,6 +41,10 @@
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Номенклатура</dataPath>
 			<field>Номенклатура</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+				<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
+			</role>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>СуммаЗакуплено</dataPath>
@@ -104,12 +108,27 @@
 			<dataPath>СчетКтЧтение</dataPath>
 			<field>СчетКтЧтение</field>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоПередано</dataPath>
+			<field>КоличествоПередано</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество передано</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧДЦ=3</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	СпецификацияСписокНоменклатуры.Ссылка КАК Спецификация,
 	СпецификацияСписокНоменклатуры.Номенклатура КАК Номенклатура,
-	СУММА(СпецификацияСписокНоменклатуры.Количество) КАК КоличествоВСпецификации,
-	НарядЗаданиеСписокСпецификаций.Ссылка.Подразделение
+	СУММА(СпецификацияСписокНоменклатуры.Количество) КАК КоличествоВСпецификации
 ПОМЕСТИТЬ втНоменклатураСпецификаций
 ИЗ
 	Документ.Спецификация.СписокНоменклатуры КАК СпецификацияСписокНоменклатуры
@@ -131,7 +150,6 @@
 ////////////////////////////////////////////////////////////////////////////////
 ВЫБРАТЬ
 	УправленческийОборотыДтКт.Регистратор,
-	УправленческийОборотыДтКт.Подразделение,
 	ВЫБОР
 		КОГДА ВЫРАЗИТЬ(УправленческийОборотыДтКт.СубконтоДт1 КАК Справочник.Номенклатура).Базовый
 			ТОГДА УправленческийОборотыДтКт.СубконтоДт1
@@ -145,41 +163,60 @@
 	КОНЕЦ КАК Количество
 ПОМЕСТИТЬ втЗакупленоРегистр
 ИЗ
-	РегистрБухгалтерии.Управленческий.ОборотыДтКт({(&amp;НачалоПериода)}, {(&amp;КонецПериода)}, Регистратор, СчетДт = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.МатериалыНаСкладе), &amp;СубконтоНоменклатура, , , Подразделение = &amp;Подразделение) КАК УправленческийОборотыДтКт
+	РегистрБухгалтерии.Управленческий.ОборотыДтКт({(&amp;НачалоПериода)}, {(&amp;КонецПериода)}, Регистратор, СчетДт = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.МатериалыНаСкладе), &amp;СубконтоНоменклатура, СчетКт В (&amp;КорСчетаПриобретенияМатериалов), , Подразделение = &amp;Подразделение) КАК УправленческийОборотыДтКт
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
 ВЫБРАТЬ
-	втНоменклатураСпецификаций.Подразделение КАК Подразделение,
+	УправленческийОборотыДтКт.Регистратор,
+	УправленческийОборотыДтКт.СубконтоДт1 КАК Номенклатура,
+	УправленческийОборотыДтКт.СуммаОборот КАК Сумма,
+	УправленческийОборотыДтКт.КоличествоОборотДт КАК Количество
+ПОМЕСТИТЬ втПереданоВЦехРегистр
+ИЗ
+	РегистрБухгалтерии.Управленческий.ОборотыДтКт({(&amp;НачалоПериода)}, {(&amp;КонецПериода)}, Регистратор, СчетДт = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ОсновноеПроизводство), &amp;СубконтоНоменклатура, СчетКт = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.МатериалыНаСкладе), , Подразделение = &amp;Подразделение) КАК УправленческийОборотыДтКт
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
 	втНоменклатураСпецификаций.Номенклатура КАК Номенклатура,
 	втНоменклатураСпецификаций.Спецификация КАК Регистратор,
 	втНоменклатураСпецификаций.КоличествоВСпецификации КАК КоличествоВСпецификации,
 	0 КАК СуммаЗакуплено,
-	0 КАК КоличествоЗакуплено
+	0 КАК КоличествоЗакуплено,
+	0 КАК КоличествоПередано
 ИЗ
 	втНоменклатураСпецификаций КАК втНоменклатураСпецификаций
 
 ОБЪЕДИНИТЬ ВСЕ
 
 ВЫБРАТЬ
-	втЗакупленоРегистр.Подразделение,
 	ВЫРАЗИТЬ(втЗакупленоРегистр.Номенклатура КАК Справочник.Номенклатура),
 	втЗакупленоРегистр.Регистратор,
 	0,
 	втЗакупленоРегистр.Сумма,
-	втЗакупленоРегистр.Количество
+	втЗакупленоРегистр.Количество,
+	0
 ИЗ
-	втЗакупленоРегистр КАК втЗакупленоРегистр</query>
+	втЗакупленоРегистр КАК втЗакупленоРегистр
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	ВЫРАЗИТЬ(втПереданоВЦехРегистр.Номенклатура КАК Справочник.Номенклатура),
+	втПереданоВЦехРегистр.Регистратор,
+	0,
+	0,
+	0,
+	втПереданоВЦехРегистр.Количество
+ИЗ
+	втПереданоВЦехРегистр КАК втПереданоВЦехРегистр</query>
 	</dataSet>
 	<dataSet xsi:type="DataSetQuery">
-		<name>НаборДанных2</name>
+		<name>ЦеныНоменклатуры</name>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Номенклатура</dataPath>
 			<field>Номенклатура</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>Подразделение</dataPath>
-			<field>Подразделение</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>ПлановаяЗакупочная</dataPath>
@@ -187,24 +224,18 @@
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
-	ЦеныНоменклатурыПоПодразделениямСрезПоследних.Подразделение,
 	ЦеныНоменклатурыПоПодразделениямСрезПоследних.Номенклатура,
 	ЦеныНоменклатурыПоПодразделениямСрезПоследних.ПлановаяЗакупочная
 ИЗ
-	РегистрСведений.ЦеныНоменклатурыПоПодразделениям.СрезПоследних КАК ЦеныНоменклатурыПоПодразделениямСрезПоследних</query>
+	РегистрСведений.ЦеныНоменклатурыПоПодразделениям.СрезПоследних КАК ЦеныНоменклатурыПоПодразделениямСрезПоследних
+ГДЕ
+	Подразделение = &amp;Подразделение</query>
 	</dataSet>
 	<dataSet xsi:type="DataSetQuery">
-		<name>НаборДанных3</name>
+		<name>НоменклатураПодразделений</name>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Номенклатура</dataPath>
 			<field>Номенклатура</field>
-			<role>
-				<dcscom:dimension>true</dcscom:dimension>
-			</role>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>Подразделение</dataPath>
-			<field>Подразделение</field>
 			<role>
 				<dcscom:dimension>true</dcscom:dimension>
 			</role>
@@ -225,35 +256,127 @@
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
-	НоменклатураПодразделений.Подразделение,
 	НоменклатураПодразделений.Номенклатура,
 	НоменклатураПодразделений.ПодЗаказ
 ИЗ
-	РегистрСведений.НоменклатураПодразделений КАК НоменклатураПодразделений</query>
+	РегистрСведений.НоменклатураПодразделений КАК НоменклатураПодразделений
+ГДЕ
+	НоменклатураПодразделений.Подразделение = &amp;Подразделение</query>
+	</dataSet>
+	<dataSet xsi:type="DataSetQuery">
+		<name>ОстаткиНаСкладе</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Субконто2</dataPath>
+			<field>Субконто2</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СчетКтЧтение</dataPath>
+			<field>СчетКтЧтение</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Подразделение</dataPath>
+			<field>Подразделение</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СчетДтЧтение</dataPath>
+			<field>СчетДтЧтение</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Субконто1</dataPath>
+			<field>Субконто1</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Счет</dataPath>
+			<field>Счет</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Субконто3</dataPath>
+			<field>Субконто3</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Номенклатура</dataPath>
+			<field>Номенклатура</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номенклатура</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Сумма</dataPath>
+			<field>Сумма</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоОстаток</dataPath>
+			<field>КоличествоОстаток</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Остаток склад</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧДЦ=3</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВыделятьОтрицательные</dcscor:parameter>
+					<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Регистратор</dataPath>
+			<field>Регистратор</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Регистратор</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	"Остаток" КАК Регистратор,
+	ВЫБОР
+		КОГДА ВЫРАЗИТЬ(УправленческийОстатки.Субконто1 КАК Справочник.Номенклатура).Базовый
+			ТОГДА УправленческийОстатки.Субконто1
+		ИНАЧЕ ВЫРАЗИТЬ(УправленческийОстатки.Субконто1 КАК Справочник.Номенклатура).БазоваяНоменклатура
+	КОНЕЦ КАК Номенклатура,
+	УправленческийОстатки.СуммаОстаток КАК Сумма,
+	ВЫБОР
+		КОГДА ВЫРАЗИТЬ(УправленческийОстатки.Субконто1 КАК Справочник.Номенклатура).Базовый
+			ТОГДА УправленческийОстатки.КоличествоОстаток
+		ИНАЧЕ ВЫРАЗИТЬ(УправленческийОстатки.Субконто1 КАК Справочник.Номенклатура).КоэффициентБазовых * УправленческийОстатки.КоличествоОстаток
+	КОНЕЦ КАК КоличествоОстаток
+ИЗ
+	РегистрБухгалтерии.Управленческий.Остатки(&amp;НачалоПериода, Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.МатериалыНаСкладе), &amp;СубконтоНоменклатура, Подразделение = &amp;Подразделение) КАК УправленческийОстатки</query>
 	</dataSet>
 	<dataSetLink>
 		<sourceDataSet>НаборДанных1</sourceDataSet>
-		<destinationDataSet>НаборДанных2</destinationDataSet>
+		<destinationDataSet>ЦеныНоменклатуры</destinationDataSet>
 		<sourceExpression>Номенклатура</sourceExpression>
 		<destinationExpression>Номенклатура</destinationExpression>
 	</dataSetLink>
 	<dataSetLink>
 		<sourceDataSet>НаборДанных1</sourceDataSet>
-		<destinationDataSet>НаборДанных2</destinationDataSet>
-		<sourceExpression>Подразделение</sourceExpression>
-		<destinationExpression>Подразделение</destinationExpression>
-	</dataSetLink>
-	<dataSetLink>
-		<sourceDataSet>НаборДанных1</sourceDataSet>
-		<destinationDataSet>НаборДанных3</destinationDataSet>
+		<destinationDataSet>НоменклатураПодразделений</destinationDataSet>
 		<sourceExpression>Номенклатура</sourceExpression>
 		<destinationExpression>Номенклатура</destinationExpression>
 	</dataSetLink>
 	<dataSetLink>
 		<sourceDataSet>НаборДанных1</sourceDataSet>
-		<destinationDataSet>НаборДанных3</destinationDataSet>
-		<sourceExpression>Подразделение</sourceExpression>
-		<destinationExpression>Подразделение</destinationExpression>
+		<destinationDataSet>ОстаткиНаСкладе</destinationDataSet>
+		<sourceExpression>Номенклатура</sourceExpression>
+		<destinationExpression>Номенклатура</destinationExpression>
 	</dataSetLink>
 	<calculatedField>
 		<dataPath>ЦенаЗакуплено</dataPath>
@@ -291,6 +414,46 @@
 			</dcscor:item>
 		</appearance>
 	</calculatedField>
+	<calculatedField>
+		<dataPath>ОтклонениеПередано</dataPath>
+		<expression>КоличествоВСпецификации - КоличествоПередано</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Отклонение передано</v8:content>
+			</v8:item>
+		</title>
+		<appearance>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>Формат</dcscor:parameter>
+				<dcscor:value xsi:type="xs:string">ЧДЦ=3</dcscor:value>
+			</dcscor:item>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>ВыделятьОтрицательные</dcscor:parameter>
+				<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+			</dcscor:item>
+		</appearance>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>ОтклонениеЗакуплено</dataPath>
+		<expression>ВЫБОР КОГДА КоличествоОстаток &gt; КоличествоВСпецификации ТОГДА КоличествоЗакуплено ИНАЧЕ КоличествоОстаток + КоличествоЗакуплено -  КоличествоВСпецификации КОНЕЦ</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Отклонение закуплено</v8:content>
+			</v8:item>
+		</title>
+		<appearance>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>Формат</dcscor:parameter>
+				<dcscor:value xsi:type="xs:string">ЧДЦ=3</dcscor:value>
+			</dcscor:item>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>ВыделятьОтрицательные</dcscor:parameter>
+				<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+			</dcscor:item>
+		</appearance>
+	</calculatedField>
 	<totalField>
 		<dataPath>КоличествоВСпецификации</dataPath>
 		<expression>Сумма(КоличествоВСпецификации)</expression>
@@ -317,6 +480,22 @@
 		<dataPath>Отклонение</dataPath>
 		<expression>ВЫБОР КОГДА Сумма(СуммаЗакуплено) &gt; 0 ТОГДА Среднее(ПлановаяЗакупочная) - ВЫБОР КОГДА Сумма(КоличествоЗакуплено) &gt; 0 ТОГДА Сумма(СуммаЗакуплено) / Сумма(КоличествоЗакуплено) ИНАЧЕ 0 КОНЕЦ ИНАЧЕ 0 КОНЕЦ</expression>
 		<group>Номенклатура</group>
+	</totalField>
+	<totalField>
+		<dataPath>КоличествоОстаток</dataPath>
+		<expression>Сумма(КоличествоОстаток)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>КоличествоПередано</dataPath>
+		<expression>Сумма(КоличествоПередано)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ОтклонениеПередано</dataPath>
+		<expression>Сумма(ОтклонениеПередано)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ОтклонениеЗакуплено</dataPath>
+		<expression>Сумма(ОтклонениеЗакуплено)</expression>
 	</totalField>
 	<parameter>
 		<name>НачалоПериода</name>
@@ -439,6 +618,22 @@
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 		<useRestriction>false</useRestriction>
 	</parameter>
+	<parameter>
+		<name>КорСчетаПриобретенияМатериалов</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Кор счета приобретения материалов</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:ChartOfAccountsRef.Управленческий</v8:Type>
+		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">ПланСчетов.Управленческий.Подотчет</value>
+		<value xsi:type="dcscor:DesignTimeValue">ПланСчетов.Управленческий.ВзаиморасчетыСПоставщиками</value>
+		<useRestriction>true</useRestriction>
+		<valueListAllowed>true</valueListAllowed>
+	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
 		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
@@ -451,19 +646,22 @@
 					<dcsset:field>ПодЗаказ</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>КоличествоВСпецификации</dcsset:field>
+					<dcsset:field>КоличествоОстаток</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>ПлановаяЗакупочная</dcsset:field>
+					<dcsset:field>КоличествоВСпецификации</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>КоличествоЗакуплено</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>ЦенаЗакуплено</dcsset:field>
+					<dcsset:field>КоличествоПередано</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Отклонение</dcsset:field>
+					<dcsset:field>ОтклонениеЗакуплено</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ОтклонениеПередано</dcsset:field>
 				</dcsset:item>
 			</dcsset:selection>
 			<dcsset:filter>
