@@ -11,7 +11,15 @@
 	<Group>Horizontal</Group>
 	<Customizable>false</Customizable>
 	<CommandSet/>
-	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаРедактироватьИзделие" id="155">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.РедактироватьИзделие</CommandName>
+				<ExtendedTooltip name="ФормаРедактироватьИзделиеРасширеннаяПодсказка" id="156"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
 	<Events>
 		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
@@ -249,7 +257,6 @@
 			<ChildItems>
 				<Table name="ДеревоИзделий" id="117">
 					<Representation>Tree</Representation>
-					<ReadOnly>true</ReadOnly>
 					<ChangeRowSet>false</ChangeRowSet>
 					<ChangeRowOrder>false</ChangeRowOrder>
 					<Width>50</Width>
@@ -293,6 +300,7 @@
 					<ChildItems>
 						<InputField name="ДеревоИзделийНаименование" id="133">
 							<DataPath>ДеревоИзделий.Наименование</DataPath>
+							<ReadOnly>true</ReadOnly>
 							<EditMode>EnterOnInput</EditMode>
 							<ContextMenu name="ДеревоИзделийНаименованиеКонтекстноеМеню" id="134"/>
 							<ExtendedTooltip name="ДеревоИзделийНаименованиеРасширеннаяПодсказка" id="135"/>
@@ -324,6 +332,13 @@
 					<ContextMenu name="ДеревоДопИзделийКонтекстноеМеню" id="137"/>
 					<AutoCommandBar name="ДеревоДопИзделийКоманднаяПанель" id="138">
 						<Autofill>false</Autofill>
+						<ChildItems>
+							<Button name="ДеревоДопИзделийРедактироватьДопИзделие" id="157">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.РедактироватьДопИзделие</CommandName>
+								<ExtendedTooltip name="ДеревоДопИзделийРедактироватьДопИзделиеРасширеннаяПодсказка" id="158"/>
+							</Button>
+						</ChildItems>
 					</AutoCommandBar>
 					<ExtendedTooltip name="ДеревоДопИзделийРасширеннаяПодсказка" id="139"/>
 					<SearchStringAddition name="ДеревоДопИзделийСтрокаПоиска" id="140">
@@ -820,6 +835,54 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ОтменитьПоиск</Action>
+		</Command>
+		<Command name="РедактироватьИзделие" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Редактировать изделие</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Редактировать изделие</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Use>
+				<xr:Common>false</xr:Common>
+				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+			</Use>
+			<Picture>
+				<xr:Ref>StdPicture.Change</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>РедактироватьИзделие</Action>
+			<Representation>Picture</Representation>
+		</Command>
+		<Command name="РедактироватьДопИзделие" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Редактировать доп изделие</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Редактировать доп изделие</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Use>
+				<xr:Common>false</xr:Common>
+				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+			</Use>
+			<Picture>
+				<xr:Ref>StdPicture.Change</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>РедактироватьДопИзделие</Action>
+			<Representation>Picture</Representation>
 		</Command>
 	</Commands>
 </Form>
