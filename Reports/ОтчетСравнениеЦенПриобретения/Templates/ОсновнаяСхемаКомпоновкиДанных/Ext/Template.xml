@@ -115,10 +115,6 @@
 					<v8:content>Поставщик факт</v8:content>
 				</v8:item>
 			</title>
-			<role>
-				<dcscom:dimension>true</dcscom:dimension>
-				<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
-			</role>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>ЦенаРозничная</dataPath>
@@ -207,11 +203,15 @@
 			ТОГДА УправленческийОборотыДтКт.КоличествоОборотДт
 		ИНАЧЕ ВЫРАЗИТЬ(УправленческийОборотыДтКт.СубконтоДт1 КАК Справочник.Номенклатура).КоэффициентБазовых * УправленческийОборотыДтКт.КоличествоОборотДт
 	КОНЕЦ КАК Количество,
-	УправленческийОборотыДтКт.СубконтоКт1 КАК Поставщик,
+	ВЫБОР
+		КОГДА УправленческийОборотыДтКт.СубконтоКт1 ССЫЛКА Справочник.Контрагенты
+			ТОГДА УправленческийОборотыДтКт.СубконтоКт1
+		ИНАЧЕ ЗНАЧЕНИЕ(Справочник.Контрагенты.ПустаяСсылка)
+	КОНЕЦ КАК Поставщик,
 	УправленческийОборотыДтКт.Подразделение
 ПОМЕСТИТЬ втЗакупки
 ИЗ
-	РегистрБухгалтерии.Управленческий.ОборотыДтКт({(&amp;НачалоПериода)}, {(&amp;КонецПериода)}, Регистратор, СчетДт = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.МатериалыНаСкладе), &amp;СубконтоНоменклатура, СчетКт В (&amp;КорСчетаПриобретенияМатериалов), &amp;СубконтоКонтрагент, Подразделение = &amp;Подразделение) КАК УправленческийОборотыДтКт
+	РегистрБухгалтерии.Управленческий.ОборотыДтКт({(&amp;НачалоПериода)}, {(&amp;КонецПериода)}, Регистратор, СчетДт = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.МатериалыНаСкладе), &amp;СубконтоНоменклатура, СчетКт В (&amp;КорСчетаПриобретенияМатериалов), , Подразделение = &amp;Подразделение) КАК УправленческийОборотыДтКт
 
 ИНДЕКСИРОВАТЬ ПО
 	Номенклатура
@@ -297,6 +297,21 @@
 		<dataPath>Перерасход</dataPath>
 		<expression>Сумма(Перерасход)</expression>
 	</totalField>
+	<totalField>
+		<dataPath>ЦенаПлановая</dataPath>
+		<expression>ЦенаПлановая</expression>
+		<group>Номенклатура</group>
+	</totalField>
+	<totalField>
+		<dataPath>ЦенаПриобретения</dataPath>
+		<expression>ЦенаПриобретения</expression>
+		<group>Номенклатура</group>
+	</totalField>
+	<totalField>
+		<dataPath>ЦенаРозничная</dataPath>
+		<expression>ЦенаРозничная</expression>
+		<group>Номенклатура</group>
+	</totalField>
 	<parameter>
 		<name>НачалоПериода</name>
 		<title xsi:type="v8:LocalStringType">
@@ -344,6 +359,7 @@
 		<valueType>
 			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:ChartOfAccountsRef.Управленческий</v8:Type>
 		</valueType>
+		<value xsi:type="dcscor:DesignTimeValue">ПланСчетов.Управленческий.Подотчет</value>
 		<value xsi:type="dcscor:DesignTimeValue">ПланСчетов.Управленческий.ВзаиморасчетыСПоставщиками</value>
 		<useRestriction>true</useRestriction>
 		<valueListAllowed>true</valueListAllowed>
@@ -376,20 +392,6 @@
 			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:ChartOfCharacteristicTypesRef.ВидыСубконто</v8:Type>
 		</valueType>
 		<value xsi:type="dcscor:DesignTimeValue">ПланВидовХарактеристик.ВидыСубконто.Номенклатура</value>
-		<useRestriction>true</useRestriction>
-	</parameter>
-	<parameter>
-		<name>СубконтоКонтрагент</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Субконто контрагент</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:ChartOfCharacteristicTypesRef.ВидыСубконто</v8:Type>
-		</valueType>
-		<value xsi:type="dcscor:DesignTimeValue">ПланВидовХарактеристик.ВидыСубконто.Контрагенты</value>
 		<useRestriction>true</useRestriction>
 	</parameter>
 	<parameter>
@@ -474,11 +476,6 @@
 				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:use>false</dcscor:use>
-					<dcscor:parameter>СубконтоКонтрагент</dcscor:parameter>
-					<dcscor:value xsi:nil="true"/>
-				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:use>false</dcscor:use>
 					<dcscor:parameter>ПериодОтчета</dcscor:parameter>
 					<dcscor:value xsi:type="v8:StandardPeriod">
 						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
@@ -500,7 +497,7 @@
 				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>АвтоПозицияРесурсов</dcscor:parameter>
-					<dcscor:value xsi:type="dcsset:DataCompositionResourcesAutoPosition">DontUse</dcscor:value>
+					<dcscor:value xsi:type="dcsset:DataCompositionResourcesAutoPosition">AfterAllFields</dcscor:value>
 				</dcscor:item>
 			</dcsset:outputParameters>
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
@@ -536,13 +533,6 @@
 							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
 						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:GroupItemField">
-							<dcsset:field>ПоставщикПлан</dcsset:field>
-							<dcsset:groupType>Items</dcsset:groupType>
-							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
-							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
-							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
-						</dcsset:item>
-						<dcsset:item xsi:type="dcsset:GroupItemField">
 							<dcsset:field>ПоставщикФакт</dcsset:field>
 							<dcsset:groupType>Items</dcsset:groupType>
 							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
@@ -550,6 +540,14 @@
 							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
 						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>ПоставщикПлан</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:use>false</dcsset:use>
 							<dcsset:field>ЦенаПлановая</dcsset:field>
 							<dcsset:groupType>Items</dcsset:groupType>
 							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
@@ -557,6 +555,7 @@
 							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
 						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:use>false</dcsset:use>
 							<dcsset:field>ЦенаПриобретения</dcsset:field>
 							<dcsset:groupType>Items</dcsset:groupType>
 							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
@@ -564,6 +563,7 @@
 							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
 						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:use>false</dcsset:use>
 							<dcsset:field>ЦенаРозничная</dcsset:field>
 							<dcsset:groupType>Items</dcsset:groupType>
 							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
