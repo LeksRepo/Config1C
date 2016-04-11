@@ -436,7 +436,7 @@
 	</calculatedField>
 	<calculatedField>
 		<dataPath>ОтклонениеЗакуплено</dataPath>
-		<expression>ВЫБОР КОГДА КоличествоОстаток &gt; КоличествоВСпецификации ТОГДА КоличествоЗакуплено ИНАЧЕ КоличествоОстаток + КоличествоЗакуплено -  КоличествоВСпецификации КОНЕЦ</expression>
+		<expression>ВЫБОР КОГДА КоличествоОстаток &gt; КоличествоВСпецификации ТОГДА -КоличествоЗакуплено КОГДА КоличествоОстаток &lt; КоличествоВСпецификации И КоличествоЗакуплено &gt; 0 ТОГДА КоличествоВСпецификации - КоличествоЗакуплено - КоличествоОстаток ИНАЧЕ 0 КОНЕЦ</expression>
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>ru</v8:lang>
@@ -712,6 +712,14 @@
 						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
 					</dcsset:item>
 				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+			</dcsset:item>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
 				<dcsset:order>
 					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
 				</dcsset:order>
