@@ -53,22 +53,6 @@
 			</role>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Отклонение</dataPath>
-			<field>Отклонение</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Отклонение</v8:content>
-				</v8:item>
-			</title>
-			<appearance>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>Формат</dcscor:parameter>
-					<dcscor:value xsi:type="xs:string">ЧДЦ=2</dcscor:value>
-				</dcscor:item>
-			</appearance>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>Подразделение</dataPath>
 			<field>Подразделение</field>
 		</field>
@@ -171,26 +155,6 @@
 			</appearance>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>ОтклонениеПлановое</dataPath>
-			<field>ОтклонениеПлановое</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Отклонение</v8:content>
-				</v8:item>
-			</title>
-			<appearance>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>Формат</dcscor:parameter>
-					<dcscor:value xsi:type="xs:string">ЧДЦ=2</dcscor:value>
-				</dcscor:item>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>ВыделятьОтрицательные</dcscor:parameter>
-					<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
-				</dcscor:item>
-			</appearance>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>ПолученоВЦехСтоимостьПлановая</dataPath>
 			<field>ПолученоВЦехСтоимостьПлановая</field>
 			<title xsi:type="v8:LocalStringType">
@@ -232,6 +196,42 @@
 				</dcscor:item>
 			</appearance>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Экономия</dataPath>
+			<field>Экономия</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Экономия</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧДЦ=</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Перерасход</dataPath>
+			<field>Перерасход</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Перерасход</v8:content>
+				</v8:item>
+			</title>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ЦветТекста</dcscor:parameter>
+					<dcscor:value xsi:type="v8ui:Color">#FF0000</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="xs:string">ЧДЦ=</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	ЕСТЬNULL(ОсновноеПроизводство.Субконто1, ДополнительныйЛимит.Субконто1) КАК Номенклатура,
@@ -255,12 +255,20 @@
 	втМатериалы.ПолученоВЦехКоличество * ЦеныНоменклатурыСрезПоследних.Розничная КАК ПолученоВЦехСтоимость,
 	втМатериалы.ТребуетсяПоСпецификациямКоличество,
 	втМатериалы.ТребуетсяПоСпецификациямКоличество * ЦеныНоменклатурыСрезПоследних.Розничная КАК ТребуетсяПоСпецификациямСтоимость,
-	(втМатериалы.ТребуетсяПоСпецификациямКоличество - втМатериалы.ПолученоВЦехКоличество) * ЦеныНоменклатурыСрезПоследних.Розничная КАК Отклонение,
+	ВЫБОР
+		КОГДА втМатериалы.ТребуетсяПоСпецификациямКоличество &gt; втМатериалы.ПолученоВЦехКоличество
+			ТОГДА (втМатериалы.ТребуетсяПоСпецификациямКоличество - втМатериалы.ПолученоВЦехКоличество) * ЦеныНоменклатурыСрезПоследних.ПлановаяЗакупочная
+		ИНАЧЕ 0
+	КОНЕЦ КАК Экономия,
+	ВЫБОР
+		КОГДА втМатериалы.ПолученоВЦехКоличество &gt; втМатериалы.ТребуетсяПоСпецификациямКоличество
+			ТОГДА (втМатериалы.ПолученоВЦехКоличество - втМатериалы.ТребуетсяПоСпецификациямКоличество) * ЦеныНоменклатурыСрезПоследних.ПлановаяЗакупочная
+		ИНАЧЕ 0
+	КОНЕЦ КАК Перерасход,
 	втМатериалы.Номенклатура.ЕдиницаИзмерения КАК ЕдиницаИзмерения,
 	втМатериалы.ПолученоВЦехСебестоимость,
 	втМатериалы.ПолученоВЦехКоличество * ЦеныНоменклатурыСрезПоследних.ПлановаяЗакупочная КАК ПолученоВЦехСтоимостьПлановая,
 	втМатериалы.ТребуетсяПоСпецификациямКоличество * ЦеныНоменклатурыСрезПоследних.ПлановаяЗакупочная КАК ТребуетсяПоСпецификациямСтоимостьПлановая,
-	(втМатериалы.ТребуетсяПоСпецификациямКоличество - втМатериалы.ПолученоВЦехКоличество) * ЦеныНоменклатурыСрезПоследних.ПлановаяЗакупочная КАК ОтклонениеПлановое,
 	ЦеныНоменклатурыСрезПоследних.ПлановаяЗакупочная
 ИЗ
 	втМатериалы КАК втМатериалы
@@ -270,10 +278,6 @@
 	втМатериалы.Номенклатура.МестоОбработки = ЗНАЧЕНИЕ(Перечисление.МестоОбработки.Цех)
 	И втМатериалы.Номенклатура.НоменклатурнаяГруппа &lt;&gt; ЗНАЧЕНИЕ(Справочник.НоменклатурныеГруппы.РасходныйМатериал)</query>
 	</dataSet>
-	<totalField>
-		<dataPath>Отклонение</dataPath>
-		<expression>Сумма(Отклонение)</expression>
-	</totalField>
 	<totalField>
 		<dataPath>ПолученоВЦехКоличество</dataPath>
 		<expression>Сумма(ПолученоВЦехКоличество)</expression>
@@ -295,10 +299,6 @@
 		<expression>Сумма(ПолученоВЦехСебестоимость)</expression>
 	</totalField>
 	<totalField>
-		<dataPath>ОтклонениеПлановое</dataPath>
-		<expression>Сумма(ОтклонениеПлановое)</expression>
-	</totalField>
-	<totalField>
 		<dataPath>ПолученоВЦехСтоимостьПлановая</dataPath>
 		<expression>Сумма(ПолученоВЦехСтоимостьПлановая)</expression>
 	</totalField>
@@ -309,6 +309,14 @@
 	<totalField>
 		<dataPath>ПлановаяЗакупочная</dataPath>
 		<expression>Минимум(ПлановаяЗакупочная)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Перерасход</dataPath>
+		<expression>Сумма(Перерасход)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Экономия</dataPath>
+		<expression>Сумма(Экономия)</expression>
 	</totalField>
 	<parameter>
 		<name>Период</name>
@@ -440,10 +448,13 @@
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
 						<dcsset:field>ПолученоВЦехСебестоимость</dcsset:field>
 					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Экономия</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Перерасход</dcsset:field>
+					</dcsset:item>
 					<dcsset:placement>Auto</dcsset:placement>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>ОтклонениеПлановое</dcsset:field>
 				</dcsset:item>
 			</dcsset:selection>
 			<dcsset:dataParameters>
@@ -517,46 +528,7 @@
 					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
 				</dcsset:order>
 				<dcsset:selection>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>Номенклатура</dcsset:field>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemFolder">
-						<dcsset:lwsTitle>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Требовалось</v8:content>
-							</v8:item>
-						</dcsset:lwsTitle>
-						<dcsset:item xsi:type="dcsset:SelectedItemField">
-							<dcsset:field>ТребуетсяПоСпецификациямКоличество</dcsset:field>
-						</dcsset:item>
-						<dcsset:item xsi:type="dcsset:SelectedItemField">
-							<dcsset:field>ТребуетсяПоСпецификациямСтоимостьПлановая</dcsset:field>
-						</dcsset:item>
-						<dcsset:placement>Auto</dcsset:placement>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemFolder">
-						<dcsset:lwsTitle>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Перемещено</v8:content>
-							</v8:item>
-						</dcsset:lwsTitle>
-						<dcsset:item xsi:type="dcsset:SelectedItemField">
-							<dcsset:field>ПолученоВЦехКоличество</dcsset:field>
-						</dcsset:item>
-						<dcsset:item xsi:type="dcsset:SelectedItemField">
-							<dcsset:field>ПолученоВЦехСтоимостьПлановая</dcsset:field>
-						</dcsset:item>
-						<dcsset:item xsi:type="dcsset:SelectedItemField">
-							<dcsset:use>false</dcsset:use>
-							<dcsset:field>ПолученоВЦехСебестоимость</dcsset:field>
-						</dcsset:item>
-						<dcsset:placement>Auto</dcsset:placement>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>ОтклонениеПлановое</dcsset:field>
-					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
 				</dcsset:selection>
 			</dcsset:item>
 		</dcsset:settings>
