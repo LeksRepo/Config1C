@@ -46,6 +46,9 @@
 			<HorizontalStretch>false</HorizontalStretch>
 			<ContextMenu name="ПодразделениеКонтекстноеМеню" id="14"/>
 			<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="15"/>
+			<Events>
+				<Event name="OnChange">ПодразделениеПриИзменении</Event>
+			</Events>
 		</InputField>
 		<Table name="СписокНоменклатуры" id="16">
 			<Representation>List</Representation>
@@ -55,7 +58,15 @@
 			<DataPath>Объект.СписокНоменклатуры</DataPath>
 			<RowFilter xsi:nil="true"/>
 			<ContextMenu name="СписокНоменклатурыКонтекстноеМеню" id="17"/>
-			<AutoCommandBar name="СписокНоменклатурыКоманднаяПанель" id="18"/>
+			<AutoCommandBar name="СписокНоменклатурыКоманднаяПанель" id="18">
+				<ChildItems>
+					<Button name="СписокНоменклатурыЗаполнитьГруппой" id="49">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ЗаполнитьГруппой</CommandName>
+						<ExtendedTooltip name="СписокНоменклатурыЗаполнитьГруппойРасширеннаяПодсказка" id="50"/>
+					</Button>
+				</ChildItems>
+			</AutoCommandBar>
 			<ExtendedTooltip name="СписокНоменклатурыРасширеннаяПодсказка" id="19"/>
 			<SearchStringAddition name="СписокНоменклатурыСтрокаПоиска" id="20">
 				<AdditionSource>
@@ -93,12 +104,18 @@
 					<EditMode>EnterOnInput</EditMode>
 					<ContextMenu name="СписокНоменклатурыНоменклатураКонтекстноеМеню" id="36"/>
 					<ExtendedTooltip name="СписокНоменклатурыНоменклатураРасширеннаяПодсказка" id="37"/>
+					<Events>
+						<Event name="OnChange">СписокНоменклатурыНоменклатураПриИзменении</Event>
+					</Events>
 				</InputField>
 				<InputField name="СписокНоменклатурыОсновнаяПоСкладу" id="41">
 					<DataPath>Объект.СписокНоменклатуры.ОсновнаяПоСкладу</DataPath>
 					<EditMode>EnterOnInput</EditMode>
 					<ContextMenu name="СписокНоменклатурыОсновнаяПоСкладуКонтекстноеМеню" id="42"/>
 					<ExtendedTooltip name="СписокНоменклатурыОсновнаяПоСкладуРасширеннаяПодсказка" id="43"/>
+					<Events>
+						<Event name="StartChoice">СписокНоменклатурыОсновнаяПоСкладуНачалоВыбора</Event>
+					</Events>
 				</InputField>
 				<CheckBoxField name="СписокНоменклатурыПодЗаказ" id="44">
 					<DataPath>Объект.СписокНоменклатуры.ПодЗаказ</DataPath>
@@ -148,4 +165,22 @@
 			</UseAlways>
 		</Attribute>
 	</Attributes>
+	<Commands>
+		<Command name="ЗаполнитьГруппой" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить группой</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить группой</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗаполнитьГруппой</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+	</Commands>
 </Form>
