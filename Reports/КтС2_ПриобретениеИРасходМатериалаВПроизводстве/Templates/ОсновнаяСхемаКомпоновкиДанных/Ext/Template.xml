@@ -236,9 +236,6 @@
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Номенклатура</dataPath>
 			<field>Номенклатура</field>
-			<role>
-				<dcscom:dimension>true</dcscom:dimension>
-			</role>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>ПодЗаказ</dataPath>
@@ -259,9 +256,7 @@
 	НоменклатураПодразделений.Номенклатура,
 	НоменклатураПодразделений.ПодЗаказ
 ИЗ
-	РегистрСведений.НоменклатураПодразделений КАК НоменклатураПодразделений
-ГДЕ
-	НоменклатураПодразделений.Подразделение = &amp;Подразделение</query>
+	РегистрСведений.НоменклатураПодразделений.СрезПоследних(, Подразделение = &amp;Подразделение) КАК НоменклатураПодразделений</query>
 	</dataSet>
 	<dataSet xsi:type="DataSetQuery">
 		<name>ОстаткиНаСкладе</name>
