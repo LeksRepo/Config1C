@@ -5,6 +5,7 @@
 	<RepostOnWrite>true</RepostOnWrite>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
@@ -21,35 +22,57 @@
 					<v8:content>Группа шапка</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Group>Horizontal</Group>
+			<HorizontalStretch>false</HorizontalStretch>
+			<Group>Vertical</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ГруппаШапкаРасширеннаяПодсказка" id="48"/>
 			<ChildItems>
-				<InputField name="Номер" id="1">
-					<DataPath>Объект.Number</DataPath>
+				<UsualGroup name="ГруппаШапкаВерх" id="51">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа шапка верх</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа шапка верх</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаШапкаВерхРасширеннаяПодсказка" id="52"/>
+					<ChildItems>
+						<InputField name="Номер" id="1">
+							<DataPath>Объект.Number</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
+							<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="3"/>
+						</InputField>
+						<InputField name="Дата" id="4">
+							<DataPath>Объект.Date</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
+							<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="6"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<InputField name="Подразделение" id="13">
+					<DataPath>Объект.Подразделение</DataPath>
 					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
-					<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="3"/>
-				</InputField>
-				<InputField name="Дата" id="4">
-					<DataPath>Объект.Date</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
-					<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="6"/>
+					<HorizontalStretch>true</HorizontalStretch>
+					<ContextMenu name="ПодразделениеКонтекстноеМеню" id="14"/>
+					<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="15"/>
+					<Events>
+						<Event name="OnChange">ПодразделениеПриИзменении</Event>
+					</Events>
 				</InputField>
 			</ChildItems>
 		</UsualGroup>
-		<InputField name="Подразделение" id="13">
-			<DataPath>Объект.Подразделение</DataPath>
-			<EditMode>EnterOnInput</EditMode>
-			<HorizontalStretch>false</HorizontalStretch>
-			<ContextMenu name="ПодразделениеКонтекстноеМеню" id="14"/>
-			<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="15"/>
-			<Events>
-				<Event name="OnChange">ПодразделениеПриИзменении</Event>
-			</Events>
-		</InputField>
 		<Table name="СписокНоменклатуры" id="16">
 			<Representation>List</Representation>
 			<AutoInsertNewRow>true</AutoInsertNewRow>
@@ -183,4 +206,13 @@
 			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>
 	</Commands>
+	<CommandInterface>
+		<NavigationPanel>
+			<Item>
+				<Command>InformationRegister.НоменклатураПодразделений.StandardCommand.OpenByRecorder</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+			</Item>
+		</NavigationPanel>
+	</CommandInterface>
 </Form>
