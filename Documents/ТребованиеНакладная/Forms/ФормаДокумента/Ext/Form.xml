@@ -145,7 +145,15 @@
 			<SearchControlLocation>None</SearchControlLocation>
 			<RowFilter xsi:nil="true"/>
 			<ContextMenu name="СписокНоменклатурыКонтекстноеМеню" id="50"/>
-			<AutoCommandBar name="СписокНоменклатурыКоманднаяПанель" id="51"/>
+			<AutoCommandBar name="СписокНоменклатурыКоманднаяПанель" id="51">
+				<ChildItems>
+					<Button name="СписокНоменклатурыПодобрать" id="83">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.Подобрать</CommandName>
+						<ExtendedTooltip name="СписокНоменклатурыПодобратьРасширеннаяПодсказка" id="84"/>
+					</Button>
+				</ChildItems>
+			</AutoCommandBar>
 			<ExtendedTooltip name="СписокНоменклатурыРасширеннаяПодсказка" id="52"/>
 			<SearchStringAddition name="СписокНоменклатурыСтрокаПоиска" id="74">
 				<AdditionSource>
@@ -171,6 +179,9 @@
 				<ContextMenu name="СписокНоменклатурыУправлениеПоискомКонтекстноеМеню" id="81"/>
 				<ExtendedTooltip name="СписокНоменклатурыУправлениеПоискомРасширеннаяПодсказка" id="82"/>
 			</SearchControlAddition>
+			<Events>
+				<Event name="ChoiceProcessing">СписокНоменклатурыОбработкаВыбора</Event>
+			</Events>
 			<ChildItems>
 				<LabelField name="СписокНоменклатурыНомерСтроки" id="53">
 					<DataPath>Объект.СписокНоменклатуры.LineNumber</DataPath>
@@ -285,4 +296,27 @@
 			</dcsset:item>
 		</ConditionalAppearance>
 	</Attributes>
+	<Commands>
+		<Command name="Подобрать" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобрать</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобрать</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.DataCompositionNewTable</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Подобрать</Action>
+			<Representation>Picture</Representation>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+	</Commands>
 </Form>
