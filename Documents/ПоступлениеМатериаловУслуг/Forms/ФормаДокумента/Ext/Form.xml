@@ -291,6 +291,9 @@
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="МатериалыНоменклатураКонтекстноеМеню" id="263"/>
 									<ExtendedTooltip name="МатериалыНоменклатураРасширеннаяПодсказка" id="264"/>
+									<Events>
+										<Event name="OnChange">МатериалыНоменклатураПриИзменении</Event>
+									</Events>
 								</InputField>
 								<LabelField name="МатериалыНоменклатураЕдиницаИзмерения" id="307">
 									<DataPath>Объект.Материалы.Номенклатура.ЕдиницаИзмерения</DataPath>
@@ -584,6 +587,21 @@
 				<Field>Объект.СуммаДокумента</Field>
 				<Field>Объект.RegisterRecords</Field>
 			</UseAlways>
+			<Columns>
+				<AdditionalColumns table="Объект.Материалы">
+					<Column name="Базовая" id="1">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Базовая</v8:content>
+							</v8:item>
+						</Title>
+						<Type>
+							<v8:Type>xs:boolean</v8:Type>
+						</Type>
+					</Column>
+				</AdditionalColumns>
+			</Columns>
 		</Attribute>
 		<Attribute name="фСуммаДокумента" id="2">
 			<Title>
@@ -600,6 +618,28 @@
 				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>МатериалыНоменклатура</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.Материалы.Базовая</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">web:DarkGreen</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
 	</Attributes>
 	<Commands>
 		<Command name="Подобрать" id="2">
