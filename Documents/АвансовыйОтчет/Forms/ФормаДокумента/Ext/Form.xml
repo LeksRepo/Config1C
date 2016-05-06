@@ -6,6 +6,7 @@
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
 		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
 		<UsualGroup name="ГруппаШапка" id="144">
@@ -469,6 +470,9 @@
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="СписокНоменклатурыНоменклатураКонтекстноеМеню" id="100"/>
 									<ExtendedTooltip name="СписокНоменклатурыНоменклатураРасширеннаяПодсказка" id="101"/>
+									<Events>
+										<Event name="OnChange">СписокНоменклатурыНоменклатураПриИзменении</Event>
+									</Events>
 								</InputField>
 								<LabelField name="СписокНоменклатурыНоменклатураЕдиницаИзмерения" id="111">
 									<DataPath>Объект.СписокНоменклатуры.Номенклатура.ЕдиницаИзмерения</DataPath>
@@ -587,5 +591,32 @@
 				</AdditionalColumns>
 			</Columns>
 		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>СписокНоменклатурыНоменклатура</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.СписокНоменклатуры.Базовая</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:use>false</dcscor:use>
+						<dcscor:parameter>ЦветФона</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">web:MistyRose</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветТекста</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">web:DarkGreen</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
 	</Attributes>
 </Form>
