@@ -125,8 +125,24 @@
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>ЗакупОптом</dataPath>
-			<field>ЗакупОптом</field>
+			<dataPath>Поле2</dataPath>
+			<field>Поле2</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поле2</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Поле1</dataPath>
+			<field>Поле1</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поле1</v8:content>
+				</v8:item>
+			</title>
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
@@ -205,13 +221,13 @@
 	втДанные.РасходСреднемесячный,
 	втДанные.КоличествоОстаток,
 	втДанные.РасходЗаПоследнийМесяц,
-	втНоменклатураПодразделений.ЗакупОптом
+	ЕСТЬNULL(втНоменклатураПодразделений.ЗакупОптом, ЛОЖЬ) КАК Поле1
 ИЗ
 	втДанные КАК втДанные
 		ЛЕВОЕ СОЕДИНЕНИЕ втНоменклатураПодразделений КАК втНоменклатураПодразделений
 		ПО втДанные.БазоваяНоменклатура = втНоменклатураПодразделений.Номенклатура
 {ГДЕ
-	втНоменклатураПодразделений.ЗакупОптом}</query>
+	(ЕСТЬNULL(втНоменклатураПодразделений.ЗакупОптом, ЛОЖЬ)) КАК Поле2}</query>
 	</dataSet>
 	<totalField>
 		<dataPath>КоличествоОстаток</dataPath>
