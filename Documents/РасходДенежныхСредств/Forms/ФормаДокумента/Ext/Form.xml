@@ -8,7 +8,6 @@
 	<Events>
 		<Event name="AfterWrite">ПослеЗаписи</Event>
 		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
-		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
@@ -88,9 +87,6 @@
 							<QuickChoice>true</QuickChoice>
 							<ContextMenu name="ПодразделениеКонтекстноеМеню" id="14"/>
 							<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="15"/>
-							<Events>
-								<Event name="OnChange">ПодразделениеПриИзменении</Event>
-							</Events>
 						</InputField>
 						<InputField name="ВидОперации" id="10">
 							<DataPath>Объект.ВидОперации</DataPath>
@@ -226,18 +222,6 @@
 									<ContextMenu name="СуммаКонтекстноеМеню" id="29"/>
 									<ExtendedTooltip name="СуммаРасширеннаяПодсказка" id="30"/>
 								</InputField>
-								<LabelField name="Остаток" id="59">
-									<DataPath>Остаток</DataPath>
-									<HorizontalAlign>Left</HorizontalAlign>
-									<Format>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>ЧН=0</v8:content>
-										</v8:item>
-									</Format>
-									<ContextMenu name="ОстатокКонтекстноеМеню" id="60"/>
-									<ExtendedTooltip name="ОстатокРасширеннаяПодсказка" id="61"/>
-								</LabelField>
 							</ChildItems>
 						</UsualGroup>
 					</ChildItems>
@@ -267,7 +251,7 @@
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Субконто Дт</v8:content>
+							<v8:content>Дебет</v8:content>
 						</v8:item>
 					</Title>
 					<TitleFont ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
@@ -285,7 +269,7 @@
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Счет Дт</v8:content>
+									<v8:content>Счет</v8:content>
 								</v8:item>
 							</Title>
 							<TitleTextColor>style:FieldSelectionBackColor</TitleTextColor>
@@ -312,9 +296,6 @@
 							<VerticalStretch>false</VerticalStretch>
 							<ContextMenu name="Субконто1ДтКонтекстноеМеню" id="17"/>
 							<ExtendedTooltip name="Субконто1ДтРасширеннаяПодсказка" id="18"/>
-							<Events>
-								<Event name="OnChange">Субконто1ДтПриИзменении</Event>
-							</Events>
 						</InputField>
 						<InputField name="Субконто2Дт" id="22">
 							<DataPath>Объект.Субконто2Дт</DataPath>
@@ -359,7 +340,7 @@
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Субконто Кт</v8:content>
+							<v8:content>Кредит</v8:content>
 						</v8:item>
 					</Title>
 					<TitleFont ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
@@ -377,7 +358,7 @@
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Счет Кт</v8:content>
+									<v8:content>Счет</v8:content>
 								</v8:item>
 							</Title>
 							<TitleTextColor>style:FieldSelectionBackColor</TitleTextColor>
@@ -515,44 +496,6 @@
 			<UseAlways>
 				<Field>Объект.RegisterRecords</Field>
 			</UseAlways>
-		</Attribute>
-		<Attribute name="Остаток" id="2">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Остаток</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:decimal</v8:Type>
-				<v8:NumberQualifiers>
-					<v8:Digits>10</v8:Digits>
-					<v8:FractionDigits>2</v8:FractionDigits>
-					<v8:AllowedSign>Any</v8:AllowedSign>
-				</v8:NumberQualifiers>
-			</Type>
-		</Attribute>
-		<Attribute name="РассчитатьОстаток" id="3">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Рассчитать остаток</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:boolean</v8:Type>
-			</Type>
-		</Attribute>
-		<Attribute name="ДокументСозданКопированием" id="4">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Документ создан копированием</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:boolean</v8:Type>
-			</Type>
 		</Attribute>
 	</Attributes>
 	<CommandInterface>
