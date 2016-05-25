@@ -210,17 +210,17 @@
 					<ContextMenu name="СписокНоменклатурыНоменклатураЕдиницаИзмеренияКонтекстноеМеню" id="46"/>
 					<ExtendedTooltip name="СписокНоменклатурыНоменклатураЕдиницаИзмеренияРасширеннаяПодсказка" id="47"/>
 				</LabelField>
-				<InputField name="СписокНоменклатурыКоличествоСклад" id="48">
-					<DataPath>Объект.СписокНоменклатуры.КоличествоСклад</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="СписокНоменклатурыКоличествоСкладКонтекстноеМеню" id="49"/>
-					<ExtendedTooltip name="СписокНоменклатурыКоличествоСкладРасширеннаяПодсказка" id="50"/>
-				</InputField>
 				<InputField name="СписокНоменклатурыКоличествоЦех" id="51">
 					<DataPath>Объект.СписокНоменклатуры.КоличествоЦех</DataPath>
 					<EditMode>EnterOnInput</EditMode>
 					<ContextMenu name="СписокНоменклатурыКоличествоЦехКонтекстноеМеню" id="52"/>
 					<ExtendedTooltip name="СписокНоменклатурыКоличествоЦехРасширеннаяПодсказка" id="53"/>
+				</InputField>
+				<InputField name="СписокНоменклатурыКоличествоСклад" id="48">
+					<DataPath>Объект.СписокНоменклатуры.КоличествоСклад</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="СписокНоменклатурыКоличествоСкладКонтекстноеМеню" id="49"/>
+					<ExtendedTooltip name="СписокНоменклатурыКоличествоСкладРасширеннаяПодсказка" id="50"/>
 				</InputField>
 			</ChildItems>
 		</Table>
@@ -248,6 +248,48 @@
 				<Field>Объект.RegisterRecords</Field>
 			</UseAlways>
 		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>СписокНоменклатуры</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.СписокНоменклатуры.КоличествоЦех</dcsset:left>
+						<dcsset:comparisonType>Less</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветФона</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">web:Pink</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>СписокНоменклатуры</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.СписокНоменклатуры.КоличествоСклад</dcsset:left>
+						<dcsset:comparisonType>Less</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветФона</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">web:Pink</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
 	</Attributes>
 	<Commands>
 		<Command name="Перезаполнить" id="1">
