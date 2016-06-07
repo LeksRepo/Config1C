@@ -255,12 +255,48 @@
 							<RowFilter xsi:nil="true"/>
 							<ContextMenu name="МатериалыКонтекстноеМеню" id="253"/>
 							<AutoCommandBar name="МатериалыКоманднаяПанель" id="254">
+								<Autofill>false</Autofill>
 								<ChildItems>
+									<Button name="МатериалыДобавить" id="346">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.Материалы.StandardCommand.Add</CommandName>
+										<ExtendedTooltip name="МатериалыДобавитьРасширеннаяПодсказка" id="347"/>
+									</Button>
+									<Button name="МатериалыПодобрать" id="344">
+										<Type>CommandBarButton</Type>
+										<Representation>PictureAndText</Representation>
+										<CommandName>Form.Command.Подобрать</CommandName>
+										<Picture>
+											<xr:Ref>StdPicture.DataCompositionNewTable</xr:Ref>
+											<xr:LoadTransparent>true</xr:LoadTransparent>
+										</Picture>
+										<ExtendedTooltip name="МатериалыПодобратьРасширеннаяПодсказка" id="345"/>
+									</Button>
 									<Button name="МатериалыДокументПоступлениеМатериаловУслугЗаполнитьПоПлановойЦене" id="337">
 										<Type>CommandBarButton</Type>
 										<CommandName>0:ce144b39-c6b3-45b4-b328-a3ec0f966413</CommandName>
 										<DataPath>Объект.Ref</DataPath>
 										<ExtendedTooltip name="МатериалыДокументПоступлениеМатериаловУслугЗаполнитьПоПлановойЦенеРасширеннаяПодсказка" id="338"/>
+									</Button>
+									<Button name="МатериалыСкопировать" id="348">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.Материалы.StandardCommand.Copy</CommandName>
+										<ExtendedTooltip name="МатериалыСкопироватьРасширеннаяПодсказка" id="349"/>
+									</Button>
+									<Button name="МатериалыУдалить" id="350">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.Материалы.StandardCommand.Delete</CommandName>
+										<ExtendedTooltip name="МатериалыУдалитьРасширеннаяПодсказка" id="351"/>
+									</Button>
+									<Button name="МатериалыПереместитьВверх" id="352">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.Материалы.StandardCommand.MoveUp</CommandName>
+										<ExtendedTooltip name="МатериалыПереместитьВверхРасширеннаяПодсказка" id="353"/>
+									</Button>
+									<Button name="МатериалыПереместитьВниз" id="354">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.Материалы.StandardCommand.MoveDown</CommandName>
+										<ExtendedTooltip name="МатериалыПереместитьВнизРасширеннаяПодсказка" id="355"/>
 									</Button>
 									<Button name="ЗаполнитьПоПлановойЦене" id="339">
 										<Type>CommandBarButton</Type>
@@ -295,6 +331,7 @@
 								<ExtendedTooltip name="МатериалыУправлениеПоискомРасширеннаяПодсказка" id="318"/>
 							</SearchControlAddition>
 							<Events>
+								<Event name="ChoiceProcessing">МатериалыОбработкаВыбора</Event>
 								<Event name="OnChange">МатериалыПриИзменении</Event>
 							</Events>
 							<ChildItems>
