@@ -286,6 +286,25 @@
 					<ContextMenu name="ЛегендаРезервКонтекстноеМеню" id="228"/>
 					<ExtendedTooltip name="ЛегендаРезервРасширеннаяПодсказка" id="229"/>
 				</LabelField>
+				<LabelField name="ЛегендаПодЗаказ" id="443">
+					<DataPath>Подсказка</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>                Под заказ</v8:content>
+						</v8:item>
+					</Title>
+					<HorizontalAlign>Left</HorizontalAlign>
+					<Width>1</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Border width="1">
+						<v8ui:style xsi:type="v8ui:ControlBorderType">Single</v8ui:style>
+					</Border>
+					<BorderColor>style:ToolTipTextColor</BorderColor>
+					<BackColor>#E5E5E5</BackColor>
+					<ContextMenu name="ЛегендаПодЗаказКонтекстноеМеню" id="444"/>
+					<ExtendedTooltip name="ЛегендаПодЗаказРасширеннаяПодсказка" id="445"/>
+				</LabelField>
 			</ChildItems>
 		</UsualGroup>
 		<Pages name="ГруппаТаблицы" id="285">
@@ -678,6 +697,12 @@
 					<ContextMenu name="ТаблицаРасшифровкиСпецификацияКонтекстноеМеню" id="384"/>
 					<ExtendedTooltip name="ТаблицаРасшифровкиСпецификацияРасширеннаяПодсказка" id="385"/>
 				</InputField>
+				<InputField name="ТаблицаРасшифровкиКомментарий" id="440">
+					<DataPath>Объект.ТаблицаРасшифровки.Комментарий</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ТаблицаРасшифровкиКомментарийКонтекстноеМеню" id="441"/>
+					<ExtendedTooltip name="ТаблицаРасшифровкиКомментарийРасширеннаяПодсказка" id="442"/>
+				</InputField>
 				<InputField name="ТаблицаРасшифровкиДатаИзготовления" id="371">
 					<DataPath>Объект.ТаблицаРасшифровки.ДатаИзготовления</DataPath>
 					<EditMode>EnterOnInput</EditMode>
@@ -783,6 +808,26 @@
 					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 						<dcscor:parameter>ЦветФона</dcscor:parameter>
 						<dcscor:value xsi:type="v8ui:Color">web:Khaki</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>СписокНоменклатуры</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.СписокНоменклатуры.ПодЗаказ</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветФона</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">#EBEBEB</dcscor:value>
 					</dcscor:item>
 				</dcsset:appearance>
 			</dcsset:item>
