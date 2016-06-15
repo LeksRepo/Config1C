@@ -89,6 +89,14 @@
 				<dcscom:dimension>true</dcscom:dimension>
 			</role>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПериодСекунда</dataPath>
+			<field>ПериодСекунда</field>
+			<role>
+				<dcscom:periodNumber>2</dcscom:periodNumber>
+				<dcscom:periodType>Main</dcscom:periodType>
+			</role>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	ОбрезкиМатериаловОстаткиИОбороты.Регистратор,
@@ -98,9 +106,10 @@
 	ОбрезкиМатериаловОстаткиИОбороты.КоличествоНачальныйОстаток,
 	ОбрезкиМатериаловОстаткиИОбороты.КоличествоКонечныйОстаток,
 	ОбрезкиМатериаловОстаткиИОбороты.КоличествоПриход,
-	ОбрезкиМатериаловОстаткиИОбороты.КоличествоРасход
+	ОбрезкиМатериаловОстаткиИОбороты.КоличествоРасход,
+	ОбрезкиМатериаловОстаткиИОбороты.ПериодСекунда
 ИЗ
-	РегистрНакопления.ОбрезкиМатериалов.ОстаткиИОбороты({(&amp;НачалоПериода)}, {(ДОБАВИТЬКДАТЕ(&amp;КонецПериода, СЕКУНДА, 1))}, Регистратор, , ) КАК ОбрезкиМатериаловОстаткиИОбороты</query>
+	РегистрНакопления.ОбрезкиМатериалов.ОстаткиИОбороты({(&amp;НачалоПериода)}, {(ДОБАВИТЬКДАТЕ(&amp;КонецПериода, СЕКУНДА, 1))}, Авто, , ) КАК ОбрезкиМатериаловОстаткиИОбороты</query>
 	</dataSet>
 	<totalField>
 		<dataPath>КонечныйОстаток</dataPath>
@@ -233,7 +242,7 @@
 				<dcsset:groupItems>
 					<dcsset:item xsi:type="dcsset:GroupItemField">
 						<dcsset:field>Номенклатура</dcsset:field>
-						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:groupType>Hierarchy</dcsset:groupType>
 						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
 						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
