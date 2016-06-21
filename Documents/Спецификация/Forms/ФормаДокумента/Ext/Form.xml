@@ -1462,6 +1462,18 @@
 									<ContextMenu name="СписокМатериаловПодЗаказНоменклатураКонтекстноеМеню" id="751"/>
 									<ExtendedTooltip name="СписокМатериаловПодЗаказНоменклатураРасширеннаяПодсказка" id="752"/>
 								</InputField>
+								<LabelField name="СписокМатериаловПодЗаказНоменклатураЕдиницаИзмерения" id="1102">
+									<DataPath>Объект.СписокМатериаловПодЗаказ.Номенклатура.ЕдиницаИзмерения</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Ед. изм.</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="СписокМатериаловПодЗаказНоменклатураЕдиницаИзмеренияКонтекстноеМеню" id="1103"/>
+									<ExtendedTooltip name="СписокМатериаловПодЗаказНоменклатураЕдиницаИзмеренияРасширеннаяПодсказка" id="1104"/>
+								</LabelField>
 								<InputField name="СписокМатериаловПодЗаказКоличество" id="759">
 									<DataPath>Объект.СписокМатериаловПодЗаказ.Количество</DataPath>
 									<ReadOnly>true</ReadOnly>
@@ -1480,10 +1492,12 @@
 								</InputField>
 								<InputField name="СписокМатериаловПодЗаказСумма" id="920">
 									<DataPath>Объект.СписокМатериаловПодЗаказ.Сумма</DataPath>
-									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="СписокМатериаловПодЗаказСуммаКонтекстноеМеню" id="921"/>
 									<ExtendedTooltip name="СписокМатериаловПодЗаказСуммаРасширеннаяПодсказка" id="922"/>
+									<Events>
+										<Event name="OnChange">СписокМатериаловПодЗаказСуммаПриИзменении</Event>
+									</Events>
 								</InputField>
 								<InputField name="СписокМатериаловПодЗаказПоставщик" id="753">
 									<DataPath>Объект.СписокМатериаловПодЗаказ.Поставщик</DataPath>
