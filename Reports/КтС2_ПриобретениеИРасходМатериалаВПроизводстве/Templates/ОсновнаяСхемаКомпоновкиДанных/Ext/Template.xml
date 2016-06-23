@@ -436,12 +436,12 @@
 		</appearance>
 	</calculatedField>
 	<calculatedField>
-		<dataPath>ОтклонениеПередано</dataPath>
+		<dataPath>ОтклонениеПереданоПлюс</dataPath>
 		<expression>КоличествоВСпецификации - КоличествоПередано</expression>
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>ru</v8:lang>
-				<v8:content>Отклонение передано</v8:content>
+				<v8:content>Отклонение передано плюс</v8:content>
 			</v8:item>
 		</title>
 		<appearance>
@@ -456,12 +456,52 @@
 		</appearance>
 	</calculatedField>
 	<calculatedField>
-		<dataPath>ОтклонениеЗакуплено</dataPath>
+		<dataPath>ОтклонениеПереданоМинус</dataPath>
+		<expression>КоличествоВСпецификации - КоличествоПередано</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Отклонение передано минус</v8:content>
+			</v8:item>
+		</title>
+		<appearance>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>Формат</dcscor:parameter>
+				<dcscor:value xsi:type="xs:string">ЧДЦ=3</dcscor:value>
+			</dcscor:item>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>ВыделятьОтрицательные</dcscor:parameter>
+				<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+			</dcscor:item>
+		</appearance>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>ОтклонениеЗакупленоПлюс</dataPath>
 		<expression>0</expression>
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>ru</v8:lang>
-				<v8:content>Отклонение закуплено</v8:content>
+				<v8:content>Отклонение закуплено плюс</v8:content>
+			</v8:item>
+		</title>
+		<appearance>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>Формат</dcscor:parameter>
+				<dcscor:value xsi:type="xs:string">ЧДЦ=3</dcscor:value>
+			</dcscor:item>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>ВыделятьОтрицательные</dcscor:parameter>
+				<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+			</dcscor:item>
+		</appearance>
+	</calculatedField>
+	<calculatedField>
+		<dataPath>ОтклонениеЗакупленоМинус</dataPath>
+		<expression>0</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Отклонение закуплено минус</v8:content>
 			</v8:item>
 		</title>
 		<appearance>
@@ -511,13 +551,20 @@
 		<expression>Сумма(КоличествоПередано)</expression>
 	</totalField>
 	<totalField>
-		<dataPath>ОтклонениеПередано</dataPath>
-		<expression>Сумма(ОтклонениеПередано)</expression>
+		<dataPath>ОтклонениеПереданоМинус</dataPath>
+		<expression>ВЫБОР КОГДА Сумма(ОтклонениеПереданоПлюс) &lt; 0 ТОГДА Сумма(ОтклонениеПереданоПлюс) ИНАЧЕ 0 КОНЕЦ</expression>
 	</totalField>
 	<totalField>
-		<dataPath>ОтклонениеЗакуплено</dataPath>
-		<expression>ВЫБОР КОГДА СУММА(КоличествоОстаток) &gt; СУММА(КоличествоВСпецификации) ТОГДА -СУММА(КоличествоЗакуплено) КОГДА СУММА(КоличествоОстаток) &lt; СУММА(КоличествоВСпецификации) И СУММА(КоличествоЗакуплено) &gt; 0 ТОГДА СУММА(КоличествоВСпецификации) - СУММА(КоличествоЗакуплено) - СУММА(КоличествоОстаток) ИНАЧЕ 0 КОНЕЦ</expression>
-		<group>Номенклатура</group>
+		<dataPath>ОтклонениеПереданоПлюс</dataPath>
+		<expression>ВЫБОР КОГДА Сумма(ОтклонениеПереданоПлюс) &gt; 0 ТОГДА Сумма(ОтклонениеПереданоПлюс) ИНАЧЕ 0 КОНЕЦ</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ОтклонениеЗакупленоПлюс</dataPath>
+		<expression>ВЫБОР КОГДА ВЫБОР КОГДА СУММА(КоличествоОстаток) &gt; СУММА(КоличествоВСпецификации) ТОГДА -СУММА(КоличествоЗакуплено) КОГДА СУММА(КоличествоОстаток) &lt; СУММА(КоличествоВСпецификации) И СУММА(КоличествоЗакуплено) &gt; 0 ТОГДА СУММА(КоличествоВСпецификации) - СУММА(КоличествоЗакуплено) - СУММА(КоличествоОстаток) ИНАЧЕ 0 КОНЕЦ &gt; 0 ТОГДА ВЫБОР КОГДА СУММА(КоличествоОстаток) &gt; СУММА(КоличествоВСпецификации) ТОГДА -СУММА(КоличествоЗакуплено) КОГДА СУММА(КоличествоОстаток) &lt; СУММА(КоличествоВСпецификации) И СУММА(КоличествоЗакуплено) &gt; 0 ТОГДА СУММА(КоличествоВСпецификации) - СУММА(КоличествоЗакуплено) - СУММА(КоличествоОстаток) ИНАЧЕ 0 КОНЕЦ ИНАЧЕ 0 КОНЕЦ</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ОтклонениеЗакупленоМинус</dataPath>
+		<expression>ВЫБОР КОГДА ВЫБОР КОГДА СУММА(КоличествоОстаток) &gt; СУММА(КоличествоВСпецификации) ТОГДА -СУММА(КоличествоЗакуплено) КОГДА СУММА(КоличествоОстаток) &lt; СУММА(КоличествоВСпецификации) И СУММА(КоличествоЗакуплено) &gt; 0 ТОГДА СУММА(КоличествоВСпецификации) - СУММА(КоличествоЗакуплено) - СУММА(КоличествоОстаток) ИНАЧЕ 0 КОНЕЦ &lt; 0 ТОГДА ВЫБОР КОГДА СУММА(КоличествоОстаток) &gt; СУММА(КоличествоВСпецификации) ТОГДА -СУММА(КоличествоЗакуплено) КОГДА СУММА(КоличествоОстаток) &lt; СУММА(КоличествоВСпецификации) И СУММА(КоличествоЗакуплено) &gt; 0 ТОГДА СУММА(КоличествоВСпецификации) - СУММА(КоличествоЗакуплено) - СУММА(КоличествоОстаток) ИНАЧЕ 0 КОНЕЦ ИНАЧЕ 0 КОНЕЦ</expression>
 	</totalField>
 	<parameter>
 		<name>НачалоПериода</name>
@@ -679,11 +726,59 @@
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>КоличествоПередано</dcsset:field>
 				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>ОтклонениеЗакуплено</dcsset:field>
+				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+					<dcsset:lwsTitle>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отклонение закуплено</v8:content>
+						</v8:item>
+					</dcsset:lwsTitle>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ОтклонениеЗакупленоПлюс</dcsset:field>
+						<dcsset:lwsTitle>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Плюс</v8:content>
+							</v8:item>
+						</dcsset:lwsTitle>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ОтклонениеЗакупленоМинус</dcsset:field>
+						<dcsset:lwsTitle>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Минус</v8:content>
+							</v8:item>
+						</dcsset:lwsTitle>
+					</dcsset:item>
+					<dcsset:placement>Auto</dcsset:placement>
 				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>ОтклонениеПередано</dcsset:field>
+				<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+					<dcsset:lwsTitle>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отклонение передано</v8:content>
+						</v8:item>
+					</dcsset:lwsTitle>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ОтклонениеПереданоПлюс</dcsset:field>
+						<dcsset:lwsTitle>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Плюс</v8:content>
+							</v8:item>
+						</dcsset:lwsTitle>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ОтклонениеПереданоМинус</dcsset:field>
+						<dcsset:lwsTitle>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Минус</v8:content>
+							</v8:item>
+						</dcsset:lwsTitle>
+					</dcsset:item>
+					<dcsset:placement>Auto</dcsset:placement>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>ЦенаРозничная</dcsset:field>
