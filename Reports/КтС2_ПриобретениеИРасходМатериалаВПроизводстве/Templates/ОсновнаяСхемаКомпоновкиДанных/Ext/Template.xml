@@ -124,6 +124,16 @@
 				</dcscor:item>
 			</appearance>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЦенаРозничная</dataPath>
+			<field>ЦенаРозничная</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Цена розничная</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	СпецификацияСписокНоменклатуры.Ссылка КАК Спецификация,
@@ -185,6 +195,7 @@
 	0 КАК СуммаЗакуплено,
 	0 КАК КоличествоЗакуплено,
 	0 КАК КоличествоПередано
+ПОМЕСТИТЬ втДанные
 ИЗ
 	втНоменклатураСпецификаций КАК втНоменклатураСпецификаций
 
@@ -210,7 +221,22 @@
 	0,
 	втПереданоВЦехРегистр.Количество
 ИЗ
-	втПереданоВЦехРегистр КАК втПереданоВЦехРегистр</query>
+	втПереданоВЦехРегистр КАК втПереданоВЦехРегистр
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	Данные.Номенклатура КАК Номенклатура,
+	Данные.Регистратор КАК Регистратор,
+	Данные.КоличествоВСпецификации КАК КоличествоВСпецификации,
+	Данные.СуммаЗакуплено КАК СуммаЗакуплено,
+	Данные.КоличествоЗакуплено КАК КоличествоЗакуплено,
+	Данные.КоличествоПередано КАК КоличествоПередано,
+	Цены.Розничная КАК ЦенаРозничная
+ИЗ
+	втДанные КАК Данные
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ЦеныНоменклатурыПоПодразделениям.СрезПоследних(, Подразделение = &amp;Подразделение) КАК Цены
+		ПО Данные.Номенклатура = Цены.Номенклатура</query>
 	</dataSet>
 	<dataSet xsi:type="DataSetQuery">
 		<name>ЦеныНоменклатуры</name>
@@ -659,6 +685,9 @@
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>ОтклонениеПередано</dcsset:field>
 				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ЦенаРозничная</dcsset:field>
+				</dcsset:item>
 			</dcsset:selection>
 			<dcsset:filter>
 				<dcsset:item xsi:type="dcsset:FilterItemComparison">
@@ -712,6 +741,13 @@
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:GroupItemField">
 						<dcsset:field>ПодЗаказ</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>ЦенаРозничная</dcsset:field>
 						<dcsset:groupType>Items</dcsset:groupType>
 						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
