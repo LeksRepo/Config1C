@@ -258,6 +258,7 @@
 					</ChildItems>
 				</Page>
 				<Page name="Наряды" id="125">
+					<Visible>false</Visible>
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -277,6 +278,10 @@
 							<EnableStartDrag>true</EnableStartDrag>
 							<DataPath>СписокНарядов</DataPath>
 							<RowPictureDataPath>СписокНарядов.DefaultPicture</RowPictureDataPath>
+							<TitleFont ref="sys:DefaultGUIFont" kind="WindowsFont"/>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
 							<AutoRefresh>false</AutoRefresh>
 							<AutoRefreshPeriod>60</AutoRefreshPeriod>
 							<Period>
@@ -291,7 +296,9 @@
 							<AllowRootChoice>false</AllowRootChoice>
 							<UpdateOnDataChange>Auto</UpdateOnDataChange>
 							<ContextMenu name="СписокНарядовКонтекстноеМеню" id="155"/>
-							<AutoCommandBar name="СписокНарядовКоманднаяПанель" id="156"/>
+							<AutoCommandBar name="СписокНарядовКоманднаяПанель" id="156">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
 							<ExtendedTooltip name="СписокНарядовРасширеннаяПодсказка" id="157"/>
 							<SearchStringAddition name="СписокНарядовСтрокаПоиска" id="158">
 								<AdditionSource>
@@ -317,41 +324,48 @@
 								<ContextMenu name="СписокНарядовУправлениеПоискомКонтекстноеМеню" id="165"/>
 								<ExtendedTooltip name="СписокНарядовУправлениеПоискомРасширеннаяПодсказка" id="166"/>
 							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">СписокНарядовВыбор</Event>
+							</Events>
 							<ChildItems>
+								<LabelField name="СписокНарядовНомер" id="176">
+									<DataPath>СписокНарядов.Номер</DataPath>
+									<TitleFont ref="style:НеПринятыеКИсполнениюЗадачи" height="12" kind="StyleItem"/>
+									<Font ref="sys:DefaultGUIFont" height="12" kind="WindowsFont"/>
+									<ContextMenu name="СписокНарядовНомерКонтекстноеМеню" id="177"/>
+									<ExtendedTooltip name="СписокНарядовНомерРасширеннаяПодсказка" id="178"/>
+								</LabelField>
+								<LabelField name="СписокНарядовДатаИзготовления" id="173">
+									<DataPath>СписокНарядов.ДатаИзготовления</DataPath>
+									<TitleFont ref="style:НеПринятыеКИсполнениюЗадачи" height="12" kind="StyleItem"/>
+									<Font ref="sys:DefaultGUIFont" height="12" kind="WindowsFont"/>
+									<ContextMenu name="СписокНарядовДатаИзготовленияКонтекстноеМеню" id="174"/>
+									<ExtendedTooltip name="СписокНарядовДатаИзготовленияРасширеннаяПодсказка" id="175"/>
+								</LabelField>
 								<LabelField name="СписокНарядовАвтор" id="167">
 									<DataPath>СписокНарядов.Автор</DataPath>
+									<TitleFont ref="style:НеПринятыеКИсполнениюЗадачи" height="12" kind="StyleItem"/>
+									<Font ref="sys:DefaultGUIFont" height="12" kind="WindowsFont"/>
 									<ContextMenu name="СписокНарядовАвторКонтекстноеМеню" id="168"/>
 									<ExtendedTooltip name="СписокНарядовАвторРасширеннаяПодсказка" id="169"/>
 								</LabelField>
 								<LabelField name="СписокНарядовДата" id="170">
 									<DataPath>СписокНарядов.Дата</DataPath>
+									<Visible>false</Visible>
 									<ContextMenu name="СписокНарядовДатаКонтекстноеМеню" id="171"/>
 									<ExtendedTooltip name="СписокНарядовДатаРасширеннаяПодсказка" id="172"/>
 								</LabelField>
-								<LabelField name="СписокНарядовДатаИзготовления" id="173">
-									<DataPath>СписокНарядов.ДатаИзготовления</DataPath>
-									<ContextMenu name="СписокНарядовДатаИзготовленияКонтекстноеМеню" id="174"/>
-									<ExtendedTooltip name="СписокНарядовДатаИзготовленияРасширеннаяПодсказка" id="175"/>
-								</LabelField>
-								<LabelField name="СписокНарядовНомер" id="176">
-									<DataPath>СписокНарядов.Номер</DataPath>
-									<ContextMenu name="СписокНарядовНомерКонтекстноеМеню" id="177"/>
-									<ExtendedTooltip name="СписокНарядовНомерРасширеннаяПодсказка" id="178"/>
-								</LabelField>
 								<LabelField name="СписокНарядовПодразделение" id="179">
 									<DataPath>СписокНарядов.Подразделение</DataPath>
+									<Visible>false</Visible>
 									<ContextMenu name="СписокНарядовПодразделениеКонтекстноеМеню" id="180"/>
 									<ExtendedTooltip name="СписокНарядовПодразделениеРасширеннаяПодсказка" id="181"/>
 								</LabelField>
 								<LabelField name="СписокНарядовСсылкаНаряда" id="182">
 									<DataPath>СписокНарядов.СсылкаНаряда</DataPath>
+									<Visible>false</Visible>
 									<ContextMenu name="СписокНарядовСсылкаНарядаКонтекстноеМеню" id="183"/>
 									<ExtendedTooltip name="СписокНарядовСсылкаНарядаРасширеннаяПодсказка" id="184"/>
-								</LabelField>
-								<LabelField name="СписокНарядовСтандартнаяКартинка" id="185">
-									<DataPath>СписокНарядов.DefaultPicture</DataPath>
-									<ContextMenu name="СписокНарядовСтандартнаяКартинкаКонтекстноеМеню" id="186"/>
-									<ExtendedTooltip name="СписокНарядовСтандартнаяКартинкаРасширеннаяПодсказка" id="187"/>
 								</LabelField>
 							</ChildItems>
 						</Table>
@@ -544,6 +558,9 @@
 			<Type>
 				<v8:Type>cfg:DynamicList</v8:Type>
 			</Type>
+			<UseAlways>
+				<Field>СписокНарядов.СсылкаНаряда</Field>
+			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>false</DynamicDataRead>
