@@ -310,7 +310,11 @@
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ЦеныНоменклатурыПоПодразделениям КАК ЦеныНоменклатурыПоПодразделениям
 		ПО втЗакупкиДата.Номенклатура = ЦеныНоменклатурыПоПодразделениям.Номенклатура
 			И втЗакупкиДата.ДатаПоследнейЦены = ЦеныНоменклатурыПоПодразделениям.Период
-			И втЗакупкиДата.Подразделение = ЦеныНоменклатурыПоПодразделениям.Подразделение</query>
+			И втЗакупкиДата.Подразделение = ЦеныНоменклатурыПоПодразделениям.Подразделение
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.НоменклатураПодразделений.СрезПоследних(, Подразделение = &amp;Подразделение) КАК НомПодразделений
+		ПО втЗакупкиДата.Номенклатура = НомПодразделений.Номенклатура
+ГДЕ
+	НЕ ЕСТЬNULL(НомПодразделений.ПодЗаказ, ЛОЖЬ)</query>
 	</dataSet>
 	<totalField>
 		<dataPath>Количество</dataPath>
@@ -442,6 +446,23 @@
 			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
 			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
 		</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>Период</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 		<useRestriction>false</useRestriction>
 	</parameter>
 	<settingsVariant>
