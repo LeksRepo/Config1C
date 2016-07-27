@@ -254,8 +254,17 @@
 					</dcscor:item>
 				</dcsset:outputParameters>
 			</dcsset:item>
-			<dcsset:item xsi:type="dcsset:StructureItemChart">
-				<dcsset:point>
+			<dcsset:item xsi:type="dcsset:StructureItemTable">
+				<dcsset:column>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+				</dcsset:column>
+				<dcsset:row>
+					<dcsset:name>Период</dcsset:name>
 					<dcsset:groupItems>
 						<dcsset:item xsi:type="dcsset:GroupItemField">
 							<dcsset:field>Период2</dcsset:field>
@@ -269,18 +278,20 @@
 						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
 					</dcsset:order>
 					<dcsset:selection>
-						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>Период2</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Период</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+						</dcsset:item>
 					</dcsset:selection>
-				</dcsset:point>
+				</dcsset:row>
 				<dcsset:selection>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
 						<dcsset:field>ПодЗаказ</dcsset:field>
-						<dcsset:lwsTitle>
-							<v8:item>
-								<v8:lang>ru</v8:lang>
-								<v8:content>Под заказ</v8:content>
-							</v8:item>
-						</dcsset:lwsTitle>
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
 						<dcsset:field>ОкруглятьДоЛистов</dcsset:field>
@@ -288,24 +299,8 @@
 				</dcsset:selection>
 				<dcsset:outputParameters>
 					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>ТипДиаграммы</dcscor:parameter>
-						<dcscor:value xsi:type="v8ui:ChartType">StackedColumn3D</dcscor:value>
-						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-							<dcscor:parameter>ТипДиаграммы.ВидПодписей</dcscor:parameter>
-							<dcscor:value xsi:type="v8ui:ChartLabelType">None</dcscor:value>
-						</dcscor:item>
-						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-							<dcscor:parameter>ТипДиаграммы.ОтображатьТаблицуДанных</dcscor:parameter>
-							<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
-						</dcscor:item>
-						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-							<dcscor:parameter>ТипДиаграммы.РасположениеЛегенды</dcscor:parameter>
-							<dcscor:value xsi:type="dcsset:DataCompositionChartLegendPlacement">None</dcscor:value>
-						</dcscor:item>
-						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-							<dcscor:parameter>ТипДиаграммы.РежимПолупрозрачности</dcscor:parameter>
-							<dcscor:value xmlns:d8p1="http://v8.1c.ru/8.2/data/chart" xsi:type="d8p1:ChartSemitransparencyMode">Use</dcscor:value>
-						</dcscor:item>
+						<dcscor:parameter>РасположениеИтогов</dcscor:parameter>
+						<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">Auto</dcscor:value>
 					</dcscor:item>
 					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 						<dcscor:parameter>Заголовок</dcscor:parameter>
