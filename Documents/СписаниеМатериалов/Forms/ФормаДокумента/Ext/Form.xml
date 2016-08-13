@@ -7,6 +7,8 @@
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
 		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
 		<UsualGroup name="ГруппаШапка" id="63">
@@ -132,6 +134,34 @@
 							</InputHint>
 							<ContextMenu name="ВиновныйКонтекстноеМеню" id="74"/>
 							<ExtendedTooltip name="ВиновныйРасширеннаяПодсказка" id="75"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаПереданВАрхив" id="100">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сдан в архив</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа передан в архив</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Representation>StrongSeparation</Representation>
+					<ExtendedTooltip name="ГруппаПереданВАрхивРасширеннаяПодсказка" id="101"/>
+					<ChildItems>
+						<InputField name="ДатаПередачи" id="102">
+							<DataPath>Объект.ДатаПередачи</DataPath>
+							<ContextMenu name="ДатаПередачиКонтекстноеМеню" id="103"/>
+							<ExtendedTooltip name="ДатаПередачиРасширеннаяПодсказка" id="104"/>
+						</InputField>
+						<InputField name="ОтветственныйЗаХранение" id="105">
+							<DataPath>Объект.ОтветственныйЗаХранение</DataPath>
+							<ContextMenu name="ОтветственныйЗаХранениеКонтекстноеМеню" id="106"/>
+							<ExtendedTooltip name="ОтветственныйЗаХранениеРасширеннаяПодсказка" id="107"/>
 						</InputField>
 					</ChildItems>
 				</UsualGroup>

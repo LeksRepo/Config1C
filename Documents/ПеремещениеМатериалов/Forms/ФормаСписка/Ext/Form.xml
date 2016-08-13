@@ -131,13 +131,20 @@
 	ДокументПеремещениеМатериалов.Склад,
 	ДокументПеремещениеМатериалов.СкладПолучатель,
 	ДокументПеремещениеМатериалов.СуммаДокумента,
-	ДокументПеремещениеМатериалов.СписокНоменклатуры,
+	ДокументПеремещениеМатериалов.СписокНоменклатуры.(
+		Ссылка,
+		НомерСтроки,
+		Номенклатура,
+		Количество
+	),
 	ДокументПеремещениеМатериалов.МоментВремени,
 	ВЫБОР
-		КОГДА ДокументПеремещениеМатериалов.Подразделение &lt;&gt; ДокументПеремещениеМатериалов.ПодразделениеПолучатель И ДокументПеремещениеМатериалов.ДатаПоступления = ДАТАВРЕМЯ(1, 1, 1)
-		ТОГДА 1
+		КОГДА ДокументПеремещениеМатериалов.Подразделение &lt;&gt; ДокументПеремещениеМатериалов.ПодразделениеПолучатель
+				И ДокументПеремещениеМатериалов.ДатаПоступления = ДАТАВРЕМЯ(1, 1, 1)
+			ТОГДА 1
 		ИНАЧЕ 0
-	КОНЕЦ КАК Сортировка
+	КОНЕЦ КАК Сортировка,
+	ДокументПеремещениеМатериалов.СданВАрхив
 ИЗ
 	Документ.ПеремещениеМатериалов КАК ДокументПеремещениеМатериалов</QueryText>
 				<MainTable>Document.ПеремещениеМатериалов</MainTable>
@@ -147,6 +154,10 @@
 						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
 					</dcsset:filter>
 					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>СданВАрхив</dcsset:field>
+							<dcsset:orderType>Desc</dcsset:orderType>
+						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:OrderItemField">
 							<dcsset:field>Сортировка</dcsset:field>
 							<dcsset:orderType>Asc</dcsset:orderType>
@@ -166,10 +177,18 @@
 						<dcsset:item>
 							<dcsset:selection/>
 							<dcsset:filter>
-								<dcsset:item xsi:type="dcsset:FilterItemComparison">
-									<dcsset:left xsi:type="dcscor:Field">Сортировка</dcsset:left>
-									<dcsset:comparisonType>Equal</dcsset:comparisonType>
-									<dcsset:right xsi:type="xs:decimal">1</dcsset:right>
+								<dcsset:item xsi:type="dcsset:FilterItemGroup">
+									<dcsset:groupType>OrGroup</dcsset:groupType>
+									<dcsset:item xsi:type="dcsset:FilterItemComparison">
+										<dcsset:left xsi:type="dcscor:Field">Сортировка</dcsset:left>
+										<dcsset:comparisonType>Equal</dcsset:comparisonType>
+										<dcsset:right xsi:type="xs:decimal">1</dcsset:right>
+									</dcsset:item>
+									<dcsset:item xsi:type="dcsset:FilterItemComparison">
+										<dcsset:left xsi:type="dcscor:Field">СданВАрхив</dcsset:left>
+										<dcsset:comparisonType>Equal</dcsset:comparisonType>
+										<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+									</dcsset:item>
 								</dcsset:item>
 							</dcsset:filter>
 							<dcsset:appearance>
