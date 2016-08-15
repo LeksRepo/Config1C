@@ -6,7 +6,6 @@
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
 		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
-		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
@@ -94,36 +93,14 @@
 						</InputField>
 					</ChildItems>
 				</UsualGroup>
-				<UsualGroup name="ГруппаПереданВАрхив" id="65">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Сдан в архив</v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа передан в архив</v8:content>
-						</v8:item>
-					</ToolTip>
-					<Representation>StrongSeparation</Representation>
-					<ExtendedTooltip name="ГруппаПереданВАрхивРасширеннаяПодсказка" id="66"/>
-					<ChildItems>
-						<InputField name="ДатаПередачи" id="67">
-							<DataPath>Объект.ДатаПередачи</DataPath>
-							<ContextMenu name="ДатаПередачиКонтекстноеМеню" id="68"/>
-							<ExtendedTooltip name="ДатаПередачиРасширеннаяПодсказка" id="69"/>
-						</InputField>
-						<InputField name="ОтветственныйЗаХранение" id="70">
-							<DataPath>Объект.ОтветственныйЗаХранение</DataPath>
-							<ContextMenu name="ОтветственныйЗаХранениеКонтекстноеМеню" id="71"/>
-							<ExtendedTooltip name="ОтветственныйЗаХранениеРасширеннаяПодсказка" id="72"/>
-						</InputField>
-					</ChildItems>
-				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
+		<CheckBoxField name="СданВАрхив" id="63">
+			<DataPath>Объект.СданВАрхив</DataPath>
+			<CheckBoxType>Auto</CheckBoxType>
+			<ContextMenu name="СданВАрхивКонтекстноеМеню" id="64"/>
+			<ExtendedTooltip name="СданВАрхивРасширеннаяПодсказка" id="65"/>
+		</CheckBoxField>
 		<Table name="СписокНоменклатуры" id="13">
 			<Representation>List</Representation>
 			<AutoInsertNewRow>true</AutoInsertNewRow>
