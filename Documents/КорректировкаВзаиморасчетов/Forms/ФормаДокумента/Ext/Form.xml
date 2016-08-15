@@ -4,6 +4,9 @@
 	<UsePostingMode>Auto</UsePostingMode>
 	<RepostOnWrite>true</RepostOnWrite>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+	</Events>
 	<ChildItems>
 		<UsualGroup name="ГруппаШапка" id="35">
 			<Title>
@@ -19,76 +22,158 @@
 				</v8:item>
 			</ToolTip>
 			<HorizontalStretch>false</HorizontalStretch>
-			<Group>Vertical</Group>
+			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ГруппаШапкаРасширеннаяПодсказка" id="36"/>
 			<ChildItems>
-				<UsualGroup name="ГруппаНомерДата" id="37">
+				<UsualGroup name="ГруппаЛеваяКолонка" id="48">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Группа номер дата</v8:content>
+							<v8:content>Группа левая колонка</v8:content>
 						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Группа номер дата</v8:content>
+							<v8:content>Группа левая колонка</v8:content>
 						</v8:item>
 					</ToolTip>
-					<Group>Horizontal</Group>
+					<HorizontalStretch>false</HorizontalStretch>
+					<Representation>None</Representation>
+					<United>false</United>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаЛеваяКолонкаРасширеннаяПодсказка" id="49"/>
+					<ChildItems>
+						<UsualGroup name="ГруппаНомерДата" id="37">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа номер дата</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа номер дата</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаНомерДатаРасширеннаяПодсказка" id="38"/>
+							<ChildItems>
+								<InputField name="Номер" id="1">
+									<DataPath>Объект.Number</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
+									<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="3"/>
+								</InputField>
+								<InputField name="Дата" id="4">
+									<DataPath>Объект.Date</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
+									<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="6"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+						<InputField name="Подразделение" id="13">
+							<DataPath>Объект.Подразделение</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="ПодразделениеКонтекстноеМеню" id="14"/>
+							<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="15"/>
+						</InputField>
+						<LabelField name="Автор" id="7">
+							<DataPath>Объект.Автор</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<Width>36</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<ContextMenu name="АвторКонтекстноеМеню" id="8"/>
+							<ExtendedTooltip name="АвторРасширеннаяПодсказка" id="9"/>
+						</LabelField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаПраваяКолонка" id="50">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа правая колонка</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа правая колонка</v8:content>
+						</v8:item>
+					</ToolTip>
+					<HorizontalStretch>false</HorizontalStretch>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="ГруппаНомерДатаРасширеннаяПодсказка" id="38"/>
+					<ExtendedTooltip name="ГруппаПраваяКолонкаРасширеннаяПодсказка" id="51"/>
 					<ChildItems>
-						<InputField name="Номер" id="1">
-							<DataPath>Объект.Number</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
-							<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="3"/>
+						<RadioButtonField name="ВидКорректировки" id="45">
+							<DataPath>Объект.ВидКорректировки</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Вид корректировки
+</v8:content>
+								</v8:item>
+							</Title>
+							<TitleLocation>None</TitleLocation>
+							<RadioButtonType>Tumbler</RadioButtonType>
+							<ChoiceList>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Начислить на счет дилера</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xr:DesignTimeRef">Enum.ВидКорректировкиВзаиморасчетов.EnumValue.НачислитьНаСчетДилера</Value>
+									</xr:Value>
+								</xr:Item>
+								<xr:Item>
+									<xr:Presentation/>
+									<xr:CheckState>0</xr:CheckState>
+									<xr:Value xsi:type="FormChoiceListDesTimeValue">
+										<Presentation>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Списать со счета дилера</v8:content>
+											</v8:item>
+										</Presentation>
+										<Value xsi:type="xr:DesignTimeRef">Enum.ВидКорректировкиВзаиморасчетов.EnumValue.СписатьСоСчетаДилера</Value>
+									</xr:Value>
+								</xr:Item>
+							</ChoiceList>
+							<ContextMenu name="ВидКорректировкиКонтекстноеМеню" id="46"/>
+							<ExtendedTooltip name="ВидКорректировкиРасширеннаяПодсказка" id="47"/>
+						</RadioButtonField>
+						<InputField name="Контрагент" id="39">
+							<DataPath>Объект.Контрагент</DataPath>
+							<ContextMenu name="КонтрагентКонтекстноеМеню" id="40"/>
+							<ExtendedTooltip name="КонтрагентРасширеннаяПодсказка" id="41"/>
 						</InputField>
-						<InputField name="Дата" id="4">
-							<DataPath>Объект.Date</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
-							<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="6"/>
+						<InputField name="СуммаДокумента" id="42">
+							<DataPath>Объект.СуммаДокумента</DataPath>
+							<HorizontalStretch>true</HorizontalStretch>
+							<ContextMenu name="СуммаДокументаКонтекстноеМеню" id="43"/>
+							<ExtendedTooltip name="СуммаДокументаРасширеннаяПодсказка" id="44"/>
 						</InputField>
 					</ChildItems>
 				</UsualGroup>
-				<InputField name="Подразделение" id="13">
-					<DataPath>Объект.Подразделение</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ПодразделениеКонтекстноеМеню" id="14"/>
-					<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="15"/>
-				</InputField>
 			</ChildItems>
 		</UsualGroup>
-		<InputField name="Контрагент" id="39">
-			<DataPath>Объект.Контрагент</DataPath>
-			<ContextMenu name="КонтрагентКонтекстноеМеню" id="40"/>
-			<ExtendedTooltip name="КонтрагентРасширеннаяПодсказка" id="41"/>
-		</InputField>
-		<RadioButtonField name="ВидКорректировки" id="45">
-			<DataPath>Объект.ВидКорректировки</DataPath>
-			<RadioButtonType>Tumbler</RadioButtonType>
-			<ContextMenu name="ВидКорректировкиКонтекстноеМеню" id="46"/>
-			<ExtendedTooltip name="ВидКорректировкиРасширеннаяПодсказка" id="47"/>
-		</RadioButtonField>
-		<InputField name="СуммаДокумента" id="42">
-			<DataPath>Объект.СуммаДокумента</DataPath>
-			<ContextMenu name="СуммаДокументаКонтекстноеМеню" id="43"/>
-			<ExtendedTooltip name="СуммаДокументаРасширеннаяПодсказка" id="44"/>
-		</InputField>
-		<LabelField name="Автор" id="7">
-			<DataPath>Объект.Автор</DataPath>
-			<EditMode>EnterOnInput</EditMode>
-			<ContextMenu name="АвторКонтекстноеМеню" id="8"/>
-			<ExtendedTooltip name="АвторРасширеннаяПодсказка" id="9"/>
-		</LabelField>
 		<InputField name="Комментарий" id="10">
 			<DataPath>Объект.Комментарий</DataPath>
 			<EditMode>EnterOnInput</EditMode>
+			<Width>77</Width>
+			<HorizontalStretch>false</HorizontalStretch>
 			<ContextMenu name="КомментарийКонтекстноеМеню" id="11"/>
 			<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="12"/>
 		</InputField>
