@@ -9,6 +9,7 @@
 	<Events>
 		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
 		<Event name="BeforeWrite">ПередЗаписью</Event>
+		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
@@ -111,6 +112,46 @@
 										<Event name="OnChange">ПодразделениеПриИзменении</Event>
 									</Events>
 								</InputField>
+								<InputField name="ПакетУслуг" id="169">
+									<DataPath>Объект.ПакетУслуг</DataPath>
+									<Width>36</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ChoiceButton>false</ChoiceButton>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Доставка до клиента</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xr:DesignTimeRef">Enum.ПакетыУслуг.EnumValue.ДоставкаДоКлиента</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Самовывоз</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xr:DesignTimeRef">Enum.ПакетыУслуг.EnumValue.СамовывозОтПроизводителя</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<ChoiceListButton>true</ChoiceListButton>
+									<ContextMenu name="ПакетУслугКонтекстноеМеню" id="170"/>
+									<ExtendedTooltip name="ПакетУслугРасширеннаяПодсказка" id="171"/>
+									<Events>
+										<Event name="OnChange">ПакетУслугПриИзменении</Event>
+									</Events>
+								</InputField>
 								<InputField name="Офис" id="144">
 									<DataPath>Объект.Офис</DataPath>
 									<Width>36</Width>
@@ -120,6 +161,7 @@
 									<ExtendedTooltip name="ОфисРасширеннаяПодсказка" id="146"/>
 									<Events>
 										<Event name="OnChange">ОфисПриИзменении</Event>
+										<Event name="ChoiceProcessing">ОфисОбработкаВыбора</Event>
 									</Events>
 								</InputField>
 								<LabelField name="СуммаДокумента" id="156">
@@ -164,6 +206,32 @@
 									<ContextMenu name="СкладКонтекстноеМеню" id="16"/>
 									<ExtendedTooltip name="СкладExtendedTooltip" id="83"/>
 								</InputField>
+								<InputField name="ДатаОтгрузки" id="172">
+									<DataPath>Объект.ДатаОтгрузки</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<Width>30</Width>
+									<ContextMenu name="ДатаОтгрузкиКонтекстноеМеню" id="173"/>
+									<ExtendedTooltip name="ДатаОтгрузкиРасширеннаяПодсказка" id="174"/>
+								</InputField>
+								<LabelField name="АдресДоставки" id="166">
+									<DataPath>Объект.АдресДоставки</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Адрес</v8:content>
+										</v8:item>
+									</Title>
+									<TitleLocation>Left</TitleLocation>
+									<Width>30</Width>
+									<Height>2</Height>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Hiperlink>true</Hiperlink>
+									<ContextMenu name="АдресДоставкиКонтекстноеМеню" id="167"/>
+									<ExtendedTooltip name="АдресДоставкиРасширеннаяПодсказка" id="168"/>
+									<Events>
+										<Event name="Click">АдресДоставкиНажатие</Event>
+									</Events>
+								</LabelField>
 							</ChildItems>
 						</UsualGroup>
 					</ChildItems>
