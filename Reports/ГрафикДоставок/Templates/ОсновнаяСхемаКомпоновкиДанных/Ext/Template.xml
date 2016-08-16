@@ -12,7 +12,7 @@
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Спецификация</v8:content>
+					<v8:content>Номер документа</v8:content>
 				</v8:item>
 			</title>
 			<presentationExpression>Ссылка.Номер</presentationExpression>
@@ -137,10 +137,6 @@
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath/>
-			<field>НомерСпецификации</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>Заметка</dataPath>
 			<field>Заметка</field>
 			<title xsi:type="v8:LocalStringType">
@@ -173,12 +169,22 @@
 			<dataPath>Статус</dataPath>
 			<field>Статус</field>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НомерДокумента</dataPath>
+			<field>НомерДокумента</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номер документа</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	ДокСпецификация.АдресМонтажа КАК АдресДоставки,
 	ДокСпецификация.Комментарий,
 	ДокСпецификация.Ссылка,
-	ДокСпецификация.Номер КАК НомерСпецификации,
+	ДокСпецификация.Номер КАК НомерДокумента,
 	ДокСпецификация.Подразделение,
 	ВЫБОР
 		КОГДА ДокДоговор.Ссылка ЕСТЬ NULL 
@@ -224,7 +230,29 @@
 	И ДокСпецификация.Проведен
 	И РеализацияГотовойПродукцииСписокСпецификаций.Ссылка ЕСТЬ NULL 
 {ГДЕ
-	(ДокСпецификация.ДатаОтгрузки &lt; КОНЕЦПЕРИОДА(&amp;ДатаОтчета, ДЕНЬ))}</query>
+	(ДокСпецификация.ДатаОтгрузки &lt; КОНЕЦПЕРИОДА(&amp;ДатаОтчета, ДЕНЬ))}
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	РеализацияМатериалов.АдресДоставки,
+	РеализацияМатериалов.Комментарий,
+	РеализацияМатериалов.Ссылка,
+	РеализацияМатериалов.Номер,
+	РеализацияМатериалов.Подразделение,
+	РеализацияМатериалов.Контрагент,
+	РеализацияМатериалов.ДатаОтгрузки,
+	РеализацияМатериалов.Контрагент.Телефон,
+	NULL,
+	NULL,
+	NULL,
+	NULL,
+	NULL
+ИЗ
+	Документ.РеализацияМатериалов КАК РеализацияМатериалов
+ГДЕ
+	РеализацияМатериалов.Проведен
+	И РеализацияМатериалов.ПакетУслуг = ЗНАЧЕНИЕ(Перечисление.ПакетыУслуг.ДоставкаДоКлиента)</query>
 	</dataSet>
 	<parameter>
 		<name>ДатаОтчета</name>
@@ -364,10 +392,6 @@
 			</dcsset:dataParameters>
 			<dcsset:order>
 				<dcsset:item xsi:type="dcsset:OrderItemField">
-					<dcsset:field>Производство</dcsset:field>
-					<dcsset:orderType>Asc</dcsset:orderType>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:OrderItemField">
 					<dcsset:field>ДатаДоставки</dcsset:field>
 					<dcsset:orderType>Asc</dcsset:orderType>
 				</dcsset:item>
@@ -415,10 +439,90 @@
 			</dcsset:outputParameters>
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
 				<dcsset:order>
-					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					<dcsset:item xsi:type="dcsset:OrderItemField">
+						<dcsset:field>ДатаДоставки</dcsset:field>
+						<dcsset:orderType>Asc</dcsset:orderType>
+					</dcsset:item>
 				</dcsset:order>
 				<dcsset:selection>
-					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+						<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+							<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+								<dcsset:item xsi:type="dcsset:SelectedItemField">
+									<dcsset:field>ДатаДоставки</dcsset:field>
+								</dcsset:item>
+								<dcsset:item xsi:type="dcsset:SelectedItemField">
+									<dcsset:field>Статус</dcsset:field>
+								</dcsset:item>
+								<dcsset:placement>Vertically</dcsset:placement>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+								<dcsset:lwsTitle>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content> </v8:content>
+									</v8:item>
+								</dcsset:lwsTitle>
+								<dcsset:item xsi:type="dcsset:SelectedItemField">
+									<dcsset:field>Ссылка</dcsset:field>
+								</dcsset:item>
+								<dcsset:item xsi:type="dcsset:SelectedItemField">
+									<dcsset:field>Телефон</dcsset:field>
+								</dcsset:item>
+								<dcsset:placement>Vertically</dcsset:placement>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+								<dcsset:lwsTitle>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>    </v8:content>
+									</v8:item>
+								</dcsset:lwsTitle>
+								<dcsset:item xsi:type="dcsset:SelectedItemField">
+									<dcsset:field>Доставлен</dcsset:field>
+								</dcsset:item>
+								<dcsset:item xsi:type="dcsset:SelectedItemField">
+									<dcsset:field>Комментарий</dcsset:field>
+								</dcsset:item>
+								<dcsset:placement>Vertically</dcsset:placement>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+								<dcsset:lwsTitle>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>  </v8:content>
+									</v8:item>
+								</dcsset:lwsTitle>
+								<dcsset:item xsi:type="dcsset:SelectedItemField">
+									<dcsset:field>Дилерский</dcsset:field>
+								</dcsset:item>
+								<dcsset:item xsi:type="dcsset:SelectedItemField">
+									<dcsset:field>ДТК</dcsset:field>
+								</dcsset:item>
+								<dcsset:placement>Vertically</dcsset:placement>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+								<dcsset:lwsTitle>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>   </v8:content>
+									</v8:item>
+								</dcsset:lwsTitle>
+								<dcsset:item xsi:type="dcsset:SelectedItemField">
+									<dcsset:field>Заказчик</dcsset:field>
+								</dcsset:item>
+								<dcsset:item xsi:type="dcsset:SelectedItemField">
+									<dcsset:field>АдресДоставки</dcsset:field>
+								</dcsset:item>
+								<dcsset:placement>Vertically</dcsset:placement>
+							</dcsset:item>
+							<dcsset:placement>Horizontally</dcsset:placement>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>Заметка</dcsset:field>
+						</dcsset:item>
+						<dcsset:placement>Vertically</dcsset:placement>
+					</dcsset:item>
 				</dcsset:selection>
 			</dcsset:item>
 		</dcsset:settings>
