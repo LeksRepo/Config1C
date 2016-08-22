@@ -28,16 +28,116 @@
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="НастройкиРасширеннаяПодсказка" id="5"/>
 			<ChildItems>
-				<InputField name="Период" id="1">
-					<DataPath>Период</DataPath>
-					<ContextMenu name="ПериодКонтекстноеМеню" id="2"/>
-					<ExtendedTooltip name="ПериодРасширеннаяПодсказка" id="3"/>
-				</InputField>
-				<InputField name="Контрагент" id="6">
-					<DataPath>Контрагент</DataPath>
-					<ContextMenu name="КонтрагентКонтекстноеМеню" id="7"/>
-					<ExtendedTooltip name="КонтрагентРасширеннаяПодсказка" id="8"/>
-				</InputField>
+				<UsualGroup name="ГруппаКоманды" id="26">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа команды</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа команды</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаКомандыРасширеннаяПодсказка" id="27"/>
+					<ChildItems>
+						<Button name="Сформировать" id="12">
+							<Type>UsualButton</Type>
+							<Representation>PictureAndText</Representation>
+							<Width>13</Width>
+							<Height>1</Height>
+							<CommandName>Form.Command.Сформировать</CommandName>
+							<Picture>
+								<xr:Ref>StdPicture.GenerateReport</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</Picture>
+							<ExtendedTooltip name="СформироватьРасширеннаяПодсказка" id="13"/>
+						</Button>
+						<Button name="Печать" id="24">
+							<Type>UsualButton</Type>
+							<Representation>PictureAndText</Representation>
+							<Width>13</Width>
+							<Height>1</Height>
+							<CommandName>Form.Item.ТабличныйДокумент.StandardCommand.Print</CommandName>
+							<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							<Picture>
+								<xr:Ref>StdPicture.Print</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</Picture>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Печать</v8:content>
+								</v8:item>
+							</Title>
+							<ExtendedTooltip name="ПечатьExtendedTooltip" id="25"/>
+						</Button>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаЛево" id="17">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа лево</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа лево</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаЛевоРасширеннаяПодсказка" id="18"/>
+					<ChildItems>
+						<InputField name="Период" id="1">
+							<DataPath>Период</DataPath>
+							<ContextMenu name="ПериодКонтекстноеМеню" id="2"/>
+							<ExtendedTooltip name="ПериодРасширеннаяПодсказка" id="3"/>
+						</InputField>
+						<InputField name="Контрагент" id="6">
+							<DataPath>Контрагент</DataPath>
+							<ContextMenu name="КонтрагентКонтекстноеМеню" id="7"/>
+							<ExtendedTooltip name="КонтрагентРасширеннаяПодсказка" id="8"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаПраво" id="19">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа лево</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа лево</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаПравоРасширеннаяПодсказка" id="20"/>
+					<ChildItems>
+						<InputField name="Организация" id="14">
+							<DataPath>Организация</DataPath>
+							<QuickChoice>true</QuickChoice>
+							<ContextMenu name="ОрганизацияКонтекстноеМеню" id="15"/>
+							<ExtendedTooltip name="ОрганизацияРасширеннаяПодсказка" id="16"/>
+						</InputField>
+						<InputField name="Подразделение" id="21">
+							<DataPath>Подразделение</DataPath>
+							<QuickChoice>true</QuickChoice>
+							<ContextMenu name="ПодразделениеКонтекстноеМеню" id="22"/>
+							<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="23"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
 		<SpreadSheetDocumentField name="ТабличныйДокумент" id="9">
@@ -87,5 +187,44 @@
 				<v8:Type xmlns:mxl="http://v8.1c.ru/8.2/data/spreadsheet">mxl:SpreadsheetDocument</v8:Type>
 			</Type>
 		</Attribute>
+		<Attribute name="Организация" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Организация</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Организации</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Подразделение" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подразделение</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Подразделения</v8:Type>
+			</Type>
+		</Attribute>
 	</Attributes>
+	<Commands>
+		<Command name="Сформировать" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сформировать</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сформировать</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Сформировать</Action>
+		</Command>
+	</Commands>
 </Form>
