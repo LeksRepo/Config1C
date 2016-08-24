@@ -60,7 +60,7 @@
 				<LabelField name="Дата" id="5">
 					<DataPath>Список.Date</DataPath>
 					<FixingInTable>Left</FixingInTable>
-					<Width>8</Width>
+					<Width>6</Width>
 					<Format>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -74,7 +74,7 @@
 					<DataPath>Список.Number</DataPath>
 					<DefaultItem>true</DefaultItem>
 					<FixingInTable>Left</FixingInTable>
-					<Width>10</Width>
+					<Width>8</Width>
 					<ContextMenu name="НомерКонтекстноеМеню" id="9"/>
 					<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="10"/>
 				</LabelField>
@@ -114,8 +114,32 @@
 			</Type>
 			<MainAttribute>true</MainAttribute>
 			<Settings xsi:type="DynamicList">
-				<ManualQuery>false</ManualQuery>
+				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	ДокументАвансовыйОтчет.Ссылка,
+	ДокументАвансовыйОтчет.ПометкаУдаления,
+	ДокументАвансовыйОтчет.Номер,
+	ДокументАвансовыйОтчет.Дата,
+	ДокументАвансовыйОтчет.Проведен,
+	ДокументАвансовыйОтчет.Автор,
+	ДокументАвансовыйОтчет.ВидОперации,
+	ДокументАвансовыйОтчет.ДатаСоздания,
+	ДокументАвансовыйОтчет.ДокументОснование,
+	ДокументАвансовыйОтчет.Комментарий,
+	ДокументАвансовыйОтчет.Подразделение,
+	ДокументАвансовыйОтчет.СданВАрхив,
+	ДокументАвансовыйОтчет.Склад,
+	ДокументАвансовыйОтчет.СуммаДокумента,
+	ДокументАвансовыйОтчет.ФизЛицо,
+	ВЫБОР
+		КОГДА ДокументАвансовыйОтчет.Проведен
+				И НЕ ДокументАвансовыйОтчет.СданВАрхив
+			ТОГДА ИСТИНА
+		ИНАЧЕ ЛОЖЬ
+	КОНЕЦ КАК ВыделитьСтроку
+ИЗ
+	Документ.АвансовыйОтчет КАК ДокументАвансовыйОтчет</QueryText>
 				<MainTable>Document.АвансовыйОтчет</MainTable>
 				<ListSettings>
 					<dcsset:filter>
@@ -124,8 +148,12 @@
 					</dcsset:filter>
 					<dcsset:order>
 						<dcsset:item xsi:type="dcsset:OrderItemField">
-							<dcsset:field>СданВАрхив</dcsset:field>
-							<dcsset:orderType>Desc</dcsset:orderType>
+							<dcsset:field>ВыделитьСтроку</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>ДатаСоздания</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
 						</dcsset:item>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
 						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
@@ -134,29 +162,16 @@
 						<dcsset:item>
 							<dcsset:selection/>
 							<dcsset:filter>
-								<dcsset:item xsi:type="dcsset:FilterItemGroup">
-									<dcsset:groupType>OrGroup</dcsset:groupType>
-									<dcsset:item xsi:type="dcsset:FilterItemComparison">
-										<dcsset:left xsi:type="dcscor:Field">Проведен</dcsset:left>
-										<dcsset:comparisonType>Equal</dcsset:comparisonType>
-										<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
-									</dcsset:item>
-									<dcsset:item xsi:type="dcsset:FilterItemComparison">
-										<dcsset:left xsi:type="dcscor:Field">ВидОперации</dcsset:left>
-										<dcsset:comparisonType>Equal</dcsset:comparisonType>
-										<dcsset:right xsi:type="dcscor:DesignTimeValue">Перечисление.ХозяйственнаяОперация.ОприходованиеКладовщиком</dcsset:right>
-									</dcsset:item>
-									<dcsset:item xsi:type="dcsset:FilterItemComparison">
-										<dcsset:left xsi:type="dcscor:Field">СданВАрхив</dcsset:left>
-										<dcsset:comparisonType>Equal</dcsset:comparisonType>
-										<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
-									</dcsset:item>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">ВыделитьСтроку</dcsset:left>
+									<dcsset:comparisonType>Equal</dcsset:comparisonType>
+									<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
 								</dcsset:item>
 							</dcsset:filter>
 							<dcsset:appearance>
 								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-									<dcscor:parameter>ЦветФона</dcscor:parameter>
-									<dcscor:value xsi:type="v8ui:Color">web:Pink</dcscor:value>
+									<dcscor:parameter>ЦветТекста</dcscor:parameter>
+									<dcscor:value xsi:type="v8ui:Color">style:SpecialTextColor</dcscor:value>
 								</dcscor:item>
 							</dcsset:appearance>
 						</dcsset:item>
