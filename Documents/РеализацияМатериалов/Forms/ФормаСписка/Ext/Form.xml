@@ -125,8 +125,35 @@
 				<Field>Список.Ref</Field>
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
-				<ManualQuery>false</ManualQuery>
+				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	ДокументРеализацияМатериалов.Ссылка,
+	ДокументРеализацияМатериалов.ПометкаУдаления,
+	ДокументРеализацияМатериалов.Номер,
+	ДокументРеализацияМатериалов.Дата,
+	ДокументРеализацияМатериалов.Проведен,
+	ДокументРеализацияМатериалов.Автор,
+	ДокументРеализацияМатериалов.АдресДоставки,
+	ДокументРеализацияМатериалов.ДатаОтгрузки,
+	ДокументРеализацияМатериалов.Километраж,
+	ДокументРеализацияМатериалов.Комментарий,
+	ДокументРеализацияМатериалов.Контрагент,
+	ДокументРеализацияМатериалов.Офис,
+	ДокументРеализацияМатериалов.ПакетУслуг,
+	ДокументРеализацияМатериалов.Подразделение,
+	ДокументРеализацияМатериалов.СданВАрхив,
+	ДокументРеализацияМатериалов.Склад,
+	ДокументРеализацияМатериалов.СуммаДокумента,
+	ДокументРеализацияМатериалов.МоментВремени,
+	ВЫБОР
+		КОГДА ДокументРеализацияМатериалов.Проведен
+				И НЕ ДокументРеализацияМатериалов.СданВАрхив
+			ТОГДА ИСТИНА
+		ИНАЧЕ ЛОЖЬ
+	КОНЕЦ КАК ВыделитьСтроку
+ИЗ
+	Документ.РеализацияМатериалов КАК ДокументРеализацияМатериалов</QueryText>
 				<MainTable>Document.РеализацияМатериалов</MainTable>
 				<ListSettings>
 					<dcsset:filter>
@@ -135,13 +162,33 @@
 					</dcsset:filter>
 					<dcsset:order>
 						<dcsset:item xsi:type="dcsset:OrderItemField">
-							<dcsset:field>СданВАрхив</dcsset:field>
+							<dcsset:field>ВыделитьСтроку</dcsset:field>
 							<dcsset:orderType>Desc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>Дата</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
 						</dcsset:item>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
 						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
 					</dcsset:order>
 					<dcsset:conditionalAppearance>
+						<dcsset:item>
+							<dcsset:selection/>
+							<dcsset:filter>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">ВыделитьСтроку</dcsset:left>
+									<dcsset:comparisonType>Equal</dcsset:comparisonType>
+									<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+								</dcsset:item>
+							</dcsset:filter>
+							<dcsset:appearance>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:parameter>ЦветТекста</dcscor:parameter>
+									<dcscor:value xsi:type="v8ui:Color">style:SpecialTextColor</dcscor:value>
+								</dcscor:item>
+							</dcsset:appearance>
+						</dcsset:item>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
 						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
 					</dcsset:conditionalAppearance>
