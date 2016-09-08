@@ -139,7 +139,8 @@
 							<ExtendedTooltip name="ОфисExtendedTooltip" id="210"/>
 						</InputField>
 						<InputField name="Контрагент" id="35">
-							<DataPath>Объект.Контрагент</DataPath>
+							<DataPath>Контрагент</DataPath>
+							<ReadOnly>true</ReadOnly>
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -151,9 +152,6 @@
 							<IncompleteChoiceMode>OnActivate</IncompleteChoiceMode>
 							<ContextMenu name="КонтрагентКонтекстноеМеню" id="36"/>
 							<ExtendedTooltip name="КонтрагентРасширеннаяПодсказка" id="208"/>
-							<Events>
-								<Event name="OnChange">КонтрагентПриИзменении</Event>
-							</Events>
 						</InputField>
 						<LabelField name="КонтрагентТелефон" id="289">
 							<DataPath>Объект.Контрагент.Телефон</DataPath>
@@ -956,6 +954,17 @@
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Контрагент" id="11">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Контрагент</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Контрагенты</v8:Type>
 			</Type>
 		</Attribute>
 	</Attributes>
