@@ -23,12 +23,14 @@
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Используется</dataPath>
 			<field>Используется</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content> </v8:content>
-				</v8:item>
-			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Предоставлен</dataPath>
+			<field>Предоставлен</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПодЗаказ</dataPath>
+			<field>ПодЗаказ</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>СпецификацияАвтор</dataPath>
@@ -40,38 +42,25 @@
 				</v8:item>
 			</title>
 		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>ПодЗаказНаДатуНаряда</dataPath>
-			<field>ПодЗаказНаДатуНаряда</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Под заказ на дату наряда</v8:content>
-				</v8:item>
-			</title>
-		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
-	НарядЗаданиеСписокЛистовНоменклатуры.Номенклатура,
-	НарядЗаданиеСписокЛистовНоменклатуры.Ссылка.Подразделение,
-	НарядЗаданиеСписокЛистовНоменклатуры.Ссылка КАК Наряд
-ПОМЕСТИТЬ СписокНоменклатуры
+	НарядЗаданиеСписокЛистовНоменклатуры.Номенклатура КАК Номенклатура,
+	НарядЗаданиеСписокСпецификаций.Спецификация КАК Спецификация,
+	НарядЗаданиеСписокСпецификаций.Ссылка.Подразделение,
+	НарядЗаданиеСписокСпецификаций.Ссылка.Дата
+ПОМЕСТИТЬ втНарядНоменклатура
 ИЗ
-	Документ.НарядЗадание.СписокЛистовНоменклатуры КАК НарядЗаданиеСписокЛистовНоменклатуры
+	Документ.НарядЗадание.СписокЛистовНоменклатуры КАК НарядЗаданиеСписокЛистовНоменклатуры,
+	Документ.НарядЗадание.СписокСпецификаций КАК НарядЗаданиеСписокСпецификаций
 ГДЕ
 	НарядЗаданиеСписокЛистовНоменклатуры.Ссылка = &amp;НарядЗадание
-
-СГРУППИРОВАТЬ ПО
-	НарядЗаданиеСписокЛистовНоменклатуры.Номенклатура,
-	НарядЗаданиеСписокЛистовНоменклатуры.Ссылка.Подразделение,
-	НарядЗаданиеСписокЛистовНоменклатуры.Ссылка
+	И НарядЗаданиеСписокСпецификаций.Ссылка = &amp;НарядЗадание
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
 ВЫБРАТЬ
-	НарядЗаданиеСписокСпецификаций.Спецификация,
-	НарядЗаданиеСписокСпецификаций.Ссылка.Подразделение
-ПОМЕСТИТЬ СписокСпецификаций
+	НарядЗаданиеСписокСпецификаций.Спецификация
+ПОМЕСТИТЬ втСпецификации
 ИЗ
 	Документ.НарядЗадание.СписокСпецификаций КАК НарядЗаданиеСписокСпецификаций
 ГДЕ
@@ -79,43 +68,72 @@
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
-ВЫБРАТЬ
-	СпецификацияСписокЛистовНоменклатуры.Номенклатура,
+ВЫБРАТЬ РАЗЛИЧНЫЕ
+	СпецификацияСписокЛистовНоменклатуры.Номенклатура КАК Номенклатура,
 	СпецификацияСписокЛистовНоменклатуры.Ссылка КАК Спецификация,
-	СпецификацияСписокЛистовНоменклатуры.Ссылка.Подразделение
-ПОМЕСТИТЬ НоменклатураСпецификаций
+	ПриходМатериаловЗаказчикаМатериалы.Предоставлен
+ПОМЕСТИТЬ втСпецификацииНоменклатура
 ИЗ
 	Документ.Спецификация.СписокЛистовНоменклатуры КАК СпецификацияСписокЛистовНоменклатуры
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.ПриходМатериаловЗаказчика.Материалы КАК ПриходМатериаловЗаказчикаМатериалы
+		ПО СпецификацияСписокЛистовНоменклатуры.Ссылка = ПриходМатериаловЗаказчикаМатериалы.Ссылка.Спецификация
+			И СпецификацияСписокЛистовНоменклатуры.Номенклатура = ПриходМатериаловЗаказчикаМатериалы.Номенклатура
 ГДЕ
 	СпецификацияСписокЛистовНоменклатуры.Ссылка В
 			(ВЫБРАТЬ
-				СписокСпецификаций.Спецификация.Ссылка
+				т.Спецификация
 			ИЗ
-				СписокСпецификаций КАК СписокСпецификаций)
+				втСпецификации КАК т)
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
 ВЫБРАТЬ
-	СписокНоменклатуры.Номенклатура,
-	НоменклатураСпецификаций.Спецификация,
+	втНарядНоменклатура.Номенклатура,
+	втНарядНоменклатура.Спецификация,
 	ВЫБОР
-		КОГДА СписокНоменклатуры.Номенклатура = НоменклатураСпецификаций.Номенклатура
-			ТОГДА ИСТИНА
-		ИНАЧЕ ЛОЖЬ
+		КОГДА втСпецификацииНоменклатура.Спецификация ЕСТЬ NULL 
+			ТОГДА ЛОЖЬ
+		ИНАЧЕ ИСТИНА
 	КОНЕЦ КАК Используется,
-	НоменклатураСпецификаций.Спецификация.Автор,
-	НоменклатураПодразделенийСрезПоследних.ПодЗаказ КАК ПодЗаказНаДатуНаряда
+	ЕСТЬNULL(втСпецификацииНоменклатура.Предоставлен, ЛОЖЬ) КАК Предоставлен,
+	втСпецификацииНоменклатура.Спецификация.Автор КАК Автор,
+	втНарядНоменклатура.Подразделение,
+	втНарядНоменклатура.Дата
+ПОМЕСТИТЬ втНоменклатураПоСпецификациям
 ИЗ
-	НоменклатураСпецификаций КАК НоменклатураСпецификаций,
-	СписокНоменклатуры КАК СписокНоменклатуры
-		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.НоменклатураПодразделений.СрезПоследних КАК НоменклатураПодразделенийСрезПоследних
-		ПО СписокНоменклатуры.Номенклатура = НоменклатураПодразделенийСрезПоследних.Номенклатура
+	втНарядНоменклатура КАК втНарядНоменклатура
+		ЛЕВОЕ СОЕДИНЕНИЕ втСпецификацииНоменклатура КАК втСпецификацииНоменклатура
+		ПО втНарядНоменклатура.Номенклатура = втСпецификацииНоменклатура.Номенклатура
+			И втНарядНоменклатура.Спецификация = втСпецификацииНоменклатура.Спецификация
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	втНоменклатураПоСпецификациям.Номенклатура,
+	втНоменклатураПоСпецификациям.Спецификация,
+	втНоменклатураПоСпецификациям.Используется,
+	втНоменклатураПоСпецификациям.Предоставлен,
+	втНоменклатураПоСпецификациям.Автор КАК СпецификацияАвтор,
+	НоменклатураПодразделенийСрезПоследних.ПодЗаказ
+ИЗ
+	втНоменклатураПоСпецификациям КАК втНоменклатураПоСпецификациям
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.НоменклатураПодразделений.СрезПоследних(, ) КАК НоменклатураПодразделенийСрезПоследних
+		ПО втНоменклатураПоСпецификациям.Номенклатура = НоменклатураПодразделенийСрезПоследних.Номенклатура
 ГДЕ
-	НоменклатураПодразделенийСрезПоследних.Подразделение = СписокНоменклатуры.Наряд.Подразделение</query>
+	НоменклатураПодразделенийСрезПоследних.Период &lt; втНоменклатураПоСпецификациям.Дата
+	И НоменклатураПодразделенийСрезПоследних.Подразделение = втНоменклатураПоСпецификациям.Подразделение</query>
 	</dataSet>
 	<totalField>
+		<dataPath>ПодЗаказ</dataPath>
+		<expression>ПодЗаказ</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Предоставлен</dataPath>
+		<expression>Предоставлен</expression>
+	</totalField>
+	<totalField>
 		<dataPath>Используется</dataPath>
-		<expression>Максимум(Используется)</expression>
+		<expression>Используется</expression>
 	</totalField>
 	<parameter>
 		<name>НарядЗадание</name>
@@ -147,7 +165,8 @@
 			</v8:DateQualifiers>
 		</valueType>
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-		<useRestriction>false</useRestriction>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
 	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
@@ -164,7 +183,10 @@
 					<dcsset:field>Используется</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>СпецификацияАвтор</dcsset:field>
+					<dcsset:field>ПодЗаказ</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Предоставлен</dcsset:field>
 				</dcsset:item>
 			</dcsset:selection>
 			<dcsset:dataParameters>
@@ -177,8 +199,8 @@
 			</dcsset:dataParameters>
 			<dcsset:order>
 				<dcsset:item xsi:type="dcsset:OrderItemField">
-					<dcsset:field>ПодЗаказНаДатуНаряда</dcsset:field>
-					<dcsset:orderType>Desc</dcsset:orderType>
+					<dcsset:field>ПодЗаказ</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:OrderItemField">
 					<dcsset:field>Номенклатура</dcsset:field>
@@ -248,19 +270,23 @@
 							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
 							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
 						</dcsset:item>
-						<dcsset:item xsi:type="dcsset:GroupItemField">
-							<dcsset:field>СпецификацияАвтор</dcsset:field>
-							<dcsset:groupType>Items</dcsset:groupType>
-							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
-							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
-							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
-						</dcsset:item>
 					</dcsset:groupItems>
 					<dcsset:order>
 						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
 					</dcsset:order>
 					<dcsset:selection>
-						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>Спецификация</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>Используется</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>ПодЗаказ</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>Предоставлен</dcsset:field>
+						</dcsset:item>
 					</dcsset:selection>
 				</dcsset:column>
 				<dcsset:row>
@@ -272,19 +298,23 @@
 							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
 							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
 						</dcsset:item>
-						<dcsset:item xsi:type="dcsset:GroupItemField">
-							<dcsset:field>ПодЗаказНаДатуНаряда</dcsset:field>
-							<dcsset:groupType>Items</dcsset:groupType>
-							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
-							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
-							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
-						</dcsset:item>
 					</dcsset:groupItems>
 					<dcsset:order>
 						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
 					</dcsset:order>
 					<dcsset:selection>
-						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>Номенклатура</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>Используется</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>ПодЗаказ</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>Предоставлен</dcsset:field>
+						</dcsset:item>
 					</dcsset:selection>
 				</dcsset:row>
 				<dcsset:selection>
