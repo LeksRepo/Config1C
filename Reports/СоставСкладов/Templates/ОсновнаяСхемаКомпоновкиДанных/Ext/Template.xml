@@ -436,8 +436,8 @@
 ВЫБРАТЬ
 	втДанные.Номенклатура КАК Номенклатура,
 	втДанные.Номенклатура.Наименование КАК НомНаименование,
-	втДанные.Количество КАК Количество,
-	втДанные.КоличествоМесяц КАК КоличествоМесяц,
+	ВЫРАЗИТЬ(втДанные.Количество КАК ЧИСЛО(15, 0)) КАК Количество,
+	ВЫРАЗИТЬ(втДанные.КоличествоМесяц КАК ЧИСЛО(15, 0)) КАК КоличествоМесяц,
 	ВЫБОР
 		КОГДА втДанные.ПодЗаказ
 			ТОГДА 0
@@ -475,7 +475,18 @@
 	втДанные.УстойчивыйОборот КАК УстойчивыйОборот,
 	втДанные.Поставщик КАК Поставщик
 ИЗ
-	втДанные КАК втДанные</query>
+	втДанные КАК втДанные
+{ГДЕ
+	(ВЫБОР
+			КОГДА &amp;ТолькоОптовые
+				ТОГДА втДанные.ЗакупОптом
+			ИНАЧЕ ИСТИНА
+		КОНЕЦ),
+	(ВЫБОР
+			КОГДА &amp;Поставщик &lt;&gt; ЗНАЧЕНИЕ(Справочник.Контрагенты.ПустаяСсылка)
+				ТОГДА втДанные.Поставщик = &amp;Поставщик
+			ИНАЧЕ ИСТИНА
+		КОНЕЦ)}</query>
 	</dataSet>
 	<totalField>
 		<dataPath>МаксимальныйОстаток</dataPath>
@@ -622,6 +633,55 @@
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 		<useRestriction>false</useRestriction>
 	</parameter>
+	<parameter>
+		<name>ТолькоОптовые</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Только оптовые</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:boolean</v8:Type>
+		</valueType>
+		<value xsi:type="xs:boolean">false</value>
+		<useRestriction>false</useRestriction>
+		<inputParameters>
+			<dcscor:item>
+				<dcscor:parameter>БыстрыйВыбор</dcscor:parameter>
+				<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+			</dcscor:item>
+		</inputParameters>
+	</parameter>
+	<parameter>
+		<name>Поставщик</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Поставщик</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Контрагенты</v8:Type>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>false</useRestriction>
+		<inputParameters>
+			<dcscor:item>
+				<dcscor:parameter>ПараметрыВыбора</dcscor:parameter>
+				<dcscor:value xsi:type="dcscor:ChoiceParameters">
+					<dcscor:item>
+						<dcscor:choiceParameter>Отбор.Поставщик</dcscor:choiceParameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcscor:value>
+			</dcscor:item>
+			<dcscor:item>
+				<dcscor:parameter>БыстрыйВыбор</dcscor:parameter>
+				<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+			</dcscor:item>
+		</inputParameters>
+	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
 		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
@@ -636,6 +696,16 @@
 					<dcscor:parameter>Период</dcscor:parameter>
 					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
 					<dcsset:userSettingID>4666cd74-8cc6-4954-bc68-998096364c20</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ТолькоОптовые</dcscor:parameter>
+					<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
+					<dcsset:userSettingID>4af07b7c-56a7-4a68-87c6-f63c0f814ba3</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Поставщик</dcscor:parameter>
+					<dcscor:value xsi:nil="true"/>
+					<dcsset:userSettingID>c2042ed3-4f5d-4c8c-af93-bddc92a32f28</dcsset:userSettingID>
 				</dcscor:item>
 			</dcsset:dataParameters>
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
