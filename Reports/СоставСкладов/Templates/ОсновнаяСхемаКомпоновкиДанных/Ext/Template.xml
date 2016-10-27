@@ -230,6 +230,16 @@
 				</v8:item>
 			</title>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>МаксимальныйЗапас</dataPath>
+			<field>МаксимальныйЗапас</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Максимальный запас</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	ВЫБОР
@@ -474,7 +484,8 @@
 	КОНЕЦ КАК Докупить,
 	втДанные.Резерв КАК Резерв,
 	втДанные.УстойчивыйОборот КАК УстойчивыйОборот,
-	втДанные.Поставщик КАК Поставщик
+	втДанные.Поставщик КАК Поставщик,
+	ВЫРАЗИТЬ((втДанные.Поставщик.ВремяПоставки + втДанные.Поставщик.ЗадержкаПоставки) * (втДанные.Количество / 30) - втДанные.Поставщик.ВремяПоставки * (втДанные.Количество / 30) + &amp;ИнтервалМеждуЗаказами * (втДанные.Количество / 30) КАК ЧИСЛО(15, 0)) КАК МаксимальныйЗапас
 ИЗ
 	втДанные КАК втДанные
 {ГДЕ
@@ -489,6 +500,17 @@
 			ИНАЧЕ ИСТИНА
 		КОНЕЦ)}</query>
 	</dataSet>
+	<calculatedField>
+		<dataPath>ДокупитьФормула</dataPath>
+		<expression>МаксимальныйЗапас-ТекущийОстаток</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Докупить формула</v8:content>
+			</v8:item>
+		</title>
+		<presentationExpression>МаксимальныйЗапас-ТекущийОстаток</presentationExpression>
+	</calculatedField>
 	<totalField>
 		<dataPath>МаксимальныйОстаток</dataPath>
 		<expression>Сумма(МаксимальныйОстаток)</expression>
@@ -548,6 +570,14 @@
 	<totalField>
 		<dataPath>КоличествоМесяц</dataPath>
 		<expression>Сумма(КоличествоМесяц)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>МаксимальныйЗапас</dataPath>
+		<expression>Сумма(МаксимальныйЗапас)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ДокупитьФормула</dataPath>
+		<expression>Сумма(ДокупитьФормула)</expression>
 	</totalField>
 	<parameter>
 		<name>Подразделение</name>
@@ -683,6 +713,26 @@
 			</dcscor:item>
 		</inputParameters>
 	</parameter>
+	<parameter>
+		<name>ИнтервалМеждуЗаказами</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Интервал между заказами</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:decimal</v8:Type>
+			<v8:NumberQualifiers>
+				<v8:Digits>0</v8:Digits>
+				<v8:FractionDigits>0</v8:FractionDigits>
+				<v8:AllowedSign>Any</v8:AllowedSign>
+			</v8:NumberQualifiers>
+		</valueType>
+		<value xsi:type="xs:decimal">0</value>
+		<useRestriction>false</useRestriction>
+		<use>Always</use>
+	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
 		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
@@ -707,6 +757,11 @@
 					<dcscor:parameter>Поставщик</dcscor:parameter>
 					<dcscor:value xsi:nil="true"/>
 					<dcsset:userSettingID>c2042ed3-4f5d-4c8c-af93-bddc92a32f28</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ИнтервалМеждуЗаказами</dcscor:parameter>
+					<dcscor:value xsi:type="xs:decimal">0</dcscor:value>
+					<dcsset:userSettingID>c547527d-b5ab-4ff2-9730-949de67f1972</dcsset:userSettingID>
 				</dcscor:item>
 			</dcsset:dataParameters>
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
@@ -845,6 +900,15 @@
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
 						<dcsset:field>Поставщик</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>МаксимальныйЗапас</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Докупить</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ДокупитьФормула</dcsset:field>
 					</dcsset:item>
 				</dcsset:selection>
 				<dcsset:conditionalAppearance>
