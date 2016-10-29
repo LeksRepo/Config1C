@@ -3,21 +3,59 @@
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<Autofill>false</Autofill>
-		<ChildItems>
-			<Button name="ФормаОтчетОшибкиСотрудниковОткрыть" id="25">
-				<Type>CommandBarButton</Type>
-				<Representation>Text</Representation>
-				<DefaultButton>true</DefaultButton>
-				<CommandName>Report.ЭффективностьСотрудников.StandardCommand.Open</CommandName>
-				<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
-				<ExtendedTooltip name="ФормаОтчетОшибкиСотрудниковОткрытьРасширеннаяПодсказка" id="26"/>
-			</Button>
-		</ChildItems>
 	</AutoCommandBar>
 	<Events>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
+		<UsualGroup name="ГруппаШапка" id="297">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа шапка</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа шапка</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаШапкаРасширеннаяПодсказка" id="298"/>
+			<ChildItems>
+				<Button name="ФормаОтчетОшибкиСотрудниковОткрыть" id="25">
+					<Type>UsualButton</Type>
+					<Representation>Text</Representation>
+					<DefaultButton>true</DefaultButton>
+					<CommandName>Report.ЭффективностьСотрудников.StandardCommand.Open</CommandName>
+					<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+					<ExtendedTooltip name="ФормаОтчетОшибкиСотрудниковОткрытьРасширеннаяПодсказка" id="26"/>
+				</Button>
+				<InputField name="Подразделение" id="294">
+					<DataPath>Подразделение</DataPath>
+					<Width>30</Width>
+					<HorizontalStretch>false</HorizontalStretch>
+					<OpenButton>false</OpenButton>
+					<QuickChoice>true</QuickChoice>
+					<ChoiceParameters>
+						<app:item name="Отбор.Активность">
+							<app:value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation/>
+								<Value xsi:type="xs:boolean">true</Value>
+							</app:value>
+						</app:item>
+					</ChoiceParameters>
+					<ContextMenu name="ПодразделениеКонтекстноеМеню" id="295"/>
+					<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="296"/>
+					<Events>
+						<Event name="OnChange">ПодразделениеПриИзменении</Event>
+					</Events>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
 		<Pages name="СтраницыСписков" id="30">
 			<Title>
 				<v8:item>
@@ -605,7 +643,7 @@
 			<MainAttribute>true</MainAttribute>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
-				<DynamicDataRead>true</DynamicDataRead>
+				<DynamicDataRead>false</DynamicDataRead>
 				<QueryText>ВЫБРАТЬ
 	Записка.Ссылка,
 	ПОДСТРОКА(Записка.Номер, 7, 5) КАК Номер,
@@ -634,7 +672,12 @@
 	Документ.СлужебнаяЗаписка КАК Записка
 ГДЕ
 	НЕ Записка.Проведен
-	И Записка.ВидСлужебнойЗаписки &lt;&gt; ЗНАЧЕНИЕ(Перечисление.ВидыСлужебнойЗаписки.Поручение)</QueryText>
+	И Записка.ВидСлужебнойЗаписки &lt;&gt; ЗНАЧЕНИЕ(Перечисление.ВидыСлужебнойЗаписки.Поручение)
+	И ВЫБОР
+		   КОГДА &amp;Подразделение &lt;&gt; ЗНАЧЕНИЕ(Справочник.Подразделения.ПустаяСсылка)
+		   ТОГДА Записка.Подразделение = &amp;Подразделение ИЛИ Записка.Подразделение = ЗНАЧЕНИЕ(Справочник.Подразделения.ПустаяСсылка)
+		   ИНАЧЕ ИСТИНА
+	КОНЕЦ </QueryText>
 				<MainTable>Document.СлужебнаяЗаписка</MainTable>
 				<ListSettings>
 					<dcsset:filter>
@@ -910,6 +953,17 @@
 					</dcsset:conditionalAppearance>
 				</ListSettings>
 			</Settings>
+		</Attribute>
+		<Attribute name="Подразделение" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подразделение</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Подразделения</v8:Type>
+			</Type>
 		</Attribute>
 	</Attributes>
 </Form>
