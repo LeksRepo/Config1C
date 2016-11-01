@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
+	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
+	<SaveDataInSettings>UseList</SaveDataInSettings>
+	<SettingsStorage>SettingsStorage.ХранилищеВариантовОтчетов</SettingsStorage>
+	<CommandBarLocation>None</CommandBarLocation>
+	<ReportResult/>
+	<DetailsData/>
+	<ReportFormType>Main</ReportFormType>
+	<VariantAppearance/>
+	<AutoShowState>Auto</AutoShowState>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
+	</AutoCommandBar>
+	<Events>
+		<Event name="ChoiceProcessing">ОбработкаВыбора</Event>
+	</Events>
+	<ChildItems>
+		<Button name="Сформировать" id="1">
+			<Type>UsualButton</Type>
+			<CommandName>Form.Command.Сформировать</CommandName>
+			<ExtendedTooltip name="СформироватьРасширеннаяПодсказка" id="2"/>
+		</Button>
+		<InputField name="ПериодОтчета" id="3">
+			<DataPath>ПериодОтчета</DataPath>
+			<ContextMenu name="ПериодОтчетаКонтекстноеМеню" id="4"/>
+			<ExtendedTooltip name="ПериодОтчетаРасширеннаяПодсказка" id="5"/>
+		</InputField>
+		<LabelField name="СписокПодразделений" id="6">
+			<DataPath>СписокПодразделений</DataPath>
+			<Hiperlink>true</Hiperlink>
+			<ContextMenu name="СписокПодразделенийКонтекстноеМеню" id="7"/>
+			<ExtendedTooltip name="СписокПодразделенийРасширеннаяПодсказка" id="8"/>
+			<Events>
+				<Event name="Click">СписокПодразделенийНажатие</Event>
+			</Events>
+		</LabelField>
+		<SpreadSheetDocumentField name="ТабДок" id="9">
+			<DataPath>ТаблицаОтчета</DataPath>
+			<TitleLocation>None</TitleLocation>
+			<ContextMenu name="ТабДокКонтекстноеМеню" id="10"/>
+			<ExtendedTooltip name="ТабДокРасширеннаяПодсказка" id="11"/>
+		</SpreadSheetDocumentField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Отчет" id="1">
+			<Type>
+				<v8:Type>cfg:ReportObject.ОтчетПоПродажам</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+		</Attribute>
+		<Attribute name="СписокПодразделений" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список подразделений</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:ValueListType</v8:Type>
+			</Type>
+			<Save>
+				<Field>СписокПодразделений</Field>
+			</Save>
+			<Settings xsi:type="v8:TypeDescription">
+				<v8:Type>cfg:CatalogRef.Подразделения</v8:Type>
+			</Settings>
+		</Attribute>
+		<Attribute name="ПериодОтчета" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Период отчета</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>v8:StandardPeriod</v8:Type>
+			</Type>
+			<Save>
+				<Field>ПериодОтчета</Field>
+			</Save>
+		</Attribute>
+		<Attribute name="ТаблицаОтчета" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Таблица отчета</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type xmlns:mxl="http://v8.1c.ru/8.2/data/spreadsheet">mxl:SpreadsheetDocument</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Сформировать" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сформировать</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сформировать</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Сформировать</Action>
+		</Command>
+	</Commands>
+</Form>
