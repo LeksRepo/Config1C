@@ -124,21 +124,6 @@
 							<ContextMenu name="ОфисКонтекстноеМеню" id="47"/>
 							<ExtendedTooltip name="ОфисExtendedTooltip" id="210"/>
 						</InputField>
-						<InputField name="Контрагент" id="35">
-							<DataPath>Контрагент</DataPath>
-							<ReadOnly>true</ReadOnly>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Заказчик</v8:content>
-								</v8:item>
-							</Title>
-							<EditMode>EnterOnInput</EditMode>
-							<AutoChoiceIncomplete>true</AutoChoiceIncomplete>
-							<IncompleteChoiceMode>OnActivate</IncompleteChoiceMode>
-							<ContextMenu name="КонтрагентКонтекстноеМеню" id="36"/>
-							<ExtendedTooltip name="КонтрагентРасширеннаяПодсказка" id="208"/>
-						</InputField>
 						<LabelField name="КонтрагентТелефон" id="289">
 							<DataPath>1/0:31067067-ac89-4054-aff6-5698d15eb980/0:4c2571fe-c7ee-47e4-9bfe-7653f8d7a09d</DataPath>
 							<ContextMenu name="КонтрагентТелефонКонтекстноеМеню" id="290"/>
@@ -219,57 +204,6 @@
 								<Event name="Click">АктВыполненияСпецификацииНажатие</Event>
 							</Events>
 						</LabelField>
-						<UsualGroup name="ГруппаОплатаПроцент" id="373">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа оплата процент</v8:content>
-								</v8:item>
-							</Title>
-							<ToolTip>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа оплата процент</v8:content>
-								</v8:item>
-							</ToolTip>
-							<HorizontalStretch>true</HorizontalStretch>
-							<Group>Horizontal</Group>
-							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ГруппаОплатаПроцентРасширеннаяПодсказка" id="374"/>
-							<ChildItems>
-								<InputField name="ВидОплаты" id="439">
-									<DataPath>Объект.ВидОплаты</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Оплата</v8:content>
-										</v8:item>
-									</Title>
-									<HorizontalStretch>false</HorizontalStretch>
-									<OpenButton>false</OpenButton>
-									<ListChoiceMode>true</ListChoiceMode>
-									<QuickChoice>true</QuickChoice>
-									<ContextMenu name="ВидОплатыКонтекстноеМеню" id="440"/>
-									<ExtendedTooltip name="ВидОплатыРасширеннаяПодсказка" id="441"/>
-									<Events>
-										<Event name="OnChange">ВидОплатыПриИзменении</Event>
-									</Events>
-								</InputField>
-								<LabelField name="ПроцентСкидки" id="353">
-									<DataPath>Объект.ПроцентСкидки</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Скидка</v8:content>
-										</v8:item>
-									</Title>
-									<HorizontalAlign>Left</HorizontalAlign>
-									<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
-									<ContextMenu name="ПроцентСкидкиКонтекстноеМеню" id="354"/>
-									<ExtendedTooltip name="ПроцентСкидкиРасширеннаяПодсказка" id="355"/>
-								</LabelField>
-							</ChildItems>
-						</UsualGroup>
 						<UsualGroup name="ГруппаСуммы" id="167">
 							<Title>
 								<v8:item>
@@ -284,42 +218,88 @@
 								</v8:item>
 							</ToolTip>
 							<Group>Vertical</Group>
-							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="ГруппаСуммыExtendedTooltip" id="275"/>
 							<ChildItems>
-								<UsualGroup name="Группа1" id="442">
+								<UsualGroup name="ГруппаОплатаПроцент" id="373">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа оплата процент</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа оплата процент</v8:content>
+										</v8:item>
+									</ToolTip>
+									<HorizontalStretch>true</HorizontalStretch>
 									<Group>Horizontal</Group>
 									<Representation>None</Representation>
 									<ShowTitle>false</ShowTitle>
-									<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="443"/>
+									<ExtendedTooltip name="ГруппаОплатаПроцентРасширеннаяПодсказка" id="374"/>
 									<ChildItems>
-										<InputField name="СуммаДокумента" id="58">
-											<DataPath>Объект.СуммаДокумента</DataPath>
+										<InputField name="ВидОплаты" id="439">
+											<DataPath>Объект.ВидОплаты</DataPath>
 											<Title>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Сумма договора  </v8:content>
+													<v8:content>Оплата</v8:content>
 												</v8:item>
 											</Title>
-											<TitleFont ref="sys:DefaultGUIFont" kind="WindowsFont"/>
-											<HorizontalAlign>Center</HorizontalAlign>
-											<EditMode>EnterOnInput</EditMode>
-											<Format>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>ЧН=Ноль</v8:content>
-												</v8:item>
-											</Format>
-											<Font ref="sys:DefaultGUIFont" height="12" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
-											<ContextMenu name="СуммаДокументаКонтекстноеМеню" id="59"/>
-											<ExtendedTooltip name="СуммаДокументаExtendedTooltip" id="277"/>
+											<Width>26</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<OpenButton>false</OpenButton>
+											<ListChoiceMode>true</ListChoiceMode>
+											<QuickChoice>true</QuickChoice>
+											<ContextMenu name="ВидОплатыКонтекстноеМеню" id="440"/>
+											<ExtendedTooltip name="ВидОплатыРасширеннаяПодсказка" id="441"/>
 											<Events>
-												<Event name="OnChange">СуммаДокументаПриИзменении</Event>
+												<Event name="OnChange">ВидОплатыПриИзменении</Event>
 											</Events>
 										</InputField>
+										<LabelField name="ПроцентСкидки" id="353">
+											<DataPath>Объект.ПроцентСкидки</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Скидка</v8:content>
+												</v8:item>
+											</Title>
+											<HorizontalAlign>Left</HorizontalAlign>
+											<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+											<ContextMenu name="ПроцентСкидкиКонтекстноеМеню" id="354"/>
+											<ExtendedTooltip name="ПроцентСкидкиРасширеннаяПодсказка" id="355"/>
+										</LabelField>
 									</ChildItems>
 								</UsualGroup>
+								<InputField name="СуммаДокумента" id="58">
+									<DataPath>Объект.СуммаДокумента</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Сумма договора  </v8:content>
+										</v8:item>
+									</Title>
+									<TitleFont ref="sys:DefaultGUIFont" kind="WindowsFont"/>
+									<HorizontalAlign>Center</HorizontalAlign>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>26</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Format>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>ЧН=Ноль</v8:content>
+										</v8:item>
+									</Format>
+									<Font ref="sys:DefaultGUIFont" height="12" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+									<ContextMenu name="СуммаДокументаКонтекстноеМеню" id="59"/>
+									<ExtendedTooltip name="СуммаДокументаExtendedTooltip" id="277"/>
+									<Events>
+										<Event name="OnChange">СуммаДокументаПриИзменении</Event>
+									</Events>
+								</InputField>
 								<LabelField name="СуммаДополнительныхСоглашений" id="168">
 									<DataPath>СуммаДопСоглашения</DataPath>
 									<Title>
@@ -329,6 +309,8 @@
 										</v8:item>
 									</Title>
 									<HorizontalAlign>Center</HorizontalAlign>
+									<Width>27</Width>
+									<HorizontalStretch>false</HorizontalStretch>
 									<Format>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -343,6 +325,8 @@
 									<DataPath>ОсталосьОплатить</DataPath>
 									<TitleFont ref="sys:DefaultGUIFont" kind="WindowsFont"/>
 									<HorizontalAlign>Center</HorizontalAlign>
+									<Width>27</Width>
+									<HorizontalStretch>false</HorizontalStretch>
 									<Format>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -918,67 +902,6 @@
 					<v8:AllowedSign>Any</v8:AllowedSign>
 				</v8:NumberQualifiers>
 			</Type>
-		</Attribute>
-		<Attribute name="Контрагент" id="11">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Контрагент</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>cfg:CatalogRef.Контрагенты</v8:Type>
-			</Type>
-		</Attribute>
-		<Attribute name="ПлатежныеДокументы1" id="12">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Платежные документы</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>cfg:DynamicList</v8:Type>
-			</Type>
-			<Settings xsi:type="DynamicList">
-				<ManualQuery>true</ManualQuery>
-				<DynamicDataRead>false</DynamicDataRead>
-				<QueryText>ВЫБРАТЬ
-	УправленческийОбороты.СуммаОборотДт КАК Возврат,
-	УправленческийОбороты.СуммаОборотКт КАК Оплата,
-	УправленческийОбороты.Регистратор КАК Документ
-ИЗ
-	РегистрБухгалтерии.Управленческий.Обороты(
-			,
-			,
-			Регистратор,
-			Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ВзаиморасчетыСПокупателями),
-			,
-			Подразделение = &amp;Подразделение
-				И Субконто1 = &amp;Контрагент
-				И Субконто2 = &amp;Договор,
-			КорСчет В ИЕРАРХИИ (ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ДенежныеСредства)),
-			) КАК УправленческийОбороты</QueryText>
-				<MainTable>AccountingRegister.Управленческий.Turnovers</MainTable>
-				<ListSettings>
-					<dcsset:filter>
-						<dcsset:viewMode>Normal</dcsset:viewMode>
-						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
-					</dcsset:filter>
-					<dcsset:order>
-						<dcsset:item xsi:type="dcsset:OrderItemField">
-							<dcsset:field>Документ.Дата</dcsset:field>
-							<dcsset:orderType>Asc</dcsset:orderType>
-						</dcsset:item>
-						<dcsset:viewMode>Normal</dcsset:viewMode>
-						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
-					</dcsset:order>
-					<dcsset:conditionalAppearance>
-						<dcsset:viewMode>Normal</dcsset:viewMode>
-						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
-					</dcsset:conditionalAppearance>
-				</ListSettings>
-			</Settings>
 		</Attribute>
 	</Attributes>
 </Form>
