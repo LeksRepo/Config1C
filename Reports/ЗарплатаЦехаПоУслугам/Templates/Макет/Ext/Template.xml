@@ -7,59 +7,107 @@
 	<dataSet xsi:type="DataSetQuery">
 		<name>НаборДанных1</name>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Количество</dataPath>
-			<field>Количество</field>
-			<appearance>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>Формат</dcscor:parameter>
-					<dcscor:value xsi:type="xs:string">ЧДЦ=</dcscor:value>
-				</dcscor:item>
-			</appearance>
+			<dataPath>КорСубконто2</dataPath>
+			<field>КорСубконто2</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Субконто2</dataPath>
+			<field>Субконто2</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СчетКтЧтение</dataPath>
+			<field>СчетКтЧтение</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КорСубконто1</dataPath>
+			<field>КорСубконто1</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Подразделение</dataPath>
+			<field>Подразделение</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СчетДтЧтение</dataPath>
+			<field>СчетДтЧтение</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КорСубконто3</dataPath>
+			<field>КорСубконто3</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Субконто1</dataPath>
+			<field>Субконто1</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КорСчет</dataPath>
+			<field>КорСчет</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Счет</dataPath>
+			<field>Счет</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Субконто3</dataPath>
+			<field>Субконто3</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>ЗарплатаЦеха</dataPath>
 			<field>ЗарплатаЦеха</field>
-			<appearance>
-				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>Формат</dcscor:parameter>
-					<dcscor:value xsi:type="xs:string">ЧДЦ=</dcscor:value>
-				</dcscor:item>
-			</appearance>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Зарплата цеха</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Количество</dataPath>
+			<field>Количество</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество</v8:content>
+				</v8:item>
+			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Номенклатура</dataPath>
 			<field>Номенклатура</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номенклатура</v8:content>
+				</v8:item>
+			</title>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+				<dcscom:ignoreNullValues>true</dcscom:ignoreNullValues>
+			</role>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Регистратор</dataPath>
 			<field>Регистратор</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Регистратор</v8:content>
-				</v8:item>
-			</title>
+			<role>
+				<dcscom:periodNumber>1</dcscom:periodNumber>
+				<dcscom:periodType>Main</dcscom:periodType>
+			</role>
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
-		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
-	СпецификацияСписокНоменклатуры.Номенклатура,
-	СпецификацияСписокНоменклатуры.ЗарплатаЦеха КАК ЗарплатаЦеха,
-	СпецификацияСписокНоменклатуры.Количество КАК Количество,
-	СпецификацияСписокНоменклатуры.Ссылка КАК Регистратор
+		<query>ВЫБРАТЬ
+	УправленческийОбороты.СуммаОборот КАК ЗарплатаЦеха,
+	УправленческийОбороты.Субконто2 КАК Номенклатура,
+	УправленческийОбороты.КоличествоОборот КАК Количество,
+	УправленческийОбороты.Регистратор КАК Регистратор
 ИЗ
-	Документ.Спецификация.СписокНоменклатуры КАК СпецификацияСписокНоменклатуры
-ГДЕ
-	СпецификацияСписокНоменклатуры.Номенклатура.ВидНоменклатуры = ЗНАЧЕНИЕ(Перечисление.ВидыНоменклатуры.Услуга)
-	И СпецификацияСписокНоменклатуры.Ссылка.ДатаИзготовления МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
-	И СпецификацияСписокНоменклатуры.Ссылка.Проведен</query>
+	РегистрБухгалтерии.Управленческий.Обороты(&amp;НачалоПериода, &amp;КонецПериода, Запись, Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ЗарплатаЦеха), , , , ) КАК УправленческийОбороты</query>
 	</dataSet>
-	<totalField>
-		<dataPath>Количество</dataPath>
-		<expression>Сумма(Количество)</expression>
-	</totalField>
 	<totalField>
 		<dataPath>ЗарплатаЦеха</dataPath>
 		<expression>Сумма(ЗарплатаЦеха)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Количество</dataPath>
+		<expression>Сумма(Количество)</expression>
 	</totalField>
 	<parameter>
 		<name>НачалоПериода</name>
