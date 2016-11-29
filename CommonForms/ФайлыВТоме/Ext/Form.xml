@@ -19,7 +19,7 @@
 			<ChoiceButton>true</ChoiceButton>
 			<TextEdit>false</TextEdit>
 			<ContextMenu name="ПредставлениеХранилищаФайловКонтекстноеМеню" id="10"/>
-			<ExtendedTooltip name="ПредставлениеХранилищаФайловExtendedTooltip" id="22"/>
+			<ExtendedTooltip name="ПредставлениеХранилищаФайловРасширеннаяПодсказка" id="22"/>
 			<Events>
 				<Event name="StartChoice">ПредставлениеХранилищаФайловНачалоВыбора</Event>
 			</Events>
@@ -65,30 +65,30 @@
 			<AutoCommandBar name="ФайлыВТомахКоманднаяПанель" id="13">
 				<Autofill>false</Autofill>
 			</AutoCommandBar>
-			<ExtendedTooltip name="ФайлыВТомахExtendedTooltip" id="23"/>
-			<SearchStringAddition name="ФайлыВТомахСтрокаПоиска" id="27">
+			<ExtendedTooltip name="ФайлыВТомахРасширеннаяПодсказка" id="23"/>
+			<SearchStringAddition name="ФайлыВТомахСтрокаПоиска" id="24">
 				<AdditionSource>
 					<Item>ФайлыВТомах</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="ФайлыВТомахСтрокаПоискаКонтекстноеМеню" id="28"/>
-				<ExtendedTooltip name="ФайлыВТомахСтрокаПоискаРасширеннаяПодсказка" id="29"/>
+				<ContextMenu name="ФайлыВТомахСтрокаПоискаКонтекстноеМеню" id="25"/>
+				<ExtendedTooltip name="ФайлыВТомахСтрокаПоискаРасширеннаяПодсказка" id="26"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="ФайлыВТомахСостояниеПросмотра" id="30">
+			<ViewStatusAddition name="ФайлыВТомахСостояниеПросмотра" id="27">
 				<AdditionSource>
 					<Item>ФайлыВТомах</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="ФайлыВТомахСостояниеПросмотраКонтекстноеМеню" id="31"/>
-				<ExtendedTooltip name="ФайлыВТомахСостояниеПросмотраРасширеннаяПодсказка" id="32"/>
+				<ContextMenu name="ФайлыВТомахСостояниеПросмотраКонтекстноеМеню" id="28"/>
+				<ExtendedTooltip name="ФайлыВТомахСостояниеПросмотраРасширеннаяПодсказка" id="29"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="ФайлыВТомахУправлениеПоиском" id="33">
+			<SearchControlAddition name="ФайлыВТомахУправлениеПоиском" id="30">
 				<AdditionSource>
 					<Item>ФайлыВТомах</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="ФайлыВТомахУправлениеПоискомКонтекстноеМеню" id="34"/>
-				<ExtendedTooltip name="ФайлыВТомахУправлениеПоискомРасширеннаяПодсказка" id="35"/>
+				<ContextMenu name="ФайлыВТомахУправлениеПоискомКонтекстноеМеню" id="31"/>
+				<ExtendedTooltip name="ФайлыВТомахУправлениеПоискомРасширеннаяПодсказка" id="32"/>
 			</SearchControlAddition>
 			<Events>
 				<Event name="Selection">ФайлыВТомахВыбор</Event>
@@ -98,17 +98,17 @@
 				<LabelField name="ПутьКФайлу" id="18">
 					<DataPath>ФайлыВТомах.ПутьКФайлу</DataPath>
 					<ContextMenu name="ПутьКФайлуКонтекстноеМеню" id="19"/>
-					<ExtendedTooltip name="ПутьКФайлуExtendedTooltip" id="24"/>
+					<ExtendedTooltip name="ПутьКФайлуРасширеннаяПодсказка" id="33"/>
 				</LabelField>
 				<LabelField name="Размер" id="20">
 					<DataPath>ФайлыВТомах.Размер</DataPath>
 					<ContextMenu name="РазмерКонтекстноеМеню" id="21"/>
-					<ExtendedTooltip name="РазмерExtendedTooltip" id="25"/>
+					<ExtendedTooltip name="РазмерРасширеннаяПодсказка" id="34"/>
 				</LabelField>
 				<LabelField name="Автор" id="14">
 					<DataPath>ФайлыВТомах.Автор</DataPath>
 					<ContextMenu name="АвторКонтекстноеМеню" id="15"/>
-					<ExtendedTooltip name="АвторExtendedTooltip" id="26"/>
+					<ExtendedTooltip name="АвторРасширеннаяПодсказка" id="35"/>
 				</LabelField>
 			</ChildItems>
 		</Table>
@@ -187,9 +187,9 @@
 				<QueryText>ВЫБРАТЬ
 	ХранилищеФайлов.Ссылка КАК Ссылка,
 	1 КАК ИндексКартинки,
-	"" КАК ПутьКФайлу,
-	0 КАК Размер,
-	Значение(Справочник.Пользователи.ПустаяСсылка) КАК Автор,
+	ВЫРАЗИТЬ("" КАК СТРОКА) КАК ПутьКФайлу,
+	ВЫРАЗИТЬ(0 КАК ЧИСЛО(10, 0)) КАК Размер,
+	ЗНАЧЕНИЕ(Справочник.Пользователи.ПустаяСсылка) КАК Автор,
 	ЛОЖЬ КАК ЭтоПрисоединенныеФайлы
 ИЗ
 	Справочник.ТомаХраненияФайлов КАК ХранилищеФайлов

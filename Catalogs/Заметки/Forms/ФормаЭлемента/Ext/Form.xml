@@ -18,14 +18,14 @@
 						<v8:content>Командная панель редактирования</v8:content>
 					</v8:item>
 				</ToolTip>
-				<ExtendedTooltip name="КоманднаяПанельРедактированияExtendedTooltip" id="107"/>
+				<CommandSource>Item.Содержание</CommandSource>
+				<ExtendedTooltip name="КоманднаяПанельРедактированияРасширеннаяПодсказка" id="107"/>
 			</ButtonGroup>
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
 		<Event name="AfterWrite">ПослеЗаписи</Event>
 		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
-		<Event name="BeforeWrite">ПередЗаписью</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
 	</Events>
@@ -40,7 +40,7 @@
 			<Group>Vertical</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="СодержаниеЗаметкиExtendedTooltip" id="108"/>
+			<ExtendedTooltip name="СодержаниеЗаметкиРасширеннаяПодсказка" id="108"/>
 			<ChildItems>
 				<UsualGroup name="ГруппаПредмет" id="102">
 					<Title>
@@ -58,7 +58,7 @@
 					<Group>Horizontal</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="ГруппаПредметExtendedTooltip" id="109"/>
+					<ExtendedTooltip name="ГруппаПредметРасширеннаяПодсказка" id="109"/>
 					<ChildItems>
 						<LabelDecoration name="НадписьПредмет" id="65">
 							<Title formatted="false">
@@ -68,7 +68,7 @@
 								</v8:item>
 							</Title>
 							<ContextMenu name="НадписьПредметКонтекстноеМеню" id="66"/>
-							<ExtendedTooltip name="НадписьПредметExtendedTooltip" id="110"/>
+							<ExtendedTooltip name="НадписьПредметРасширеннаяПодсказка" id="110"/>
 						</LabelDecoration>
 						<LabelDecoration name="Предмет" id="63">
 							<HorizontalStretch>true</HorizontalStretch>
@@ -87,7 +87,7 @@
 							</ToolTip>
 							<Hyperlink>true</Hyperlink>
 							<ContextMenu name="ПредметКонтекстноеМеню" id="64"/>
-							<ExtendedTooltip name="ПредметExtendedTooltip" id="111"/>
+							<ExtendedTooltip name="ПредметРасширеннаяПодсказка" id="111"/>
 							<Events>
 								<Event name="Click">ПредметНажатие</Event>
 							</Events>
@@ -99,7 +99,6 @@
 		<FormattedDocumentField name="Содержание" id="9">
 			<DataPath>ФорматированныйТекст</DataPath>
 			<DefaultItem>true</DefaultItem>
-			<ReadOnly>true</ReadOnly>
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -115,28 +114,9 @@
 			</ToolTip>
 			<EditMode>EnterOnInput</EditMode>
 			<ContextMenu name="СодержаниеКонтекстноеМеню" id="10"/>
-			<ExtendedTooltip name="СодержаниеExtendedTooltip" id="112"/>
+			<ExtendedTooltip name="СодержаниеРасширеннаяПодсказка" id="112"/>
 		</FormattedDocumentField>
-		<InputField name="ТекстПользователя" id="121">
-			<DataPath>ТекстПользователя</DataPath>
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Текст</v8:content>
-				</v8:item>
-			</Title>
-			<Height>5</Height>
-			<MultiLine>true</MultiLine>
-			<ContextMenu name="ТекстПользователяКонтекстноеМеню" id="122"/>
-			<ExtendedTooltip name="ТекстПользователяРасширеннаяПодсказка" id="123"/>
-		</InputField>
-		<Button name="Отправить" id="124">
-			<Type>UsualButton</Type>
-			<CommandName>Form.Command.Отправить</CommandName>
-			<ExtendedTooltip name="ОтправитьРасширеннаяПодсказка" id="125"/>
-		</Button>
 		<UsualGroup name="ПараметрыОтображения" id="90">
-			<Visible>false</Visible>
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -152,7 +132,7 @@
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ПараметрыОтображенияExtendedTooltip" id="113"/>
+			<ExtendedTooltip name="ПараметрыОтображенияРасширеннаяПодсказка" id="113"/>
 			<ChildItems>
 				<CheckBoxField name="ОтображатьНаРабочемСтоле" id="80">
 					<DataPath>Объект.ДляРабочегоСтола</DataPath>
@@ -165,7 +145,7 @@
 					<TitleLocation>Right</TitleLocation>
 					<CheckBoxType>Auto</CheckBoxType>
 					<ContextMenu name="ОтображатьНаРабочемСтолеКонтекстноеМеню" id="81"/>
-					<ExtendedTooltip name="ОтображатьНаРабочемСтолеExtendedTooltip" id="114"/>
+					<ExtendedTooltip name="ОтображатьНаРабочемСтолеРасширеннаяПодсказка" id="114"/>
 				</CheckBoxField>
 				<InputField name="Пометка" id="82">
 					<DataPath>Объект.Пометка</DataPath>
@@ -178,18 +158,17 @@
 					<Width>15</Width>
 					<HorizontalStretch>false</HorizontalStretch>
 					<ContextMenu name="ПометкаКонтекстноеМеню" id="83"/>
-					<ExtendedTooltip name="ПометкаExtendedTooltip" id="115"/>
+					<ExtendedTooltip name="ПометкаРасширеннаяПодсказка" id="115"/>
 				</InputField>
 				<InputField name="ГруппаЗаметок" id="105">
 					<DataPath>Объект.Parent</DataPath>
 					<OpenButton>false</OpenButton>
 					<ContextMenu name="ГруппаЗаметокКонтекстноеМеню" id="106"/>
-					<ExtendedTooltip name="ГруппаЗаметокExtendedTooltip" id="116"/>
+					<ExtendedTooltip name="ГруппаЗаметокРасширеннаяПодсказка" id="116"/>
 				</InputField>
 			</ChildItems>
 		</UsualGroup>
 		<UsualGroup name="ИнформацияОбАвторе" id="91">
-			<Visible>false</Visible>
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -205,7 +184,7 @@
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ИнформацияОбАвтореExtendedTooltip" id="117"/>
+			<ExtendedTooltip name="ИнформацияОбАвтореРасширеннаяПодсказка" id="117"/>
 			<ChildItems>
 				<LabelDecoration name="НадписьАвтор" id="92">
 					<Title formatted="false">
@@ -215,7 +194,7 @@
 						</v8:item>
 					</Title>
 					<ContextMenu name="НадписьАвторКонтекстноеМеню" id="93"/>
-					<ExtendedTooltip name="НадписьАвторExtendedTooltip" id="118"/>
+					<ExtendedTooltip name="НадписьАвторРасширеннаяПодсказка" id="118"/>
 				</LabelDecoration>
 				<LabelDecoration name="Автор" id="94">
 					<Title formatted="false">
@@ -232,7 +211,7 @@
 					</ToolTip>
 					<Hyperlink>true</Hyperlink>
 					<ContextMenu name="АвторКонтекстноеМеню" id="95"/>
-					<ExtendedTooltip name="АвторExtendedTooltip" id="119"/>
+					<ExtendedTooltip name="АвторРасширеннаяПодсказка" id="119"/>
 					<Events>
 						<Event name="Click">АвторНажатие</Event>
 					</Events>
@@ -240,7 +219,6 @@
 			</ChildItems>
 		</UsualGroup>
 		<LabelDecoration name="ДатаЗаметки" id="103">
-			<Visible>false</Visible>
 			<TextColor>style:ПоясняющийТекст</TextColor>
 			<Title formatted="false">
 				<v8:item>
@@ -249,7 +227,7 @@
 				</v8:item>
 			</Title>
 			<ContextMenu name="ДатаЗаметкиКонтекстноеМеню" id="104"/>
-			<ExtendedTooltip name="ДатаЗаметкиExtendedTooltip" id="120"/>
+			<ExtendedTooltip name="ДатаЗаметкиРасширеннаяПодсказка" id="120"/>
 		</LabelDecoration>
 	</ChildItems>
 	<Attributes>
@@ -272,67 +250,5 @@
 			</Type>
 			<SavedData>true</SavedData>
 		</Attribute>
-		<Attribute name="ТекстПользователя" id="2">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Текст пользователя</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:string</v8:Type>
-				<v8:StringQualifiers>
-					<v8:Length>0</v8:Length>
-					<v8:AllowedLength>Variable</v8:AllowedLength>
-				</v8:StringQualifiers>
-			</Type>
-		</Attribute>
-		<Attribute name="ФизЛицоСтрока" id="3">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Физ лицо строка</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:string</v8:Type>
-				<v8:StringQualifiers>
-					<v8:Length>0</v8:Length>
-					<v8:AllowedLength>Variable</v8:AllowedLength>
-				</v8:StringQualifiers>
-			</Type>
-		</Attribute>
-		<Attribute name="ДолжностьФизЛица" id="5">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Должность физ лица</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:string</v8:Type>
-				<v8:StringQualifiers>
-					<v8:Length>0</v8:Length>
-					<v8:AllowedLength>Variable</v8:AllowedLength>
-				</v8:StringQualifiers>
-			</Type>
-		</Attribute>
 	</Attributes>
-	<Commands>
-		<Command name="Отправить" id="1">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Отправить</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Отправить</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Action>Отправить</Action>
-		</Command>
-	</Commands>
 </Form>

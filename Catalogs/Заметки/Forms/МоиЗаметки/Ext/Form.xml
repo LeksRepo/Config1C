@@ -90,30 +90,30 @@
 			<UpdateOnDataChange>Auto</UpdateOnDataChange>
 			<ContextMenu name="СписокКонтекстноеМеню" id="2"/>
 			<AutoCommandBar name="СписокКоманднаяПанель" id="3"/>
-			<ExtendedTooltip name="СписокExtendedTooltip" id="11"/>
-			<SearchStringAddition name="СписокСтрокаПоиска" id="15">
+			<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="11"/>
+			<SearchStringAddition name="СписокСтрокаПоиска" id="12">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="16"/>
-				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="17"/>
+				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="13"/>
+				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="14"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокСостояниеПросмотра" id="18">
+			<ViewStatusAddition name="СписокСостояниеПросмотра" id="15">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="19"/>
-				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="20"/>
+				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="16"/>
+				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="17"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокУправлениеПоиском" id="21">
+			<SearchControlAddition name="СписокУправлениеПоиском" id="18">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="22"/>
-				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="23"/>
+				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="19"/>
+				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="20"/>
 			</SearchControlAddition>
 			<ChildItems>
 				<ColumnGroup name="Содержание" id="8">
@@ -132,7 +132,7 @@
 					<Width>5</Width>
 					<HorizontalStretch>false</HorizontalStretch>
 					<Group>InCell</Group>
-					<ExtendedTooltip name="СодержаниеExtendedTooltip" id="12"/>
+					<ExtendedTooltip name="СодержаниеРасширеннаяПодсказка" id="21"/>
 					<ChildItems>
 						<LabelField name="ПредставлениеЗаметки" id="4">
 							<DataPath>Список.Description</DataPath>
@@ -140,13 +140,13 @@
 							<AutoCellHeight>true</AutoCellHeight>
 							<Width>5</Width>
 							<ContextMenu name="ПредставлениеЗаметкиКонтекстноеМеню" id="5"/>
-							<ExtendedTooltip name="ПредставлениеЗаметкиExtendedTooltip" id="13"/>
+							<ExtendedTooltip name="ПредставлениеЗаметкиРасширеннаяПодсказка" id="22"/>
 						</LabelField>
 						<LabelField name="ПредставлениеПредмета" id="9">
 							<DataPath>Список.ПредставлениеПредмета</DataPath>
 							<Width>5</Width>
 							<ContextMenu name="ПредставлениеПредметаКонтекстноеМеню" id="10"/>
-							<ExtendedTooltip name="ПредставлениеПредметаExtendedTooltip" id="14"/>
+							<ExtendedTooltip name="ПредставлениеПредметаРасширеннаяПодсказка" id="23"/>
 						</LabelField>
 					</ChildItems>
 				</ColumnGroup>
@@ -179,12 +179,14 @@
 			ТОГДА -1
 		КОГДА СправочникЗаметки.Пометка = ЗНАЧЕНИЕ(Перечисление.ЦветаЗаметок.ПустаяСсылка)
 			ТОГДА 4
-		ИНАЧЕ СправочникЗаметки.Пометка.Порядок + 2
+		ИНАЧЕ ЕСТЬNULL(ЦветаЗаметок.Порядок, 0) + 2
 	КОНЕЦ КАК ИндексКартинки,
 	СправочникЗаметки.ПредставлениеПредмета,
 	СправочникЗаметки.ДатаИзменения
 ИЗ
 	Справочник.Заметки КАК СправочникЗаметки
+		ЛЕВОЕ СОЕДИНЕНИЕ Перечисление.ЦветаЗаметок КАК ЦветаЗаметок
+		ПО СправочникЗаметки.Пометка.Порядок = ЦветаЗаметок.Порядок
 ГДЕ
 	СправочникЗаметки.ПометкаУдаления = ЛОЖЬ
 	И СправочникЗаметки.Автор = &amp;Пользователь

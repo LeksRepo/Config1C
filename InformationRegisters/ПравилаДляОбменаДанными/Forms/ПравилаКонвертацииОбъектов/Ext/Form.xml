@@ -27,23 +27,24 @@
 						<v8:content>Группа кнопок</v8:content>
 					</v8:item>
 				</ToolTip>
-				<ExtendedTooltip name="ГруппаКнопокExtendedTooltip" id="51"/>
+				<ExtendedTooltip name="ГруппаКнопокРасширеннаяПодсказка" id="51"/>
 			</ButtonGroup>
 			<Button name="ФормаПеречитать" id="50">
 				<Type>CommandBarButton</Type>
 				<OnlyInAllActions>false</OnlyInAllActions>
 				<CommandName>Form.StandardCommand.Reread</CommandName>
-				<ExtendedTooltip name="ФормаПеречитатьExtendedTooltip" id="52"/>
+				<ExtendedTooltip name="ФормаПеречитатьРасширеннаяПодсказка" id="52"/>
 			</Button>
 			<Button name="ФормаИнформацияОФайлеПравил" id="49">
 				<Type>CommandBarButton</Type>
 				<OnlyInAllActions>false</OnlyInAllActions>
 				<CommandName>Form.Command.ИнформацияОФайлеПравил</CommandName>
-				<ExtendedTooltip name="ФормаИнформацияОФайлеПравилExtendedTooltip" id="53"/>
+				<ExtendedTooltip name="ФормаИнформацияОФайлеПравилРасширеннаяПодсказка" id="53"/>
 			</Button>
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
+		<Event name="BeforeWrite">ПередЗаписью</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 		<Event name="OnWriteAtServer">ПриЗаписиНаСервере</Event>
 	</Events>
@@ -64,7 +65,7 @@
 			<Group>Vertical</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаПланаОбменаExtendedTooltip" id="54"/>
+			<ExtendedTooltip name="ГруппаПланаОбменаРасширеннаяПодсказка" id="54"/>
 			<ChildItems>
 				<InputField name="ИмяПланаОбмена" id="1">
 					<DataPath>Запись.ИмяПланаОбмена</DataPath>
@@ -72,7 +73,7 @@
 					<ListChoiceMode>true</ListChoiceMode>
 					<ChoiceListButton>true</ChoiceListButton>
 					<ContextMenu name="ИмяПланаОбменаКонтекстноеМеню" id="2"/>
-					<ExtendedTooltip name="ИмяПланаОбменаExtendedTooltip" id="55"/>
+					<ExtendedTooltip name="ИмяПланаОбменаРасширеннаяПодсказка" id="55"/>
 					<Events>
 						<Event name="OnChange">ИмяПланаОбменаПриИзменении</Event>
 					</Events>
@@ -94,7 +95,7 @@
 			</ToolTip>
 			<Group>Vertical</Group>
 			<Representation>StrongSeparation</Representation>
-			<ExtendedTooltip name="ГруппаОсновнаяExtendedTooltip" id="56"/>
+			<ExtendedTooltip name="ГруппаОсновнаяРасширеннаяПодсказка" id="56"/>
 			<ChildItems>
 				<RadioButtonField name="ИсточникПравил" id="29">
 					<DataPath>ИсточникПравил</DataPath>
@@ -143,7 +144,7 @@
 						</xr:Item>
 					</ChoiceList>
 					<ContextMenu name="ИсточникПравилКонтекстноеМеню" id="30"/>
-					<ExtendedTooltip name="ИсточникПравилExtendedTooltip" id="57"/>
+					<ExtendedTooltip name="ИсточникПравилРасширеннаяПодсказка" id="57"/>
 					<Events>
 						<Event name="OnChange">ИсточникПравилПриИзменении</Event>
 					</Events>
@@ -162,7 +163,7 @@
 						</v8:item>
 					</ToolTip>
 					<PagesRepresentation>None</PagesRepresentation>
-					<ExtendedTooltip name="ГруппаИсточникиПравилExtendedTooltip" id="58"/>
+					<ExtendedTooltip name="ГруппаИсточникиПравилРасширеннаяПодсказка" id="58"/>
 					<ChildItems>
 						<Page name="ИсточникМакетКонфигурации" id="16">
 							<Title>
@@ -178,7 +179,7 @@
 								</v8:item>
 							</ToolTip>
 							<Group>Horizontal</Group>
-							<ExtendedTooltip name="ИсточникМакетКонфигурацииExtendedTooltip" id="59"/>
+							<ExtendedTooltip name="ИсточникМакетКонфигурацииРасширеннаяПодсказка" id="59"/>
 							<ChildItems>
 								<InputField name="ИмяМакетаПравил" id="7">
 									<DataPath>Запись.ИмяМакетаПравил</DataPath>
@@ -188,7 +189,7 @@
 									<TextEdit>false</TextEdit>
 									<ChoiceListButton>false</ChoiceListButton>
 									<ContextMenu name="ИмяМакетаПравилКонтекстноеМеню" id="8"/>
-									<ExtendedTooltip name="ИмяМакетаПравилExtendedTooltip" id="60"/>
+									<ExtendedTooltip name="ИмяМакетаПравилРасширеннаяПодсказка" id="60"/>
 								</InputField>
 								<UsualGroup name="ГруппаДействияСТиповымиПравилами" id="27">
 									<Title>
@@ -206,19 +207,19 @@
 									<Group>Horizontal</Group>
 									<Representation>None</Representation>
 									<ShowTitle>false</ShowTitle>
-									<ExtendedTooltip name="ГруппаДействияСТиповымиПравиламиExtendedTooltip" id="61"/>
+									<ExtendedTooltip name="ГруппаДействияСТиповымиПравиламиРасширеннаяПодсказка" id="61"/>
 									<ChildItems>
 										<Button name="ЗагрузитьТиповыеПравила" id="19">
 											<Type>UsualButton</Type>
 											<SkipOnInput>true</SkipOnInput>
 											<CommandName>Form.Command.ЗагрузитьПравила</CommandName>
-											<ExtendedTooltip name="ЗагрузитьТиповыеПравилаExtendedTooltip" id="62"/>
+											<ExtendedTooltip name="ЗагрузитьТиповыеПравилаРасширеннаяПодсказка" id="62"/>
 										</Button>
 										<Button name="ВыгрузитьТиповыеПравила" id="20">
 											<Type>UsualButton</Type>
 											<SkipOnInput>true</SkipOnInput>
 											<CommandName>Form.Command.ВыгрузитьПравила</CommandName>
-											<ExtendedTooltip name="ВыгрузитьТиповыеПравилаExtendedTooltip" id="63"/>
+											<ExtendedTooltip name="ВыгрузитьТиповыеПравилаРасширеннаяПодсказка" id="63"/>
 										</Button>
 									</ChildItems>
 								</UsualGroup>
@@ -238,7 +239,7 @@
 								</v8:item>
 							</ToolTip>
 							<Group>Horizontal</Group>
-							<ExtendedTooltip name="ИсточникФайлExtendedTooltip" id="64"/>
+							<ExtendedTooltip name="ИсточникФайлРасширеннаяПодсказка" id="64"/>
 							<ChildItems>
 								<InputField name="ИмяФайлаПравил" id="5">
 									<DataPath>Запись.ИмяФайлаПравил</DataPath>
@@ -247,7 +248,7 @@
 									<ChoiceButton>false</ChoiceButton>
 									<OpenButton>false</OpenButton>
 									<ContextMenu name="ИмяФайлаПравилКонтекстноеМеню" id="6"/>
-									<ExtendedTooltip name="ИмяФайлаПравилExtendedTooltip" id="65"/>
+									<ExtendedTooltip name="ИмяФайлаПравилРасширеннаяПодсказка" id="65"/>
 								</InputField>
 								<UsualGroup name="ГруппаДействияСПравиламиИзФайла" id="28">
 									<Title>
@@ -265,19 +266,19 @@
 									<Group>Horizontal</Group>
 									<Representation>None</Representation>
 									<ShowTitle>false</ShowTitle>
-									<ExtendedTooltip name="ГруппаДействияСПравиламиИзФайлаExtendedTooltip" id="66"/>
+									<ExtendedTooltip name="ГруппаДействияСПравиламиИзФайлаРасширеннаяПодсказка" id="66"/>
 									<ChildItems>
 										<Button name="ЗагрузитьПравилаИзФайла" id="21">
 											<Type>UsualButton</Type>
 											<SkipOnInput>true</SkipOnInput>
 											<CommandName>Form.Command.ЗагрузитьПравила</CommandName>
-											<ExtendedTooltip name="ЗагрузитьПравилаИзФайлаExtendedTooltip" id="67"/>
+											<ExtendedTooltip name="ЗагрузитьПравилаИзФайлаРасширеннаяПодсказка" id="67"/>
 										</Button>
 										<Button name="ВыгрузитьПравилаВФайл" id="22">
 											<Type>UsualButton</Type>
 											<SkipOnInput>true</SkipOnInput>
 											<CommandName>Form.Command.ВыгрузитьПравила</CommandName>
-											<ExtendedTooltip name="ВыгрузитьПравилаВФайлExtendedTooltip" id="68"/>
+											<ExtendedTooltip name="ВыгрузитьПравилаВФайлРасширеннаяПодсказка" id="68"/>
 										</Button>
 									</ChildItems>
 								</UsualGroup>
@@ -300,7 +301,7 @@
 					</ToolTip>
 					<Group>Vertical</Group>
 					<Representation>StrongSeparation</Representation>
-					<ExtendedTooltip name="ГруппаОтладкиExtendedTooltip" id="69"/>
+					<ExtendedTooltip name="ГруппаОтладкиРасширеннаяПодсказка" id="69"/>
 					<ChildItems>
 						<UsualGroup name="ГруппаОтладкиВыгрузки" id="38">
 							<Title>
@@ -318,7 +319,7 @@
 							<Group>Vertical</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ГруппаОтладкиВыгрузкиExtendedTooltip" id="70"/>
+							<ExtendedTooltip name="ГруппаОтладкиВыгрузкиРасширеннаяПодсказка" id="70"/>
 							<ChildItems>
 								<CheckBoxField name="ВключитьОтладкуВыгрузки" id="32">
 									<DataPath>Запись.РежимОтладкиВыгрузки</DataPath>
@@ -331,7 +332,7 @@
 									<TitleLocation>Right</TitleLocation>
 									<CheckBoxType>Auto</CheckBoxType>
 									<ContextMenu name="ВключитьОтладкуВыгрузкиКонтекстноеМеню" id="33"/>
-									<ExtendedTooltip name="ВключитьОтладкуВыгрузкиExtendedTooltip" id="71"/>
+									<ExtendedTooltip name="ВключитьОтладкуВыгрузкиРасширеннаяПодсказка" id="71"/>
 									<Events>
 										<Event name="OnChange">ВключитьОтладкуВыгрузкиПриИзменении</Event>
 									</Events>
@@ -342,7 +343,7 @@
 									<TitleLocation>None</TitleLocation>
 									<ChoiceButton>true</ChoiceButton>
 									<ContextMenu name="ВнешняяОбработкаДляОтладкиВыгрузкиКонтекстноеМеню" id="41"/>
-									<ExtendedTooltip name="ВнешняяОбработкаДляОтладкиВыгрузкиExtendedTooltip" id="72"/>
+									<ExtendedTooltip name="ВнешняяОбработкаДляОтладкиВыгрузкиРасширеннаяПодсказка" id="72"/>
 									<Events>
 										<Event name="StartChoice">ВнешняяОбработкаДляОтладкиВыгрузкиНачалоВыбора</Event>
 									</Events>
@@ -365,7 +366,7 @@
 							<Group>Vertical</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ГруппаОтладкиЗагрузкиExtendedTooltip" id="73"/>
+							<ExtendedTooltip name="ГруппаОтладкиЗагрузкиРасширеннаяПодсказка" id="73"/>
 							<ChildItems>
 								<CheckBoxField name="ВключитьОтладкуЗагрузки" id="34">
 									<DataPath>Запись.РежимОтладкиЗагрузки</DataPath>
@@ -378,7 +379,7 @@
 									<TitleLocation>Right</TitleLocation>
 									<CheckBoxType>Auto</CheckBoxType>
 									<ContextMenu name="ВключитьОтладкуЗагрузкиКонтекстноеМеню" id="35"/>
-									<ExtendedTooltip name="ВключитьОтладкуЗагрузкиExtendedTooltip" id="74"/>
+									<ExtendedTooltip name="ВключитьОтладкуЗагрузкиРасширеннаяПодсказка" id="74"/>
 									<Events>
 										<Event name="OnChange">ВключитьОтладкуЗагрузкиПриИзменении</Event>
 									</Events>
@@ -389,7 +390,7 @@
 									<TitleLocation>None</TitleLocation>
 									<ChoiceButton>true</ChoiceButton>
 									<ContextMenu name="ВнешняяОбработкаДляОтладкиЗагрузкиКонтекстноеМеню" id="37"/>
-									<ExtendedTooltip name="ВнешняяОбработкаДляОтладкиЗагрузкиExtendedTooltip" id="75"/>
+									<ExtendedTooltip name="ВнешняяОбработкаДляОтладкиЗагрузкиРасширеннаяПодсказка" id="75"/>
 									<Events>
 										<Event name="StartChoice">ВнешняяОбработкаДляОтладкиЗагрузкиНачалоВыбора</Event>
 									</Events>
@@ -412,14 +413,14 @@
 							<Group>Vertical</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ГруппаПротоколExtendedTooltip" id="76"/>
+							<ExtendedTooltip name="ГруппаПротоколРасширеннаяПодсказка" id="76"/>
 							<ChildItems>
 								<CheckBoxField name="ВключитьПротоколированиеОбменаДанными" id="43">
 									<DataPath>Запись.РежимПротоколированияОбменаДанными</DataPath>
 									<TitleLocation>Right</TitleLocation>
 									<CheckBoxType>Auto</CheckBoxType>
 									<ContextMenu name="ВключитьПротоколированиеОбменаДаннымиКонтекстноеМеню" id="44"/>
-									<ExtendedTooltip name="ВключитьПротоколированиеОбменаДаннымиExtendedTooltip" id="77"/>
+									<ExtendedTooltip name="ВключитьПротоколированиеОбменаДаннымиРасширеннаяПодсказка" id="77"/>
 									<Events>
 										<Event name="OnChange">ВключитьПротоколированиеОбменаДаннымиПриИзменении</Event>
 									</Events>
@@ -431,7 +432,7 @@
 									<ChoiceButton>true</ChoiceButton>
 									<OpenButton>true</OpenButton>
 									<ContextMenu name="ФайлПротоколаОбменаКонтекстноеМеню" id="46"/>
-									<ExtendedTooltip name="ФайлПротоколаОбменаExtendedTooltip" id="78"/>
+									<ExtendedTooltip name="ФайлПротоколаОбменаРасширеннаяПодсказка" id="78"/>
 									<Events>
 										<Event name="StartChoice">ФайлПротоколаОбменаНачалоВыбора</Event>
 										<Event name="Opening">ФайлПротоколаОбменаОткрытие</Event>
@@ -450,7 +451,7 @@
 							<TitleLocation>Right</TitleLocation>
 							<CheckBoxType>Auto</CheckBoxType>
 							<ContextMenu name="НеОстанавливатьПоОшибкеКонтекстноеМеню" id="48"/>
-							<ExtendedTooltip name="НеОстанавливатьПоОшибкеExtendedTooltip" id="79"/>
+							<ExtendedTooltip name="НеОстанавливатьПоОшибкеРасширеннаяПодсказка" id="79"/>
 						</CheckBoxField>
 					</ChildItems>
 				</UsualGroup>
@@ -462,7 +463,7 @@
 			<Height>6</Height>
 			<MultiLine>true</MultiLine>
 			<ContextMenu name="ИнформацияОПравилахКонтекстноеМеню" id="12"/>
-			<ExtendedTooltip name="ИнформацияОПравилахExtendedTooltip" id="80"/>
+			<ExtendedTooltip name="ИнформацияОПравилахРасширеннаяПодсказка" id="80"/>
 		</InputField>
 		<UsualGroup name="ГруппаДополнительно" id="18">
 			<Title>
@@ -480,14 +481,14 @@
 			<HorizontalStretch>true</HorizontalStretch>
 			<Group>Horizontal</Group>
 			<ChildItemsWidth>LeftWidest</ChildItemsWidth>
-			<ExtendedTooltip name="ГруппаДополнительноExtendedTooltip" id="81"/>
+			<ExtendedTooltip name="ГруппаДополнительноРасширеннаяПодсказка" id="81"/>
 			<ChildItems>
 				<CheckBoxField name="ИспользоватьФильтрВыборочнойРегистрацииОбъектов" id="13">
 					<DataPath>Запись.ИспользоватьФильтрВыборочнойРегистрацииОбъектов</DataPath>
 					<TitleLocation>Right</TitleLocation>
 					<CheckBoxType>Auto</CheckBoxType>
 					<ContextMenu name="ИспользоватьФильтрВыборочнойРегистрацииОбъектовКонтекстноеМеню" id="14"/>
-					<ExtendedTooltip name="ИспользоватьФильтрВыборочнойРегистрацииОбъектовExtendedTooltip" id="82"/>
+					<ExtendedTooltip name="ИспользоватьФильтрВыборочнойРегистрацииОбъектовРасширеннаяПодсказка" id="82"/>
 				</CheckBoxField>
 			</ChildItems>
 		</UsualGroup>

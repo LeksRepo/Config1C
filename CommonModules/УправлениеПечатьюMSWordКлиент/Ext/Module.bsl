@@ -600,17 +600,20 @@
 	ВызватьИсключение ТекстИсключения;
 КонецПроцедуры
 
-Функция Заменить(Object, Знач СтрокаПоиска, Знач СтрокаЗамены)
+Процедура Заменить(Object, Знач СтрокаПоиска, Знач СтрокаЗамены)
 	
 	СтрокаПоиска = "{v8 " + СтрокаПоиска + "}";
 	СтрокаЗамены = Строка(СтрокаЗамены);
 	
-	wdReplaceAll = 2;
+	Object.Select();
+	Selection = Object.Application.Selection;
 	
-	FindObject = Object.Find;
+	FindObject = Selection.Find;
 	FindObject.ClearFormatting();
-	FindObject.Replacement.ClearFormatting();
+	Пока FindObject.Execute(СтрокаПоиска) Цикл
+		Selection.TypeText(СтрокаЗамены);
+	КонецЦикла;
 	
-	Возврат FindObject.Execute(СтрокаПоиска,,,,,,,,,СтрокаЗамены,wdReplaceAll);
-
-КонецФункции
+	Selection.Collapse();
+	
+КонецПроцедуры

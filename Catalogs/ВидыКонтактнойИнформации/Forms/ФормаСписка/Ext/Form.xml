@@ -13,7 +13,7 @@
 				<CommandName>Form.Command.ПереместитьЭлементВверх</CommandName>
 				<TextColor>style:ButtonTextColor</TextColor>
 				<BackColor>style:ButtonBackColor</BackColor>
-				<ExtendedTooltip name="ПереместитьВверхExtendedTooltip" id="32"/>
+				<ExtendedTooltip name="ПереместитьВверхРасширеннаяПодсказка" id="32"/>
 			</Button>
 			<Button name="ПереместитьВниз" id="18">
 				<Type>CommandBarButton</Type>
@@ -21,7 +21,7 @@
 				<CommandName>Form.Command.ПереместитьЭлементВниз</CommandName>
 				<TextColor>style:ButtonTextColor</TextColor>
 				<BackColor>style:ButtonBackColor</BackColor>
-				<ExtendedTooltip name="ПереместитьВнизExtendedTooltip" id="33"/>
+				<ExtendedTooltip name="ПереместитьВнизРасширеннаяПодсказка" id="33"/>
 			</Button>
 		</ChildItems>
 	</AutoCommandBar>
@@ -58,30 +58,30 @@
 			<UpdateOnDataChange>Auto</UpdateOnDataChange>
 			<ContextMenu name="СписокКонтекстноеМеню" id="2"/>
 			<AutoCommandBar name="СписокКоманднаяПанель" id="3"/>
-			<ExtendedTooltip name="СписокExtendedTooltip" id="34"/>
-			<SearchStringAddition name="СписокСтрокаПоиска" id="37">
+			<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="34"/>
+			<SearchStringAddition name="СписокСтрокаПоиска" id="35">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="38"/>
-				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="39"/>
+				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="36"/>
+				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="37"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокСостояниеПросмотра" id="40">
+			<ViewStatusAddition name="СписокСостояниеПросмотра" id="38">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="41"/>
-				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="42"/>
+				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="39"/>
+				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="40"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокУправлениеПоиском" id="43">
+			<SearchControlAddition name="СписокУправлениеПоиском" id="41">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="44"/>
-				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="45"/>
+				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="42"/>
+				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="43"/>
 			</SearchControlAddition>
 			<Events>
 				<Event name="BeforeAddRow">СписокПередНачаломДобавления</Event>
@@ -101,7 +101,7 @@
 						<v8ui:style xsi:type="v8ui:ControlBorderType">WithoutBorder</v8ui:style>
 					</Border>
 					<ContextMenu name="НомерКартинкиКонтекстноеМеню" id="29"/>
-					<ExtendedTooltip name="НомерКартинкиExtendedTooltip" id="35"/>
+					<ExtendedTooltip name="НомерКартинкиРасширеннаяПодсказка" id="44"/>
 				</PictureField>
 				<InputField name="Ссылка" id="30">
 					<DataPath>Список.Ref</DataPath>
@@ -113,7 +113,7 @@
 					</Title>
 					<Wrap>false</Wrap>
 					<ContextMenu name="СсылкаКонтекстноеМеню" id="31"/>
-					<ExtendedTooltip name="СсылкаExtendedTooltip" id="36"/>
+					<ExtendedTooltip name="СсылкаРасширеннаяПодсказка" id="45"/>
 				</InputField>
 			</ChildItems>
 		</Table>
@@ -135,7 +135,7 @@
 	ВЫБОР
 		КОГДА СправочникВидыКонтактнойИнформации.ЭтоГруппа
 			ТОГДА 0
-		ИНАЧЕ СправочникВидыКонтактнойИнформации.Тип.Порядок + 2
+		ИНАЧЕ ЕСТЬNULL(ТипыКонтактнойИнформации.Порядок, 0) + 2
 	КОНЕЦ КАК НомерКартинки,
 	СправочникВидыКонтактнойИнформации.Ссылка,
 	СправочникВидыКонтактнойИнформации.ПометкаУдаления,
@@ -149,7 +149,9 @@
 	СправочникВидыКонтактнойИнформации.МожноИзменятьСпособРедактирования,
 	СправочникВидыКонтактнойИнформации.АдресТолькоРоссийский
 ИЗ
-	Справочник.ВидыКонтактнойИнформации КАК СправочникВидыКонтактнойИнформации</QueryText>
+	Справочник.ВидыКонтактнойИнформации КАК СправочникВидыКонтактнойИнформации
+		ЛЕВОЕ СОЕДИНЕНИЕ Перечисление.ТипыКонтактнойИнформации КАК ТипыКонтактнойИнформации
+		ПО СправочникВидыКонтактнойИнформации.Тип.Порядок = ТипыКонтактнойИнформации.Порядок</QueryText>
 				<MainTable>Catalog.ВидыКонтактнойИнформации</MainTable>
 				<ListSettings>
 					<dcsset:filter>
