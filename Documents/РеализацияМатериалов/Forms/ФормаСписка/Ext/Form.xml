@@ -82,6 +82,20 @@
 					<ContextMenu name="НомерКонтекстноеМеню" id="7"/>
 					<ExtendedTooltip name="НомерExtendedTooltip" id="22"/>
 				</LabelField>
+				<PictureField name="ЕстьЗаметка" id="41">
+					<DataPath>Список.ЕстьЗаметка</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<HeaderPicture>
+						<xr:Ref>CommonPicture.Заметка</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</HeaderPicture>
+					<ValuesPicture>
+						<xr:Ref>CommonPicture.Заметка</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</ValuesPicture>
+					<ContextMenu name="ЕстьЗаметкаКонтекстноеМеню" id="42"/>
+					<ExtendedTooltip name="ЕстьЗаметкаРасширеннаяПодсказка" id="43"/>
+				</PictureField>
 				<LabelField name="Подразделение" id="8">
 					<DataPath>Список.Подразделение</DataPath>
 					<ContextMenu name="ПодразделениеКонтекстноеМеню" id="9"/>
@@ -131,7 +145,7 @@
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
-				<DynamicDataRead>true</DynamicDataRead>
+				<DynamicDataRead>false</DynamicDataRead>
 				<QueryText>ВЫБРАТЬ
 	ДокументРеализацияМатериалов.Ссылка,
 	ДокументРеализацияМатериалов.ПометкаУдаления,
@@ -156,9 +170,17 @@
 				И НЕ ДокументРеализацияМатериалов.СданВАрхив
 			ТОГДА ИСТИНА
 		ИНАЧЕ ЛОЖЬ
-	КОНЕЦ КАК ВыделитьСтроку
+	КОНЕЦ КАК ВыделитьСтроку,
+	ВЫБОР
+		КОГДА НаличиеЗаметокПоПредмету.ЕстьЗаметка ЕСТЬ NULL 
+			ТОГДА -1
+		ИНАЧЕ 0
+	КОНЕЦ КАК ЕстьЗаметка
+
 ИЗ
-	Документ.РеализацияМатериалов КАК ДокументРеализацияМатериалов</QueryText>
+	Документ.РеализацияМатериалов КАК ДокументРеализацияМатериалов
+	ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.НаличиеЗаметокПоПредмету КАК НаличиеЗаметокПоПредмету
+		ПО ДокументРеализацияМатериалов.Ссылка = НаличиеЗаметокПоПредмету.Предмет</QueryText>
 				<MainTable>Document.РеализацияМатериалов</MainTable>
 				<ListSettings>
 					<dcsset:filter>
