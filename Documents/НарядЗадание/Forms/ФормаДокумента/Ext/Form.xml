@@ -945,7 +945,15 @@
 							<DataPath>Объект.ОстаткиЛистовогоМатериала</DataPath>
 							<RowFilter xsi:nil="true"/>
 							<ContextMenu name="ОстаткиЛистовогоМатериалаКонтекстноеМеню" id="455"/>
-							<AutoCommandBar name="ОстаткиЛистовогоМатериалаКоманднаяПанель" id="456"/>
+							<AutoCommandBar name="ОстаткиЛистовогоМатериалаКоманднаяПанель" id="456">
+								<ChildItems>
+									<Button name="ОстаткиЛистовогоМатериалаПодборОстатков" id="479">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.ПодборОстатков</CommandName>
+										<ExtendedTooltip name="ОстаткиЛистовогоМатериалаПодборОстатковРасширеннаяПодсказка" id="480"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
 							<ExtendedTooltip name="ОстаткиЛистовогоМатериалаРасширеннаяПодсказка" id="457"/>
 							<SearchStringAddition name="ОстаткиЛистовогоМатериалаСтрокаПоиска" id="458">
 								<AdditionSource>
@@ -971,6 +979,9 @@
 								<ContextMenu name="ОстаткиЛистовогоМатериалаУправлениеПоискомКонтекстноеМеню" id="465"/>
 								<ExtendedTooltip name="ОстаткиЛистовогоМатериалаУправлениеПоискомРасширеннаяПодсказка" id="466"/>
 							</SearchControlAddition>
+							<Events>
+								<Event name="ChoiceProcessing">ОстаткиЛистовогоМатериалаОбработкаВыбора</Event>
+							</Events>
 							<ChildItems>
 								<LabelField name="ОстаткиЛистовогоМатериалаНомерСтроки" id="467">
 									<DataPath>Объект.ОстаткиЛистовогоМатериала.LineNumber</DataPath>
@@ -1466,6 +1477,21 @@
 			<Action>СформироватьРаскройНаХлысты</Action>
 			<Representation>TextPicture</Representation>
 			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ПодборОстатков" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор остатков</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подбор остатков</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПодборОстатков</Action>
 		</Command>
 	</Commands>
 </Form>
