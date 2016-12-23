@@ -357,20 +357,51 @@
 										</LabelField>
 									</ChildItems>
 								</Table>
-								<CheckBoxField name="ВводКоличества" id="94">
-									<DataPath>ВводКоличества</DataPath>
+								<UsualGroup name="ГруппаПараметры" id="227">
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Запрашивать ввод количества</v8:content>
+											<v8:content>Группа параметры</v8:content>
 										</v8:item>
 									</Title>
-									<TitleTextColor>web:ForestGreen</TitleTextColor>
-									<TitleFont ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
-									<CheckBoxType>Auto</CheckBoxType>
-									<ContextMenu name="ВводКоличестваКонтекстноеМеню" id="95"/>
-									<ExtendedTooltip name="ВводКоличестваРасширеннаяПодсказка" id="96"/>
-								</CheckBoxField>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа параметры</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаПараметрыРасширеннаяПодсказка" id="228"/>
+									<ChildItems>
+										<CheckBoxField name="ВводКоличества" id="94">
+											<DataPath>ВводКоличества</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Запрашивать ввод количества</v8:content>
+												</v8:item>
+											</Title>
+											<TitleTextColor>web:ForestGreen</TitleTextColor>
+											<TitleFont ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="ВводКоличестваКонтекстноеМеню" id="95"/>
+											<ExtendedTooltip name="ВводКоличестваРасширеннаяПодсказка" id="96"/>
+										</CheckBoxField>
+										<CheckBoxField name="ЕстьОстаток" id="229">
+											<DataPath>ЕстьОстаток</DataPath>
+											<TitleTextColor>web:ForestGreen</TitleTextColor>
+											<TitleFont ref="style:NormalTextFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="ЕстьОстатокКонтекстноеМеню" id="230"/>
+											<ExtendedTooltip name="ЕстьОстатокРасширеннаяПодсказка" id="231"/>
+											<Events>
+												<Event name="OnChange">ЕстьОстатокПриИзменении</Event>
+											</Events>
+										</CheckBoxField>
+									</ChildItems>
+								</UsualGroup>
 							</ChildItems>
 						</UsualGroup>
 						<Table name="Выбранные" id="29">
@@ -887,6 +918,15 @@
 	И НЕ СпрНоменклатура.ЭтоГруппа
 	И НЕ СпрНоменклатура.ЗапретИспользования
 	И ВЫБОР
+			КОГДА &amp;ЕстьОстаток
+			ТОГДА ВЫБОР
+						КОГДА &amp;ТолькоБазовая
+						ТОГДА Остатки.Количество &gt; 0
+						ИНАЧЕ ОстаткиДляРеализации.Количество &gt; 0
+				  КОНЕЦ
+			ИНАЧЕ ИСТИНА
+	КОНЕЦ
+	И ВЫБОР
 			КОГДА &amp;РодительНоменклатуры = ЗНАЧЕНИЕ(Справочник.Номенклатура.ПустаяСсылка)
 					ИЛИ &amp;РодительНоменклатуры = "Все"
 				ТОГДА ИСТИНА
@@ -1295,6 +1335,17 @@
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.Склады</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЕстьОстаток" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Есть остаток</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 	</Attributes>
