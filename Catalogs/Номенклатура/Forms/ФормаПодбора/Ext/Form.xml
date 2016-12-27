@@ -143,6 +143,36 @@
 											<ContextMenu name="НомГруппыКонтекстноеМеню" id="110"/>
 											<ExtendedTooltip name="НомГруппыРасширеннаяПодсказка" id="111"/>
 										</LabelField>
+										<UsualGroup name="ГруппаСкладОфис" id="235">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа склад офис</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа склад офис</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Horizontal</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="ГруппаСкладОфисРасширеннаяПодсказка" id="236"/>
+											<ChildItems>
+												<LabelField name="Склад" id="232">
+													<DataPath>Склад</DataPath>
+													<ContextMenu name="СкладКонтекстноеМеню" id="233"/>
+													<ExtendedTooltip name="СкладРасширеннаяПодсказка" id="234"/>
+												</LabelField>
+												<LabelField name="Офис" id="237">
+													<DataPath>Офис</DataPath>
+													<ContextMenu name="ОфисКонтекстноеМеню" id="238"/>
+													<ExtendedTooltip name="ОфисРасширеннаяПодсказка" id="239"/>
+												</LabelField>
+											</ChildItems>
+										</UsualGroup>
 										<InputField name="СтрокаПоиска" id="57">
 											<DataPath>СтрокаПоиска</DataPath>
 											<Title>
@@ -854,7 +884,12 @@
 	ВЫБОР
 		КОГДА Цены.Розничная ЕСТЬ NULL 
 			ТОГДА NULL
-		ИНАЧЕ Цены.Розничная * &amp;НаценкаОфиса
+		ИНАЧЕ 
+			 ВЫБОР
+				КОГДА СпрНоменклатура.Базовый
+					ТОГДА Цены.Розничная * &amp;НаценкаОфиса
+				ИНАЧЕ СпрНоменклатура.КоэффициентБазовых * Цены.Розничная * &amp;НаценкаОфиса
+			КОНЕЦ	
 	КОНЕЦ КАК РозничнаяЦена,
 	ВЫБОР
 		КОГДА &amp;ТолькоБазовая
@@ -866,7 +901,7 @@
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.НоменклатураПодразделений.СрезПоследних(, Подразделение = &amp;Подразделение) КАК НоменклатураПодразделений
 		ПО СпрНоменклатура.Ссылка = НоменклатураПодразделений.Номенклатура
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ЦеныНоменклатурыПоПодразделениям.СрезПоследних(&amp;Период, Подразделение = &amp;Подразделение) КАК Цены
-		ПО СпрНоменклатура.Ссылка = Цены.Номенклатура
+		ПО (СпрНоменклатура.Ссылка = Цены.Номенклатура ИЛИ СпрНоменклатура.БазоваяНоменклатура = Цены.Номенклатура)
 		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
 			ВЫБОР
 				КОГДА УпрОстатки.Субконто2.Базовый
@@ -1348,6 +1383,17 @@
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="Офис" id="18">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Офис</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.Офисы</v8:Type>
 			</Type>
 		</Attribute>
 	</Attributes>
