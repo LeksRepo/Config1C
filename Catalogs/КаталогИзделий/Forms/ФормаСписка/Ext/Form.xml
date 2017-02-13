@@ -81,13 +81,13 @@
 			</Events>
 			<ChildItems>
 				<LabelField name="Наименование" id="5">
-					<DataPath>Список.Наименование</DataPath>
+					<DataPath>1/62</DataPath>
 					<DefaultItem>true</DefaultItem>
 					<ContextMenu name="НаименованиеКонтекстноеМеню" id="6"/>
 					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="7"/>
 				</LabelField>
 				<LabelField name="СтатусИзделияПоКаталогу" id="14">
-					<DataPath>Список.СтатусИзделияПоКаталогу</DataPath>
+					<DataPath>1/30</DataPath>
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -98,7 +98,7 @@
 					<ExtendedTooltip name="СтатусИзделияПоКаталогуРасширеннаяПодсказка" id="16"/>
 				</LabelField>
 				<CheckBoxField name="АктивныйДляДилера" id="37">
-					<DataPath>Список.АктивныйДляДилера</DataPath>
+					<DataPath>1/67</DataPath>
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -110,7 +110,7 @@
 					<ExtendedTooltip name="АктивныйДляДилераРасширеннаяПодсказка" id="39"/>
 				</CheckBoxField>
 				<CheckBoxField name="ПроверенИнженером" id="49">
-					<DataPath>Список.ПроверенИнженером</DataPath>
+					<DataPath>1/70</DataPath>
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -122,7 +122,7 @@
 					<ExtendedTooltip name="ПроверенИнженеромРасширеннаяПодсказка" id="51"/>
 				</CheckBoxField>
 				<LabelField name="КоличествоОстаток" id="34">
-					<DataPath>Список.КоличествоBalance</DataPath>
+					<DataPath>1/58</DataPath>
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -136,7 +136,7 @@
 					<ExtendedTooltip name="КоличествоОстатокРасширеннаяПодсказка" id="36"/>
 				</LabelField>
 				<LabelField name="ДатаУстановкиСтатуса" id="20">
-					<DataPath>Список.ДатаУстановкиСтатуса</DataPath>
+					<DataPath>1/54</DataPath>
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -147,7 +147,7 @@
 					<ExtendedTooltip name="ДатаУстановкиСтатусаРасширеннаяПодсказка" id="22"/>
 				</LabelField>
 				<LabelField name="АвторСменыСтатуса" id="17">
-					<DataPath>Список.АвторСменыСтатуса</DataPath>
+					<DataPath>1/37</DataPath>
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -158,7 +158,7 @@
 					<ExtendedTooltip name="АвторСменыСтатусаРасширеннаяПодсказка" id="19"/>
 				</LabelField>
 				<LabelField name="Код" id="8">
-					<DataPath>Список.Код</DataPath>
+					<DataPath>1/65</DataPath>
 					<ContextMenu name="КодКонтекстноеМеню" id="9"/>
 					<ExtendedTooltip name="КодРасширеннаяПодсказка" id="10"/>
 				</LabelField>
@@ -181,7 +181,7 @@
 			<MainAttribute>true</MainAttribute>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
-				<DynamicDataRead>true</DynamicDataRead>
+				<DynamicDataRead>false</DynamicDataRead>
 				<QueryText>ВЫБРАТЬ
 	СправочникКаталогИзделий.Ссылка КАК Ссылка,
 	СправочникКаталогИзделий.Код КАК Код,
@@ -193,12 +193,11 @@
 	СправочникКаталогИзделий.ДатаУстановкиСтатуса КАК ДатаУстановкиСтатуса,
 	СправочникКаталогИзделий.СтатусИзделияПоКаталогу КАК СтатусИзделияПоКаталогу,
 	СправочникКаталогИзделий.ПроверенИнженером КАК ПроверенИнженером,
-	РеализованныеИзделийПоКаталогуОстатки.КоличествоОстаток
+	РеализованныеИзделияПоКаталогуОстатки.КоличествоОстаток
 ИЗ
 	Справочник.КаталогИзделий КАК СправочникКаталогИзделий
-		ЛЕВОЕ СОЕДИНЕНИЕ РегистрНакопления.РеализованныеИзделийПоКаталогу.Остатки КАК РеализованныеИзделийПоКаталогуОстатки
-		ПО (СправочникКаталогИзделий.Ссылка = РеализованныеИзделийПоКаталогуОстатки.ИзделиеПоКаталогу)</QueryText>
-				<MainTable>Catalog.КаталогИзделий</MainTable>
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрНакопления.РеализованныеИзделияПоКаталогу.Остатки КАК РеализованныеИзделияПоКаталогуОстатки
+		ПО (СправочникКаталогИзделий.Ссылка = РеализованныеИзделияПоКаталогуОстатки.ИзделиеПоКаталогу)</QueryText>
 				<ListSettings>
 					<dcsset:filter>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
