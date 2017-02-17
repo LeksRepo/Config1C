@@ -11,31 +11,10 @@
 		<HorizontalAlign>Right</HorizontalAlign>
 		<Autofill>false</Autofill>
 		<ChildItems>
-			<Button name="ПеренестиВыбранные" id="36">
-				<Type>CommandBarButton</Type>
-				<CommandName>Form.Command.ПеренестиВыбранные</CommandName>
-				<Title>
-					<v8:item>
-						<v8:lang>ru</v8:lang>
-						<v8:content>Перенести у выбранных</v8:content>
-					</v8:item>
-				</Title>
-				<ExtendedTooltip name="ПеренестиВыбранныеРасширеннаяПодсказка" id="37"/>
-			</Button>
-			<Button name="ФормаПеренестиВсе" id="41">
-				<Type>CommandBarButton</Type>
-				<CommandName>Form.Command.ПеренестиВсе</CommandName>
-				<Title>
-					<v8:item>
-						<v8:lang>ru</v8:lang>
-						<v8:content>Перенести у всех</v8:content>
-					</v8:item>
-				</Title>
-				<ExtendedTooltip name="ФормаПеренестиВсеРасширеннаяПодсказка" id="42"/>
-			</Button>
 			<Button name="ФормаЗакрыть" id="14">
 				<Type>CommandBarButton</Type>
 				<Representation>PictureAndText</Representation>
+				<DefaultButton>true</DefaultButton>
 				<CommandName>Form.StandardCommand.Close</CommandName>
 				<ExtendedTooltip name="ФормаЗакрытьРасширеннаяПодсказка" id="15"/>
 			</Button>
@@ -55,52 +34,6 @@
 			<Group>Horizontal</Group>
 			<ExtendedTooltip name="ГруппаДанныеПереносаРасширеннаяПодсказка" id="2"/>
 			<ChildItems>
-				<RadioButtonField name="ПерключательКомуПереносить" id="11">
-					<DataPath>ПерключательКомуПереносить</DataPath>
-					<DefaultItem>true</DefaultItem>
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Выберите режим:</v8:content>
-						</v8:item>
-					</Title>
-					<TitleLocation>None</TitleLocation>
-					<RadioButtonType>Tumbler</RadioButtonType>
-					<ColumnsCount>1</ColumnsCount>
-					<ChoiceList>
-						<xr:Item>
-							<xr:Presentation/>
-							<xr:CheckState>0</xr:CheckState>
-							<xr:Value xsi:type="FormChoiceListDesTimeValue">
-								<Presentation>
-									<v8:item>
-										<v8:lang>ru</v8:lang>
-										<v8:content>Выбранным пользователям</v8:content>
-									</v8:item>
-								</Presentation>
-								<Value xsi:type="xs:string">ВыбраннымПользователям</Value>
-							</xr:Value>
-						</xr:Item>
-						<xr:Item>
-							<xr:Presentation/>
-							<xr:CheckState>0</xr:CheckState>
-							<xr:Value xsi:type="FormChoiceListDesTimeValue">
-								<Presentation>
-									<v8:item>
-										<v8:lang>ru</v8:lang>
-										<v8:content>Всем пользователям</v8:content>
-									</v8:item>
-								</Presentation>
-								<Value xsi:type="xs:string">ВсемПользователям</Value>
-							</xr:Value>
-						</xr:Item>
-					</ChoiceList>
-					<ContextMenu name="ПерключательКомуПереноситьКонтекстноеМеню" id="12"/>
-					<ExtendedTooltip name="ПерключательКомуПереноситьРасширеннаяПодсказка" id="13"/>
-					<Events>
-						<Event name="OnChange">ПерключательКомуПереноситьПриИзменении</Event>
-					</Events>
-				</RadioButtonField>
 				<UsualGroup name="ГруппаВыбратьПользователей" id="6">
 					<ToolTip>
 						<v8:item>
@@ -160,6 +93,54 @@
 								<OnlyInAllActions>true</OnlyInAllActions>
 								<CommandName>Form.Item.ПользователиСписок.StandardCommand.SortListAsc</CommandName>
 								<ExtendedTooltip name="ПользователиСписокКнопка2РасширеннаяПодсказка" id="48"/>
+							</Button>
+							<Button name="КнопкаВыбратьПользователей" id="51">
+								<Type>CommandBarButton</Type>
+								<OnlyInAllActions>false</OnlyInAllActions>
+								<CommandName>Form.Command.ВыбратьПользователей</CommandName>
+								<TextColor>style:ВидДняПредпраздничныйЦвет</TextColor>
+								<Title>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Выбрать пользователей...</v8:content>
+									</v8:item>
+								</Title>
+								<ExtendedTooltip name="КнопкаВыбратьПользователейРасширеннаяПодсказка" id="52"/>
+							</Button>
+							<Button name="ПеренестиУВыбранныхКартинка" id="49">
+								<Type>CommandBarButton</Type>
+								<Representation>PictureAndText</Representation>
+								<OnlyInAllActions>true</OnlyInAllActions>
+								<GroupHorizontalAlign>Right</GroupHorizontalAlign>
+								<CommandName>Form.Command.ПеренестиВыбранные</CommandName>
+								<Picture>
+									<xr:Ref>CommonPicture.ЗакончитьРедактированиеФайла</xr:Ref>
+									<xr:LoadTransparent>true</xr:LoadTransparent>
+								</Picture>
+								<Title>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Перенести у выбранных</v8:content>
+									</v8:item>
+								</Title>
+								<ExtendedTooltip name="ПеренестиУВыбранныхКартинкаРасширеннаяПодсказка" id="50"/>
+							</Button>
+							<Button name="ФормаПеренестиВсе" id="41">
+								<Type>CommandBarButton</Type>
+								<Representation>PictureAndText</Representation>
+								<OnlyInAllActions>false</OnlyInAllActions>
+								<CommandName>Form.Command.ПеренестиВсе</CommandName>
+								<Picture>
+									<xr:Ref>CommonPicture.ОтветитьНаЭлектронноеПисьмоВсем</xr:Ref>
+									<xr:LoadTransparent>true</xr:LoadTransparent>
+								</Picture>
+								<Title>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Перенести реквизит у всех</v8:content>
+									</v8:item>
+								</Title>
+								<ExtendedTooltip name="ФормаПеренестиВсеРасширеннаяПодсказка" id="42"/>
 							</Button>
 						</ChildItems>
 					</AutoCommandBar>
@@ -283,6 +264,21 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ПеренестиВсе</Action>
+		</Command>
+		<Command name="ВыбратьПользователей" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать пользователей</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выбрать пользователей</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ВыбратьПользователей</Action>
 		</Command>
 	</Commands>
 	<Parameters>
