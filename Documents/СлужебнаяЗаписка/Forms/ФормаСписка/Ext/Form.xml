@@ -8,54 +8,6 @@
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
-		<UsualGroup name="ГруппаШапка" id="297">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа шапка</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа шапка</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Group>Horizontal</Group>
-			<Representation>None</Representation>
-			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаШапкаРасширеннаяПодсказка" id="298"/>
-			<ChildItems>
-				<Button name="ФормаОтчетОшибкиСотрудниковОткрыть" id="25">
-					<Type>UsualButton</Type>
-					<Representation>Text</Representation>
-					<DefaultButton>true</DefaultButton>
-					<CommandName>Report.ЭффективностьСотрудников.StandardCommand.Open</CommandName>
-					<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
-					<ExtendedTooltip name="ФормаОтчетОшибкиСотрудниковОткрытьРасширеннаяПодсказка" id="26"/>
-				</Button>
-				<InputField name="Подразделение" id="294">
-					<DataPath>Подразделение</DataPath>
-					<Width>30</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<OpenButton>false</OpenButton>
-					<QuickChoice>true</QuickChoice>
-					<ChoiceParameters>
-						<app:item name="Отбор.Активность">
-							<app:value xsi:type="FormChoiceListDesTimeValue">
-								<Presentation/>
-								<Value xsi:type="xs:boolean">true</Value>
-							</app:value>
-						</app:item>
-					</ChoiceParameters>
-					<ContextMenu name="ПодразделениеКонтекстноеМеню" id="295"/>
-					<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="296"/>
-					<Events>
-						<Event name="OnChange">ПодразделениеПриИзменении</Event>
-					</Events>
-				</InputField>
-			</ChildItems>
-		</UsualGroup>
 		<Pages name="СтраницыСписков" id="30">
 			<Title>
 				<v8:item>
@@ -234,6 +186,133 @@
 						</Table>
 					</ChildItems>
 				</Page>
+				<Page name="СтраницаSMART" id="180">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>S.M.A.R.T.</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница SMART</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="СтраницаSMARTРасширеннаяПодсказка" id="181"/>
+					<ChildItems>
+						<Table name="SMART" id="182">
+							<UseAlternationRowColor>true</UseAlternationRowColor>
+							<EnableStartDrag>true</EnableStartDrag>
+							<DataPath>SMART</DataPath>
+							<RowPictureDataPath>SMART.DefaultPicture</RowPictureDataPath>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<AutoRefresh>false</AutoRefresh>
+							<AutoRefreshPeriod>60</AutoRefreshPeriod>
+							<Period>
+								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+							</Period>
+							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+							<RestoreCurrentRow>false</RestoreCurrentRow>
+							<TopLevelParent xsi:nil="true"/>
+							<ShowRoot>true</ShowRoot>
+							<AllowRootChoice>false</AllowRootChoice>
+							<UpdateOnDataChange>Auto</UpdateOnDataChange>
+							<ContextMenu name="SMARTКонтекстноеМеню" id="183"/>
+							<AutoCommandBar name="SMARTКоманднаяПанель" id="184"/>
+							<ExtendedTooltip name="SMARTРасширеннаяПодсказка" id="185"/>
+							<SearchStringAddition name="SMARTСтрокаПоиска" id="249">
+								<AdditionSource>
+									<Item>SMART</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="SMARTСтрокаПоискаКонтекстноеМеню" id="250"/>
+								<ExtendedTooltip name="SMARTСтрокаПоискаРасширеннаяПодсказка" id="251"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="SMARTСостояниеПросмотра" id="252">
+								<AdditionSource>
+									<Item>SMART</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="SMARTСостояниеПросмотраКонтекстноеМеню" id="253"/>
+								<ExtendedTooltip name="SMARTСостояниеПросмотраРасширеннаяПодсказка" id="254"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="SMARTУправлениеПоиском" id="255">
+								<AdditionSource>
+									<Item>SMART</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="SMARTУправлениеПоискомКонтекстноеМеню" id="256"/>
+								<ExtendedTooltip name="SMARTУправлениеПоискомРасширеннаяПодсказка" id="257"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="SMARTДата" id="201">
+									<DataPath>SMART.Date</DataPath>
+									<Width>6</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<Format>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>ДФ=dd.MM.yy</v8:content>
+										</v8:item>
+									</Format>
+									<ContextMenu name="SMARTДатаКонтекстноеМеню" id="202"/>
+									<ExtendedTooltip name="SMARTДатаРасширеннаяПодсказка" id="203"/>
+								</LabelField>
+								<LabelField name="SMARTНомер" id="204">
+									<DataPath>SMART.Номер</DataPath>
+									<Width>1</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
+									<ContextMenu name="SMARTНомерКонтекстноеМеню" id="205"/>
+									<ExtendedTooltip name="SMARTНомерРасширеннаяПодсказка" id="206"/>
+								</LabelField>
+								<CheckBoxField name="SMARTАрхив" id="216">
+									<DataPath>SMART.Архив</DataPath>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="SMARTАрхивКонтекстноеМеню" id="217"/>
+									<ExtendedTooltip name="SMARTАрхивРасширеннаяПодсказка" id="218"/>
+								</CheckBoxField>
+								<LabelField name="SMARTАдресат" id="213">
+									<DataPath>SMART.Адресат</DataPath>
+									<Width>25</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="SMARTАдресатКонтекстноеМеню" id="214"/>
+									<ExtendedTooltip name="SMARTАдресатРасширеннаяПодсказка" id="215"/>
+								</LabelField>
+								<LabelField name="SMARTВидСлужебнойЗаписки" id="219">
+									<DataPath>SMART.ВидСлужебнойЗаписки</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Вид СЗ</v8:content>
+										</v8:item>
+									</Title>
+									<Width>10</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="SMARTВидСлужебнойЗапискиКонтекстноеМеню" id="220"/>
+									<ExtendedTooltip name="SMARTВидСлужебнойЗапискиРасширеннаяПодсказка" id="221"/>
+								</LabelField>
+								<LabelField name="SMARTТема" id="228">
+									<DataPath>SMART.Тема</DataPath>
+									<ContextMenu name="SMARTТемаКонтекстноеМеню" id="229"/>
+									<ExtendedTooltip name="SMARTТемаРасширеннаяПодсказка" id="230"/>
+								</LabelField>
+								<LabelField name="SMARTАвтор" id="210">
+									<DataPath>SMART.Автор</DataPath>
+									<Width>25</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="SMARTАвторКонтекстноеМеню" id="211"/>
+									<ExtendedTooltip name="SMARTАвторРасширеннаяПодсказка" id="212"/>
+								</LabelField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
 				<Page name="СтраницаАрхив" id="34">
 					<Title>
 						<v8:item>
@@ -401,133 +480,6 @@
 						</Table>
 					</ChildItems>
 				</Page>
-				<Page name="СтраницаSMART" id="180">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>S.M.A.R.T.</v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Страница SMART</v8:content>
-						</v8:item>
-					</ToolTip>
-					<ExtendedTooltip name="СтраницаSMARTРасширеннаяПодсказка" id="181"/>
-					<ChildItems>
-						<Table name="SMART" id="182">
-							<UseAlternationRowColor>true</UseAlternationRowColor>
-							<EnableStartDrag>true</EnableStartDrag>
-							<DataPath>SMART</DataPath>
-							<RowPictureDataPath>SMART.DefaultPicture</RowPictureDataPath>
-							<SearchStringLocation>None</SearchStringLocation>
-							<ViewStatusLocation>None</ViewStatusLocation>
-							<SearchControlLocation>None</SearchControlLocation>
-							<AutoRefresh>false</AutoRefresh>
-							<AutoRefreshPeriod>60</AutoRefreshPeriod>
-							<Period>
-								<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
-								<v8:startDate>0001-01-01T00:00:00</v8:startDate>
-								<v8:endDate>0001-01-01T00:00:00</v8:endDate>
-							</Period>
-							<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
-							<RestoreCurrentRow>false</RestoreCurrentRow>
-							<TopLevelParent xsi:nil="true"/>
-							<ShowRoot>true</ShowRoot>
-							<AllowRootChoice>false</AllowRootChoice>
-							<UpdateOnDataChange>Auto</UpdateOnDataChange>
-							<ContextMenu name="SMARTКонтекстноеМеню" id="183"/>
-							<AutoCommandBar name="SMARTКоманднаяПанель" id="184"/>
-							<ExtendedTooltip name="SMARTРасширеннаяПодсказка" id="185"/>
-							<SearchStringAddition name="SMARTСтрокаПоиска" id="249">
-								<AdditionSource>
-									<Item>SMART</Item>
-									<Type>SearchStringRepresentation</Type>
-								</AdditionSource>
-								<ContextMenu name="SMARTСтрокаПоискаКонтекстноеМеню" id="250"/>
-								<ExtendedTooltip name="SMARTСтрокаПоискаРасширеннаяПодсказка" id="251"/>
-							</SearchStringAddition>
-							<ViewStatusAddition name="SMARTСостояниеПросмотра" id="252">
-								<AdditionSource>
-									<Item>SMART</Item>
-									<Type>ViewStatusRepresentation</Type>
-								</AdditionSource>
-								<ContextMenu name="SMARTСостояниеПросмотраКонтекстноеМеню" id="253"/>
-								<ExtendedTooltip name="SMARTСостояниеПросмотраРасширеннаяПодсказка" id="254"/>
-							</ViewStatusAddition>
-							<SearchControlAddition name="SMARTУправлениеПоиском" id="255">
-								<AdditionSource>
-									<Item>SMART</Item>
-									<Type>SearchControl</Type>
-								</AdditionSource>
-								<ContextMenu name="SMARTУправлениеПоискомКонтекстноеМеню" id="256"/>
-								<ExtendedTooltip name="SMARTУправлениеПоискомРасширеннаяПодсказка" id="257"/>
-							</SearchControlAddition>
-							<ChildItems>
-								<LabelField name="SMARTДата" id="201">
-									<DataPath>SMART.Date</DataPath>
-									<Width>6</Width>
-									<HorizontalStretch>false</HorizontalStretch>
-									<Format>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>ДФ=dd.MM.yy</v8:content>
-										</v8:item>
-									</Format>
-									<ContextMenu name="SMARTДатаКонтекстноеМеню" id="202"/>
-									<ExtendedTooltip name="SMARTДатаРасширеннаяПодсказка" id="203"/>
-								</LabelField>
-								<LabelField name="SMARTНомер" id="204">
-									<DataPath>SMART.Номер</DataPath>
-									<Width>1</Width>
-									<HorizontalStretch>false</HorizontalStretch>
-									<VerticalStretch>false</VerticalStretch>
-									<ContextMenu name="SMARTНомерКонтекстноеМеню" id="205"/>
-									<ExtendedTooltip name="SMARTНомерРасширеннаяПодсказка" id="206"/>
-								</LabelField>
-								<CheckBoxField name="SMARTАрхив" id="216">
-									<DataPath>SMART.Архив</DataPath>
-									<CheckBoxType>Auto</CheckBoxType>
-									<ContextMenu name="SMARTАрхивКонтекстноеМеню" id="217"/>
-									<ExtendedTooltip name="SMARTАрхивРасширеннаяПодсказка" id="218"/>
-								</CheckBoxField>
-								<LabelField name="SMARTАдресат" id="213">
-									<DataPath>SMART.Адресат</DataPath>
-									<Width>25</Width>
-									<HorizontalStretch>false</HorizontalStretch>
-									<ContextMenu name="SMARTАдресатКонтекстноеМеню" id="214"/>
-									<ExtendedTooltip name="SMARTАдресатРасширеннаяПодсказка" id="215"/>
-								</LabelField>
-								<LabelField name="SMARTВидСлужебнойЗаписки" id="219">
-									<DataPath>SMART.ВидСлужебнойЗаписки</DataPath>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Вид СЗ</v8:content>
-										</v8:item>
-									</Title>
-									<Width>10</Width>
-									<HorizontalStretch>false</HorizontalStretch>
-									<ContextMenu name="SMARTВидСлужебнойЗапискиКонтекстноеМеню" id="220"/>
-									<ExtendedTooltip name="SMARTВидСлужебнойЗапискиРасширеннаяПодсказка" id="221"/>
-								</LabelField>
-								<LabelField name="SMARTТема" id="228">
-									<DataPath>SMART.Тема</DataPath>
-									<ContextMenu name="SMARTТемаКонтекстноеМеню" id="229"/>
-									<ExtendedTooltip name="SMARTТемаРасширеннаяПодсказка" id="230"/>
-								</LabelField>
-								<LabelField name="SMARTАвтор" id="210">
-									<DataPath>SMART.Автор</DataPath>
-									<Width>25</Width>
-									<HorizontalStretch>false</HorizontalStretch>
-									<ContextMenu name="SMARTАвторКонтекстноеМеню" id="211"/>
-									<ExtendedTooltip name="SMARTАвторРасширеннаяПодсказка" id="212"/>
-								</LabelField>
-							</ChildItems>
-						</Table>
-					</ChildItems>
-				</Page>
 				<Page name="СтранницаЗаметки" id="258">
 					<Title>
 						<v8:item>
@@ -643,7 +595,7 @@
 			<MainAttribute>true</MainAttribute>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
-				<DynamicDataRead>false</DynamicDataRead>
+				<DynamicDataRead>true</DynamicDataRead>
 				<QueryText>ВЫБРАТЬ
 	Записка.Ссылка,
 	ПОДСТРОКА(Записка.Номер, 7, 5) КАК Номер,
@@ -672,12 +624,7 @@
 	Документ.СлужебнаяЗаписка КАК Записка
 ГДЕ
 	НЕ Записка.Проведен
-	И Записка.ВидСлужебнойЗаписки &lt;&gt; ЗНАЧЕНИЕ(Перечисление.ВидыСлужебнойЗаписки.Поручение)
-	И ВЫБОР
-		   КОГДА &amp;Подразделение &lt;&gt; ЗНАЧЕНИЕ(Справочник.Подразделения.ПустаяСсылка)
-		   ТОГДА Записка.Подразделение = &amp;Подразделение ИЛИ Записка.Подразделение = ЗНАЧЕНИЕ(Справочник.Подразделения.ПустаяСсылка)
-		   ИНАЧЕ ИСТИНА
-	КОНЕЦ </QueryText>
+	И Записка.ВидСлужебнойЗаписки &lt;&gt; ЗНАЧЕНИЕ(Перечисление.ВидыСлужебнойЗаписки.Поручение)</QueryText>
 				<MainTable>Document.СлужебнаяЗаписка</MainTable>
 				<ListSettings>
 					<dcsset:filter>
