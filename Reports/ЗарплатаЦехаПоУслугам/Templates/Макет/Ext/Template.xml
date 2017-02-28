@@ -61,21 +61,31 @@
 				</v8:item>
 			</title>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Регистратор</dataPath>
+			<field>Регистратор</field>
+			<role>
+				<dcscom:periodNumber>1</dcscom:periodNumber>
+				<dcscom:periodType>Main</dcscom:periodType>
+			</role>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	УправленческийОбороты.СуммаОборот КАК СуммаОборот,
 	УправленческийОбороты.Субконто2 КАК Субконто2,
 	УправленческийОбороты.Субконто1 КАК Субконто1,
 	УправленческийОбороты.КоличествоОборот КАК КоличествоОборот,
-	УправленческийОбороты.Подразделение КАК Подразделение
+	УправленческийОбороты.Подразделение КАК Подразделение,
+	УправленческийОбороты.Регистратор КАК Регистратор
 {ВЫБРАТЬ
 	СуммаОборот КАК ЗарплатаЦеха,
 	Субконто2.* КАК Номенклатура,
 	Субконто1.* КАК Спецификация,
 	КоличествоОборот КАК Количество,
-	Подразделение.*}
+	Подразделение.*,
+	Регистратор.*}
 ИЗ
-	РегистрБухгалтерии.Управленческий.Обороты({(&amp;НачалоПериода)}, {(&amp;КонецПериода)}, Запись, Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ЗарплатаЦеха), , , , ) КАК УправленческийОбороты
+	РегистрБухгалтерии.Управленческий.Обороты({(&amp;НачалоПериода)}, {(&amp;КонецПериода)}, Регистратор, Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ЗарплатаЦеха), , , , ) КАК УправленческийОбороты
 {ГДЕ
 	УправленческийОбороты.Подразделение.*}</query>
 		<autoFillFields>false</autoFillFields>
@@ -220,7 +230,15 @@
 					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
 				</dcsset:order>
 				<dcsset:selection>
-					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Номенклатура</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Количество</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ЗарплатаЦеха</dcsset:field>
+					</dcsset:item>
 				</dcsset:selection>
 			</dcsset:item>
 		</dcsset:settings>
