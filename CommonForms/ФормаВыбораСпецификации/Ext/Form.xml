@@ -181,6 +181,192 @@
 				</LabelField>
 			</ChildItems>
 		</UsualGroup>
+		<Table name="ТЗ" id="1">
+			<Representation>List</Representation>
+			<Footer>true</Footer>
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>ТЗ</DataPath>
+			<CommandSet>
+				<ExcludedCommand>Copy</ExcludedCommand>
+				<ExcludedCommand>SortListAsc</ExcludedCommand>
+				<ExcludedCommand>MoveUp</ExcludedCommand>
+				<ExcludedCommand>CancelSearch</ExcludedCommand>
+				<ExcludedCommand>OutputList</ExcludedCommand>
+				<ExcludedCommand>SelectAll</ExcludedCommand>
+				<ExcludedCommand>SortListDesc</ExcludedCommand>
+				<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+				<ExcludedCommand>Delete</ExcludedCommand>
+				<ExcludedCommand>EndEdit</ExcludedCommand>
+				<ExcludedCommand>Add</ExcludedCommand>
+				<ExcludedCommand>Change</ExcludedCommand>
+				<ExcludedCommand>Find</ExcludedCommand>
+				<ExcludedCommand>MoveDown</ExcludedCommand>
+			</CommandSet>
+			<SearchStringLocation>None</SearchStringLocation>
+			<ViewStatusLocation>None</ViewStatusLocation>
+			<SearchControlLocation>None</SearchControlLocation>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="ТЗКонтекстноеМеню" id="2"/>
+			<AutoCommandBar name="ТЗКоманднаяПанель" id="3"/>
+			<ExtendedTooltip name="ТЗExtendedTooltip" id="21"/>
+			<SearchStringAddition name="ТЗСтрокаПоиска" id="71">
+				<AdditionSource>
+					<Item>ТЗ</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ТЗСтрокаПоискаКонтекстноеМеню" id="72"/>
+				<ExtendedTooltip name="ТЗСтрокаПоискаРасширеннаяПодсказка" id="73"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="ТЗСостояниеПросмотра" id="74">
+				<AdditionSource>
+					<Item>ТЗ</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="ТЗСостояниеПросмотраКонтекстноеМеню" id="75"/>
+				<ExtendedTooltip name="ТЗСостояниеПросмотраРасширеннаяПодсказка" id="76"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="ТЗУправлениеПоиском" id="77">
+				<AdditionSource>
+					<Item>ТЗ</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="ТЗУправлениеПоискомКонтекстноеМеню" id="78"/>
+				<ExtendedTooltip name="ТЗУправлениеПоискомРасширеннаяПодсказка" id="79"/>
+			</SearchControlAddition>
+			<Events>
+				<Event name="Selection">ТЗВыбор</Event>
+			</Events>
+			<ChildItems>
+				<CheckBoxField name="ТЗПометка" id="4">
+					<DataPath>ТЗ.Пометка</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<EditMode>EnterOnInput</EditMode>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ТЗПометкаКонтекстноеМеню" id="5"/>
+					<ExtendedTooltip name="ТЗПометкаExtendedTooltip" id="22"/>
+					<Events>
+						<Event name="OnChange">ТЗПометкаПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+				<PictureField name="ТЗЕстьЗаметка" id="65">
+					<DataPath>ТЗ.ЕстьЗаметка</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<TitleLocation>None</TitleLocation>
+					<EditMode>EnterOnInput</EditMode>
+					<HeaderPicture>
+						<xr:Ref>CommonPicture.Заметка</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</HeaderPicture>
+					<ValuesPicture>
+						<xr:Ref>CommonPicture.Заметка</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</ValuesPicture>
+					<ContextMenu name="ТЗЕстьЗаметкаКонтекстноеМеню" id="66"/>
+					<ExtendedTooltip name="ТЗЕстьЗаметкаРасширеннаяПодсказка" id="67"/>
+				</PictureField>
+				<CheckBoxField name="ТЗСрочный" id="68">
+					<DataPath>ТЗ.Срочный</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ТЗСрочныйКонтекстноеМеню" id="69"/>
+					<ExtendedTooltip name="ТЗСрочныйРасширеннаяПодсказка" id="70"/>
+				</CheckBoxField>
+				<CheckBoxField name="ТЗМатериалЗаказчикаНеПредоставлен" id="83">
+					<DataPath>ТЗ.МатериалЗаказчикаНеПредоставлен</DataPath>
+					<Enabled>false</Enabled>
+					<ReadOnly>true</ReadOnly>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Нет мат.</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Материал заказчика не предоставлен.</v8:content>
+						</v8:item>
+					</ToolTip>
+					<HorizontalAlign>Left</HorizontalAlign>
+					<EditMode>EnterOnInput</EditMode>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ТЗМатериалЗаказчикаНеПредоставленКонтекстноеМеню" id="84"/>
+					<ExtendedTooltip name="ТЗМатериалЗаказчикаНеПредоставленРасширеннаяПодсказка" id="85"/>
+				</CheckBoxField>
+				<InputField name="ТЗСпецификация" id="6">
+					<DataPath>ТЗ.Спецификация</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ТЗСпецификацияКонтекстноеМеню" id="7"/>
+					<ExtendedTooltip name="ТЗСпецификацияРасширеннаяПодсказка" id="24"/>
+				</InputField>
+				<InputField name="ТЗДатаИзготовления" id="17">
+					<DataPath>ТЗ.ДатаИзготовления</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Изготовить</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ТЗДатаИзготовленияКонтекстноеМеню" id="18"/>
+					<ExtendedTooltip name="ТЗДатаИзготовленияРасширеннаяПодсказка" id="23"/>
+				</InputField>
+				<InputField name="ТЗДатаОтгрузки" id="47">
+					<DataPath>ТЗ.ДатаОтгрузки</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отгрузить</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ТЗДатаОтгрузкиКонтекстноеМеню" id="48"/>
+					<ExtendedTooltip name="ТЗДатаОтгрузкиРасширеннаяПодсказка" id="49"/>
+				</InputField>
+				<InputField name="ТЗИзделие" id="50">
+					<DataPath>ТЗ.Изделие</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ТЗИзделиеКонтекстноеМеню" id="51"/>
+					<ExtendedTooltip name="ТЗИзделиеРасширеннаяПодсказка" id="52"/>
+				</InputField>
+				<InputField name="ТЗСтатус" id="41">
+					<DataPath>ТЗ.Статус</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ТЗСтатусКонтекстноеМеню" id="42"/>
+					<ExtendedTooltip name="ТЗСтатусРасширеннаяПодсказка" id="43"/>
+				</InputField>
+				<InputField name="ТЗСуммаНаряда" id="8">
+					<DataPath>ТЗ.СуммаНаряда</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<FooterDataPath>ОбщаяСуммаНаряда</FooterDataPath>
+					<FooterFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+					<ContextMenu name="ТЗСуммаНарядаКонтекстноеМеню" id="9"/>
+					<ExtendedTooltip name="ТЗСуммаНарядаExtendedTooltip" id="25"/>
+				</InputField>
+				<InputField name="ТЗОсобыеУслуги" id="62">
+					<DataPath>ТЗ.ОсобыеУслуги</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ТЗОсобыеУслугиКонтекстноеМеню" id="63"/>
+					<ExtendedTooltip name="ТЗОсобыеУслугиРасширеннаяПодсказка" id="64"/>
+				</InputField>
+				<InputField name="ТЗЦветЛДСПОсновной" id="80">
+					<DataPath>ТЗ.ЦветЛДСПОсновной</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ТЗЦветЛДСПОсновнойКонтекстноеМеню" id="81"/>
+					<ExtendedTooltip name="ТЗЦветЛДСПОсновнойРасширеннаяПодсказка" id="82"/>
+				</InputField>
+			</ChildItems>
+		</Table>
 		<UsualGroup name="ГруппаОбщая" id="29">
 			<Title>
 				<v8:item>
@@ -198,189 +384,6 @@
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ГруппаОбщаяРасширеннаяПодсказка" id="30"/>
-			<ChildItems>
-				<Table name="ТЗ" id="1">
-					<Representation>List</Representation>
-					<Footer>true</Footer>
-					<AutoInsertNewRow>true</AutoInsertNewRow>
-					<EnableStartDrag>true</EnableStartDrag>
-					<EnableDrag>true</EnableDrag>
-					<DataPath>ТЗ</DataPath>
-					<CommandSet>
-						<ExcludedCommand>Copy</ExcludedCommand>
-						<ExcludedCommand>SortListAsc</ExcludedCommand>
-						<ExcludedCommand>MoveUp</ExcludedCommand>
-						<ExcludedCommand>CancelSearch</ExcludedCommand>
-						<ExcludedCommand>OutputList</ExcludedCommand>
-						<ExcludedCommand>SelectAll</ExcludedCommand>
-						<ExcludedCommand>SortListDesc</ExcludedCommand>
-						<ExcludedCommand>CopyToClipboard</ExcludedCommand>
-						<ExcludedCommand>Delete</ExcludedCommand>
-						<ExcludedCommand>EndEdit</ExcludedCommand>
-						<ExcludedCommand>Add</ExcludedCommand>
-						<ExcludedCommand>Change</ExcludedCommand>
-						<ExcludedCommand>Find</ExcludedCommand>
-						<ExcludedCommand>MoveDown</ExcludedCommand>
-					</CommandSet>
-					<SearchStringLocation>None</SearchStringLocation>
-					<ViewStatusLocation>None</ViewStatusLocation>
-					<SearchControlLocation>None</SearchControlLocation>
-					<RowFilter xsi:nil="true"/>
-					<ContextMenu name="ТЗКонтекстноеМеню" id="2"/>
-					<AutoCommandBar name="ТЗКоманднаяПанель" id="3"/>
-					<ExtendedTooltip name="ТЗExtendedTooltip" id="21"/>
-					<SearchStringAddition name="ТЗСтрокаПоиска" id="71">
-						<AdditionSource>
-							<Item>ТЗ</Item>
-							<Type>SearchStringRepresentation</Type>
-						</AdditionSource>
-						<ContextMenu name="ТЗСтрокаПоискаКонтекстноеМеню" id="72"/>
-						<ExtendedTooltip name="ТЗСтрокаПоискаРасширеннаяПодсказка" id="73"/>
-					</SearchStringAddition>
-					<ViewStatusAddition name="ТЗСостояниеПросмотра" id="74">
-						<AdditionSource>
-							<Item>ТЗ</Item>
-							<Type>ViewStatusRepresentation</Type>
-						</AdditionSource>
-						<ContextMenu name="ТЗСостояниеПросмотраКонтекстноеМеню" id="75"/>
-						<ExtendedTooltip name="ТЗСостояниеПросмотраРасширеннаяПодсказка" id="76"/>
-					</ViewStatusAddition>
-					<SearchControlAddition name="ТЗУправлениеПоиском" id="77">
-						<AdditionSource>
-							<Item>ТЗ</Item>
-							<Type>SearchControl</Type>
-						</AdditionSource>
-						<ContextMenu name="ТЗУправлениеПоискомКонтекстноеМеню" id="78"/>
-						<ExtendedTooltip name="ТЗУправлениеПоискомРасширеннаяПодсказка" id="79"/>
-					</SearchControlAddition>
-					<Events>
-						<Event name="Selection">ТЗВыбор</Event>
-					</Events>
-					<ChildItems>
-						<CheckBoxField name="ТЗПометка" id="4">
-							<DataPath>ТЗ.Пометка</DataPath>
-							<TitleLocation>None</TitleLocation>
-							<EditMode>EnterOnInput</EditMode>
-							<CheckBoxType>Auto</CheckBoxType>
-							<ContextMenu name="ТЗПометкаКонтекстноеМеню" id="5"/>
-							<ExtendedTooltip name="ТЗПометкаExtendedTooltip" id="22"/>
-							<Events>
-								<Event name="OnChange">ТЗПометкаПриИзменении</Event>
-							</Events>
-						</CheckBoxField>
-						<PictureField name="ТЗЕстьЗаметка" id="65">
-							<DataPath>ТЗ.ЕстьЗаметка</DataPath>
-							<ReadOnly>true</ReadOnly>
-							<TitleLocation>None</TitleLocation>
-							<EditMode>EnterOnInput</EditMode>
-							<HeaderPicture>
-								<xr:Ref>CommonPicture.Заметка</xr:Ref>
-								<xr:LoadTransparent>true</xr:LoadTransparent>
-							</HeaderPicture>
-							<ValuesPicture>
-								<xr:Ref>CommonPicture.Заметка</xr:Ref>
-								<xr:LoadTransparent>true</xr:LoadTransparent>
-							</ValuesPicture>
-							<ContextMenu name="ТЗЕстьЗаметкаКонтекстноеМеню" id="66"/>
-							<ExtendedTooltip name="ТЗЕстьЗаметкаРасширеннаяПодсказка" id="67"/>
-						</PictureField>
-						<CheckBoxField name="ТЗСрочный" id="68">
-							<DataPath>ТЗ.Срочный</DataPath>
-							<ReadOnly>true</ReadOnly>
-							<EditMode>EnterOnInput</EditMode>
-							<CheckBoxType>Auto</CheckBoxType>
-							<ContextMenu name="ТЗСрочныйКонтекстноеМеню" id="69"/>
-							<ExtendedTooltip name="ТЗСрочныйРасширеннаяПодсказка" id="70"/>
-						</CheckBoxField>
-						<CheckBoxField name="ТЗМатериалЗаказчикаНеПредоставлен" id="83">
-							<DataPath>ТЗ.МатериалЗаказчикаНеПредоставлен</DataPath>
-							<Enabled>false</Enabled>
-							<ReadOnly>true</ReadOnly>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Мат. не предоставлен </v8:content>
-								</v8:item>
-							</Title>
-							<HorizontalAlign>Center</HorizontalAlign>
-							<EditMode>EnterOnInput</EditMode>
-							<HeaderHorizontalAlign>Center</HeaderHorizontalAlign>
-							<CheckBoxType>Auto</CheckBoxType>
-							<ContextMenu name="ТЗМатериалЗаказчикаНеПредоставленКонтекстноеМеню" id="84"/>
-							<ExtendedTooltip name="ТЗМатериалЗаказчикаНеПредоставленРасширеннаяПодсказка" id="85"/>
-						</CheckBoxField>
-						<InputField name="ТЗСпецификация" id="6">
-							<DataPath>ТЗ.Спецификация</DataPath>
-							<ReadOnly>true</ReadOnly>
-							<EditMode>EnterOnInput</EditMode>
-							<ContextMenu name="ТЗСпецификацияКонтекстноеМеню" id="7"/>
-							<ExtendedTooltip name="ТЗСпецификацияРасширеннаяПодсказка" id="24"/>
-						</InputField>
-						<InputField name="ТЗДатаИзготовления" id="17">
-							<DataPath>ТЗ.ДатаИзготовления</DataPath>
-							<ReadOnly>true</ReadOnly>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Изготовить</v8:content>
-								</v8:item>
-							</Title>
-							<EditMode>EnterOnInput</EditMode>
-							<ContextMenu name="ТЗДатаИзготовленияКонтекстноеМеню" id="18"/>
-							<ExtendedTooltip name="ТЗДатаИзготовленияРасширеннаяПодсказка" id="23"/>
-						</InputField>
-						<InputField name="ТЗДатаОтгрузки" id="47">
-							<DataPath>ТЗ.ДатаОтгрузки</DataPath>
-							<ReadOnly>true</ReadOnly>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Отгрузить</v8:content>
-								</v8:item>
-							</Title>
-							<EditMode>EnterOnInput</EditMode>
-							<ContextMenu name="ТЗДатаОтгрузкиКонтекстноеМеню" id="48"/>
-							<ExtendedTooltip name="ТЗДатаОтгрузкиРасширеннаяПодсказка" id="49"/>
-						</InputField>
-						<InputField name="ТЗИзделие" id="50">
-							<DataPath>ТЗ.Изделие</DataPath>
-							<ReadOnly>true</ReadOnly>
-							<EditMode>EnterOnInput</EditMode>
-							<ContextMenu name="ТЗИзделиеКонтекстноеМеню" id="51"/>
-							<ExtendedTooltip name="ТЗИзделиеРасширеннаяПодсказка" id="52"/>
-						</InputField>
-						<InputField name="ТЗСтатус" id="41">
-							<DataPath>ТЗ.Статус</DataPath>
-							<ReadOnly>true</ReadOnly>
-							<EditMode>EnterOnInput</EditMode>
-							<ContextMenu name="ТЗСтатусКонтекстноеМеню" id="42"/>
-							<ExtendedTooltip name="ТЗСтатусРасширеннаяПодсказка" id="43"/>
-						</InputField>
-						<InputField name="ТЗСуммаНаряда" id="8">
-							<DataPath>ТЗ.СуммаНаряда</DataPath>
-							<ReadOnly>true</ReadOnly>
-							<EditMode>EnterOnInput</EditMode>
-							<FooterDataPath>ОбщаяСуммаНаряда</FooterDataPath>
-							<FooterFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
-							<ContextMenu name="ТЗСуммаНарядаКонтекстноеМеню" id="9"/>
-							<ExtendedTooltip name="ТЗСуммаНарядаExtendedTooltip" id="25"/>
-						</InputField>
-						<InputField name="ТЗОсобыеУслуги" id="62">
-							<DataPath>ТЗ.ОсобыеУслуги</DataPath>
-							<ReadOnly>true</ReadOnly>
-							<EditMode>EnterOnInput</EditMode>
-							<ContextMenu name="ТЗОсобыеУслугиКонтекстноеМеню" id="63"/>
-							<ExtendedTooltip name="ТЗОсобыеУслугиРасширеннаяПодсказка" id="64"/>
-						</InputField>
-						<InputField name="ТЗЦветЛДСПОсновной" id="80">
-							<DataPath>ТЗ.ЦветЛДСПОсновной</DataPath>
-							<EditMode>EnterOnInput</EditMode>
-							<ContextMenu name="ТЗЦветЛДСПОсновнойКонтекстноеМеню" id="81"/>
-							<ExtendedTooltip name="ТЗЦветЛДСПОсновнойРасширеннаяПодсказка" id="82"/>
-						</InputField>
-					</ChildItems>
-				</Table>
-			</ChildItems>
 		</UsualGroup>
 	</ChildItems>
 	<Attributes>
@@ -601,13 +604,28 @@
 			<dcsset:item>
 				<dcsset:selection>
 					<dcsset:item>
+						<dcsset:field>ТЗПометка</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>ТЗЕстьЗаметка</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>ТЗСрочный</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>ТЗМатериалЗаказчикаНеПредоставлен</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>ТЗСпецификация</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
 						<dcsset:field>ТЗДатаИзготовления</dcsset:field>
 					</dcsset:item>
 					<dcsset:item>
 						<dcsset:field>ТЗДатаОтгрузки</dcsset:field>
 					</dcsset:item>
 					<dcsset:item>
-						<dcsset:field>ТЗСпецификация</dcsset:field>
+						<dcsset:field>ТЗИзделие</dcsset:field>
 					</dcsset:item>
 					<dcsset:item>
 						<dcsset:field>ТЗСтатус</dcsset:field>
@@ -619,10 +637,7 @@
 						<dcsset:field>ТЗОсобыеУслуги</dcsset:field>
 					</dcsset:item>
 					<dcsset:item>
-						<dcsset:field>ТЗНомер</dcsset:field>
-					</dcsset:item>
-					<dcsset:item>
-						<dcsset:field>ТЗИзделие</dcsset:field>
+						<dcsset:field>ТЗЦветЛДСПОсновной</dcsset:field>
 					</dcsset:item>
 				</dcsset:selection>
 				<dcsset:filter>
@@ -635,6 +650,83 @@
 					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 						<dcscor:parameter>ЦветФона</dcscor:parameter>
 						<dcscor:value xsi:type="v8ui:Color">web:Moccasin</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ТЗПометка</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>ТЗЕстьЗаметка</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>ТЗСрочный</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>ТЗМатериалЗаказчикаНеПредоставлен</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>ТЗСпецификация</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>ТЗДатаИзготовления</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>ТЗДатаОтгрузки</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>ТЗИзделие</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>ТЗСтатус</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>ТЗСуммаНаряда</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>ТЗОсобыеУслуги</dcsset:field>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:field>ТЗЦветЛДСПОсновной</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">ТЗ.МатериалЗаказчикаНеПредоставлен</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветФона</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">web:Gainsboro</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>ТЗОсобыеУслуги</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">ТЗ.ОсобыеУслуги</dcsset:left>
+						<dcsset:comparisonType>Filled</dcsset:comparisonType>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:use>false</dcscor:use>
+						<dcscor:parameter>ЦветФона</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">web:LightGray</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Шрифт</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 					</dcscor:item>
 				</dcsset:appearance>
 			</dcsset:item>
