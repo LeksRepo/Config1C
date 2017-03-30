@@ -209,7 +209,7 @@
 		ИНАЧЕ ЛОЖЬ
 	КОНЕЦ КАК ЕстьДоставка,
 	ВЫБОР
-		КОГДА Спец.ДатаОтгрузки = &amp;ДатаОкончания
+		КОГДА Спец.ДатаОтгрузки = &amp;КонецПериода
 			ТОГДА ЛОЖЬ
 		ИНАЧЕ ИСТИНА
 	КОНЕЦ КАК Просрочен,
@@ -220,7 +220,7 @@
 	СпЗаметки.ТекстСодержания КАК Заметка
 ИЗ
 	Документ.Спецификация КАК Спец
-		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СтатусСпецификации.СрезПоследних(&amp;ДатаОкончания, ) КАК СтатусСпецификации
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СтатусСпецификации.СрезПоследних({(&amp;КонецПериода)}, ) КАК СтатусСпецификации
 		ПО (СтатусСпецификации.Спецификация = Спец.Ссылка)
 		ЛЕВОЕ СОЕДИНЕНИЕ Документ.Договор КАК Дог
 		ПО (Дог.Спецификация = Спец.Ссылка)
@@ -230,10 +230,12 @@
 		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.Заметки КАК СпЗаметки
 		ПО (СпЗаметки.Предмет = Спец.Ссылка)
 ГДЕ
-	Спец.ДатаОтгрузки &lt;= &amp;ДатаОкончания
+	Спец.ДатаОтгрузки МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
 	И Спец.Проведен
 	И СтатусСпецификации.Статус &lt;&gt; ЗНАЧЕНИЕ(Перечисление.СтатусыСпецификации.Установлен)
 	И СтатусСпецификации.Статус &lt;&gt; ЗНАЧЕНИЕ(Перечисление.СтатусыСпецификации.Отгружен)
+{ГДЕ
+	(Спец.Подразделение = &amp;Подразделение)}
 
 ОБЪЕДИНИТЬ ВСЕ
 
@@ -259,32 +261,36 @@
 ГДЕ
 	РеализацияМатериалов.Проведен
 	И РеализацияМатериалов.ПакетУслуг = ЗНАЧЕНИЕ(Перечисление.ПакетыУслуг.ДоставкаДоКлиента)
-	И РеализацияМатериалов.ДатаОтгрузки &lt;= &amp;ДатаОкончания
-	И НЕ РеализацияМатериалов.СданВАрхив</query>
+	И РеализацияМатериалов.ДатаОтгрузки МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+	И НЕ РеализацияМатериалов.СданВАрхив
+{ГДЕ
+	(РеализацияМатериалов.Подразделение = &amp;Подразделение)}</query>
 	</dataSet>
 	<parameter>
-		<name>ДатаОкончания</name>
+		<name>ПериодОтчета</name>
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>ru</v8:lang>
-				<v8:content>Дата</v8:content>
+				<v8:content>Период отчета</v8:content>
 			</v8:item>
 		</title>
 		<valueType>
-			<v8:Type>xs:dateTime</v8:Type>
-			<v8:DateQualifiers>
-				<v8:DateFractions>Date</v8:DateFractions>
-			</v8:DateQualifiers>
+			<v8:Type>v8:StandardPeriod</v8:Type>
 		</valueType>
-		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
 		<useRestriction>false</useRestriction>
+		<use>Always</use>
 	</parameter>
 	<parameter>
-		<name>Период</name>
+		<name>КонецПериода</name>
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>ru</v8:lang>
-				<v8:content>Период</v8:content>
+				<v8:content>Конец периода</v8:content>
 			</v8:item>
 		</title>
 		<valueType>
@@ -294,7 +300,56 @@
 			</v8:DateQualifiers>
 		</valueType>
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;ПериодОтчета.ДатаОкончания</expression>
+	</parameter>
+	<parameter>
+		<name>НачалоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>Date</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;ПериодОтчета.ДатаНачала</expression>
+	</parameter>
+	<parameter>
+		<name>Подразделение</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Подразделение</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Подразделения</v8:Type>
+		</valueType>
+		<value xsi:nil="true"/>
 		<useRestriction>false</useRestriction>
+		<inputParameters>
+			<dcscor:item>
+				<dcscor:parameter>ПараметрыВыбора</dcscor:parameter>
+				<dcscor:value xsi:type="dcscor:ChoiceParameters">
+					<dcscor:item>
+						<dcscor:choiceParameter>Отбор.Активность</dcscor:choiceParameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcscor:value>
+			</dcscor:item>
+			<dcscor:item>
+				<dcscor:parameter>БыстрыйВыбор</dcscor:parameter>
+				<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+			</dcscor:item>
+		</inputParameters>
+		<use>Always</use>
 	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
@@ -407,26 +462,25 @@
 					<dcsset:placement>Vertically</dcsset:placement>
 				</dcsset:item>
 			</dcsset:selection>
-			<dcsset:filter>
-				<dcsset:item xsi:type="dcsset:FilterItemComparison">
-					<dcsset:left xsi:type="dcscor:Field">Производство</dcsset:left>
-					<dcsset:comparisonType>Equal</dcsset:comparisonType>
-					<dcsset:right xsi:type="dcscor:DesignTimeValue">Справочник.Подразделения.ПустаяСсылка</dcsset:right>
-					<dcsset:userSettingID>96f4be23-a2a5-45ea-a5fe-65f406f25a3c</dcsset:userSettingID>
-				</dcsset:item>
-			</dcsset:filter>
 			<dcsset:dataParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-					<dcscor:parameter>ДатаОкончания</dcscor:parameter>
-					<dcscor:value xsi:type="v8:StandardBeginningDate">
-						<v8:variant xsi:type="v8:StandardBeginningDateVariant">BeginningOfThisDay</v8:variant>
+					<dcscor:parameter>ПериодОтчета</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
 					</dcscor:value>
-					<dcsset:userSettingID>4e961338-6c51-41ef-a2c9-3c69fd4628a4</dcsset:userSettingID>
+					<dcsset:userSettingID>0e2f0520-2977-49cd-920f-51e7bb49ee1b</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Подразделение</dcscor:parameter>
+					<dcscor:value xsi:nil="true"/>
+					<dcsset:userSettingID>c3cdf218-407f-4f42-8e49-5b67f300fc48</dcsset:userSettingID>
 				</dcscor:item>
 			</dcsset:dataParameters>
 			<dcsset:order>
 				<dcsset:item xsi:type="dcsset:OrderItemField">
-					<dcsset:field>Производство</dcsset:field>
+					<dcsset:field>Подразделение</dcsset:field>
 					<dcsset:orderType>Asc</dcsset:orderType>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:OrderItemField">
