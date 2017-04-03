@@ -46,7 +46,6 @@
 					</Button>
 					<Button name="Редактировать" id="74">
 						<Type>CommandBarButton</Type>
-						<Visible>false</Visible>
 						<SkipOnInput>false</SkipOnInput>
 						<CommandName>Form.Command.Редактировать</CommandName>
 						<ExtendedTooltip name="РедактироватьРасширеннаяПодсказка" id="116"/>
@@ -555,19 +554,8 @@
 						</InputField>
 					</ChildItems>
 				</ColumnGroup>
-				<LabelField name="ВидФайла" id="185">
-					<DataPath>Список.ВидФайла</DataPath>
-					<ContextMenu name="ВидФайлаКонтекстноеМеню" id="186"/>
-					<ExtendedTooltip name="ВидФайлаРасширеннаяПодсказка" id="187"/>
-				</LabelField>
-				<LabelField name="Размер" id="188">
-					<DataPath>Список.Размер</DataPath>
-					<ContextMenu name="РазмерКонтекстноеМеню" id="189"/>
-					<ExtendedTooltip name="РазмерРасширеннаяПодсказка" id="190"/>
-				</LabelField>
 				<InputField name="Описание" id="27">
 					<DataPath>Список.Описание</DataPath>
-					<Visible>false</Visible>
 					<Height>1</Height>
 					<Wrap>false</Wrap>
 					<ContextMenu name="ОписаниеКонтекстноеМеню" id="28"/>
@@ -721,9 +709,7 @@
 		ИНАЧЕ ЛОЖЬ
 	КОНЕЦ КАК РедактируетТекущийПользователь,
 	Файлы.Зашифрован,
-	Файлы.ПодписанЭЦП,
-	Файлы.ВидФайла,
-	ВЫРАЗИТЬ((Файлы.ТекущаяВерсияРазмер / 1024) КАК ЧИСЛО(15,2)) КАК Размер
+	Файлы.ПодписанЭЦП
 ИЗ
 	Справочник.Файлы КАК Файлы
 ГДЕ
