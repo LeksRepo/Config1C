@@ -33,7 +33,7 @@
 				</v8:item>
 			</ToolTip>
 			<CommandSource>Form</CommandSource>
-			<ExtendedTooltip name="КоманднаяПанельСпискаExtendedTooltip" id="52"/>
+			<ExtendedTooltip name="КоманднаяПанельСпискаРасширеннаяПодсказка" id="65"/>
 		</CommandBar>
 		<Table name="Список" id="1">
 			<Representation>List</Representation>
@@ -64,35 +64,99 @@
 			<UpdateOnDataChange>Auto</UpdateOnDataChange>
 			<ContextMenu name="СписокКонтекстноеМеню" id="2"/>
 			<AutoCommandBar name="СписокКоманднаяПанель" id="3"/>
-			<ExtendedTooltip name="СписокExtendedTooltip" id="53"/>
-			<SearchStringAddition name="СписокСтрокаПоиска" id="76">
+			<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="66"/>
+			<SearchStringAddition name="СписокСтрокаПоиска" id="67">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="77"/>
-				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="78"/>
+				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="68"/>
+				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="69"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокСостояниеПросмотра" id="79">
+			<ViewStatusAddition name="СписокСостояниеПросмотра" id="70">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="80"/>
-				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="81"/>
+				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="71"/>
+				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="72"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокУправлениеПоиском" id="82">
+			<SearchControlAddition name="СписокУправлениеПоиском" id="73">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="83"/>
-				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="84"/>
+				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="74"/>
+				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="75"/>
 			</SearchControlAddition>
 			<Events>
 				<Event name="Selection">СписокВыбор</Event>
 			</Events>
 			<ChildItems>
+				<PictureField name="ВажностьКартинка" id="52">
+					<DataPath>Список.ВажностьКартинка</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Важность</v8:content>
+						</v8:item>
+					</Title>
+					<TitleLocation>None</TitleLocation>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Важность</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Shortcut>Ctrl+S</Shortcut>
+					<HeaderPicture>
+						<xr:Ref>CommonPicture.ВосклицательныйЗнакСерый</xr:Ref>
+						<xr:LoadTransparent>false</xr:LoadTransparent>
+					</HeaderPicture>
+					<ValuesPicture>
+						<xr:Ref>CommonPicture.КоллекцияВариантыВажности</xr:Ref>
+						<xr:LoadTransparent>false</xr:LoadTransparent>
+					</ValuesPicture>
+					<ContextMenu name="ВажностьКартинкаКонтекстноеМеню" id="53"/>
+					<ExtendedTooltip name="ВажностьКартинкаРасширеннаяПодсказка" id="76"/>
+				</PictureField>
+				<CheckBoxField name="ЗадачаВыполнена" id="54">
+					<DataPath>Список.Executed</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выполненные</v8:content>
+						</v8:item>
+					</ToolTip>
+					<HeaderPicture>
+						<xr:Ref>StdPicture.ExecuteTask</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</HeaderPicture>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="ЗадачаВыполненаКонтекстноеМеню" id="55"/>
+					<ExtendedTooltip name="ЗадачаВыполненаРасширеннаяПодсказка" id="77"/>
+				</CheckBoxField>
+				<PictureField name="Остановлена" id="56">
+					<DataPath>Список.Остановлена</DataPath>
+					<TitleLocation>None</TitleLocation>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Остановленные</v8:content>
+						</v8:item>
+					</ToolTip>
+					<HeaderPicture>
+						<xr:Ref>CommonPicture.ЗнакСтопЧБ</xr:Ref>
+						<xr:LoadTransparent>false</xr:LoadTransparent>
+					</HeaderPicture>
+					<ValuesPicture>
+						<xr:Ref>CommonPicture.ЗнакСтоп</xr:Ref>
+						<xr:LoadTransparent>false</xr:LoadTransparent>
+					</ValuesPicture>
+					<ContextMenu name="ОстановленаКонтекстноеМеню" id="57"/>
+					<ExtendedTooltip name="ОстановленаРасширеннаяПодсказка" id="78"/>
+				</PictureField>
 				<InputField name="Номер" id="4">
 					<DataPath>Список.Number</DataPath>
 					<DefaultItem>true</DefaultItem>
@@ -104,7 +168,7 @@
 					</Title>
 					<Wrap>false</Wrap>
 					<ContextMenu name="НомерКонтекстноеМеню" id="5"/>
-					<ExtendedTooltip name="НомерExtendedTooltip" id="54"/>
+					<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="79"/>
 				</InputField>
 				<InputField name="Наименование" id="6">
 					<DataPath>Список.Description</DataPath>
@@ -116,14 +180,45 @@
 					</Title>
 					<Wrap>false</Wrap>
 					<ContextMenu name="НаименованиеКонтекстноеМеню" id="7"/>
-					<ExtendedTooltip name="НаименованиеExtendedTooltip" id="55"/>
+					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="80"/>
 				</InputField>
-				<InputField name="Исполнитель" id="18">
-					<DataPath>Список.Исполнитель</DataPath>
-					<Wrap>false</Wrap>
-					<ContextMenu name="ИсполнительКонтекстноеМеню" id="19"/>
-					<ExtendedTooltip name="ИсполнительExtendedTooltip" id="56"/>
-				</InputField>
+				<ColumnGroup name="ГруппаИсполнитель" id="64">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Исполнитель</v8:content>
+						</v8:item>
+					</Title>
+					<Width>35</Width>
+					<Group>InCell</Group>
+					<ExtendedTooltip name="ГруппаИсполнительРасширеннаяПодсказка" id="81"/>
+					<ChildItems>
+						<InputField name="Исполнитель" id="18">
+							<DataPath>Список.Исполнитель</DataPath>
+							<Wrap>false</Wrap>
+							<ContextMenu name="ИсполнительКонтекстноеМеню" id="19"/>
+							<ExtendedTooltip name="ИсполнительРасширеннаяПодсказка" id="82"/>
+						</InputField>
+						<LabelField name="РольИсполнителя" id="58">
+							<DataPath>Список.РольИсполнителя</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ContextMenu name="РольИсполнителяКонтекстноеМеню" id="59"/>
+							<ExtendedTooltip name="РольИсполнителяРасширеннаяПодсказка" id="83"/>
+						</LabelField>
+						<LabelField name="ОсновнойОбъектАдресации" id="60">
+							<DataPath>Список.ОсновнойОбъектАдресации</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ContextMenu name="ОсновнойОбъектАдресацииКонтекстноеМеню" id="61"/>
+							<ExtendedTooltip name="ОсновнойОбъектАдресацииРасширеннаяПодсказка" id="84"/>
+						</LabelField>
+						<LabelField name="ДополнительныйОбъектАдресации" id="62">
+							<DataPath>Список.ДополнительныйОбъектАдресации</DataPath>
+							<TitleLocation>None</TitleLocation>
+							<ContextMenu name="ДополнительныйОбъектАдресацииКонтекстноеМеню" id="63"/>
+							<ExtendedTooltip name="ДополнительныйОбъектАдресацииРасширеннаяПодсказка" id="85"/>
+						</LabelField>
+					</ChildItems>
+				</ColumnGroup>
 				<LabelField name="СрокИсполнения" id="23">
 					<DataPath>Список.СрокИсполнения</DataPath>
 					<Format>
@@ -133,7 +228,7 @@
 						</v8:item>
 					</Format>
 					<ContextMenu name="СрокИсполненияКонтекстноеМеню" id="24"/>
-					<ExtendedTooltip name="СрокИсполненияExtendedTooltip" id="57"/>
+					<ExtendedTooltip name="СрокИсполненияРасширеннаяПодсказка" id="86"/>
 				</LabelField>
 			</ChildItems>
 		</Table>
@@ -142,7 +237,7 @@
 			<TitleLocation>Right</TitleLocation>
 			<CheckBoxType>Auto</CheckBoxType>
 			<ContextMenu name="ПоказыватьВыполненныеКонтекстноеМеню" id="22"/>
-			<ExtendedTooltip name="ПоказыватьВыполненныеExtendedTooltip" id="58"/>
+			<ExtendedTooltip name="ПоказыватьВыполненныеРасширеннаяПодсказка" id="87"/>
 			<Events>
 				<Event name="OnChange">ПоказыватьВыполненныеПриИзменении</Event>
 			</Events>
@@ -177,22 +272,22 @@
 					<Button name="ДеревоЗадачКонтекстноеМенюИзменить" id="43">
 						<Type>CommandBarButton</Type>
 						<CommandName>Form.Command.Обновить</CommandName>
-						<ExtendedTooltip name="ДеревоЗадачКонтекстноеМенюИзменитьExtendedTooltip" id="59"/>
+						<ExtendedTooltip name="ДеревоЗадачКонтекстноеМенюИзменитьРасширеннаяПодсказка" id="88"/>
 					</Button>
 					<Button name="ДеревоЗадачКонтекстноеМенюОбновить" id="44">
 						<Type>CommandBarButton</Type>
 						<CommandName>0</CommandName>
-						<ExtendedTooltip name="ДеревоЗадачКонтекстноеМенюОбновитьExtendedTooltip" id="60"/>
+						<ExtendedTooltip name="ДеревоЗадачКонтекстноеМенюОбновитьРасширеннаяПодсказка" id="89"/>
 					</Button>
 					<Button name="ДеревоЗадачКонтекстноеМенюКопироватьВБуферОбмена" id="45">
 						<Type>CommandBarButton</Type>
 						<CommandName>Form.Item.ДеревоЗадач.StandardCommand.CopyToClipboard</CommandName>
-						<ExtendedTooltip name="ДеревоЗадачКонтекстноеМенюКопироватьВБуферОбменаExtendedTooltip" id="61"/>
+						<ExtendedTooltip name="ДеревоЗадачКонтекстноеМенюКопироватьВБуферОбменаРасширеннаяПодсказка" id="90"/>
 					</Button>
 					<Button name="ДеревоЗадачКонтекстноеМенюВывестиСписок" id="46">
 						<Type>CommandBarButton</Type>
 						<CommandName>Form.Item.ДеревоЗадач.StandardCommand.OutputList</CommandName>
-						<ExtendedTooltip name="ДеревоЗадачКонтекстноеМенюВывестиСписокExtendedTooltip" id="62"/>
+						<ExtendedTooltip name="ДеревоЗадачКонтекстноеМенюВывестиСписокРасширеннаяПодсказка" id="91"/>
 					</Button>
 				</ChildItems>
 			</ContextMenu>
@@ -202,50 +297,50 @@
 					<Button name="ДеревоЗадачИзменить" id="47">
 						<Type>CommandBarButton</Type>
 						<CommandName>Form.Command.Изменить</CommandName>
-						<ExtendedTooltip name="ДеревоЗадачИзменитьExtendedTooltip" id="63"/>
+						<ExtendedTooltip name="ДеревоЗадачИзменитьРасширеннаяПодсказка" id="92"/>
 					</Button>
 					<Button name="ДеревоЗадачОбновить" id="48">
 						<Type>CommandBarButton</Type>
 						<OnlyInAllActions>false</OnlyInAllActions>
 						<CommandName>Form.Command.Обновить</CommandName>
-						<ExtendedTooltip name="ДеревоЗадачОбновитьExtendedTooltip" id="64"/>
+						<ExtendedTooltip name="ДеревоЗадачОбновитьРасширеннаяПодсказка" id="93"/>
 					</Button>
 					<Button name="Справка" id="49">
 						<Type>CommandBarButton</Type>
 						<CommandName>Form.StandardCommand.Help</CommandName>
-						<ExtendedTooltip name="СправкаExtendedTooltip" id="65"/>
+						<ExtendedTooltip name="СправкаРасширеннаяПодсказка" id="94"/>
 					</Button>
 					<Button name="ДеревоЗадачВывестиСписок" id="51">
 						<Type>CommandBarButton</Type>
 						<CommandName>Form.Item.ДеревоЗадач.StandardCommand.OutputList</CommandName>
-						<ExtendedTooltip name="ДеревоЗадачВывестиСписокExtendedTooltip" id="66"/>
+						<ExtendedTooltip name="ДеревоЗадачВывестиСписокРасширеннаяПодсказка" id="95"/>
 					</Button>
 				</ChildItems>
 			</AutoCommandBar>
-			<ExtendedTooltip name="ДеревоЗадачExtendedTooltip" id="67"/>
-			<SearchStringAddition name="ДеревоЗадачСтрокаПоиска" id="85">
+			<ExtendedTooltip name="ДеревоЗадачРасширеннаяПодсказка" id="96"/>
+			<SearchStringAddition name="ДеревоЗадачСтрокаПоиска" id="97">
 				<AdditionSource>
 					<Item>ДеревоЗадач</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="ДеревоЗадачСтрокаПоискаКонтекстноеМеню" id="86"/>
-				<ExtendedTooltip name="ДеревоЗадачСтрокаПоискаРасширеннаяПодсказка" id="87"/>
+				<ContextMenu name="ДеревоЗадачСтрокаПоискаКонтекстноеМеню" id="98"/>
+				<ExtendedTooltip name="ДеревоЗадачСтрокаПоискаРасширеннаяПодсказка" id="99"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="ДеревоЗадачСостояниеПросмотра" id="88">
+			<ViewStatusAddition name="ДеревоЗадачСостояниеПросмотра" id="100">
 				<AdditionSource>
 					<Item>ДеревоЗадач</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="ДеревоЗадачСостояниеПросмотраКонтекстноеМеню" id="89"/>
-				<ExtendedTooltip name="ДеревоЗадачСостояниеПросмотраРасширеннаяПодсказка" id="90"/>
+				<ContextMenu name="ДеревоЗадачСостояниеПросмотраКонтекстноеМеню" id="101"/>
+				<ExtendedTooltip name="ДеревоЗадачСостояниеПросмотраРасширеннаяПодсказка" id="102"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="ДеревоЗадачУправлениеПоиском" id="91">
+			<SearchControlAddition name="ДеревоЗадачУправлениеПоиском" id="103">
 				<AdditionSource>
 					<Item>ДеревоЗадач</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="ДеревоЗадачУправлениеПоискомКонтекстноеМеню" id="92"/>
-				<ExtendedTooltip name="ДеревоЗадачУправлениеПоискомРасширеннаяПодсказка" id="93"/>
+				<ContextMenu name="ДеревоЗадачУправлениеПоискомКонтекстноеМеню" id="104"/>
+				<ExtendedTooltip name="ДеревоЗадачУправлениеПоискомРасширеннаяПодсказка" id="105"/>
 			</SearchControlAddition>
 			<Events>
 				<Event name="Selection">ДеревоЗадачВыбор</Event>
@@ -270,7 +365,7 @@
 						<xr:LoadTransparent>false</xr:LoadTransparent>
 					</ValuesPicture>
 					<ContextMenu name="ДеревоЗадачВажностьКонтекстноеМеню" id="29"/>
-					<ExtendedTooltip name="ДеревоЗадачВажностьExtendedTooltip" id="68"/>
+					<ExtendedTooltip name="ДеревоЗадачВажностьРасширеннаяПодсказка" id="106"/>
 				</PictureField>
 				<CheckBoxField name="Выполнена" id="30">
 					<DataPath>ДеревоЗадач.Выполнена</DataPath>
@@ -288,7 +383,7 @@
 					</HeaderPicture>
 					<CheckBoxType>Auto</CheckBoxType>
 					<ContextMenu name="ВыполненаКонтекстноеМеню" id="31"/>
-					<ExtendedTooltip name="ВыполненаExtendedTooltip" id="69"/>
+					<ExtendedTooltip name="ВыполненаРасширеннаяПодсказка" id="107"/>
 				</CheckBoxField>
 				<PictureField name="ДеревоЗадачОстановлен" id="32">
 					<DataPath>ДеревоЗадач.Остановлен</DataPath>
@@ -309,7 +404,7 @@
 						<xr:LoadTransparent>false</xr:LoadTransparent>
 					</ValuesPicture>
 					<ContextMenu name="ДеревоЗадачОстановленКонтекстноеМеню" id="33"/>
-					<ExtendedTooltip name="ДеревоЗадачОстановленExtendedTooltip" id="70"/>
+					<ExtendedTooltip name="ДеревоЗадачОстановленРасширеннаяПодсказка" id="108"/>
 				</PictureField>
 				<ColumnGroup name="ТипИНаименование" id="34">
 					<Title>
@@ -325,7 +420,7 @@
 						</v8:item>
 					</ToolTip>
 					<Group>InCell</Group>
-					<ExtendedTooltip name="ТипИНаименованиеExtendedTooltip" id="71"/>
+					<ExtendedTooltip name="ТипИНаименованиеРасширеннаяПодсказка" id="109"/>
 					<ChildItems>
 						<PictureField name="ДеревоЗадачТип" id="35">
 							<DataPath>ДеревоЗадач.Тип</DataPath>
@@ -337,7 +432,7 @@
 								<xr:LoadTransparent>false</xr:LoadTransparent>
 							</ValuesPicture>
 							<ContextMenu name="ДеревоЗадачТипКонтекстноеМеню" id="36"/>
-							<ExtendedTooltip name="ДеревоЗадачТипExtendedTooltip" id="72"/>
+							<ExtendedTooltip name="ДеревоЗадачТипРасширеннаяПодсказка" id="110"/>
 						</PictureField>
 						<InputField name="ДеревоЗадачНаименование" id="37">
 							<DataPath>ДеревоЗадач.Наименование</DataPath>
@@ -356,7 +451,7 @@
 							<EditMode>EnterOnInput</EditMode>
 							<Width>40</Width>
 							<ContextMenu name="ДеревоЗадачНаименованиеКонтекстноеМеню" id="38"/>
-							<ExtendedTooltip name="ДеревоЗадачНаименованиеExtendedTooltip" id="73"/>
+							<ExtendedTooltip name="ДеревоЗадачНаименованиеРасширеннаяПодсказка" id="111"/>
 						</InputField>
 					</ChildItems>
 				</ColumnGroup>
@@ -365,7 +460,7 @@
 					<EditMode>EnterOnInput</EditMode>
 					<Width>1</Width>
 					<ContextMenu name="ДеревоЗадачИсполнительКонтекстноеМеню" id="40"/>
-					<ExtendedTooltip name="ДеревоЗадачИсполнительExtendedTooltip" id="74"/>
+					<ExtendedTooltip name="ДеревоЗадачИсполнительРасширеннаяПодсказка" id="112"/>
 				</InputField>
 				<InputField name="СрокИсполнения1" id="41">
 					<DataPath>ДеревоЗадач.СрокИсполнения</DataPath>
@@ -378,7 +473,7 @@
 					<EditMode>EnterOnInput</EditMode>
 					<Width>8</Width>
 					<ContextMenu name="СрокИсполнения1КонтекстноеМеню" id="42"/>
-					<ExtendedTooltip name="СрокИсполнения1ExtendedTooltip" id="75"/>
+					<ExtendedTooltip name="СрокИсполнения1РасширеннаяПодсказка" id="113"/>
 				</InputField>
 			</ChildItems>
 		</Table>
@@ -402,6 +497,13 @@
 	Задачи.Наименование,
 	Задачи.Выполнена,
 	Задачи.Важность,
+	ВЫБОР
+		КОГДА Задачи.Важность = ЗНАЧЕНИЕ(Перечисление.ВариантыВажностиЗадачи.Низкая)
+			ТОГДА 0
+		КОГДА Задачи.Важность = ЗНАЧЕНИЕ(Перечисление.ВариантыВажностиЗадачи.Высокая)
+			ТОГДА 2
+		ИНАЧЕ 1
+	КОНЕЦ КАК ВажностьКартинка,
 	Задачи.ДатаИсполнения,
 	Задачи.Автор,
 	Задачи.Описание,
@@ -411,7 +513,12 @@
 	Задачи.РольИсполнителя,
 	Задачи.ОсновнойОбъектАдресации,
 	Задачи.ДополнительныйОбъектАдресации,
-	Задачи.Представление
+	Задачи.Представление,
+	ВЫБОР
+		КОГДА Задачи.СостояниеБизнесПроцесса = ЗНАЧЕНИЕ(Перечисление.СостоянияБизнесПроцессов.Остановлен)
+			ТОГДА Истина
+		ИНАЧЕ Ложь
+	КОНЕЦ КАК Остановлена
 ИЗ
 	Задача.ЗадачаИсполнителя КАК Задачи
 	

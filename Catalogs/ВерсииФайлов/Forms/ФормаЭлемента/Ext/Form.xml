@@ -1,35 +1,32 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
-	<CommandBarLocation>None</CommandBarLocation>
+	<CommandBarLocation>Top</CommandBarLocation>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
-	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="Открыть" id="26">
+				<Type>CommandBarButton</Type>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.Command.Открыть</CommandName>
+				<TextColor>style:ButtonTextColor</TextColor>
+				<BackColor>style:ButtonBackColor</BackColor>
+				<BorderColor>style:BorderColor</BorderColor>
+				<ExtendedTooltip name="ОткрытьРасширеннаяПодсказка" id="57"/>
+			</Button>
+			<Button name="ФормаСохранитьКак" id="50">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.СохранитьКак</CommandName>
+				<ExtendedTooltip name="ФормаСохранитьКакРасширеннаяПодсказка" id="58"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
 	<Events>
 		<Event name="AfterWrite">ПослеЗаписи</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
-		<CommandBar name="ОсновнаяКоманднаяПанель" id="1">
-			<CommandSource>Form</CommandSource>
-			<ExtendedTooltip name="ОсновнаяКоманднаяПанельExtendedTooltip" id="57"/>
-			<ChildItems>
-				<Button name="Открыть" id="26">
-					<Type>CommandBarButton</Type>
-					<SkipOnInput>false</SkipOnInput>
-					<CommandName>Form.Command.Открыть</CommandName>
-					<TextColor>style:ButtonTextColor</TextColor>
-					<BackColor>style:ButtonBackColor</BackColor>
-					<BorderColor>style:BorderColor</BorderColor>
-					<ExtendedTooltip name="ОткрытьExtendedTooltip" id="58"/>
-				</Button>
-				<Button name="ФормаСохранитьКак" id="50">
-					<Type>CommandBarButton</Type>
-					<CommandName>Form.Command.СохранитьКак</CommandName>
-					<ExtendedTooltip name="ФормаСохранитьКакExtendedTooltip" id="59"/>
-				</Button>
-			</ChildItems>
-		</CommandBar>
 		<InputField name="Владелец" id="6">
 			<DataPath>Объект.Owner</DataPath>
 			<ReadOnly>true</ReadOnly>
@@ -37,7 +34,7 @@
 			<Wrap>false</Wrap>
 			<BorderColor>style:BorderColor</BorderColor>
 			<ContextMenu name="ВладелецКонтекстноеМеню" id="7"/>
-			<ExtendedTooltip name="ВладелецExtendedTooltip" id="60"/>
+			<ExtendedTooltip name="ВладелецРасширеннаяПодсказка" id="59"/>
 		</InputField>
 		<UsualGroup name="НаименованиеКод" id="31">
 			<ToolTip>
@@ -49,7 +46,7 @@
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="НаименованиеКодExtendedTooltip" id="61"/>
+			<ExtendedTooltip name="НаименованиеКодРасширеннаяПодсказка" id="60"/>
 			<ChildItems>
 				<InputField name="ПолноеНаименование" id="29">
 					<DataPath>Объект.ПолноеНаименование</DataPath>
@@ -62,7 +59,7 @@
 					<Wrap>false</Wrap>
 					<BorderColor>style:BorderColor</BorderColor>
 					<ContextMenu name="ПолноеНаименованиеКонтекстноеМеню" id="30"/>
-					<ExtendedTooltip name="ПолноеНаименованиеExtendedTooltip" id="62"/>
+					<ExtendedTooltip name="ПолноеНаименованиеРасширеннаяПодсказка" id="61"/>
 					<Events>
 						<Event name="OnChange">ПолноеНаименованиеПриИзменении</Event>
 					</Events>
@@ -73,7 +70,7 @@
 					<Wrap>false</Wrap>
 					<BorderColor>style:BorderColor</BorderColor>
 					<ContextMenu name="КодКонтекстноеМеню" id="3"/>
-					<ExtendedTooltip name="КодExtendedTooltip" id="63"/>
+					<ExtendedTooltip name="КодРасширеннаяПодсказка" id="62"/>
 				</InputField>
 			</ChildItems>
 		</UsualGroup>
@@ -89,7 +86,7 @@
 				</xr:Link>
 			</ChoiceParameterLinks>
 			<ContextMenu name="РодительскаяВерсияКонтекстноеМеню" id="34"/>
-			<ExtendedTooltip name="РодительскаяВерсияExtendedTooltip" id="64"/>
+			<ExtendedTooltip name="РодительскаяВерсияРасширеннаяПодсказка" id="63"/>
 		</InputField>
 		<UsualGroup name="РасширениеКартинка" id="32">
 			<ToolTip>
@@ -101,7 +98,7 @@
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="РасширениеКартинкаExtendedTooltip" id="65"/>
+			<ExtendedTooltip name="РасширениеКартинкаРасширеннаяПодсказка" id="64"/>
 			<ChildItems>
 				<InputField name="Размер" id="8">
 					<DataPath>Объект.Размер</DataPath>
@@ -110,7 +107,7 @@
 					<Wrap>false</Wrap>
 					<BorderColor>style:BorderColor</BorderColor>
 					<ContextMenu name="РазмерКонтекстноеМеню" id="9"/>
-					<ExtendedTooltip name="РазмерExtendedTooltip" id="66"/>
+					<ExtendedTooltip name="РазмерРасширеннаяПодсказка" id="65"/>
 				</InputField>
 				<InputField name="Расширение" id="10">
 					<DataPath>Объект.Расширение</DataPath>
@@ -120,7 +117,7 @@
 					<Wrap>false</Wrap>
 					<BorderColor>style:BorderColor</BorderColor>
 					<ContextMenu name="РасширениеКонтекстноеМеню" id="11"/>
-					<ExtendedTooltip name="РасширениеExtendedTooltip" id="67"/>
+					<ExtendedTooltip name="РасширениеРасширеннаяПодсказка" id="66"/>
 				</InputField>
 				<PictureField name="Картинка" id="20">
 					<DataPath>Объект.ИндексКартинки</DataPath>
@@ -139,7 +136,7 @@
 						<v8ui:style xsi:type="v8ui:ControlBorderType">WithoutBorder</v8ui:style>
 					</Border>
 					<ContextMenu name="КартинкаКонтекстноеМеню" id="21"/>
-					<ExtendedTooltip name="КартинкаExtendedTooltip" id="68"/>
+					<ExtendedTooltip name="КартинкаРасширеннаяПодсказка" id="67"/>
 				</PictureField>
 			</ChildItems>
 		</UsualGroup>
@@ -155,7 +152,7 @@
 			<Height>2</Height>
 			<BorderColor>style:BorderColor</BorderColor>
 			<ContextMenu name="КомментарийКонтекстноеМеню" id="13"/>
-			<ExtendedTooltip name="КомментарийExtendedTooltip" id="69"/>
+			<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="68"/>
 		</InputField>
 		<InputField name="Автор" id="14">
 			<DataPath>Объект.Автор</DataPath>
@@ -170,7 +167,7 @@
 			<Wrap>false</Wrap>
 			<BorderColor>style:BorderColor</BorderColor>
 			<ContextMenu name="АвторКонтекстноеМеню" id="15"/>
-			<ExtendedTooltip name="АвторExtendedTooltip" id="70"/>
+			<ExtendedTooltip name="АвторРасширеннаяПодсказка" id="69"/>
 		</InputField>
 		<UsualGroup name="ДатаИНомер" id="35">
 			<ToolTip>
@@ -182,7 +179,7 @@
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ДатаИНомерExtendedTooltip" id="71"/>
+			<ExtendedTooltip name="ДатаИНомерРасширеннаяПодсказка" id="70"/>
 			<ChildItems>
 				<InputField name="ДатаСоздания" id="16">
 					<DataPath>Объект.ДатаСоздания</DataPath>
@@ -191,13 +188,13 @@
 					<Wrap>false</Wrap>
 					<BorderColor>style:BorderColor</BorderColor>
 					<ContextMenu name="ДатаСозданияКонтекстноеМеню" id="17"/>
-					<ExtendedTooltip name="ДатаСозданияExtendedTooltip" id="72"/>
+					<ExtendedTooltip name="ДатаСозданияРасширеннаяПодсказка" id="71"/>
 				</InputField>
 				<InputField name="НомерВерсии" id="36">
 					<DataPath>Объект.НомерВерсии</DataPath>
 					<ReadOnly>true</ReadOnly>
 					<ContextMenu name="НомерВерсииКонтекстноеМеню" id="37"/>
-					<ExtendedTooltip name="НомерВерсииExtendedTooltip" id="73"/>
+					<ExtendedTooltip name="НомерВерсииРасширеннаяПодсказка" id="72"/>
 				</InputField>
 			</ChildItems>
 		</UsualGroup>
@@ -211,13 +208,13 @@
 				</v8:item>
 			</Title>
 			<ContextMenu name="ДатаМодификацииФайлаКонтекстноеМеню" id="49"/>
-			<ExtendedTooltip name="ДатаМодификацииФайлаExtendedTooltip" id="74"/>
+			<ExtendedTooltip name="ДатаМодификацииФайлаРасширеннаяПодсказка" id="73"/>
 		</InputField>
 		<LabelField name="Кодировка" id="55">
 			<DataPath>Кодировка</DataPath>
 			<HorizontalStretch>false</HorizontalStretch>
 			<ContextMenu name="КодировкаКонтекстноеМеню" id="56"/>
-			<ExtendedTooltip name="КодировкаExtendedTooltip" id="75"/>
+			<ExtendedTooltip name="КодировкаРасширеннаяПодсказка" id="74"/>
 		</LabelField>
 		<UsualGroup name="ГруппаХранение" id="38">
 			<UserVisible>
@@ -238,13 +235,13 @@
 			<Group>Vertical</Group>
 			<Representation>NormalSeparation</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаХранениеExtendedTooltip" id="76"/>
+			<ExtendedTooltip name="ГруппаХранениеРасширеннаяПодсказка" id="75"/>
 			<ChildItems>
 				<InputField name="ТипХраненияФайла" id="39">
 					<DataPath>Объект.ТипХраненияФайла</DataPath>
 					<ReadOnly>true</ReadOnly>
 					<ContextMenu name="ТипХраненияФайлаКонтекстноеМеню" id="40"/>
-					<ExtendedTooltip name="ТипХраненияФайлаExtendedTooltip" id="77"/>
+					<ExtendedTooltip name="ТипХраненияФайлаРасширеннаяПодсказка" id="76"/>
 				</InputField>
 				<UsualGroup name="ГруппаТом" id="47">
 					<Title>
@@ -263,19 +260,19 @@
 					<Representation>None</Representation>
 					<ChildItemsWidth>LeftNarrowest</ChildItemsWidth>
 					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="ГруппаТомExtendedTooltip" id="78"/>
+					<ExtendedTooltip name="ГруппаТомРасширеннаяПодсказка" id="77"/>
 					<ChildItems>
 						<InputField name="Том" id="51">
 							<DataPath>Объект.Том</DataPath>
 							<ReadOnly>true</ReadOnly>
 							<ContextMenu name="ТомКонтекстноеМеню" id="52"/>
-							<ExtendedTooltip name="ТомExtendedTooltip" id="79"/>
+							<ExtendedTooltip name="ТомРасширеннаяПодсказка" id="78"/>
 						</InputField>
 						<InputField name="ТомПолныйПуть" id="53">
 							<DataPath>ТомПолныйПуть</DataPath>
 							<ReadOnly>true</ReadOnly>
 							<ContextMenu name="ТомПолныйПутьКонтекстноеМеню" id="54"/>
-							<ExtendedTooltip name="ТомПолныйПутьExtendedTooltip" id="80"/>
+							<ExtendedTooltip name="ТомПолныйПутьРасширеннаяПодсказка" id="79"/>
 						</InputField>
 					</ChildItems>
 				</UsualGroup>
@@ -283,7 +280,7 @@
 					<DataPath>Объект.ПутьКФайлу</DataPath>
 					<ReadOnly>true</ReadOnly>
 					<ContextMenu name="ПутьКФайлуКонтекстноеМеню" id="44"/>
-					<ExtendedTooltip name="ПутьКФайлуExtendedTooltip" id="81"/>
+					<ExtendedTooltip name="ПутьКФайлуРасширеннаяПодсказка" id="80"/>
 				</InputField>
 			</ChildItems>
 		</UsualGroup>

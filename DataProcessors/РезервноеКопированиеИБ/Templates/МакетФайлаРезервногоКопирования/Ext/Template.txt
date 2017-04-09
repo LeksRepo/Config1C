@@ -397,18 +397,15 @@ function backupDB()
 
 function WaitUntilFinish()
 {
-	var connection = createConnection();
-    if (connection == null)
-	    return (useComConnector ? 1 : 0);
-	    
-	FileSize = connection.РезервноеКопированиеИБСервер.ОпределитьРазмерФайлаСКопией(backupFileName)    
+	var FileArchiveObject = new ActiveXObject("Scripting.FileSystemObject");
+	FileArchive = FileArchiveObject.GetFile(backupFileName);
 	
-	connection = null;
+	FileSize = FileArchive.size / 1024;
 	
 	if (FileSize < 5)
 		return -1;
 		
-    return 0;
+	return 0;
 }
 
 

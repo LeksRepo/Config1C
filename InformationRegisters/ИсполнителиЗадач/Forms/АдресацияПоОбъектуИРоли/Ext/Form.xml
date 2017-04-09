@@ -6,6 +6,7 @@
 			<v8:content>Исполнители роли</v8:content>
 		</v8:item>
 	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<CommandSet>
@@ -13,6 +14,17 @@
 	</CommandSet>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<ChildItems>
+			<Button name="ФормаПодбор" id="33">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.Подобрать</CommandName>
+				<ExtendedTooltip name="ФормаПодборРасширеннаяПодсказка" id="35"/>
+			</Button>
+			<Button name="ФормаПеречитать" id="34">
+				<Type>CommandBarButton</Type>
+				<OnlyInAllActions>false</OnlyInAllActions>
+				<CommandName>Form.StandardCommand.Reread</CommandName>
+				<ExtendedTooltip name="ФормаПеречитатьРасширеннаяПодсказка" id="36"/>
+			</Button>
 			<ButtonGroup name="ГруппаКомандСписка" id="20">
 				<Title>
 					<v8:item>
@@ -27,7 +39,7 @@
 					</v8:item>
 				</ToolTip>
 				<CommandSource>Item.Список</CommandSource>
-				<ExtendedTooltip name="ГруппаКомандСпискаExtendedTooltip" id="33"/>
+				<ExtendedTooltip name="ГруппаКомандСпискаРасширеннаяПодсказка" id="37"/>
 			</ButtonGroup>
 		</ChildItems>
 	</AutoCommandBar>
@@ -40,23 +52,15 @@
 			<Group>Vertical</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаШапкаExtendedTooltip" id="34"/>
+			<ExtendedTooltip name="ГруппаШапкаРасширеннаяПодсказка" id="38"/>
 			<ChildItems>
-				<LabelField name="Роль" id="16">
-					<DataPath>Роль</DataPath>
-					<ReadOnly>true</ReadOnly>
-					<TitleFont kind="AutoFont"/>
-					<Font kind="AutoFont"/>
-					<ContextMenu name="РольКонтекстноеМеню" id="17"/>
-					<ExtendedTooltip name="РольExtendedTooltip" id="35"/>
-				</LabelField>
 				<LabelField name="ОсновнойОбъектАдресации" id="18">
 					<DataPath>ОсновнойОбъектАдресации</DataPath>
 					<ReadOnly>true</ReadOnly>
 					<TitleFont kind="AutoFont"/>
 					<Font kind="AutoFont"/>
 					<ContextMenu name="ОсновнойОбъектАдресацииКонтекстноеМеню" id="19"/>
-					<ExtendedTooltip name="ОсновнойОбъектАдресацииExtendedTooltip" id="36"/>
+					<ExtendedTooltip name="ОсновнойОбъектАдресацииРасширеннаяПодсказка" id="39"/>
 				</LabelField>
 			</ChildItems>
 		</UsualGroup>
@@ -75,33 +79,34 @@
 			<RowFilter xsi:nil="true"/>
 			<ContextMenu name="СписокКонтекстноеМеню" id="23"/>
 			<AutoCommandBar name="СписокКоманднаяПанель" id="24"/>
-			<ExtendedTooltip name="СписокExtendedTooltip" id="37"/>
-			<SearchStringAddition name="СписокСтрокаПоиска" id="40">
+			<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="40"/>
+			<SearchStringAddition name="СписокСтрокаПоиска" id="41">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="41"/>
-				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="42"/>
+				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="42"/>
+				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="43"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокСостояниеПросмотра" id="43">
+			<ViewStatusAddition name="СписокСостояниеПросмотра" id="44">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="44"/>
-				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="45"/>
+				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="45"/>
+				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="46"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокУправлениеПоиском" id="46">
+			<SearchControlAddition name="СписокУправлениеПоиском" id="47">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="47"/>
-				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="48"/>
+				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="48"/>
+				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="49"/>
 			</SearchControlAddition>
 			<Events>
 				<Event name="BeforeEditEnd">СписокПередОкончаниемРедактирования</Event>
+				<Event name="ChoiceProcessing">СписокОбработкаВыбора</Event>
 				<Event name="OnStartEdit">СписокПриНачалеРедактирования</Event>
 			</Events>
 			<ChildItems>
@@ -109,13 +114,13 @@
 					<DataPath>НаборЗаписей.Исполнитель</DataPath>
 					<Wrap>false</Wrap>
 					<ContextMenu name="ИсполнительКонтекстноеМеню" id="28"/>
-					<ExtendedTooltip name="ИсполнительExtendedTooltip" id="38"/>
+					<ExtendedTooltip name="ИсполнительРасширеннаяПодсказка" id="50"/>
 				</InputField>
 				<InputField name="ДополнительныйОбъектАдресации" id="31">
 					<DataPath>НаборЗаписей.ДополнительныйОбъектАдресации</DataPath>
 					<Wrap>false</Wrap>
 					<ContextMenu name="ДополнительныйОбъектАдресацииКонтекстноеМеню" id="32"/>
-					<ExtendedTooltip name="ДополнительныйОбъектАдресацииExtendedTooltip" id="39"/>
+					<ExtendedTooltip name="ДополнительныйОбъектАдресацииРасширеннаяПодсказка" id="51"/>
 				</InputField>
 			</ChildItems>
 		</Table>
@@ -168,6 +173,28 @@
 			</Type>
 		</Attribute>
 	</Attributes>
+	<Commands>
+		<Command name="Подобрать" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобрать</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобрать пользователей</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Properties</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>Подобрать</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+	</Commands>
 	<Parameters>
 		<Parameter name="Роль">
 			<Type>

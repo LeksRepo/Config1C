@@ -427,21 +427,17 @@ function backupDB()
 
 function WaitUntilFinish()
 {
-	var connection = createConnection();
-    if (connection == null)
-	    return (useComConnector ? 1 : 0);
-	    
 	FileName = BaseFileName+ '\\1Cv8.1CD';
 
-	FileSize = connection.РезервноеКопированиеИБСервер.ОпределитьРазмерФайлаСКопией(FileName)    
+	var FileArchiveObject = new ActiveXObject("Scripting.FileSystemObject");
+	FileArchive = FileArchiveObject.GetFile(FileName);
 	
-	connection = null;
+	FileSize = FileArchive.size / 1024;
 	
 	if (FileSize < 5)
 		return -1;
-		
-    return 0;
-
+	
+	return 0;
 }
 
 // Восстановление информационной базы из резервной копии

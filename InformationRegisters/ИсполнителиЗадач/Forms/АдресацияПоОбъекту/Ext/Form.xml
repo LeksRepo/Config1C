@@ -3,27 +3,78 @@
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<ChildItems>
-			<Button name="НазначитьИсполнителей" id="53">
-				<Type>CommandBarButton</Type>
-				<SkipOnInput>false</SkipOnInput>
-				<CommandName>Form.Command.НазначитьИсполнителей</CommandName>
-				<ExtendedTooltip name="НазначитьИсполнителейExtendedTooltip" id="54"/>
-			</Button>
-			<Button name="ВсеНазначения" id="39">
+			<Button name="НазначитьИсполнителей" id="67">
 				<Type>CommandBarButton</Type>
 				<Representation>PictureAndText</Representation>
-				<SkipOnInput>false</SkipOnInput>
-				<OnlyInAllActions>false</OnlyInAllActions>
-				<CommandName>Form.Command.ВсеНазначения</CommandName>
-				<ExtendedTooltip name="ВсеНазначенияExtendedTooltip" id="55"/>
+				<CommandName>Form.Item.Список.StandardCommand.Change</CommandName>
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Назначить исполнителей</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="НазначитьИсполнителейРасширеннаяПодсказка" id="68"/>
 			</Button>
+			<ButtonGroup name="ГруппаПоиск" id="60">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Поиск</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ГруппаПоискРасширеннаяПодсказка" id="69"/>
+				<ChildItems>
+					<Button name="ФормаНайти" id="58">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>Form.Item.Список.StandardCommand.Find</CommandName>
+						<ExtendedTooltip name="ФормаНайтиРасширеннаяПодсказка" id="70"/>
+					</Button>
+					<Button name="ФормаОтменитьПоиск" id="59">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>Form.Item.Список.StandardCommand.CancelSearch</CommandName>
+						<ExtendedTooltip name="ФормаОтменитьПоискРасширеннаяПодсказка" id="71"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
 			<Button name="Обновить" id="52">
 				<Type>CommandBarButton</Type>
 				<SkipOnInput>false</SkipOnInput>
 				<OnlyInAllActions>false</OnlyInAllActions>
 				<CommandName>Form.Command.Обновить</CommandName>
-				<ExtendedTooltip name="ОбновитьExtendedTooltip" id="56"/>
+				<ExtendedTooltip name="ОбновитьРасширеннаяПодсказка" id="72"/>
 			</Button>
+			<Button name="ФормаВывестиСписок" id="57">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Item.Список.StandardCommand.OutputList</CommandName>
+				<ExtendedTooltip name="ФормаВывестиСписокРасширеннаяПодсказка" id="73"/>
+			</Button>
+			<ButtonGroup name="ФормаПерейти" id="65">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Перейти</v8:content>
+					</v8:item>
+				</Title>
+				<ExtendedTooltip name="ФормаПерейтиРасширеннаяПодсказка" id="74"/>
+				<ChildItems>
+					<Button name="ВсеНазначения" id="39">
+						<Type>CommandBarButton</Type>
+						<Representation>PictureAndText</Representation>
+						<SkipOnInput>false</SkipOnInput>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>Form.Command.ВсеНазначения</CommandName>
+						<ExtendedTooltip name="ВсеНазначенияРасширеннаяПодсказка" id="75"/>
+					</Button>
+					<Button name="ФормаСписокРолей" id="66">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>Form.Command.СписокРолей</CommandName>
+						<ExtendedTooltip name="ФормаСписокРолейРасширеннаяПодсказка" id="76"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
@@ -36,7 +87,7 @@
 			<TitleFont kind="AutoFont"/>
 			<Font kind="AutoFont"/>
 			<ContextMenu name="ОсновнойОбъектАдресацииКонтекстноеМеню" id="15"/>
-			<ExtendedTooltip name="ОсновнойОбъектАдресацииExtendedTooltip" id="57"/>
+			<ExtendedTooltip name="ОсновнойОбъектАдресацииРасширеннаяПодсказка" id="77"/>
 			<Events>
 				<Event name="OnChange">ПолеОсновнойОбъектАдресацииПриИзменении</Event>
 			</Events>
@@ -44,10 +95,10 @@
 		<Table name="Список" id="45">
 			<Representation>List</Representation>
 			<CommandBarLocation>None</CommandBarLocation>
-			<ReadOnly>true</ReadOnly>
 			<SkipOnInput>false</SkipOnInput>
 			<ChangeRowSet>false</ChangeRowSet>
-			<Width>50</Width>
+			<ChangeRowOrder>false</ChangeRowOrder>
+			<Width>70</Width>
 			<HeightInTableRows>10</HeightInTableRows>
 			<AutoInsertNewRow>true</AutoInsertNewRow>
 			<DataPath>Список</DataPath>
@@ -58,50 +109,97 @@
 				<xr:TransparentPixel x="30" y="2"/>
 			</RowsPicture>
 			<CommandSet>
-				<ExcludedCommand>Change</ExcludedCommand>
+				<ExcludedCommand>MoveUp</ExcludedCommand>
+				<ExcludedCommand>MoveDown</ExcludedCommand>
 			</CommandSet>
 			<SearchStringLocation>None</SearchStringLocation>
 			<ViewStatusLocation>None</ViewStatusLocation>
 			<SearchControlLocation>None</SearchControlLocation>
 			<RowFilter xsi:nil="true"/>
-			<ContextMenu name="СписокКонтекстноеМеню" id="46"/>
+			<ContextMenu name="СписокКонтекстноеМеню" id="46">
+				<ChildItems>
+					<Button name="СписокНазначитьИсполнителей" id="54">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.Список.StandardCommand.Change</CommandName>
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Назначить исполнителей</v8:content>
+							</v8:item>
+						</Title>
+						<ExtendedTooltip name="СписокНазначитьИсполнителейРасширеннаяПодсказка" id="78"/>
+					</Button>
+					<ButtonGroup name="СписокКонтекстноеМенюГруппа" id="63">
+						<ExtendedTooltip name="СписокКонтекстноеМенюГруппаРасширеннаяПодсказка" id="79"/>
+						<ChildItems>
+							<Button name="СписокКонтекстноеМенюНайти" id="62">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.Список.StandardCommand.Find</CommandName>
+								<ExtendedTooltip name="СписокКонтекстноеМенюНайтиРасширеннаяПодсказка" id="80"/>
+							</Button>
+							<Button name="СписокКонтекстноеМенюОтменитьПоиск" id="61">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.Список.StandardCommand.CancelSearch</CommandName>
+								<ExtendedTooltip name="СписокКонтекстноеМенюОтменитьПоискРасширеннаяПодсказка" id="81"/>
+							</Button>
+						</ChildItems>
+					</ButtonGroup>
+					<Button name="СписокКонтекстноеМенюВывестиСписок" id="56">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.Список.StandardCommand.OutputList</CommandName>
+						<ExtendedTooltip name="СписокКонтекстноеМенюВывестиСписокРасширеннаяПодсказка" id="82"/>
+					</Button>
+					<Button name="СписокКонтекстноеМенюВыделитьВсе" id="64">
+						<Type>CommandBarButton</Type>
+						<Visible>false</Visible>
+						<CommandName>Form.Item.Список.StandardCommand.SelectAll</CommandName>
+						<ExtendedTooltip name="СписокКонтекстноеМенюВыделитьВсеРасширеннаяПодсказка" id="83"/>
+					</Button>
+					<Button name="СписокКонтекстноеМенюКопироватьВБуферОбмена" id="55">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.Список.StandardCommand.CopyToClipboard</CommandName>
+						<ExtendedTooltip name="СписокКонтекстноеМенюКопироватьВБуферОбменаРасширеннаяПодсказка" id="84"/>
+					</Button>
+				</ChildItems>
+			</ContextMenu>
 			<AutoCommandBar name="СписокКоманднаяПанель" id="47">
 				<Autofill>false</Autofill>
 			</AutoCommandBar>
-			<ExtendedTooltip name="СписокExtendedTooltip" id="58"/>
-			<SearchStringAddition name="СписокСтрокаПоиска" id="61">
+			<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="85"/>
+			<SearchStringAddition name="СписокСтрокаПоиска" id="86">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="62"/>
-				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="63"/>
+				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="87"/>
+				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="88"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокСостояниеПросмотра" id="64">
+			<ViewStatusAddition name="СписокСостояниеПросмотра" id="89">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="65"/>
-				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="66"/>
+				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="90"/>
+				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="91"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокУправлениеПоиском" id="67">
+			<SearchControlAddition name="СписокУправлениеПоиском" id="92">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="68"/>
-				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="69"/>
+				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="93"/>
+				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="94"/>
 			</SearchControlAddition>
 			<Events>
 				<Event name="Selection">СписокВыбор</Event>
+				<Event name="BeforeRowChange">СписокПередНачаломИзменения</Event>
 			</Events>
 			<ChildItems>
 				<InputField name="Роль" id="48">
 					<DataPath>Список.Роль</DataPath>
 					<Wrap>false</Wrap>
 					<ContextMenu name="РольКонтекстноеМеню" id="49"/>
-					<ExtendedTooltip name="РольExtendedTooltip" id="59"/>
+					<ExtendedTooltip name="РольРасширеннаяПодсказка" id="95"/>
 				</InputField>
 				<InputField name="Исполнители" id="50">
 					<DataPath>Список.ИсполнителиСтрока</DataPath>
@@ -111,9 +209,10 @@
 							<v8:content>Исполнители</v8:content>
 						</v8:item>
 					</Title>
+					<Width>35</Width>
 					<Wrap>false</Wrap>
 					<ContextMenu name="ИсполнителиКонтекстноеМеню" id="51"/>
-					<ExtendedTooltip name="ИсполнителиExtendedTooltip" id="60"/>
+					<ExtendedTooltip name="ИсполнителиРасширеннаяПодсказка" id="96"/>
 				</InputField>
 			</ChildItems>
 		</Table>
@@ -302,7 +401,23 @@
 					<v8:content>Назначить исполнителей</v8:content>
 				</v8:item>
 			</ToolTip>
+			<Shortcut>F2</Shortcut>
 			<Action>НазначитьИсполнителей</Action>
+		</Command>
+		<Command name="СписокРолей" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список ролей</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Список ролей исполнителей</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СписокРолей</Action>
 		</Command>
 	</Commands>
 	<Parameters>

@@ -4,6 +4,7 @@
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
 	<SaveDataInSettings>UseList</SaveDataInSettings>
+	<AutoTitle>false</AutoTitle>
 	<CommandBarLocation>Bottom</CommandBarLocation>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
@@ -220,13 +221,30 @@
 								</InputField>
 								<CheckBoxField name="ТаблицаОперацийИзменять" id="42">
 									<DataPath>Объект.Операции.Изменять</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Изменять</v8:content>
+										</v8:item>
+									</ToolTip>
 									<EditMode>Directly</EditMode>
+									<HeaderPicture>
+										<xr:Ref>StdPicture.Change</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</HeaderPicture>
 									<CheckBoxType>Auto</CheckBoxType>
 									<ContextMenu name="ТаблицаОперацийИзменятьКонтекстноеМеню" id="43"/>
 									<ExtendedTooltip name="ТаблицаОперацийИзменятьРасширеннаяПодсказка" id="92"/>
 								</CheckBoxField>
 								<InputField name="ТаблицаОперацийЗначение" id="13">
 									<DataPath>Объект.Операции.Значение</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Новое значение</v8:content>
+										</v8:item>
+									</Title>
 									<EditMode>Directly</EditMode>
 									<ChoiceParameterLinks>
 										<xr:Link>
@@ -245,7 +263,7 @@
 								<v8:item>
 									<v8:lang>ru</v8:lang>
 									<v8:content>
-Нажмите кнопку "Далее", чтобы перейти к просмотру изменяемых объектов (%1).</v8:content>
+Нажмите кнопку "Далее", чтобы перейти к просмотру изменяемых элементов списка (%1).</v8:content>
 								</v8:item>
 							</Title>
 							<ContextMenu name="ПодсказкаСтраницыДействийКонтекстноеМеню" id="26"/>
@@ -354,13 +372,18 @@
 							<ChildItems>
 								<CheckBoxField name="ОбъектыДляИзмененияИзменять" id="53">
 									<DataPath>ИзменяемыеОбъекты.Изменять</DataPath>
-									<Title>
+									<TitleLocation>None</TitleLocation>
+									<ToolTip>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content> </v8:content>
+											<v8:content>Изменять</v8:content>
 										</v8:item>
-									</Title>
+									</ToolTip>
 									<EditMode>EnterOnInput</EditMode>
+									<HeaderPicture>
+										<xr:Ref>StdPicture.Change</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</HeaderPicture>
 									<CheckBoxType>Auto</CheckBoxType>
 									<ContextMenu name="ОбъектыДляИзмененияИзменятьКонтекстноеМеню" id="54"/>
 									<ExtendedTooltip name="ОбъектыДляИзмененияИзменятьРасширеннаяПодсказка" id="109"/>
@@ -407,13 +430,14 @@
 									<ExtendedTooltip name="СтраницаПодсказкаПоКнопкеИзменитьРасширеннаяПодсказка" id="112"/>
 									<ChildItems>
 										<LabelDecoration name="ПодсказкаПоКнопкеИзменить" id="37">
+											<Height>2</Height>
 											<Title formatted="false">
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>
-Нажмите кнопку "Изменить" для изменения объектов.</v8:content>
+													<v8:content>Выберите элементы, которые нужно изменить.</v8:content>
 												</v8:item>
 											</Title>
+											<VerticalAlign>Bottom</VerticalAlign>
 											<ContextMenu name="ПодсказкаПоКнопкеИзменитьКонтекстноеМеню" id="38"/>
 											<ExtendedTooltip name="ПодсказкаПоКнопкеИзменитьРасширеннаяПодсказка" id="113"/>
 										</LabelDecoration>
@@ -439,7 +463,7 @@
 											<Title formatted="false">
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Не удалось изменить объекты. Измененно объектов %1 из %2.</v8:content>
+													<v8:content>Не удалось изменить элементы. Изменено %1 из %2.</v8:content>
 												</v8:item>
 											</Title>
 											<ContextMenu name="ПодсказкаПослеИзмененияЕстьОшибкиКонтекстноеМеню" id="40"/>
@@ -472,8 +496,8 @@
 											<Title formatted="false">
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Изменение объектов успешно завершено.
-Изменено объектов: %n.</v8:content>
+													<v8:content>Изменение элементов успешно завершено: %n
+</v8:content>
 												</v8:item>
 											</Title>
 											<VerticalAlign>Bottom</VerticalAlign>
@@ -527,7 +551,7 @@
 							<Title formatted="false">
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Выполняется изменение объектов...</v8:content>
+									<v8:content>Выполняется изменение элементов...</v8:content>
 								</v8:item>
 							</Title>
 							<VerticalAlign>Center</VerticalAlign>
@@ -983,7 +1007,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Настроить параметры изменения...</v8:content>
+					<v8:content>Настроить...</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
@@ -1004,7 +1028,7 @@
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Устанавливает ранее использованные настройки изменения реквизитов</v8:content>
+					<v8:content>Окрыть список ранее выполненных действий</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -1018,13 +1042,13 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Открыть объект по ссылке</v8:content>
+					<v8:content>Открыть элемент</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Открыть объект по ссылке</v8:content>
+					<v8:content>Открыть элемент по ссылке</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Action>ОткрытьОбъектПоСсылкеОбработчикКоманды</Action>
@@ -1039,7 +1063,7 @@
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Пометить все объекты для изменения</v8:content>
+					<v8:content>Пометить все элементы для изменения</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -1058,7 +1082,7 @@
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Снять пометку изменения со всех объектов</v8:content>
+					<v8:content>Снять пометку изменения со всех элементов</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>

@@ -2,7 +2,6 @@
 // Параметры процедуры обновления
 var now = new Date();
 var outFileName = "log" + now.valueOf() + ".txt"; // Путь к log-файлу
-var advFileName = [ИмяФайлаРекламы]; // Путь к файлу рекламы.
 var cfgFileNames = [ИменаФайловОбновления]; // Пути к .cf/.cfu-файлам с обновлениями
 var v8conf = [ИмяИсполняемогоФайлаКонфигуратора] // Путь к исполняемому файлу 1С:Предприятия 8
 var v8client = [ИмяИсполняемогоФайлаКлиента] // Путь к исполняемому файлу 1С:Предприятия 8
@@ -182,10 +181,6 @@ function initialize() {
     log(format("Количество файлов обновления: {0}", cfgFileNames.length));
     for (var i = 0; i < cfgFileNames.length; i++)
         log(format("{0}. {1}", i + 1, cfgFileNames[i]));
-
-    // Отображение рекламы.
-    if (advFileName.length > 0)
-        runApp(advFileName);
 
     return 0;
 }

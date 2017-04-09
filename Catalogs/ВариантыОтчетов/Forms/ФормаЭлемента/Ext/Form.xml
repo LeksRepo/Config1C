@@ -1,33 +1,95 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
 	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<CommandSet>
+		<ExcludedCommand>Copy</ExcludedCommand>
+		<ExcludedCommand>Delete</ExcludedCommand>
+	</CommandSet>
 	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
 		<ChildItems>
-			<Button name="ВосстановитьИсходныеНастройки" id="26">
+			<Button name="ФормаЗаписатьИЗакрыть" id="144">
 				<Type>CommandBarButton</Type>
-				<OnlyInAllActions>false</OnlyInAllActions>
-				<CommandName>Form.Command.ВосстановитьИсходныеНастройки</CommandName>
-				<ExtendedTooltip name="ВосстановитьИсходныеНастройкиExtendedTooltip" id="119"/>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.StandardCommand.WriteAndClose</CommandName>
+				<ExtendedTooltip name="ФормаЗаписатьИЗакрытьРасширеннаяПодсказка" id="150"/>
 			</Button>
-			<Button name="РазместитьВРазделах" id="56">
+			<Button name="ФормаЗаписать" id="145">
 				<Type>CommandBarButton</Type>
-				<Visible>false</Visible>
-				<CommandName>Catalog.ВариантыОтчетов.Command.РазместитьВРазделах</CommandName>
-				<DataPath>Объект.Ref</DataPath>
-				<ExtendedTooltip name="РазместитьВРазделахExtendedTooltip" id="120"/>
+				<CommandName>Form.StandardCommand.Write</CommandName>
+				<ExtendedTooltip name="ФормаЗаписатьРасширеннаяПодсказка" id="151"/>
 			</Button>
-			<Button name="СброситьНастройкиПользователей" id="79">
+			<Button name="ФормаОткрыть" id="143">
 				<Type>CommandBarButton</Type>
-				<OnlyInAllActions>false</OnlyInAllActions>
-				<CommandName>Catalog.ВариантыОтчетов.Command.СброситьНастройкиПользователей</CommandName>
+				<CommandName>Catalog.ВариантыОтчетов.Command.Открыть</CommandName>
 				<DataPath>Объект.Ref</DataPath>
-				<ExtendedTooltip name="СброситьНастройкиПользователейExtendedTooltip" id="121"/>
+				<ExtendedTooltip name="ФормаОткрытьРасширеннаяПодсказка" id="152"/>
+			</Button>
+			<Button name="ФормаУстановитьПометкуУдаления" id="147">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.SetDeletionMark</CommandName>
+				<ExtendedTooltip name="ФормаУстановитьПометкуУдаленияРасширеннаяПодсказка" id="153"/>
+			</Button>
+			<ButtonGroup name="СбросНастроек" id="139">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Сброс настроек</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Сброс настроек</v8:content>
+					</v8:item>
+				</ToolTip>
+				<ExtendedTooltip name="СбросНастроекРасширеннаяПодсказка" id="154"/>
+				<ChildItems>
+					<Button name="ФормаСброситьНастройкиРазмещения" id="119">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>Catalog.ВариантыОтчетов.Command.СброситьНастройкиРазмещения</CommandName>
+						<DataPath>Объект.Ref</DataPath>
+						<ExtendedTooltip name="ФормаСброситьНастройкиРазмещенияРасширеннаяПодсказка" id="155"/>
+					</Button>
+					<Button name="ФормаСброситьНастройкиПользователей" id="79">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>Catalog.ВариантыОтчетов.Command.СброситьНастройкиПользователей</CommandName>
+						<DataPath>Объект.Ref</DataPath>
+						<ExtendedTooltip name="ФормаСброситьНастройкиПользователейРасширеннаяПодсказка" id="156"/>
+					</Button>
+					<Button name="ФормаРазместитьВРазделах" id="138">
+						<Type>CommandBarButton</Type>
+						<Visible>false</Visible>
+						<CommandName>Catalog.ВариантыОтчетов.Command.РазместитьВРазделах</CommandName>
+						<DataPath>Объект.Ref</DataPath>
+						<ExtendedTooltip name="ФормаРазместитьВРазделахРасширеннаяПодсказка" id="157"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+			<Button name="ФормаПеречитать" id="148">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Reread</CommandName>
+				<ExtendedTooltip name="ФормаПеречитатьРасширеннаяПодсказка" id="158"/>
+			</Button>
+			<Button name="ФормаИзменитьФорму" id="149">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
+				<ExtendedTooltip name="ФормаИзменитьФормуРасширеннаяПодсказка" id="159"/>
+			</Button>
+			<Button name="ФормаСправка" id="146">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Help</CommandName>
+				<ExtendedTooltip name="ФормаСправкаРасширеннаяПодсказка" id="160"/>
 			</Button>
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
 		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
 		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
@@ -36,7 +98,7 @@
 		<InputField name="Наименование" id="1">
 			<DataPath>Объект.Description</DataPath>
 			<ContextMenu name="НаименованиеКонтекстноеМеню" id="2"/>
-			<ExtendedTooltip name="НаименованиеExtendedTooltip" id="122"/>
+			<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="161"/>
 		</InputField>
 		<InputField name="Описание" id="3">
 			<DataPath>Объект.Описание</DataPath>
@@ -51,7 +113,7 @@
 			<OpenButton>false</OpenButton>
 			<ChoiceListButton>false</ChoiceListButton>
 			<ContextMenu name="ОписаниеКонтекстноеМеню" id="4"/>
-			<ExtendedTooltip name="ОписаниеExtendedTooltip" id="123"/>
+			<ExtendedTooltip name="ОписаниеРасширеннаяПодсказка" id="162"/>
 			<Events>
 				<Event name="StartChoice">ОписаниеНачалоВыбора</Event>
 			</Events>
@@ -72,7 +134,7 @@
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаДоступенExtendedTooltip" id="124"/>
+			<ExtendedTooltip name="ГруппаДоступенРасширеннаяПодсказка" id="163"/>
 			<ChildItems>
 				<RadioButtonField name="Доступен" id="109">
 					<DataPath>Доступен</DataPath>
@@ -108,7 +170,7 @@
 						</xr:Item>
 					</ChoiceList>
 					<ContextMenu name="ДоступенКонтекстноеМеню" id="110"/>
-					<ExtendedTooltip name="ДоступенExtendedTooltip" id="125"/>
+					<ExtendedTooltip name="ДоступенРасширеннаяПодсказка" id="164"/>
 					<Events>
 						<Event name="OnChange">ДоступенПриИзменении</Event>
 					</Events>
@@ -129,11 +191,11 @@
 					<Group>Vertical</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="ГруппаАвторИВидимостьПоУмолчаниюExtendedTooltip" id="126"/>
+					<ExtendedTooltip name="ГруппаАвторИВидимостьПоУмолчаниюРасширеннаяПодсказка" id="165"/>
 					<ChildItems>
 						<LabelDecoration name="Декорация" id="117">
 							<ContextMenu name="ДекорацияКонтекстноеМеню" id="118"/>
-							<ExtendedTooltip name="ДекорацияExtendedTooltip" id="127"/>
+							<ExtendedTooltip name="ДекорацияРасширеннаяПодсказка" id="166"/>
 						</LabelDecoration>
 						<InputField name="Автор" id="115">
 							<DataPath>Объект.Автор</DataPath>
@@ -141,14 +203,17 @@
 							<Width>35</Width>
 							<HorizontalStretch>false</HorizontalStretch>
 							<ContextMenu name="АвторКонтекстноеМеню" id="116"/>
-							<ExtendedTooltip name="АвторExtendedTooltip" id="128"/>
+							<ExtendedTooltip name="АвторРасширеннаяПодсказка" id="167"/>
 						</InputField>
 						<CheckBoxField name="ВидимостьПоУмолчанию" id="113">
 							<DataPath>Объект.ВидимостьПоУмолчанию</DataPath>
 							<TitleLocation>Right</TitleLocation>
 							<CheckBoxType>Auto</CheckBoxType>
 							<ContextMenu name="ВидимостьПоУмолчаниюКонтекстноеМеню" id="114"/>
-							<ExtendedTooltip name="ВидимостьПоУмолчаниюExtendedTooltip" id="129"/>
+							<ExtendedTooltip name="ВидимостьПоУмолчаниюРасширеннаяПодсказка" id="168"/>
+							<Events>
+								<Event name="OnChange">ВидимостьПоУмолчаниюПриИзменении</Event>
+							</Events>
 						</CheckBoxField>
 					</ChildItems>
 				</UsualGroup>
@@ -180,30 +245,30 @@
 			<AutoCommandBar name="ДеревоПодсистемКоманднаяПанель" id="82">
 				<Autofill>false</Autofill>
 			</AutoCommandBar>
-			<ExtendedTooltip name="ДеревоПодсистемExtendedTooltip" id="130"/>
-			<SearchStringAddition name="ДеревоПодсистемСтрокаПоиска" id="135">
+			<ExtendedTooltip name="ДеревоПодсистемРасширеннаяПодсказка" id="169"/>
+			<SearchStringAddition name="ДеревоПодсистемСтрокаПоиска" id="170">
 				<AdditionSource>
 					<Item>ДеревоПодсистем</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="ДеревоПодсистемСтрокаПоискаКонтекстноеМеню" id="136"/>
-				<ExtendedTooltip name="ДеревоПодсистемСтрокаПоискаРасширеннаяПодсказка" id="137"/>
+				<ContextMenu name="ДеревоПодсистемСтрокаПоискаКонтекстноеМеню" id="171"/>
+				<ExtendedTooltip name="ДеревоПодсистемСтрокаПоискаРасширеннаяПодсказка" id="172"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="ДеревоПодсистемСостояниеПросмотра" id="138">
+			<ViewStatusAddition name="ДеревоПодсистемСостояниеПросмотра" id="173">
 				<AdditionSource>
 					<Item>ДеревоПодсистем</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="ДеревоПодсистемСостояниеПросмотраКонтекстноеМеню" id="139"/>
-				<ExtendedTooltip name="ДеревоПодсистемСостояниеПросмотраРасширеннаяПодсказка" id="140"/>
+				<ContextMenu name="ДеревоПодсистемСостояниеПросмотраКонтекстноеМеню" id="174"/>
+				<ExtendedTooltip name="ДеревоПодсистемСостояниеПросмотраРасширеннаяПодсказка" id="175"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="ДеревоПодсистемУправлениеПоиском" id="141">
+			<SearchControlAddition name="ДеревоПодсистемУправлениеПоиском" id="176">
 				<AdditionSource>
 					<Item>ДеревоПодсистем</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="ДеревоПодсистемУправлениеПоискомКонтекстноеМеню" id="142"/>
-				<ExtendedTooltip name="ДеревоПодсистемУправлениеПоискомРасширеннаяПодсказка" id="143"/>
+				<ContextMenu name="ДеревоПодсистемУправлениеПоискомКонтекстноеМеню" id="177"/>
+				<ExtendedTooltip name="ДеревоПодсистемУправлениеПоискомРасширеннаяПодсказка" id="178"/>
 			</SearchControlAddition>
 			<ChildItems>
 				<ColumnGroup name="ГруппаКолонок" id="83">
@@ -220,7 +285,7 @@
 						</v8:item>
 					</ToolTip>
 					<Group>InCell</Group>
-					<ExtendedTooltip name="ГруппаКолонокExtendedTooltip" id="131"/>
+					<ExtendedTooltip name="ГруппаКолонокРасширеннаяПодсказка" id="179"/>
 					<ChildItems>
 						<CheckBoxField name="ДеревоПодсистемИспользование" id="104">
 							<DataPath>ДеревоПодсистем.Использование</DataPath>
@@ -229,7 +294,7 @@
 							<EditMode>EnterOnInput</EditMode>
 							<CheckBoxType>Auto</CheckBoxType>
 							<ContextMenu name="ДеревоПодсистемИспользованиеКонтекстноеМеню" id="105"/>
-							<ExtendedTooltip name="ДеревоПодсистемИспользованиеExtendedTooltip" id="132"/>
+							<ExtendedTooltip name="ДеревоПодсистемИспользованиеРасширеннаяПодсказка" id="180"/>
 							<Events>
 								<Event name="OnChange">ДеревоПодсистемИспользованиеПриИзменении</Event>
 							</Events>
@@ -240,7 +305,7 @@
 							<HorizontalAlign>Left</HorizontalAlign>
 							<EditMode>EnterOnInput</EditMode>
 							<ContextMenu name="ДеревоПодсистемПредставлениеКонтекстноеМеню" id="87"/>
-							<ExtendedTooltip name="ДеревоПодсистемПредставлениеExtendedTooltip" id="133"/>
+							<ExtendedTooltip name="ДеревоПодсистемПредставлениеРасширеннаяПодсказка" id="181"/>
 						</InputField>
 					</ChildItems>
 				</ColumnGroup>
@@ -256,13 +321,131 @@
 					<ChooseType>false</ChooseType>
 					<ChoiceListButton>false</ChoiceListButton>
 					<ContextMenu name="ДеревоПодсистемВажностьКонтекстноеМеню" id="97"/>
-					<ExtendedTooltip name="ДеревоПодсистемВажностьExtendedTooltip" id="134"/>
+					<ExtendedTooltip name="ДеревоПодсистемВажностьРасширеннаяПодсказка" id="182"/>
 					<Events>
 						<Event name="OnChange">ДеревоПодсистемВажностьПриИзменении</Event>
 					</Events>
 				</InputField>
 			</ChildItems>
 		</Table>
+		<UsualGroup name="ТехническаяИнформация" id="135">
+			<UserVisible>
+				<xr:Common>false</xr:Common>
+			</UserVisible>
+			<ReadOnly>true</ReadOnly>
+			<EnableContentChange>true</EnableContentChange>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Техническая информация</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Техническая информация</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Vertical</Group>
+			<ExtendedTooltip name="ТехническаяИнформацияРасширеннаяПодсказка" id="183"/>
+			<ChildItems>
+				<InputField name="Отчет" id="136">
+					<DataPath>Объект.Отчет</DataPath>
+					<OpenButton>true</OpenButton>
+					<ContextMenu name="ОтчетКонтекстноеМеню" id="137"/>
+					<ExtendedTooltip name="ОтчетРасширеннаяПодсказка" id="184"/>
+				</InputField>
+				<InputField name="ПредопределенныйВариант" id="120">
+					<DataPath>Объект.ПредопределенныйВариант</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<ContextMenu name="ПредопределенныйВариантКонтекстноеМеню" id="121"/>
+					<ExtendedTooltip name="ПредопределенныйВариантРасширеннаяПодсказка" id="185"/>
+				</InputField>
+				<Table name="Размещение" id="122">
+					<ReadOnly>true</ReadOnly>
+					<AutoInsertNewRow>true</AutoInsertNewRow>
+					<EnableStartDrag>true</EnableStartDrag>
+					<EnableDrag>true</EnableDrag>
+					<DataPath>Объект.Размещение</DataPath>
+					<CommandSet>
+						<ExcludedCommand>Copy</ExcludedCommand>
+						<ExcludedCommand>SortListAsc</ExcludedCommand>
+						<ExcludedCommand>MoveUp</ExcludedCommand>
+						<ExcludedCommand>CancelSearch</ExcludedCommand>
+						<ExcludedCommand>OutputList</ExcludedCommand>
+						<ExcludedCommand>SelectAll</ExcludedCommand>
+						<ExcludedCommand>SortListDesc</ExcludedCommand>
+						<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+						<ExcludedCommand>Delete</ExcludedCommand>
+						<ExcludedCommand>EndEdit</ExcludedCommand>
+						<ExcludedCommand>Add</ExcludedCommand>
+						<ExcludedCommand>Change</ExcludedCommand>
+						<ExcludedCommand>Find</ExcludedCommand>
+						<ExcludedCommand>MoveDown</ExcludedCommand>
+					</CommandSet>
+					<SearchStringLocation>None</SearchStringLocation>
+					<ViewStatusLocation>None</ViewStatusLocation>
+					<SearchControlLocation>None</SearchControlLocation>
+					<RowFilter xsi:nil="true"/>
+					<ContextMenu name="РазмещениеКонтекстноеМеню" id="123"/>
+					<AutoCommandBar name="РазмещениеКоманднаяПанель" id="124"/>
+					<ExtendedTooltip name="РазмещениеРасширеннаяПодсказка" id="186"/>
+					<SearchStringAddition name="РазмещениеСтрокаПоиска" id="187">
+						<AdditionSource>
+							<Item>Размещение</Item>
+							<Type>SearchStringRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="РазмещениеСтрокаПоискаКонтекстноеМеню" id="188"/>
+						<ExtendedTooltip name="РазмещениеСтрокаПоискаРасширеннаяПодсказка" id="189"/>
+					</SearchStringAddition>
+					<ViewStatusAddition name="РазмещениеСостояниеПросмотра" id="190">
+						<AdditionSource>
+							<Item>Размещение</Item>
+							<Type>ViewStatusRepresentation</Type>
+						</AdditionSource>
+						<ContextMenu name="РазмещениеСостояниеПросмотраКонтекстноеМеню" id="191"/>
+						<ExtendedTooltip name="РазмещениеСостояниеПросмотраРасширеннаяПодсказка" id="192"/>
+					</ViewStatusAddition>
+					<SearchControlAddition name="РазмещениеУправлениеПоиском" id="193">
+						<AdditionSource>
+							<Item>Размещение</Item>
+							<Type>SearchControl</Type>
+						</AdditionSource>
+						<ContextMenu name="РазмещениеУправлениеПоискомКонтекстноеМеню" id="194"/>
+						<ExtendedTooltip name="РазмещениеУправлениеПоискомРасширеннаяПодсказка" id="195"/>
+					</SearchControlAddition>
+					<ChildItems>
+						<CheckBoxField name="РазмещениеИспользование" id="127">
+							<DataPath>Объект.Размещение.Использование</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="РазмещениеИспользованиеКонтекстноеМеню" id="128"/>
+							<ExtendedTooltip name="РазмещениеИспользованиеРасширеннаяПодсказка" id="196"/>
+						</CheckBoxField>
+						<InputField name="РазмещениеРазделИлиГруппа" id="129">
+							<DataPath>Объект.Размещение.РазделИлиГруппа</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<ContextMenu name="РазмещениеРазделИлиГруппаКонтекстноеМеню" id="130"/>
+							<ExtendedTooltip name="РазмещениеРазделИлиГруппаРасширеннаяПодсказка" id="197"/>
+						</InputField>
+						<CheckBoxField name="РазмещениеВажный" id="131">
+							<DataPath>Объект.Размещение.Важный</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="РазмещениеВажныйКонтекстноеМеню" id="132"/>
+							<ExtendedTooltip name="РазмещениеВажныйРасширеннаяПодсказка" id="198"/>
+						</CheckBoxField>
+						<CheckBoxField name="РазмещениеСмТакже" id="133">
+							<DataPath>Объект.Размещение.СмТакже</DataPath>
+							<EditMode>EnterOnInput</EditMode>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="РазмещениеСмТакжеКонтекстноеМеню" id="134"/>
+							<ExtendedTooltip name="РазмещениеСмТакжеРасширеннаяПодсказка" id="199"/>
+						</CheckBoxField>
+					</ChildItems>
+				</Table>
+			</ChildItems>
+		</UsualGroup>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Объект" id="1">
@@ -501,27 +684,20 @@
 				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
-	</Attributes>
-	<Commands>
-		<Command name="ВосстановитьИсходныеНастройки" id="1">
+		<Attribute name="СвойстваПредопределенного" id="10">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Восстановить исходные настройки</v8:content>
+					<v8:content>Свойства предопределенного</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Восстановить исходные настройки варианта отчета, поставляемые конфигурацией.
-Восстанавливаются наименование, описание и настройки размещения.</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Picture>
-				<xr:Ref>StdPicture.Refresh</xr:Ref>
-				<xr:LoadTransparent>true</xr:LoadTransparent>
-			</Picture>
-			<Action>ВосстановитьИсходныеНастройки</Action>
-		</Command>
-	</Commands>
+			<Type/>
+			<View>
+				<xr:Common>false</xr:Common>
+			</View>
+			<Edit>
+				<xr:Common>false</xr:Common>
+			</Edit>
+		</Attribute>
+	</Attributes>
 </Form>

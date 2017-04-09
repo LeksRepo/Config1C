@@ -22,7 +22,7 @@
 				<Representation>PictureAndText</Representation>
 				<DefaultButton>true</DefaultButton>
 				<CommandName>Form.StandardCommand.Write</CommandName>
-				<ExtendedTooltip name="ФормаЗаписатьРасширеннаяПодсказка" id="67"/>
+				<ExtendedTooltip name="ФормаЗаписатьРасширеннаяПодсказка" id="78"/>
 			</Button>
 		</ChildItems>
 	</AutoCommandBar>
@@ -46,7 +46,7 @@
 					<v8:content>Страницы формы</v8:content>
 				</v8:item>
 			</ToolTip>
-			<ExtendedTooltip name="СтраницыФормыРасширеннаяПодсказка" id="68"/>
+			<ExtendedTooltip name="СтраницыФормыРасширеннаяПодсказка" id="79"/>
 			<ChildItems>
 				<Page name="СтраницаОбщие" id="48">
 					<Title>
@@ -61,32 +61,8 @@
 							<v8:content>Страница общие</v8:content>
 						</v8:item>
 					</ToolTip>
-					<ExtendedTooltip name="СтраницаОбщиеРасширеннаяПодсказка" id="69"/>
+					<ExtendedTooltip name="СтраницаОбщиеРасширеннаяПодсказка" id="80"/>
 					<ChildItems>
-						<CheckBoxField name="ПомещатьПисьмоВПапкуПисьмаОснования" id="62">
-							<DataPath>Запись.ПомещатьПисьмоВПапкуПисьмаОснования</DataPath>
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Помещать письмо в папку письма основания</v8:content>
-								</v8:item>
-							</Title>
-							<TitleLocation>Right</TitleLocation>
-							<CheckBoxType>Auto</CheckBoxType>
-							<ContextMenu name="ПомещатьПисьмоВПапкуПисьмаОснованияКонтекстноеМеню" id="63"/>
-							<ExtendedTooltip name="ПомещатьПисьмоВПапкуПисьмаОснованияРасширеннаяПодсказка" id="70"/>
-						</CheckBoxField>
-						<LabelDecoration name="ПодписьПомещатьПисьмоВПапкуПисьмаОснования" id="64">
-							<TextColor>style:ПоясняющийТекст</TextColor>
-							<Title formatted="false">
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Для таких писем правила обработки электронной почты не применяются.</v8:content>
-								</v8:item>
-							</Title>
-							<ContextMenu name="ПодписьПомещатьПисьмоВПапкуПисьмаОснованияКонтекстноеМеню" id="65"/>
-							<ExtendedTooltip name="ПодписьПомещатьПисьмоВПапкуПисьмаОснованияРасширеннаяПодсказка" id="71"/>
-						</LabelDecoration>
 						<UsualGroup name="ВидУчетнойЗаписи" id="66">
 							<Title>
 								<v8:item>
@@ -97,101 +73,255 @@
 							<Group>Vertical</Group>
 							<Representation>NormalSeparation</Representation>
 							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ВидУчетнойЗаписиРасширеннаяПодсказка" id="72"/>
+							<ExtendedTooltip name="ВидУчетнойЗаписиРасширеннаяПодсказка" id="81"/>
 							<ChildItems>
-								<CheckBoxField name="ПерсональнаяУчетнаяЗапись" id="49">
-									<DataPath>Запись.ПерсональнаяУчетнаяЗапись</DataPath>
-									<TitleLocation>Right</TitleLocation>
-									<CheckBoxType>Auto</CheckBoxType>
-									<ContextMenu name="ПерсональнаяУчетнаяЗаписьКонтекстноеМеню" id="50"/>
-									<ExtendedTooltip name="ПерсональнаяУчетнаяЗаписьРасширеннаяПодсказка" id="73"/>
-									<Events>
-										<Event name="OnChange">ПерсональнаяУчетнаяЗаписьПриИзменении</Event>
-									</Events>
-								</CheckBoxField>
-								<Pages name="СтраницыОтветственный" id="55">
+								<RadioButtonField name="ИспользоватьДляВстроенногоПочтовогоКлиента" id="69">
+									<DataPath>ИспользоватьВоВстроенномПочтовомКлиенте</DataPath>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Страницы ответственный</v8:content>
+											<v8:content>Использование для встроенного почтового клиента</v8:content>
+										</v8:item>
+									</Title>
+									<VerticalAlign>Top</VerticalAlign>
+									<RadioButtonType>Auto</RadioButtonType>
+									<ColumnsCount>1</ColumnsCount>
+									<ChoiceList>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Получать, сохранять и отправлять письма с этой учетной записи во встроенном почтовом клиенте</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:decimal">1</Value>
+											</xr:Value>
+										</xr:Item>
+										<xr:Item>
+											<xr:Presentation/>
+											<xr:CheckState>0</xr:CheckState>
+											<xr:Value xsi:type="FormChoiceListDesTimeValue">
+												<Presentation>
+													<v8:item>
+														<v8:lang>ru</v8:lang>
+														<v8:content>Не использовать (получение, хранение и отправка почты для этой учетной записи не выполняются)</v8:content>
+													</v8:item>
+												</Presentation>
+												<Value xsi:type="xs:decimal">0</Value>
+											</xr:Value>
+										</xr:Item>
+									</ChoiceList>
+									<ContextMenu name="ИспользоватьДляВстроенногоПочтовогоКлиентаКонтекстноеМеню" id="70"/>
+									<ExtendedTooltip name="ИспользоватьДляВстроенногоПочтовогоКлиентаРасширеннаяПодсказка" id="82"/>
+									<Events>
+										<Event name="OnChange">ИспользоватьВоВстроенномПочтовомКлиентеПриИзменении</Event>
+									</Events>
+								</RadioButtonField>
+								<UsualGroup name="ГруппаОсновныеНастройки" id="71">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа основные настройки</v8:content>
 										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Страницы ответственный</v8:content>
+											<v8:content>Группа основные настройки</v8:content>
 										</v8:item>
 									</ToolTip>
-									<PagesRepresentation>None</PagesRepresentation>
-									<ExtendedTooltip name="СтраницыОтветственныйРасширеннаяПодсказка" id="74"/>
+									<Group>Vertical</Group>
+									<Representation>NormalSeparation</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаОсновныеНастройкиРасширеннаяПодсказка" id="83"/>
 									<ChildItems>
-										<Page name="СтраницаКорпоративная" id="56">
+										<CheckBoxField name="ПерсональнаяУчетнаяЗапись" id="49">
+											<DataPath>Запись.ПерсональнаяУчетнаяЗапись</DataPath>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="ПерсональнаяУчетнаяЗаписьКонтекстноеМеню" id="50"/>
+											<ExtendedTooltip name="ПерсональнаяУчетнаяЗаписьРасширеннаяПодсказка" id="84"/>
+											<Events>
+												<Event name="OnChange">ПерсональнаяУчетнаяЗаписьПриИзменении</Event>
+											</Events>
+										</CheckBoxField>
+										<UsualGroup name="Ответственные" id="75">
 											<Title>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Страница корпоративная</v8:content>
+													<v8:content>Ответственные</v8:content>
+												</v8:item>
+											</Title>
+											<Group>Horizontal</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="ОтветственныеРасширеннаяПодсказка" id="85"/>
+											<ChildItems>
+												<LabelDecoration name="Отступ" id="76">
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content> </v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="ОтступКонтекстноеМеню" id="77"/>
+													<ExtendedTooltip name="ОтступРасширеннаяПодсказка" id="86"/>
+												</LabelDecoration>
+												<Pages name="СтраницыОтветственный" id="55">
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Страницы ответственный</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Страницы ответственный</v8:content>
+														</v8:item>
+													</ToolTip>
+													<PagesRepresentation>None</PagesRepresentation>
+													<ExtendedTooltip name="СтраницыОтветственныйРасширеннаяПодсказка" id="87"/>
+													<ChildItems>
+														<Page name="СтраницаКорпоративная" id="56">
+															<Title>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Страница корпоративная</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Страница корпоративная</v8:content>
+																</v8:item>
+															</ToolTip>
+															<ExtendedTooltip name="СтраницаКорпоративнаяРасширеннаяПодсказка" id="88"/>
+															<ChildItems>
+																<InputField name="ОтветственныйЗаОбработкуПисем" id="51">
+																	<DataPath>Запись.ОтветственныйЗаОбработкуПисем</DataPath>
+																	<Width>35</Width>
+																	<HorizontalStretch>false</HorizontalStretch>
+																	<OpenButton>false</OpenButton>
+																	<AutoMarkIncomplete>true</AutoMarkIncomplete>
+																	<ContextMenu name="ОтветственныйЗаОбработкуПисемКонтекстноеМеню" id="52"/>
+																	<ExtendedTooltip name="ОтветственныйЗаОбработкуПисемРасширеннаяПодсказка" id="89"/>
+																</InputField>
+																<InputField name="ОтветственныйЗаВедениеПапок" id="53">
+																	<DataPath>Запись.ОтветственныйЗаВедениеПапок</DataPath>
+																	<Width>35</Width>
+																	<HorizontalStretch>false</HorizontalStretch>
+																	<OpenButton>false</OpenButton>
+																	<AutoMarkIncomplete>true</AutoMarkIncomplete>
+																	<ContextMenu name="ОтветственныйЗаВедениеПапокКонтекстноеМеню" id="54"/>
+																	<ExtendedTooltip name="ОтветственныйЗаВедениеПапокРасширеннаяПодсказка" id="90"/>
+																</InputField>
+																<CheckBoxField name="УдалятьПисьмаПослеОтправки" id="60">
+																	<DataPath>Запись.УдалятьПисьмаПослеОтправки</DataPath>
+																	<TitleLocation>Right</TitleLocation>
+																	<CheckBoxType>Auto</CheckBoxType>
+																	<ContextMenu name="УдалятьПисьмаПослеОтправкиКонтекстноеМеню" id="61"/>
+																	<ExtendedTooltip name="УдалятьПисьмаПослеОтправкиРасширеннаяПодсказка" id="91"/>
+																</CheckBoxField>
+															</ChildItems>
+														</Page>
+														<Page name="СтраницаПерсональная" id="57">
+															<Title>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Страница персональная</v8:content>
+																</v8:item>
+															</Title>
+															<ToolTip>
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Страница персональная</v8:content>
+																</v8:item>
+															</ToolTip>
+															<ExtendedTooltip name="СтраницаПерсональнаяРасширеннаяПодсказка" id="92"/>
+															<ChildItems>
+																<InputField name="ПользовательУчетнойЗаписи" id="58">
+																	<DataPath>ПользовательУчетнойЗаписи</DataPath>
+																	<Width>35</Width>
+																	<HorizontalStretch>false</HorizontalStretch>
+																	<OpenButton>false</OpenButton>
+																	<AutoMarkIncomplete>true</AutoMarkIncomplete>
+																	<ContextMenu name="ПользовательУчетнойЗаписиКонтекстноеМеню" id="59"/>
+																	<ExtendedTooltip name="ПользовательУчетнойЗаписиРасширеннаяПодсказка" id="93"/>
+																</InputField>
+																<LabelDecoration name="Пояснение" id="73">
+																	<TextColor>style:ПоясняющийТекст</TextColor>
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Выполняет настройку почтовых папок и является ответственным за входящую корреспонденцию.</v8:content>
+																		</v8:item>
+																	</Title>
+																	<ContextMenu name="ПояснениеКонтекстноеМеню" id="74"/>
+																	<ExtendedTooltip name="ПояснениеРасширеннаяПодсказка" id="94"/>
+																</LabelDecoration>
+															</ChildItems>
+														</Page>
+													</ChildItems>
+												</Pages>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="ГруппаПредставлениеПомещать" id="72">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Группа представление помещать</v8:content>
 												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Страница корпоративная</v8:content>
+													<v8:content>Группа представление помещать</v8:content>
 												</v8:item>
 											</ToolTip>
-											<ExtendedTooltip name="СтраницаКорпоративнаяРасширеннаяПодсказка" id="75"/>
+											<Group>Vertical</Group>
+											<Representation>NormalSeparation</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="ГруппаПредставлениеПомещатьРасширеннаяПодсказка" id="95"/>
 											<ChildItems>
-												<CheckBoxField name="УдалятьПисьмаПослеОтправки" id="60">
-													<DataPath>Запись.УдалятьПисьмаПослеОтправки</DataPath>
+												<CheckBoxField name="ПомещатьПисьмоВПапкуПисьмаОснования" id="62">
+													<DataPath>Запись.ПомещатьПисьмоВПапкуПисьмаОснования</DataPath>
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Помещать письма в папку письма основания</v8:content>
+														</v8:item>
+													</Title>
 													<TitleLocation>Right</TitleLocation>
 													<CheckBoxType>Auto</CheckBoxType>
-													<ContextMenu name="УдалятьПисьмаПослеОтправкиКонтекстноеМеню" id="61"/>
-													<ExtendedTooltip name="УдалятьПисьмаПослеОтправкиРасширеннаяПодсказка" id="76"/>
+													<ContextMenu name="ПомещатьПисьмоВПапкуПисьмаОснованияКонтекстноеМеню" id="63"/>
+													<ExtendedTooltip name="ПомещатьПисьмоВПапкуПисьмаОснованияРасширеннаяПодсказка" id="96"/>
 												</CheckBoxField>
-												<InputField name="ОтветственныйЗаОбработкуПисем" id="51">
-													<DataPath>Запись.ОтветственныйЗаОбработкуПисем</DataPath>
-													<Width>35</Width>
-													<HorizontalStretch>false</HorizontalStretch>
-													<AutoMarkIncomplete>true</AutoMarkIncomplete>
-													<ContextMenu name="ОтветственныйЗаОбработкуПисемКонтекстноеМеню" id="52"/>
-													<ExtendedTooltip name="ОтветственныйЗаОбработкуПисемРасширеннаяПодсказка" id="77"/>
-												</InputField>
-												<InputField name="ОтветственныйЗаВедениеПапок" id="53">
-													<DataPath>Запись.ОтветственныйЗаВедениеПапок</DataPath>
-													<Width>35</Width>
-													<HorizontalStretch>false</HorizontalStretch>
-													<AutoMarkIncomplete>true</AutoMarkIncomplete>
-													<ContextMenu name="ОтветственныйЗаВедениеПапокКонтекстноеМеню" id="54"/>
-													<ExtendedTooltip name="ОтветственныйЗаВедениеПапокРасширеннаяПодсказка" id="78"/>
-												</InputField>
+												<LabelDecoration name="ПодписьПомещатьПисьмоВПапкуПисьмаОснования" id="64">
+													<TextColor>style:ПоясняющийТекст</TextColor>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Для таких писем правила обработки электронной почты не применяются.</v8:content>
+														</v8:item>
+													</Title>
+													<ContextMenu name="ПодписьПомещатьПисьмоВПапкуПисьмаОснованияКонтекстноеМеню" id="65"/>
+													<ExtendedTooltip name="ПодписьПомещатьПисьмоВПапкуПисьмаОснованияРасширеннаяПодсказка" id="97"/>
+												</LabelDecoration>
 											</ChildItems>
-										</Page>
-										<Page name="СтраницаПерсональная" id="57">
-											<Title>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Страница персональная</v8:content>
-												</v8:item>
-											</Title>
-											<ToolTip>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Страница персональная</v8:content>
-												</v8:item>
-											</ToolTip>
-											<ExtendedTooltip name="СтраницаПерсональнаяРасширеннаяПодсказка" id="79"/>
-											<ChildItems>
-												<InputField name="ПользовательУчетнойЗаписи" id="58">
-													<DataPath>ПользовательУчетнойЗаписи</DataPath>
-													<Width>35</Width>
-													<HorizontalStretch>false</HorizontalStretch>
-													<AutoMarkIncomplete>true</AutoMarkIncomplete>
-													<ContextMenu name="ПользовательУчетнойЗаписиКонтекстноеМеню" id="59"/>
-													<ExtendedTooltip name="ПользовательУчетнойЗаписиРасширеннаяПодсказка" id="80"/>
-												</InputField>
-											</ChildItems>
-										</Page>
+										</UsualGroup>
+										<CheckBoxField name="ВПредставлениеВключатьИмяПользователя" id="67">
+											<DataPath>Запись.ВПредставлениеВключатьИмяПользователя</DataPath>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="ВПредставлениеВключатьИмяПользователяКонтекстноеМеню" id="68"/>
+											<ExtendedTooltip name="ВПредставлениеВключатьИмяПользователяРасширеннаяПодсказка" id="98"/>
+										</CheckBoxField>
 									</ChildItems>
-								</Pages>
+								</UsualGroup>
 							</ChildItems>
 						</UsualGroup>
 					</ChildItems>
@@ -210,7 +340,7 @@
 						</v8:item>
 					</ToolTip>
 					<Group>Horizontal</Group>
-					<ExtendedTooltip name="СтраницаПодписиРасширеннаяПодсказка" id="81"/>
+					<ExtendedTooltip name="СтраницаПодписиРасширеннаяПодсказка" id="99"/>
 					<ChildItems>
 						<UsualGroup name="ГруппаДляНовыхСообщений" id="17">
 							<Title>
@@ -228,7 +358,7 @@
 							<Group>Vertical</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ГруппаДляНовыхСообщенийРасширеннаяПодсказка" id="82"/>
+							<ExtendedTooltip name="ГруппаДляНовыхСообщенийРасширеннаяПодсказка" id="100"/>
 							<ChildItems>
 								<UsualGroup name="ГруппаВключатьФорматНовые" id="7">
 									<Title>
@@ -246,20 +376,20 @@
 									<Group>Vertical</Group>
 									<Representation>None</Representation>
 									<ShowTitle>false</ShowTitle>
-									<ExtendedTooltip name="ГруппаВключатьФорматНовыеРасширеннаяПодсказка" id="83"/>
+									<ExtendedTooltip name="ГруппаВключатьФорматНовыеРасширеннаяПодсказка" id="101"/>
 									<ChildItems>
 										<CheckBoxField name="ВключатьПодписьДляНовыйСообщений" id="1">
 											<DataPath>Запись.ВключатьПодписьДляНовыхСообщений</DataPath>
 											<Title>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Включать подпись для новых сообщений</v8:content>
+													<v8:content>Включать подпись для новых писем</v8:content>
 												</v8:item>
 											</Title>
 											<TitleLocation>Right</TitleLocation>
 											<CheckBoxType>Auto</CheckBoxType>
 											<ContextMenu name="ВключатьПодписьДляНовыйСообщенийКонтекстноеМеню" id="2"/>
-											<ExtendedTooltip name="ВключатьПодписьДляНовыйСообщенийРасширеннаяПодсказка" id="84"/>
+											<ExtendedTooltip name="ВключатьПодписьДляНовыйСообщенийРасширеннаяПодсказка" id="102"/>
 											<Events>
 												<Event name="OnChange">ВключатьПодписьДляНовыйСообщенийПриИзменении</Event>
 											</Events>
@@ -275,7 +405,7 @@
 											<Width>15</Width>
 											<HorizontalStretch>false</HorizontalStretch>
 											<ContextMenu name="ФорматПодписиДляНовыхСообщенийКонтекстноеМеню" id="4"/>
-											<ExtendedTooltip name="ФорматПодписиДляНовыхСообщенийРасширеннаяПодсказка" id="85"/>
+											<ExtendedTooltip name="ФорматПодписиДляНовыхСообщенийРасширеннаяПодсказка" id="103"/>
 											<Events>
 												<Event name="OnChange">ФорматПодписиДляНовыхСообщенийПриИзменении</Event>
 											</Events>
@@ -297,7 +427,7 @@
 									</ToolTip>
 									<Width>35</Width>
 									<PagesRepresentation>None</PagesRepresentation>
-									<ExtendedTooltip name="СтраницыПодписьДляНовыхСообщенийРасширеннаяПодсказка" id="86"/>
+									<ExtendedTooltip name="СтраницыПодписьДляНовыхСообщенийРасширеннаяПодсказка" id="104"/>
 									<ChildItems>
 										<Page name="СтраницаНовоеСообщениеПростойТекст" id="9">
 											<Title>
@@ -312,14 +442,14 @@
 													<v8:content>Страница новое сообщение простой текст</v8:content>
 												</v8:item>
 											</ToolTip>
-											<ExtendedTooltip name="СтраницаНовоеСообщениеПростойТекстРасширеннаяПодсказка" id="87"/>
+											<ExtendedTooltip name="СтраницаНовоеСообщениеПростойТекстРасширеннаяПодсказка" id="105"/>
 											<ChildItems>
 												<InputField name="ПодписьДляНовыхСообщенийПростойТекст" id="5">
 													<DataPath>Запись.ПодписьДляНовыхСообщенийПростойТекст</DataPath>
 													<TitleLocation>None</TitleLocation>
 													<MultiLine>true</MultiLine>
 													<ContextMenu name="ПодписьДляНовыхСообщенийПростойТекстКонтекстноеМеню" id="6"/>
-													<ExtendedTooltip name="ПодписьДляНовыхСообщенийПростойТекстРасширеннаяПодсказка" id="88"/>
+													<ExtendedTooltip name="ПодписьДляНовыхСообщенийПростойТекстРасширеннаяПодсказка" id="106"/>
 												</InputField>
 											</ChildItems>
 										</Page>
@@ -336,7 +466,7 @@
 													<v8:content>Страница новое сообщение форматированный текст</v8:content>
 												</v8:item>
 											</ToolTip>
-											<ExtendedTooltip name="СтраницаНовоеСообщениеФорматированныйТекстРасширеннаяПодсказка" id="89"/>
+											<ExtendedTooltip name="СтраницаНовоеСообщениеФорматированныйТекстРасширеннаяПодсказка" id="107"/>
 											<ChildItems>
 												<CommandBar name="ГруппаКомандыФорматированныйДокумент" id="15">
 													<Title>
@@ -352,14 +482,14 @@
 														</v8:item>
 													</ToolTip>
 													<CommandSource>Item.НовоеСообщениеФорматированныйДокумент</CommandSource>
-													<ExtendedTooltip name="ГруппаКомандыФорматированныйДокументРасширеннаяПодсказка" id="90"/>
+													<ExtendedTooltip name="ГруппаКомандыФорматированныйДокументРасширеннаяПодсказка" id="108"/>
 												</CommandBar>
 												<FormattedDocumentField name="НовоеСообщениеФорматированныйДокумент" id="11">
 													<DataPath>НовоеСообщениеФорматированныйДокумент</DataPath>
 													<TitleLocation>None</TitleLocation>
 													<Width>10</Width>
 													<ContextMenu name="НовоеСообщениеФорматированныйДокументКонтекстноеМеню" id="12"/>
-													<ExtendedTooltip name="НовоеСообщениеФорматированныйДокументРасширеннаяПодсказка" id="91"/>
+													<ExtendedTooltip name="НовоеСообщениеФорматированныйДокументРасширеннаяПодсказка" id="109"/>
 												</FormattedDocumentField>
 											</ChildItems>
 										</Page>
@@ -384,7 +514,7 @@
 							<Group>Vertical</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ГруппаПриОтветеПересылкеРасширеннаяПодсказка" id="92"/>
+							<ExtendedTooltip name="ГруппаПриОтветеПересылкеРасширеннаяПодсказка" id="110"/>
 							<ChildItems>
 								<UsualGroup name="ГруппаВключатьФорматОтветПересылка" id="19">
 									<Title>
@@ -402,7 +532,7 @@
 									<Group>Vertical</Group>
 									<Representation>None</Representation>
 									<ShowTitle>false</ShowTitle>
-									<ExtendedTooltip name="ГруппаВключатьФорматОтветПересылкаРасширеннаяПодсказка" id="93"/>
+									<ExtendedTooltip name="ГруппаВключатьФорматОтветПересылкаРасширеннаяПодсказка" id="111"/>
 									<ChildItems>
 										<CheckBoxField name="ВключатьПодписьПриОтветеПересылке" id="20">
 											<DataPath>Запись.ВключатьПодписьПриОтветеПересылке</DataPath>
@@ -415,7 +545,7 @@
 											<TitleLocation>Right</TitleLocation>
 											<CheckBoxType>Auto</CheckBoxType>
 											<ContextMenu name="ВключатьПодписьПриОтветеПересылкеКонтекстноеМеню" id="21"/>
-											<ExtendedTooltip name="ВключатьПодписьПриОтветеПересылкеРасширеннаяПодсказка" id="94"/>
+											<ExtendedTooltip name="ВключатьПодписьПриОтветеПересылкеРасширеннаяПодсказка" id="112"/>
 											<Events>
 												<Event name="OnChange">ВключатьПодписьПриОтветеПересылкеПриИзменении</Event>
 											</Events>
@@ -431,7 +561,7 @@
 											<Width>15</Width>
 											<HorizontalStretch>false</HorizontalStretch>
 											<ContextMenu name="ФорматПодписиПриОтветеПересылкеКонтекстноеМеню" id="23"/>
-											<ExtendedTooltip name="ФорматПодписиПриОтветеПересылкеРасширеннаяПодсказка" id="95"/>
+											<ExtendedTooltip name="ФорматПодписиПриОтветеПересылкеРасширеннаяПодсказка" id="113"/>
 											<Events>
 												<Event name="OnChange">ФорматПодписиПриОтветеПересылкеПриИзменении</Event>
 											</Events>
@@ -452,7 +582,7 @@
 										</v8:item>
 									</ToolTip>
 									<PagesRepresentation>None</PagesRepresentation>
-									<ExtendedTooltip name="СтраницыПодписьПриОтветеПересылкеРасширеннаяПодсказка" id="96"/>
+									<ExtendedTooltip name="СтраницыПодписьПриОтветеПересылкеРасширеннаяПодсказка" id="114"/>
 									<ChildItems>
 										<Page name="СтраницаПриОтветеПересылкеПростойТекст" id="25">
 											<Title>
@@ -467,14 +597,14 @@
 													<v8:content>Страница при ответе пересылке простой текст</v8:content>
 												</v8:item>
 											</ToolTip>
-											<ExtendedTooltip name="СтраницаПриОтветеПересылкеПростойТекстРасширеннаяПодсказка" id="97"/>
+											<ExtendedTooltip name="СтраницаПриОтветеПересылкеПростойТекстРасширеннаяПодсказка" id="115"/>
 											<ChildItems>
 												<InputField name="ПодписьПриОтветеПересылкеПростойТекст" id="27">
 													<DataPath>Запись.ПодписьПриОтветеПересылкеПростойТекст</DataPath>
 													<TitleLocation>None</TitleLocation>
 													<MultiLine>true</MultiLine>
 													<ContextMenu name="ПодписьПриОтветеПересылкеПростойТекстКонтекстноеМеню" id="28"/>
-													<ExtendedTooltip name="ПодписьПриОтветеПересылкеПростойТекстРасширеннаяПодсказка" id="98"/>
+													<ExtendedTooltip name="ПодписьПриОтветеПересылкеПростойТекстРасширеннаяПодсказка" id="116"/>
 												</InputField>
 											</ChildItems>
 										</Page>
@@ -491,7 +621,7 @@
 													<v8:content>Страница при ответе пересылке простой текст</v8:content>
 												</v8:item>
 											</ToolTip>
-											<ExtendedTooltip name="СтраницаПриОтветеПересылкеФорматированныйДокументРасширеннаяПодсказка" id="99"/>
+											<ExtendedTooltip name="СтраницаПриОтветеПересылкеФорматированныйДокументРасширеннаяПодсказка" id="117"/>
 											<ChildItems>
 												<CommandBar name="ГруппаКомандыПриОтветеПересылкеФорматированныйДокумент" id="31">
 													<Title>
@@ -507,14 +637,14 @@
 														</v8:item>
 													</ToolTip>
 													<CommandSource>Item.ПриОтветеПересылкеФорматированныйДокумент</CommandSource>
-													<ExtendedTooltip name="ГруппаКомандыПриОтветеПересылкеФорматированныйДокументРасширеннаяПодсказка" id="100"/>
+													<ExtendedTooltip name="ГруппаКомандыПриОтветеПересылкеФорматированныйДокументРасширеннаяПодсказка" id="118"/>
 												</CommandBar>
 												<FormattedDocumentField name="ПриОтветеПересылкеФорматированныйДокумент" id="29">
 													<DataPath>ПриОтветеПересылкеФорматированныйДокумент</DataPath>
 													<TitleLocation>None</TitleLocation>
 													<Width>10</Width>
 													<ContextMenu name="ПриОтветеПересылкеФорматированныйДокументКонтекстноеМеню" id="30"/>
-													<ExtendedTooltip name="ПриОтветеПересылкеФорматированныйДокументРасширеннаяПодсказка" id="101"/>
+													<ExtendedTooltip name="ПриОтветеПересылкеФорматированныйДокументРасширеннаяПодсказка" id="119"/>
 												</FormattedDocumentField>
 											</ChildItems>
 										</Page>
@@ -565,6 +695,23 @@
 			</Type>
 			<SavedData>true</SavedData>
 			<FillCheck>ShowError</FillCheck>
+		</Attribute>
+		<Attribute name="ИспользоватьВоВстроенномПочтовомКлиенте" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать во встроенном почтовом клиенте</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>3</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+			<SavedData>true</SavedData>
 		</Attribute>
 	</Attributes>
 </Form>

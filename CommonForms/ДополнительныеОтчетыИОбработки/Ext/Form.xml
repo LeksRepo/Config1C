@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
-	<Width>80</Width>
+	<Width>70</Width>
 	<AutoTitle>false</AutoTitle>
 	<CommandBarLocation>None</CommandBarLocation>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
@@ -14,6 +14,7 @@
 	<Events>
 		<Event name="ChoiceProcessing">ОбработкаВыбора</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="OnClose">ПриЗакрытии</Event>
 	</Events>
 	<ChildItems>
 		<Pages name="Страницы" id="37">
@@ -47,7 +48,7 @@
 					</ToolTip>
 					<ExtendedTooltip name="СтраницаОткрытьОбработкуРасширеннаяПодсказка" id="55"/>
 					<ChildItems>
-						<Table name="Обработки" id="15">
+						<Table name="ТаблицаКоманд" id="15">
 							<Representation>List</Representation>
 							<CommandBarLocation>None</CommandBarLocation>
 							<ReadOnly>true</ReadOnly>
@@ -58,7 +59,7 @@
 							<AutoInsertNewRow>true</AutoInsertNewRow>
 							<EnableStartDrag>true</EnableStartDrag>
 							<EnableDrag>true</EnableDrag>
-							<DataPath>Обработки</DataPath>
+							<DataPath>ТаблицаКоманд</DataPath>
 							<CommandSet>
 								<ExcludedCommand>Copy</ExcludedCommand>
 								<ExcludedCommand>SortListAsc</ExcludedCommand>
@@ -74,51 +75,45 @@
 							<ViewStatusLocation>None</ViewStatusLocation>
 							<SearchControlLocation>None</SearchControlLocation>
 							<RowFilter xsi:nil="true"/>
-							<ContextMenu name="ОбработкиКонтекстноеМеню" id="16"/>
-							<AutoCommandBar name="ОбработкиКоманднаяПанель" id="17"/>
-							<ExtendedTooltip name="ОбработкиРасширеннаяПодсказка" id="56"/>
-							<SearchStringAddition name="ОбработкиСтрокаПоиска" id="57">
+							<ContextMenu name="ТаблицаКомандКонтекстноеМеню" id="16"/>
+							<AutoCommandBar name="ТаблицаКомандКоманднаяПанель" id="17"/>
+							<ExtendedTooltip name="ТаблицаКомандРасширеннаяПодсказка" id="56"/>
+							<SearchStringAddition name="ТаблицаКомандСтрокаПоиска" id="57">
 								<AdditionSource>
-									<Item>Обработки</Item>
+									<Item>ТаблицаКоманд</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="ОбработкиСтрокаПоискаКонтекстноеМеню" id="58"/>
-								<ExtendedTooltip name="ОбработкиСтрокаПоискаРасширеннаяПодсказка" id="59"/>
+								<ContextMenu name="ТаблицаКомандСтрокаПоискаКонтекстноеМеню" id="58"/>
+								<ExtendedTooltip name="ТаблицаКомандСтрокаПоискаРасширеннаяПодсказка" id="59"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="ОбработкиСостояниеПросмотра" id="60">
+							<ViewStatusAddition name="ТаблицаКомандСостояниеПросмотра" id="60">
 								<AdditionSource>
-									<Item>Обработки</Item>
+									<Item>ТаблицаКоманд</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="ОбработкиСостояниеПросмотраКонтекстноеМеню" id="61"/>
-								<ExtendedTooltip name="ОбработкиСостояниеПросмотраРасширеннаяПодсказка" id="62"/>
+								<ContextMenu name="ТаблицаКомандСостояниеПросмотраКонтекстноеМеню" id="61"/>
+								<ExtendedTooltip name="ТаблицаКомандСостояниеПросмотраРасширеннаяПодсказка" id="62"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="ОбработкиУправлениеПоиском" id="63">
+							<SearchControlAddition name="ТаблицаКомандУправлениеПоиском" id="63">
 								<AdditionSource>
-									<Item>Обработки</Item>
+									<Item>ТаблицаКоманд</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="ОбработкиУправлениеПоискомКонтекстноеМеню" id="64"/>
-								<ExtendedTooltip name="ОбработкиУправлениеПоискомРасширеннаяПодсказка" id="65"/>
+								<ContextMenu name="ТаблицаКомандУправлениеПоискомКонтекстноеМеню" id="64"/>
+								<ExtendedTooltip name="ТаблицаКомандУправлениеПоискомРасширеннаяПодсказка" id="65"/>
 							</SearchControlAddition>
 							<Events>
-								<Event name="Selection">ОбработкиВыбор</Event>
+								<Event name="Selection">ТаблицаКомандВыбор</Event>
 							</Events>
 							<ChildItems>
 								<InputField name="ОбработкиПредставление" id="26">
-									<DataPath>Обработки.Представление</DataPath>
+									<DataPath>ТаблицаКоманд.Представление</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="ОбработкиПредставлениеКонтекстноеМеню" id="27"/>
 									<ExtendedTooltip name="ОбработкиПредставлениеРасширеннаяПодсказка" id="66"/>
 								</InputField>
 							</ChildItems>
 						</Table>
-						<Button name="НастроитьСписокБыстрогоДоступа" id="35">
-							<Type>Hyperlink</Type>
-							<SkipOnInput>false</SkipOnInput>
-							<CommandName>Form.Command.НастроитьСписокБыстрогоДоступа</CommandName>
-							<ExtendedTooltip name="НастроитьСписокБыстрогоДоступаРасширеннаяПодсказка" id="67"/>
-						</Button>
 					</ChildItems>
 				</Page>
 				<Page name="СтраницаВыполненияОбработки" id="39">
@@ -135,7 +130,7 @@
 						</v8:item>
 					</ToolTip>
 					<Group>Horizontal</Group>
-					<ExtendedTooltip name="СтраницаВыполненияОбработкиРасширеннаяПодсказка" id="68"/>
+					<ExtendedTooltip name="СтраницаВыполненияОбработкиРасширеннаяПодсказка" id="67"/>
 					<ChildItems>
 						<PictureDecoration name="ДекорацияДлительнаяОперация" id="44">
 							<Width>7</Width>
@@ -154,7 +149,7 @@
 								<xr:LoadTransparent>false</xr:LoadTransparent>
 							</Picture>
 							<ContextMenu name="ДекорацияДлительнаяОперацияКонтекстноеМеню" id="45"/>
-							<ExtendedTooltip name="ДекорацияДлительнаяОперацияРасширеннаяПодсказка" id="69"/>
+							<ExtendedTooltip name="ДекорацияДлительнаяОперацияРасширеннаяПодсказка" id="68"/>
 						</PictureDecoration>
 						<LabelDecoration name="ПоясняющаяДекорация" id="46">
 							<Height>3</Height>
@@ -163,7 +158,7 @@
 							<SkipOnInput>true</SkipOnInput>
 							<VerticalAlign>Center</VerticalAlign>
 							<ContextMenu name="ПоясняющаяДекорацияКонтекстноеМеню" id="47"/>
-							<ExtendedTooltip name="ПоясняющаяДекорацияРасширеннаяПодсказка" id="70"/>
+							<ExtendedTooltip name="ПоясняющаяДекорацияРасширеннаяПодсказка" id="69"/>
 						</LabelDecoration>
 					</ChildItems>
 				</Page>
@@ -183,7 +178,7 @@
 				</v8:item>
 			</ToolTip>
 			<PagesRepresentation>None</PagesRepresentation>
-			<ExtendedTooltip name="СтраницыКомандныеПанелиРасширеннаяПодсказка" id="71"/>
+			<ExtendedTooltip name="СтраницыКомандныеПанелиРасширеннаяПодсказка" id="70"/>
 			<ChildItems>
 				<Page name="СтраницаКоманднаяПанельСтраницыОткрытьОбработку" id="49">
 					<Title>
@@ -198,8 +193,15 @@
 							<v8:content>Страница командная панель страницы открыть обработку</v8:content>
 						</v8:item>
 					</ToolTip>
-					<ExtendedTooltip name="СтраницаКоманднаяПанельСтраницыОткрытьОбработкуРасширеннаяПодсказка" id="72"/>
+					<Group>Horizontal</Group>
+					<ExtendedTooltip name="СтраницаКоманднаяПанельСтраницыОткрытьОбработкуРасширеннаяПодсказка" id="71"/>
 					<ChildItems>
+						<Button name="НастроитьСписок" id="35">
+							<Type>Hyperlink</Type>
+							<SkipOnInput>false</SkipOnInput>
+							<CommandName>Form.Command.НастроитьСписок</CommandName>
+							<ExtendedTooltip name="НастроитьСписокРасширеннаяПодсказка" id="72"/>
+						</Button>
 						<CommandBar name="КоманднаяПанельСтраницыОткрытьОбработку" id="36">
 							<Title>
 								<v8:item>
@@ -279,11 +281,11 @@
 		</Pages>
 	</ChildItems>
 	<Attributes>
-		<Attribute name="Обработки" id="1">
+		<Attribute name="ТаблицаКоманд" id="1">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Обработки</v8:content>
+					<v8:content>Команды</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -299,17 +301,6 @@
 					</Title>
 					<Type>
 						<v8:Type>cfg:CatalogRef.ДополнительныеОтчетыИОбработки</v8:Type>
-					</Type>
-				</Column>
-				<Column name="БезопасныйРежим" id="2">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Безопасный режим</v8:content>
-						</v8:item>
-					</Title>
-					<Type>
-						<v8:Type>xs:boolean</v8:Type>
 					</Type>
 				</Column>
 				<Column name="Представление" id="3">
@@ -350,11 +341,7 @@
 						</v8:item>
 					</Title>
 					<Type>
-						<v8:Type>xs:string</v8:Type>
-						<v8:StringQualifiers>
-							<v8:Length>0</v8:Length>
-							<v8:AllowedLength>Variable</v8:AllowedLength>
-						</v8:StringQualifiers>
+						<v8:Type>cfg:EnumRef.СпособыВызоваДополнительныхОбработок</v8:Type>
 					</Type>
 				</Column>
 				<Column name="ПоказыватьОповещение" id="6">
@@ -407,21 +394,6 @@
 				<v8:Type>cfg:EnumRef.ВидыДополнительныхОтчетовИОбработок</v8:Type>
 			</Type>
 		</Attribute>
-		<Attribute name="ВидОбработокСтрока" id="10">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Вид обработок строка</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:string</v8:Type>
-				<v8:StringQualifiers>
-					<v8:Length>0</v8:Length>
-					<v8:AllowedLength>Variable</v8:AllowedLength>
-				</v8:StringQualifiers>
-			</Type>
-		</Attribute>
 		<Attribute name="ЭтоГлобальныеОбработки" id="4">
 			<Title>
 				<v8:item>
@@ -444,30 +416,9 @@
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
-		<Attribute name="Раздел" id="7">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Раздел</v8:content>
-				</v8:item>
-			</Title>
+		<Attribute name="СсылкаРодителя" id="8">
 			<Type>
 				<v8:Type>cfg:CatalogRef.ИдентификаторыОбъектовМетаданных</v8:Type>
-			</Type>
-		</Attribute>
-		<Attribute name="ПолноеИмяОбъектаМетаданных" id="8">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Полное имя объекта метаданных</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:string</v8:Type>
-				<v8:StringQualifiers>
-					<v8:Length>0</v8:Length>
-					<v8:AllowedLength>Variable</v8:AllowedLength>
-				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
 		<Attribute name="ЭтоФормаОбъекта" id="5">
@@ -522,6 +473,54 @@
 				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
+		<Attribute name="ЭтоОтчеты" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Это отчеты</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СсылкаРаздела" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Ссылка раздела</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.ИдентификаторыОбъектовМетаданных</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИмяФормыВладельца" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Имя формы владельца</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ФоновоеЗаданиеОтменитьПриЗакрытии" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Фоновое задание отменить при закрытии</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
 	</Attributes>
 	<Commands>
 		<Command name="ВыполнитьОбработку" id="4">
@@ -544,20 +543,24 @@
 			<Action>ВыполнитьОбработку</Action>
 			<Representation>TextPicture</Representation>
 		</Command>
-		<Command name="НастроитьСписокБыстрогоДоступа" id="1">
+		<Command name="НастроитьСписок" id="1">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Настроить список моих отчетов и обработок</v8:content>
+					<v8:content>Настроить список</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Настроить список быстрого доступа</v8:content>
+					<v8:content>Настроить список моих отчетов или обработок</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Action>Настроить</Action>
+			<Picture>
+				<xr:Ref>StdPicture.ListSettings</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>НастроитьСписок</Action>
 		</Command>
 		<Command name="ОтменитьВыполнениеОбработки" id="2">
 			<Title>

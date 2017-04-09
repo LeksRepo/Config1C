@@ -4,14 +4,88 @@
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
 	<ChildItems>
+		<Pages name="СтраницыДеятельностьПрекращена" id="21">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Страницы деятельность прекращена</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Страницы деятельность прекращена</v8:content>
+				</v8:item>
+			</ToolTip>
+			<PagesRepresentation>None</PagesRepresentation>
+			<ExtendedTooltip name="СтраницыДеятельностьПрекращенаРасширеннаяПодсказка" id="24"/>
+			<ChildItems>
+				<Page name="СтраницаНадписьДеятельностьПрекращена" id="22">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница надпись деятельность прекращена</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница надпись деятельность прекращена</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="СтраницаНадписьДеятельностьПрекращенаРасширеннаяПодсказка" id="25"/>
+					<ChildItems>
+						<LabelDecoration name="НадписьДеятельностьБанкаПрекращена" id="19">
+							<TextColor>style:ПросроченныеДанныеЦвет</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Деятельность банка прекращена</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="НадписьДеятельностьБанкаПрекращенаКонтекстноеМеню" id="20"/>
+							<ExtendedTooltip name="НадписьДеятельностьБанкаПрекращенаРасширеннаяПодсказка" id="26"/>
+						</LabelDecoration>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаФлажокДеятельностьПрекращена" id="23">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница флажок деятельность прекращена</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница флажок деятельность прекращена</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="СтраницаФлажокДеятельностьПрекращенаРасширеннаяПодсказка" id="27"/>
+					<ChildItems>
+						<CheckBoxField name="ДеятельностьПрекращена" id="17">
+							<DataPath>Объект.ДеятельностьПрекращена</DataPath>
+							<TitleLocation>Right</TitleLocation>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ДеятельностьПрекращенаКонтекстноеМеню" id="18"/>
+							<ExtendedTooltip name="ДеятельностьПрекращенаРасширеннаяПодсказка" id="28"/>
+						</CheckBoxField>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
 		<InputField name="Наименование" id="3">
 			<DataPath>Объект.Description</DataPath>
 			<EditMode>EnterOnInput</EditMode>
 			<Width>42</Width>
 			<HorizontalStretch>false</HorizontalStretch>
 			<ContextMenu name="НаименованиеКонтекстноеМеню" id="4"/>
-			<ExtendedTooltip name="НаименованиеExtendedTooltip" id="17"/>
+			<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="29"/>
 		</InputField>
 		<UsualGroup name="ГруппаКоррСчетБИК" id="15">
 			<ToolTip>
@@ -23,7 +97,7 @@
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаКоррСчетБИКExtendedTooltip" id="18"/>
+			<ExtendedTooltip name="ГруппаКоррСчетБИКРасширеннаяПодсказка" id="30"/>
 			<ChildItems>
 				<InputField name="КоррСчет" id="7">
 					<DataPath>Объект.КоррСчет</DataPath>
@@ -31,7 +105,7 @@
 					<Width>24</Width>
 					<HorizontalStretch>false</HorizontalStretch>
 					<ContextMenu name="КоррСчетКонтекстноеМеню" id="8"/>
-					<ExtendedTooltip name="КоррСчетExtendedTooltip" id="19"/>
+					<ExtendedTooltip name="КоррСчетРасширеннаяПодсказка" id="31"/>
 				</InputField>
 				<InputField name="Код" id="1">
 					<DataPath>Объект.Code</DataPath>
@@ -39,7 +113,7 @@
 					<Width>12</Width>
 					<HorizontalStretch>false</HorizontalStretch>
 					<ContextMenu name="КодКонтекстноеМеню" id="2"/>
-					<ExtendedTooltip name="КодExtendedTooltip" id="20"/>
+					<ExtendedTooltip name="КодРасширеннаяПодсказка" id="32"/>
 				</InputField>
 			</ChildItems>
 		</UsualGroup>
@@ -53,7 +127,7 @@
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаГородExtendedTooltip" id="21"/>
+			<ExtendedTooltip name="ГруппаГородРасширеннаяПодсказка" id="33"/>
 			<ChildItems>
 				<InputField name="Город" id="9">
 					<DataPath>Объект.Город</DataPath>
@@ -61,7 +135,7 @@
 					<Width>15</Width>
 					<HorizontalStretch>false</HorizontalStretch>
 					<ContextMenu name="ГородКонтекстноеМеню" id="10"/>
-					<ExtendedTooltip name="ГородExtendedTooltip" id="22"/>
+					<ExtendedTooltip name="ГородРасширеннаяПодсказка" id="34"/>
 				</InputField>
 				<InputField name="Родитель" id="5">
 					<DataPath>Объект.Parent</DataPath>
@@ -69,7 +143,7 @@
 					<Width>15</Width>
 					<HorizontalStretch>false</HorizontalStretch>
 					<ContextMenu name="РодительКонтекстноеМеню" id="6"/>
-					<ExtendedTooltip name="РодительExtendedTooltip" id="23"/>
+					<ExtendedTooltip name="РодительРасширеннаяПодсказка" id="35"/>
 				</InputField>
 			</ChildItems>
 		</UsualGroup>
@@ -79,7 +153,7 @@
 			<Width>42</Width>
 			<HorizontalStretch>false</HorizontalStretch>
 			<ContextMenu name="АдресКонтекстноеМеню" id="12"/>
-			<ExtendedTooltip name="АдресExtendedTooltip" id="24"/>
+			<ExtendedTooltip name="АдресРасширеннаяПодсказка" id="36"/>
 		</InputField>
 		<InputField name="Телефоны" id="13">
 			<DataPath>Объект.Телефоны</DataPath>
@@ -87,7 +161,7 @@
 			<Width>42</Width>
 			<HorizontalStretch>false</HorizontalStretch>
 			<ContextMenu name="ТелефоныКонтекстноеМеню" id="14"/>
-			<ExtendedTooltip name="ТелефоныExtendedTooltip" id="25"/>
+			<ExtendedTooltip name="ТелефоныРасширеннаяПодсказка" id="37"/>
 		</InputField>
 	</ChildItems>
 	<Attributes>

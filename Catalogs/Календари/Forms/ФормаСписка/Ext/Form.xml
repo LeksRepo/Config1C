@@ -1,18 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
 	<VerticalScroll>useIfNecessary</VerticalScroll>
-	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
-		<ChildItems>
-			<Button name="ФормаСоздатьСтандартныйКалендарь" id="10">
-				<Type>CommandBarButton</Type>
-				<CommandName>Form.Command.СоздатьПоШаблону</CommandName>
-				<ExtendedTooltip name="ФормаСоздатьСтандартныйКалендарьExtendedTooltip" id="11"/>
-			</Button>
-		</ChildItems>
-	</AutoCommandBar>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
-		<Event name="ChoiceProcessing">ОбработкаВыбора</Event>
-		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
@@ -45,45 +35,58 @@
 			<AutoCommandBar name="СписокКоманднаяПанель" id="3">
 				<Autofill>false</Autofill>
 			</AutoCommandBar>
-			<ExtendedTooltip name="СписокExtendedTooltip" id="12"/>
-			<SearchStringAddition name="СписокСтрокаПоиска" id="15">
+			<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="21"/>
+			<SearchStringAddition name="СписокСтрокаПоиска" id="22">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="16"/>
-				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="17"/>
+				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="23"/>
+				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="24"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокСостояниеПросмотра" id="18">
+			<ViewStatusAddition name="СписокСостояниеПросмотра" id="25">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="19"/>
-				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="20"/>
+				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="26"/>
+				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="27"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокУправлениеПоиском" id="21">
+			<SearchControlAddition name="СписокУправлениеПоиском" id="28">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="22"/>
-				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="23"/>
+				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="29"/>
+				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="30"/>
 			</SearchControlAddition>
-			<Events>
-				<Event name="BeforeAddRow">СписокПередНачаломДобавления</Event>
-			</Events>
 			<ChildItems>
 				<LabelField name="Наименование" id="4">
 					<DataPath>Список.Description</DataPath>
 					<DefaultItem>true</DefaultItem>
 					<ContextMenu name="НаименованиеКонтекстноеМеню" id="5"/>
-					<ExtendedTooltip name="НаименованиеExtendedTooltip" id="13"/>
+					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="31"/>
 				</LabelField>
-				<LabelField name="ВидКалендаря" id="6">
-					<DataPath>Список.ВидКалендаря</DataPath>
-					<ContextMenu name="ВидКалендаряКонтекстноеМеню" id="7"/>
-					<ExtendedTooltip name="ВидКалендаряExtendedTooltip" id="14"/>
+				<LabelField name="ПроизводственныйКалендарь" id="17">
+					<DataPath>Список.ПроизводственныйКалендарь</DataPath>
+					<ContextMenu name="ПроизводственныйКалендарьКонтекстноеМеню" id="18"/>
+					<ExtendedTooltip name="ПроизводственныйКалендарьРасширеннаяПодсказка" id="32"/>
+				</LabelField>
+				<LabelField name="СпособЗаполнения" id="15">
+					<DataPath>Список.СпособЗаполнения</DataPath>
+					<ContextMenu name="СпособЗаполненияКонтекстноеМеню" id="16"/>
+					<ExtendedTooltip name="СпособЗаполненияРасширеннаяПодсказка" id="33"/>
+				</LabelField>
+				<LabelField name="ВозможнаяПричина" id="19">
+					<DataPath>Список.ВозможнаяПричина</DataPath>
+					<ContextMenu name="ВозможнаяПричинаКонтекстноеМеню" id="20"/>
+					<ExtendedTooltip name="ВозможнаяПричинаРасширеннаяПодсказка" id="34"/>
+				</LabelField>
+				<LabelField name="Описание" id="13">
+					<DataPath>Список.Описание</DataPath>
+					<Height>1</Height>
+					<ContextMenu name="ОписаниеКонтекстноеМеню" id="14"/>
+					<ExtendedTooltip name="ОписаниеРасширеннаяПодсказка" id="35"/>
 				</LabelField>
 			</ChildItems>
 		</Table>
@@ -94,12 +97,88 @@
 				<v8:Type>cfg:DynamicList</v8:Type>
 			</Type>
 			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>Список.ТребуетЗаполнения</Field>
+			</UseAlways>
 			<Settings xsi:type="DynamicList">
-				<ManualQuery>false</ManualQuery>
+				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	СправочникГрафикиРаботы.Ссылка,
+	СправочникГрафикиРаботы.ВерсияДанных,
+	СправочникГрафикиРаботы.ПометкаУдаления,
+	СправочникГрафикиРаботы.Предопределенный,
+	СправочникГрафикиРаботы.Родитель,
+	СправочникГрафикиРаботы.ЭтоГруппа,
+	СправочникГрафикиРаботы.Наименование,
+	СправочникГрафикиРаботы.ПроизводственныйКалендарь,
+	СправочникГрафикиРаботы.СпособЗаполнения,
+	СправочникГрафикиРаботы.ДатаНачала,
+	СправочникГрафикиРаботы.ДатаОкончания,
+	СправочникГрафикиРаботы.ДатаОтсчета,
+	СправочникГрафикиРаботы.УчитыватьПраздники,
+	СправочникГрафикиРаботы.Описание,
+	СправочникГрафикиРаботы.УдалитьВидКалендаря,
+	СправочникГрафикиРаботы.ГоризонтПланирования,
+	СправочникГрафикиРаботы.ВладелецГрафика,
+	ДОБАВИТЬКДАТЕ(&amp;ТекущаяДата, МЕСЯЦ, СправочникГрафикиРаботы.ГоризонтПланирования) КАК ДатаНеобходимойЗаполненности,
+	ДанныеГрафиков.ДатаЗаполненности,
+	ДанныеПроизводственныхКалендарей.ДатаЗаполненности КАК ДатаЗаполненностиПроизводственногоКалендаря,
+	ВЫБОР
+		КОГДА ДанныеГрафиков.ДатаЗаполненности &lt; ДОБАВИТЬКДАТЕ(&amp;ТекущаяДата, МЕСЯЦ, СправочникГрафикиРаботы.ГоризонтПланирования)
+			ТОГДА ИСТИНА
+		ИНАЧЕ ЛОЖЬ
+	КОНЕЦ КАК ТребуетЗаполнения,
+	ВЫБОР
+		КОГДА ДанныеГрафиков.ДатаЗаполненности &lt; ДОБАВИТЬКДАТЕ(&amp;ТекущаяДата, МЕСЯЦ, СправочникГрафикиРаботы.ГоризонтПланирования)
+			ТОГДА ВЫБОР
+					КОГДА СправочникГрафикиРаботы.ПроизводственныйКалендарь &lt;&gt; ЗНАЧЕНИЕ(Справочник.ПроизводственныеКалендари.ПустаяСсылка)
+						ТОГДА ВЫБОР
+								КОГДА ДанныеПроизводственныхКалендарей.ДатаЗаполненности = ДАТАВРЕМЯ(1, 1, 1)
+									ТОГДА "Производственный календарь не заполнен"
+								ИНАЧЕ ВЫБОР
+										КОГДА ДанныеПроизводственныхКалендарей.ДатаЗаполненности &lt; ДОБАВИТЬКДАТЕ(&amp;ТекущаяДата, МЕСЯЦ, СправочникГрафикиРаботы.ГоризонтПланирования)
+											ТОГДА "Производственный календарь не заполнен на очередной календарный год"
+									КОНЕЦ
+							КОНЕЦ
+					ИНАЧЕ ВЫБОР
+							КОГДА СправочникГрафикиРаботы.ДатаОкончания = ДАТАВРЕМЯ(1, 1, 1)
+								ТОГДА "График не был заполнен на очередной календарный год"
+							ИНАЧЕ ВЫБОР
+									КОГДА СправочникГрафикиРаботы.ДатаОкончания &lt; ДОБАВИТЬКДАТЕ(&amp;ТекущаяДата, МЕСЯЦ, СправочникГрафикиРаботы.ГоризонтПланирования)
+										ТОГДА "Период заполнения графика ограничен (см. поле «Дата окончания»)"
+								КОНЕЦ
+						КОНЕЦ
+				КОНЕЦ
+		ИНАЧЕ ""
+	КОНЕЦ КАК ВозможнаяПричина
+ИЗ
+	Справочник.Календари КАК СправочникГрафикиРаботы
+		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
+			КалендарныеГрафики.Календарь КАК ГрафикРаботы,
+			МАКСИМУМ(КалендарныеГрафики.ДатаГрафика) КАК ДатаЗаполненности
+		ИЗ
+			РегистрСведений.КалендарныеГрафики КАК КалендарныеГрафики
+		
+		СГРУППИРОВАТЬ ПО
+			КалендарныеГрафики.Календарь) КАК ДанныеГрафиков
+		ПО СправочникГрафикиРаботы.Ссылка = ДанныеГрафиков.ГрафикРаботы
+		ЛЕВОЕ СОЕДИНЕНИЕ (ВЫБРАТЬ
+			ДанныеПроизводственныхКалендарей.ПроизводственныйКалендарь КАК ПроизводственныйКалендарь,
+			МАКСИМУМ(ДанныеПроизводственныхКалендарей.Дата) КАК ДатаЗаполненности
+		ИЗ
+			РегистрСведений.ДанныеПроизводственногоКалендаря КАК ДанныеПроизводственныхКалендарей
+		
+		СГРУППИРОВАТЬ ПО
+			ДанныеПроизводственныхКалендарей.ПроизводственныйКалендарь) КАК ДанныеПроизводственныхКалендарей
+		ПО СправочникГрафикиРаботы.ПроизводственныйКалендарь = ДанныеПроизводственныхКалендарей.ПроизводственныйКалендарь</QueryText>
 				<MainTable>Catalog.Календари</MainTable>
 				<ListSettings>
 					<dcsset:filter>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">ВладелецГрафика</dcsset:left>
+							<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+						</dcsset:item>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
 						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
 					</dcsset:filter>
@@ -108,6 +187,22 @@
 						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
 					</dcsset:order>
 					<dcsset:conditionalAppearance>
+						<dcsset:item>
+							<dcsset:selection/>
+							<dcsset:filter>
+								<dcsset:item xsi:type="dcsset:FilterItemComparison">
+									<dcsset:left xsi:type="dcscor:Field">ТребуетЗаполнения</dcsset:left>
+									<dcsset:comparisonType>Equal</dcsset:comparisonType>
+									<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+								</dcsset:item>
+							</dcsset:filter>
+							<dcsset:appearance>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:parameter>ЦветТекста</dcscor:parameter>
+									<dcscor:value xsi:type="v8ui:Color">style:ПросроченныеДанныеЦвет</dcscor:value>
+								</dcscor:item>
+							</dcsset:appearance>
+						</dcsset:item>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
 						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
 					</dcsset:conditionalAppearance>
@@ -115,26 +210,4 @@
 			</Settings>
 		</Attribute>
 	</Attributes>
-	<Commands>
-		<Command name="СоздатьПоШаблону" id="1">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Создать по шаблону...</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Создать календарь на основе данных производственного календаря</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Use>
-				<xr:Common>false</xr:Common>
-				<xr:Value name="Role.ДобавлениеИзменениеБазовойНСИ">true</xr:Value>
-				<xr:Value name="Role.ПолныеПрава">true</xr:Value>
-			</Use>
-			<Action>СоздатьПоШаблону</Action>
-		</Command>
-	</Commands>
 </Form>

@@ -6,7 +6,27 @@
 			<Button name="ФормаПометкаУдаления" id="24">
 				<Type>CommandBarButton</Type>
 				<CommandName>Form.Command.ПометкаУдаления</CommandName>
-				<ExtendedTooltip name="ФормаПометкаУдаленияExtendedTooltip" id="25"/>
+				<ExtendedTooltip name="ФормаПометкаУдаленияРасширеннаяПодсказка" id="38"/>
+			</Button>
+			<ButtonGroup name="ГруппаПоиск" id="36">
+				<ExtendedTooltip name="ГруппаПоискРасширеннаяПодсказка" id="39"/>
+				<ChildItems>
+					<Button name="ФормаНайти" id="35">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.StandardCommand.Find</CommandName>
+						<ExtendedTooltip name="ФормаНайтиРасширеннаяПодсказка" id="40"/>
+					</Button>
+					<Button name="ФормаОтменитьПоиск" id="34">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.StandardCommand.CancelSearch</CommandName>
+						<ExtendedTooltip name="ФормаОтменитьПоискРасширеннаяПодсказка" id="41"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+			<Button name="ФормаКартаМаршрута" id="33">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.КартаМаршрута</CommandName>
+				<ExtendedTooltip name="ФормаКартаМаршрутаРасширеннаяПодсказка" id="42"/>
 			</Button>
 		</ChildItems>
 	</AutoCommandBar>
@@ -31,7 +51,6 @@
 			<CommandSet>
 				<ExcludedCommand>Copy</ExcludedCommand>
 				<ExcludedCommand>Create</ExcludedCommand>
-				<ExcludedCommand>CopyToClipboard</ExcludedCommand>
 				<ExcludedCommand>Choose</ExcludedCommand>
 				<ExcludedCommand>Delete</ExcludedCommand>
 				<ExcludedCommand>Change</ExcludedCommand>
@@ -52,32 +71,70 @@
 			<ShowRoot>true</ShowRoot>
 			<AllowRootChoice>false</AllowRootChoice>
 			<UpdateOnDataChange>Auto</UpdateOnDataChange>
-			<ContextMenu name="СписокКонтекстноеМеню" id="2"/>
+			<ContextMenu name="СписокКонтекстноеМеню" id="2">
+				<ChildItems>
+					<Button name="СписокКонтекстноеМенюИзменить" id="25">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.StandardCommand.Change</CommandName>
+						<ExtendedTooltip name="СписокКонтекстноеМенюИзменитьРасширеннаяПодсказка" id="43"/>
+					</Button>
+					<Button name="СписокКонтекстноеМенюПометкаУдаления" id="31">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ПометкаУдаления</CommandName>
+						<ExtendedTooltip name="СписокКонтекстноеМенюПометкаУдаленияРасширеннаяПодсказка" id="44"/>
+					</Button>
+					<ButtonGroup name="СписокКонтекстноеМенюГруппа" id="32">
+						<ExtendedTooltip name="СписокКонтекстноеМенюГруппаРасширеннаяПодсказка" id="45"/>
+						<ChildItems>
+							<Button name="СписокКонтекстноеМенюНайти" id="29">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.Список.StandardCommand.Find</CommandName>
+								<ExtendedTooltip name="СписокКонтекстноеМенюНайтиРасширеннаяПодсказка" id="46"/>
+							</Button>
+							<Button name="СписокКонтекстноеМенюОтменитьПоиск" id="30">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Item.Список.StandardCommand.CancelSearch</CommandName>
+								<ExtendedTooltip name="СписокКонтекстноеМенюОтменитьПоискРасширеннаяПодсказка" id="47"/>
+							</Button>
+						</ChildItems>
+					</ButtonGroup>
+					<Button name="СписокКонтекстноеМенюКартаМаршрута" id="37">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.КартаМаршрута</CommandName>
+						<ExtendedTooltip name="СписокКонтекстноеМенюКартаМаршрутаРасширеннаяПодсказка" id="48"/>
+					</Button>
+					<Button name="СписокКонтекстноеМенюКопироватьВБуферОбмена" id="28">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Item.Список.StandardCommand.CopyToClipboard</CommandName>
+						<ExtendedTooltip name="СписокКонтекстноеМенюКопироватьВБуферОбменаРасширеннаяПодсказка" id="49"/>
+					</Button>
+				</ChildItems>
+			</ContextMenu>
 			<AutoCommandBar name="СписокКоманднаяПанель" id="3"/>
-			<ExtendedTooltip name="СписокExtendedTooltip" id="26"/>
-			<SearchStringAddition name="СписокСтрокаПоиска" id="34">
+			<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="50"/>
+			<SearchStringAddition name="СписокСтрокаПоиска" id="51">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="35"/>
-				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="36"/>
+				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="52"/>
+				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="53"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокСостояниеПросмотра" id="37">
+			<ViewStatusAddition name="СписокСостояниеПросмотра" id="54">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="38"/>
-				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="39"/>
+				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="55"/>
+				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="56"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокУправлениеПоиском" id="40">
+			<SearchControlAddition name="СписокУправлениеПоиском" id="57">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="41"/>
-				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="42"/>
+				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="58"/>
+				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="59"/>
 			</SearchControlAddition>
 			<Events>
 				<Event name="Selection">СписокВыбор</Event>
@@ -95,26 +152,26 @@
 					</Title>
 					<Wrap>false</Wrap>
 					<ContextMenu name="НомерКонтекстноеМеню" id="7"/>
-					<ExtendedTooltip name="НомерExtendedTooltip" id="27"/>
+					<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="60"/>
 				</InputField>
 				<InputField name="Наименование" id="22">
 					<DataPath>Список.Наименование</DataPath>
 					<Wrap>false</Wrap>
 					<ContextMenu name="НаименованиеКонтекстноеМеню" id="23"/>
-					<ExtendedTooltip name="НаименованиеExtendedTooltip" id="28"/>
+					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="61"/>
 				</InputField>
-				<InputField name="Куратор" id="14">
-					<DataPath>1/9</DataPath>
+				<InputField name="Автор" id="14">
+					<DataPath>Список.Автор</DataPath>
 					<DefaultItem>true</DefaultItem>
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Куратор</v8:content>
+							<v8:content>Автор</v8:content>
 						</v8:item>
 					</Title>
 					<Wrap>false</Wrap>
-					<ContextMenu name="КураторКонтекстноеМеню" id="15"/>
-					<ExtendedTooltip name="КураторExtendedTooltip" id="29"/>
+					<ContextMenu name="АвторКонтекстноеМеню" id="15"/>
+					<ExtendedTooltip name="АвторРасширеннаяПодсказка" id="62"/>
 				</InputField>
 				<InputField name="Дата" id="8">
 					<DataPath>Список.Дата</DataPath>
@@ -127,7 +184,7 @@
 					</Title>
 					<Wrap>false</Wrap>
 					<ContextMenu name="ДатаКонтекстноеМеню" id="9"/>
-					<ExtendedTooltip name="ДатаExtendedTooltip" id="30"/>
+					<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="63"/>
 				</InputField>
 				<CheckBoxField name="Стартован" id="12">
 					<DataPath>Список.Стартован</DataPath>
@@ -140,7 +197,7 @@
 					</Title>
 					<CheckBoxType>Auto</CheckBoxType>
 					<ContextMenu name="СтартованКонтекстноеМеню" id="13"/>
-					<ExtendedTooltip name="СтартованExtendedTooltip" id="31"/>
+					<ExtendedTooltip name="СтартованРасширеннаяПодсказка" id="64"/>
 				</CheckBoxField>
 				<CheckBoxField name="Завершен" id="10">
 					<DataPath>Список.Завершен</DataPath>
@@ -153,7 +210,7 @@
 					</Title>
 					<CheckBoxType>Auto</CheckBoxType>
 					<ContextMenu name="ЗавершенКонтекстноеМеню" id="11"/>
-					<ExtendedTooltip name="ЗавершенExtendedTooltip" id="32"/>
+					<ExtendedTooltip name="ЗавершенРасширеннаяПодсказка" id="65"/>
 				</CheckBoxField>
 				<InputField name="ДатаЗавершения" id="16">
 					<DataPath>Список.ДатаЗавершения</DataPath>
@@ -166,7 +223,7 @@
 					</Title>
 					<Wrap>false</Wrap>
 					<ContextMenu name="ДатаЗавершенияКонтекстноеМеню" id="17"/>
-					<ExtendedTooltip name="ДатаЗавершенияExtendedTooltip" id="33"/>
+					<ExtendedTooltip name="ДатаЗавершенияРасширеннаяПодсказка" id="66"/>
 				</InputField>
 			</ChildItems>
 		</Table>
@@ -268,6 +325,25 @@
 				<xr:LoadTransparent>true</xr:LoadTransparent>
 			</Picture>
 			<Action>ПометкаУдаления</Action>
+		</Command>
+		<Command name="КартаМаршрута" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Карта маршрута</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть карту маршрута бизнес-процесса</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.BusinessProcess</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>КартаМаршрута</Action>
 		</Command>
 	</Commands>
 </Form>
