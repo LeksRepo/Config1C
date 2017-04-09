@@ -33,26 +33,6 @@
 				<CommandName>Form.Command.Отмена</CommandName>
 				<ExtendedTooltip name="ОтменаExtendedTooltip" id="28"/>
 			</Button>
-			<Button name="ТЗВыделитьВсе" id="15">
-				<Type>CommandBarButton</Type>
-				<Representation>Picture</Representation>
-				<CommandName>Form.Command.ВыделитьВсе</CommandName>
-				<Picture>
-					<xr:Ref>StdPicture.CheckAll</xr:Ref>
-					<xr:LoadTransparent>true</xr:LoadTransparent>
-				</Picture>
-				<ExtendedTooltip name="ТЗВыделитьВсеExtendedTooltip" id="19"/>
-			</Button>
-			<Button name="ТЗОтменитьВсе" id="16">
-				<Type>CommandBarButton</Type>
-				<Representation>Picture</Representation>
-				<CommandName>Form.Command.ОтменитьВсе</CommandName>
-				<Picture>
-					<xr:Ref>StdPicture.UncheckAll</xr:Ref>
-					<xr:LoadTransparent>true</xr:LoadTransparent>
-				</Picture>
-				<ExtendedTooltip name="ТЗОтменитьВсеExtendedTooltip" id="20"/>
-			</Button>
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
@@ -209,7 +189,30 @@
 			<SearchControlLocation>None</SearchControlLocation>
 			<RowFilter xsi:nil="true"/>
 			<ContextMenu name="ТЗКонтекстноеМеню" id="2"/>
-			<AutoCommandBar name="ТЗКоманднаяПанель" id="3"/>
+			<AutoCommandBar name="ТЗКоманднаяПанель" id="3">
+				<ChildItems>
+					<Button name="ТЗВыделитьВсе" id="15">
+						<Type>CommandBarButton</Type>
+						<Representation>Picture</Representation>
+						<CommandName>Form.Command.ВыделитьВсе</CommandName>
+						<Picture>
+							<xr:Ref>StdPicture.CheckAll</xr:Ref>
+							<xr:LoadTransparent>true</xr:LoadTransparent>
+						</Picture>
+						<ExtendedTooltip name="ТЗВыделитьВсеExtendedTooltip" id="19"/>
+					</Button>
+					<Button name="ТЗОтменитьВсе" id="16">
+						<Type>CommandBarButton</Type>
+						<Representation>Picture</Representation>
+						<CommandName>Form.Command.ОтменитьВсе</CommandName>
+						<Picture>
+							<xr:Ref>StdPicture.UncheckAll</xr:Ref>
+							<xr:LoadTransparent>true</xr:LoadTransparent>
+						</Picture>
+						<ExtendedTooltip name="ТЗОтменитьВсеExtendedTooltip" id="20"/>
+					</Button>
+				</ChildItems>
+			</AutoCommandBar>
 			<ExtendedTooltip name="ТЗExtendedTooltip" id="21"/>
 			<SearchStringAddition name="ТЗСтрокаПоиска" id="71">
 				<AdditionSource>
@@ -307,9 +310,6 @@
 					<ChoiceListButton>false</ChoiceListButton>
 					<ContextMenu name="ТЗСпецификацияКонтекстноеМеню" id="7"/>
 					<ExtendedTooltip name="ТЗСпецификацияРасширеннаяПодсказка" id="24"/>
-					<Events>
-						<Event name="StartChoice">ТЗСпецификацияНачалоВыбора</Event>
-					</Events>
 				</InputField>
 				<InputField name="ТЗДатаИзготовления" id="17">
 					<DataPath>ТЗ.ДатаИзготовления</DataPath>
