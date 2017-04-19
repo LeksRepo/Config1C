@@ -209,7 +209,7 @@
 					<xr:ToolTip>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Папка, объединяющая профили групп доступа для удобства поиска</v8:content>
+							<v8:content>Группа (папка), объединяющая профили для удобства поиска</v8:content>
 						</v8:item>
 					</xr:ToolTip>
 					<xr:ExtendedEdit>false</xr:ExtendedEdit>
@@ -221,7 +221,12 @@
 					<xr:PasswordMode>false</xr:PasswordMode>
 					<xr:MarkNegatives>false</xr:MarkNegatives>
 					<xr:MinValue xsi:nil="true"/>
-					<xr:Synonym/>
+					<xr:Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа (папка)</v8:content>
+						</v8:item>
+					</xr:Synonym>
 					<xr:Comment/>
 					<xr:FullTextSearch>Use</xr:FullTextSearch>
 					<xr:ChoiceParameterLinks/>
@@ -300,7 +305,7 @@
 			<DefaultFolderForm>Catalog.ПрофилиГруппДоступа.Form.ФормаГруппы</DefaultFolderForm>
 			<DefaultListForm>Catalog.ПрофилиГруппДоступа.Form.ФормаСписка</DefaultListForm>
 			<DefaultChoiceForm>Catalog.ПрофилиГруппДоступа.Form.ФормаСписка</DefaultChoiceForm>
-			<DefaultFolderChoiceForm>Catalog.ПрофилиГруппДоступа.Form.ФормаСписка</DefaultFolderChoiceForm>
+			<DefaultFolderChoiceForm>Catalog.ПрофилиГруппДоступа.Form.ФормаВыбораГруппы</DefaultFolderChoiceForm>
 			<AuxiliaryObjectForm/>
 			<AuxiliaryFolderForm/>
 			<AuxiliaryListForm/>
@@ -325,6 +330,50 @@
 			<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
 		</Properties>
 		<ChildObjects>
+			<Attribute uuid="cd59707e-b9e4-4038-8203-ae22a8060e8d">
+				<Properties>
+					<Name>ИдентификаторПоставляемыхДанных</Name>
+					<Synonym>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Идентификатор поставляемых данных</v8:content>
+						</v8:item>
+					</Synonym>
+					<Comment/>
+					<Type>
+						<v8:Type>v8:UUID</v8:Type>
+					</Type>
+					<PasswordMode>false</PasswordMode>
+					<Format/>
+					<EditFormat/>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Для профилей, поставляемых в составе конфигурации, содержит идентификатор по которому можно найти описание поставляемого профиля.</v8:content>
+						</v8:item>
+					</ToolTip>
+					<MarkNegatives>false</MarkNegatives>
+					<Mask/>
+					<MultiLine>false</MultiLine>
+					<ExtendedEdit>false</ExtendedEdit>
+					<MinValue xsi:nil="true"/>
+					<MaxValue xsi:nil="true"/>
+					<FillFromFillingValue>false</FillFromFillingValue>
+					<FillValue xsi:nil="true"/>
+					<FillChecking>DontCheck</FillChecking>
+					<ChoiceFoldersAndItems>Items</ChoiceFoldersAndItems>
+					<ChoiceParameterLinks/>
+					<ChoiceParameters/>
+					<QuickChoice>Auto</QuickChoice>
+					<CreateOnInput>Auto</CreateOnInput>
+					<ChoiceForm/>
+					<LinkByType/>
+					<ChoiceHistoryOnInput>Auto</ChoiceHistoryOnInput>
+					<Use>ForItem</Use>
+					<Indexing>Index</Indexing>
+					<FullTextSearch>DontUse</FullTextSearch>
+				</Properties>
+			</Attribute>
 			<Attribute uuid="db497857-33d3-49a1-b328-dfc62c973ecb">
 				<Properties>
 					<Name>ПоставляемыйПрофильИзменен</Name>
@@ -877,6 +926,7 @@
 			<Form>ФормаЭлемента</Form>
 			<Form>ФормаСписка</Form>
 			<Form>ФормаГруппы</Form>
+			<Form>ФормаВыбораГруппы</Form>
 			<Command uuid="c895d58a-5be1-4157-81af-f4f6db9b4b9e">
 				<Properties>
 					<Name>ГруппыДоступа</Name>

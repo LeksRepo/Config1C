@@ -101,3 +101,4 @@
 Функция ПодключитьВебСервис()
 	Возврат WSСсылки.ОтправкаSMSЧерезМТС.СоздатьWSПрокси("http://mcommunicator.ru/M2M", "MTS_x0020_Communicator_x0020_M2M_x0020_XML_x0020_API", "MTS_x0020_Communicator_x0020_M2M_x0020_XML_x0020_APISoap12"); 
 КонецФункции
+

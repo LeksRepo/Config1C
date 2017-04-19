@@ -610,7 +610,11 @@
 	FindObject = Selection.Find;
 	FindObject.ClearFormatting();
 	Пока FindObject.Execute(СтрокаПоиска) Цикл
-		Selection.TypeText(СтрокаЗамены);
+		Если ПустаяСтрока(СтрокаЗамены) Тогда
+			Selection.Delete();
+		Иначе
+			Selection.TypeText(СтрокаЗамены);
+		КонецЕсли;
 	КонецЦикла;
 	
 	Selection.Collapse();

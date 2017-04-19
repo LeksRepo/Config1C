@@ -6,6 +6,7 @@
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
 		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 		<Event name="BeforeWriteAtServer">ПередЗаписьюНаСервере</Event>
 	</Events>
@@ -17,7 +18,7 @@
 			<ContextMenu name="НаименованиеКонтекстноеМеню" id="2"/>
 			<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="15"/>
 			<Events>
-				<Event name="StartListChoice">НаименованиеНачалоВыбораИзСписка</Event>
+				<Event name="OnChange">НаименованиеПриИзменении</Event>
 			</Events>
 		</InputField>
 		<InputField name="ПомещатьВПапку" id="3">
@@ -81,6 +82,9 @@
 				<ContextMenu name="КомпоновщикНастроекНастройкиОтборУправлениеПоискомКонтекстноеМеню" id="26"/>
 				<ExtendedTooltip name="КомпоновщикНастроекНастройкиОтборУправлениеПоискомРасширеннаяПодсказка" id="27"/>
 			</SearchControlAddition>
+			<Events>
+				<Event name="OnChange">КомпоновщикНастроекНастройкиОтборПриИзменении</Event>
+			</Events>
 		</Table>
 	</ChildItems>
 	<Attributes>

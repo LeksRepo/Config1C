@@ -2,7 +2,26 @@
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
-	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<CommandSet>
+		<ExcludedCommand>Copy</ExcludedCommand>
+		<ExcludedCommand>SetDeletionMark</ExcludedCommand>
+		<ExcludedCommand>Delete</ExcludedCommand>
+	</CommandSet>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаОбщаяКомандаНастроитьПараметрыТранспортаСообщенийОбмена" id="11">
+				<Type>CommandBarButton</Type>
+				<Representation>PictureAndText</Representation>
+				<CommandName>CommonCommand.НастроитьПараметрыТранспортаСообщенийОбмена</CommandName>
+				<DataPath>Объект.Ref</DataPath>
+				<Picture>
+					<xr:Ref>CommonPicture.СинхронизацияДанныхНастройка</xr:Ref>
+					<xr:LoadTransparent>false</xr:LoadTransparent>
+				</Picture>
+				<ExtendedTooltip name="ФормаОбщаяКомандаНастроитьПараметрыТранспортаСообщенийОбменаРасширеннаяПодсказка" id="12"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
 	<Events>
 		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
@@ -13,7 +32,7 @@
 			<DataPath>Объект.Description</DataPath>
 			<EditMode>EnterOnInput</EditMode>
 			<ContextMenu name="НаименованиеКонтекстноеМеню" id="4"/>
-			<ExtendedTooltip name="НаименованиеExtendedTooltip" id="11"/>
+			<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="13"/>
 		</InputField>
 		<UsualGroup name="ГруппаИнформационныхСообщений" id="10">
 			<Title>
@@ -25,7 +44,7 @@
 			<Group>Vertical</Group>
 			<Representation>NormalSeparation</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаИнформационныхСообщенийExtendedTooltip" id="12"/>
+			<ExtendedTooltip name="ГруппаИнформационныхСообщенийРасширеннаяПодсказка" id="14"/>
 			<ChildItems>
 				<LabelDecoration name="ИнформационноеСообщение" id="7">
 					<TextColor>style:ПоясняющийТекст</TextColor>
@@ -37,12 +56,12 @@
 					</Title>
 					<TitleHeight>2</TitleHeight>
 					<ContextMenu name="ИнформационноеСообщениеКонтекстноеМеню" id="8"/>
-					<ExtendedTooltip name="ИнформационноеСообщениеExtendedTooltip" id="13"/>
+					<ExtendedTooltip name="ИнформационноеСообщениеРасширеннаяПодсказка" id="15"/>
 				</LabelDecoration>
 				<Button name="СделатьЭтуКонечнуюТочкуВедомой" id="9">
 					<Type>UsualButton</Type>
 					<CommandName>Form.Command.СделатьЭтуКонечнуюТочкуВедомой</CommandName>
-					<ExtendedTooltip name="СделатьЭтуКонечнуюТочкуВедомойExtendedTooltip" id="14"/>
+					<ExtendedTooltip name="СделатьЭтуКонечнуюТочкуВедомойРасширеннаяПодсказка" id="16"/>
 				</Button>
 			</ChildItems>
 		</UsualGroup>

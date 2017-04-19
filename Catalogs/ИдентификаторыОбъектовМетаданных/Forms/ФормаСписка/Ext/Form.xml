@@ -1,15 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
 	<VerticalScroll>useIfNecessary</VerticalScroll>
-	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
-		<ChildItems>
-			<Button name="ОбновитьДанныеСправочника" id="10">
-				<Type>CommandBarButton</Type>
-				<CommandName>Form.Command.ОбновитьДанныеСправочника</CommandName>
-				<ExtendedTooltip name="ОбновитьДанныеСправочникаРасширеннаяПодсказка" id="15"/>
-			</Button>
-		</ChildItems>
-	</AutoCommandBar>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
@@ -46,30 +38,30 @@
 			<AutoCommandBar name="СписокКоманднаяПанель" id="3">
 				<Autofill>false</Autofill>
 			</AutoCommandBar>
-			<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="16"/>
-			<SearchStringAddition name="СписокСтрокаПоиска" id="17">
+			<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="15"/>
+			<SearchStringAddition name="СписокСтрокаПоиска" id="16">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="18"/>
-				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="19"/>
+				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="17"/>
+				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="18"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокСостояниеПросмотра" id="20">
+			<ViewStatusAddition name="СписокСостояниеПросмотра" id="19">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="21"/>
-				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="22"/>
+				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="20"/>
+				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="21"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокУправлениеПоиском" id="23">
+			<SearchControlAddition name="СписокУправлениеПоиском" id="22">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="24"/>
-				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="25"/>
+				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="23"/>
+				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="24"/>
 			</SearchControlAddition>
 			<Events>
 				<Event name="ValueChoice">СписокВыборЗначения</Event>
@@ -85,7 +77,7 @@
 						</v8:item>
 					</Title>
 					<ContextMenu name="СинонимКонтекстноеМеню" id="5"/>
-					<ExtendedTooltip name="СинонимРасширеннаяПодсказка" id="26"/>
+					<ExtendedTooltip name="СинонимРасширеннаяПодсказка" id="25"/>
 				</LabelField>
 				<LabelField name="ПолноеИмя" id="13">
 					<DataPath>Список.ПолноеИмя</DataPath>
@@ -93,7 +85,7 @@
 						<xr:Common>false</xr:Common>
 					</UserVisible>
 					<ContextMenu name="ПолноеИмяКонтекстноеМеню" id="14"/>
-					<ExtendedTooltip name="ПолноеИмяРасширеннаяПодсказка" id="27"/>
+					<ExtendedTooltip name="ПолноеИмяРасширеннаяПодсказка" id="26"/>
 				</LabelField>
 			</ChildItems>
 		</Table>
@@ -105,6 +97,7 @@
 			</Type>
 			<MainAttribute>true</MainAttribute>
 			<UseAlways>
+				<Field>Список.ПометкаБудущегоУдаления</Field>
 				<Field>Список.Parent</Field>
 				<Field>Список.Description</Field>
 				<Field>1/53</Field>
@@ -142,49 +135,10 @@
 						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
 					</dcsset:filter>
 					<dcsset:order>
-						<dcsset:item xsi:type="dcsset:OrderItemField">
-							<dcsset:field>ПометкаУдаления</dcsset:field>
-							<dcsset:orderType>Desc</dcsset:orderType>
-						</dcsset:item>
-						<dcsset:item xsi:type="dcsset:OrderItemField">
-							<dcsset:field>ПорядокКоллекции</dcsset:field>
-							<dcsset:orderType>Asc</dcsset:orderType>
-						</dcsset:item>
-						<dcsset:item xsi:type="dcsset:OrderItemField">
-							<dcsset:field>Родитель</dcsset:field>
-							<dcsset:orderType>Asc</dcsset:orderType>
-						</dcsset:item>
-						<dcsset:item xsi:type="dcsset:OrderItemField">
-							<dcsset:field>Синоним</dcsset:field>
-							<dcsset:orderType>Asc</dcsset:orderType>
-						</dcsset:item>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
 						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
 					</dcsset:order>
 					<dcsset:conditionalAppearance>
-						<dcsset:item>
-							<dcsset:selection>
-								<dcsset:item>
-									<dcsset:field>Синоним</dcsset:field>
-								</dcsset:item>
-								<dcsset:item>
-									<dcsset:field>ПолноеИмя</dcsset:field>
-								</dcsset:item>
-							</dcsset:selection>
-							<dcsset:filter>
-								<dcsset:item xsi:type="dcsset:FilterItemComparison">
-									<dcsset:left xsi:type="dcscor:Field">ПометкаБудущегоУдаления</dcsset:left>
-									<dcsset:comparisonType>Equal</dcsset:comparisonType>
-									<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-								</dcsset:item>
-							</dcsset:filter>
-							<dcsset:appearance>
-								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-									<dcscor:parameter>ЦветТекста</dcscor:parameter>
-									<dcscor:value xsi:type="v8ui:Color">web:DarkGray</dcscor:value>
-								</dcscor:item>
-							</dcsset:appearance>
-						</dcsset:item>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
 						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
 					</dcsset:conditionalAppearance>
@@ -203,23 +157,6 @@
 			</Type>
 		</Attribute>
 	</Attributes>
-	<Commands>
-		<Command name="ОбновитьДанныеСправочника" id="1">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Обновить данные справочника</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Обновить данные справочника по метаданным конфигурации</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Action>ОбновитьДанныеСправочника</Action>
-		</Command>
-	</Commands>
 	<Parameters>
 		<Parameter name="ВыбиратьГруппыОбъектовМетаданных">
 			<Type>

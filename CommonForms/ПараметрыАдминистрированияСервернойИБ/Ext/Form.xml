@@ -11,18 +11,18 @@
 				<Type>CommandBarButton</Type>
 				<DefaultButton>true</DefaultButton>
 				<CommandName>Form.Command.OK</CommandName>
-				<ExtendedTooltip name="ФормаOKExtendedTooltip" id="36"/>
+				<ExtendedTooltip name="ФормаOKРасширеннаяПодсказка" id="40"/>
 			</Button>
 			<Button name="ФормаОтмена" id="29">
 				<Type>CommandBarButton</Type>
 				<CommandName>Form.StandardCommand.Cancel</CommandName>
-				<ExtendedTooltip name="ФормаОтменаExtendedTooltip" id="37"/>
+				<ExtendedTooltip name="ФормаОтменаРасширеннаяПодсказка" id="41"/>
 			</Button>
 			<Button name="Справка" id="23">
 				<Type>CommandBarButton</Type>
 				<SkipOnInput>false</SkipOnInput>
 				<CommandName>Form.StandardCommand.Help</CommandName>
-				<ExtendedTooltip name="СправкаExtendedTooltip" id="38"/>
+				<ExtendedTooltip name="СправкаРасширеннаяПодсказка" id="42"/>
 			</Button>
 		</ChildItems>
 	</AutoCommandBar>
@@ -35,16 +35,16 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Укажите администратора информационной базы:</v8:content>
+					<v8:content>Администратор информационной базы:</v8:content>
 				</v8:item>
 			</Title>
 			<Group>Vertical</Group>
-			<Representation>NormalSeparation</Representation>
-			<ExtendedTooltip name="ГруппаАдминистрированиеExtendedTooltip" id="39"/>
+			<Representation>None</Representation>
+			<ExtendedTooltip name="ГруппаАдминистрированиеРасширеннаяПодсказка" id="43"/>
 			<ChildItems>
 				<Pages name="РежимРаботы" id="31">
 					<PagesRepresentation>None</PagesRepresentation>
-					<ExtendedTooltip name="РежимРаботыExtendedTooltip" id="40"/>
+					<ExtendedTooltip name="РежимРаботыРасширеннаяПодсказка" id="44"/>
 					<ChildItems>
 						<Page name="РазделениеДанных" id="33">
 							<Title>
@@ -59,7 +59,8 @@
 									<v8:content>Разделение данных</v8:content>
 								</v8:item>
 							</ToolTip>
-							<ExtendedTooltip name="РазделениеДанныхExtendedTooltip" id="41"/>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="РазделениеДанныхРасширеннаяПодсказка" id="45"/>
 							<ChildItems>
 								<InputField name="НеразделенныйАдминистраторИБ" id="34">
 									<DataPath>НеразделенныйАдминистраторИБ</DataPath>
@@ -73,7 +74,18 @@
 									<ListChoiceMode>true</ListChoiceMode>
 									<ChooseType>false</ChooseType>
 									<ContextMenu name="НеразделенныйАдминистраторИБКонтекстноеМеню" id="35"/>
-									<ExtendedTooltip name="НеразделенныйАдминистраторИБExtendedTooltip" id="42"/>
+									<ExtendedTooltip name="НеразделенныйАдминистраторИБРасширеннаяПодсказка" id="46"/>
+								</InputField>
+								<InputField name="ПарольНеразделенногоАдминистратораИБ" id="36">
+									<DataPath>ПарольАдминистратораИБ</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Пароль</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="ПарольНеразделенногоАдминистратораИБКонтекстноеМеню" id="37"/>
+									<ExtendedTooltip name="ПарольНеразделенногоАдминистратораИБРасширеннаяПодсказка" id="47"/>
 								</InputField>
 							</ChildItems>
 						</Page>
@@ -84,7 +96,7 @@
 									<v8:content>Нет разделения данных</v8:content>
 								</v8:item>
 							</Title>
-							<ExtendedTooltip name="НетРазделенияДанныхExtendedTooltip" id="43"/>
+							<ExtendedTooltip name="НетРазделенияДанныхРасширеннаяПодсказка" id="48"/>
 							<ChildItems>
 								<InputField name="АдминистраторИБ" id="25">
 									<DataPath>АдминистраторИБ</DataPath>
@@ -100,114 +112,124 @@
 											<v8:content>Администратор информационной базы, от имени которого выполняется принудительное отключение сеансов</v8:content>
 										</v8:item>
 									</ToolTip>
-									<Width>22</Width>
-									<HorizontalStretch>false</HorizontalStretch>
 									<Wrap>false</Wrap>
+									<ClearButton>true</ClearButton>
+									<OpenButton>false</OpenButton>
 									<ContextMenu name="АдминистраторИБКонтекстноеМеню" id="26"/>
-									<ExtendedTooltip name="АдминистраторИБExtendedTooltip" id="44"/>
+									<ExtendedTooltip name="АдминистраторИБРасширеннаяПодсказка" id="49"/>
+								</InputField>
+								<InputField name="ПарольАдминистратораИБ" id="27">
+									<DataPath>ПарольАдминистратораИБ</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Пароль</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Пароль администратора информационной базы, от имени которого выполняется принудительное отключение сеансов</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Wrap>false</Wrap>
+									<PasswordMode>true</PasswordMode>
+									<ContextMenu name="ПарольАдминистратораИБКонтекстноеМеню" id="28"/>
+									<ExtendedTooltip name="ПарольАдминистратораИБРасширеннаяПодсказка" id="50"/>
 								</InputField>
 							</ChildItems>
 						</Page>
 					</ChildItems>
 				</Pages>
-				<InputField name="ПарольАдминистратораИБ" id="27">
-					<DataPath>ПарольАдминистратораИБ</DataPath>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаКластерТребуетАвторизации" id="39">
+			<Group>Vertical</Group>
+			<ExtendedTooltip name="ГруппаКластерТребуетАвторизацииРасширеннаяПодсказка" id="51"/>
+			<ChildItems>
+				<CheckBoxField name="КластерТребуетАвторизации" id="7">
+					<DataPath>КластерТребуетАвторизации</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="КластерТребуетАвторизацииКонтекстноеМеню" id="8"/>
+					<ExtendedTooltip name="КластерТребуетАвторизацииРасширеннаяПодсказка" id="52"/>
+					<Events>
+						<Event name="OnChange">КластерТребуетАвторизацииПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+				<UsualGroup name="ГруппаАвторизацияКластера" id="9">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Пароль</v8:content>
+							<v8:content>Параметры авторизации кластера серверов</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаАвторизацияКластераРасширеннаяПодсказка" id="53"/>
+					<ChildItems>
+						<InputField name="ИмяАдминистратораКластера" id="10">
+							<DataPath>ИмяАдминистратораКластера</DataPath>
+							<Width>15</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Wrap>false</Wrap>
+							<ContextMenu name="ИмяАдминистратораКластераКонтекстноеМеню" id="11"/>
+							<ExtendedTooltip name="ИмяАдминистратораКластераРасширеннаяПодсказка" id="54"/>
+						</InputField>
+						<InputField name="ПарольАдминистратораКластера" id="12">
+							<DataPath>ПарольАдминистратораКластера</DataPath>
+							<Width>15</Width>
+							<HorizontalStretch>false</HorizontalStretch>
+							<Wrap>false</Wrap>
+							<PasswordMode>true</PasswordMode>
+							<ContextMenu name="ПарольАдминистратораКластераКонтекстноеМеню" id="13"/>
+							<ExtendedTooltip name="ПарольАдминистратораКластераРасширеннаяПодсказка" id="55"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
+		<UsualGroup name="ГруппаНестандартныеПорты" id="38">
+			<Group>Vertical</Group>
+			<ExtendedTooltip name="ГруппаНестандартныеПортыРасширеннаяПодсказка" id="56"/>
+			<ChildItems>
+				<CheckBoxField name="НестандартныеПорты" id="14">
+					<DataPath>НестандартныеПорты</DataPath>
+					<TitleLocation>Right</TitleLocation>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="НестандартныеПортыКонтекстноеМеню" id="15"/>
+					<ExtendedTooltip name="НестандартныеПортыРасширеннаяПодсказка" id="57"/>
+					<Events>
+						<Event name="OnChange">НестандартныеПортыПриИзменении</Event>
+					</Events>
+				</CheckBoxField>
+				<UsualGroup name="ГруппаПорты" id="16">
+					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Пароль администратора информационной базы, от имени которого выполняется принудительное отключение сеансов</v8:content>
+							<v8:content>Порты</v8:content>
 						</v8:item>
-					</ToolTip>
-					<Width>15</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<Wrap>false</Wrap>
-					<PasswordMode>true</PasswordMode>
-					<ContextMenu name="ПарольАдминистратораИБКонтекстноеМеню" id="28"/>
-					<ExtendedTooltip name="ПарольАдминистратораИБExtendedTooltip" id="45"/>
-				</InputField>
-			</ChildItems>
-		</UsualGroup>
-		<CheckBoxField name="КластерТребуетАвторизации" id="7">
-			<DataPath>КластерТребуетАвторизации</DataPath>
-			<TitleLocation>Right</TitleLocation>
-			<CheckBoxType>Auto</CheckBoxType>
-			<ContextMenu name="КластерТребуетАвторизацииКонтекстноеМеню" id="8"/>
-			<ExtendedTooltip name="КластерТребуетАвторизацииExtendedTooltip" id="46"/>
-			<Events>
-				<Event name="OnChange">КластерТребуетАвторизацииПриИзменении</Event>
-			</Events>
-		</CheckBoxField>
-		<UsualGroup name="ГруппаАвторизацияКластера" id="9">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Параметры авторизации кластера серверов</v8:content>
-				</v8:item>
-			</Title>
-			<Group>Vertical</Group>
-			<Representation>None</Representation>
-			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаАвторизацияКластераExtendedTooltip" id="47"/>
-			<ChildItems>
-				<InputField name="ИмяАдминистратораКластера" id="10">
-					<DataPath>ИмяАдминистратораКластера</DataPath>
-					<Width>15</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<Wrap>false</Wrap>
-					<ContextMenu name="ИмяАдминистратораКластераКонтекстноеМеню" id="11"/>
-					<ExtendedTooltip name="ИмяАдминистратораКластераExtendedTooltip" id="48"/>
-				</InputField>
-				<InputField name="ПарольАдминистратораКластера" id="12">
-					<DataPath>ПарольАдминистратораКластера</DataPath>
-					<Width>15</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<Wrap>false</Wrap>
-					<PasswordMode>true</PasswordMode>
-					<ContextMenu name="ПарольАдминистратораКластераКонтекстноеМеню" id="13"/>
-					<ExtendedTooltip name="ПарольАдминистратораКластераExtendedTooltip" id="49"/>
-				</InputField>
-			</ChildItems>
-		</UsualGroup>
-		<CheckBoxField name="НестандартныеПорты" id="14">
-			<DataPath>НестандартныеПорты</DataPath>
-			<TitleLocation>Right</TitleLocation>
-			<CheckBoxType>Auto</CheckBoxType>
-			<ContextMenu name="НестандартныеПортыКонтекстноеМеню" id="15"/>
-			<ExtendedTooltip name="НестандартныеПортыExtendedTooltip" id="50"/>
-			<Events>
-				<Event name="OnChange">НестандартныеПортыПриИзменении</Event>
-			</Events>
-		</CheckBoxField>
-		<UsualGroup name="ГруппаПорты" id="16">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Порты</v8:content>
-				</v8:item>
-			</Title>
-			<Group>Vertical</Group>
-			<Representation>None</Representation>
-			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаПортыExtendedTooltip" id="51"/>
-			<ChildItems>
-				<InputField name="ПортКластераСерверов" id="17">
-					<DataPath>ПортКластераСерверов</DataPath>
-					<Wrap>false</Wrap>
-					<ContextMenu name="ПортКластераСерверовКонтекстноеМеню" id="18"/>
-					<ExtendedTooltip name="ПортКластераСерверовExtendedTooltip" id="52"/>
-				</InputField>
-				<InputField name="ПортАгентаСервера" id="19">
-					<DataPath>ПортАгентаСервера</DataPath>
-					<Wrap>false</Wrap>
-					<ContextMenu name="ПортАгентаСервераКонтекстноеМеню" id="20"/>
-					<ExtendedTooltip name="ПортАгентаСервераExtendedTooltip" id="53"/>
-				</InputField>
+					</Title>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаПортыРасширеннаяПодсказка" id="58"/>
+					<ChildItems>
+						<InputField name="ПортКластераСерверов" id="17">
+							<DataPath>ПортКластераСерверов</DataPath>
+							<Wrap>false</Wrap>
+							<ContextMenu name="ПортКластераСерверовКонтекстноеМеню" id="18"/>
+							<ExtendedTooltip name="ПортКластераСерверовРасширеннаяПодсказка" id="59"/>
+						</InputField>
+						<InputField name="ПортАгентаСервера" id="19">
+							<DataPath>ПортАгентаСервера</DataPath>
+							<Wrap>false</Wrap>
+							<ContextMenu name="ПортАгентаСервераКонтекстноеМеню" id="20"/>
+							<ExtendedTooltip name="ПортАгентаСервераРасширеннаяПодсказка" id="60"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
 	</ChildItems>

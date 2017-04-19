@@ -7,6 +7,7 @@
 		</v8:item>
 	</Title>
 	<Width>150</Width>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
@@ -21,6 +22,7 @@
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
 		<Event name="BeforeClose">ПередЗакрытием</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
@@ -82,6 +84,7 @@
 			</SearchControlAddition>
 			<Events>
 				<Event name="BeforeDeleteRow">ТаблицаКонтактовПередУдалением</Event>
+				<Event name="OnActivateCell">ТаблицаКонтактовПриАктивизацииЯчейки</Event>
 			</Events>
 			<ChildItems>
 				<CheckBoxField name="ТаблицаКонтактовИзменять" id="26">
@@ -143,7 +146,6 @@
 							<Events>
 								<Event name="OnChange">ТаблицаКонтактовКонтактПриИзменении</Event>
 								<Event name="StartChoice">ТаблицаКонтактовКонтактНачалоВыбора</Event>
-								<Event name="StartListChoice">ТаблицаКонтактовКонтактНачалоВыбораИзСписка</Event>
 								<Event name="Clearing">ТаблицаКонтактовКонтактОчистка</Event>
 								<Event name="ChoiceProcessing">ТаблицаКонтактовКонтактОбработкаВыбора</Event>
 							</Events>
@@ -165,7 +167,6 @@
 							<ContextMenu name="ТаблицаКонтактовТекущийАдресКонтактаКонтекстноеМеню" id="29"/>
 							<ExtendedTooltip name="ТаблицаКонтактовТекущийАдресКонтактаРасширеннаяПодсказка" id="48"/>
 							<Events>
-								<Event name="StartListChoice">ТаблицаКонтактовТекущийАдресКонтактаНачалоВыбораИзСписка</Event>
 								<Event name="Clearing">ТаблицаКонтактовТекущийАдресКонтактаОчистка</Event>
 								<Event name="ChoiceProcessing">ТаблицаКонтактовТекущийАдресКонтактаОбработкаВыбора</Event>
 							</Events>

@@ -7,6 +7,7 @@
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
 		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="ChoiceProcessing">ОбработкаВыбора</Event>
 		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
 		<Event name="BeforeWrite">ПередЗаписью</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
@@ -19,13 +20,13 @@
 			<DefaultItem>true</DefaultItem>
 			<Wrap>false</Wrap>
 			<ContextMenu name="НаименованиеКонтекстноеМеню" id="2"/>
-			<ExtendedTooltip name="НаименованиеExtendedTooltip" id="56"/>
+			<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="56"/>
 		</InputField>
 		<InputField name="Родитель" id="3">
 			<DataPath>Объект.Parent</DataPath>
 			<Wrap>false</Wrap>
 			<ContextMenu name="РодительКонтекстноеМеню" id="4"/>
-			<ExtendedTooltip name="РодительExtendedTooltip" id="57"/>
+			<ExtendedTooltip name="РодительРасширеннаяПодсказка" id="57"/>
 		</InputField>
 		<RadioButtonField name="ЭтоДополнительноеСведениеРеквизит" id="20">
 			<DataPath>ЭтоДополнительноеСведениеРеквизит</DataPath>
@@ -61,7 +62,7 @@
 				</xr:Item>
 			</ChoiceList>
 			<ContextMenu name="ЭтоДополнительноеСведениеРеквизитКонтекстноеМеню" id="21"/>
-			<ExtendedTooltip name="ЭтоДополнительноеСведениеРеквизитExtendedTooltip" id="58"/>
+			<ExtendedTooltip name="ЭтоДополнительноеСведениеРеквизитРасширеннаяПодсказка" id="58"/>
 			<Events>
 				<Event name="OnChange">ЭтоДополнительноеСведениеРеквизитПриИзменении</Event>
 			</Events>
@@ -81,13 +82,13 @@
 			</ToolTip>
 			<Group>Horizontal</Group>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ТипЗначенияФорматExtendedTooltip" id="59"/>
+			<ExtendedTooltip name="ТипЗначенияФорматРасширеннаяПодсказка" id="59"/>
 			<ChildItems>
 				<InputField name="ТипЗначения" id="5">
 					<DataPath>Объект.ValueType</DataPath>
 					<Wrap>false</Wrap>
 					<ContextMenu name="ТипЗначенияКонтекстноеМеню" id="6"/>
-					<ExtendedTooltip name="ТипЗначенияExtendedTooltip" id="60"/>
+					<ExtendedTooltip name="ТипЗначенияРасширеннаяПодсказка" id="60"/>
 					<Events>
 						<Event name="OnChange">ТипЗначенияПриИзменении</Event>
 					</Events>
@@ -95,7 +96,7 @@
 				<Button name="РедактироватьФорматЗначения" id="37">
 					<Type>Hyperlink</Type>
 					<CommandName>Form.Command.РедактироватьФорматЗначения</CommandName>
-					<ExtendedTooltip name="РедактироватьФорматЗначенияExtendedTooltip" id="61"/>
+					<ExtendedTooltip name="РедактироватьФорматЗначенияРасширеннаяПодсказка" id="61"/>
 				</Button>
 			</ChildItems>
 		</UsualGroup>
@@ -115,7 +116,7 @@
 			<Group>Vertical</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаМногострочностьExtendedTooltip" id="62"/>
+			<ExtendedTooltip name="ГруппаМногострочностьРасширеннаяПодсказка" id="62"/>
 			<ChildItems>
 				<UsualGroup name="ГруппаМногострочноеПолеВводаНастройки" id="46">
 					<Title>
@@ -133,14 +134,14 @@
 					<Group>Horizontal</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="ГруппаМногострочноеПолеВводаНастройкиExtendedTooltip" id="63"/>
+					<ExtendedTooltip name="ГруппаМногострочноеПолеВводаНастройкиРасширеннаяПодсказка" id="63"/>
 					<ChildItems>
 						<CheckBoxField name="МногострочноеПолеВвода" id="39">
 							<DataPath>МногострочноеПолеВвода</DataPath>
 							<TitleLocation>Right</TitleLocation>
 							<CheckBoxType>Auto</CheckBoxType>
 							<ContextMenu name="МногострочноеПолеВводаКонтекстноеМеню" id="40"/>
-							<ExtendedTooltip name="МногострочноеПолеВводаExtendedTooltip" id="64"/>
+							<ExtendedTooltip name="МногострочноеПолеВводаРасширеннаяПодсказка" id="64"/>
 						</CheckBoxField>
 						<InputField name="МногострочноеПолеВводаЧисло" id="41">
 							<DataPath>МногострочноеПолеВводаЧисло</DataPath>
@@ -155,7 +156,7 @@
 							<MinValue xsi:type="xs:decimal">1</MinValue>
 							<MaxValue xsi:type="xs:decimal">10</MaxValue>
 							<ContextMenu name="МногострочноеПолеВводаЧислоКонтекстноеМеню" id="42"/>
-							<ExtendedTooltip name="МногострочноеПолеВводаЧислоExtendedTooltip" id="65"/>
+							<ExtendedTooltip name="МногострочноеПолеВводаЧислоРасширеннаяПодсказка" id="65"/>
 							<Events>
 								<Event name="OnChange">МногострочноеПолеВводаЧислоПриИзменении</Event>
 							</Events>
@@ -169,12 +170,12 @@
 			<TitleLocation>Right</TitleLocation>
 			<CheckBoxType>Auto</CheckBoxType>
 			<ContextMenu name="ЗаполнятьОбязательноКонтекстноеМеню" id="55"/>
-			<ExtendedTooltip name="ЗаполнятьОбязательноExtendedTooltip" id="66"/>
+			<ExtendedTooltip name="ЗаполнятьОбязательноРасширеннаяПодсказка" id="66"/>
 		</CheckBoxField>
 		<InputField name="Подсказка" id="30">
 			<DataPath>Объект.Подсказка</DataPath>
 			<ContextMenu name="ПодсказкаКонтекстноеМеню" id="31"/>
-			<ExtendedTooltip name="ПодсказкаExtendedTooltip" id="67"/>
+			<ExtendedTooltip name="ПодсказкаРасширеннаяПодсказка" id="67"/>
 		</InputField>
 		<UsualGroup name="ГруппаСклонения" id="32">
 			<Title>
@@ -186,7 +187,7 @@
 			<Group>Vertical</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаСклоненияExtendedTooltip" id="68"/>
+			<ExtendedTooltip name="ГруппаСклоненияРасширеннаяПодсказка" id="68"/>
 			<ChildItems>
 				<InputField name="ЕдинственноеЧислоПредмета" id="33">
 					<DataPath>ЕдинственноеЧислоПредмета</DataPath>
@@ -197,7 +198,7 @@
 						</v8:item>
 					</ToolTip>
 					<ContextMenu name="ЕдинственноеЧислоПредметаКонтекстноеМеню" id="34"/>
-					<ExtendedTooltip name="ЕдинственноеЧислоПредметаExtendedTooltip" id="69"/>
+					<ExtendedTooltip name="ЕдинственноеЧислоПредметаРасширеннаяПодсказка" id="69"/>
 				</InputField>
 				<InputField name="МножественноеЧислоПредмета" id="35">
 					<DataPath>МножественноеЧислоПредмета</DataPath>
@@ -208,7 +209,7 @@
 						</v8:item>
 					</ToolTip>
 					<ContextMenu name="МножественноеЧислоПредметаКонтекстноеМеню" id="36"/>
-					<ExtendedTooltip name="МножественноеЧислоПредметаExtendedTooltip" id="70"/>
+					<ExtendedTooltip name="МножественноеЧислоПредметаРасширеннаяПодсказка" id="70"/>
 				</InputField>
 			</ChildItems>
 		</UsualGroup>
@@ -219,7 +220,7 @@
 			<MultiLine>true</MultiLine>
 			<OpenButton>true</OpenButton>
 			<ContextMenu name="КомментарийКонтекстноеМеню" id="29"/>
-			<ExtendedTooltip name="КомментарийExtendedTooltip" id="71"/>
+			<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="71"/>
 			<Events>
 				<Event name="Opening">КомментарийОткрытие</Event>
 			</Events>
@@ -228,7 +229,7 @@
 			<Type>Hyperlink</Type>
 			<SkipOnInput>false</SkipOnInput>
 			<CommandName>Form.Command.РедактироватьСписокНаборов</CommandName>
-			<ExtendedTooltip name="РедактироватьСписокНаборовExtendedTooltip" id="72"/>
+			<ExtendedTooltip name="РедактироватьСписокНаборовРасширеннаяПодсказка" id="72"/>
 		</Button>
 	</ChildItems>
 	<Attributes>

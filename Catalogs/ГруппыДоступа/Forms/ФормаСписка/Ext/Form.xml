@@ -218,12 +218,6 @@
 	Справочник.ГруппыДоступа КАК ГруппыДоступа
 ГДЕ
 	ВЫБОР
-			КОГДА &amp;РежимВыбора
-					И &amp;РежимВыбораТолькоГрупп
-				ТОГДА ГруппыДоступа.ЭтоГруппа
-			ИНАЧЕ ИСТИНА
-		КОНЕЦ
-	И ВЫБОР
 			КОГДА &amp;Профиль = ЗНАЧЕНИЕ(Справочник.ПрофилиГруппДоступа.ПустаяСсылка)
 				ТОГДА ИСТИНА
 			ИНАЧЕ ГруппыДоступа.Профиль = &amp;Профиль
@@ -231,17 +225,6 @@
 				<MainTable>Catalog.ГруппыДоступа</MainTable>
 				<ListSettings>
 					<dcsset:filter>
-						<dcsset:item xsi:type="dcsset:FilterItemComparison">
-							<dcsset:left xsi:type="dcscor:Field">Ссылка</dcsset:left>
-							<dcsset:comparisonType>NotInList</dcsset:comparisonType>
-							<dcsset:viewMode>Inaccessible</dcsset:viewMode>
-						</dcsset:item>
-						<dcsset:item xsi:type="dcsset:FilterItemComparison">
-							<dcsset:use>false</dcsset:use>
-							<dcsset:left xsi:type="dcscor:Field">ПометкаУдаления</dcsset:left>
-							<dcsset:comparisonType>Equal</dcsset:comparisonType>
-							<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
-						</dcsset:item>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
 						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
 					</dcsset:filter>

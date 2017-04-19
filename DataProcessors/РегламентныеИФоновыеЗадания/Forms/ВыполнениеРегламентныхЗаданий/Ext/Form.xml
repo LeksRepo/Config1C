@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
 	<Width>75</Width>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoSaveDataInSettings>Use</AutoSaveDataInSettings>
 	<AutoFillCheck>false</AutoFillCheck>
 	<Customizable>false</Customizable>
@@ -26,7 +27,7 @@
 				<SkipOnInput>false</SkipOnInput>
 				<CommandName>Form.Command.ПрекратитьВыполнениеИЗавершитьСеанс</CommandName>
 				<Font kind="AutoFont"/>
-				<ExtendedTooltip name="ФормаПрекратитьВыполнениеИЗавершитьСеансExtendedTooltip" id="33"/>
+				<ExtendedTooltip name="ФормаПрекратитьВыполнениеИЗавершитьСеансРасширеннаяПодсказка" id="33"/>
 			</Button>
 			<ButtonGroup name="КомандыСписка" id="30">
 				<Title>
@@ -41,24 +42,24 @@
 						<v8:content>Команды списка</v8:content>
 					</v8:item>
 				</ToolTip>
-				<ExtendedTooltip name="КомандыСпискаExtendedTooltip" id="34"/>
+				<ExtendedTooltip name="КомандыСпискаРасширеннаяПодсказка" id="34"/>
 				<ChildItems>
 					<Button name="ФормаНайти" id="28">
 						<Type>CommandBarButton</Type>
 						<OnlyInAllActions>false</OnlyInAllActions>
 						<CommandName>Form.Item.РегламентныеЗадания.StandardCommand.Find</CommandName>
-						<ExtendedTooltip name="ФормаНайтиExtendedTooltip" id="35"/>
+						<ExtendedTooltip name="ФормаНайтиРасширеннаяПодсказка" id="35"/>
 					</Button>
 					<Button name="ФормаОтменитьПоиск" id="29">
 						<Type>CommandBarButton</Type>
 						<OnlyInAllActions>false</OnlyInAllActions>
 						<CommandName>Form.Item.РегламентныеЗадания.StandardCommand.CancelSearch</CommandName>
-						<ExtendedTooltip name="ФормаОтменитьПоискExtendedTooltip" id="36"/>
+						<ExtendedTooltip name="ФормаОтменитьПоискРасширеннаяПодсказка" id="36"/>
 					</Button>
 					<Button name="ФормаВывестиСписок" id="27">
 						<Type>CommandBarButton</Type>
 						<CommandName>Form.Item.РегламентныеЗадания.StandardCommand.OutputList</CommandName>
-						<ExtendedTooltip name="ФормаВывестиСписокExtendedTooltip" id="37"/>
+						<ExtendedTooltip name="ФормаВывестиСписокРасширеннаяПодсказка" id="37"/>
 					</Button>
 				</ChildItems>
 			</ButtonGroup>
@@ -66,13 +67,14 @@
 				<Type>CommandBarButton</Type>
 				<OnlyInAllActions>false</OnlyInAllActions>
 				<CommandName>Form.Command.НастройкаВыполненияРегламентныхЗаданий</CommandName>
-				<ExtendedTooltip name="ФормаНастройкаВыполненияРегламентныхЗаданийExtendedTooltip" id="38"/>
+				<ExtendedTooltip name="ФормаНастройкаВыполненияРегламентныхЗаданийРасширеннаяПодсказка" id="38"/>
 			</Button>
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
 		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="OnClose">ПриЗакрытии</Event>
 	</Events>
 	<ChildItems>
 		<UsualGroup name="ГруппаПояснение" id="18">
@@ -85,7 +87,7 @@
 			<Group>Horizontal</Group>
 			<Representation>NormalSeparation</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаПояснениеExtendedTooltip" id="39"/>
+			<ExtendedTooltip name="ГруппаПояснениеРасширеннаяПодсказка" id="39"/>
 			<ChildItems>
 				<PictureDecoration name="ДекорацияИнформация" id="16">
 					<Width>8</Width>
@@ -102,7 +104,7 @@
 						<xr:LoadTransparent>false</xr:LoadTransparent>
 					</Picture>
 					<ContextMenu name="ДекорацияИнформацияКонтекстноеМеню" id="17"/>
-					<ExtendedTooltip name="ДекорацияИнформацияExtendedTooltip" id="40"/>
+					<ExtendedTooltip name="ДекорацияИнформацияРасширеннаяПодсказка" id="40"/>
 				</PictureDecoration>
 				<UsualGroup name="ГруппаСостояние" id="24">
 					<Title>
@@ -114,7 +116,7 @@
 					<Group>Vertical</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="ГруппаСостояниеExtendedTooltip" id="41"/>
+					<ExtendedTooltip name="ГруппаСостояниеРасширеннаяПодсказка" id="41"/>
 					<ChildItems>
 						<LabelDecoration name="Надпись" id="14">
 							<Height>2</Height>
@@ -129,7 +131,7 @@
 							</Title>
 							<VerticalAlign>Center</VerticalAlign>
 							<ContextMenu name="НадписьКонтекстноеМеню" id="15"/>
-							<ExtendedTooltip name="НадписьExtendedTooltip" id="42"/>
+							<ExtendedTooltip name="НадписьРасширеннаяПодсказка" id="42"/>
 						</LabelDecoration>
 						<LabelDecoration name="СтрокаСостояния" id="22">
 							<Height>1</Height>
@@ -142,7 +144,7 @@
 							</Title>
 							<VerticalAlign>Center</VerticalAlign>
 							<ContextMenu name="СтрокаСостоянияКонтекстноеМеню" id="23"/>
-							<ExtendedTooltip name="СтрокаСостоянияExtendedTooltip" id="43"/>
+							<ExtendedTooltip name="СтрокаСостоянияРасширеннаяПодсказка" id="43"/>
 						</LabelDecoration>
 					</ChildItems>
 				</UsualGroup>
@@ -164,30 +166,30 @@
 			<RowFilter xsi:nil="true"/>
 			<ContextMenu name="РегламентныеЗаданияКонтекстноеМеню" id="8"/>
 			<AutoCommandBar name="РегламентныеЗаданияКоманднаяПанель" id="9"/>
-			<ExtendedTooltip name="РегламентныеЗаданияExtendedTooltip" id="44"/>
-			<SearchStringAddition name="РегламентныеЗаданияСтрокаПоиска" id="51">
+			<ExtendedTooltip name="РегламентныеЗаданияРасширеннаяПодсказка" id="44"/>
+			<SearchStringAddition name="РегламентныеЗаданияСтрокаПоиска" id="45">
 				<AdditionSource>
 					<Item>РегламентныеЗадания</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="РегламентныеЗаданияСтрокаПоискаКонтекстноеМеню" id="52"/>
-				<ExtendedTooltip name="РегламентныеЗаданияСтрокаПоискаРасширеннаяПодсказка" id="53"/>
+				<ContextMenu name="РегламентныеЗаданияСтрокаПоискаКонтекстноеМеню" id="46"/>
+				<ExtendedTooltip name="РегламентныеЗаданияСтрокаПоискаРасширеннаяПодсказка" id="47"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="РегламентныеЗаданияСостояниеПросмотра" id="54">
+			<ViewStatusAddition name="РегламентныеЗаданияСостояниеПросмотра" id="48">
 				<AdditionSource>
 					<Item>РегламентныеЗадания</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="РегламентныеЗаданияСостояниеПросмотраКонтекстноеМеню" id="55"/>
-				<ExtendedTooltip name="РегламентныеЗаданияСостояниеПросмотраРасширеннаяПодсказка" id="56"/>
+				<ContextMenu name="РегламентныеЗаданияСостояниеПросмотраКонтекстноеМеню" id="49"/>
+				<ExtendedTooltip name="РегламентныеЗаданияСостояниеПросмотраРасширеннаяПодсказка" id="50"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="РегламентныеЗаданияУправлениеПоиском" id="57">
+			<SearchControlAddition name="РегламентныеЗаданияУправлениеПоиском" id="51">
 				<AdditionSource>
 					<Item>РегламентныеЗадания</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="РегламентныеЗаданияУправлениеПоискомКонтекстноеМеню" id="58"/>
-				<ExtendedTooltip name="РегламентныеЗаданияУправлениеПоискомРасширеннаяПодсказка" id="59"/>
+				<ContextMenu name="РегламентныеЗаданияУправлениеПоискомКонтекстноеМеню" id="52"/>
+				<ExtendedTooltip name="РегламентныеЗаданияУправлениеПоискомРасширеннаяПодсказка" id="53"/>
 			</SearchControlAddition>
 			<ChildItems>
 				<InputField name="РегламентныеЗаданияНомер" id="25">
@@ -195,19 +197,19 @@
 					<EditMode>EnterOnInput</EditMode>
 					<Width>2</Width>
 					<ContextMenu name="РегламентныеЗаданияНомерКонтекстноеМеню" id="26"/>
-					<ExtendedTooltip name="РегламентныеЗаданияНомерExtendedTooltip" id="45"/>
+					<ExtendedTooltip name="РегламентныеЗаданияНомерРасширеннаяПодсказка" id="54"/>
 				</InputField>
 				<InputField name="РегламентныеЗаданияРегламентноеЗадание" id="10">
 					<DataPath>ТаблицаРегламентныхЗаданий.РегламентноеЗадание</DataPath>
 					<EditMode>EnterOnInput</EditMode>
 					<ContextMenu name="РегламентныеЗаданияРегламентноеЗаданиеКонтекстноеМеню" id="11"/>
-					<ExtendedTooltip name="РегламентныеЗаданияРегламентноеЗаданиеExtendedTooltip" id="46"/>
+					<ExtendedTooltip name="РегламентныеЗаданияРегламентноеЗаданиеРасширеннаяПодсказка" id="55"/>
 				</InputField>
 				<InputField name="РегламентныеЗаданияВыполнено" id="12">
 					<DataPath>ТаблицаРегламентныхЗаданий.Выполнено</DataPath>
 					<EditMode>EnterOnInput</EditMode>
 					<ContextMenu name="РегламентныеЗаданияВыполненоКонтекстноеМеню" id="13"/>
-					<ExtendedTooltip name="РегламентныеЗаданияВыполненоExtendedTooltip" id="47"/>
+					<ExtendedTooltip name="РегламентныеЗаданияВыполненоРасширеннаяПодсказка" id="56"/>
 				</InputField>
 			</ChildItems>
 		</Table>
@@ -221,7 +223,7 @@
 			<Group>Horizontal</Group>
 			<Representation>NormalSeparation</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаИнтервалВремениВыполненияExtendedTooltip" id="48"/>
+			<ExtendedTooltip name="ГруппаИнтервалВремениВыполненияРасширеннаяПодсказка" id="57"/>
 			<ChildItems>
 				<InputField name="ПериодВыполнения" id="19">
 					<DataPath>ИнтервалВремениПроверкиВыполнения</DataPath>
@@ -237,7 +239,7 @@
 					<MinValue xsi:type="xs:decimal">5</MinValue>
 					<MaxValue xsi:type="xs:decimal">600</MaxValue>
 					<ContextMenu name="ПериодВыполненияКонтекстноеМеню" id="20"/>
-					<ExtendedTooltip name="ПериодВыполненияExtendedTooltip" id="49"/>
+					<ExtendedTooltip name="ПериодВыполненияРасширеннаяПодсказка" id="58"/>
 				</InputField>
 				<LabelDecoration name="ДекорацияСекунд" id="31">
 					<SkipOnInput>true</SkipOnInput>
@@ -248,7 +250,7 @@
 						</v8:item>
 					</Title>
 					<ContextMenu name="ДекорацияСекундКонтекстноеМеню" id="32"/>
-					<ExtendedTooltip name="ДекорацияСекундExtendedTooltip" id="50"/>
+					<ExtendedTooltip name="ДекорацияСекундРасширеннаяПодсказка" id="59"/>
 				</LabelDecoration>
 			</ChildItems>
 		</UsualGroup>

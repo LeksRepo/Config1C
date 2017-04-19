@@ -13,6 +13,7 @@
 		<Autofill>false</Autofill>
 	</AutoCommandBar>
 	<Events>
+		<Event name="ChoiceProcessing">ОбработкаВыбора</Event>
 		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 		<Event name="BeforeLoadDataFromSettingsAtServer">ПриЗагрузкеДанныхИзНастроекНаСервере</Event>
@@ -29,14 +30,14 @@
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаФильтрыРасширеннаяПодсказка" id="146"/>
+			<ExtendedTooltip name="ГруппаФильтрыРасширеннаяПодсказка" id="147"/>
 			<ChildItems>
 				<Button name="ПереключитьРежимПросмотра" id="102">
 					<Type>UsualButton</Type>
 					<Representation>Picture</Representation>
 					<Check>true</Check>
 					<CommandName>Form.Command.ПереключитьРежимПросмотра</CommandName>
-					<ExtendedTooltip name="ПереключитьРежимПросмотраРасширеннаяПодсказка" id="147"/>
+					<ExtendedTooltip name="ПереключитьРежимПросмотраРасширеннаяПодсказка" id="148"/>
 				</Button>
 				<InputField name="ТипВзаимодействия" id="136">
 					<DataPath>ТипВзаимодействия</DataPath>
@@ -202,9 +203,22 @@
 								<Value xsi:type="xs:string">ВходящиеЗвонки</Value>
 							</xr:Value>
 						</xr:Item>
+						<xr:Item>
+							<xr:Presentation/>
+							<xr:CheckState>0</xr:CheckState>
+							<xr:Value xsi:type="FormChoiceListDesTimeValue">
+								<Presentation>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Сообщения SMS</v8:content>
+									</v8:item>
+								</Presentation>
+								<Value xsi:type="xs:string">СообщенияSMS</Value>
+							</xr:Value>
+						</xr:Item>
 					</ChoiceList>
 					<ContextMenu name="ТипВзаимодействияКонтекстноеМеню" id="137"/>
-					<ExtendedTooltip name="ТипВзаимодействияРасширеннаяПодсказка" id="148"/>
+					<ExtendedTooltip name="ТипВзаимодействияРасширеннаяПодсказка" id="149"/>
 					<Events>
 						<Event name="OnChange">ТипВзаимодействияПриИзменении</Event>
 						<Event name="Clearing">ТипВзаимодействияСтатусОчистка</Event>
@@ -270,7 +284,7 @@
 						</xr:Item>
 					</ChoiceList>
 					<ContextMenu name="СтатусКонтекстноеМеню" id="51"/>
-					<ExtendedTooltip name="СтатусРасширеннаяПодсказка" id="149"/>
+					<ExtendedTooltip name="СтатусРасширеннаяПодсказка" id="150"/>
 					<Events>
 						<Event name="OnChange">СтатусПриИзменении</Event>
 						<Event name="Clearing">ТипВзаимодействияСтатусОчистка</Event>
@@ -284,10 +298,12 @@
 							<v8:content>Ответственный</v8:content>
 						</v8:item>
 					</Title>
+					<Width>35</Width>
+					<HorizontalStretch>false</HorizontalStretch>
 					<Wrap>false</Wrap>
 					<ClearButton>true</ClearButton>
 					<ContextMenu name="ОтветственныйКонтекстноеМеню" id="47"/>
-					<ExtendedTooltip name="ОтветственныйРасширеннаяПодсказка" id="150"/>
+					<ExtendedTooltip name="ОтветственныйРасширеннаяПодсказка" id="151"/>
 					<Events>
 						<Event name="OnChange">ОтветственныйПриИзменении</Event>
 					</Events>
@@ -308,7 +324,7 @@
 				</v8:item>
 			</ToolTip>
 			<PagesRepresentation>None</PagesRepresentation>
-			<ExtendedTooltip name="СтраницыСписокДеревоРасширеннаяПодсказка" id="151"/>
+			<ExtendedTooltip name="СтраницыСписокДеревоРасширеннаяПодсказка" id="152"/>
 			<ChildItems>
 				<Page name="СтраницаСписок" id="104">
 					<Title>
@@ -323,7 +339,7 @@
 							<v8:content>Страница список</v8:content>
 						</v8:item>
 					</ToolTip>
-					<ExtendedTooltip name="СтраницаСписокРасширеннаяПодсказка" id="152"/>
+					<ExtendedTooltip name="СтраницаСписокРасширеннаяПодсказка" id="153"/>
 					<ChildItems>
 						<Table name="Список" id="1">
 							<Representation>List</Representation>
@@ -362,25 +378,25 @@
 										<Type>CommandBarButton</Type>
 										<SkipOnInput>false</SkipOnInput>
 										<CommandName>Form.Command.ОтложитьРассмотрение</CommandName>
-										<ExtendedTooltip name="ОтложитьРасширеннаяПодсказка" id="153"/>
+										<ExtendedTooltip name="ОтложитьРасширеннаяПодсказка" id="154"/>
 									</Button>
 									<Button name="УстановитьРассмотрено" id="48">
 										<Type>CommandBarButton</Type>
 										<SkipOnInput>false</SkipOnInput>
 										<CommandName>Form.Command.Рассмотрено</CommandName>
-										<ExtendedTooltip name="УстановитьРассмотреноРасширеннаяПодсказка" id="154"/>
+										<ExtendedTooltip name="УстановитьРассмотреноРасширеннаяПодсказка" id="155"/>
 									</Button>
 									<Button name="УстановитьОтветственного" id="49">
 										<Type>CommandBarButton</Type>
 										<SkipOnInput>false</SkipOnInput>
 										<CommandName>Form.Command.Ответственный</CommandName>
-										<ExtendedTooltip name="УстановитьОтветственногоРасширеннаяПодсказка" id="155"/>
+										<ExtendedTooltip name="УстановитьОтветственногоРасширеннаяПодсказка" id="156"/>
 									</Button>
 									<Button name="УстановитьПредмет" id="73">
 										<Type>CommandBarButton</Type>
 										<SkipOnInput>false</SkipOnInput>
 										<CommandName>Form.Command.Предмет</CommandName>
-										<ExtendedTooltip name="УстановитьПредметРасширеннаяПодсказка" id="156"/>
+										<ExtendedTooltip name="УстановитьПредметРасширеннаяПодсказка" id="157"/>
 									</Button>
 								</ChildItems>
 							</ContextMenu>
@@ -402,7 +418,7 @@
 												<v8:content>Написать письмо</v8:content>
 											</v8:item>
 										</Title>
-										<ExtendedTooltip name="СписокСоздатьЭлектронноеПисьмоОтдельнаяКнопкаРасширеннаяПодсказка" id="157"/>
+										<ExtendedTooltip name="СписокСоздатьЭлектронноеПисьмоОтдельнаяКнопкаРасширеннаяПодсказка" id="158"/>
 									</Button>
 									<Popup name="ГруппаСоздать" id="80">
 										<Title>
@@ -421,27 +437,32 @@
 											<xr:Ref>StdPicture.CreateListItem</xr:Ref>
 											<xr:LoadTransparent>true</xr:LoadTransparent>
 										</Picture>
-										<ExtendedTooltip name="ГруппаСоздатьРасширеннаяПодсказка" id="158"/>
+										<ExtendedTooltip name="ГруппаСоздатьРасширеннаяПодсказка" id="159"/>
 										<ChildItems>
 											<Button name="СписокСоздатьВстречу" id="81">
 												<Type>CommandBarButton</Type>
 												<CommandName>Form.Command.СоздатьВстречу</CommandName>
-												<ExtendedTooltip name="СписокСоздатьВстречуРасширеннаяПодсказка" id="159"/>
+												<ExtendedTooltip name="СписокСоздатьВстречуРасширеннаяПодсказка" id="160"/>
 											</Button>
 											<Button name="СписокСоздатьЗапланированноеВзаимодействие" id="93">
 												<Type>CommandBarButton</Type>
 												<CommandName>Form.Command.СоздатьЗапланированноеВзаимодействие</CommandName>
-												<ExtendedTooltip name="СписокСоздатьЗапланированноеВзаимодействиеРасширеннаяПодсказка" id="160"/>
+												<ExtendedTooltip name="СписокСоздатьЗапланированноеВзаимодействиеРасширеннаяПодсказка" id="161"/>
+											</Button>
+											<Button name="СписокСоздатьСообщениеSMS" id="146">
+												<Type>CommandBarButton</Type>
+												<CommandName>Form.Command.СоздатьСообщениеSMS</CommandName>
+												<ExtendedTooltip name="СписокСоздатьСообщениеSMSРасширеннаяПодсказка" id="162"/>
 											</Button>
 											<Button name="СписокСоздатьТелефонныйЗвонок" id="94">
 												<Type>CommandBarButton</Type>
 												<CommandName>Form.Command.СоздатьТелефонныйЗвонок</CommandName>
-												<ExtendedTooltip name="СписокСоздатьТелефонныйЗвонокРасширеннаяПодсказка" id="161"/>
+												<ExtendedTooltip name="СписокСоздатьТелефонныйЗвонокРасширеннаяПодсказка" id="163"/>
 											</Button>
 											<Button name="СписокСоздатьЭлектронноеПисьмо" id="95">
 												<Type>CommandBarButton</Type>
 												<CommandName>Form.Command.СоздатьЭлектронноеПисьмо</CommandName>
-												<ExtendedTooltip name="СписокСоздатьЭлектронноеПисьмоРасширеннаяПодсказка" id="162"/>
+												<ExtendedTooltip name="СписокСоздатьЭлектронноеПисьмоРасширеннаяПодсказка" id="164"/>
 											</Button>
 										</ChildItems>
 									</Popup>
@@ -458,38 +479,38 @@
 												<v8:content>Группа команды взаимодействий</v8:content>
 											</v8:item>
 										</ToolTip>
-										<ExtendedTooltip name="ГруппаКомандыВзаимодействийРасширеннаяПодсказка" id="163"/>
+										<ExtendedTooltip name="ГруппаКомандыВзаимодействийРасширеннаяПодсказка" id="165"/>
 										<ChildItems>
 											<Button name="КомандаРассмотрено" id="45">
 												<Type>CommandBarButton</Type>
 												<Representation>PictureAndText</Representation>
 												<SkipOnInput>false</SkipOnInput>
 												<CommandName>Form.Command.Рассмотрено</CommandName>
-												<ExtendedTooltip name="КомандаРассмотреноРасширеннаяПодсказка" id="164"/>
+												<ExtendedTooltip name="КомандаРассмотреноРасширеннаяПодсказка" id="166"/>
 											</Button>
 											<Button name="СписокНеРассмотрено" id="138">
 												<Type>CommandBarButton</Type>
 												<OnlyInAllActions>false</OnlyInAllActions>
 												<CommandName>Form.Command.НеРассмотрено</CommandName>
-												<ExtendedTooltip name="СписокНеРассмотреноРасширеннаяПодсказка" id="165"/>
+												<ExtendedTooltip name="СписокНеРассмотреноРасширеннаяПодсказка" id="167"/>
 											</Button>
 											<Button name="ОтложитьРассмотрение" id="75">
 												<Type>CommandBarButton</Type>
 												<SkipOnInput>false</SkipOnInput>
 												<CommandName>Form.Command.ОтложитьРассмотрение</CommandName>
-												<ExtendedTooltip name="ОтложитьРассмотрениеРасширеннаяПодсказка" id="166"/>
+												<ExtendedTooltip name="ОтложитьРассмотрениеРасширеннаяПодсказка" id="168"/>
 											</Button>
 											<Button name="КомандаОтветственный" id="70">
 												<Type>CommandBarButton</Type>
 												<SkipOnInput>false</SkipOnInput>
 												<CommandName>Form.Command.Ответственный</CommandName>
-												<ExtendedTooltip name="КомандаОтветственныйРасширеннаяПодсказка" id="167"/>
+												<ExtendedTooltip name="КомандаОтветственныйРасширеннаяПодсказка" id="169"/>
 											</Button>
 											<Button name="КомандаПредмет" id="74">
 												<Type>CommandBarButton</Type>
 												<SkipOnInput>false</SkipOnInput>
 												<CommandName>Form.Command.Предмет</CommandName>
-												<ExtendedTooltip name="КомандаПредметРасширеннаяПодсказка" id="168"/>
+												<ExtendedTooltip name="КомандаПредметРасширеннаяПодсказка" id="170"/>
 											</Button>
 										</ChildItems>
 									</ButtonGroup>
@@ -506,7 +527,7 @@
 												<v8:content>Группа команды списка</v8:content>
 											</v8:item>
 										</ToolTip>
-										<ExtendedTooltip name="ГруппаКомандыСпискаРасширеннаяПодсказка" id="169"/>
+										<ExtendedTooltip name="ГруппаКомандыСпискаРасширеннаяПодсказка" id="171"/>
 										<ChildItems>
 											<ButtonGroup name="ГруппаНайти" id="89">
 												<Title>
@@ -521,35 +542,35 @@
 														<v8:content>Группа найти</v8:content>
 													</v8:item>
 												</ToolTip>
-												<ExtendedTooltip name="ГруппаНайтиРасширеннаяПодсказка" id="170"/>
+												<ExtendedTooltip name="ГруппаНайтиРасширеннаяПодсказка" id="172"/>
 												<ChildItems>
 													<Button name="Найти" id="90">
 														<Type>CommandBarButton</Type>
 														<CommandName>Form.Item.Список.StandardCommand.Find</CommandName>
-														<ExtendedTooltip name="НайтиРасширеннаяПодсказка" id="171"/>
+														<ExtendedTooltip name="НайтиРасширеннаяПодсказка" id="173"/>
 													</Button>
 													<Button name="ОтменитьПоиск" id="92">
 														<Type>CommandBarButton</Type>
 														<CommandName>Form.Item.Список.StandardCommand.CancelSearch</CommandName>
-														<ExtendedTooltip name="ОтменитьПоискРасширеннаяПодсказка" id="172"/>
+														<ExtendedTooltip name="ОтменитьПоискРасширеннаяПодсказка" id="174"/>
 													</Button>
 													<Button name="УстановитьИнтервалДат" id="88">
 														<Type>CommandBarButton</Type>
 														<CommandName>Form.Item.Список.StandardCommand.SetDateInterval</CommandName>
-														<ExtendedTooltip name="УстановитьИнтервалДатРасширеннаяПодсказка" id="173"/>
+														<ExtendedTooltip name="УстановитьИнтервалДатРасширеннаяПодсказка" id="175"/>
 													</Button>
 												</ChildItems>
 											</ButtonGroup>
 											<Button name="Изменить" id="83">
 												<Type>CommandBarButton</Type>
 												<CommandName>Form.Item.Список.StandardCommand.Change</CommandName>
-												<ExtendedTooltip name="ИзменитьРасширеннаяПодсказка" id="174"/>
+												<ExtendedTooltip name="ИзменитьРасширеннаяПодсказка" id="176"/>
 											</Button>
 											<Button name="Скопировать" id="84">
 												<Type>CommandBarButton</Type>
 												<OnlyInAllActions>false</OnlyInAllActions>
 												<CommandName>Form.Item.Список.StandardCommand.Copy</CommandName>
-												<ExtendedTooltip name="СкопироватьРасширеннаяПодсказка" id="175"/>
+												<ExtendedTooltip name="СкопироватьРасширеннаяПодсказка" id="177"/>
 											</Button>
 											<ButtonGroup name="ГруппаСписокУстановитьПометкуУдаления" id="86">
 												<Title>
@@ -564,13 +585,13 @@
 														<v8:content>Группа список установить пометку удаления</v8:content>
 													</v8:item>
 												</ToolTip>
-												<ExtendedTooltip name="ГруппаСписокУстановитьПометкуУдаленияРасширеннаяПодсказка" id="176"/>
+												<ExtendedTooltip name="ГруппаСписокУстановитьПометкуУдаленияРасширеннаяПодсказка" id="178"/>
 												<ChildItems>
 													<Button name="УстановитьПометкуУдаления" id="85">
 														<Type>CommandBarButton</Type>
 														<OnlyInAllActions>false</OnlyInAllActions>
 														<CommandName>Form.Item.Список.StandardCommand.SetDeletionMark</CommandName>
-														<ExtendedTooltip name="УстановитьПометкуУдаленияРасширеннаяПодсказка" id="177"/>
+														<ExtendedTooltip name="УстановитьПометкуУдаленияРасширеннаяПодсказка" id="179"/>
 													</Button>
 												</ChildItems>
 											</ButtonGroup>
@@ -579,60 +600,60 @@
 									<Button name="СписокОбновить" id="96">
 										<Type>CommandBarButton</Type>
 										<CommandName>Form.Item.Список.StandardCommand.Refresh</CommandName>
-										<ExtendedTooltip name="СписокОбновитьРасширеннаяПодсказка" id="178"/>
+										<ExtendedTooltip name="СписокОбновитьРасширеннаяПодсказка" id="180"/>
 									</Button>
 									<Button name="СписокПереключитьРежимПросмотра" id="144">
 										<Type>CommandBarButton</Type>
 										<OnlyInAllActions>false</OnlyInAllActions>
 										<CommandName>Form.Command.ПереключитьРежимПросмотра</CommandName>
-										<ExtendedTooltip name="СписокПереключитьРежимПросмотраРасширеннаяПодсказка" id="179"/>
+										<ExtendedTooltip name="СписокПереключитьРежимПросмотраРасширеннаяПодсказка" id="181"/>
 									</Button>
 									<Button name="СписокНастройкаСписка" id="97">
 										<Type>CommandBarButton</Type>
 										<CommandName>Form.Item.Список.StandardCommand.ListSettings</CommandName>
-										<ExtendedTooltip name="СписокНастройкаСпискаРасширеннаяПодсказка" id="180"/>
+										<ExtendedTooltip name="СписокНастройкаСпискаРасширеннаяПодсказка" id="182"/>
 									</Button>
 									<Button name="СписокВывестиСписок" id="98">
 										<Type>CommandBarButton</Type>
 										<CommandName>Form.Item.Список.StandardCommand.OutputList</CommandName>
-										<ExtendedTooltip name="СписокВывестиСписокРасширеннаяПодсказка" id="181"/>
+										<ExtendedTooltip name="СписокВывестиСписокРасширеннаяПодсказка" id="183"/>
 									</Button>
 									<Button name="СписокСправка" id="78">
 										<Type>CommandBarButton</Type>
 										<CommandName>Form.StandardCommand.Help</CommandName>
-										<ExtendedTooltip name="СписокСправкаРасширеннаяПодсказка" id="182"/>
+										<ExtendedTooltip name="СписокСправкаРасширеннаяПодсказка" id="184"/>
 									</Button>
 									<Button name="СписокИзменитьФорму" id="99">
 										<Type>CommandBarButton</Type>
 										<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
-										<ExtendedTooltip name="СписокИзменитьФормуРасширеннаяПодсказка" id="183"/>
+										<ExtendedTooltip name="СписокИзменитьФормуРасширеннаяПодсказка" id="185"/>
 									</Button>
 								</ChildItems>
 							</AutoCommandBar>
-							<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="184"/>
-							<SearchStringAddition name="СписокСтрокаПоиска" id="185">
+							<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="186"/>
+							<SearchStringAddition name="СписокСтрокаПоиска" id="187">
 								<AdditionSource>
 									<Item>Список</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="186"/>
-								<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="187"/>
+								<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="188"/>
+								<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="189"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="СписокСостояниеПросмотра" id="188">
+							<ViewStatusAddition name="СписокСостояниеПросмотра" id="190">
 								<AdditionSource>
 									<Item>Список</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="189"/>
-								<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="190"/>
+								<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="191"/>
+								<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="192"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="СписокУправлениеПоиском" id="191">
+							<SearchControlAddition name="СписокУправлениеПоиском" id="193">
 								<AdditionSource>
 									<Item>Список</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="192"/>
-								<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="193"/>
+								<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="194"/>
+								<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="195"/>
 							</SearchControlAddition>
 							<Events>
 								<Event name="BeforeAddRow">СписокПередНачаломДобавления</Event>
@@ -649,13 +670,13 @@
 										</v8:item>
 									</Format>
 									<ContextMenu name="ДатаКонтекстноеМеню" id="69"/>
-									<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="194"/>
+									<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="196"/>
 								</InputField>
 								<InputField name="Участники" id="66">
 									<DataPath>Список.Участники</DataPath>
 									<Wrap>false</Wrap>
 									<ContextMenu name="УчастникиКонтекстноеМеню" id="67"/>
-									<ExtendedTooltip name="УчастникиРасширеннаяПодсказка" id="195"/>
+									<ExtendedTooltip name="УчастникиРасширеннаяПодсказка" id="197"/>
 								</InputField>
 								<InputField name="Тема" id="20">
 									<DataPath>Список.Тема</DataPath>
@@ -667,7 +688,7 @@
 									</Title>
 									<Wrap>false</Wrap>
 									<ContextMenu name="ТемаКонтекстноеМеню" id="21"/>
-									<ExtendedTooltip name="ТемаРасширеннаяПодсказка" id="196"/>
+									<ExtendedTooltip name="ТемаРасширеннаяПодсказка" id="198"/>
 								</InputField>
 							</ChildItems>
 						</Table>
@@ -686,7 +707,7 @@
 							<v8:content>Страница дерево</v8:content>
 						</v8:item>
 					</ToolTip>
-					<ExtendedTooltip name="СтраницаДеревоРасширеннаяПодсказка" id="197"/>
+					<ExtendedTooltip name="СтраницаДеревоРасширеннаяПодсказка" id="199"/>
 					<ChildItems>
 						<Table name="ДеревоВзаимодействий" id="106">
 							<Representation>Tree</Representation>
@@ -735,7 +756,7 @@
 												<v8:content>Написать письмо</v8:content>
 											</v8:item>
 										</Title>
-										<ExtendedTooltip name="СписокСоздатьЭлектронноеПисьмоОтдельнаяКнопкаДеревоРасширеннаяПодсказка" id="198"/>
+										<ExtendedTooltip name="СписокСоздатьЭлектронноеПисьмоОтдельнаяКнопкаДеревоРасширеннаяПодсказка" id="200"/>
 									</Button>
 									<Popup name="ГруппаСоздатьДерево" id="120">
 										<Title>
@@ -754,27 +775,27 @@
 											<xr:Ref>StdPicture.CreateListItem</xr:Ref>
 											<xr:LoadTransparent>true</xr:LoadTransparent>
 										</Picture>
-										<ExtendedTooltip name="ГруппаСоздатьДеревоРасширеннаяПодсказка" id="199"/>
+										<ExtendedTooltip name="ГруппаСоздатьДеревоРасширеннаяПодсказка" id="201"/>
 										<ChildItems>
 											<Button name="СписокСоздатьВстречуДерево" id="121">
 												<Type>CommandBarButton</Type>
 												<CommandName>Form.Command.СоздатьВстречу</CommandName>
-												<ExtendedTooltip name="СписокСоздатьВстречуДеревоРасширеннаяПодсказка" id="200"/>
+												<ExtendedTooltip name="СписокСоздатьВстречуДеревоРасширеннаяПодсказка" id="202"/>
 											</Button>
 											<Button name="СписокСоздатьЗапланированноеВзаимодействиеДерево" id="122">
 												<Type>CommandBarButton</Type>
 												<CommandName>Form.Command.СоздатьЗапланированноеВзаимодействие</CommandName>
-												<ExtendedTooltip name="СписокСоздатьЗапланированноеВзаимодействиеДеревоРасширеннаяПодсказка" id="201"/>
+												<ExtendedTooltip name="СписокСоздатьЗапланированноеВзаимодействиеДеревоРасширеннаяПодсказка" id="203"/>
 											</Button>
 											<Button name="СписокСоздатьТелефонныйЗвонокДерево" id="123">
 												<Type>CommandBarButton</Type>
 												<CommandName>Form.Command.СоздатьТелефонныйЗвонок</CommandName>
-												<ExtendedTooltip name="СписокСоздатьТелефонныйЗвонокДеревоРасширеннаяПодсказка" id="202"/>
+												<ExtendedTooltip name="СписокСоздатьТелефонныйЗвонокДеревоРасширеннаяПодсказка" id="204"/>
 											</Button>
 											<Button name="СписокСоздатьЭлектронноеПисьмоДерево" id="124">
 												<Type>CommandBarButton</Type>
 												<CommandName>Form.Command.СоздатьЭлектронноеПисьмо</CommandName>
-												<ExtendedTooltip name="СписокСоздатьЭлектронноеПисьмоДеревоРасширеннаяПодсказка" id="203"/>
+												<ExtendedTooltip name="СписокСоздатьЭлектронноеПисьмоДеревоРасширеннаяПодсказка" id="205"/>
 											</Button>
 										</ChildItems>
 									</Popup>
@@ -791,45 +812,45 @@
 												<v8:content>Группа команды взаимодействий</v8:content>
 											</v8:item>
 										</ToolTip>
-										<ExtendedTooltip name="ГруппаКомандыВзаимодействийДеревоРасширеннаяПодсказка" id="204"/>
+										<ExtendedTooltip name="ГруппаКомандыВзаимодействийДеревоРасширеннаяПодсказка" id="206"/>
 										<ChildItems>
 											<Button name="КомандаРассмотреноДерево" id="127">
 												<Type>CommandBarButton</Type>
 												<Representation>PictureAndText</Representation>
 												<SkipOnInput>false</SkipOnInput>
 												<CommandName>Form.Command.Рассмотрено</CommandName>
-												<ExtendedTooltip name="КомандаРассмотреноДеревоРасширеннаяПодсказка" id="205"/>
+												<ExtendedTooltip name="КомандаРассмотреноДеревоРасширеннаяПодсказка" id="207"/>
 											</Button>
 											<Button name="ДеревоВзаимодействийНеРассмотрено" id="139">
 												<Type>CommandBarButton</Type>
 												<OnlyInAllActions>false</OnlyInAllActions>
 												<CommandName>Form.Command.НеРассмотрено</CommandName>
-												<ExtendedTooltip name="ДеревоВзаимодействийНеРассмотреноРасширеннаяПодсказка" id="206"/>
+												<ExtendedTooltip name="ДеревоВзаимодействийНеРассмотреноРасширеннаяПодсказка" id="208"/>
 											</Button>
 											<Button name="ОтложитьРассмотрениеДерево" id="128">
 												<Type>CommandBarButton</Type>
 												<SkipOnInput>false</SkipOnInput>
 												<CommandName>Form.Command.ОтложитьРассмотрение</CommandName>
-												<ExtendedTooltip name="ОтложитьРассмотрениеДеревоРасширеннаяПодсказка" id="207"/>
+												<ExtendedTooltip name="ОтложитьРассмотрениеДеревоРасширеннаяПодсказка" id="209"/>
 											</Button>
 											<Button name="КомандаОтветственныйДерево" id="129">
 												<Type>CommandBarButton</Type>
 												<SkipOnInput>false</SkipOnInput>
 												<CommandName>Form.Command.Ответственный</CommandName>
-												<ExtendedTooltip name="КомандаОтветственныйДеревоРасширеннаяПодсказка" id="208"/>
+												<ExtendedTooltip name="КомандаОтветственныйДеревоРасширеннаяПодсказка" id="210"/>
 											</Button>
 											<Button name="КомандаПредметДерево" id="130">
 												<Type>CommandBarButton</Type>
 												<SkipOnInput>false</SkipOnInput>
 												<CommandName>Form.Command.Предмет</CommandName>
-												<ExtendedTooltip name="КомандаПредметДеревоРасширеннаяПодсказка" id="209"/>
+												<ExtendedTooltip name="КомандаПредметДеревоРасширеннаяПодсказка" id="211"/>
 											</Button>
 										</ChildItems>
 									</ButtonGroup>
 									<Button name="ДеревоВзаимодействийУстановитьИнтервал" id="132">
 										<Type>CommandBarButton</Type>
 										<CommandName>Form.Command.УстановитьИнтервал</CommandName>
-										<ExtendedTooltip name="ДеревоВзаимодействийУстановитьИнтервалРасширеннаяПодсказка" id="210"/>
+										<ExtendedTooltip name="ДеревоВзаимодействийУстановитьИнтервалРасширеннаяПодсказка" id="212"/>
 									</Button>
 									<ButtonGroup name="ГруппаСтандартныеКомандыДерево" id="125">
 										<Title>
@@ -844,18 +865,18 @@
 												<v8:content>Группа стандартные команды дерево</v8:content>
 											</v8:item>
 										</ToolTip>
-										<ExtendedTooltip name="ГруппаСтандартныеКомандыДеревоРасширеннаяПодсказка" id="211"/>
+										<ExtendedTooltip name="ГруппаСтандартныеКомандыДеревоРасширеннаяПодсказка" id="213"/>
 										<ChildItems>
 											<Button name="ДеревоВзаимодействийИзменить" id="141">
 												<Type>CommandBarButton</Type>
 												<CommandName>Form.Item.ДеревоВзаимодействий.StandardCommand.Change</CommandName>
-												<ExtendedTooltip name="ДеревоВзаимодействийИзменитьРасширеннаяПодсказка" id="212"/>
+												<ExtendedTooltip name="ДеревоВзаимодействийИзменитьРасширеннаяПодсказка" id="214"/>
 											</Button>
 											<Button name="ДеревоВзаимодействийСкопировать" id="142">
 												<Type>CommandBarButton</Type>
 												<OnlyInAllActions>false</OnlyInAllActions>
 												<CommandName>Form.Item.ДеревоВзаимодействий.StandardCommand.Copy</CommandName>
-												<ExtendedTooltip name="ДеревоВзаимодействийСкопироватьРасширеннаяПодсказка" id="213"/>
+												<ExtendedTooltip name="ДеревоВзаимодействийСкопироватьРасширеннаяПодсказка" id="215"/>
 											</Button>
 											<Button name="ДеревоВзаимодействийУдалить" id="143">
 												<Type>CommandBarButton</Type>
@@ -871,7 +892,7 @@
 														<v8:content>Пометить на удаление /  Cнять пометку</v8:content>
 													</v8:item>
 												</Title>
-												<ExtendedTooltip name="ДеревоВзаимодействийУдалитьРасширеннаяПодсказка" id="214"/>
+												<ExtendedTooltip name="ДеревоВзаимодействийУдалитьРасширеннаяПодсказка" id="216"/>
 											</Button>
 										</ChildItems>
 									</ButtonGroup>
@@ -879,7 +900,7 @@
 										<Type>CommandBarButton</Type>
 										<OnlyInAllActions>false</OnlyInAllActions>
 										<CommandName>Form.Command.ПереключитьРежимПросмотра</CommandName>
-										<ExtendedTooltip name="ДеревоВзаимодействийПереключитьРежимПросмотраРасширеннаяПодсказка" id="215"/>
+										<ExtendedTooltip name="ДеревоВзаимодействийПереключитьРежимПросмотраРасширеннаяПодсказка" id="217"/>
 									</Button>
 									<Button name="ОбновитьДерево" id="131">
 										<Type>CommandBarButton</Type>
@@ -895,34 +916,34 @@
 												<v8:content>Обновить</v8:content>
 											</v8:item>
 										</Title>
-										<ExtendedTooltip name="ОбновитьДеревоРасширеннаяПодсказка" id="216"/>
+										<ExtendedTooltip name="ОбновитьДеревоРасширеннаяПодсказка" id="218"/>
 									</Button>
 								</ChildItems>
 							</AutoCommandBar>
-							<ExtendedTooltip name="ДеревоВзаимодействийРасширеннаяПодсказка" id="217"/>
-							<SearchStringAddition name="ДеревоВзаимодействийСтрокаПоиска" id="218">
+							<ExtendedTooltip name="ДеревоВзаимодействийРасширеннаяПодсказка" id="219"/>
+							<SearchStringAddition name="ДеревоВзаимодействийСтрокаПоиска" id="220">
 								<AdditionSource>
 									<Item>ДеревоВзаимодействий</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="ДеревоВзаимодействийСтрокаПоискаКонтекстноеМеню" id="219"/>
-								<ExtendedTooltip name="ДеревоВзаимодействийСтрокаПоискаРасширеннаяПодсказка" id="220"/>
+								<ContextMenu name="ДеревоВзаимодействийСтрокаПоискаКонтекстноеМеню" id="221"/>
+								<ExtendedTooltip name="ДеревоВзаимодействийСтрокаПоискаРасширеннаяПодсказка" id="222"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="ДеревоВзаимодействийСостояниеПросмотра" id="221">
+							<ViewStatusAddition name="ДеревоВзаимодействийСостояниеПросмотра" id="223">
 								<AdditionSource>
 									<Item>ДеревоВзаимодействий</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="ДеревоВзаимодействийСостояниеПросмотраКонтекстноеМеню" id="222"/>
-								<ExtendedTooltip name="ДеревоВзаимодействийСостояниеПросмотраРасширеннаяПодсказка" id="223"/>
+								<ContextMenu name="ДеревоВзаимодействийСостояниеПросмотраКонтекстноеМеню" id="224"/>
+								<ExtendedTooltip name="ДеревоВзаимодействийСостояниеПросмотраРасширеннаяПодсказка" id="225"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="ДеревоВзаимодействийУправлениеПоиском" id="224">
+							<SearchControlAddition name="ДеревоВзаимодействийУправлениеПоиском" id="226">
 								<AdditionSource>
 									<Item>ДеревоВзаимодействий</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="ДеревоВзаимодействийУправлениеПоискомКонтекстноеМеню" id="225"/>
-								<ExtendedTooltip name="ДеревоВзаимодействийУправлениеПоискомРасширеннаяПодсказка" id="226"/>
+								<ContextMenu name="ДеревоВзаимодействийУправлениеПоискомКонтекстноеМеню" id="227"/>
+								<ExtendedTooltip name="ДеревоВзаимодействийУправлениеПоискомРасширеннаяПодсказка" id="228"/>
 							</SearchControlAddition>
 							<Events>
 								<Event name="Selection">ДеревоВзаимодействийВыбор</Event>
@@ -945,7 +966,7 @@
 										</v8:item>
 									</ToolTip>
 									<Group>InCell</Group>
-									<ExtendedTooltip name="ДатаКартинкаРасширеннаяПодсказка" id="227"/>
+									<ExtendedTooltip name="ДатаКартинкаРасширеннаяПодсказка" id="229"/>
 									<ChildItems>
 										<PictureField name="ДеревоВзаимодействийНомерКартинки" id="113">
 											<DataPath>ДеревоВзаимодействий.НомерКартинки</DataPath>
@@ -956,7 +977,7 @@
 												<xr:LoadTransparent>false</xr:LoadTransparent>
 											</ValuesPicture>
 											<ContextMenu name="ДеревоВзаимодействийНомерКартинкиКонтекстноеМеню" id="114"/>
-											<ExtendedTooltip name="ДеревоВзаимодействийНомерКартинкиРасширеннаяПодсказка" id="228"/>
+											<ExtendedTooltip name="ДеревоВзаимодействийНомерКартинкиРасширеннаяПодсказка" id="230"/>
 										</PictureField>
 										<InputField name="ДеревоВзаимодействийДата" id="111">
 											<DataPath>ДеревоВзаимодействий.Дата</DataPath>
@@ -964,7 +985,7 @@
 											<ChoiceButton>false</ChoiceButton>
 											<ClearButton>false</ClearButton>
 											<ContextMenu name="ДеревоВзаимодействийДатаКонтекстноеМеню" id="112"/>
-											<ExtendedTooltip name="ДеревоВзаимодействийДатаРасширеннаяПодсказка" id="229"/>
+											<ExtendedTooltip name="ДеревоВзаимодействийДатаРасширеннаяПодсказка" id="231"/>
 										</InputField>
 									</ChildItems>
 								</ColumnGroup>
@@ -976,7 +997,7 @@
 									<OpenButton>false</OpenButton>
 									<ChooseType>false</ChooseType>
 									<ContextMenu name="ДеревоВзаимодействийУчастникиКонтекстноеМеню" id="119"/>
-									<ExtendedTooltip name="ДеревоВзаимодействийУчастникиРасширеннаяПодсказка" id="230"/>
+									<ExtendedTooltip name="ДеревоВзаимодействийУчастникиРасширеннаяПодсказка" id="232"/>
 								</InputField>
 								<InputField name="ДеревоВзаимодействийТема" id="116">
 									<DataPath>ДеревоВзаимодействий.Тема</DataPath>
@@ -988,7 +1009,7 @@
 									<ChooseType>false</ChooseType>
 									<ChoiceListButton>false</ChoiceListButton>
 									<ContextMenu name="ДеревоВзаимодействийТемаКонтекстноеМеню" id="117"/>
-									<ExtendedTooltip name="ДеревоВзаимодействийТемаРасширеннаяПодсказка" id="231"/>
+									<ExtendedTooltip name="ДеревоВзаимодействийТемаРасширеннаяПодсказка" id="233"/>
 								</InputField>
 							</ChildItems>
 						</Table>
@@ -1019,22 +1040,61 @@
 				<QueryText>ВЫБРАТЬ
 	ВЫБОР
 		КОГДА ЖурналДокументовВзаимодействия.Ссылка ССЫЛКА Документ.Встреча
-			ТОГДА 0
+			ТОГДА ВЫБОР
+					КОГДА ЖурналДокументовВзаимодействия.ПометкаУдаления
+						ТОГДА 10
+					ИНАЧЕ 0
+				КОНЕЦ
 		КОГДА ЖурналДокументовВзаимодействия.Ссылка ССЫЛКА Документ.ЗапланированноеВзаимодействие
-			ТОГДА 1
+			ТОГДА ВЫБОР
+					КОГДА ЖурналДокументовВзаимодействия.ПометкаУдаления
+						ТОГДА 11
+					ИНАЧЕ 1
+				КОНЕЦ
 		КОГДА ЖурналДокументовВзаимодействия.Ссылка ССЫЛКА Документ.ТелефонныйЗвонок
-			ТОГДА 2
+			ТОГДА ВЫБОР
+					КОГДА ЖурналДокументовВзаимодействия.ПометкаУдаления
+						ТОГДА 12
+					ИНАЧЕ 2
+				КОНЕЦ
 		КОГДА ЖурналДокументовВзаимодействия.Ссылка ССЫЛКА Документ.ЭлектронноеПисьмоВходящее
-			ТОГДА 3
-		ИНАЧЕ 4
-	КОНЕЦ + ВЫБОР
-		КОГДА ЖурналДокументовВзаимодействия.ПометкаУдаления
-			ТОГДА 10
-		ИНАЧЕ ВЫБОР
-				КОГДА ЖурналДокументовВзаимодействия.Рассмотрено
-					ТОГДА 5
-				ИНАЧЕ 0
-			КОНЕЦ
+			ТОГДА ВЫБОР
+					КОГДА ЖурналДокументовВзаимодействия.ПометкаУдаления
+						ТОГДА 13
+					ИНАЧЕ 3
+				КОНЕЦ
+		КОГДА ЖурналДокументовВзаимодействия.Ссылка ССЫЛКА Документ.ЭлектронноеПисьмоИсходящее
+			ТОГДА ВЫБОР
+					КОГДА ЖурналДокументовВзаимодействия.ПометкаУдаления
+						ТОГДА 14
+					ИНАЧЕ ВЫБОР
+							КОГДА ЖурналДокументовВзаимодействия.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СтатусыИсходящегоЭлектронногоПисьма.Черновик)
+								ТОГДА 15
+							КОГДА ЖурналДокументовВзаимодействия.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СтатусыИсходящегоЭлектронногоПисьма.Исходящее)
+								ТОГДА 16
+							ИНАЧЕ 4
+						КОНЕЦ
+				КОНЕЦ
+		КОГДА ЖурналДокументовВзаимодействия.Ссылка ССЫЛКА Документ.СообщениеSMS
+			ТОГДА ВЫБОР
+					КОГДА ЖурналДокументовВзаимодействия.ПометкаУдаления
+						ТОГДА 22
+					ИНАЧЕ ВЫБОР
+							КОГДА ЖурналДокументовВзаимодействия.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СостоянияДокументаСообщениеSMS.Черновик)
+								ТОГДА 17
+							КОГДА ЖурналДокументовВзаимодействия.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СостоянияДокументаСообщениеSMS.Исходящее)
+								ТОГДА 18
+							КОГДА ЖурналДокументовВзаимодействия.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СостоянияДокументаСообщениеSMS.Доставляется)
+								ТОГДА 19
+							КОГДА ЖурналДокументовВзаимодействия.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СостоянияДокументаСообщениеSMS.ЧастичноДоставлено)
+								ТОГДА 21
+							КОГДА ЖурналДокументовВзаимодействия.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СостоянияДокументаСообщениеSMS.НеДоставлено)
+								ТОГДА 23
+							КОГДА ЖурналДокументовВзаимодействия.СтатусИсходящегоПисьма = ЗНАЧЕНИЕ(Перечисление.СостоянияДокументаСообщениеSMS.Доставлено)
+								ТОГДА 24
+							ИНАЧЕ 17
+						КОНЕЦ
+				КОНЕЦ
 	КОНЕЦ КАК НомерКартинки,
 	ЖурналДокументовВзаимодействия.Ссылка,
 	ЖурналДокументовВзаимодействия.Дата,
@@ -1169,6 +1229,7 @@
 				<v8:Type>cfg:DocumentRef.ЭлектронноеПисьмоВходящее</v8:Type>
 				<v8:Type>cfg:DocumentRef.ТелефонныйЗвонок</v8:Type>
 				<v8:Type>cfg:DocumentRef.Встреча</v8:Type>
+				<v8:Type>cfg:DocumentRef.СообщениеSMS</v8:Type>
 			</Type>
 		</Attribute>
 		<Attribute name="ВВидеДерева" id="3">
@@ -1209,6 +1270,7 @@
 						<v8:Type>cfg:DocumentRef.ЭлектронноеПисьмоВходящее</v8:Type>
 						<v8:Type>cfg:DocumentRef.ТелефонныйЗвонок</v8:Type>
 						<v8:Type>cfg:DocumentRef.Встреча</v8:Type>
+						<v8:Type>cfg:DocumentRef.СообщениеSMS</v8:Type>
 					</Type>
 				</Column>
 				<Column name="Дата" id="2">
@@ -1686,6 +1748,28 @@
 			<Action>РассмотреноВыполнить</Action>
 			<FunctionalOptions>
 				<Item>FunctionalOption.ИспользоватьПризнакРассмотрено</Item>
+			</FunctionalOptions>
+		</Command>
+		<Command name="СоздатьСообщениеSMS" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сообщение SMS</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Создать сообщение SMS</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.CreateListItem</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>СоздатьСообщениеSMS</Action>
+			<FunctionalOptions>
+				<Item>FunctionalOption.ИспользоватьПрочиеВзаимодействия</Item>
 			</FunctionalOptions>
 		</Command>
 	</Commands>

@@ -12,16 +12,17 @@
 				<Type>CommandBarButton</Type>
 				<DefaultButton>true</DefaultButton>
 				<CommandName>Form.Command.ОК</CommandName>
-				<ExtendedTooltip name="ФормаОКExtendedTooltip" id="16"/>
+				<ExtendedTooltip name="ФормаОКРасширеннаяПодсказка" id="16"/>
 			</Button>
 			<Button name="ФормаОтмена" id="1">
 				<Type>CommandBarButton</Type>
 				<CommandName>Form.StandardCommand.Cancel</CommandName>
-				<ExtendedTooltip name="ФормаОтменаExtendedTooltip" id="17"/>
+				<ExtendedTooltip name="ФормаОтменаРасширеннаяПодсказка" id="17"/>
 			</Button>
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
+		<Event name="ChoiceProcessing">ОбработкаВыбора</Event>
 		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
@@ -49,17 +50,17 @@
 				</xr:Item>
 			</ChoiceList>
 			<ContextMenu name="ДействияПриСохраненииСЭЦПКонтекстноеМеню" id="4"/>
-			<ExtendedTooltip name="ДействияПриСохраненииСЭЦПExtendedTooltip" id="18"/>
+			<ExtendedTooltip name="ДействияПриСохраненииСЭЦПРасширеннаяПодсказка" id="18"/>
 		</RadioButtonField>
 		<InputField name="РасширениеДляЗашифрованныхФайлов" id="9">
 			<DataPath>РасширениеДляЗашифрованныхФайлов</DataPath>
 			<ContextMenu name="РасширениеДляЗашифрованныхФайловКонтекстноеМеню" id="10"/>
-			<ExtendedTooltip name="РасширениеДляЗашифрованныхФайловExtendedTooltip" id="19"/>
+			<ExtendedTooltip name="РасширениеДляЗашифрованныхФайловРасширеннаяПодсказка" id="19"/>
 		</InputField>
 		<InputField name="РасширениеДляФайловПодписи" id="13">
 			<DataPath>РасширениеДляФайловПодписи</DataPath>
 			<ContextMenu name="РасширениеДляФайловПодписиКонтекстноеМеню" id="14"/>
-			<ExtendedTooltip name="РасширениеДляФайловПодписиExtendedTooltip" id="20"/>
+			<ExtendedTooltip name="РасширениеДляФайловПодписиРасширеннаяПодсказка" id="20"/>
 		</InputField>
 		<InputField name="ЛичныйСертификатДляШифрования" id="11">
 			<DataPath>ЛичныйСертификатДляШифрования</DataPath>
@@ -67,7 +68,7 @@
 			<OpenButton>true</OpenButton>
 			<TextEdit>false</TextEdit>
 			<ContextMenu name="ЛичныйСертификатДляШифрованияКонтекстноеМеню" id="12"/>
-			<ExtendedTooltip name="ЛичныйСертификатДляШифрованияExtendedTooltip" id="21"/>
+			<ExtendedTooltip name="ЛичныйСертификатДляШифрованияРасширеннаяПодсказка" id="21"/>
 			<Events>
 				<Event name="StartChoice">ЛичныйСертификатНачалоВыбора</Event>
 				<Event name="Opening">ЛичныйСертификатОткрытие</Event>
@@ -88,7 +89,7 @@
 				</v8:item>
 			</ToolTip>
 			<Group>Vertical</Group>
-			<ExtendedTooltip name="ПараметрыВебКлиентаПодУправлениемLinuxExtendedTooltip" id="22"/>
+			<ExtendedTooltip name="ПараметрыВебКлиентаПодУправлениемLinuxРасширеннаяПодсказка" id="22"/>
 			<ChildItems>
 				<InputField name="ПутьМодуляКриптографии" id="7">
 					<DataPath>ПутьМодуляКриптографии</DataPath>
@@ -100,7 +101,7 @@
 						</v8:item>
 					</ToolTip>
 					<ContextMenu name="ПутьМодуляКриптографииКонтекстноеМеню" id="8"/>
-					<ExtendedTooltip name="ПутьМодуляКриптографииExtendedTooltip" id="23"/>
+					<ExtendedTooltip name="ПутьМодуляКриптографииРасширеннаяПодсказка" id="23"/>
 				</InputField>
 			</ChildItems>
 		</UsualGroup>
@@ -213,11 +214,4 @@
 			<Action>ОК</Action>
 		</Command>
 	</Commands>
-	<Parameters>
-		<Parameter name="ВебКлиентВLinux">
-			<Type>
-				<v8:Type>xs:boolean</v8:Type>
-			</Type>
-		</Parameter>
-	</Parameters>
 </Form>

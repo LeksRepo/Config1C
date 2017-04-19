@@ -2,6 +2,10 @@
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1">
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
+	<CommandSet>
+		<ExcludedCommand>Copy</ExcludedCommand>
+		<ExcludedCommand>Create</ExcludedCommand>
+	</CommandSet>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<ChildItems>
 		<Table name="Список" id="1">
@@ -14,6 +18,10 @@
 			<EnableStartDrag>true</EnableStartDrag>
 			<DataPath>Список</DataPath>
 			<RowPictureDataPath>Список.DefaultPicture</RowPictureDataPath>
+			<CommandSet>
+				<ExcludedCommand>Copy</ExcludedCommand>
+				<ExcludedCommand>Create</ExcludedCommand>
+			</CommandSet>
 			<SearchStringLocation>None</SearchStringLocation>
 			<ViewStatusLocation>None</ViewStatusLocation>
 			<SearchControlLocation>None</SearchControlLocation>
@@ -34,52 +42,55 @@
 			<AutoCommandBar name="СписокКоманднаяПанель" id="3">
 				<Autofill>false</Autofill>
 			</AutoCommandBar>
-			<ExtendedTooltip name="СписокExtendedTooltip" id="14"/>
-			<SearchStringAddition name="СписокСтрокаПоиска" id="20">
+			<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="14"/>
+			<SearchStringAddition name="СписокСтрокаПоиска" id="15">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="21"/>
-				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="22"/>
+				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="16"/>
+				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="17"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокСостояниеПросмотра" id="23">
+			<ViewStatusAddition name="СписокСостояниеПросмотра" id="18">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="24"/>
-				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="25"/>
+				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="19"/>
+				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="20"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокУправлениеПоиском" id="26">
+			<SearchControlAddition name="СписокУправлениеПоиском" id="21">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="27"/>
-				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="28"/>
+				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="22"/>
+				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="23"/>
 			</SearchControlAddition>
+			<Events>
+				<Event name="BeforeAddRow">СписокПередНачаломДобавления</Event>
+			</Events>
 			<ChildItems>
 				<LabelField name="Дата" id="4">
 					<DataPath>Список.Date</DataPath>
 					<DefaultItem>true</DefaultItem>
 					<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
-					<ExtendedTooltip name="ДатаExtendedTooltip" id="15"/>
+					<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="24"/>
 				</LabelField>
 				<LabelField name="Номер" id="6">
 					<DataPath>Список.Number</DataPath>
 					<ContextMenu name="НомерКонтекстноеМеню" id="7"/>
-					<ExtendedTooltip name="НомерExtendedTooltip" id="16"/>
+					<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="25"/>
 				</LabelField>
 				<LabelField name="Тема" id="8">
 					<DataPath>Список.Тема</DataPath>
 					<ContextMenu name="ТемаКонтекстноеМеню" id="9"/>
-					<ExtendedTooltip name="ТемаExtendedTooltip" id="17"/>
+					<ExtendedTooltip name="ТемаРасширеннаяПодсказка" id="26"/>
 				</LabelField>
 				<LabelField name="Предмет" id="10">
 					<DataPath>Список.Предмет</DataPath>
 					<ContextMenu name="ПредметКонтекстноеМеню" id="11"/>
-					<ExtendedTooltip name="ПредметExtendedTooltip" id="18"/>
+					<ExtendedTooltip name="ПредметРасширеннаяПодсказка" id="27"/>
 				</LabelField>
 				<LabelField name="ОтправительАдрес" id="12">
 					<DataPath>Список.ОтправительАдрес</DataPath>
@@ -90,7 +101,7 @@
 						</v8:item>
 					</Title>
 					<ContextMenu name="ОтправительАдресКонтекстноеМеню" id="13"/>
-					<ExtendedTooltip name="ОтправительАдресExtendedTooltip" id="19"/>
+					<ExtendedTooltip name="ОтправительАдресРасширеннаяПодсказка" id="28"/>
 				</LabelField>
 			</ChildItems>
 		</Table>

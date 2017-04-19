@@ -6,12 +6,14 @@
 			<v8:content>Номер телефона</v8:content>
 		</v8:item>
 	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<Autofill>false</Autofill>
 	</AutoCommandBar>
 	<Events>
+		<Event name="BeforeClose">ПередЗакрытием</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
@@ -42,6 +44,12 @@
 						<InputField name="КодСтраны" id="5">
 							<DataPath>КодСтраны</DataPath>
 							<TitleLocation>Top</TitleLocation>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Код страны в телефонном номере</v8:content>
+								</v8:item>
+							</ToolTip>
 							<Width>6</Width>
 							<HorizontalStretch>false</HorizontalStretch>
 							<ContextMenu name="КодСтраныКонтекстноеМеню" id="6"/>
@@ -53,6 +61,12 @@
 						<InputField name="КодГорода" id="3">
 							<DataPath>КодГорода</DataPath>
 							<TitleLocation>Top</TitleLocation>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Код города в телефонном номере</v8:content>
+								</v8:item>
+							</ToolTip>
 							<Width>6</Width>
 							<HorizontalStretch>false</HorizontalStretch>
 							<ContextMenu name="КодГородаКонтекстноеМеню" id="4"/>
@@ -64,6 +78,12 @@
 						<InputField name="НомерТелефона" id="9">
 							<DataPath>НомерТелефона</DataPath>
 							<TitleLocation>Top</TitleLocation>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Номер телефона в телефонном номере</v8:content>
+								</v8:item>
+							</ToolTip>
 							<Width>21</Width>
 							<HorizontalStretch>true</HorizontalStretch>
 							<ContextMenu name="НомерТелефонаКонтекстноеМеню" id="10"/>
@@ -75,6 +95,12 @@
 						<InputField name="Добавочный" id="1">
 							<DataPath>Добавочный</DataPath>
 							<TitleLocation>Top</TitleLocation>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Добавочный номер</v8:content>
+								</v8:item>
+							</ToolTip>
 							<Width>8</Width>
 							<HorizontalStretch>false</HorizontalStretch>
 							<ContextMenu name="ДобавочныйКонтекстноеМеню" id="2"/>
@@ -114,6 +140,12 @@
 						<InputField name="Комментарий" id="7">
 							<DataPath>Комментарий</DataPath>
 							<TitleLocation>Left</TitleLocation>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Дополнительный комментарий, не попадающий в представление</v8:content>
+								</v8:item>
+							</ToolTip>
 							<HorizontalStretch>true</HorizontalStretch>
 							<MultiLine>true</MultiLine>
 							<ChoiceButton>true</ChoiceButton>
@@ -365,6 +397,17 @@
 			</Title>
 			<Type>
 				<v8:Type>cfg:EnumRef.ТипыКонтактнойИнформации</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ВозвращатьСписокЗначений" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Возвращать список значений</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 	</Attributes>

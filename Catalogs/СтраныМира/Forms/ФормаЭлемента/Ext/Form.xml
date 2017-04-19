@@ -5,28 +5,67 @@
 	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
 	<AutoCommandBar name="Форма_КоманднаяПанель" id="-1"/>
 	<Events>
-		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
 		<UsualGroup name="Группа" id="11">
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаРасширеннаяПодсказка" id="12"/>
+			<ExtendedTooltip name="ГруппаРасширеннаяПодсказка" id="13"/>
 			<ChildItems>
+				<InputField name="Наименование" id="3">
+					<DataPath>Объект.Description</DataPath>
+					<Wrap>false</Wrap>
+					<ContextMenu name="Наименование_КонтекстноеМеню" id="4"/>
+					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="14"/>
+				</InputField>
 				<InputField name="Код" id="1">
 					<DataPath>Объект.Code</DataPath>
 					<Wrap>false</Wrap>
 					<ContextMenu name="Код_КонтекстноеМеню" id="2"/>
-					<ExtendedTooltip name="КодРасширеннаяПодсказка" id="13"/>
+					<ExtendedTooltip name="КодРасширеннаяПодсказка" id="15"/>
 				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="НаименованиеПолное" id="5">
+			<DataPath>Объект.НаименованиеПолное</DataPath>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Полное наименование</v8:content>
+				</v8:item>
+			</Title>
+			<Wrap>false</Wrap>
+			<ContextMenu name="НаименованиеПолное_КонтекстноеМеню" id="6"/>
+			<ExtendedTooltip name="НаименованиеПолноеРасширеннаяПодсказка" id="16"/>
+		</InputField>
+		<UsualGroup name="ГруппаАльфаКодов" id="12">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа альфа кодов</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа альфа кодов</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаАльфаКодовРасширеннаяПодсказка" id="17"/>
+			<ChildItems>
 				<InputField name="КодАльфа2" id="7">
 					<DataPath>Объект.КодАльфа2</DataPath>
 					<Width>2</Width>
 					<HorizontalStretch>false</HorizontalStretch>
 					<Wrap>false</Wrap>
 					<ContextMenu name="КодАльфа2_КонтекстноеМеню" id="8"/>
-					<ExtendedTooltip name="КодАльфа2РасширеннаяПодсказка" id="14"/>
+					<ExtendedTooltip name="КодАльфа2РасширеннаяПодсказка" id="18"/>
 				</InputField>
 				<InputField name="КодАльфа3" id="9">
 					<DataPath>Объект.КодАльфа3</DataPath>
@@ -34,28 +73,10 @@
 					<HorizontalStretch>false</HorizontalStretch>
 					<Wrap>false</Wrap>
 					<ContextMenu name="КодАльфа3_КонтекстноеМеню" id="10"/>
-					<ExtendedTooltip name="КодАльфа3РасширеннаяПодсказка" id="15"/>
+					<ExtendedTooltip name="КодАльфа3РасширеннаяПодсказка" id="19"/>
 				</InputField>
 			</ChildItems>
 		</UsualGroup>
-		<InputField name="Наименование" id="3">
-			<DataPath>Объект.Description</DataPath>
-			<Wrap>false</Wrap>
-			<ContextMenu name="Наименование_КонтекстноеМеню" id="4"/>
-			<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="16"/>
-		</InputField>
-		<InputField name="НаименованиеПолное" id="5">
-			<DataPath>Объект.НаименованиеПолное</DataPath>
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Полное</v8:content>
-				</v8:item>
-			</Title>
-			<Wrap>false</Wrap>
-			<ContextMenu name="НаименованиеПолное_КонтекстноеМеню" id="6"/>
-			<ExtendedTooltip name="НаименованиеПолноеРасширеннаяПодсказка" id="17"/>
-		</InputField>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Объект" id="1">
