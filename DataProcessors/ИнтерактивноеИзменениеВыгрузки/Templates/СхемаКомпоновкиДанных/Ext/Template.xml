@@ -333,6 +333,24 @@
 			</v8:NumberQualifiers>
 		</valueType>
 	</calculatedField>
+	<calculatedField>
+		<dataPath>УпрощенныйРежим</dataPath>
+		<expression>&amp;УпрощенныйРежим</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Упрощенный режим</v8:content>
+			</v8:item>
+		</title>
+		<useRestriction>
+			<condition>true</condition>
+			<group>true</group>
+			<order>true</order>
+		</useRestriction>
+		<valueType>
+			<v8:Type>xs:boolean</v8:Type>
+		</valueType>
+	</calculatedField>
 	<totalField>
 		<dataPath>РегистрацияАвтоматически</dataPath>
 		<expression>СУММА(РегистрацияАвтоматически)</expression>
@@ -545,6 +563,21 @@
 			</v8:StringQualifiers>
 		</valueType>
 		<value xsi:type="xs:string"/>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>УпрощенныйРежим</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Упрощенный режим</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:boolean</v8:Type>
+		</valueType>
+		<value xsi:type="xs:boolean">false</value>
 		<useRestriction>true</useRestriction>
 		<availableAsField>false</availableAsField>
 	</parameter>
@@ -993,6 +1026,28 @@
 			<dcsat:expression>&amp;ПредставлениеСписка</dcsat:expression>
 		</parameter>
 	</template>
+	<template>
+		<name>Макет6</name>
+		<template xmlns:dcsat="http://v8.1c.ru/8.1/data-composition-system/area-template" xsi:type="dcsat:AreaTemplate">
+			<dcsat:item xsi:type="dcsat:TableRow">
+				<dcsat:tableCell/>
+				<dcsat:tableCell/>
+			</dcsat:item>
+			<dcsat:item xsi:type="dcsat:TableRow">
+				<dcsat:tableCell>
+					<dcsat:item xsi:type="dcsat:Field">
+						<dcsat:value xsi:type="v8:LocalStringType">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>* В состав отправляемых данных могут быть включены дополнительные объекты для обеспечения целостности данных</v8:content>
+							</v8:item>
+						</dcsat:value>
+					</dcsat:item>
+				</dcsat:tableCell>
+				<dcsat:tableCell/>
+			</dcsat:item>
+		</template>
+	</template>
 	<groupHeaderTemplate>
 		<groupName>Подвал</groupName>
 		<templateType>Header</templateType>
@@ -1012,6 +1067,11 @@
 		<groupName>ПодвалВидаОбъекта</groupName>
 		<templateType>Header</templateType>
 		<template>Макет4</template>
+	</groupHeaderTemplate>
+	<groupHeaderTemplate>
+		<groupName>ПустойПодвал</groupName>
+		<templateType>Header</templateType>
+		<template>Макет6</template>
 	</groupHeaderTemplate>
 	<settingsVariant>
 		<dcsset:name>ТехническиеДанные</dcsset:name>
@@ -1229,22 +1289,22 @@
 								</v8:item>
 							</dcsset:lwsTitle>
 						</dcsset:item>
-						<dcsset:item xsi:type="dcsset:SelectedItemField">
-							<dcsset:field>КоличествоДляВыгрузки</dcsset:field>
-							<dcsset:lwsTitle>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Будет отправлено</v8:content>
-								</v8:item>
-							</dcsset:lwsTitle>
-						</dcsset:item>
 						<dcsset:placement>Horizontally</dcsset:placement>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ОбщееКоличество</dcsset:field>
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
 						<dcsset:field>НеБудетВыгружено</dcsset:field>
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
-						<dcsset:field>ОбщееКоличество</dcsset:field>
+						<dcsset:field>КоличествоДляВыгрузки</dcsset:field>
+						<dcsset:lwsTitle>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Будет отправлено</v8:content>
+							</v8:item>
+						</dcsset:lwsTitle>
 					</dcsset:item>
 				</dcsset:selection>
 				<dcsset:conditionalAppearance>
@@ -1282,6 +1342,20 @@
 										<v8:content>ЧН=-</v8:content>
 									</v8:item>
 								</dcscor:value>
+							</dcscor:item>
+						</dcsset:appearance>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:selection>
+							<dcsset:item>
+								<dcsset:field>КоличествоДляВыгрузки</dcsset:field>
+							</dcsset:item>
+						</dcsset:selection>
+						<dcsset:filter/>
+						<dcsset:appearance>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>Шрифт</dcscor:parameter>
+								<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 							</dcscor:item>
 						</dcsset:appearance>
 					</dcsset:item>
@@ -1428,16 +1502,16 @@
 								</v8:item>
 							</dcsset:lwsTitle>
 						</dcsset:item>
-						<dcsset:item xsi:type="dcsset:SelectedItemField">
-							<dcsset:field>КоличествоДляВыгрузки</dcsset:field>
-							<dcsset:lwsTitle>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Будет отправлено</v8:content>
-								</v8:item>
-							</dcsset:lwsTitle>
-						</dcsset:item>
 						<dcsset:placement>Horizontally</dcsset:placement>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>КоличествоДляВыгрузки</dcsset:field>
+						<dcsset:lwsTitle>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Будет отправлено</v8:content>
+							</v8:item>
+						</dcsset:lwsTitle>
 					</dcsset:item>
 				</dcsset:selection>
 				<dcsset:conditionalAppearance>
@@ -1475,6 +1549,20 @@
 										<v8:content>ЧН=-</v8:content>
 									</v8:item>
 								</dcscor:value>
+							</dcscor:item>
+						</dcsset:appearance>
+					</dcsset:item>
+					<dcsset:item>
+						<dcsset:selection>
+							<dcsset:item>
+								<dcsset:field>КоличествоДляВыгрузки</dcsset:field>
+							</dcsset:item>
+						</dcsset:selection>
+						<dcsset:filter/>
+						<dcsset:appearance>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:parameter>Шрифт</dcscor:parameter>
+								<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 							</dcscor:item>
 						</dcsset:appearance>
 					</dcsset:item>

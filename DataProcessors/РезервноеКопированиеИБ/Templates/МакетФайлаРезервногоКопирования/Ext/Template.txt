@@ -240,6 +240,7 @@ function finalize(success)
     {
         allowConnections(false); // Разрешение подключений
     }
+      	
       	 	 
     write1CEventLog();      // Запись всей информации из log-файла в журнал регистрации
     setResult(success);
@@ -358,28 +359,28 @@ function writeEventLog(success)
 function backupDB()
 {   
 	try
-		{
-	    
-		var NewTextFile = oFileSystemObject.CreateTextFile(backupFileName,false);
+	{
+    
+	var NewTextFile = oFileSystemObject.CreateTextFile(backupFileName,false);
+	
+	NewTextFile.Write(String.fromCharCode(80,75,5,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0));
+	NewTextFile.Close();
+	
+	var ZIPFile = oFileSystemObject.GetAbsolutePathName(backupFileName);
+	var dFolder = oShellApplication.NameSpace(ZIPFile);
+   	var file = oFileSystemObject.GetAbsolutePathName(BaseFileName);
+	var FolderNameSpace = oFileSystemObject.GetParentFolderName(file);
+	var Folder = oShellApplication.Namespace(FolderNameSpace);
+	var FolderItemNameSpace = oFileSystemObject.GetFileName(file);
+	var FolderItem = Folder.ParseName(FolderItemNameSpace);
+	
+	if (!createBackup)
+		return 0;
 		
-		NewTextFile.Write(String.fromCharCode(80,75,5,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0));
-		NewTextFile.Close();
-		
-		var ZIPFile = oFileSystemObject.GetAbsolutePathName(backupFileName);
-		var dFolder = oShellApplication.NameSpace(ZIPFile);
-	   	var file = oFileSystemObject.GetAbsolutePathName(BaseFileName);
-		var FolderNameSpace = oFileSystemObject.GetParentFolderName(file);
-		var Folder = oShellApplication.Namespace(FolderNameSpace);
-		var FolderItemNameSpace = oFileSystemObject.GetFileName(file);
-		var FolderItem = Folder.ParseName(FolderItemNameSpace);
-		
-		if (!createBackup)
-			return 0;
-			
-		dFolder.CopyHere(file);
-		
-		ret = 0;
-	   	log(format("Попытка создания резервной копии", ret), ret != 0);
+	dFolder.CopyHere(file);
+	
+	ret = 0;
+   	log(format("Попытка создания резервной копии", ret), ret != 0);
 	}
 	catch(e)
 	{
@@ -416,7 +417,6 @@ function WaitUntilFinish()
 	return 0;
 }
 
-
 function doAllowConnections(updateAndFillDB)
 {
     if (updateAndFillDB == undefined)
@@ -425,18 +425,20 @@ function doAllowConnections(updateAndFillDB)
     var connection = createConnection();
     if (connection == null)
         return (useComConnector ? 1 : 0);
+    
+ 
 	
-    try
-    {
-        connection.СоединенияИБ.РазрешитьРаботуПользователей();
-        connectionsDenied = false;
-    }
-    catch(e)
-    {
-        CollectGarbage();   // предотвращает исключение out of memory
-        log(format("Исключение при вызове СоединенияИБ.РазрешитьРаботуПользователей: {0}, {1}.", e.name, e.message), true);
-        return 3;
-    }
+	    try
+	    {
+	        connection.СоединенияИБ.РазрешитьРаботуПользователей();
+	        connectionsDenied = false;
+	    }
+	    catch(e)
+	    {
+	        CollectGarbage();   // предотвращает исключение out of memory
+	        log(format("Исключение при вызове СоединенияИБ.РазрешитьРаботуПользователей: {0}, {1}.", e.name, e.message), true);
+	        return 3;
+	    }
     return 0;
 }
 

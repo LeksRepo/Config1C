@@ -81,6 +81,7 @@
 											<v8:content>Пользователь, настройки которого требуется скопировать или очистить</v8:content>
 										</v8:item>
 									</ToolTip>
+									<Width>35</Width>
 									<HorizontalStretch>false</HorizontalStretch>
 									<ChoiceButton>true</ChoiceButton>
 									<ClearButton>false</ClearButton>
@@ -139,16 +140,16 @@
 									<CommandName>Form.Command.Открыть</CommandName>
 									<ExtendedTooltip name="ОткрытьРасширеннаяПодсказка" id="124"/>
 								</Button>
-								<Button name="СкопироватьОт" id="102">
+								<Button name="Скопировать" id="41">
 									<Type>CommandBarButton</Type>
-									<CommandName>Form.Command.СкопироватьОт</CommandName>
-									<ExtendedTooltip name="СкопироватьОтРасширеннаяПодсказка" id="125"/>
+									<CommandName>Form.Command.СкопироватьДругим</CommandName>
+									<ExtendedTooltip name="СкопироватьРасширеннаяПодсказка" id="125"/>
 								</Button>
 								<Popup name="СкопироватьДругим" id="94">
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Скопировать другим</v8:content>
+											<v8:content>Скопировать другим группу настроек</v8:content>
 										</v8:item>
 									</Title>
 									<ToolTip>
@@ -197,28 +198,19 @@
 												</v8:item>
 											</ToolTip>
 											<ExtendedTooltip name="СкопироватьДругимВыделенныеРасширеннаяПодсказка" id="131"/>
-											<ChildItems>
-												<Button name="Скопировать" id="41">
-													<Type>CommandBarButton</Type>
-													<OnlyInAllActions>false</OnlyInAllActions>
-													<CommandName>Form.Command.СкопироватьДругим</CommandName>
-													<Title>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>Выделенные настройки...</v8:content>
-														</v8:item>
-													</Title>
-													<ExtendedTooltip name="СкопироватьРасширеннаяПодсказка" id="132"/>
-												</Button>
-											</ChildItems>
 										</ButtonGroup>
 									</ChildItems>
 								</Popup>
+								<Button name="ОчиститьНастройки" id="44">
+									<Type>CommandBarButton</Type>
+									<CommandName>Form.Command.Очистить</CommandName>
+									<ExtendedTooltip name="ОчиститьНастройкиРасширеннаяПодсказка" id="132"/>
+								</Button>
 								<Popup name="Очистить" id="98">
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Очистить</v8:content>
+											<v8:content>Очистить все</v8:content>
 										</v8:item>
 									</Title>
 									<ToolTip>
@@ -227,10 +219,6 @@
 											<v8:content>Очистить настройки</v8:content>
 										</v8:item>
 									</ToolTip>
-									<Picture>
-										<xr:Ref>StdPicture.Delete</xr:Ref>
-										<xr:LoadTransparent>true</xr:LoadTransparent>
-									</Picture>
 									<ExtendedTooltip name="ОчиститьРасширеннаяПодсказка" id="133"/>
 									<ChildItems>
 										<Button name="ОчиститьВсеНастройки" id="99">
@@ -258,25 +246,26 @@
 											</ToolTip>
 											<ExtendedTooltip name="ОчиститьВыделенныеРасширеннаяПодсказка" id="136"/>
 											<ChildItems>
-												<Button name="ОчиститьНастройки" id="44">
-													<Type>CommandBarButton</Type>
-													<CommandName>Form.Command.Очистить</CommandName>
-													<ExtendedTooltip name="ОчиститьНастройкиРасширеннаяПодсказка" id="137"/>
-												</Button>
 												<Button name="ОчиститьНастройкиВыбраннымПользователям" id="108">
 													<Type>CommandBarButton</Type>
+													<OnlyInAllActions>false</OnlyInAllActions>
 													<CommandName>Form.Command.ОчиститьНастройкиУПользователей</CommandName>
-													<ExtendedTooltip name="ОчиститьНастройкиВыбраннымПользователямРасширеннаяПодсказка" id="138"/>
+													<ExtendedTooltip name="ОчиститьНастройкиВыбраннымПользователямРасширеннаяПодсказка" id="137"/>
+												</Button>
+												<Button name="ОчиститьНастройкиВсехПользователей" id="74">
+													<Type>CommandBarButton</Type>
+													<OnlyInAllActions>false</OnlyInAllActions>
+													<CommandName>Form.Command.ОчиститьНастройкиВсехПользователей</CommandName>
+													<ExtendedTooltip name="ОчиститьНастройкиВсехПользователейРасширеннаяПодсказка" id="138"/>
 												</Button>
 											</ChildItems>
 										</ButtonGroup>
 									</ChildItems>
 								</Popup>
-								<Button name="ОчиститьНастройкиВсехПользователей" id="74">
+								<Button name="СкопироватьОт" id="102">
 									<Type>CommandBarButton</Type>
-									<OnlyInAllActions>false</OnlyInAllActions>
-									<CommandName>Form.Command.ОчиститьНастройкиВсехПользователей</CommandName>
-									<ExtendedTooltip name="ОчиститьНастройкиВсехПользователейРасширеннаяПодсказка" id="139"/>
+									<CommandName>Form.Command.СкопироватьОт</CommandName>
+									<ExtendedTooltip name="СкопироватьОтРасширеннаяПодсказка" id="139"/>
 								</Button>
 								<Button name="Обновить" id="1">
 									<Type>CommandBarButton</Type>
@@ -1419,6 +1408,10 @@
 				</v8:item>
 			</ToolTip>
 			<Shortcut>F9</Shortcut>
+			<Picture>
+				<xr:Ref>StdPicture.CloneListItem</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
 			<Action>СкопироватьДругим</Action>
 			<Representation>TextPicture</Representation>
 		</Command>
@@ -1426,7 +1419,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Выделенные настройки</v8:content>
+					<v8:content>Очистить</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
@@ -1435,6 +1428,10 @@
 					<v8:content>Очистить выделенные настройки</v8:content>
 				</v8:item>
 			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Delete</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
 			<Action>Очистить</Action>
 			<Representation>TextPicture</Representation>
 		</Command>
@@ -1448,7 +1445,7 @@
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Открыть настройку</v8:content>
+					<v8:content>Перейти к форме с выбранной настройкой</v8:content>
 				</v8:item>
 			</ToolTip>
 			<Picture>
@@ -1462,7 +1459,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Очистить настройки у всех пользователей</v8:content>
+					<v8:content>Все настройки у всех пользователей</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
