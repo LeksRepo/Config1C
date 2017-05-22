@@ -16,10 +16,12 @@
 	</AutoCommandBar>
 	<Events>
 		<Event name="ChoiceProcessing">ОбработкаВыбора</Event>
+		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
 		<Event name="OnSaveVariantAtServer">ПриСохраненииВариантаНаСервере</Event>
 		<Event name="OnLoadUserSettingsAtServer">ПриЗагрузкеПользовательскихНастроекНаСервере</Event>
 		<Event name="OnLoadVariantAtServer">ПриЗагрузкеВариантаНаСервере</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="OnClose">ПриЗакрытии</Event>
 	</Events>
 	<ChildItems>
 		<UsualGroup name="ВыборВариантаОтчета" id="1">
@@ -39,19 +41,19 @@
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ВыборВариантаОтчетаРасширеннаяПодсказка" id="112"/>
+			<ExtendedTooltip name="ВыборВариантаОтчетаРасширеннаяПодсказка" id="113"/>
 			<ChildItems>
 				<InputField name="ОтчетНаименованиеТекущегоВарианта" id="2">
 					<DataPath>ОтчетНаименованиеТекущегоВарианта</DataPath>
 					<ReadOnly>true</ReadOnly>
 					<TitleLocation>Left</TitleLocation>
 					<ContextMenu name="ОтчетНаименованиеТекущегоВариантаКонтекстноеМеню" id="3"/>
-					<ExtendedTooltip name="ОтчетНаименованиеТекущегоВариантаРасширеннаяПодсказка" id="113"/>
+					<ExtendedTooltip name="ОтчетНаименованиеТекущегоВариантаРасширеннаяПодсказка" id="114"/>
 				</InputField>
 				<Button name="ЗагрузитьВариант" id="4">
 					<Type>UsualButton</Type>
 					<CommandName>Form.StandardCommand.LoadVariant</CommandName>
-					<ExtendedTooltip name="ЗагрузитьВариантРасширеннаяПодсказка" id="114"/>
+					<ExtendedTooltip name="ЗагрузитьВариантРасширеннаяПодсказка" id="115"/>
 				</Button>
 			</ChildItems>
 		</UsualGroup>
@@ -71,7 +73,7 @@
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ОсновнаяКоманднаяПанельРасширеннаяПодсказка" id="115"/>
+			<ExtendedTooltip name="ОсновнаяКоманднаяПанельРасширеннаяПодсказка" id="116"/>
 			<ChildItems>
 				<CommandBar name="ЛеваяЧастьКоманднойПанели" id="49">
 					<Title>
@@ -86,21 +88,19 @@
 							<v8:content>Левая часть командной панели</v8:content>
 						</v8:item>
 					</ToolTip>
-					<HorizontalStretch>false</HorizontalStretch>
-					<VerticalStretch>false</VerticalStretch>
-					<ExtendedTooltip name="ЛеваяЧастьКоманднойПанелиРасширеннаяПодсказка" id="116"/>
+					<ExtendedTooltip name="ЛеваяЧастьКоманднойПанелиРасширеннаяПодсказка" id="117"/>
 					<ChildItems>
 						<Button name="СформироватьОтчет" id="100">
 							<Type>CommandBarButton</Type>
 							<DefaultButton>true</DefaultButton>
 							<CommandName>Form.Command.ОтчетСкомпоноватьРезультат</CommandName>
-							<ExtendedTooltip name="СформироватьОтчетРасширеннаяПодсказка" id="117"/>
+							<ExtendedTooltip name="СформироватьОтчетРасширеннаяПодсказка" id="118"/>
 						</Button>
 						<Button name="КнопкаСформировать" id="48">
 							<Type>CommandBarButton</Type>
 							<Visible>false</Visible>
 							<CommandName>Form.StandardCommand.Generate</CommandName>
-							<ExtendedTooltip name="КнопкаСформироватьРасширеннаяПодсказка" id="118"/>
+							<ExtendedTooltip name="КнопкаСформироватьРасширеннаяПодсказка" id="119"/>
 						</Button>
 						<ButtonGroup name="КнопкиТабличногоДокумента" id="88">
 							<Title>
@@ -115,26 +115,26 @@
 									<v8:content>Кнопки табличного документа</v8:content>
 								</v8:item>
 							</ToolTip>
-							<ExtendedTooltip name="КнопкиТабличногоДокументаРасширеннаяПодсказка" id="119"/>
+							<ExtendedTooltip name="КнопкиТабличногоДокументаРасширеннаяПодсказка" id="120"/>
 							<ChildItems>
 								<Button name="Найти" id="62">
 									<Type>CommandBarButton</Type>
 									<Representation>PictureAndText</Representation>
 									<OnlyInAllActions>true</OnlyInAllActions>
 									<CommandName>Form.Item.ОтчетТабличныйДокумент.StandardCommand.Find</CommandName>
-									<ExtendedTooltip name="НайтиРасширеннаяПодсказка" id="120"/>
+									<ExtendedTooltip name="НайтиРасширеннаяПодсказка" id="121"/>
 								</Button>
 								<Button name="СвернутьВсеГруппы" id="60">
 									<Type>CommandBarButton</Type>
 									<OnlyInAllActions>true</OnlyInAllActions>
 									<CommandName>Form.Item.ОтчетТабличныйДокумент.StandardCommand.CollapseAllGroups</CommandName>
-									<ExtendedTooltip name="СвернутьВсеГруппыРасширеннаяПодсказка" id="121"/>
+									<ExtendedTooltip name="СвернутьВсеГруппыРасширеннаяПодсказка" id="122"/>
 								</Button>
 								<Button name="РазвернутьВсеГруппы" id="61">
 									<Type>CommandBarButton</Type>
 									<OnlyInAllActions>true</OnlyInAllActions>
 									<CommandName>Form.Item.ОтчетТабличныйДокумент.StandardCommand.ExpandAllGroups</CommandName>
-									<ExtendedTooltip name="РазвернутьВсеГруппыРасширеннаяПодсказка" id="122"/>
+									<ExtendedTooltip name="РазвернутьВсеГруппыРасширеннаяПодсказка" id="123"/>
 								</Button>
 							</ChildItems>
 						</ButtonGroup>
@@ -151,20 +151,20 @@
 									<v8:content> </v8:content>
 								</v8:item>
 							</ToolTip>
-							<ExtendedTooltip name="ГруппаПечатьРасширеннаяПодсказка" id="123"/>
+							<ExtendedTooltip name="ГруппаПечатьРасширеннаяПодсказка" id="124"/>
 							<ChildItems>
 								<Button name="Печать" id="56">
 									<Type>CommandBarButton</Type>
 									<Representation>Picture</Representation>
 									<OnlyInAllActions>true</OnlyInAllActions>
 									<CommandName>Form.StandardCommand.Print</CommandName>
-									<ExtendedTooltip name="ПечатьРасширеннаяПодсказка" id="124"/>
+									<ExtendedTooltip name="ПечатьРасширеннаяПодсказка" id="125"/>
 								</Button>
 								<Button name="ПредварительныйПросмотр" id="102">
 									<Type>CommandBarButton</Type>
 									<OnlyInAllActions>true</OnlyInAllActions>
 									<CommandName>Form.Item.ОтчетТабличныйДокумент.StandardCommand.Preview</CommandName>
-									<ExtendedTooltip name="ПредварительныйПросмотрРасширеннаяПодсказка" id="125"/>
+									<ExtendedTooltip name="ПредварительныйПросмотрРасширеннаяПодсказка" id="126"/>
 								</Button>
 							</ChildItems>
 						</ButtonGroup>
@@ -178,7 +178,7 @@
 									<v8:content>Сохранить...</v8:content>
 								</v8:item>
 							</Title>
-							<ExtendedTooltip name="СохранитьРасширеннаяПодсказка" id="126"/>
+							<ExtendedTooltip name="СохранитьРасширеннаяПодсказка" id="127"/>
 						</Button>
 						<Popup name="Отправить" id="63">
 							<Title>
@@ -197,14 +197,14 @@
 								<xr:Ref>CommonPicture.ЭлектронноеПисьмо</xr:Ref>
 								<xr:LoadTransparent>false</xr:LoadTransparent>
 							</Picture>
-							<ExtendedTooltip name="ОтправитьРасширеннаяПодсказка" id="127"/>
+							<ExtendedTooltip name="ОтправитьРасширеннаяПодсказка" id="128"/>
 							<ChildItems>
 								<Button name="ОтправитьПоЭлектроннойПочте" id="97">
 									<Type>CommandBarButton</Type>
 									<Representation>PictureAndText</Representation>
 									<OnlyInAllActions>true</OnlyInAllActions>
 									<CommandName>Form.Command.ОтправитьПоЭлектроннойПочте</CommandName>
-									<ExtendedTooltip name="ОтправитьПоЭлектроннойПочтеРасширеннаяПодсказка" id="128"/>
+									<ExtendedTooltip name="ОтправитьПоЭлектроннойПочтеРасширеннаяПодсказка" id="129"/>
 								</Button>
 							</ChildItems>
 						</Popup>
@@ -226,12 +226,12 @@
 					<Group>Horizontal</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="ГруппаСуммаРасширеннаяПодсказка" id="129"/>
+					<ExtendedTooltip name="ГруппаСуммаРасширеннаяПодсказка" id="130"/>
 					<ChildItems>
 						<Button name="ВычислитьСумму" id="111">
 							<Type>UsualButton</Type>
 							<CommandName>Form.Command.ВычислитьСумму</CommandName>
-							<ExtendedTooltip name="ВычислитьСуммуРасширеннаяПодсказка" id="130"/>
+							<ExtendedTooltip name="ВычислитьСуммуРасширеннаяПодсказка" id="131"/>
 						</Button>
 						<InputField name="Сумма" id="105">
 							<DataPath>СуммаВыделенныхЯчеек</DataPath>
@@ -244,8 +244,6 @@
 								</v8:item>
 							</ToolTip>
 							<Width>10</Width>
-							<HorizontalStretch>false</HorizontalStretch>
-							<VerticalStretch>false</VerticalStretch>
 							<EditFormat>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
@@ -255,16 +253,17 @@
 							<BackColor>style:FormBackColor</BackColor>
 							<BorderColor>style:FormBackColor</BorderColor>
 							<ContextMenu name="СуммаКонтекстноеМеню" id="106"/>
-							<ExtendedTooltip name="СуммаРасширеннаяПодсказка" id="131"/>
+							<ExtendedTooltip name="СуммаРасширеннаяПодсказка" id="132"/>
 						</InputField>
 					</ChildItems>
 				</UsualGroup>
 				<LabelDecoration name="ПустаяДекорация1" id="84">
+					<Visible>false</Visible>
 					<HorizontalStretch>true</HorizontalStretch>
 					<VerticalStretch>false</VerticalStretch>
 					<HorizontalAlign>Center</HorizontalAlign>
 					<ContextMenu name="ПустаяДекорация1КонтекстноеМеню" id="85"/>
-					<ExtendedTooltip name="ПустаяДекорация1РасширеннаяПодсказка" id="132"/>
+					<ExtendedTooltip name="ПустаяДекорация1РасширеннаяПодсказка" id="133"/>
 				</LabelDecoration>
 				<CommandBar name="ПраваяЧастьКоманднойПанели" id="5">
 					<Title>
@@ -284,7 +283,7 @@
 					<VerticalStretch>false</VerticalStretch>
 					<HorizontalLocation>Right</HorizontalLocation>
 					<CommandSource>Form</CommandSource>
-					<ExtendedTooltip name="ПраваяЧастьКоманднойПанелиРасширеннаяПодсказка" id="133"/>
+					<ExtendedTooltip name="ПраваяЧастьКоманднойПанелиРасширеннаяПодсказка" id="134"/>
 					<ChildItems>
 						<ButtonGroup name="КомандыВажные" id="50">
 							<Title>
@@ -299,20 +298,20 @@
 									<v8:content>Команды важные</v8:content>
 								</v8:item>
 							</ToolTip>
-							<ExtendedTooltip name="КомандыВажныеРасширеннаяПодсказка" id="134"/>
+							<ExtendedTooltip name="КомандыВажныеРасширеннаяПодсказка" id="135"/>
 							<ChildItems>
 								<Button name="ФормаОтчетСкомпоноватьРезультат" id="101">
 									<Type>CommandBarButton</Type>
 									<OnlyInAllActions>false</OnlyInAllActions>
 									<CommandName>Form.Command.ОтчетСкомпоноватьРезультат</CommandName>
-									<ExtendedTooltip name="ФормаОтчетСкомпоноватьРезультатРасширеннаяПодсказка" id="135"/>
+									<ExtendedTooltip name="ФормаОтчетСкомпоноватьРезультатРасширеннаяПодсказка" id="136"/>
 								</Button>
 								<Button name="ФормаСформировать" id="46">
 									<Type>CommandBarButton</Type>
 									<Visible>false</Visible>
 									<OnlyInAllActions>false</OnlyInAllActions>
 									<CommandName>Form.StandardCommand.Generate</CommandName>
-									<ExtendedTooltip name="ФормаСформироватьРасширеннаяПодсказка" id="136"/>
+									<ExtendedTooltip name="ФормаСформироватьРасширеннаяПодсказка" id="137"/>
 								</Button>
 								<ButtonGroup name="ФормаГруппаПечать" id="93">
 									<Title>
@@ -327,24 +326,24 @@
 											<v8:content> </v8:content>
 										</v8:item>
 									</ToolTip>
-									<ExtendedTooltip name="ФормаГруппаПечатьРасширеннаяПодсказка" id="137"/>
+									<ExtendedTooltip name="ФормаГруппаПечатьРасширеннаяПодсказка" id="138"/>
 									<ChildItems>
 										<Button name="ФормаПечать" id="52">
 											<Type>CommandBarButton</Type>
 											<CommandName>Form.StandardCommand.Print</CommandName>
-											<ExtendedTooltip name="ФормаПечатьРасширеннаяПодсказка" id="138"/>
+											<ExtendedTooltip name="ФормаПечатьРасширеннаяПодсказка" id="139"/>
 										</Button>
 										<Button name="ФормаПредварительныйПросмотр" id="90">
 											<Type>CommandBarButton</Type>
 											<OnlyInAllActions>false</OnlyInAllActions>
 											<CommandName>Form.Item.ОтчетТабличныйДокумент.StandardCommand.Preview</CommandName>
-											<ExtendedTooltip name="ФормаПредварительныйПросмотрРасширеннаяПодсказка" id="139"/>
+											<ExtendedTooltip name="ФормаПредварительныйПросмотрРасширеннаяПодсказка" id="140"/>
 										</Button>
 										<Button name="ФормаПараметрыСтраницы" id="94">
 											<Type>CommandBarButton</Type>
 											<OnlyInAllActions>false</OnlyInAllActions>
 											<CommandName>Form.Item.ОтчетТабличныйДокумент.StandardCommand.PageSetup</CommandName>
-											<ExtendedTooltip name="ФормаПараметрыСтраницыРасширеннаяПодсказка" id="140"/>
+											<ExtendedTooltip name="ФормаПараметрыСтраницыРасширеннаяПодсказка" id="141"/>
 										</Button>
 									</ChildItems>
 								</ButtonGroup>
@@ -358,7 +357,7 @@
 											<v8:content>Сохранить...</v8:content>
 										</v8:item>
 									</Title>
-									<ExtendedTooltip name="ФормаСохранитьРасширеннаяПодсказка" id="141"/>
+									<ExtendedTooltip name="ФормаСохранитьРасширеннаяПодсказка" id="142"/>
 								</Button>
 								<Popup name="ОтправитьВсеДействия" id="74">
 									<Title>
@@ -377,13 +376,13 @@
 										<xr:Ref>CommonPicture.ОтправитьЭлектронноеПисьмо</xr:Ref>
 										<xr:LoadTransparent>false</xr:LoadTransparent>
 									</Picture>
-									<ExtendedTooltip name="ОтправитьВсеДействияРасширеннаяПодсказка" id="142"/>
+									<ExtendedTooltip name="ОтправитьВсеДействияРасширеннаяПодсказка" id="143"/>
 									<ChildItems>
 										<Button name="ОтправитьПоЭлектроннойПочтеВсеДействия" id="98">
 											<Type>CommandBarButton</Type>
 											<OnlyInAllActions>false</OnlyInAllActions>
 											<CommandName>Form.Command.ОтправитьПоЭлектроннойПочте</CommandName>
-											<ExtendedTooltip name="ОтправитьПоЭлектроннойПочтеВсеДействияРасширеннаяПодсказка" id="143"/>
+											<ExtendedTooltip name="ОтправитьПоЭлектроннойПочтеВсеДействияРасширеннаяПодсказка" id="144"/>
 										</Button>
 									</ChildItems>
 								</Popup>
@@ -402,12 +401,42 @@
 									<v8:content> </v8:content>
 								</v8:item>
 							</ToolTip>
-							<ExtendedTooltip name="ГруппаСкрытьПоказатьБыстрыеНастройкиРасширеннаяПодсказка" id="144"/>
+							<ExtendedTooltip name="ГруппаСкрытьПоказатьБыстрыеНастройкиРасширеннаяПодсказка" id="145"/>
 							<ChildItems>
 								<Button name="СкрытьПоказатьБыстрыеНастройки" id="13">
 									<Type>CommandBarButton</Type>
 									<CommandName>Form.Command.СкрытьПоказатьБыстрыеНастройки</CommandName>
-									<ExtendedTooltip name="СкрытьПоказатьБыстрыеНастройкиРасширеннаяПодсказка" id="145"/>
+									<ExtendedTooltip name="СкрытьПоказатьБыстрыеНастройкиРасширеннаяПодсказка" id="146"/>
+								</Button>
+							</ChildItems>
+						</ButtonGroup>
+						<ButtonGroup name="ГруппаНастроитьОтчет" id="112">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа настроить отчет</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа настроить отчет</v8:content>
+								</v8:item>
+							</ToolTip>
+							<ExtendedTooltip name="ГруппаНастроитьОтчетРасширеннаяПодсказка" id="147"/>
+							<ChildItems>
+								<Button name="НастроитьОтчет" id="12">
+									<Type>CommandBarButton</Type>
+									<Representation>Picture</Representation>
+									<OnlyInAllActions>true</OnlyInAllActions>
+									<CommandName>Form.Command.НастроитьОтчет</CommandName>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Все настройки...</v8:content>
+										</v8:item>
+									</Title>
+									<ExtendedTooltip name="НастроитьОтчетРасширеннаяПодсказка" id="148"/>
 								</Button>
 							</ChildItems>
 						</ButtonGroup>
@@ -424,21 +453,8 @@
 									<v8:content>Команды вариантов пользовательских настроек</v8:content>
 								</v8:item>
 							</ToolTip>
-							<ExtendedTooltip name="КомандыВариантовПользовательскихНастроекРасширеннаяПодсказка" id="146"/>
+							<ExtendedTooltip name="КомандыВариантовПользовательскихНастроекРасширеннаяПодсказка" id="149"/>
 							<ChildItems>
-								<Button name="НастроитьОтчет" id="12">
-									<Type>CommandBarButton</Type>
-									<Representation>Picture</Representation>
-									<OnlyInAllActions>true</OnlyInAllActions>
-									<CommandName>Form.Command.НастроитьОтчет</CommandName>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Все настройки...</v8:content>
-										</v8:item>
-									</Title>
-									<ExtendedTooltip name="НастроитьОтчетРасширеннаяПодсказка" id="147"/>
-								</Button>
 								<Button name="ФормаЗагрузитьНастройкиОтчета" id="38">
 									<Type>CommandBarButton</Type>
 									<OnlyInAllActions>false</OnlyInAllActions>
@@ -449,7 +465,7 @@
 											<v8:content>Загрузить настройки...</v8:content>
 										</v8:item>
 									</Title>
-									<ExtendedTooltip name="ФормаЗагрузитьНастройкиОтчетаРасширеннаяПодсказка" id="148"/>
+									<ExtendedTooltip name="ФормаЗагрузитьНастройкиОтчетаРасширеннаяПодсказка" id="150"/>
 								</Button>
 								<Button name="ФормаСохранитьНастройкиОтчета" id="37">
 									<Type>CommandBarButton</Type>
@@ -461,7 +477,7 @@
 											<v8:content>Сохранить настройки...</v8:content>
 										</v8:item>
 									</Title>
-									<ExtendedTooltip name="ФормаСохранитьНастройкиОтчетаРасширеннаяПодсказка" id="149"/>
+									<ExtendedTooltip name="ФормаСохранитьНастройкиОтчетаРасширеннаяПодсказка" id="151"/>
 								</Button>
 								<ButtonGroup name="ДополнительныеКомандыВариантовПользовательскихНастроек" id="11">
 									<Title>
@@ -476,7 +492,7 @@
 											<v8:content> </v8:content>
 										</v8:item>
 									</ToolTip>
-									<ExtendedTooltip name="ДополнительныеКомандыВариантовПользовательскихНастроекРасширеннаяПодсказка" id="150"/>
+									<ExtendedTooltip name="ДополнительныеКомандыВариантовПользовательскихНастроекРасширеннаяПодсказка" id="152"/>
 									<ChildItems>
 										<Button name="ФормаСтандартныеНастройки" id="39">
 											<Type>CommandBarButton</Type>
@@ -489,13 +505,13 @@
 													<v8:content>Сбросить настройки</v8:content>
 												</v8:item>
 											</Title>
-											<ExtendedTooltip name="ФормаСтандартныеНастройкиРасширеннаяПодсказка" id="151"/>
+											<ExtendedTooltip name="ФормаСтандартныеНастройкиРасширеннаяПодсказка" id="153"/>
 										</Button>
 										<Button name="СброситьНастройки" id="87">
 											<Type>CommandBarButton</Type>
 											<OnlyInAllActions>false</OnlyInAllActions>
 											<CommandName>Form.Command.СброситьНастройки</CommandName>
-											<ExtendedTooltip name="СброситьНастройкиРасширеннаяПодсказка" id="152"/>
+											<ExtendedTooltip name="СброситьНастройкиРасширеннаяПодсказка" id="154"/>
 										</Button>
 									</ChildItems>
 								</ButtonGroup>
@@ -514,13 +530,13 @@
 									<v8:content>Команды вариантов отчета</v8:content>
 								</v8:item>
 							</ToolTip>
-							<ExtendedTooltip name="КомандыВариантовОтчетаРасширеннаяПодсказка" id="153"/>
+							<ExtendedTooltip name="КомандыВариантовОтчетаРасширеннаяПодсказка" id="155"/>
 							<ChildItems>
 								<Button name="ИзменитьВариантОтчета" id="86">
 									<Type>CommandBarButton</Type>
 									<OnlyInAllActions>false</OnlyInAllActions>
 									<CommandName>Form.Command.ИзменитьВариантОтчета</CommandName>
-									<ExtendedTooltip name="ИзменитьВариантОтчетаРасширеннаяПодсказка" id="154"/>
+									<ExtendedTooltip name="ИзменитьВариантОтчетаРасширеннаяПодсказка" id="156"/>
 								</Button>
 								<Button name="ФормаИзменитьВариант" id="33">
 									<Type>CommandBarButton</Type>
@@ -533,7 +549,7 @@
 											<v8:content>Изменить вариант отчета...</v8:content>
 										</v8:item>
 									</Title>
-									<ExtendedTooltip name="ФормаИзменитьВариантРасширеннаяПодсказка" id="155"/>
+									<ExtendedTooltip name="ФормаИзменитьВариантРасширеннаяПодсказка" id="157"/>
 								</Button>
 								<Button name="ФормаЗагрузитьВариант" id="35">
 									<Type>CommandBarButton</Type>
@@ -546,7 +562,7 @@
 											<v8:content>Выбрать вариант отчета...</v8:content>
 										</v8:item>
 									</Title>
-									<ExtendedTooltip name="ФормаЗагрузитьВариантРасширеннаяПодсказка" id="156"/>
+									<ExtendedTooltip name="ФормаЗагрузитьВариантРасширеннаяПодсказка" id="158"/>
 								</Button>
 								<Button name="ФормаСохранитьВариант" id="34">
 									<Type>CommandBarButton</Type>
@@ -558,7 +574,7 @@
 											<v8:content>Сохранить вариант отчета...</v8:content>
 										</v8:item>
 									</Title>
-									<ExtendedTooltip name="ФормаСохранитьВариантРасширеннаяПодсказка" id="157"/>
+									<ExtendedTooltip name="ФормаСохранитьВариантРасширеннаяПодсказка" id="159"/>
 								</Button>
 							</ChildItems>
 						</ButtonGroup>
@@ -575,19 +591,19 @@
 									<v8:content>Команды см также</v8:content>
 								</v8:item>
 							</ToolTip>
-							<ExtendedTooltip name="КомандыСмТакжеРасширеннаяПодсказка" id="158"/>
+							<ExtendedTooltip name="КомандыСмТакжеРасширеннаяПодсказка" id="160"/>
 							<ChildItems>
 								<Button name="ФормаНовоеОкно" id="41">
 									<Type>CommandBarButton</Type>
 									<OnlyInAllActions>false</OnlyInAllActions>
 									<CommandName>Form.StandardCommand.NewWindow</CommandName>
-									<ExtendedTooltip name="ФормаНовоеОкноРасширеннаяПодсказка" id="159"/>
+									<ExtendedTooltip name="ФормаНовоеОкноРасширеннаяПодсказка" id="161"/>
 								</Button>
 								<Button name="ФормаИзменитьФорму" id="42">
 									<Type>CommandBarButton</Type>
 									<OnlyInAllActions>false</OnlyInAllActions>
 									<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
-									<ExtendedTooltip name="ФормаИзменитьФормуРасширеннаяПодсказка" id="160"/>
+									<ExtendedTooltip name="ФормаИзменитьФормуРасширеннаяПодсказка" id="162"/>
 								</Button>
 							</ChildItems>
 						</ButtonGroup>
@@ -595,7 +611,7 @@
 							<Type>CommandBarButton</Type>
 							<OnlyInAllActions>true</OnlyInAllActions>
 							<CommandName>Form.StandardCommand.Help</CommandName>
-							<ExtendedTooltip name="ФормаСправкаРасширеннаяПодсказка" id="161"/>
+							<ExtendedTooltip name="ФормаСправкаРасширеннаяПодсказка" id="163"/>
 						</Button>
 					</ChildItems>
 				</CommandBar>
@@ -617,7 +633,7 @@
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="РезультатИБыстрыеНастройкиРасширеннаяПодсказка" id="162"/>
+			<ExtendedTooltip name="РезультатИБыстрыеНастройкиРасширеннаяПодсказка" id="164"/>
 			<ChildItems>
 				<SpreadSheetDocumentField name="ОтчетТабличныйДокумент" id="7">
 					<DataPath>ОтчетТабличныйДокумент</DataPath>
@@ -625,7 +641,7 @@
 					<Width>60</Width>
 					<Height>15</Height>
 					<ContextMenu name="ОтчетТабличныйДокументКонтекстноеМеню" id="8"/>
-					<ExtendedTooltip name="ОтчетТабличныйДокументРасширеннаяПодсказка" id="163"/>
+					<ExtendedTooltip name="ОтчетТабличныйДокументРасширеннаяПодсказка" id="165"/>
 					<Events>
 						<Event name="AdditionalDetailProcessing">ОтчетТабличныйДокументОбработкаДополнительнойРасшифровки</Event>
 						<Event name="OnActivateArea">ОтчетТабличныйДокументПриАктивизацииОбласти</Event>
@@ -649,7 +665,7 @@
 					<Group>Vertical</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="БыстрыеНастройкиРасширеннаяПодсказка" id="164"/>
+					<ExtendedTooltip name="БыстрыеНастройкиРасширеннаяПодсказка" id="166"/>
 					<ChildItems>
 						<UsualGroup name="Периоды" id="31">
 							<Title>
@@ -667,7 +683,7 @@
 							<Group>Vertical</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ПериодыРасширеннаяПодсказка" id="165"/>
+							<ExtendedTooltip name="ПериодыРасширеннаяПодсказка" id="167"/>
 						</UsualGroup>
 						<UsualGroup name="ПараметрыИОтборы" id="18">
 							<Title>
@@ -685,7 +701,7 @@
 							<HorizontalStretch>true</HorizontalStretch>
 							<Group>Vertical</Group>
 							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ПараметрыИОтборыРасширеннаяПодсказка" id="166"/>
+							<ExtendedTooltip name="ПараметрыИОтборыРасширеннаяПодсказка" id="168"/>
 						</UsualGroup>
 						<UsualGroup name="ТаблицыСФлажками" id="81">
 							<Title>
@@ -703,7 +719,7 @@
 							<Group>Vertical</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ТаблицыСФлажкамиРасширеннаяПодсказка" id="167"/>
+							<ExtendedTooltip name="ТаблицыСФлажкамиРасширеннаяПодсказка" id="169"/>
 						</UsualGroup>
 					</ChildItems>
 				</UsualGroup>
