@@ -107,11 +107,9 @@
 		<Table name="ТаблицаВыбранных" id="23">
 			<Representation>List</Representation>
 			<TitleLocation>Top</TitleLocation>
-			<ReadOnly>true</ReadOnly>
+			<ChangeRowOrder>false</ChangeRowOrder>
+			<SelectionMode>SingleRow</SelectionMode>
 			<RowSelectionMode>Row</RowSelectionMode>
-			<AutoInsertNewRow>true</AutoInsertNewRow>
-			<EnableStartDrag>true</EnableStartDrag>
-			<EnableDrag>true</EnableDrag>
 			<DataPath>ТаблицаВыбранных</DataPath>
 			<Title>
 				<v8:item>
@@ -123,6 +121,14 @@
 			<ContextMenu name="ТаблицаВыбранныхКонтекстноеМеню" id="24"/>
 			<AutoCommandBar name="ТаблицаВыбранныхКоманднаяПанель" id="25">
 				<Autofill>false</Autofill>
+				<ChildItems>
+					<Button name="ТаблицаВыбранныхУдалить" id="52">
+						<Type>CommandBarButton</Type>
+						<Representation>PictureAndText</Representation>
+						<CommandName>Form.Item.ТаблицаВыбранных.StandardCommand.Delete</CommandName>
+						<ExtendedTooltip name="ТаблицаВыбранныхУдалитьРасширеннаяПодсказка" id="53"/>
+					</Button>
+				</ChildItems>
 			</AutoCommandBar>
 			<ExtendedTooltip name="ТаблицаВыбранныхРасширеннаяПодсказка" id="26"/>
 			<SearchStringAddition name="ТаблицаВыбранныхСтрокаПоиска" id="27">
@@ -151,16 +157,20 @@
 			</SearchControlAddition>
 			<Events>
 				<Event name="Selection">ТаблицаВыбранныхВыбор</Event>
+				<Event name="BeforeAddRow">ТаблицаВыбранныхПередНачаломДобавления</Event>
+				<Event name="BeforeDeleteRow">ТаблицаВыбранныхПередУдалением</Event>
 			</Events>
 			<ChildItems>
 				<InputField name="ТаблицаВыбранныхНоменклатура" id="36">
 					<DataPath>ТаблицаВыбранных.Номенклатура</DataPath>
+					<ReadOnly>true</ReadOnly>
 					<EditMode>EnterOnInput</EditMode>
 					<ContextMenu name="ТаблицаВыбранныхНоменклатураКонтекстноеМеню" id="37"/>
 					<ExtendedTooltip name="ТаблицаВыбранныхНоменклатураРасширеннаяПодсказка" id="38"/>
 				</InputField>
 				<InputField name="ТаблицаВыбранныхВысотаОбрезка" id="39">
 					<DataPath>ТаблицаВыбранных.ВысотаОстатка</DataPath>
+					<ReadOnly>true</ReadOnly>
 					<EditMode>EnterOnInput</EditMode>
 					<HorizontalStretch>false</HorizontalStretch>
 					<ContextMenu name="ТаблицаВыбранныхВысотаОбрезкаКонтекстноеМеню" id="40"/>
@@ -168,6 +178,7 @@
 				</InputField>
 				<InputField name="ТаблицаВыбранныхШиринаОбрезка" id="42">
 					<DataPath>ТаблицаВыбранных.ШиринаОстатка</DataPath>
+					<ReadOnly>true</ReadOnly>
 					<EditMode>EnterOnInput</EditMode>
 					<HorizontalStretch>false</HorizontalStretch>
 					<ContextMenu name="ТаблицаВыбранныхШиринаОбрезкаКонтекстноеМеню" id="43"/>

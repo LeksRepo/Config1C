@@ -2200,10 +2200,10 @@
 					<ExtendedTooltip name="СтраницаОбрезкиРасширеннаяПодсказка" id="1110"/>
 					<ChildItems>
 						<Table name="ОбрезкиЛистовогоМатериала" id="1111">
-							<ReadOnly>true</ReadOnly>
-							<AutoInsertNewRow>true</AutoInsertNewRow>
-							<EnableStartDrag>true</EnableStartDrag>
-							<EnableDrag>true</EnableDrag>
+							<Representation>List</Representation>
+							<ChangeRowOrder>false</ChangeRowOrder>
+							<RowSelectionMode>Row</RowSelectionMode>
+							<AutoAddIncomplete>false</AutoAddIncomplete>
 							<DataPath>Объект.ОбрезкиЛистовогоМатериала</DataPath>
 							<RowFilter xsi:nil="true"/>
 							<ContextMenu name="ОбрезкиЛистовогоМатериалаКонтекстноеМеню" id="1112"/>
@@ -2219,16 +2219,6 @@
 										<Type>CommandBarButton</Type>
 										<CommandName>Form.Item.ОбрезкиЛистовогоМатериала.StandardCommand.Delete</CommandName>
 										<ExtendedTooltip name="ОбрезкиЛистовогоМатериалаУдалитьРасширеннаяПодсказка" id="1137"/>
-									</Button>
-									<Button name="ОбрезкиЛистовогоМатериалаНайти" id="1138">
-										<Type>CommandBarButton</Type>
-										<CommandName>Form.Item.ОбрезкиЛистовогоМатериала.StandardCommand.Find</CommandName>
-										<ExtendedTooltip name="ОбрезкиЛистовогоМатериалаНайтиРасширеннаяПодсказка" id="1139"/>
-									</Button>
-									<Button name="ОбрезкиЛистовогоМатериалаОтменитьПоиск" id="1140">
-										<Type>CommandBarButton</Type>
-										<CommandName>Form.Item.ОбрезкиЛистовогоМатериала.StandardCommand.CancelSearch</CommandName>
-										<ExtendedTooltip name="ОбрезкиЛистовогоМатериалаОтменитьПоискРасширеннаяПодсказка" id="1141"/>
 									</Button>
 								</ChildItems>
 							</AutoCommandBar>
@@ -2258,29 +2248,34 @@
 								<ExtendedTooltip name="ОбрезкиЛистовогоМатериалаУправлениеПоискомРасширеннаяПодсказка" id="1123"/>
 							</SearchControlAddition>
 							<Events>
+								<Event name="BeforeAddRow">ОбрезкиЛистовогоМатериалаПередНачаломДобавления</Event>
 								<Event name="ChoiceProcessing">ОбрезкиЛистовогоМатериалаОбработкаВыбора</Event>
 							</Events>
 							<ChildItems>
 								<LabelField name="ОбрезкиЛистовогоМатериалаНомерСтроки" id="1124">
 									<DataPath>Объект.ОбрезкиЛистовогоМатериала.LineNumber</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="ОбрезкиЛистовогоМатериалаНомерСтрокиКонтекстноеМеню" id="1125"/>
 									<ExtendedTooltip name="ОбрезкиЛистовогоМатериалаНомерСтрокиРасширеннаяПодсказка" id="1126"/>
 								</LabelField>
 								<InputField name="ОбрезкиЛистовогоМатериалаНоменклатура" id="1127">
 									<DataPath>Объект.ОбрезкиЛистовогоМатериала.Номенклатура</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="ОбрезкиЛистовогоМатериалаНоменклатураКонтекстноеМеню" id="1128"/>
 									<ExtendedTooltip name="ОбрезкиЛистовогоМатериалаНоменклатураРасширеннаяПодсказка" id="1129"/>
 								</InputField>
 								<InputField name="ОбрезкиЛистовогоМатериалаВысотаОстатка" id="1130">
 									<DataPath>Объект.ОбрезкиЛистовогоМатериала.ВысотаОстатка</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="ОбрезкиЛистовогоМатериалаВысотаОстаткаКонтекстноеМеню" id="1131"/>
 									<ExtendedTooltip name="ОбрезкиЛистовогоМатериалаВысотаОстаткаРасширеннаяПодсказка" id="1132"/>
 								</InputField>
 								<InputField name="ОбрезкиЛистовогоМатериалаШиринаОстатка" id="1133">
 									<DataPath>Объект.ОбрезкиЛистовогоМатериала.ШиринаОстатка</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="ОбрезкиЛистовогоМатериалаШиринаОстаткаКонтекстноеМеню" id="1134"/>
 									<ExtendedTooltip name="ОбрезкиЛистовогоМатериалаШиринаОстаткаРасширеннаяПодсказка" id="1135"/>
