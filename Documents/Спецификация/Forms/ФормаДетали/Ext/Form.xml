@@ -423,7 +423,7 @@
 											<InputHint>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Склейка, ручка, кожа</v8:content>
+													<v8:content>Склейка, кожа</v8:content>
 												</v8:item>
 											</InputHint>
 											<ContextMenu name="НоменклатураДляСклеиванияКонтекстноеМеню" id="244"/>
@@ -431,6 +431,17 @@
 											<Events>
 												<Event name="OnChange">НоменклатураДляСклеиванияПриИзменении</Event>
 												<Event name="StartChoice">НоменклатураДляСклеиванияНачалоВыбора</Event>
+											</Events>
+										</InputField>
+										<InputField name="Ручка" id="703">
+											<DataPath>Items.Детали.CurrentData.Ручка</DataPath>
+											<TitleFont ref="style:NormalTextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+											<OpenButton>false</OpenButton>
+											<ContextMenu name="РучкаКонтекстноеМеню" id="704"/>
+											<ExtendedTooltip name="РучкаРасширеннаяПодсказка" id="705"/>
+											<Events>
+												<Event name="OnChange">ДеталиРучкаПриИзменении</Event>
+												<Event name="StartChoice">ДеталиРучкаНачалоВыбора</Event>
 											</Events>
 										</InputField>
 									</ChildItems>
@@ -2864,6 +2875,17 @@
 							<v8:FractionDigits>0</v8:FractionDigits>
 							<v8:AllowedSign>Any</v8:AllowedSign>
 						</v8:NumberQualifiers>
+					</Type>
+				</Column>
+				<Column name="Ручка" id="5">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ручка</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Номенклатура</v8:Type>
 					</Type>
 				</Column>
 			</Columns>
