@@ -491,16 +491,13 @@
 							</SearchControlAddition>
 							<Events>
 								<Event name="Selection">СписокВыбранныхПользователейИГруппВыбор</Event>
+								<Event name="BeforeAddRow">СписокВыбранныхПользователейИГруппПередНачаломДобавления</Event>
 							</Events>
 							<ChildItems>
 								<InputField name="ПользователиИГруппы" id="81">
 									<DataPath>ВыбранныеПользователиИГруппы.Пользователь</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
-									<ChoiceButton>false</ChoiceButton>
-									<ClearButton>false</ClearButton>
-									<SpinButton>false</SpinButton>
-									<OpenButton>false</OpenButton>
-									<ChoiceListButton>false</ChoiceListButton>
 									<ContextMenu name="ПользователиИГруппыКонтекстноеМеню" id="82"/>
 									<ExtendedTooltip name="ПользователиИГруппыРасширеннаяПодсказка" id="156"/>
 								</InputField>
@@ -547,6 +544,9 @@
 				<v8:Type>cfg:DynamicList</v8:Type>
 			</Type>
 			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>ПользователиСписок.Недействителен</Field>
+			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>

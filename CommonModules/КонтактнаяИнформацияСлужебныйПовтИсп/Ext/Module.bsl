@@ -721,7 +721,7 @@
 		|<xsl:output method=""xml"" omit-xml-declaration=""yes"" indent=""yes"" encoding=""utf-8""/>
 		|  " + XSLT_ШаблоныСтроковыхФункций() + "
 		|  
-		|  <xsl:variable name=""local-сountry"">РОССИЯ</xsl:variable>
+		|  <xsl:variable name=""local-country"">РОССИЯ</xsl:variable>
 		|
 		|  <xsl:variable name=""presentation"" select=""tns:Structure/tns:Property[@name='Представление']/tns:Value/text()"" />
 		|  
@@ -747,7 +747,7 @@
 		|        <xsl:attribute name=""Страна"">
 		|          <xsl:choose>
 		|            <xsl:when test=""0=count($country)"">
-		|              <xsl:value-of select=""$local-сountry"" />
+		|              <xsl:value-of select=""$local-country"" />
 		|            </xsl:when>
 		|            <xsl:otherwise>
 		|              <xsl:value-of select=""$country"" />
@@ -759,7 +759,7 @@
 		|          <xsl:when test=""0=count($country)"">
 		|            <xsl:apply-templates select=""/"" mode=""domestic"" />
 		|          </xsl:when>
-		|          <xsl:when test=""$country-upper=$local-сountry"">
+		|          <xsl:when test=""$country-upper=$local-country"">
 		|            <xsl:apply-templates select=""/"" mode=""domestic"" />
 		|          </xsl:when>
 		|          <xsl:otherwise>
