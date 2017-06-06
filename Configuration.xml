@@ -47,7 +47,7 @@
 				<xr:Item xsi:type="xr:MDObjectRef">Role.ПолныеПрава</xr:Item>
 			</DefaultRoles>
 			<Vendor/>
-			<Version>2.1.7.1</Version>
+			<Version>2.1.8.5</Version>
 			<UpdateCatalogAddress/>
 			<IncludeHelpInContents>true</IncludeHelpInContents>
 			<UseManagedFormInOrdinaryApplication>false</UseManagedFormInOrdinaryApplication>
@@ -506,16 +506,16 @@
 			<Interface>ИнтерфейсМенеджера</Interface>
 			<Interface>ИнтерфейсАдминистратора</Interface>
 			<SessionParameter>ВидыДоступаБезГруппЗначенияДоступа</SessionParameter>
+			<SessionParameter>ОграничиватьДоступПоВиду</SessionParameter>
+			<SessionParameter>ДатаОбновленияПовторноИспользуемыхЗначенийМРО</SessionParameter>
+			<SessionParameter>ВыполняетсяОбновлениеИБ</SessionParameter>
+			<SessionParameter>ВидыДоступаЧерезПраваПоЗначениямДоступа</SessionParameter>
+			<SessionParameter>ОбластьДанныхИспользование</SessionParameter>
+			<SessionParameter>ДоступныеПодразделения</SessionParameter>
+			<SessionParameter>ОбластьДанныхЗначение</SessionParameter>
+			<SessionParameter>ИспользуемыеПланыОбмена</SessionParameter>
 			<SessionParameter>ВидыДоступаБезОграничения</SessionParameter>
 			<SessionParameter>ВидыДоступаЕдинственныеДляТипаЗначенияДоступа</SessionParameter>
-			<SessionParameter>ВидыДоступаЧерезПраваПоЗначениямДоступа</SessionParameter>
-			<SessionParameter>ВыполняетсяОбновлениеИБ</SessionParameter>
-			<SessionParameter>ДатаОбновленияПовторноИспользуемыхЗначенийМРО</SessionParameter>
-			<SessionParameter>ДоступныеПодразделения</SessionParameter>
-			<SessionParameter>ИспользуемыеПланыОбмена</SessionParameter>
-			<SessionParameter>ОбластьДанныхЗначение</SessionParameter>
-			<SessionParameter>ОбластьДанныхИспользование</SessionParameter>
-			<SessionParameter>ОграничиватьДоступПоВиду</SessionParameter>
 			<SessionParameter>ОграничиватьДоступПоВидуВнешниеПользователи</SessionParameter>
 			<SessionParameter>ОграничиватьДоступПоВидуДополнительныеСведения</SessionParameter>
 			<SessionParameter>ОграничиватьДоступПоВидуОбъект</SessionParameter>
@@ -836,15 +836,16 @@
 			<Role>ПросмотрПриходМатериаловЗаказчика</Role>
 			<Role>ЧтениеФизическихЛиц</Role>
 			<CommonTemplate>ИзвлечениеКодовОбщихДанных</CommonTemplate>
-			<CommonTemplate>ИнструкцияКакВыполнитьУстановкуОбновленияВручную</CommonTemplate>
+			<CommonTemplate>КомпонентаПечатиQRКода</CommonTemplate>
 			<CommonTemplate>ОбщиеОбластиСтандартногоОтчета</CommonTemplate>
 			<CommonTemplate>ОценкаПроизводительностиВнешнийКомпонент</CommonTemplate>
 			<CommonTemplate>ПоступлениеМатериаловУслуг</CommonTemplate>
-			<CommonTemplate>КомпонентаTWAIN</CommonTemplate>
+			<CommonTemplate>ИнструкцияКакВыполнитьУстановкуОбновленияВручную</CommonTemplate>
 			<CommonTemplate>ТОРГ12</CommonTemplate>
 			<CommonTemplate>ШапкаДоговораРеквизиты</CommonTemplate>
-			<CommonTemplate>КомпонентаСклоненияФИО</CommonTemplate>
 			<CommonTemplate>ПолучениеДереваОбработчиковОбновления</CommonTemplate>
+			<CommonTemplate>КомпонентаTWAIN</CommonTemplate>
+			<CommonTemplate>КомпонентаСклоненияФИО</CommonTemplate>
 			<CommonTemplate>СтруктураПодчиненности</CommonTemplate>
 			<FilterCriterion>СвязанныеДокументы</FilterCriterion>
 			<FilterCriterion>ФайлыВТоме</FilterCriterion>
@@ -1070,6 +1071,7 @@
 			<CommonModule>ПрефиксацияОбъектовСобытия</CommonModule>
 			<CommonModule>ПрисоединенныеФайлы</CommonModule>
 			<CommonModule>ПрисоединенныеФайлыКлиент</CommonModule>
+			<CommonModule>ПрисоединенныеФайлыКлиентСервер</CommonModule>
 			<CommonModule>ПрисоединенныеФайлыПереопределяемый</CommonModule>
 			<CommonModule>ПрисоединенныеФайлыСлужебный</CommonModule>
 			<CommonModule>ПрисоединенныеФайлыСлужебныйВызовСервера</CommonModule>
@@ -1085,8 +1087,8 @@
 			<CommonModule>РаботаСБанкамиПереопределяемый</CommonModule>
 			<CommonModule>РаботаСКурсамиВалют</CommonModule>
 			<CommonModule>РаботаСКурсамиВалютВызовСервера</CommonModule>
-			<CommonModule>РаботаСКурсамиВалютГлобальный</CommonModule>
 			<CommonModule>СтрокиСообщений</CommonModule>
+			<CommonModule>РаботаСКурсамиВалютГлобальный</CommonModule>
 			<CommonModule>РаботаСКурсамиВалютКлиент</CommonModule>
 			<CommonModule>РаботаСКурсамиВалютКлиентСервер</CommonModule>
 			<CommonModule>РаботаСКурсамиВалютПереопределяемый</CommonModule>
@@ -1229,17 +1231,17 @@
 			<CommonAttribute>ОбластьДанныхОсновныеДанные</CommonAttribute>
 			<ExchangePlan>ОбменСообщениями</ExchangePlan>
 			<XDTOPackage>AgentScripts</XDTOPackage>
-			<XDTOPackage>ApdexExport</XDTOPackage>
-			<XDTOPackage>ApplicationExtensionsCompatibility_1_0_0_1</XDTOPackage>
-			<XDTOPackage>ApplicationExtensionsControl_1_0_1_1</XDTOPackage>
-			<XDTOPackage>ApplicationExtensionsManagement_1_0_1_1</XDTOPackage>
+			<XDTOPackage>SuppliedData</XDTOPackage>
 			<XDTOPackage>ApplicationExtensionsManifest_1_0_0_1</XDTOPackage>
-			<XDTOPackage>ApplicationExtensionsPermissions_1_0_0_1</XDTOPackage>
-			<XDTOPackage>CurrencyRates</XDTOPackage>
+			<XDTOPackage>ApplicationExtensionsManagement_1_0_1_1</XDTOPackage>
+			<XDTOPackage>ApplicationExtensionsControl_1_0_1_1</XDTOPackage>
 			<XDTOPackage>DataDump_1_0_1_1</XDTOPackage>
+			<XDTOPackage>CurrencyRates</XDTOPackage>
+			<XDTOPackage>ApplicationExtensionsPermissions_1_0_0_1</XDTOPackage>
+			<XDTOPackage>ApdexExport</XDTOPackage>
 			<XDTOPackage>ПакетXDTO</XDTOPackage>
 			<XDTOPackage>CuttingPlans</XDTOPackage>
-			<XDTOPackage>SuppliedData</XDTOPackage>
+			<XDTOPackage>ApplicationExtensionsCompatibility_1_0_0_1</XDTOPackage>
 			<XDTOPackage>АдминистрированиеОбменаДанными</XDTOPackage>
 			<XDTOPackage>АдминистрированиеОбменаДаннымиКонтроль</XDTOPackage>
 			<XDTOPackage>АдминистрированиеОбменаДаннымиУправление</XDTOPackage>
@@ -1269,7 +1271,6 @@
 			<WebService>RemoteAdministrationOfExchange</WebService>
 			<WebService>RemoteAdministrationOfExchange_2_0_1_6</WebService>
 			<WebService>RemoteAdministrationOfExchange_2_1_6_1</WebService>
-			<WSReference>ОтправкаSMSЧерезМТС</WSReference>
 			<EventSubscription>АвтономнаяРаботаПроверитьВозможностьЗаписиОбщихДанных</EventSubscription>
 			<EventSubscription>АвтономнаяРаботаПроверитьВозможностьЗаписиОбщихДанныхДокумент</EventSubscription>
 			<EventSubscription>АвтономнаяРаботаПроверитьВозможностьЗаписиОбщихДанныхКонстанта</EventSubscription>
@@ -1957,24 +1958,24 @@
 			<Report>АнализЖурналаРегистрации</Report>
 			<Report>АнализОпроса</Report>
 			<Report>АнализПоставщиков</Report>
-			<Report>АналитическийОтчетПоАнкетированию</Report>
 			<Report>БизнесПроцессы</Report>
+			<Report>ДатыЗапретаИзменения</Report>
 			<Report>ГрафикДоставок</Report>
 			<Report>ГрафикЗамеров</Report>
 			<Report>ГрафикМонтажей</Report>
 			<Report>ГрафикОтгрузок</Report>
 			<Report>ГрафикРасчетовСпецификаций</Report>
-			<Report>ДатыЗапретаЗагрузки</Report>
-			<Report>ДатыЗапретаИзменения</Report>
+			<Report>ЗависшиеЗадачи</Report>
+			<Report>Задания</Report>
 			<Report>ДиагностикаБизнеса</Report>
 			<Report>ДилерскиеДоговора</Report>
 			<Report>ДилерскийАктСверки</Report>
 			<Report>ДинамикаЦенНоменклатуры</Report>
-			<Report>ЗависшиеЗадачи</Report>
-			<Report>ЗагруженностьЦеха</Report>
-			<Report>Задания</Report>
 			<Report>Задачи</Report>
+			<Report>ЗагруженностьЦеха</Report>
 			<Report>ЗадачиИстекающиеНаДату</Report>
+			<Report>ПраваДоступа</Report>
+			<Report>АналитическийОтчетПоАнкетированию</Report>
 			<Report>ЗакупМатериалов</Report>
 			<Report>ЗакупочныеЦены</Report>
 			<Report>ЗамерыИВстречи</Report>
@@ -2022,7 +2023,7 @@
 			<Report>ПорученияДетально</Report>
 			<Report>ПорученияСписок</Report>
 			<Report>Поставщики</Report>
-			<Report>ПраваДоступа</Report>
+			<Report>ДатыЗапретаЗагрузки</Report>
 			<Report>ПродажиДетально</Report>
 			<Report>ПродажиДилерам</Report>
 			<Report>ПроизводственныйОтчет</Report>
@@ -2034,24 +2035,24 @@
 			<Report>ТелефонныйСправочник</Report>
 			<Report>ЭффективностьСотрудников</Report>
 			<DataProcessor>АвтоматическоеИзвлечениеТекстов</DataProcessor>
-			<DataProcessor>АвтоматическоеИзвлечениеТекстовДляВсехОбластейДанных</DataProcessor>
-			<DataProcessor>АктивныеПользователи</DataProcessor>
-			<DataProcessor>БлокировкаРаботыПользователей</DataProcessor>
-			<DataProcessor>ВводКонтактнойИнформации</DataProcessor>
-			<DataProcessor>ВыполнениеОбменаДанными</DataProcessor>
-			<DataProcessor>ГрупповоеИзменениеОбъектов</DataProcessor>
-			<DataProcessor>ЖурналРегистрации</DataProcessor>
 			<DataProcessor>ЗагрузкаКурсовВалют</DataProcessor>
-			<DataProcessor>ЗаработнаяПлатаДизайнера</DataProcessor>
-			<DataProcessor>ЗагрузкаПравилРегистрацииОбъектов</DataProcessor>
-			<DataProcessor>ЗащитаПерсональныхДанных</DataProcessor>
 			<DataProcessor>ИнтерактивноеИзменениеВыгрузки</DataProcessor>
+			<DataProcessor>ВводКонтактнойИнформации</DataProcessor>
+			<DataProcessor>БлокировкаРаботыПользователей</DataProcessor>
+			<DataProcessor>ЗагрузкаПравилРегистрацииОбъектов</DataProcessor>
+			<DataProcessor>ВыполнениеОбменаДанными</DataProcessor>
+			<DataProcessor>ЗащитаПерсональныхДанных</DataProcessor>
+			<DataProcessor>АвтоматическоеИзвлечениеТекстовДляВсехОбластейДанных</DataProcessor>
+			<DataProcessor>ЗаработнаяПлатаДизайнера</DataProcessor>
 			<DataProcessor>ИнформацияПриЗапуске</DataProcessor>
-			<DataProcessor>КартаМаршрутаБизнесПроцесса</DataProcessor>
+			<DataProcessor>ЛегальностьПолученияОбновлений</DataProcessor>
+			<DataProcessor>ЖурналРегистрации</DataProcessor>
+			<DataProcessor>АктивныеПользователи</DataProcessor>
 			<DataProcessor>КонвертацияОбъектовИнформационныхБаз</DataProcessor>
+			<DataProcessor>ГрупповоеИзменениеОбъектов</DataProcessor>
 			<DataProcessor>КорректировкаДвижений</DataProcessor>
 			<DataProcessor>КонвертацияОбъектовРаспределенныхИнформационныхБаз</DataProcessor>
-			<DataProcessor>ЛегальностьПолученияОбновлений</DataProcessor>
+			<DataProcessor>КартаМаршрутаБизнесПроцесса</DataProcessor>
 			<DataProcessor>НастройкаРезервногоКопированияИБ</DataProcessor>
 			<DataProcessor>НастройкаРезервногоКопированияПриложения</DataProcessor>
 			<DataProcessor>ОтчетПоОперационнойКассе</DataProcessor>
