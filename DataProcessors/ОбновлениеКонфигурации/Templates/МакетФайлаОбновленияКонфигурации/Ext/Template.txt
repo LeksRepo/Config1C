@@ -7,8 +7,7 @@ var v8conf = [ИмяИсполняемогоФайлаКонфигуратора
 var v8client = [ИмяИсполняемогоФайлаКлиента] // Путь к исполняемому файлу 1С:Предприятия 8
 var infoBasePath = [ПараметрПутиКИнформационнойБазе]; 
 var BaseFileName = [СтрокаПутиКФайлуИнформационнойБазы]; 
-var connectionString = [СтрокаСоединенияИнформационнойБазы] + ';UC=ПакетноеОбновлениеКонфигурацииИБ'; 
-var infoBaseAuthorization = [ПараметрыАутентификацииПользователя]; 
+var connectionString = [СтрокаСоединенияИнформационнойБазы] + ';UC=ПакетноеОбновлениеКонфигурацииИБ';
 var backupFileName = [КаталогРезервнойКопии] + '1Cv8' + now.valueOf() + '.1CD';  // Файл резервной копии
 var UseRestore = [ВосстанавливатьИнформационнуюБазу];  // Использовать восстановление ИБ в случае падения
 var createBackup = [СоздаватьРезервнуюКопию]; // создавать резервную копию
@@ -30,15 +29,23 @@ var oFileSystemObject = new ActiveXObject("Scripting.FileSystemObject");
 
 var thisFileName;
 var thisFileDir;
+var InfoBasePassword;
 
 if (oHTA != null) {
     thisFileName = eval("oHTA.commandLine");
     thisFileDir = thisFileName.substr(1, thisFileName.lastIndexOf("\\") - 1);
+    InfoBasePassword = thisFileName.substr(thisFileName.indexOf("[p1]") + 4, thisFileName.indexOf("[/p1]") - thisFileName.indexOf("[p1]") - 4);
+    thisFileName = thisFileName.substr(1, thisFileName.indexOf("[p1]") - 4);
 }
 else {
     thisFileName = eval("WScript.ScriptFullName");
     thisFileDir = thisFileName.substr(0, thisFileName.lastIndexOf("\\") + 1);
+    InfoBasePassword = eval("WScript.Arguments").Named.Item("p1");
 }
+
+var infoBaseAuthorization = format('/N\"{0}\" /P\"{1}\" /WA-', adminName, InfoBasePassword);
+connectionString = format(connectionString, adminName, InfoBasePassword);
+
 var oShell = new ActiveXObject("WScript.Shell");
 oShell.CurrentDirectory = thisFileDir;
 
@@ -68,7 +75,7 @@ function runApp(sFilePath, sFileArgs, show, bWaitOnReturn) {
         sFileArgs = "";
     var ret = 1;
     log(format("Запускается: {0}; параметры: {1}; окно: {2}; ожидание: {3}",
-	    sFilePath, sFileArgs, SWtoString(show), bWaitOnReturn));
+	    sFilePath, hidePass(sFileArgs), SWtoString(show), bWaitOnReturn));
     if (oFileSystemObject.FileExists(sFilePath)) {
         try {
             ret = oShell.Run(format('"{0}" {1}', sFilePath, sFileArgs), show, bWaitOnReturn);
@@ -83,6 +90,12 @@ function runApp(sFilePath, sFileArgs, show, bWaitOnReturn) {
     else
         log(format("Запускаемый файл не существует: {0}", sFilePath), true);
     return ret;
+}
+
+function hidePass(text) {
+    beforePass = text.substr(0, text.indexOf("/P") + 3);
+    afterPass = text.substr(text.indexOf(" /WA-") - 1, text.indexOf("/P") + 3);
+    return (beforePass + "******" + afterPass);
 }
 
 function clearLogFile() {
