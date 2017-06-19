@@ -3,15 +3,7 @@
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
-	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
-		<ChildItems>
-			<Button name="ФормаПарольИнкассатора" id="102">
-				<Type>CommandBarButton</Type>
-				<CommandName>Form.Command.ПарольИнкассатора</CommandName>
-				<ExtendedTooltip name="ФормаПарольИнкассатораРасширеннаяПодсказка" id="103"/>
-			</Button>
-		</ChildItems>
-	</AutoCommandBar>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
 		<Event name="OnOpen">ПриОткрытии</Event>
 	</Events>
@@ -182,7 +174,6 @@
 											<v8:content>Телефон служебный</v8:content>
 										</v8:item>
 									</Title>
-									<Width>22</Width>
 									<HorizontalStretch>false</HorizontalStretch>
 									<VerticalStretch>false</VerticalStretch>
 									<Mask>9-999-999-99-99</Mask>
@@ -197,7 +188,7 @@
 								</InputField>
 								<InputField name="ЭлектронныйАдрес" id="112">
 									<DataPath>Объект.ЭлектронныйАдрес</DataPath>
-									<Width>22</Width>
+									<Width>17</Width>
 									<HorizontalStretch>false</HorizontalStretch>
 									<VerticalStretch>false</VerticalStretch>
 									<ContextMenu name="ЭлектронныйАдресКонтекстноеМеню" id="113"/>
@@ -287,23 +278,23 @@
 			<Representation>None</Representation>
 			<ExtendedTooltip name="ГруппаМестоРаботыРасширеннаяПодсказка" id="93"/>
 			<ChildItems>
-				<UsualGroup name="ГруппаФлаги" id="129">
+				<UsualGroup name="ГруппаФлагиПарольИнкассатора" id="129">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Группа флаги</v8:content>
+							<v8:content>Группа флаги пароль инкассатора</v8:content>
 						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Группа флаги</v8:content>
+							<v8:content>Группа флаги пароль инкассатора</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Group>Horizontal</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
-					<ExtendedTooltip name="ГруппаФлагиРасширеннаяПодсказка" id="130"/>
+					<ExtendedTooltip name="ГруппаФлагиПарольИнкассатораРасширеннаяПодсказка" id="130"/>
 					<ChildItems>
 						<CheckBoxField name="Активность" id="124">
 							<DataPath>Объект.Активность</DataPath>
@@ -326,6 +317,13 @@
 							<ContextMenu name="РасчетСпецификацийКонтекстноеМеню" id="135"/>
 							<ExtendedTooltip name="РасчетСпецификацийРасширеннаяПодсказка" id="136"/>
 						</CheckBoxField>
+						<InputField name="ПарольИнкассатора" id="149">
+							<DataPath>Объект.ПарольИнкассатора</DataPath>
+							<HorizontalStretch>false</HorizontalStretch>
+							<PasswordMode>true</PasswordMode>
+							<ContextMenu name="ПарольИнкассатораКонтекстноеМеню" id="150"/>
+							<ExtendedTooltip name="ПарольИнкассатораРасширеннаяПодсказка" id="151"/>
+						</InputField>
 					</ChildItems>
 				</UsualGroup>
 				<UsualGroup name="ГруппаПараметрыРаботы" id="127">
@@ -465,23 +463,6 @@
 			<SavedData>true</SavedData>
 		</Attribute>
 	</Attributes>
-	<Commands>
-		<Command name="ПарольИнкассатора" id="2">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Пароль инкассатора</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Пароль инкассатора</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Action>ПарольИнкассатора</Action>
-		</Command>
-	</Commands>
 	<CommandInterface>
 		<CommandBar>
 			<Item>
