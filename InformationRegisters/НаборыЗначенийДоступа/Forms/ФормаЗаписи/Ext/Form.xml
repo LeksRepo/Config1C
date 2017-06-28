@@ -13,20 +13,6 @@
 				<CommandName>Form.Command.ВключитьВозможностьРедактирования</CommandName>
 				<ExtendedTooltip name="ФормаВключитьВозможностьРедактированияExtendedTooltip" id="39"/>
 			</Button>
-			<Button name="ФормаВключитьРедактированиеАвтоРеквизитов" id="34">
-				<Type>CommandBarButton</Type>
-				<SkipOnInput>false</SkipOnInput>
-				<OnlyInAllActions>false</OnlyInAllActions>
-				<CommandName>Form.Command.ВключитьРедактированиеАвтоРеквизитов</CommandName>
-				<ExtendedTooltip name="ФормаВключитьРедактированиеАвтоРеквизитовExtendedTooltip" id="40"/>
-			</Button>
-			<Button name="ФормаЗаполнитьАвтоРеквизиты" id="35">
-				<Type>CommandBarButton</Type>
-				<SkipOnInput>false</SkipOnInput>
-				<OnlyInAllActions>false</OnlyInAllActions>
-				<CommandName>Form.Command.ЗаполнитьАвтоРеквизиты</CommandName>
-				<ExtendedTooltip name="ФормаЗаполнитьАвтоРеквизитыExtendedTooltip" id="41"/>
-			</Button>
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
@@ -38,158 +24,81 @@
 			<ContextMenu name="ОбъектКонтекстноеМеню" id="2"/>
 			<ExtendedTooltip name="ОбъектExtendedTooltip" id="42"/>
 		</InputField>
-		<Pages name="СвойстваИРеквизиты" id="33">
+		<InputField name="НомерНабора" id="3">
+			<DataPath>Запись.НомерНабора</DataPath>
+			<ContextMenu name="НомерНабораКонтекстноеМеню" id="4"/>
+			<ExtendedTooltip name="НомерНабораExtendedTooltip" id="45"/>
+		</InputField>
+		<InputField name="ЗначениеДоступа" id="7">
+			<DataPath>Запись.ЗначениеДоступа</DataPath>
+			<ContextMenu name="ЗначениеДоступаКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="ЗначениеДоступаExtendedTooltip" id="47"/>
+		</InputField>
+		<InputField name="Уточнение" id="51">
+			<DataPath>Запись.Уточнение</DataPath>
+			<ContextMenu name="УточнениеКонтекстноеМеню" id="52"/>
+			<ExtendedTooltip name="УточнениеРасширеннаяПодсказка" id="53"/>
+		</InputField>
+		<CheckBoxField name="Чтение" id="9">
+			<DataPath>Запись.Чтение</DataPath>
+			<TitleLocation>Right</TitleLocation>
+			<CheckBoxType>Auto</CheckBoxType>
+			<ContextMenu name="ЧтениеКонтекстноеМеню" id="10"/>
+			<ExtendedTooltip name="ЧтениеExtendedTooltip" id="48"/>
+		</CheckBoxField>
+		<CheckBoxField name="Изменение" id="13">
+			<DataPath>Запись.Изменение</DataPath>
+			<TitleLocation>Right</TitleLocation>
+			<CheckBoxType>Auto</CheckBoxType>
+			<ContextMenu name="ИзменениеКонтекстноеМеню" id="14"/>
+			<ExtendedTooltip name="ИзменениеExtendedTooltip" id="50"/>
+		</CheckBoxField>
+		<UsualGroup name="КэшРеквизиты" id="63">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Свойства и реквизиты</v8:content>
+					<v8:content>Кэш реквизиты</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Свойства и реквизиты</v8:content>
+					<v8:content>Кэш реквизиты</v8:content>
 				</v8:item>
 			</ToolTip>
-			<ExtendedTooltip name="СвойстваИРеквизитыExtendedTooltip" id="43"/>
+			<Group>Vertical</Group>
+			<ExtendedTooltip name="КэшРеквизитыРасширеннаяПодсказка" id="64"/>
 			<ChildItems>
-				<Page name="Свойства" id="31">
+				<UsualGroup name="ГоризонтальнаяГруппа" id="65">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Свойства</v8:content>
+							<v8:content>Горизонтальная группа</v8:content>
 						</v8:item>
 					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Свойства</v8:content>
-						</v8:item>
-					</ToolTip>
-					<ExtendedTooltip name="СвойстваExtendedTooltip" id="44"/>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГоризонтальнаяГруппаРасширеннаяПодсказка" id="66"/>
 					<ChildItems>
-						<InputField name="НомерНабора" id="3">
-							<DataPath>Запись.НомерНабора</DataPath>
-							<ContextMenu name="НомерНабораКонтекстноеМеню" id="4"/>
-							<ExtendedTooltip name="НомерНабораExtendedTooltip" id="45"/>
-						</InputField>
-						<InputField name="ВидДоступа" id="5">
-							<DataPath>Запись.ВидДоступа</DataPath>
-							<ContextMenu name="ВидДоступаКонтекстноеМеню" id="6"/>
-							<ExtendedTooltip name="ВидДоступаExtendedTooltip" id="46"/>
-							<Events>
-								<Event name="OnChange">СвойствоПриИзменении</Event>
-							</Events>
-						</InputField>
-						<InputField name="ЗначениеДоступа" id="7">
-							<DataPath>Запись.ЗначениеДоступа</DataPath>
-							<ContextMenu name="ЗначениеДоступаКонтекстноеМеню" id="8"/>
-							<ExtendedTooltip name="ЗначениеДоступаExtendedTooltip" id="47"/>
-							<Events>
-								<Event name="OnChange">СвойствоПриИзменении</Event>
-							</Events>
-						</InputField>
-						<CheckBoxField name="Чтение" id="9">
-							<DataPath>Запись.Чтение</DataPath>
+						<CheckBoxField name="СтандартноеЗначение" id="57">
+							<DataPath>Запись.СтандартноеЗначение</DataPath>
+							<TitleLocation>Right</TitleLocation>
 							<CheckBoxType>Auto</CheckBoxType>
-							<ContextMenu name="ЧтениеКонтекстноеМеню" id="10"/>
-							<ExtendedTooltip name="ЧтениеExtendedTooltip" id="48"/>
-							<Events>
-								<Event name="OnChange">СвойствоПриИзменении</Event>
-							</Events>
+							<ContextMenu name="СтандартноеЗначениеКонтекстноеМеню" id="58"/>
+							<ExtendedTooltip name="СтандартноеЗначениеРасширеннаяПодсказка" id="59"/>
 						</CheckBoxField>
-						<CheckBoxField name="Добавление" id="11">
-							<DataPath>Запись.Добавление</DataPath>
+						<CheckBoxField name="ЗначениеБезГрупп" id="60">
+							<DataPath>Запись.ЗначениеБезГрупп</DataPath>
+							<TitleLocation>Right</TitleLocation>
 							<CheckBoxType>Auto</CheckBoxType>
-							<ContextMenu name="ДобавлениеКонтекстноеМеню" id="12"/>
-							<ExtendedTooltip name="ДобавлениеExtendedTooltip" id="49"/>
-							<Events>
-								<Event name="OnChange">СвойствоПриИзменении</Event>
-							</Events>
-						</CheckBoxField>
-						<CheckBoxField name="Изменение" id="13">
-							<DataPath>Запись.Изменение</DataPath>
-							<CheckBoxType>Auto</CheckBoxType>
-							<ContextMenu name="ИзменениеКонтекстноеМеню" id="14"/>
-							<ExtendedTooltip name="ИзменениеExtendedTooltip" id="50"/>
-							<Events>
-								<Event name="OnChange">СвойствоПриИзменении</Event>
-							</Events>
-						</CheckBoxField>
-						<CheckBoxField name="Удаление" id="15">
-							<DataPath>Запись.Удаление</DataPath>
-							<CheckBoxType>Auto</CheckBoxType>
-							<ContextMenu name="УдалениеКонтекстноеМеню" id="16"/>
-							<ExtendedTooltip name="УдалениеExtendedTooltip" id="51"/>
-							<Events>
-								<Event name="OnChange">СвойствоПриИзменении</Event>
-							</Events>
+							<ContextMenu name="ЗначениеБезГруппКонтекстноеМеню" id="61"/>
+							<ExtendedTooltip name="ЗначениеБезГруппРасширеннаяПодсказка" id="62"/>
 						</CheckBoxField>
 					</ChildItems>
-				</Page>
-				<Page name="АвтоРеквизиты" id="32">
-					<ReadOnly>true</ReadOnly>
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Авто реквизиты</v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Авто реквизиты, заполняемые автоматически, для ускорения работы запросов стандартных шаблонов ограничения доступа</v8:content>
-						</v8:item>
-					</ToolTip>
-					<ExtendedTooltip name="АвтоРеквизитыExtendedTooltip" id="52"/>
-					<ChildItems>
-						<CheckBoxField name="ВидДоступаЧерезПраваПоЗначениямДоступа" id="21">
-							<DataPath>Запись.ВидДоступаЧерезПраваПоЗначениямДоступа</DataPath>
-							<CheckBoxType>Auto</CheckBoxType>
-							<ContextMenu name="ВидДоступаЧерезПраваПоЗначениямДоступаКонтекстноеМеню" id="22"/>
-							<ExtendedTooltip name="ВидДоступаЧерезПраваПоЗначениямДоступаExtendedTooltip" id="53"/>
-						</CheckBoxField>
-						<CheckBoxField name="ВидДоступаЕдинственныйДляТипаЗначенияДоступа" id="19">
-							<DataPath>Запись.ВидДоступаЕдинственныйДляТипаЗначенияДоступа</DataPath>
-							<CheckBoxType>Auto</CheckBoxType>
-							<ContextMenu name="ВидДоступаЕдинственныйДляТипаЗначенияДоступаКонтекстноеМеню" id="20"/>
-							<ExtendedTooltip name="ВидДоступаЕдинственныйДляТипаЗначенияДоступаExtendedTooltip" id="54"/>
-						</CheckBoxField>
-						<CheckBoxField name="ВидДоступаБезГруппЗначенияДоступа" id="17">
-							<DataPath>Запись.ВидДоступаБезГруппЗначенияДоступа</DataPath>
-							<CheckBoxType>Auto</CheckBoxType>
-							<ContextMenu name="ВидДоступаБезГруппЗначенияДоступаКонтекстноеМеню" id="18"/>
-							<ExtendedTooltip name="ВидДоступаБезГруппЗначенияДоступаExtendedTooltip" id="55"/>
-						</CheckBoxField>
-						<InputField name="ВидДоступаПравоЧтения" id="25">
-							<DataPath>Запись.ВидДоступаПравоЧтения</DataPath>
-							<ContextMenu name="ВидДоступаПравоЧтенияКонтекстноеМеню" id="26"/>
-							<ExtendedTooltip name="ВидДоступаПравоЧтенияExtendedTooltip" id="56"/>
-						</InputField>
-						<InputField name="ВидДоступаПравоДобавления" id="27">
-							<DataPath>Запись.ВидДоступаПравоДобавления</DataPath>
-							<ContextMenu name="ВидДоступаПравоДобавленияКонтекстноеМеню" id="28"/>
-							<ExtendedTooltip name="ВидДоступаПравоДобавленияExtendedTooltip" id="57"/>
-						</InputField>
-						<InputField name="ВидДоступаПравоИзменения" id="29">
-							<DataPath>Запись.ВидДоступаПравоИзменения</DataPath>
-							<ContextMenu name="ВидДоступаПравоИзмененияКонтекстноеМеню" id="30"/>
-							<ExtendedTooltip name="ВидДоступаПравоИзмененияExtendedTooltip" id="58"/>
-						</InputField>
-						<InputField name="ТипОбъекта" id="36">
-							<DataPath>Запись.ТипОбъекта</DataPath>
-							<ContextMenu name="ТипОбъектаКонтекстноеМеню" id="37"/>
-							<ExtendedTooltip name="ТипОбъектаExtendedTooltip" id="59"/>
-						</InputField>
-						<InputField name="ТипЗначенияДоступа" id="23">
-							<DataPath>Запись.ТипЗначенияДоступа</DataPath>
-							<ContextMenu name="ТипЗначенияДоступаКонтекстноеМеню" id="24"/>
-							<ExtendedTooltip name="ТипЗначенияДоступаExtendedTooltip" id="60"/>
-						</InputField>
-					</ChildItems>
-				</Page>
+				</UsualGroup>
 			</ChildItems>
-		</Pages>
+		</UsualGroup>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Запись" id="1">
@@ -199,53 +108,8 @@
 			<MainAttribute>true</MainAttribute>
 			<SavedData>true</SavedData>
 		</Attribute>
-		<Attribute name="РедактированиеАвтоРеквизитов" id="2">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Редактирование авто реквизитов</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:boolean</v8:Type>
-			</Type>
-		</Attribute>
 	</Attributes>
 	<Commands>
-		<Command name="ВключитьРедактированиеАвтоРеквизитов" id="1">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Включить редактирование авто реквизитов</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Включить редактирование авто реквизитов для целей сложного анализа</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Action>ВключитьРедактированиеАвтоРеквизитов</Action>
-		</Command>
-		<Command name="ЗаполнитьАвтоРеквизиты" id="2">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Заполнить авто реквизиты</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Заполнить авто реквизиты вручную, если в режиме редактирования авто реквизиты изменены и нужно сделать авто заполнение</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Picture>
-				<xr:Ref>CommonPicture.ЗаполнитьФорму</xr:Ref>
-				<xr:LoadTransparent>false</xr:LoadTransparent>
-			</Picture>
-			<Action>ЗаполнитьАвтоРеквизиты</Action>
-		</Command>
 		<Command name="ВключитьВозможностьРедактирования" id="3">
 			<Title>
 				<v8:item>

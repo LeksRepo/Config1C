@@ -647,7 +647,7 @@
 //
 Функция XSLT_ИнтерпретацияРазличияXMLКонтактнойИнформации(Знач ТипКонтактнойИнформации) Экспорт
 	
-	Если ТипЗнч(ТипКонтактнойИнформации)<>Тип("Строка") Тогда
+	Если ТипЗнч(ТипКонтактнойИнформации) <> Тип("Строка") Тогда
 		ТипКонтактнойИнформации = ТипКонтактнойИнформации.Метаданные().Имя;
 	КонецЕсли;
 	
@@ -699,7 +699,7 @@
 	
 	КодыРегионов = Новый ТекстовыйДокумент;
 	ВсеРегионы = КонтактнаяИнформацияСлужебный.ВсеРегионы();
-	Если ВсеРегионы<>Неопределено Тогда
+	Если ВсеРегионы <> Неопределено Тогда
 		Для Каждого Строка Из ВсеРегионы Цикл
 			КодыРегионов.ДобавитьСтроку("<data:item data:code=""" + Формат(Строка.Код, "ЧН=; ЧГ=") + """>" + Строка.Представление + "</data:item>");
 		КонецЦикла;
@@ -721,7 +721,7 @@
 		|<xsl:output method=""xml"" omit-xml-declaration=""yes"" indent=""yes"" encoding=""utf-8""/>
 		|  " + XSLT_ШаблоныСтроковыхФункций() + "
 		|  
-		|  <xsl:variable name=""local-country"">РОССИЯ</xsl:variable>
+		|  <xsl:variable name=""local-сountry"">РОССИЯ</xsl:variable>
 		|
 		|  <xsl:variable name=""presentation"" select=""tns:Structure/tns:Property[@name='Представление']/tns:Value/text()"" />
 		|  
@@ -747,7 +747,7 @@
 		|        <xsl:attribute name=""Страна"">
 		|          <xsl:choose>
 		|            <xsl:when test=""0=count($country)"">
-		|              <xsl:value-of select=""$local-country"" />
+		|              <xsl:value-of select=""$local-сountry"" />
 		|            </xsl:when>
 		|            <xsl:otherwise>
 		|              <xsl:value-of select=""$country"" />
@@ -759,7 +759,7 @@
 		|          <xsl:when test=""0=count($country)"">
 		|            <xsl:apply-templates select=""/"" mode=""domestic"" />
 		|          </xsl:when>
-		|          <xsl:when test=""$country-upper=$local-country"">
+		|          <xsl:when test=""$country-upper=$local-сountry"">
 		|            <xsl:apply-templates select=""/"" mode=""domestic"" />
 		|          </xsl:when>
 		|          <xsl:otherwise>

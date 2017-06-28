@@ -7,6 +7,7 @@
 		</v8:item>
 	</Title>
 	<Width>30</Width>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
 	<Customizable>false</Customizable>
 	<CommandBarLocation>None</CommandBarLocation>
@@ -55,14 +56,27 @@
 						<Value xsi:type="xs:decimal">2</Value>
 					</xr:Value>
 				</xr:Item>
+				<xr:Item>
+					<xr:Presentation/>
+					<xr:CheckState>0</xr:CheckState>
+					<xr:Value xsi:type="FormChoiceListDesTimeValue">
+						<Presentation>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Со сканера</v8:content>
+							</v8:item>
+						</Presentation>
+						<Value xsi:type="xs:decimal">3</Value>
+					</xr:Value>
+				</xr:Item>
 			</ChoiceList>
 			<ContextMenu name="РежимСозданияКонтекстноеМеню" id="3"/>
-			<ExtendedTooltip name="РежимСозданияРасширеннаяПодсказка" id="10"/>
+			<ExtendedTooltip name="РежимСозданияExtendedTooltip" id="10"/>
 		</RadioButtonField>
 		<CommandBar name="ОсновнаяКоманднаяПанель" id="1">
 			<HorizontalLocation>Right</HorizontalLocation>
 			<CommandSource>Form</CommandSource>
-			<ExtendedTooltip name="ОсновнаяКоманднаяПанельРасширеннаяПодсказка" id="11"/>
+			<ExtendedTooltip name="ОсновнаяКоманднаяПанельExtendedTooltip" id="11"/>
 			<ChildItems>
 				<Button name="СоздатьФайл" id="4">
 					<Type>CommandBarButton</Type>
@@ -78,19 +92,19 @@
 							<v8:content>Создать</v8:content>
 						</v8:item>
 					</Title>
-					<ExtendedTooltip name="СоздатьФайлРасширеннаяПодсказка" id="12"/>
+					<ExtendedTooltip name="СоздатьФайлExtendedTooltip" id="12"/>
 				</Button>
 				<Button name="Отмена" id="8">
 					<Type>CommandBarButton</Type>
 					<SkipOnInput>false</SkipOnInput>
 					<CommandName>Form.StandardCommand.Cancel</CommandName>
-					<ExtendedTooltip name="ОтменаРасширеннаяПодсказка" id="13"/>
+					<ExtendedTooltip name="ОтменаExtendedTooltip" id="13"/>
 				</Button>
 				<Button name="Справка" id="9">
 					<Type>CommandBarButton</Type>
 					<SkipOnInput>false</SkipOnInput>
 					<CommandName>Form.StandardCommand.Help</CommandName>
-					<ExtendedTooltip name="СправкаРасширеннаяПодсказка" id="14"/>
+					<ExtendedTooltip name="СправкаExtendedTooltip" id="14"/>
 				</Button>
 			</ChildItems>
 		</CommandBar>
@@ -134,6 +148,11 @@
 		<Parameter name="ГруппаСоздания">
 			<Type>
 				<v8:Type>cfg:CatalogRef.ПапкиФайлов</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ДоступнаКомандаСканировать">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Parameter>
 	</Parameters>

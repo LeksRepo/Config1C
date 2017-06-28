@@ -12,9 +12,12 @@
 	<CommandSet>
 		<ExcludedCommand>Tree</ExcludedCommand>
 		<ExcludedCommand>ListSettings</ExcludedCommand>
-		<ExcludedCommand>CancelSearch</ExcludedCommand>
+		<ExcludedCommand>SetDeletionMark</ExcludedCommand>
+		<ExcludedCommand>Copy</ExcludedCommand>
+		<ExcludedCommand>MoveItem</ExcludedCommand>
+		<ExcludedCommand>Delete</ExcludedCommand>
+		<ExcludedCommand>Create</ExcludedCommand>
 		<ExcludedCommand>List</ExcludedCommand>
-		<ExcludedCommand>Find</ExcludedCommand>
 		<ExcludedCommand>HierarchicalList</ExcludedCommand>
 	</CommandSet>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
@@ -25,6 +28,7 @@
 		<Table name="Список" id="1">
 			<Representation>Tree</Representation>
 			<CommandBarLocation>None</CommandBarLocation>
+			<ReadOnly>true</ReadOnly>
 			<SkipOnInput>false</SkipOnInput>
 			<DefaultItem>true</DefaultItem>
 			<Width>40</Width>
@@ -33,12 +37,20 @@
 			<Header>false</Header>
 			<HorizontalLines>false</HorizontalLines>
 			<VerticalLines>false</VerticalLines>
+			<InitialTreeView>ExpandTopLevel</InitialTreeView>
 			<DataPath>Список</DataPath>
 			<RowPictureDataPath>Список.ИндексКартинки</RowPictureDataPath>
 			<RowsPicture>
 				<xr:Ref>CommonPicture.Папки</xr:Ref>
 				<xr:LoadTransparent>false</xr:LoadTransparent>
 			</RowsPicture>
+			<CommandSet>
+				<ExcludedCommand>Copy</ExcludedCommand>
+				<ExcludedCommand>Create</ExcludedCommand>
+				<ExcludedCommand>MoveItem</ExcludedCommand>
+				<ExcludedCommand>SetDeletionMark</ExcludedCommand>
+				<ExcludedCommand>Delete</ExcludedCommand>
+			</CommandSet>
 			<SearchStringLocation>None</SearchStringLocation>
 			<ViewStatusLocation>None</ViewStatusLocation>
 			<SearchControlLocation>None</SearchControlLocation>
@@ -59,37 +71,37 @@
 			<AutoCommandBar name="СписокКоманднаяПанель" id="3">
 				<Autofill>false</Autofill>
 			</AutoCommandBar>
-			<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="6"/>
-			<SearchStringAddition name="СписокСтрокаПоиска" id="7">
+			<ExtendedTooltip name="СписокExtendedTooltip" id="6"/>
+			<SearchStringAddition name="СписокСтрокаПоиска" id="8">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="8"/>
-				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="9"/>
+				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="9"/>
+				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="10"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокСостояниеПросмотра" id="10">
+			<ViewStatusAddition name="СписокСостояниеПросмотра" id="11">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="11"/>
-				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="12"/>
+				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="12"/>
+				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="13"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокУправлениеПоиском" id="13">
+			<SearchControlAddition name="СписокУправлениеПоиском" id="14">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="14"/>
-				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="15"/>
+				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="15"/>
+				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="16"/>
 			</SearchControlAddition>
 			<ChildItems>
 				<LabelField name="Наименование" id="4">
 					<DataPath>Список.Description</DataPath>
 					<DefaultItem>true</DefaultItem>
 					<ContextMenu name="НаименованиеКонтекстноеМеню" id="5"/>
-					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="16"/>
+					<ExtendedTooltip name="НаименованиеExtendedTooltip" id="7"/>
 				</LabelField>
 			</ChildItems>
 		</Table>
@@ -141,4 +153,24 @@
 			</Settings>
 		</Attribute>
 	</Attributes>
+	<CommandInterface>
+		<CommandBar>
+			<Item>
+				<Command>CommonCommand.НастроитьПрава</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>CommonCommand.ДополнительныеСведенияКоманднаяПанель</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+		</CommandBar>
+	</CommandInterface>
 </Form>

@@ -12,13 +12,11 @@ var backupFileName = [КаталогРезервнойКопии]+'.zip';  // Ф
 var UseRestore = [ВосстанавливатьИнформационнуюБазу];  // Использовать восстановление ИБ в случае падения
 var createBackup = [СоздаватьРезервнуюКопию]; // создавать резервную копию
 var eventLogID = [СобытиеЖурналаРегистрации];
-var adminName = [ИмяАдминистратораОбновления];	// имя администратора, инициировавшего обновление
+var adminName = [ИмяАдминистратораОбновления];  // имя администратора, инициировавшего обновление
 var doBlockUsers = [БлокироватьСоединенияИБ];  // устанавливать блокировку соединений перед обновлением
 var comConnectorName = [ИмяCOMСоединителя];  // имя COM-класса для работы с 1С:Предприятием 8 через COM-соединение
 var useComConnector = [ИспользоватьCOMСоединитель];  // флаг использования COM-соединения для работы с 1С:Предприятием 8
-var typeReserveCopying = [ТипРезервногоКопирования];  // Тип Резервного копирования: "1" - прямо сейчас, "2" - отложенное, "3" - при завершении работы.
-var splashWindowWidth = [ШиринаОкнаЗаставкиОбновления]; // ширина окна обновления в пикселях
-var splashWindowHeight = [ВысотаОкнаЗаставкиОбновления]; // высота окна обновления в пикселях
+var OnExit = [ВыполнитьПриЗавершенииРаботы];  // "true" - при завершении работы, "false" - прямо сейчас.
 var tempLogFileName = "templog.txt";
 #КонецОбласти
 
@@ -362,27 +360,26 @@ function backupDB()
 {   
 	try
 	{
-    
-	var NewTextFile = oFileSystemObject.CreateTextFile(backupFileName,false);
-	
-	NewTextFile.Write(String.fromCharCode(80,75,5,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0));
-	NewTextFile.Close();
-	
-	var ZIPFile = oFileSystemObject.GetAbsolutePathName(backupFileName);
-	var dFolder = oShellApplication.NameSpace(ZIPFile);
-   	var file = oFileSystemObject.GetAbsolutePathName(BaseFileName);
-	var FolderNameSpace = oFileSystemObject.GetParentFolderName(file);
-	var Folder = oShellApplication.Namespace(FolderNameSpace);
-	var FolderItemNameSpace = oFileSystemObject.GetFileName(file);
-	var FolderItem = Folder.ParseName(FolderItemNameSpace);
-	
-	if (!createBackup)
-		return 0;
+		var NewTextFile = oFileSystemObject.CreateTextFile(backupFileName,false);
 		
-	dFolder.CopyHere(file);
-	
-	ret = 0;
-   	log(format("Попытка создания резервной копии", ret), ret != 0);
+		NewTextFile.Write(String.fromCharCode(80,75,5,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0));
+		NewTextFile.Close();
+		
+		var ZIPFile = oFileSystemObject.GetAbsolutePathName(backupFileName);
+		var dFolder = oShellApplication.NameSpace(ZIPFile);
+	   	var file = oFileSystemObject.GetAbsolutePathName(BaseFileName);
+		var FolderNameSpace = oFileSystemObject.GetParentFolderName(file);
+		var Folder = oShellApplication.Namespace(FolderNameSpace);
+		var FolderItemNameSpace = oFileSystemObject.GetFileName(file);
+		var FolderItem = Folder.ParseName(FolderItemNameSpace);
+		
+		if (!createBackup)
+			return 0;
+			
+		dFolder.CopyHere(file);
+		
+		ret = 0;
+	   	log(format("Попытка создания резервной копии", ret), ret != 0);
 	}
 	catch(e)
 	{
@@ -428,19 +425,17 @@ function doAllowConnections(updateAndFillDB)
     if (connection == null)
         return (useComConnector ? 1 : 0);
     
- 
-	
-	    try
-	    {
-	        connection.СоединенияИБ.РазрешитьРаботуПользователей();
-	        connectionsDenied = false;
-	    }
-	    catch(e)
-	    {
-	        CollectGarbage();   // предотвращает исключение out of memory
-	        log(format("Исключение при вызове СоединенияИБ.РазрешитьРаботуПользователей: {0}, {1}.", e.name, e.message), true);
-	        return 3;
-	    }
+    try
+    {
+        connection.СоединенияИБ.РазрешитьРаботуПользователей();
+        connectionsDenied = false;
+    }
+    catch(e)
+    {
+        CollectGarbage();   // предотвращает исключение out of memory
+        log(format("Исключение при вызове СоединенияИБ.РазрешитьРаботуПользователей: {0}, {1}.", e.name, e.message), true);
+        return 3;
+    }
     return 0;
 }
 
@@ -649,7 +644,7 @@ function disconnectAndBlockUsers()
 // Интерактивный запуск "1С:Предприятие"
 function runEnterprise()
 {
-	if (typeReserveCopying != "3") {
+	if (OnExit == false) {
 		return runApp(v8exeEnterprise, format('ENTERPRISE {0} {1}', infoBasePath, infoBaseAuthorization ), SW_SHOW, false);
 	}
 }

@@ -20,12 +20,12 @@
 			<Button name="КнопкаСоздать" id="12">
 				<Type>CommandBarButton</Type>
 				<CommandName>Form.Command.Создать</CommandName>
-				<ExtendedTooltip name="КнопкаСоздатьРасширеннаяПодсказка" id="17"/>
+				<ExtendedTooltip name="КнопкаСоздатьExtendedTooltip" id="17"/>
 			</Button>
 			<Button name="КнопкаИзменить" id="13">
 				<Type>CommandBarButton</Type>
 				<CommandName>Form.Command.Изменить</CommandName>
-				<ExtendedTooltip name="КнопкаИзменитьРасширеннаяПодсказка" id="18"/>
+				<ExtendedTooltip name="КнопкаИзменитьExtendedTooltip" id="18"/>
 			</Button>
 			<Button name="КнопкаПрекратить" id="16">
 				<Type>CommandBarButton</Type>
@@ -36,7 +36,7 @@
 						<v8:content>Прекратить</v8:content>
 					</v8:item>
 				</Title>
-				<ExtendedTooltip name="КнопкаПрекратитьРасширеннаяПодсказка" id="19"/>
+				<ExtendedTooltip name="КнопкаПрекратитьExtendedTooltip" id="19"/>
 			</Button>
 			<ButtonGroup name="СтандартныеКоманды" id="14">
 				<Title>
@@ -52,12 +52,12 @@
 					</v8:item>
 				</ToolTip>
 				<CommandSource>Form</CommandSource>
-				<ExtendedTooltip name="СтандартныеКомандыРасширеннаяПодсказка" id="20"/>
+				<ExtendedTooltip name="СтандартныеКомандыExtendedTooltip" id="20"/>
 			</ButtonGroup>
 			<Button name="ФормаСправка" id="15">
 				<Type>CommandBarButton</Type>
 				<CommandName>Form.StandardCommand.Help</CommandName>
-				<ExtendedTooltip name="ФормаСправкаРасширеннаяПодсказка" id="21"/>
+				<ExtendedTooltip name="ФормаСправкаExtendedTooltip" id="21"/>
 			</Button>
 		</ChildItems>
 	</AutoCommandBar>
@@ -97,32 +97,33 @@
 			<AutoCommandBar name="СписокКоманднаяПанель" id="3">
 				<Autofill>false</Autofill>
 			</AutoCommandBar>
-			<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="22"/>
-			<SearchStringAddition name="СписокСтрокаПоиска" id="23">
+			<ExtendedTooltip name="СписокExtendedTooltip" id="22"/>
+			<SearchStringAddition name="СписокСтрокаПоиска" id="27">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="24"/>
-				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="25"/>
+				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="28"/>
+				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="29"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокСостояниеПросмотра" id="26">
+			<ViewStatusAddition name="СписокСостояниеПросмотра" id="30">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="27"/>
-				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="28"/>
+				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="31"/>
+				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="32"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокУправлениеПоиском" id="29">
+			<SearchControlAddition name="СписокУправлениеПоиском" id="33">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="30"/>
-				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="31"/>
+				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="34"/>
+				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="35"/>
 			</SearchControlAddition>
 			<Events>
+				<Event name="BeforeDeleteRow">СписокПередУдалением</Event>
 				<Event name="OnActivateRow">СписокПриАктивизацииСтроки</Event>
 				<Event name="BeforeRowChange">СписокПередНачаломИзменения</Event>
 			</Events>
@@ -131,19 +132,19 @@
 					<DataPath>Список.СрокНапоминания</DataPath>
 					<DefaultItem>true</DefaultItem>
 					<ContextMenu name="СрокНапоминанияКонтекстноеМеню" id="9"/>
-					<ExtendedTooltip name="СрокНапоминанияРасширеннаяПодсказка" id="32"/>
+					<ExtendedTooltip name="СрокНапоминанияExtendedTooltip" id="23"/>
 				</LabelField>
 				<LabelField name="Описание" id="10">
 					<DataPath>Список.Описание</DataPath>
 					<DefaultItem>true</DefaultItem>
 					<ContextMenu name="ОписаниеКонтекстноеМеню" id="11"/>
-					<ExtendedTooltip name="ОписаниеРасширеннаяПодсказка" id="33"/>
+					<ExtendedTooltip name="ОписаниеExtendedTooltip" id="24"/>
 				</LabelField>
 				<LabelField name="ВремяСобытия" id="4">
 					<DataPath>Список.ВремяСобытия</DataPath>
 					<DefaultItem>true</DefaultItem>
 					<ContextMenu name="ВремяСобытияКонтекстноеМеню" id="5"/>
-					<ExtendedTooltip name="ВремяСобытияРасширеннаяПодсказка" id="34"/>
+					<ExtendedTooltip name="ВремяСобытияExtendedTooltip" id="25"/>
 				</LabelField>
 				<LabelField name="Источник" id="6">
 					<DataPath>Список.ПредставлениеИсточника</DataPath>
@@ -155,7 +156,7 @@
 						</v8:item>
 					</Title>
 					<ContextMenu name="ИсточникКонтекстноеМеню" id="7"/>
-					<ExtendedTooltip name="ИсточникРасширеннаяПодсказка" id="35"/>
+					<ExtendedTooltip name="ИсточникExtendedTooltip" id="26"/>
 				</LabelField>
 			</ChildItems>
 		</Table>

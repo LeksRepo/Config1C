@@ -6,6 +6,7 @@
 			<v8:content>Подключение конечной точки</v8:content>
 		</v8:item>
 	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
 	<CommandBarLocation>Bottom</CommandBarLocation>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
@@ -21,7 +22,7 @@
 				<Type>CommandBarButton</Type>
 				<DefaultButton>true</DefaultButton>
 				<CommandName>Form.Command.ПодключитьКонечнуюТочку</CommandName>
-				<ExtendedTooltip name="ФормаПодключитьКонечнуюТочкуРасширеннаяПодсказка" id="25"/>
+				<ExtendedTooltip name="ФормаПодключитьКонечнуюТочкуExtendedTooltip" id="25"/>
 			</Button>
 			<Button name="ФормаЗакрыть" id="11">
 				<Type>CommandBarButton</Type>
@@ -33,12 +34,11 @@
 						<v8:content>Отмена</v8:content>
 					</v8:item>
 				</Title>
-				<ExtendedTooltip name="ФормаЗакрытьРасширеннаяПодсказка" id="26"/>
+				<ExtendedTooltip name="ФормаЗакрытьExtendedTooltip" id="26"/>
 			</Button>
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
-		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="BeforeClose">ПередЗакрытием</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
@@ -58,24 +58,50 @@
 			</ToolTip>
 			<Group>Vertical</Group>
 			<Representation>StrongSeparation</Representation>
-			<ExtendedTooltip name="НастройкиПодключенияОтправителяРасширеннаяПодсказка" id="27"/>
+			<ExtendedTooltip name="НастройкиПодключенияОтправителяExtendedTooltip" id="27"/>
 			<ChildItems>
 				<InputField name="НастройкиОтправителяWSURLВебСервиса" id="19">
 					<DataPath>НастройкиОтправителяWSURLВебСервиса</DataPath>
 					<ContextMenu name="НастройкиОтправителяWSURLВебСервисаКонтекстноеМеню" id="20"/>
-					<ExtendedTooltip name="НастройкиОтправителяWSURLВебСервисаРасширеннаяПодсказка" id="28"/>
+					<ExtendedTooltip name="НастройкиОтправителяWSURLВебСервисаExtendedTooltip" id="28"/>
 				</InputField>
+				<LabelDecoration name="Декорация1" id="35">
+					<TextColor>style:ПоясняющийТекст</TextColor>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Веб-адрес публикации информационной базы (конечной точки), например: http://myserver/infobase</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="Декорация1КонтекстноеМеню" id="36"/>
+					<ExtendedTooltip name="Декорация1РасширеннаяПодсказка" id="37"/>
+				</LabelDecoration>
 				<InputField name="НастройкиОтправителяWSИмяПользователя" id="21">
 					<DataPath>НастройкиОтправителяWSИмяПользователя</DataPath>
+					<Width>30</Width>
+					<HorizontalStretch>false</HorizontalStretch>
 					<ContextMenu name="НастройкиОтправителяWSИмяПользователяКонтекстноеМеню" id="22"/>
-					<ExtendedTooltip name="НастройкиОтправителяWSИмяПользователяРасширеннаяПодсказка" id="29"/>
+					<ExtendedTooltip name="НастройкиОтправителяWSИмяПользователяExtendedTooltip" id="29"/>
 				</InputField>
 				<InputField name="НастройкиОтправителяWSПароль" id="23">
 					<DataPath>НастройкиОтправителяWSПароль</DataPath>
+					<Width>30</Width>
+					<HorizontalStretch>false</HorizontalStretch>
 					<PasswordMode>true</PasswordMode>
 					<ContextMenu name="НастройкиОтправителяWSПарольКонтекстноеМеню" id="24"/>
-					<ExtendedTooltip name="НастройкиОтправителяWSПарольРасширеннаяПодсказка" id="30"/>
+					<ExtendedTooltip name="НастройкиОтправителяWSПарольExtendedTooltip" id="30"/>
 				</InputField>
+				<LabelDecoration name="Декорация3" id="41">
+					<TextColor>style:ПоясняющийТекст</TextColor>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя и пароль служебного пользователя с ролью "Удаленный доступ (Обмен сообщениями)"</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="Декорация3КонтекстноеМеню" id="42"/>
+					<ExtendedTooltip name="Декорация3РасширеннаяПодсказка" id="43"/>
+				</LabelDecoration>
 			</ChildItems>
 		</UsualGroup>
 		<UsualGroup name="НастройкиПодключенияПолучателя" id="12">
@@ -93,24 +119,51 @@
 			</ToolTip>
 			<Group>Vertical</Group>
 			<Representation>StrongSeparation</Representation>
-			<ExtendedTooltip name="НастройкиПодключенияПолучателяРасширеннаяПодсказка" id="31"/>
+			<ExtendedTooltip name="НастройкиПодключенияПолучателяExtendedTooltip" id="31"/>
 			<ChildItems>
 				<InputField name="НастройкиПолучателяWSURLВебСервиса" id="13">
 					<DataPath>НастройкиПолучателяWSURLВебСервиса</DataPath>
 					<ContextMenu name="НастройкиПолучателяWSURLВебСервисаКонтекстноеМеню" id="14"/>
-					<ExtendedTooltip name="НастройкиПолучателяWSURLВебСервисаРасширеннаяПодсказка" id="32"/>
+					<ExtendedTooltip name="НастройкиПолучателяWSURLВебСервисаExtendedTooltip" id="32"/>
 				</InputField>
+				<LabelDecoration name="Декорация2" id="38">
+					<TextColor>style:ПоясняющийТекст</TextColor>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Веб-адрес публикации этой информационной базы, например: http://myserver/thisinfobase</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="Декорация2КонтекстноеМеню" id="39"/>
+					<ExtendedTooltip name="Декорация2РасширеннаяПодсказка" id="40"/>
+				</LabelDecoration>
 				<InputField name="НастройкиПолучателяWSИмяПользователя" id="15">
 					<DataPath>НастройкиПолучателяWSИмяПользователя</DataPath>
+					<Width>30</Width>
+					<HorizontalStretch>false</HorizontalStretch>
 					<ContextMenu name="НастройкиПолучателяWSИмяПользователяКонтекстноеМеню" id="16"/>
-					<ExtendedTooltip name="НастройкиПолучателяWSИмяПользователяРасширеннаяПодсказка" id="33"/>
+					<ExtendedTooltip name="НастройкиПолучателяWSИмяПользователяExtendedTooltip" id="33"/>
 				</InputField>
 				<InputField name="НастройкиПолучателяWSПароль" id="17">
 					<DataPath>НастройкиПолучателяWSПароль</DataPath>
+					<Width>30</Width>
+					<HorizontalStretch>false</HorizontalStretch>
 					<PasswordMode>true</PasswordMode>
 					<ContextMenu name="НастройкиПолучателяWSПарольКонтекстноеМеню" id="18"/>
-					<ExtendedTooltip name="НастройкиПолучателяWSПарольРасширеннаяПодсказка" id="34"/>
+					<ExtendedTooltip name="НастройкиПолучателяWSПарольExtendedTooltip" id="34"/>
 				</InputField>
+				<LabelDecoration name="Декорация4" id="44">
+					<TextColor>style:ПоясняющийТекст</TextColor>
+					<Title formatted="false">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Имя и пароль служебного пользователя с ролью "Удаленный доступ (Обмен сообщениями)"
+в этой информационной базе.</v8:content>
+						</v8:item>
+					</Title>
+					<ContextMenu name="Декорация4КонтекстноеМеню" id="45"/>
+					<ExtendedTooltip name="Декорация4РасширеннаяПодсказка" id="46"/>
+				</LabelDecoration>
 			</ChildItems>
 		</UsualGroup>
 	</ChildItems>

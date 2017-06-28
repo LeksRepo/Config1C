@@ -6,6 +6,7 @@
 			<v8:content>Установка расширения работы с файлами</v8:content>
 		</v8:item>
 	</Title>
+	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
 	<Customizable>false</Customizable>
 	<CommandBarLocation>Bottom</CommandBarLocation>
@@ -26,24 +27,24 @@
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<HorizontalAlign>Right</HorizontalAlign>
 		<ChildItems>
-			<Button name="УстановитьСейчас" id="8">
+			<Button name="УстановитьИПродолжить" id="8">
 				<Type>CommandBarButton</Type>
 				<DefaultButton>true</DefaultButton>
 				<SkipOnInput>false</SkipOnInput>
-				<CommandName>Form.Command.УстановитьСейчас</CommandName>
-				<ExtendedTooltip name="УстановитьСейчасРасширеннаяПодсказка" id="11"/>
+				<CommandName>Form.Command.УстановитьИПродолжить</CommandName>
+				<ExtendedTooltip name="УстановитьИПродолжитьРасширеннаяПодсказка" id="11"/>
 			</Button>
-			<Button name="УстановитьПозже" id="9">
+			<Button name="ПродолжитьБезУстановки" id="9">
 				<Type>CommandBarButton</Type>
 				<SkipOnInput>false</SkipOnInput>
-				<CommandName>Form.Command.УстановитьПозже</CommandName>
-				<ExtendedTooltip name="УстановитьПозжеРасширеннаяПодсказка" id="12"/>
+				<CommandName>Form.Command.ПродолжитьБезУстановки</CommandName>
+				<ExtendedTooltip name="ПродолжитьБезУстановкиРасширеннаяПодсказка" id="12"/>
 			</Button>
-			<Button name="НеУстанавливать" id="10">
+			<Button name="БольшеНеНапоминать" id="10">
 				<Type>CommandBarButton</Type>
 				<SkipOnInput>false</SkipOnInput>
-				<CommandName>Form.Command.НеУстанавливать</CommandName>
-				<ExtendedTooltip name="НеУстанавливатьРасширеннаяПодсказка" id="13"/>
+				<CommandName>Form.Command.БольшеНеНапоминать</CommandName>
+				<ExtendedTooltip name="БольшеНеНапоминатьРасширеннаяПодсказка" id="13"/>
 			</Button>
 		</ChildItems>
 	</AutoCommandBar>
@@ -52,19 +53,19 @@
 	</Events>
 	<ChildItems>
 		<LabelDecoration name="ДекорацияПояснение" id="6">
-			<Height>2</Height>
 			<HorizontalStretch>true</HorizontalStretch>
-			<VerticalStretch>false</VerticalStretch>
+			<VerticalStretch>true</VerticalStretch>
 			<SkipOnInput>false</SkipOnInput>
 			<Title formatted="false">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Для удобной работы с файловыми функциями предлагается установить расширение работы с файлами. 
+					<v8:content>Для удобной работы с программой предлагается установить расширение работы с файлами. 
 Установить?</v8:content>
 				</v8:item>
 			</Title>
+			<VerticalAlign>Top</VerticalAlign>
 			<ContextMenu name="ДекорацияПояснениеКонтекстноеМеню" id="7"/>
-			<ExtendedTooltip name="ДекорацияПояснениеРасширеннаяПодсказка" id="14"/>
+			<ExtendedTooltip name="ДекорацияПояснениеExtendedTooltip" id="14"/>
 		</LabelDecoration>
 	</ChildItems>
 	<Attributes>
@@ -85,7 +86,7 @@
 		</Attribute>
 	</Attributes>
 	<Commands>
-		<Command name="УстановитьСейчас" id="1">
+		<Command name="УстановитьИПродолжить" id="1">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -98,9 +99,9 @@
 					<v8:content>Установить расширение работы с файлами и продолжить</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Action>УстановитьСейчас</Action>
+			<Action>УстановитьИПродолжить</Action>
 		</Command>
-		<Command name="УстановитьПозже" id="2">
+		<Command name="ПродолжитьБезУстановки" id="2">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -113,9 +114,9 @@
 					<v8:content>Продолжить без установки расширения работы с файлами</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Action>УстановитьПозже</Action>
+			<Action>ПродолжитьБезУстановки</Action>
 		</Command>
-		<Command name="НеУстанавливать" id="3">
+		<Command name="БольшеНеНапоминать" id="3">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -128,7 +129,19 @@
 					<v8:content>Не устанавливать и больше не напоминать</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Action>НеУстанавливать</Action>
+			<Action>БольшеНеНапоминать</Action>
 		</Command>
 	</Commands>
+	<Parameters>
+		<Parameter name="ТекстПредложения">
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+			<KeyParameter>true</KeyParameter>
+		</Parameter>
+	</Parameters>
 </Form>

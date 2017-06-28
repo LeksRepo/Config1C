@@ -10,6 +10,7 @@
 		<ExcludedCommand>CustomizeForm</ExcludedCommand>
 		<ExcludedCommand>SaveValues</ExcludedCommand>
 		<ExcludedCommand>Close</ExcludedCommand>
+		<ExcludedCommand>Help</ExcludedCommand>
 		<ExcludedCommand>Abort</ExcludedCommand>
 		<ExcludedCommand>Retry</ExcludedCommand>
 		<ExcludedCommand>Yes</ExcludedCommand>
@@ -31,12 +32,12 @@
 						<v8:content>Сохранить</v8:content>
 					</v8:item>
 				</Title>
-				<ExtendedTooltip name="КнопкаСохранитьРасширеннаяПодсказка" id="80"/>
+				<ExtendedTooltip name="КнопкаСохранитьExtendedTooltip" id="80"/>
 			</Button>
 			<Button name="КнопкаОтмена" id="64">
 				<Type>CommandBarButton</Type>
 				<CommandName>Form.StandardCommand.Cancel</CommandName>
-				<ExtendedTooltip name="КнопкаОтменаРасширеннаяПодсказка" id="81"/>
+				<ExtendedTooltip name="КнопкаОтменаExtendedTooltip" id="81"/>
 			</Button>
 		</ChildItems>
 	</AutoCommandBar>
@@ -62,7 +63,7 @@
 			<Group>Vertical</Group>
 			<Representation>NormalSeparation</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ВыборМестаСохраненияФайлаРасширеннаяПодсказка" id="82"/>
+			<ExtendedTooltip name="ВыборМестаСохраненияФайлаExtendedTooltip" id="82"/>
 			<ChildItems>
 				<RadioButtonField name="ВариантСохранения" id="67">
 					<DataPath>ВариантСохранения</DataPath>
@@ -97,7 +98,7 @@
 						</xr:Item>
 					</ChoiceList>
 					<ContextMenu name="ВариантСохраненияКонтекстноеМеню" id="68"/>
-					<ExtendedTooltip name="ВариантСохраненияРасширеннаяПодсказка" id="83"/>
+					<ExtendedTooltip name="ВариантСохраненияExtendedTooltip" id="83"/>
 					<Events>
 						<Event name="OnChange">ВариантСохраненияПриИзменении</Event>
 					</Events>
@@ -116,7 +117,7 @@
 						</v8:item>
 					</ToolTip>
 					<PagesRepresentation>None</PagesRepresentation>
-					<ExtendedTooltip name="ГруппаМестаСохраненияРасширеннаяПодсказка" id="84"/>
+					<ExtendedTooltip name="ГруппаМестаСохраненияExtendedTooltip" id="84"/>
 					<ChildItems>
 						<Page name="СтраницаСохранениеВПапку" id="70">
 							<Title>
@@ -131,7 +132,7 @@
 									<v8:content>Страница сохранение в папку</v8:content>
 								</v8:item>
 							</ToolTip>
-							<ExtendedTooltip name="СтраницаСохранениеВПапкуРасширеннаяПодсказка" id="85"/>
+							<ExtendedTooltip name="СтраницаСохранениеВПапкуExtendedTooltip" id="85"/>
 							<ChildItems>
 								<InputField name="ПапкаДляСохраненияФайлов" id="42">
 									<DataPath>ВыбраннаяПапка</DataPath>
@@ -139,7 +140,7 @@
 									<ChoiceButton>true</ChoiceButton>
 									<AutoMarkIncomplete>true</AutoMarkIncomplete>
 									<ContextMenu name="ПапкаДляСохраненияФайловКонтекстноеМеню" id="43"/>
-									<ExtendedTooltip name="ПапкаДляСохраненияФайловРасширеннаяПодсказка" id="86"/>
+									<ExtendedTooltip name="ПапкаДляСохраненияФайловExtendedTooltip" id="86"/>
 									<Events>
 										<Event name="StartChoice">ПапкаДляСохраненияФайловНачалоВыбора</Event>
 									</Events>
@@ -159,16 +160,17 @@
 									<v8:content>Страница присоединение к объекту</v8:content>
 								</v8:item>
 							</ToolTip>
-							<ExtendedTooltip name="СтраницаПрисоединениеКОбъектуРасширеннаяПодсказка" id="87"/>
+							<ExtendedTooltip name="СтраницаПрисоединениеКОбъектуExtendedTooltip" id="87"/>
 							<ChildItems>
 								<InputField name="ВыбранныйОбъект" id="48">
 									<DataPath>ВыбранныйОбъект</DataPath>
 									<TitleLocation>None</TitleLocation>
 									<ClearButton>false</ClearButton>
+									<CreateButton>false</CreateButton>
 									<ListChoiceMode>true</ListChoiceMode>
-									<ChooseType>false</ChooseType>
+									<TextEdit>false</TextEdit>
 									<ContextMenu name="ВыбранныйОбъектКонтекстноеМеню" id="49"/>
-									<ExtendedTooltip name="ВыбранныйОбъектРасширеннаяПодсказка" id="88"/>
+									<ExtendedTooltip name="ВыбранныйОбъектExtendedTooltip" id="88"/>
 									<Events>
 										<Event name="Clearing">ВыбранныйОбъектОчистка</Event>
 									</Events>
@@ -193,7 +195,7 @@
 				</v8:item>
 			</ToolTip>
 			<Group>Vertical</Group>
-			<ExtendedTooltip name="ГруппаВыборФорматовРасширеннаяПодсказка" id="89"/>
+			<ExtendedTooltip name="ГруппаВыборФорматовExtendedTooltip" id="89"/>
 			<ChildItems>
 				<Table name="ВыбранныеФорматыСохранения" id="72">
 					<Representation>List</Representation>
@@ -225,30 +227,30 @@
 					<AutoCommandBar name="ВыбранныеФорматыСохраненияКоманднаяПанель" id="74">
 						<Autofill>false</Autofill>
 					</AutoCommandBar>
-					<ExtendedTooltip name="ВыбранныеФорматыСохраненияРасширеннаяПодсказка" id="90"/>
-					<SearchStringAddition name="ВыбранныеФорматыСохраненияСтрокаПоиска" id="91">
+					<ExtendedTooltip name="ВыбранныеФорматыСохраненияExtendedTooltip" id="90"/>
+					<SearchStringAddition name="ВыбранныеФорматыСохраненияСтрокаПоиска" id="95">
 						<AdditionSource>
 							<Item>ВыбранныеФорматыСохранения</Item>
 							<Type>SearchStringRepresentation</Type>
 						</AdditionSource>
-						<ContextMenu name="ВыбранныеФорматыСохраненияСтрокаПоискаКонтекстноеМеню" id="92"/>
-						<ExtendedTooltip name="ВыбранныеФорматыСохраненияСтрокаПоискаРасширеннаяПодсказка" id="93"/>
+						<ContextMenu name="ВыбранныеФорматыСохраненияСтрокаПоискаКонтекстноеМеню" id="96"/>
+						<ExtendedTooltip name="ВыбранныеФорматыСохраненияСтрокаПоискаРасширеннаяПодсказка" id="97"/>
 					</SearchStringAddition>
-					<ViewStatusAddition name="ВыбранныеФорматыСохраненияСостояниеПросмотра" id="94">
+					<ViewStatusAddition name="ВыбранныеФорматыСохраненияСостояниеПросмотра" id="98">
 						<AdditionSource>
 							<Item>ВыбранныеФорматыСохранения</Item>
 							<Type>ViewStatusRepresentation</Type>
 						</AdditionSource>
-						<ContextMenu name="ВыбранныеФорматыСохраненияСостояниеПросмотраКонтекстноеМеню" id="95"/>
-						<ExtendedTooltip name="ВыбранныеФорматыСохраненияСостояниеПросмотраРасширеннаяПодсказка" id="96"/>
+						<ContextMenu name="ВыбранныеФорматыСохраненияСостояниеПросмотраКонтекстноеМеню" id="99"/>
+						<ExtendedTooltip name="ВыбранныеФорматыСохраненияСостояниеПросмотраРасширеннаяПодсказка" id="100"/>
 					</ViewStatusAddition>
-					<SearchControlAddition name="ВыбранныеФорматыСохраненияУправлениеПоиском" id="97">
+					<SearchControlAddition name="ВыбранныеФорматыСохраненияУправлениеПоиском" id="101">
 						<AdditionSource>
 							<Item>ВыбранныеФорматыСохранения</Item>
 							<Type>SearchControl</Type>
 						</AdditionSource>
-						<ContextMenu name="ВыбранныеФорматыСохраненияУправлениеПоискомКонтекстноеМеню" id="98"/>
-						<ExtendedTooltip name="ВыбранныеФорматыСохраненияУправлениеПоискомРасширеннаяПодсказка" id="99"/>
+						<ContextMenu name="ВыбранныеФорматыСохраненияУправлениеПоискомКонтекстноеМеню" id="102"/>
+						<ExtendedTooltip name="ВыбранныеФорматыСохраненияУправлениеПоискомРасширеннаяПодсказка" id="103"/>
 					</SearchControlAddition>
 					<ChildItems>
 						<CheckBoxField name="ВыбранныеФорматыСохраненияПометка" id="78">
@@ -256,14 +258,14 @@
 							<EditMode>EnterOnInput</EditMode>
 							<CheckBoxType>Auto</CheckBoxType>
 							<ContextMenu name="ВыбранныеФорматыСохраненияПометкаКонтекстноеМеню" id="79"/>
-							<ExtendedTooltip name="ВыбранныеФорматыСохраненияПометкаРасширеннаяПодсказка" id="100"/>
+							<ExtendedTooltip name="ВыбранныеФорматыСохраненияПометкаExtendedTooltip" id="91"/>
 						</CheckBoxField>
 						<InputField name="ВыбранныеФорматыСохраненияЗначение" id="75">
 							<DataPath>ВыбранныеФорматыСохранения.Value</DataPath>
 							<ReadOnly>true</ReadOnly>
 							<EditMode>EnterOnInput</EditMode>
 							<ContextMenu name="ВыбранныеФорматыСохраненияЗначениеКонтекстноеМеню" id="76"/>
-							<ExtendedTooltip name="ВыбранныеФорматыСохраненияЗначениеРасширеннаяПодсказка" id="101"/>
+							<ExtendedTooltip name="ВыбранныеФорматыСохраненияЗначениеExtendedTooltip" id="92"/>
 						</InputField>
 					</ChildItems>
 				</Table>
@@ -285,7 +287,7 @@
 			<Group>Vertical</Group>
 			<Representation>NormalSeparation</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаДополнительныеПараметрыРасширеннаяПодсказка" id="102"/>
+			<ExtendedTooltip name="ГруппаДополнительныеПараметрыExtendedTooltip" id="93"/>
 			<ChildItems>
 				<CheckBoxField name="УпаковатьВАрхив" id="14">
 					<DataPath>УпаковатьВАрхив</DataPath>
@@ -298,7 +300,7 @@
 					<TitleLocation>Right</TitleLocation>
 					<CheckBoxType>Auto</CheckBoxType>
 					<ContextMenu name="УпаковатьВАрхивКонтекстноеМеню" id="15"/>
-					<ExtendedTooltip name="УпаковатьВАрхивРасширеннаяПодсказка" id="103"/>
+					<ExtendedTooltip name="УпаковатьВАрхивExtendedTooltip" id="94"/>
 				</CheckBoxField>
 			</ChildItems>
 		</UsualGroup>

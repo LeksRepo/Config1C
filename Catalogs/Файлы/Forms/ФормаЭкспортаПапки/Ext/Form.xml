@@ -15,14 +15,14 @@
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
 		<Event name="OnOpen">ПриОткрытии</Event>
-		<Event name="OnCreateAtServer">ПриСоздании</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
 		<UsualGroup name="Группа" id="34">
 			<Group>Vertical</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаРасширеннаяПодсказка" id="35"/>
+			<ExtendedTooltip name="ГруппаExtendedTooltip" id="35"/>
 			<ChildItems>
 				<InputField name="ПапкаДляЭкспорта" id="2">
 					<DataPath>ПапкаДляЭкспорта</DataPath>
@@ -39,7 +39,7 @@
 					<OpenButton>false</OpenButton>
 					<BorderColor>style:BorderColor</BorderColor>
 					<ContextMenu name="ПапкаДляЭкспортаКонтекстноеМеню" id="3"/>
-					<ExtendedTooltip name="ПапкаДляЭкспортаРасширеннаяПодсказка" id="36"/>
+					<ExtendedTooltip name="ПапкаДляЭкспортаExtendedTooltip" id="36"/>
 					<Events>
 						<Event name="OnChange">ПапкаДляЭкспортаПриИзменении</Event>
 						<Event name="StartChoice">ПапкаДляЭкспортаНачалоВыбора</Event>
@@ -62,26 +62,26 @@
 				</v8:item>
 			</ToolTip>
 			<HorizontalLocation>Right</HorizontalLocation>
-			<ExtendedTooltip name="КоманднаяПанельРасширеннаяПодсказка" id="37"/>
+			<ExtendedTooltip name="КоманднаяПанельExtendedTooltip" id="37"/>
 			<ChildItems>
 				<Button name="Выгрузить" id="33">
 					<Type>CommandBarButton</Type>
 					<DefaultButton>true</DefaultButton>
 					<SkipOnInput>false</SkipOnInput>
-					<CommandName>Form.Command.Экспорт</CommandName>
-					<ExtendedTooltip name="ВыгрузитьРасширеннаяПодсказка" id="38"/>
+					<CommandName>Form.Command.СохранитьПапку</CommandName>
+					<ExtendedTooltip name="ВыгрузитьExtendedTooltip" id="38"/>
 				</Button>
 				<Button name="Отмена" id="32">
 					<Type>CommandBarButton</Type>
 					<SkipOnInput>false</SkipOnInput>
 					<CommandName>Form.StandardCommand.Cancel</CommandName>
-					<ExtendedTooltip name="ОтменаРасширеннаяПодсказка" id="39"/>
+					<ExtendedTooltip name="ОтменаExtendedTooltip" id="39"/>
 				</Button>
 				<Button name="Справка" id="31">
 					<Type>CommandBarButton</Type>
 					<SkipOnInput>false</SkipOnInput>
 					<CommandName>Form.StandardCommand.Help</CommandName>
-					<ExtendedTooltip name="СправкаРасширеннаяПодсказка" id="40"/>
+					<ExtendedTooltip name="СправкаExtendedTooltip" id="40"/>
 				</Button>
 			</ChildItems>
 		</CommandBar>
@@ -281,20 +281,20 @@
 		</Attribute>
 	</Attributes>
 	<Commands>
-		<Command name="Экспорт" id="1">
+		<Command name="СохранитьПапку" id="1">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Экспорт</v8:content>
+					<v8:content>Сохранить папку</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Экспорт</v8:content>
+					<v8:content>Сохранить папку</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Action>ВыгрузитьВыполнить</Action>
+			<Action>СохранитьПапку</Action>
 		</Command>
 	</Commands>
 	<Parameters>

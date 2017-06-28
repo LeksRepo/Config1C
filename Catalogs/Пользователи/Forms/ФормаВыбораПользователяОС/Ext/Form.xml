@@ -27,7 +27,7 @@
 				<TextColor>style:ButtonTextColor</TextColor>
 				<BackColor>style:ButtonBackColor</BackColor>
 				<BorderColor>style:BorderColor</BorderColor>
-				<ExtendedTooltip name="ВыбратьРасширеннаяПодсказка" id="28"/>
+				<ExtendedTooltip name="ВыбратьExtendedTooltip" id="28"/>
 			</Button>
 		</ChildItems>
 	</AutoCommandBar>
@@ -49,220 +49,278 @@
 				</v8:item>
 			</ToolTip>
 			<Group>Horizontal</Group>
-			<Representation>None</Representation>
+			<Representation>NormalSeparation</Representation>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ДоменыИПользователиРасширеннаяПодсказка" id="29"/>
+			<ExtendedTooltip name="ДоменыИПользователиExtendedTooltip" id="29"/>
 			<ChildItems>
-				<Table name="ТаблицаДоменов" id="5">
-					<Representation>List</Representation>
-					<TitleLocation>Top</TitleLocation>
-					<Autofill>true</Autofill>
-					<ReadOnly>true</ReadOnly>
-					<SkipOnInput>false</SkipOnInput>
-					<Width>40</Width>
-					<HeightInTableRows>4</HeightInTableRows>
-					<SelectionMode>SingleRow</SelectionMode>
-					<Header>false</Header>
-					<HorizontalLines>false</HorizontalLines>
-					<VerticalLines>false</VerticalLines>
-					<DataPath>СписокДоменов</DataPath>
-					<BorderColor>style:BorderColor</BorderColor>
+				<UsualGroup name="ГруппаДомены" id="51">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Домены</v8:content>
+							<v8:content>Домены:</v8:content>
 						</v8:item>
 					</Title>
-					<CommandSet>
-						<ExcludedCommand>Copy</ExcludedCommand>
-						<ExcludedCommand>SortListAsc</ExcludedCommand>
-						<ExcludedCommand>MoveUp</ExcludedCommand>
-						<ExcludedCommand>SortListDesc</ExcludedCommand>
-						<ExcludedCommand>CopyToClipboard</ExcludedCommand>
-						<ExcludedCommand>Delete</ExcludedCommand>
-						<ExcludedCommand>EndEdit</ExcludedCommand>
-						<ExcludedCommand>Add</ExcludedCommand>
-						<ExcludedCommand>Change</ExcludedCommand>
-						<ExcludedCommand>MoveDown</ExcludedCommand>
-					</CommandSet>
-					<SearchStringLocation>None</SearchStringLocation>
-					<ViewStatusLocation>None</ViewStatusLocation>
-					<SearchControlLocation>None</SearchControlLocation>
-					<RowFilter xsi:nil="true"/>
-					<ContextMenu name="ТаблицаДоменовКонтекстноеМеню" id="6">
-						<ChildItems>
-							<Button name="ТаблицаДоменовКонтекстноеМенюНайти" id="17">
-								<Type>CommandBarButton</Type>
-								<CommandName>Form.Item.ТаблицаДоменов.StandardCommand.Find</CommandName>
-								<ExtendedTooltip name="ТаблицаДоменовКонтекстноеМенюНайтиРасширеннаяПодсказка" id="30"/>
-							</Button>
-							<Button name="ТаблицаДоменовКонтекстноеМенюОтменитьПоиск" id="18">
-								<Type>CommandBarButton</Type>
-								<CommandName>Form.Item.ТаблицаДоменов.StandardCommand.CancelSearch</CommandName>
-								<ExtendedTooltip name="ТаблицаДоменовКонтекстноеМенюОтменитьПоискРасширеннаяПодсказка" id="31"/>
-							</Button>
-							<Button name="ТаблицаДоменовКонтекстноеМенюВывестиСписок" id="21">
-								<Type>CommandBarButton</Type>
-								<CommandName>Form.Item.ТаблицаДоменов.StandardCommand.OutputList</CommandName>
-								<ExtendedTooltip name="ТаблицаДоменовКонтекстноеМенюВывестиСписокРасширеннаяПодсказка" id="32"/>
-							</Button>
-						</ChildItems>
-					</ContextMenu>
-					<AutoCommandBar name="ТаблицаДоменовКоманднаяПанель" id="7">
-						<Autofill>false</Autofill>
-					</AutoCommandBar>
-					<ExtendedTooltip name="ТаблицаДоменовРасширеннаяПодсказка" id="33"/>
-					<SearchStringAddition name="ТаблицаДоменовСтрокаПоиска" id="34">
-						<AdditionSource>
-							<Item>ТаблицаДоменов</Item>
-							<Type>SearchStringRepresentation</Type>
-						</AdditionSource>
-						<ContextMenu name="ТаблицаДоменовСтрокаПоискаКонтекстноеМеню" id="35"/>
-						<ExtendedTooltip name="ТаблицаДоменовСтрокаПоискаРасширеннаяПодсказка" id="36"/>
-					</SearchStringAddition>
-					<ViewStatusAddition name="ТаблицаДоменовСостояниеПросмотра" id="37">
-						<AdditionSource>
-							<Item>ТаблицаДоменов</Item>
-							<Type>ViewStatusRepresentation</Type>
-						</AdditionSource>
-						<ContextMenu name="ТаблицаДоменовСостояниеПросмотраКонтекстноеМеню" id="38"/>
-						<ExtendedTooltip name="ТаблицаДоменовСостояниеПросмотраРасширеннаяПодсказка" id="39"/>
-					</ViewStatusAddition>
-					<SearchControlAddition name="ТаблицаДоменовУправлениеПоиском" id="40">
-						<AdditionSource>
-							<Item>ТаблицаДоменов</Item>
-							<Type>SearchControl</Type>
-						</AdditionSource>
-						<ContextMenu name="ТаблицаДоменовУправлениеПоискомКонтекстноеМеню" id="41"/>
-						<ExtendedTooltip name="ТаблицаДоменовУправлениеПоискомРасширеннаяПодсказка" id="42"/>
-					</SearchControlAddition>
-					<Events>
-						<Event name="OnActivateRow">ТаблицаДоменовПриАктивизацииСтроки</Event>
-					</Events>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа домены</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ExtendedTooltip name="ГруппаДоменыРасширеннаяПодсказка" id="52"/>
 					<ChildItems>
-						<InputField name="Домены" id="11">
-							<DataPath>СписокДоменов.ИмяДомена</DataPath>
+						<Table name="ТаблицаДоменов" id="5">
+							<Representation>List</Representation>
+							<Autofill>true</Autofill>
+							<ReadOnly>true</ReadOnly>
+							<SkipOnInput>false</SkipOnInput>
+							<Width>40</Width>
+							<HeightInTableRows>4</HeightInTableRows>
+							<SelectionMode>SingleRow</SelectionMode>
+							<Header>false</Header>
+							<HorizontalLines>false</HorizontalLines>
+							<VerticalLines>false</VerticalLines>
+							<DataPath>СписокДоменов</DataPath>
+							<BorderColor>style:BorderColor</BorderColor>
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
 									<v8:content>Домены</v8:content>
 								</v8:item>
 							</Title>
-							<Wrap>false</Wrap>
-							<BorderColor>style:BorderColor</BorderColor>
-							<ContextMenu name="ДоменыКонтекстноеМеню" id="12"/>
-							<ExtendedTooltip name="ДоменыРасширеннаяПодсказка" id="43"/>
-						</InputField>
+							<CommandSet>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>SortListAsc</ExcludedCommand>
+								<ExcludedCommand>MoveUp</ExcludedCommand>
+								<ExcludedCommand>SortListDesc</ExcludedCommand>
+								<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+								<ExcludedCommand>Delete</ExcludedCommand>
+								<ExcludedCommand>EndEdit</ExcludedCommand>
+								<ExcludedCommand>Add</ExcludedCommand>
+								<ExcludedCommand>Change</ExcludedCommand>
+								<ExcludedCommand>MoveDown</ExcludedCommand>
+							</CommandSet>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ТаблицаДоменовКонтекстноеМеню" id="6">
+								<ChildItems>
+									<Button name="ТаблицаДоменовКонтекстноеМенюНайти" id="17">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.ТаблицаДоменов.StandardCommand.Find</CommandName>
+										<ExtendedTooltip name="ТаблицаДоменовКонтекстноеМенюНайтиExtendedTooltip" id="30"/>
+									</Button>
+									<Button name="ТаблицаДоменовКонтекстноеМенюОтменитьПоиск" id="18">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.ТаблицаДоменов.StandardCommand.CancelSearch</CommandName>
+										<ExtendedTooltip name="ТаблицаДоменовКонтекстноеМенюОтменитьПоискExtendedTooltip" id="31"/>
+									</Button>
+									<Button name="ТаблицаДоменовКонтекстноеМенюВывестиСписок" id="21">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.ТаблицаДоменов.StandardCommand.OutputList</CommandName>
+										<ExtendedTooltip name="ТаблицаДоменовКонтекстноеМенюВывестиСписокExtendedTooltip" id="32"/>
+									</Button>
+								</ChildItems>
+							</ContextMenu>
+							<AutoCommandBar name="ТаблицаДоменовКоманднаяПанель" id="7">
+								<Autofill>false</Autofill>
+								<ChildItems>
+									<Button name="ТаблицаДоменовНайти" id="41">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.ТаблицаДоменов.StandardCommand.Find</CommandName>
+										<ExtendedTooltip name="ТаблицаДоменовНайтиРасширеннаяПодсказка" id="42"/>
+									</Button>
+									<Button name="ТаблицаДоменовОтменитьПоиск" id="43">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.ТаблицаДоменов.StandardCommand.CancelSearch</CommandName>
+										<ExtendedTooltip name="ТаблицаДоменовОтменитьПоискРасширеннаяПодсказка" id="44"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ТаблицаДоменовExtendedTooltip" id="33"/>
+							<SearchStringAddition name="ТаблицаДоменовСтрокаПоиска" id="53">
+								<AdditionSource>
+									<Item>ТаблицаДоменов</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаДоменовСтрокаПоискаКонтекстноеМеню" id="54"/>
+								<ExtendedTooltip name="ТаблицаДоменовСтрокаПоискаРасширеннаяПодсказка" id="55"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ТаблицаДоменовСостояниеПросмотра" id="56">
+								<AdditionSource>
+									<Item>ТаблицаДоменов</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаДоменовСостояниеПросмотраКонтекстноеМеню" id="57"/>
+								<ExtendedTooltip name="ТаблицаДоменовСостояниеПросмотраРасширеннаяПодсказка" id="58"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ТаблицаДоменовУправлениеПоиском" id="59">
+								<AdditionSource>
+									<Item>ТаблицаДоменов</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаДоменовУправлениеПоискомКонтекстноеМеню" id="60"/>
+								<ExtendedTooltip name="ТаблицаДоменовУправлениеПоискомРасширеннаяПодсказка" id="61"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="OnActivateRow">ТаблицаДоменовПриАктивизацииСтроки</Event>
+							</Events>
+							<ChildItems>
+								<InputField name="Домены" id="11">
+									<DataPath>СписокДоменов.ИмяДомена</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Домены</v8:content>
+										</v8:item>
+									</Title>
+									<Wrap>false</Wrap>
+									<BorderColor>style:BorderColor</BorderColor>
+									<ContextMenu name="ДоменыКонтекстноеМеню" id="12"/>
+									<ExtendedTooltip name="ДоменыExtendedTooltip" id="34"/>
+								</InputField>
+							</ChildItems>
+						</Table>
 					</ChildItems>
-				</Table>
-				<Table name="ТаблицаПользователейДомена" id="8">
-					<Representation>List</Representation>
-					<TitleLocation>Top</TitleLocation>
-					<Autofill>true</Autofill>
-					<ReadOnly>true</ReadOnly>
-					<SkipOnInput>false</SkipOnInput>
-					<Width>40</Width>
-					<HeightInTableRows>4</HeightInTableRows>
-					<SelectionMode>SingleRow</SelectionMode>
-					<Header>false</Header>
-					<HorizontalLines>false</HorizontalLines>
-					<VerticalLines>false</VerticalLines>
-					<DataPath>СписокПользователейТекущегоДомена</DataPath>
-					<BorderColor>style:BorderColor</BorderColor>
+				</UsualGroup>
+				<UsualGroup name="ГруппаПользователи" id="49">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Пользователи</v8:content>
+							<v8:content>Пользователи:</v8:content>
 						</v8:item>
 					</Title>
-					<CommandSet>
-						<ExcludedCommand>Copy</ExcludedCommand>
-						<ExcludedCommand>SortListAsc</ExcludedCommand>
-						<ExcludedCommand>MoveUp</ExcludedCommand>
-						<ExcludedCommand>SortListDesc</ExcludedCommand>
-						<ExcludedCommand>CopyToClipboard</ExcludedCommand>
-						<ExcludedCommand>Delete</ExcludedCommand>
-						<ExcludedCommand>EndEdit</ExcludedCommand>
-						<ExcludedCommand>Add</ExcludedCommand>
-						<ExcludedCommand>Change</ExcludedCommand>
-						<ExcludedCommand>MoveDown</ExcludedCommand>
-					</CommandSet>
-					<SearchStringLocation>None</SearchStringLocation>
-					<ViewStatusLocation>None</ViewStatusLocation>
-					<SearchControlLocation>None</SearchControlLocation>
-					<RowFilter xsi:nil="true"/>
-					<ContextMenu name="ТаблицаПользователейДоменаКонтекстноеМеню" id="9">
-						<ChildItems>
-							<Button name="ТаблицаПользователейДоменаКонтекстноеМенюВыбрать" id="27">
-								<Type>CommandBarButton</Type>
-								<CommandName>Form.Command.Выбрать</CommandName>
-								<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
-								<ExtendedTooltip name="ТаблицаПользователейДоменаКонтекстноеМенюВыбратьРасширеннаяПодсказка" id="44"/>
-							</Button>
-							<Button name="ТаблицаПользователейДоменаКонтекстноеМенюНайти" id="22">
-								<Type>CommandBarButton</Type>
-								<CommandName>Form.Item.ТаблицаПользователейДомена.StandardCommand.Find</CommandName>
-								<ExtendedTooltip name="ТаблицаПользователейДоменаКонтекстноеМенюНайтиРасширеннаяПодсказка" id="45"/>
-							</Button>
-							<Button name="ТаблицаПользователейДоменаКонтекстноеМенюОтменитьПоиск" id="23">
-								<Type>CommandBarButton</Type>
-								<CommandName>Form.Item.ТаблицаПользователейДомена.StandardCommand.CancelSearch</CommandName>
-								<ExtendedTooltip name="ТаблицаПользователейДоменаКонтекстноеМенюОтменитьПоискРасширеннаяПодсказка" id="46"/>
-							</Button>
-							<Button name="ТаблицаПользователейДоменаКонтекстноеМенюВывестиСписок" id="26">
-								<Type>CommandBarButton</Type>
-								<CommandName>Form.Item.ТаблицаПользователейДомена.StandardCommand.OutputList</CommandName>
-								<ExtendedTooltip name="ТаблицаПользователейДоменаКонтекстноеМенюВывестиСписокРасширеннаяПодсказка" id="47"/>
-							</Button>
-						</ChildItems>
-					</ContextMenu>
-					<AutoCommandBar name="ТаблицаПользователейДоменаКоманднаяПанель" id="10">
-						<Autofill>false</Autofill>
-					</AutoCommandBar>
-					<ExtendedTooltip name="ТаблицаПользователейДоменаРасширеннаяПодсказка" id="48"/>
-					<SearchStringAddition name="ТаблицаПользователейДоменаСтрокаПоиска" id="49">
-						<AdditionSource>
-							<Item>ТаблицаПользователейДомена</Item>
-							<Type>SearchStringRepresentation</Type>
-						</AdditionSource>
-						<ContextMenu name="ТаблицаПользователейДоменаСтрокаПоискаКонтекстноеМеню" id="50"/>
-						<ExtendedTooltip name="ТаблицаПользователейДоменаСтрокаПоискаРасширеннаяПодсказка" id="51"/>
-					</SearchStringAddition>
-					<ViewStatusAddition name="ТаблицаПользователейДоменаСостояниеПросмотра" id="52">
-						<AdditionSource>
-							<Item>ТаблицаПользователейДомена</Item>
-							<Type>ViewStatusRepresentation</Type>
-						</AdditionSource>
-						<ContextMenu name="ТаблицаПользователейДоменаСостояниеПросмотраКонтекстноеМеню" id="53"/>
-						<ExtendedTooltip name="ТаблицаПользователейДоменаСостояниеПросмотраРасширеннаяПодсказка" id="54"/>
-					</ViewStatusAddition>
-					<SearchControlAddition name="ТаблицаПользователейДоменаУправлениеПоиском" id="55">
-						<AdditionSource>
-							<Item>ТаблицаПользователейДомена</Item>
-							<Type>SearchControl</Type>
-						</AdditionSource>
-						<ContextMenu name="ТаблицаПользователейДоменаУправлениеПоискомКонтекстноеМеню" id="56"/>
-						<ExtendedTooltip name="ТаблицаПользователейДоменаУправлениеПоискомРасширеннаяПодсказка" id="57"/>
-					</SearchControlAddition>
-					<Events>
-						<Event name="Selection">ТаблицаПользователейДоменаВыбор</Event>
-					</Events>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа пользователи</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<ExtendedTooltip name="ГруппаПользователиРасширеннаяПодсказка" id="50"/>
 					<ChildItems>
-						<InputField name="Пользователи" id="13">
-							<DataPath>СписокПользователейТекущегоДомена.ИмяПользователя</DataPath>
+						<Table name="ТаблицаПользователейДомена" id="8">
+							<Representation>List</Representation>
+							<Autofill>true</Autofill>
+							<ReadOnly>true</ReadOnly>
+							<SkipOnInput>false</SkipOnInput>
+							<Width>40</Width>
+							<HeightInTableRows>4</HeightInTableRows>
+							<SelectionMode>SingleRow</SelectionMode>
+							<Header>false</Header>
+							<HorizontalLines>false</HorizontalLines>
+							<VerticalLines>false</VerticalLines>
+							<DataPath>СписокПользователейТекущегоДомена</DataPath>
+							<BorderColor>style:BorderColor</BorderColor>
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
 									<v8:content>Пользователи</v8:content>
 								</v8:item>
 							</Title>
-							<Wrap>false</Wrap>
-							<BorderColor>style:BorderColor</BorderColor>
-							<ContextMenu name="ПользователиКонтекстноеМеню" id="14"/>
-							<ExtendedTooltip name="ПользователиРасширеннаяПодсказка" id="58"/>
-						</InputField>
+							<CommandSet>
+								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>SortListAsc</ExcludedCommand>
+								<ExcludedCommand>MoveUp</ExcludedCommand>
+								<ExcludedCommand>SortListDesc</ExcludedCommand>
+								<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+								<ExcludedCommand>Delete</ExcludedCommand>
+								<ExcludedCommand>EndEdit</ExcludedCommand>
+								<ExcludedCommand>Add</ExcludedCommand>
+								<ExcludedCommand>Change</ExcludedCommand>
+								<ExcludedCommand>MoveDown</ExcludedCommand>
+							</CommandSet>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ТаблицаПользователейДоменаКонтекстноеМеню" id="9">
+								<ChildItems>
+									<Button name="ТаблицаПользователейДоменаКонтекстноеМенюВыбрать" id="27">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.Выбрать</CommandName>
+										<Font ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+										<ExtendedTooltip name="ТаблицаПользователейДоменаКонтекстноеМенюВыбратьExtendedTooltip" id="35"/>
+									</Button>
+									<Button name="ТаблицаПользователейДоменаКонтекстноеМенюНайти" id="22">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.ТаблицаПользователейДомена.StandardCommand.Find</CommandName>
+										<ExtendedTooltip name="ТаблицаПользователейДоменаКонтекстноеМенюНайтиExtendedTooltip" id="36"/>
+									</Button>
+									<Button name="ТаблицаПользователейДоменаКонтекстноеМенюОтменитьПоиск" id="23">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.ТаблицаПользователейДомена.StandardCommand.CancelSearch</CommandName>
+										<ExtendedTooltip name="ТаблицаПользователейДоменаКонтекстноеМенюОтменитьПоискExtendedTooltip" id="37"/>
+									</Button>
+									<Button name="ТаблицаПользователейДоменаКонтекстноеМенюВывестиСписок" id="26">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.ТаблицаПользователейДомена.StandardCommand.OutputList</CommandName>
+										<ExtendedTooltip name="ТаблицаПользователейДоменаКонтекстноеМенюВывестиСписокExtendedTooltip" id="38"/>
+									</Button>
+								</ChildItems>
+							</ContextMenu>
+							<AutoCommandBar name="ТаблицаПользователейДоменаКоманднаяПанель" id="10">
+								<Autofill>false</Autofill>
+								<ChildItems>
+									<Button name="ТаблицаПользователейДоменаНайти" id="45">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.ТаблицаПользователейДомена.StandardCommand.Find</CommandName>
+										<ExtendedTooltip name="ТаблицаПользователейДоменаНайтиРасширеннаяПодсказка" id="46"/>
+									</Button>
+									<Button name="ТаблицаПользователейДоменаОтменитьПоиск" id="47">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.ТаблицаПользователейДомена.StandardCommand.CancelSearch</CommandName>
+										<ExtendedTooltip name="ТаблицаПользователейДоменаОтменитьПоискРасширеннаяПодсказка" id="48"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ТаблицаПользователейДоменаExtendedTooltip" id="39"/>
+							<SearchStringAddition name="ТаблицаПользователейДоменаСтрокаПоиска" id="62">
+								<AdditionSource>
+									<Item>ТаблицаПользователейДомена</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаПользователейДоменаСтрокаПоискаКонтекстноеМеню" id="63"/>
+								<ExtendedTooltip name="ТаблицаПользователейДоменаСтрокаПоискаРасширеннаяПодсказка" id="64"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ТаблицаПользователейДоменаСостояниеПросмотра" id="65">
+								<AdditionSource>
+									<Item>ТаблицаПользователейДомена</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаПользователейДоменаСостояниеПросмотраКонтекстноеМеню" id="66"/>
+								<ExtendedTooltip name="ТаблицаПользователейДоменаСостояниеПросмотраРасширеннаяПодсказка" id="67"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ТаблицаПользователейДоменаУправлениеПоиском" id="68">
+								<AdditionSource>
+									<Item>ТаблицаПользователейДомена</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаПользователейДоменаУправлениеПоискомКонтекстноеМеню" id="69"/>
+								<ExtendedTooltip name="ТаблицаПользователейДоменаУправлениеПоискомРасширеннаяПодсказка" id="70"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">ТаблицаПользователейДоменаВыбор</Event>
+							</Events>
+							<ChildItems>
+								<InputField name="Пользователи" id="13">
+									<DataPath>СписокПользователейТекущегоДомена.ИмяПользователя</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Пользователи</v8:content>
+										</v8:item>
+									</Title>
+									<Wrap>false</Wrap>
+									<BorderColor>style:BorderColor</BorderColor>
+									<ContextMenu name="ПользователиКонтекстноеМеню" id="14"/>
+									<ExtendedTooltip name="ПользователиExtendedTooltip" id="40"/>
+								</InputField>
+							</ChildItems>
+						</Table>
 					</ChildItems>
-				</Table>
+				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
 	</ChildItems>

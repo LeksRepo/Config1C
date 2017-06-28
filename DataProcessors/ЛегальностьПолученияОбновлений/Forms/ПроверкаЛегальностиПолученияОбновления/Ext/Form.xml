@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4">
 	<Width>75</Width>
-	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
+	<WindowOpeningMode>LockWholeInterface</WindowOpeningMode>
 	<CommandBarLocation>Bottom</CommandBarLocation>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
@@ -12,7 +12,7 @@
 				<Type>CommandBarButton</Type>
 				<DefaultButton>true</DefaultButton>
 				<CommandName>Form.Command.Продолжить</CommandName>
-				<ExtendedTooltip name="ФормаПродолжитьРасширеннаяПодсказка" id="8"/>
+				<ExtendedTooltip name="ФормаПродолжитьExtendedTooltip" id="8"/>
 			</Button>
 		</ChildItems>
 	</AutoCommandBar>
@@ -26,7 +26,7 @@
 			<TitleLocation>None</TitleLocation>
 			<Width>75</Width>
 			<ContextMenu name="ТекстПредупрежденияКонтекстноеМеню" id="2"/>
-			<ExtendedTooltip name="ТекстПредупрежденияРасширеннаяПодсказка" id="9"/>
+			<ExtendedTooltip name="ТекстПредупрежденияExtendedTooltip" id="9"/>
 		</HTMLDocumentField>
 		<RadioButtonField name="ПодтверждениеВыбора" id="3">
 			<DataPath>ПодтверждениеВыбора</DataPath>
@@ -63,7 +63,7 @@
 				</xr:Item>
 			</ChoiceList>
 			<ContextMenu name="ПодтверждениеВыбораКонтекстноеМеню" id="4"/>
-			<ExtendedTooltip name="ПодтверждениеВыбораРасширеннаяПодсказка" id="10"/>
+			<ExtendedTooltip name="ПодтверждениеВыбораExtendedTooltip" id="10"/>
 		</RadioButtonField>
 		<LabelDecoration name="Примечание" id="6">
 			<Title formatted="false">
@@ -73,7 +73,7 @@
 				</v8:item>
 			</Title>
 			<ContextMenu name="ПримечаниеКонтекстноеМеню" id="7"/>
-			<ExtendedTooltip name="ПримечаниеРасширеннаяПодсказка" id="11"/>
+			<ExtendedTooltip name="ПримечаниеExtendedTooltip" id="11"/>
 		</LabelDecoration>
 	</ChildItems>
 	<Attributes>
@@ -125,6 +125,17 @@
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
+		<Attribute name="ПропуститьПерезапуск" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пропустить перезапуск</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
 	</Attributes>
 	<Commands>
 		<Command name="Продолжить" id="1">
@@ -150,7 +161,12 @@
 			</Type>
 			<KeyParameter>true</KeyParameter>
 		</Parameter>
-		<Parameter name="ПринудительныйЗапуск">
+		<Parameter name="ПрограммноеОткрытие">
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Parameter>
+		<Parameter name="ПропуститьПерезапуск">
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>

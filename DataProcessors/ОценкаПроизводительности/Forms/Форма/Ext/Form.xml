@@ -26,7 +26,7 @@
 						<v8:content>Обновить показатели производительности</v8:content>
 					</v8:item>
 				</Title>
-				<ExtendedTooltip name="ПроизводительностьОбновитьРасширеннаяПодсказка" id="75"/>
+				<ExtendedTooltip name="ПроизводительностьОбновитьExtendedTooltip" id="75"/>
 			</Button>
 			<Button name="ФормаНастройка" id="66">
 				<Type>CommandBarButton</Type>
@@ -42,7 +42,17 @@
 						<v8:content>Настройка...</v8:content>
 					</v8:item>
 				</Title>
-				<ExtendedTooltip name="ФормаНастройкаРасширеннаяПодсказка" id="76"/>
+				<ExtendedTooltip name="ФормаНастройкаExtendedTooltip" id="76"/>
+			</Button>
+			<Button name="ФормаЭкспортДанных" id="93">
+				<Type>CommandBarButton</Type>
+				<OnlyInAllActions>false</OnlyInAllActions>
+				<CommandName>Form.Command.ЭкспортДанных</CommandName>
+				<Picture>
+					<xr:Ref>StdPicture.SaveValues</xr:Ref>
+					<xr:LoadTransparent>true</xr:LoadTransparent>
+				</Picture>
+				<ExtendedTooltip name="ФормаЭкспортДанныхРасширеннаяПодсказка" id="94"/>
 			</Button>
 		</ChildItems>
 	</AutoCommandBar>
@@ -66,17 +76,17 @@
 				</v8:item>
 			</ToolTip>
 			<Group>Horizontal</Group>
-			<ExtendedTooltip name="НастройкиРасширеннаяПодсказка" id="77"/>
+			<ExtendedTooltip name="НастройкиExtendedTooltip" id="77"/>
 			<ChildItems>
 				<InputField name="ДатаНачала" id="69">
 					<DataPath>Объект.ДатаНачала</DataPath>
 					<ContextMenu name="ДатаНачалаКонтекстноеМеню" id="70"/>
-					<ExtendedTooltip name="ДатаНачалаРасширеннаяПодсказка" id="78"/>
+					<ExtendedTooltip name="ДатаНачалаExtendedTooltip" id="78"/>
 				</InputField>
 				<InputField name="ДатаОкончания" id="71">
 					<DataPath>Объект.ДатаОкончания</DataPath>
 					<ContextMenu name="ДатаОкончанияКонтекстноеМеню" id="72"/>
-					<ExtendedTooltip name="ДатаОкончанияРасширеннаяПодсказка" id="79"/>
+					<ExtendedTooltip name="ДатаОкончанияExtendedTooltip" id="79"/>
 				</InputField>
 				<InputField name="Шаг" id="4">
 					<DataPath>Объект.Шаг</DataPath>
@@ -120,9 +130,8 @@
 							</xr:Value>
 						</xr:Item>
 					</ChoiceList>
-					<ChoiceListButton>true</ChoiceListButton>
 					<ContextMenu name="ШагКонтекстноеМеню" id="5"/>
-					<ExtendedTooltip name="ШагРасширеннаяПодсказка" id="80"/>
+					<ExtendedTooltip name="ШагExtendedTooltip" id="80"/>
 				</InputField>
 			</ChildItems>
 		</UsualGroup>
@@ -139,7 +148,7 @@
 					<v8:content>Форма</v8:content>
 				</v8:item>
 			</ToolTip>
-			<ExtendedTooltip name="ФормаРасширеннаяПодсказка" id="81"/>
+			<ExtendedTooltip name="ФормаExtendedTooltip" id="81"/>
 			<Events>
 				<Event name="OnCurrentPageChange">ФормаПриСменеСтраницы</Event>
 			</Events>
@@ -157,7 +166,7 @@
 							<v8:content>Страница таблица</v8:content>
 						</v8:item>
 					</ToolTip>
-					<ExtendedTooltip name="СтраницаТаблицаРасширеннаяПодсказка" id="82"/>
+					<ExtendedTooltip name="СтраницаТаблицаExtendedTooltip" id="82"/>
 					<ChildItems>
 						<Table name="Производительность" id="23">
 							<Representation>List</Representation>
@@ -167,6 +176,16 @@
 							<DataPath>Объект.Производительность</DataPath>
 							<CommandSet>
 								<ExcludedCommand>Copy</ExcludedCommand>
+								<ExcludedCommand>SortListAsc</ExcludedCommand>
+								<ExcludedCommand>MoveUp</ExcludedCommand>
+								<ExcludedCommand>CancelSearch</ExcludedCommand>
+								<ExcludedCommand>SortListDesc</ExcludedCommand>
+								<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+								<ExcludedCommand>Delete</ExcludedCommand>
+								<ExcludedCommand>EndEdit</ExcludedCommand>
+								<ExcludedCommand>Add</ExcludedCommand>
+								<ExcludedCommand>Change</ExcludedCommand>
+								<ExcludedCommand>MoveDown</ExcludedCommand>
 							</CommandSet>
 							<SearchStringLocation>None</SearchStringLocation>
 							<ViewStatusLocation>None</ViewStatusLocation>
@@ -189,12 +208,31 @@
 												<v8:content>Вычислить целевое время из APDEX</v8:content>
 											</v8:item>
 										</Title>
-										<ExtendedTooltip name="ПроизводительностьКонтекстноеМенюУказатьAPDEXРасширеннаяПодсказка" id="83"/>
+										<ExtendedTooltip name="ПроизводительностьКонтекстноеМенюУказатьAPDEXExtendedTooltip" id="83"/>
 									</Button>
 								</ChildItems>
 							</ContextMenu>
 							<AutoCommandBar name="ПроизводительностьКоманднаяПанель" id="25">
 								<ChildItems>
+									<Button name="ПроизводительностьДобавитьКлючевуюОперацию" id="95">
+										<Type>CommandBarButton</Type>
+										<Representation>Picture</Representation>
+										<CommandName>Form.Command.ДобавитьКлючевуюОперацию</CommandName>
+										<Picture>
+											<xr:Ref>StdPicture.CreateListItem</xr:Ref>
+											<xr:LoadTransparent>true</xr:LoadTransparent>
+										</Picture>
+										<ExtendedTooltip name="ПроизводительностьДобавитьКлючевуюОперациюРасширеннаяПодсказка" id="96"/>
+									</Button>
+									<Button name="ПроизводительностьУдалитьКлючевуюОперацию" id="97">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.УдалитьКлючевуюОперацию</CommandName>
+										<Picture>
+											<xr:Ref>StdPicture.Delete</xr:Ref>
+											<xr:LoadTransparent>true</xr:LoadTransparent>
+										</Picture>
+										<ExtendedTooltip name="ПроизводительностьУдалитьКлючевуюОперациюРасширеннаяПодсказка" id="98"/>
+									</Button>
 									<Button name="ПроизводительностьПереместитьВверх" id="63">
 										<Type>CommandBarButton</Type>
 										<Representation>Picture</Representation>
@@ -203,7 +241,7 @@
 											<xr:Ref>StdPicture.MoveUp</xr:Ref>
 											<xr:LoadTransparent>true</xr:LoadTransparent>
 										</Picture>
-										<ExtendedTooltip name="ПроизводительностьПереместитьВверхРасширеннаяПодсказка" id="84"/>
+										<ExtendedTooltip name="ПроизводительностьПереместитьВверхExtendedTooltip" id="84"/>
 									</Button>
 									<Button name="ПроизводительностьПереместитьВниз" id="64">
 										<Type>CommandBarButton</Type>
@@ -213,7 +251,7 @@
 											<xr:Ref>StdPicture.MoveDown</xr:Ref>
 											<xr:LoadTransparent>true</xr:LoadTransparent>
 										</Picture>
-										<ExtendedTooltip name="ПроизводительностьПереместитьВнизРасширеннаяПодсказка" id="85"/>
+										<ExtendedTooltip name="ПроизводительностьПереместитьВнизExtendedTooltip" id="85"/>
 									</Button>
 									<Button name="ПроизводительностьУстановитьОтбор" id="74">
 										<Type>CommandBarButton</Type>
@@ -222,34 +260,34 @@
 											<xr:Ref>StdPicture.FilterCriterion</xr:Ref>
 											<xr:LoadTransparent>true</xr:LoadTransparent>
 										</Picture>
-										<ExtendedTooltip name="ПроизводительностьУстановитьОтборРасширеннаяПодсказка" id="86"/>
+										<ExtendedTooltip name="ПроизводительностьУстановитьОтборExtendedTooltip" id="86"/>
 									</Button>
 								</ChildItems>
 							</AutoCommandBar>
-							<ExtendedTooltip name="ПроизводительностьРасширеннаяПодсказка" id="87"/>
-							<SearchStringAddition name="ПроизводительностьСтрокаПоиска" id="88">
+							<ExtendedTooltip name="ПроизводительностьExtendedTooltip" id="87"/>
+							<SearchStringAddition name="ПроизводительностьСтрокаПоиска" id="99">
 								<AdditionSource>
 									<Item>Производительность</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="ПроизводительностьСтрокаПоискаКонтекстноеМеню" id="89"/>
-								<ExtendedTooltip name="ПроизводительностьСтрокаПоискаРасширеннаяПодсказка" id="90"/>
+								<ContextMenu name="ПроизводительностьСтрокаПоискаКонтекстноеМеню" id="100"/>
+								<ExtendedTooltip name="ПроизводительностьСтрокаПоискаРасширеннаяПодсказка" id="101"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="ПроизводительностьСостояниеПросмотра" id="91">
+							<ViewStatusAddition name="ПроизводительностьСостояниеПросмотра" id="102">
 								<AdditionSource>
 									<Item>Производительность</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="ПроизводительностьСостояниеПросмотраКонтекстноеМеню" id="92"/>
-								<ExtendedTooltip name="ПроизводительностьСостояниеПросмотраРасширеннаяПодсказка" id="93"/>
+								<ContextMenu name="ПроизводительностьСостояниеПросмотраКонтекстноеМеню" id="103"/>
+								<ExtendedTooltip name="ПроизводительностьСостояниеПросмотраРасширеннаяПодсказка" id="104"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="ПроизводительностьУправлениеПоиском" id="94">
+							<SearchControlAddition name="ПроизводительностьУправлениеПоиском" id="105">
 								<AdditionSource>
 									<Item>Производительность</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="ПроизводительностьУправлениеПоискомКонтекстноеМеню" id="95"/>
-								<ExtendedTooltip name="ПроизводительностьУправлениеПоискомРасширеннаяПодсказка" id="96"/>
+								<ContextMenu name="ПроизводительностьУправлениеПоискомКонтекстноеМеню" id="106"/>
+								<ExtendedTooltip name="ПроизводительностьУправлениеПоискомРасширеннаяПодсказка" id="107"/>
 							</SearchControlAddition>
 							<Events>
 								<Event name="Selection">ПроизводительностьВыбор</Event>
@@ -258,6 +296,7 @@
 							<ChildItems>
 								<InputField name="КлючеваяОперация" id="28">
 									<DataPath>Объект.Производительность.КлючеваяОперация</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
@@ -267,17 +306,13 @@
 									<EditMode>EnterOnInput</EditMode>
 									<OpenButton>false</OpenButton>
 									<ContextMenu name="КлючеваяОперацияКонтекстноеМеню" id="29"/>
-									<ExtendedTooltip name="КлючеваяОперацияРасширеннаяПодсказка" id="97"/>
-									<Events>
-										<Event name="StartChoice">ПроизводительностьКлючеваяОперацияНачалоВыбора</Event>
-										<Event name="Opening">КлючеваяОперацияОткрытие</Event>
-									</Events>
+									<ExtendedTooltip name="КлючеваяОперацияExtendedTooltip" id="88"/>
 								</InputField>
 								<InputField name="Приоритет" id="67">
 									<DataPath>Объект.Производительность.Приоритет</DataPath>
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="ПриоритетКонтекстноеМеню" id="68"/>
-									<ExtendedTooltip name="ПриоритетРасширеннаяПодсказка" id="98"/>
+									<ExtendedTooltip name="ПриоритетExtendedTooltip" id="89"/>
 								</InputField>
 								<InputField name="ЦелевоеВремя" id="30">
 									<DataPath>Объект.Производительность.ЦелевоеВремя</DataPath>
@@ -289,7 +324,7 @@
 									</Title>
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="ЦелевоеВремяКонтекстноеМеню" id="31"/>
-									<ExtendedTooltip name="ЦелевоеВремяРасширеннаяПодсказка" id="99"/>
+									<ExtendedTooltip name="ЦелевоеВремяExtendedTooltip" id="90"/>
 									<Events>
 										<Event name="OnChange">ЦелевоеВремяПриИзменении</Event>
 									</Events>
@@ -311,7 +346,7 @@
 							<v8:content>Страница диаграмма</v8:content>
 						</v8:item>
 					</ToolTip>
-					<ExtendedTooltip name="СтраницаДиаграммаРасширеннаяПодсказка" id="100"/>
+					<ExtendedTooltip name="СтраницаДиаграммаExtendedTooltip" id="91"/>
 					<ChildItems>
 						<ChartField name="Диаграмма" id="21">
 							<DataPath>Объект.Диаграмма</DataPath>
@@ -322,7 +357,7 @@
 								</v8:item>
 							</Title>
 							<ContextMenu name="ДиаграммаКонтекстноеМеню" id="22"/>
-							<ExtendedTooltip name="ДиаграммаРасширеннаяПодсказка" id="101"/>
+							<ExtendedTooltip name="ДиаграммаExtendedTooltip" id="92"/>
 						</ChartField>
 					</ChildItems>
 				</Page>
@@ -560,6 +595,36 @@
 				</v8:item>
 			</ToolTip>
 			<Action>УстановитьОтбор</Action>
+		</Command>
+		<Command name="ДобавитьКлючевуюОперацию" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить ключевую операцию</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Добавить ключевую операцию</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ДобавитьКлючевуюОперацию</Action>
+		</Command>
+		<Command name="УдалитьКлючевуюОперацию" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Удалить ключевую операцию</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Удалить ключевую операцию</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>УдалитьКлючевуюОперацию</Action>
 		</Command>
 	</Commands>
 </Form>
