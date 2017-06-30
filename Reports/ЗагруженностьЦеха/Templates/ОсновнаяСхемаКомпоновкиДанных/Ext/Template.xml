@@ -50,13 +50,52 @@
 				</v8:item>
 			</title>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаНарядов</dataPath>
+			<field>СуммаНарядов</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма нарядов</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	ЦеховойЛимит.Период КАК Дата,
 	ЦеховойЛимит.СтоимостьУслугОборот КАК Норматив,
 	ЦеховойЛимит.СтоимостьУслугФактОборот КАК СуммаВсего
+ПОМЕСТИТЬ втОбороты
 ИЗ
-	РегистрНакопления.ЦеховойЛимит.Обороты(&amp;НачалоПериода, &amp;КонецПериода, День, Подразделение = &amp;Подразделение) КАК ЦеховойЛимит</query>
+	РегистрНакопления.ЦеховойЛимит.Обороты(&amp;НачалоПериода, &amp;КонецПериода, День, Подразделение = &amp;Подразделение) КАК ЦеховойЛимит
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	НАЧАЛОПЕРИОДА(Наряд.ДатаИзготовления, ДЕНЬ) КАК Дата,
+	СУММА(ЕСТЬNULL(Наряд.СуммаДокумента, 0)) КАК СуммаНарядов
+ПОМЕСТИТЬ втНаряды
+ИЗ
+	Документ.НарядЗадание КАК Наряд
+ГДЕ
+	Наряд.ДатаИзготовления МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+	И Наряд.Подразделение = &amp;Подразделение
+	И Наряд.Проведен
+
+СГРУППИРОВАТЬ ПО
+	НАЧАЛОПЕРИОДА(Наряд.ДатаИзготовления, ДЕНЬ)
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	Обороты.Дата,
+	Обороты.Норматив,
+	Обороты.СуммаВсего,
+	Наряды.СуммаНарядов
+ИЗ
+	втОбороты КАК Обороты
+		ЛЕВОЕ СОЕДИНЕНИЕ втНаряды КАК Наряды
+		ПО Обороты.Дата = Наряды.Дата</query>
 	</dataSet>
 	<totalField>
 		<dataPath>Норматив</dataPath>
@@ -65,6 +104,10 @@
 	<totalField>
 		<dataPath>СуммаВсего</dataPath>
 		<expression>Сумма(СуммаВсего)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>СуммаНарядов</dataPath>
+		<expression>Сумма(СуммаНарядов)</expression>
 	</totalField>
 	<parameter>
 		<name>ПериодОтчета</name>
@@ -163,7 +206,16 @@
 					<dcsset:lwsTitle>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Услуги</v8:content>
+							<v8:content>По спецификациям</v8:content>
+						</v8:item>
+					</dcsset:lwsTitle>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СуммаНарядов</dcsset:field>
+					<dcsset:lwsTitle>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>По нарядам</v8:content>
 						</v8:item>
 					</dcsset:lwsTitle>
 				</dcsset:item>
@@ -195,10 +247,14 @@
 			<dcsset:outputParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>ТипДиаграммы</dcscor:parameter>
-					<dcscor:value xsi:type="v8ui:ChartType">Line</dcscor:value>
+					<dcscor:value xsi:type="v8ui:ChartType">Area</dcscor:value>
 					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 						<dcscor:parameter>ТипДиаграммы.ВидПодписей</dcscor:parameter>
 						<dcscor:value xsi:type="v8ui:ChartLabelType">None</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ТипДиаграммы.АвтоРаздвижениеСерий</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:AutoSeriesSeparation">All</dcscor:value>
 					</dcscor:item>
 					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 						<dcscor:use>false</dcscor:use>
@@ -232,6 +288,10 @@
 					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 						<dcscor:parameter>ТипДиаграммы</dcscor:parameter>
 						<dcscor:value xsi:type="v8ui:ChartType">Line</dcscor:value>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>ТипДиаграммы.АвтоРаздвижениеСерий</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:AutoSeriesSeparation">All</dcscor:value>
+						</dcscor:item>
 						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 							<dcscor:use>false</dcscor:use>
 							<dcscor:parameter>ТипДиаграммы.ОтображатьТаблицуДанных</dcscor:parameter>
