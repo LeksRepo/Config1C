@@ -44,17 +44,21 @@
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
-	ЦеныНоменклатурыПоПодразделениям.Подразделение,
-	ЦеныНоменклатурыПоПодразделениям.Номенклатура,
-	ЦеныНоменклатурыПоПодразделениям.Розничная,
-	ЦеныНоменклатурыПоПодразделениям.ПлановаяЗакупочная,
-	ЦеныНоменклатурыПоПодразделениям.Период,
-	ЦеныНоменклатурыПоПодразделениям.Регистратор.Автор КАК Автор1
+	Цены.Подразделение,
+	Цены.Номенклатура,
+	Цены.Розничная,
+	Цены.ПлановаяЗакупочная,
+	Цены.Период КАК Период,
+	Цены.Регистратор.Автор КАК Автор1
 ИЗ
-	РегистрСведений.ЦеныНоменклатурыПоПодразделениям КАК ЦеныНоменклатурыПоПодразделениям
+	РегистрСведений.ЦеныНоменклатурыПоПодразделениям КАК Цены
 ГДЕ
-	ЦеныНоменклатурыПоПодразделениям.Подразделение = &amp;Подразделение
-	И ЦеныНоменклатурыПоПодразделениям.Номенклатура = &amp;Номенклатура</query>
+	Цены.Подразделение = &amp;Подразделение
+	И Цены.Номенклатура = &amp;Номенклатура
+	И Цены.Период МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+
+УПОРЯДОЧИТЬ ПО
+	Период</query>
 	</dataSet>
 	<dataSet xsi:type="DataSetQuery">
 		<name>НаборДанных2</name>
@@ -111,18 +115,27 @@
 				</v8:item>
 			</title>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Регистратор</dataPath>
+			<field>Регистратор</field>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	НоменклатураПодразделений.ПодЗаказ,
 	НоменклатураПодразделений.ОкруглятьДоЛистов,
 	НоменклатураПодразделений.Период КАК Период2,
 	НоменклатураПодразделений.Номенклатура КАК Номенклатура2,
-	НоменклатураПодразделений.Регистратор.Автор КАК Автор2
+	НоменклатураПодразделений.Регистратор.Автор КАК Автор2,
+	НоменклатураПодразделений.Регистратор
 ИЗ
 	РегистрСведений.НоменклатураПодразделений КАК НоменклатураПодразделений
 ГДЕ
 	НоменклатураПодразделений.Номенклатура = &amp;Номенклатура
-	И НоменклатураПодразделений.Подразделение = &amp;Подразделение</query>
+	И НоменклатураПодразделений.Подразделение = &amp;Подразделение
+	И НоменклатураПодразделений.Период МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+
+УПОРЯДОЧИТЬ ПО
+	Период2</query>
 	</dataSet>
 	<totalField>
 		<dataPath>Розничная</dataPath>
@@ -139,6 +152,14 @@
 	<totalField>
 		<dataPath>ОкруглятьДоЛистов</dataPath>
 		<expression>Максимум(ОкруглятьДоЛистов)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Автор2</dataPath>
+		<expression>Максимум(Автор2)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Регистратор</dataPath>
+		<expression>Максимум(Регистратор)</expression>
 	</totalField>
 	<parameter>
 		<name>Номенклатура</name>
@@ -172,6 +193,61 @@
 		<denyIncompleteValues>true</denyIncompleteValues>
 		<use>Always</use>
 	</parameter>
+	<parameter>
+		<name>КонецПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конец периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>Date</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаОкончания</expression>
+	</parameter>
+	<parameter>
+		<name>НачалоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>Date</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;Период.ДатаНачала</expression>
+	</parameter>
+	<parameter>
+		<name>Период</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
+		<use>Always</use>
+	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
 		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
@@ -186,6 +262,15 @@
 					<dcscor:parameter>Подразделение</dcscor:parameter>
 					<dcscor:value xsi:nil="true"/>
 					<dcsset:userSettingID>1cbcd099-86dc-43ff-a08e-57668d5347bb</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Период</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+					</dcscor:value>
+					<dcsset:userSettingID>1c732bc2-a7f1-42be-9b17-841f7e3263da</dcsset:userSettingID>
 				</dcscor:item>
 			</dcsset:dataParameters>
 			<dcsset:order>
@@ -290,6 +375,24 @@
 					</dcsset:selection>
 				</dcsset:row>
 				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Регистратор</dcsset:field>
+						<dcsset:lwsTitle>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Документ</v8:content>
+							</v8:item>
+						</dcsset:lwsTitle>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Автор2</dcsset:field>
+						<dcsset:lwsTitle>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Автор</v8:content>
+							</v8:item>
+						</dcsset:lwsTitle>
+					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
 						<dcsset:field>ПодЗаказ</dcsset:field>
 					</dcsset:item>
