@@ -7,18 +7,28 @@
 	<dataSet xsi:type="DataSetQuery">
 		<name>НаборДанных1</name>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>БазоваяСтоимость</dataPath>
-			<field>БазоваяСтоимость</field>
+			<dataPath>Спецификация</dataPath>
+			<field>СпецификацияСсылка</field>
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Базовая стоимость</v8:content>
+					<v8:content>Спецификация</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаСпецификации</dataPath>
+			<field>СуммаСпецификации</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма спецификации</v8:content>
 				</v8:item>
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Договор</dataPath>
-			<field>Договор</field>
+			<field>ДоговорСсылка</field>
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -27,102 +37,136 @@
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>СуммаДоговора</dataPath>
-			<field>СуммаДоговора</field>
+			<dataPath>ДопСоглашение</dataPath>
+			<field>ДопСоглашениеСсылка</field>
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Сумма договора</v8:content>
+					<v8:content>Доп соглашение</v8:content>
 				</v8:item>
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Дизайнер</dataPath>
-			<field>Дизайнер</field>
+			<dataPath>СуммаПродажи</dataPath>
+			<field>СуммаПродажи</field>
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Дизайнер</v8:content>
+					<v8:content>Сумма продажи</v8:content>
 				</v8:item>
 			</title>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>Замерщик</dataPath>
-			<field>Замерщик</field>
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
-		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
-	Таб.Договор,
-	Таб.Дизайнер,
-	СУММА(Таб.СуммаДоговора) КАК СуммаДоговора,
-	СУММА(Таб.БазоваяСтоимость) КАК БазоваяСтоимость,
-	МАКСИМУМ(Таб.Замерщик) КАК Замерщик
+		<query>ВЫБРАТЬ
+	ДокДоговор.Ссылка КАК ДоговорСсылка,
+	ДокДоговор.Спецификация КАК СпецификацияСсылка,
+	ДокДоговор.СуммаДокумента КАК СуммаПродажи
+ПОМЕСТИТЬ втДоговоры
 ИЗ
-	(ВЫБРАТЬ
-		ДокАктВыполненияДоговора.Договор.Ссылка КАК Договор,
-		ДокАктВыполненияДоговора.Договор.Автор КАК Дизайнер,
-		ДокАктВыполненияДоговора.Договор.СуммаДокумента КАК СуммаДоговора,
-		ДокАктВыполненияДоговора.Договор.Спецификация.СуммаДокумента КАК БазоваяСтоимость,
-		Замер.Замерщик КАК Замерщик
-	ИЗ
-		Документ.АктВыполненияДоговора КАК ДокАктВыполненияДоговора
-			ЛЕВОЕ СОЕДИНЕНИЕ Документ.Замер КАК Замер
-			ПО ДокАктВыполненияДоговора.Договор.Спецификация.ДокументОснование = Замер.Ссылка
-	ГДЕ
-		ДокАктВыполненияДоговора.Проведен
-		И ДокАктВыполненияДоговора.ДатаПередачи МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
-	
-	ОБЪЕДИНИТЬ ВСЕ
-	
-	ВЫБРАТЬ
-		ДополнительноеСоглашение.Договор.Ссылка,
-		ДополнительноеСоглашение.Договор.Автор,
-		ДополнительноеСоглашение.СуммаДокумента,
-		Спецификация.СуммаДокумента,
-		0
-	ИЗ
-		Документ.ДополнительноеСоглашение КАК ДополнительноеСоглашение
-			ЛЕВОЕ СОЕДИНЕНИЕ Документ.Спецификация КАК Спецификация
-			ПО (Спецификация.Проведен)
-				И (Спецификация.ДокументОснование = ДополнительноеСоглашение.Ссылка)
-			ЛЕВОЕ СОЕДИНЕНИЕ Документ.АктВыполненияДоговора КАК АктВыполненияДоговора
-			ПО ДополнительноеСоглашение.Договор = АктВыполненияДоговора.Договор
-	ГДЕ
-		АктВыполненияДоговора.ДатаПередачи МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
-		И ДополнительноеСоглашение.Проведен
-		И ДополнительноеСоглашение.Договор.Проведен
-		И АктВыполненияДоговора.Проведен) КАК Таб
+	Документ.АктВыполненияДоговора КАК ДокАкт
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.Договор КАК ДокДоговор
+		ПО ДокАкт.Договор = ДокДоговор.Ссылка
+			И (ДокАкт.Проведен)
+{ГДЕ
+	(ДокАкт.Дата МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода)}
+;
 
-СГРУППИРОВАТЬ ПО
-	Таб.Договор,
-	Таб.Дизайнер</query>
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	ДополнительноеСоглашение.Договор КАК ДоговорСсылка,
+	ДополнительноеСоглашение.Ссылка КАК ДопСоглашениеСсылка,
+	ДополнительноеСоглашение.СуммаДокумента КАК СуммаПродажи
+ПОМЕСТИТЬ втДопСоглашения
+ИЗ
+	Документ.ДополнительноеСоглашение КАК ДополнительноеСоглашение
+ГДЕ
+	ДополнительноеСоглашение.Проведен
+	И ДополнительноеСоглашение.Договор В
+			(ВЫБРАТЬ
+				т.ДоговорСсылка
+			ИЗ
+				втДоговоры КАК т)
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	Спецификация.Ссылка КАК СпецификацияСсылка,
+	ЕСТЬNULL(втДоговоры.ДоговорСсылка, Спецификация.ДокументОснование.Договор) КАК ДоговорСсылка,
+	Спецификация.СуммаДокумента КАК СуммаСпецификации
+ПОМЕСТИТЬ втСпецификации
+ИЗ
+	Документ.Спецификация КАК Спецификация
+		ЛЕВОЕ СОЕДИНЕНИЕ втДоговоры КАК втДоговоры
+		ПО (втДоговоры.СпецификацияСсылка = Спецификация.Ссылка)
+ГДЕ
+	Спецификация.Проведен
+	И (втДоговоры.ДоговорСсылка ЕСТЬ НЕ NULL 
+			ИЛИ Спецификация.ДокументОснование В
+				(ВЫБРАТЬ
+					т.ДопСоглашениеСсылка
+				ИЗ
+					втДопСоглашения КАК т))
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	втДоговоры.ДоговорСсылка,
+	втДоговоры.СпецификацияСсылка,
+	втДоговоры.СуммаПродажи,
+	NULL КАК ДопСоглашениеСсылка,
+	0 КАК СуммаСпецификации
+ИЗ
+	втДоговоры КАК втДоговоры
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	втДопСоглашения.ДоговорСсылка,
+	NULL,
+	втДопСоглашения.СуммаПродажи,
+	втДопСоглашения.ДопСоглашениеСсылка,
+	0
+ИЗ
+	втДопСоглашения КАК втДопСоглашения
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	втСпецификации.ДоговорСсылка,
+	втСпецификации.СпецификацияСсылка,
+	0,
+	NULL,
+	втСпецификации.СуммаСпецификации
+ИЗ
+	втСпецификации КАК втСпецификации</query>
 	</dataSet>
 	<calculatedField>
 		<dataPath>Маржа</dataPath>
-		<expression>СуммаДоговора - БазоваяСтоимость</expression>
+		<expression>СуммаПродажи - СуммаСпецификации</expression>
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>ru</v8:lang>
 				<v8:content>Маржа</v8:content>
 			</v8:item>
 		</title>
+		<appearance>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>ВыделятьОтрицательные</dcscor:parameter>
+				<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+			</dcscor:item>
+		</appearance>
 	</calculatedField>
 	<totalField>
-		<dataPath>БазоваяСтоимость</dataPath>
-		<expression>Сумма(БазоваяСтоимость)</expression>
+		<dataPath>СуммаПродажи</dataPath>
+		<expression>Сумма(СуммаПродажи)</expression>
 	</totalField>
 	<totalField>
-		<dataPath>СуммаДоговора</dataPath>
-		<expression>Сумма(СуммаДоговора)</expression>
+		<dataPath>СуммаСпецификации</dataPath>
+		<expression>Сумма(СуммаСпецификации)</expression>
 	</totalField>
 	<totalField>
 		<dataPath>Маржа</dataPath>
 		<expression>Сумма(Маржа)</expression>
-	</totalField>
-	<totalField>
-		<dataPath>Замерщик</dataPath>
-		<expression>Минимум(Замерщик)</expression>
-		<group>Договор</group>
 	</totalField>
 	<parameter>
 		<name>КонецПериода</name>
@@ -141,6 +185,7 @@
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 		<useRestriction>true</useRestriction>
 		<expression>&amp;ПериодОтчета.ДатаОкончания</expression>
+		<availableAsField>false</availableAsField>
 	</parameter>
 	<parameter>
 		<name>НачалоПериода</name>
@@ -159,6 +204,7 @@
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 		<useRestriction>true</useRestriction>
 		<expression>&amp;ПериодОтчета.ДатаНачала</expression>
+		<availableAsField>false</availableAsField>
 	</parameter>
 	<parameter>
 		<name>ПериодОтчета</name>
@@ -184,13 +230,10 @@
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 			<dcsset:selection>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Замерщик</dcsset:field>
+					<dcsset:field>СуммаПродажи</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>СуммаДоговора</dcsset:field>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>БазоваяСтоимость</dcsset:field>
+					<dcsset:field>СуммаСпецификации</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Маржа</dcsset:field>
@@ -198,17 +241,26 @@
 			</dcsset:selection>
 			<dcsset:dataParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
 					<dcscor:parameter>ПериодОтчета</dcscor:parameter>
 					<dcscor:value xsi:type="v8:StandardPeriod">
-						<v8:variant xsi:type="v8:StandardPeriodVariant">ThisMonth</v8:variant>
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
 					</dcscor:value>
-					<dcsset:userSettingID>20693634-7da9-43f1-b4c5-9904108b6e4a</dcsset:userSettingID>
+					<dcsset:userSettingID>9110f13c-01f1-4253-8f5e-b7a191569a66</dcsset:userSettingID>
 				</dcscor:item>
 			</dcsset:dataParameters>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>РасположениеРеквизитов</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionAttributesPlacement">Separately</dcscor:value>
+				</dcscor:item>
+			</dcsset:outputParameters>
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
 				<dcsset:groupItems>
 					<dcsset:item xsi:type="dcsset:GroupItemField">
-						<dcsset:field>Дизайнер</dcsset:field>
+						<dcsset:field>Договор.Автор</dcsset:field>
 						<dcsset:groupType>Items</dcsset:groupType>
 						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
