@@ -43,11 +43,110 @@
 			<dataPath>Город</dataPath>
 			<field>Город</field>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПечатьДвери</dataPath>
+			<field>ПечатьДвери</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Печать двери</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПечатьРаскрой</dataPath>
+			<field>ПечатьРаскрой</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Печать раскрой</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Вход</dataPath>
+			<field>Вход</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вход</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>РеализацияБезПредоплаты</dataPath>
+			<field>РеализацияБезПредоплаты</field>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>БЛ=; БИ=Да</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ПроцентНаценки</dataPath>
+			<field>ПроцентНаценки</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаНаценки</dataPath>
+			<field>СуммаНаценки</field>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>ЧДЦ=</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
-	Контрагенты.Ссылка,
+	Журнал.Пользователь.ОбъектАвторизации КАК Контрагент,
+	СУММА(ВЫБОР
+			КОГДА Журнал.Действие = ЗНАЧЕНИЕ(Перечисление.ВидыАктивностиПользователей.ВходВСистему)
+				ТОГДА 1
+			ИНАЧЕ 0
+		КОНЕЦ) КАК Вход,
+	СУММА(ВЫБОР
+			КОГДА Журнал.Действие = ЗНАЧЕНИЕ(Перечисление.ВидыАктивностиПользователей.ПечатьДвери)
+				ТОГДА 1
+			ИНАЧЕ 0
+		КОНЕЦ) КАК ПечатьДвери,
+	СУММА(ВЫБОР
+			КОГДА Журнал.Действие = ЗНАЧЕНИЕ(Перечисление.ВидыАктивностиПользователей.ПечатьРаскрой)
+				ТОГДА 1
+			ИНАЧЕ 0
+		КОНЕЦ) КАК ПечатьРаскрой
+ПОМЕСТИТЬ втЖурнал
+ИЗ
+	РегистрСведений.ЖурналАктивностиПользователей КАК Журнал
+ГДЕ
+	ВЫБОР
+			КОГДА &amp;КонецПериода &gt; ДАТАВРЕМЯ(1, 1, 1, 1, 1, 1)
+				ТОГДА Журнал.Дата МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+			ИНАЧЕ Журнал.Дата &gt; &amp;НачалоПериода
+		КОНЕЦ
+
+СГРУППИРОВАТЬ ПО
+	Журнал.Пользователь.ОбъектАвторизации
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	Контрагенты.Ссылка КАК Контрагент,
 	Контрагенты.Подразделение,
-	Контрагенты.Город
+	Контрагенты.Город,
+	Контрагенты.ПроцентНаценки,
+	Контрагенты.СуммаНаценки,
+	Контрагенты.РеализацияБезПредоплаты
 ПОМЕСТИТЬ втАктивныеКонтрагенты
 ИЗ
 	Справочник.Контрагенты КАК Контрагенты
@@ -64,7 +163,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 ВЫБРАТЬ
-	Активные.Ссылка КАК Контрагент,
+	Активные.Контрагент КАК Контрагент,
 	ВЫБОР
 		КОГДА Параметры.Наценка ЕСТЬ NULL
 			ТОГДА 0
@@ -72,19 +171,51 @@
 	КОНЕЦ КАК Наценка,
 	Параметры.ПроверкаСпецификации КАК ПроверкаСпецификации,
 	Активные.Подразделение КАК Подразделение,
-	Активные.Город КАК Город
+	Активные.Город КАК Город,
+	Активные.ПроцентНаценки,
+	Активные.СуммаНаценки,
+	Активные.РеализацияБезПредоплаты,
+	Журнал.Вход КАК Вход,
+	Журнал.ПечатьДвери КАК ПечатьДвери,
+	Журнал.ПечатьРаскрой КАК ПечатьРаскрой
 ИЗ
 	втАктивныеКонтрагенты КАК Активные
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ПараметрыДилеров.СрезПоследних(, ) КАК Параметры
-		ПО Активные.Ссылка = Параметры.Контрагент</query>
+		ПО Активные.Контрагент = Параметры.Контрагент
+		ЛЕВОЕ СОЕДИНЕНИЕ втЖурнал КАК Журнал
+		ПО Активные.Контрагент = Журнал.Контрагент</query>
 	</dataSet>
 	<totalField>
 		<dataPath>Наценка</dataPath>
 		<expression>Сумма(Наценка)</expression>
 	</totalField>
 	<totalField>
+		<dataPath>ПечатьДвери</dataPath>
+		<expression>Сумма(ПечатьДвери)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Вход</dataPath>
+		<expression>Сумма(Вход)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ПечатьРаскрой</dataPath>
+		<expression>Сумма(ПечатьРаскрой)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ПроцентНаценки</dataPath>
+		<expression>Сумма(ПроцентНаценки)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>СуммаНаценки</dataPath>
+		<expression>Сумма(СуммаНаценки)</expression>
+	</totalField>
+	<totalField>
 		<dataPath>ПроверкаСпецификации</dataPath>
-		<expression>Количество(ПроверкаСпецификации)</expression>
+		<expression>Максимум(ПроверкаСпецификации)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>РеализацияБезПредоплаты</dataPath>
+		<expression>Максимум(РеализацияБезПредоплаты)</expression>
 	</totalField>
 	<parameter>
 		<name>Период</name>
@@ -101,7 +232,8 @@
 			</v8:DateQualifiers>
 		</valueType>
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-		<useRestriction>false</useRestriction>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
 	</parameter>
 	<parameter>
 		<name>Подразделение</name>
@@ -133,6 +265,63 @@
 		</inputParameters>
 		<use>Always</use>
 	</parameter>
+	<parameter>
+		<name>КонецПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конец периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;СтПериод.ДатаОкончания</expression>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>СтПериод</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Ст период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>v8:StandardPeriod</v8:Type>
+		</valueType>
+		<value xsi:type="v8:StandardPeriod">
+			<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+			<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+		</value>
+		<useRestriction>false</useRestriction>
+		<use>Always</use>
+	</parameter>
+	<parameter>
+		<name>НачалоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<expression>&amp;СтПериод.ДатаНачала</expression>
+		<availableAsField>false</availableAsField>
+	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
 		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
@@ -158,19 +347,70 @@
 					<dcsset:lwsTitle>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Наценка ( % )</v8:content>
+							<v8:content>Наценка (%)</v8:content>
 						</v8:item>
 					</dcsset:lwsTitle>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>ПроверкаСпецификации</dcsset:field>
 				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>РеализацияБезПредоплаты</dcsset:field>
+					<dcsset:lwsTitle>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Без предоплаты</v8:content>
+						</v8:item>
+					</dcsset:lwsTitle>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ПроцентНаценки</dcsset:field>
+					<dcsset:lwsTitle>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Процент наценки дилера</v8:content>
+						</v8:item>
+					</dcsset:lwsTitle>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СуммаНаценки</dcsset:field>
+					<dcsset:lwsTitle>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Сумма наценки дилера</v8:content>
+						</v8:item>
+					</dcsset:lwsTitle>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Вход</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ПечатьДвери</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ПечатьРаскрой</dcsset:field>
+				</dcsset:item>
 			</dcsset:selection>
 			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>Период</dcscor:parameter>
+					<dcscor:value xsi:type="xs:dateTime">0001-01-01T00:00:00</dcscor:value>
+					<dcsset:userSettingID>6c992c95-ab02-4358-85f7-84df1f06a702</dcsset:userSettingID>
+				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>Подразделение</dcscor:parameter>
 					<dcscor:value xsi:nil="true"/>
 					<dcsset:userSettingID>c0098824-af7c-4560-91a3-b4c90b6cf0f8</dcsset:userSettingID>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>СтПериод</dcscor:parameter>
+					<dcscor:value xsi:type="v8:StandardPeriod">
+						<v8:variant xsi:type="v8:StandardPeriodVariant">Custom</v8:variant>
+						<v8:startDate>0001-01-01T00:00:00</v8:startDate>
+						<v8:endDate>0001-01-01T00:00:00</v8:endDate>
+					</dcscor:value>
+					<dcsset:userSettingID>4249d09c-67c9-4c69-bb11-57fb1daae3f0</dcsset:userSettingID>
 				</dcscor:item>
 			</dcsset:dataParameters>
 			<dcsset:order>
