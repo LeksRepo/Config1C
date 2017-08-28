@@ -106,24 +106,18 @@
 				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
 				<QueryText>ВЫБРАТЬ
-	ДокументРеализацияГотовойПродукции.Ссылка,
 	ДокументРеализацияГотовойПродукции.ПометкаУдаления,
 	ДокументРеализацияГотовойПродукции.Номер,
 	ДокументРеализацияГотовойПродукции.Дата,
-	ДокументРеализацияГотовойПродукции.Проведен,
 	ДокументРеализацияГотовойПродукции.Автор,
-	ДокументРеализацияГотовойПродукции.ДатаПередачи,
 	ДокументРеализацияГотовойПродукции.Комментарий,
-	ДокументРеализацияГотовойПродукции.ОтветственныйЗаХранение,
 	ДокументРеализацияГотовойПродукции.Подразделение,
-	ДокументРеализацияГотовойПродукции.СписокСпецификаций,
-	ДокументРеализацияГотовойПродукции.МоментВремени,
 	ВЫБОР
-		КОГДА ДокументРеализацияГотовойПродукции.ОтветственныйЗаХранение = ЗНАЧЕНИЕ(Справочник.ФизическиеЛица.ПустаяСсылка)
-				ИЛИ НЕ ДокументРеализацияГотовойПродукции.Проведен
-			ТОГДА 1
-		ИНАЧЕ 0
-	КОНЕЦ КАК Сортировка
+		КОГДА ДокументРеализацияГотовойПродукции.Проведен
+				И НЕ ДокументРеализацияГотовойПродукции.СданВАрхив
+			ТОГДА ИСТИНА
+		ИНАЧЕ ЛОЖЬ
+	КОНЕЦ КАК ВыделитьСтроку
 ИЗ
 	Документ.РеализацияГотовойПродукции КАК ДокументРеализацияГотовойПродукции</QueryText>
 				<MainTable>Document.РеализацияГотовойПродукции</MainTable>
@@ -134,7 +128,11 @@
 					</dcsset:filter>
 					<dcsset:order>
 						<dcsset:item xsi:type="dcsset:OrderItemField">
-							<dcsset:field>Сортировка</dcsset:field>
+							<dcsset:field>ПометкаУдаления</dcsset:field>
+							<dcsset:orderType>Desc</dcsset:orderType>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>ВыделитьСтроку</dcsset:field>
 							<dcsset:orderType>Asc</dcsset:orderType>
 						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:OrderItemField">
@@ -145,6 +143,30 @@
 						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
 					</dcsset:order>
 					<dcsset:conditionalAppearance>
+						<dcsset:item>
+							<dcsset:selection/>
+							<dcsset:filter>
+								<dcsset:item xsi:type="dcsset:FilterItemGroup">
+									<dcsset:groupType>AndGroup</dcsset:groupType>
+									<dcsset:item xsi:type="dcsset:FilterItemComparison">
+										<dcsset:left xsi:type="dcscor:Field">ПометкаУдаления</dcsset:left>
+										<dcsset:comparisonType>Equal</dcsset:comparisonType>
+										<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+									</dcsset:item>
+									<dcsset:item xsi:type="dcsset:FilterItemComparison">
+										<dcsset:left xsi:type="dcscor:Field">ВыделитьСтроку</dcsset:left>
+										<dcsset:comparisonType>Equal</dcsset:comparisonType>
+										<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+									</dcsset:item>
+								</dcsset:item>
+							</dcsset:filter>
+							<dcsset:appearance>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:parameter>ЦветФона</dcscor:parameter>
+									<dcscor:value xsi:type="v8ui:Color">web:Pink</dcscor:value>
+								</dcscor:item>
+							</dcsset:appearance>
+						</dcsset:item>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
 						<dcsset:userSettingID>b75fecce-942b-4aed-abc9-e6a02e460fb3</dcsset:userSettingID>
 					</dcsset:conditionalAppearance>
