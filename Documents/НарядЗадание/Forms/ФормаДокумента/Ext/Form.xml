@@ -859,6 +859,7 @@
 					<ExtendedTooltip name="СтраницаЛистовНоменклатурыРасширеннаяПодсказка" id="429"/>
 					<ChildItems>
 						<Table name="СписокЛистовНоменклатуры" id="430">
+							<RowSelectionMode>Row</RowSelectionMode>
 							<Footer>true</Footer>
 							<AutoInsertNewRow>true</AutoInsertNewRow>
 							<EnableStartDrag>true</EnableStartDrag>
@@ -868,6 +869,18 @@
 							<ContextMenu name="СписокЛистовНоменклатурыКонтекстноеМеню" id="431"/>
 							<AutoCommandBar name="СписокЛистовНоменклатурыКоманднаяПанель" id="432">
 								<Autofill>false</Autofill>
+								<ChildItems>
+									<Button name="СписокЛистовНоменклатурыПереместитьВверх" id="481">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.СписокЛистовНоменклатуры.StandardCommand.MoveUp</CommandName>
+										<ExtendedTooltip name="СписокЛистовНоменклатурыПереместитьВверхРасширеннаяПодсказка" id="482"/>
+									</Button>
+									<Button name="СписокЛистовНоменклатурыПереместитьВниз" id="483">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.СписокЛистовНоменклатуры.StandardCommand.MoveDown</CommandName>
+										<ExtendedTooltip name="СписокЛистовНоменклатурыПереместитьВнизРасширеннаяПодсказка" id="484"/>
+									</Button>
+								</ChildItems>
 							</AutoCommandBar>
 							<ExtendedTooltip name="СписокЛистовНоменклатурыРасширеннаяПодсказка" id="433"/>
 							<SearchStringAddition name="СписокЛистовНоменклатурыСтрокаПоиска" id="434">
@@ -894,21 +907,28 @@
 								<ContextMenu name="СписокЛистовНоменклатурыУправлениеПоискомКонтекстноеМеню" id="441"/>
 								<ExtendedTooltip name="СписокЛистовНоменклатурыУправлениеПоискомРасширеннаяПодсказка" id="442"/>
 							</SearchControlAddition>
+							<Events>
+								<Event name="BeforeAddRow">СписокЛистовНоменклатурыПередНачаломДобавления</Event>
+								<Event name="BeforeDeleteRow">СписокЛистовНоменклатурыПередУдалением</Event>
+							</Events>
 							<ChildItems>
 								<LabelField name="СписокЛистовНоменклатурыНомерСтроки" id="443">
 									<DataPath>Объект.СписокЛистовНоменклатуры.LineNumber</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="СписокЛистовНоменклатурыНомерСтрокиКонтекстноеМеню" id="444"/>
 									<ExtendedTooltip name="СписокЛистовНоменклатурыНомерСтрокиРасширеннаяПодсказка" id="445"/>
 								</LabelField>
 								<InputField name="СписокЛистовНоменклатурыНоменклатура" id="449">
 									<DataPath>Объект.СписокЛистовНоменклатуры.Номенклатура</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="СписокЛистовНоменклатурыНоменклатураКонтекстноеМеню" id="450"/>
 									<ExtendedTooltip name="СписокЛистовНоменклатурыНоменклатураРасширеннаяПодсказка" id="451"/>
 								</InputField>
 								<InputField name="СписокЛистовНоменклатурыКоличество" id="446">
 									<DataPath>Объект.СписокЛистовНоменклатуры.Количество</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
 									<FooterDataPath>Объект.СписокЛистовНоменклатуры.TotalКоличество</FooterDataPath>
 									<ContextMenu name="СписокЛистовНоменклатурыКоличествоКонтекстноеМеню" id="447"/>
