@@ -10,50 +10,61 @@
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
-		<UsualGroup name="ДатаНомер" id="38">
+		<UsualGroup name="ГруппаШапка" id="214">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Дата номер</v8:content>
+					<v8:content>Группа шапка</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Дата номер</v8:content>
+					<v8:content>Группа шапка</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Group>Horizontal</Group>
+			<HorizontalStretch>false</HorizontalStretch>
+			<Group>Vertical</Group>
 			<Representation>None</Representation>
+			<ChildItemsWidth>Equal</ChildItemsWidth>
 			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ДатаНомерРасширеннаяПодсказка" id="39"/>
+			<ExtendedTooltip name="ГруппаШапкаРасширеннаяПодсказка" id="215"/>
 			<ChildItems>
-				<InputField name="Подразделение" id="208">
-					<DataPath>Объект.Подразделение</DataPath>
-					<Width>30</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<OpenButton>false</OpenButton>
-					<ContextMenu name="ПодразделениеКонтекстноеМеню" id="209"/>
-					<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="210"/>
-				</InputField>
-				<InputField name="Номер" id="1">
-					<DataPath>Объект.Number</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
-					<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="3"/>
-				</InputField>
-				<LabelField name="Дата" id="4">
-					<DataPath>Объект.Date</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<Format>
+				<UsualGroup name="ГруппаНомерДата" id="216">
+					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>ДФ=dd.MM.yyyy</v8:content>
+							<v8:content>Группа номер дата</v8:content>
 						</v8:item>
-					</Format>
-					<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
-					<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="6"/>
-				</LabelField>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа номер дата</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаНомерДатаРасширеннаяПодсказка" id="217"/>
+					<ChildItems>
+						<InputField name="Номер" id="230">
+							<DataPath>Объект.Number</DataPath>
+							<ContextMenu name="НомерКонтекстноеМеню" id="231"/>
+							<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="232"/>
+						</InputField>
+						<InputField name="Дата" id="233">
+							<DataPath>Объект.Date</DataPath>
+							<ContextMenu name="ДатаКонтекстноеМеню" id="234"/>
+							<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="235"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
+				<InputField name="Подразделение" id="236">
+					<DataPath>Объект.Подразделение</DataPath>
+					<ContextMenu name="ПодразделениеКонтекстноеМеню" id="237"/>
+					<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="238"/>
+				</InputField>
 			</ChildItems>
 		</UsualGroup>
 		<Pages name="СпискиОбзвона" id="106">
@@ -71,20 +82,20 @@
 			</ToolTip>
 			<ExtendedTooltip name="СпискиОбзвонаРасширеннаяПодсказка" id="107"/>
 			<ChildItems>
-				<Page name="Договора" id="108">
+				<Page name="Договоры" id="108">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Договора</v8:content>
+							<v8:content>Договоры</v8:content>
 						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Договора</v8:content>
+							<v8:content>Договоры</v8:content>
 						</v8:item>
 					</ToolTip>
-					<ExtendedTooltip name="ДоговораРасширеннаяПодсказка" id="109"/>
+					<ExtendedTooltip name="ДоговорыРасширеннаяПодсказка" id="109"/>
 					<ChildItems>
 						<Table name="СписокДоговоров" id="7">
 							<Representation>List</Representation>
@@ -92,6 +103,12 @@
 							<EnableStartDrag>true</EnableStartDrag>
 							<EnableDrag>true</EnableDrag>
 							<DataPath>Объект.СписокДоговоров</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Договоры</v8:content>
+								</v8:item>
+							</Title>
 							<CommandSet>
 								<ExcludedCommand>Copy</ExcludedCommand>
 								<ExcludedCommand>Add</ExcludedCommand>
@@ -597,21 +614,21 @@
 										</InputField>
 									</ChildItems>
 								</ColumnGroup>
-								<ColumnGroup name="Комментарий" id="45">
+								<ColumnGroup name="КомментарииДоговор" id="45">
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Комментарий</v8:content>
+											<v8:content>Комментарии к договору</v8:content>
 										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Комментарий</v8:content>
+											<v8:content>Комментарии договор</v8:content>
 										</v8:item>
 									</ToolTip>
 									<ShowInHeader>true</ShowInHeader>
-									<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="46"/>
+									<ExtendedTooltip name="КомментарииДоговорРасширеннаяПодсказка" id="46"/>
 									<ChildItems>
 										<InputField name="СписокДоговоровКомментарийЗамер" id="56">
 											<DataPath>Объект.СписокДоговоров.КомментарийЗамер</DataPath>
@@ -692,6 +709,12 @@
 							<EnableStartDrag>true</EnableStartDrag>
 							<EnableDrag>true</EnableDrag>
 							<DataPath>Объект.СписокСпецификаций</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Спецификации</v8:content>
+								</v8:item>
+							</Title>
 							<CommandSet>
 								<ExcludedCommand>Copy</ExcludedCommand>
 								<ExcludedCommand>Add</ExcludedCommand>
@@ -867,6 +890,12 @@
 							<EnableStartDrag>true</EnableStartDrag>
 							<EnableDrag>true</EnableDrag>
 							<DataPath>Объект.СписокДилеров</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Дилеры</v8:content>
+								</v8:item>
+							</Title>
 							<CommandSet>
 								<ExcludedCommand>Copy</ExcludedCommand>
 								<ExcludedCommand>Add</ExcludedCommand>
@@ -964,6 +993,11 @@
 				</Page>
 			</ChildItems>
 		</Pages>
+		<InputField name="Комментарий" id="211">
+			<DataPath>Объект.Комментарий</DataPath>
+			<ContextMenu name="КомментарийКонтекстноеМеню" id="212"/>
+			<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="213"/>
+		</InputField>
 		<LabelField name="Автор" id="42">
 			<DataPath>Объект.Автор</DataPath>
 			<ContextMenu name="АвторКонтекстноеМеню" id="43"/>
