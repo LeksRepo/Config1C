@@ -4,6 +4,11 @@
 	<UsePostingMode>Auto</UsePostingMode>
 	<RepostOnWrite>true</RepostOnWrite>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="BeforeWrite">ПередЗаписью</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
 	<ChildItems>
 		<UsualGroup name="ГруппаШапка" id="68">
 			<Title>
@@ -26,6 +31,8 @@
 				<InputField name="Номер" id="1">
 					<DataPath>Объект.Number</DataPath>
 					<EditMode>EnterOnInput</EditMode>
+					<Width>11</Width>
+					<HorizontalStretch>false</HorizontalStretch>
 					<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
 					<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="3"/>
 				</InputField>
@@ -37,23 +44,16 @@
 				</InputField>
 			</ChildItems>
 		</UsualGroup>
-		<InputField name="Автор" id="7">
-			<DataPath>Объект.Автор</DataPath>
-			<EditMode>EnterOnInput</EditMode>
-			<ContextMenu name="АвторКонтекстноеМеню" id="8"/>
-			<ExtendedTooltip name="АвторРасширеннаяПодсказка" id="9"/>
-		</InputField>
-		<InputField name="Комментарий" id="10">
-			<DataPath>Объект.Комментарий</DataPath>
-			<EditMode>EnterOnInput</EditMode>
-			<ContextMenu name="КомментарийКонтекстноеМеню" id="11"/>
-			<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="12"/>
-		</InputField>
 		<InputField name="Подразделение" id="13">
 			<DataPath>Объект.Подразделение</DataPath>
 			<EditMode>EnterOnInput</EditMode>
+			<Width>34</Width>
+			<HorizontalStretch>false</HorizontalStretch>
 			<ContextMenu name="ПодразделениеКонтекстноеМеню" id="14"/>
 			<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="15"/>
+			<Events>
+				<Event name="OnChange">ПодразделениеПриИзменении</Event>
+			</Events>
 		</InputField>
 		<Table name="СписокНоменклатуры" id="16">
 			<Representation>List</Representation>
@@ -63,7 +63,76 @@
 			<DataPath>Объект.СписокНоменклатуры</DataPath>
 			<RowFilter xsi:nil="true"/>
 			<ContextMenu name="СписокНоменклатурыКонтекстноеМеню" id="17"/>
-			<AutoCommandBar name="СписокНоменклатурыКоманднаяПанель" id="18"/>
+			<AutoCommandBar name="СписокНоменклатурыКоманднаяПанель" id="18">
+				<ChildItems>
+					<Popup name="Заполнить" id="77">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Заполнить</v8:content>
+							</v8:item>
+						</Title>
+						<ToolTip>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Заполнить</v8:content>
+							</v8:item>
+						</ToolTip>
+						<ExtendedTooltip name="ЗаполнитьРасширеннаяПодсказка" id="78"/>
+						<ChildItems>
+							<Button name="СписокНоменклатурыЗаполнитьГруппой" id="73">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ЗаполнитьГруппой</CommandName>
+								<ExtendedTooltip name="СписокНоменклатурыЗаполнитьГруппойРасширеннаяПодсказка" id="74"/>
+							</Button>
+							<Button name="СписокНоменклатурыЗаполнитьПустыми" id="75">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.ЗаполнитьПустыми</CommandName>
+								<ExtendedTooltip name="СписокНоменклатурыЗаполнитьПустымиРасширеннаяПодсказка" id="76"/>
+							</Button>
+						</ChildItems>
+					</Popup>
+					<Popup name="Умножить" id="79">
+						<Title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Умножить</v8:content>
+							</v8:item>
+						</Title>
+						<ToolTip>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Умножить</v8:content>
+							</v8:item>
+						</ToolTip>
+						<ExtendedTooltip name="УмножитьРасширеннаяПодсказка" id="80"/>
+						<ChildItems>
+							<Button name="СписокНоменклатурыУмножитьПлановую" id="81">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.УмножитьПлановую</CommandName>
+								<Title>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Умножить плановую цену</v8:content>
+									</v8:item>
+								</Title>
+								<ExtendedTooltip name="СписокНоменклатурыУмножитьПлановуюРасширеннаяПодсказка" id="82"/>
+							</Button>
+							<Button name="СписокНоменклатурыУмножитьРозничную" id="83">
+								<Type>CommandBarButton</Type>
+								<CommandName>Form.Command.УмножитьРозничную</CommandName>
+								<Title>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Умножить розничную цену</v8:content>
+									</v8:item>
+								</Title>
+								<ExtendedTooltip name="СписокНоменклатурыУмножитьРозничнуюРасширеннаяПодсказка" id="84"/>
+							</Button>
+						</ChildItems>
+					</Popup>
+				</ChildItems>
+			</AutoCommandBar>
 			<ExtendedTooltip name="СписокНоменклатурыРасширеннаяПодсказка" id="19"/>
 			<SearchStringAddition name="СписокНоменклатурыСтрокаПоиска" id="20">
 				<AdditionSource>
@@ -96,30 +165,54 @@
 					<ContextMenu name="СписокНоменклатурыНомерСтрокиКонтекстноеМеню" id="30"/>
 					<ExtendedTooltip name="СписокНоменклатурыНомерСтрокиРасширеннаяПодсказка" id="31"/>
 				</LabelField>
-				<InputField name="СписокНоменклатурыКомментарий" id="32">
-					<DataPath>Объект.СписокНоменклатуры.Комментарий</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="СписокНоменклатурыКомментарийКонтекстноеМеню" id="33"/>
-					<ExtendedTooltip name="СписокНоменклатурыКомментарийРасширеннаяПодсказка" id="34"/>
-				</InputField>
 				<InputField name="СписокНоменклатурыНоменклатура" id="35">
 					<DataPath>Объект.СписокНоменклатуры.Номенклатура</DataPath>
 					<EditMode>EnterOnInput</EditMode>
 					<ContextMenu name="СписокНоменклатурыНоменклатураКонтекстноеМеню" id="36"/>
 					<ExtendedTooltip name="СписокНоменклатурыНоменклатураРасширеннаяПодсказка" id="37"/>
+					<Events>
+						<Event name="OnChange">СписокНоменклатурыНоменклатураПриИзменении</Event>
+					</Events>
 				</InputField>
-				<CheckBoxField name="СписокНоменклатурыОкруглятьДоЛистов" id="38">
-					<DataPath>Объект.СписокНоменклатуры.ОкруглятьДоЛистов</DataPath>
+				<LabelField name="СписокНоменклатурыНоменклатураЕдиницаИзмерения" id="70">
+					<DataPath>Объект.СписокНоменклатуры.Номенклатура.ЕдиницаИзмерения</DataPath>
+					<ReadOnly>true</ReadOnly>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ед. изм.</v8:content>
+						</v8:item>
+					</Title>
 					<EditMode>EnterOnInput</EditMode>
-					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="СписокНоменклатурыОкруглятьДоЛистовКонтекстноеМеню" id="39"/>
-					<ExtendedTooltip name="СписокНоменклатурыОкруглятьДоЛистовРасширеннаяПодсказка" id="40"/>
-				</CheckBoxField>
+					<ContextMenu name="СписокНоменклатурыНоменклатураЕдиницаИзмеренияКонтекстноеМеню" id="71"/>
+					<ExtendedTooltip name="СписокНоменклатурыНоменклатураЕдиницаИзмеренияРасширеннаяПодсказка" id="72"/>
+				</LabelField>
+				<InputField name="СписокНоменклатурыОсновнаяПоСкладу" id="65">
+					<DataPath>Объект.СписокНоменклатуры.ОсновнаяПоСкладу</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="СписокНоменклатурыОсновнаяПоСкладуКонтекстноеМеню" id="66"/>
+					<ExtendedTooltip name="СписокНоменклатурыОсновнаяПоСкладуРасширеннаяПодсказка" id="67"/>
+					<Events>
+						<Event name="StartChoice">СписокНоменклатурыОсновнаяПоСкладуНачалоВыбора</Event>
+					</Events>
+				</InputField>
+				<InputField name="СписокНоменклатурыПоставщик" id="47">
+					<DataPath>Объект.СписокНоменклатуры.Поставщик</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="СписокНоменклатурыПоставщикКонтекстноеМеню" id="48"/>
+					<ExtendedTooltip name="СписокНоменклатурыПоставщикРасширеннаяПодсказка" id="49"/>
+				</InputField>
 				<InputField name="СписокНоменклатурыПлановаяЗакупочная" id="41">
 					<DataPath>Объект.СписокНоменклатуры.ПлановаяЗакупочная</DataPath>
 					<EditMode>EnterOnInput</EditMode>
 					<ContextMenu name="СписокНоменклатурыПлановаяЗакупочнаяКонтекстноеМеню" id="42"/>
 					<ExtendedTooltip name="СписокНоменклатурыПлановаяЗакупочнаяРасширеннаяПодсказка" id="43"/>
+				</InputField>
+				<InputField name="СписокНоменклатурыРозничная" id="50">
+					<DataPath>Объект.СписокНоменклатуры.Розничная</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="СписокНоменклатурыРозничнаяКонтекстноеМеню" id="51"/>
+					<ExtendedTooltip name="СписокНоменклатурыРозничнаяРасширеннаяПодсказка" id="52"/>
 				</InputField>
 				<CheckBoxField name="СписокНоменклатурыПодЗаказ" id="44">
 					<DataPath>Объект.СписокНоменклатуры.ПодЗаказ</DataPath>
@@ -128,30 +221,19 @@
 					<ContextMenu name="СписокНоменклатурыПодЗаказКонтекстноеМеню" id="45"/>
 					<ExtendedTooltip name="СписокНоменклатурыПодЗаказРасширеннаяПодсказка" id="46"/>
 				</CheckBoxField>
-				<InputField name="СписокНоменклатурыПоставщик" id="47">
-					<DataPath>Объект.СписокНоменклатуры.Поставщик</DataPath>
+				<CheckBoxField name="СписокНоменклатурыОкруглятьДоЛистов" id="38">
+					<DataPath>Объект.СписокНоменклатуры.ОкруглятьДоЛистов</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Округлять</v8:content>
+						</v8:item>
+					</Title>
 					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="СписокНоменклатурыПоставщикКонтекстноеМеню" id="48"/>
-					<ExtendedTooltip name="СписокНоменклатурыПоставщикРасширеннаяПодсказка" id="49"/>
-				</InputField>
-				<InputField name="СписокНоменклатурыРозничная" id="50">
-					<DataPath>Объект.СписокНоменклатуры.Розничная</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="СписокНоменклатурыРозничнаяКонтекстноеМеню" id="51"/>
-					<ExtendedTooltip name="СписокНоменклатурыРозничнаяРасширеннаяПодсказка" id="52"/>
-				</InputField>
-				<InputField name="СписокНоменклатурыАдресХранения" id="53">
-					<DataPath>Объект.СписокНоменклатуры.АдресХранения</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="СписокНоменклатурыАдресХраненияКонтекстноеМеню" id="54"/>
-					<ExtendedTooltip name="СписокНоменклатурыАдресХраненияРасширеннаяПодсказка" id="55"/>
-				</InputField>
-				<InputField name="СписокНоменклатурыДнейНаИзготовление" id="56">
-					<DataPath>Объект.СписокНоменклатуры.ДнейНаИзготовление</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="СписокНоменклатурыДнейНаИзготовлениеКонтекстноеМеню" id="57"/>
-					<ExtendedTooltip name="СписокНоменклатурыДнейНаИзготовлениеРасширеннаяПодсказка" id="58"/>
-				</InputField>
+					<CheckBoxType>Auto</CheckBoxType>
+					<ContextMenu name="СписокНоменклатурыОкруглятьДоЛистовКонтекстноеМеню" id="39"/>
+					<ExtendedTooltip name="СписокНоменклатурыОкруглятьДоЛистовРасширеннаяПодсказка" id="40"/>
+				</CheckBoxField>
 				<CheckBoxField name="СписокНоменклатурыЗакупОптом" id="59">
 					<DataPath>Объект.СписокНоменклатуры.ЗакупОптом</DataPath>
 					<EditMode>EnterOnInput</EditMode>
@@ -161,19 +243,49 @@
 				</CheckBoxField>
 				<CheckBoxField name="СписокНоменклатурыМожетПредоставитьЗаказчик" id="62">
 					<DataPath>Объект.СписокНоменклатуры.МожетПредоставитьЗаказчик</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Можно предоставить</v8:content>
+						</v8:item>
+					</Title>
 					<EditMode>EnterOnInput</EditMode>
 					<CheckBoxType>Auto</CheckBoxType>
 					<ContextMenu name="СписокНоменклатурыМожетПредоставитьЗаказчикКонтекстноеМеню" id="63"/>
 					<ExtendedTooltip name="СписокНоменклатурыМожетПредоставитьЗаказчикРасширеннаяПодсказка" id="64"/>
 				</CheckBoxField>
-				<InputField name="СписокНоменклатурыОсновнаяПоСкладу" id="65">
-					<DataPath>Объект.СписокНоменклатуры.ОсновнаяПоСкладу</DataPath>
+				<InputField name="СписокНоменклатурыДнейНаИзготовление" id="56">
+					<DataPath>Объект.СписокНоменклатуры.ДнейНаИзготовление</DataPath>
 					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="СписокНоменклатурыОсновнаяПоСкладуКонтекстноеМеню" id="66"/>
-					<ExtendedTooltip name="СписокНоменклатурыОсновнаяПоСкладуРасширеннаяПодсказка" id="67"/>
+					<ContextMenu name="СписокНоменклатурыДнейНаИзготовлениеКонтекстноеМеню" id="57"/>
+					<ExtendedTooltip name="СписокНоменклатурыДнейНаИзготовлениеРасширеннаяПодсказка" id="58"/>
+				</InputField>
+				<InputField name="СписокНоменклатурыАдресХранения" id="53">
+					<DataPath>Объект.СписокНоменклатуры.АдресХранения</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="СписокНоменклатурыАдресХраненияКонтекстноеМеню" id="54"/>
+					<ExtendedTooltip name="СписокНоменклатурыАдресХраненияРасширеннаяПодсказка" id="55"/>
+				</InputField>
+				<InputField name="СписокНоменклатурыКомментарий" id="32">
+					<DataPath>Объект.СписокНоменклатуры.Комментарий</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="СписокНоменклатурыКомментарийКонтекстноеМеню" id="33"/>
+					<ExtendedTooltip name="СписокНоменклатурыКомментарийРасширеннаяПодсказка" id="34"/>
 				</InputField>
 			</ChildItems>
 		</Table>
+		<LabelField name="Автор" id="7">
+			<DataPath>Объект.Автор</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="АвторКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="АвторРасширеннаяПодсказка" id="9"/>
+		</LabelField>
+		<InputField name="Комментарий" id="10">
+			<DataPath>Объект.Комментарий</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="КомментарийКонтекстноеМеню" id="11"/>
+			<ExtendedTooltip name="КомментарийРасширеннаяПодсказка" id="12"/>
+		</InputField>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Объект" id="1">
@@ -186,5 +298,93 @@
 				<Field>Объект.RegisterRecords</Field>
 			</UseAlways>
 		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>СписокНоменклатуры</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.СписокНоменклатуры.ПлановаяЗакупочная</dcsset:left>
+						<dcsset:comparisonType>Greater</dcsset:comparisonType>
+						<dcsset:right xsi:type="dcscor:Field">Объект.СписокНоменклатуры.Розничная</dcsset:right>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветФона</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">web:Pink</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
 	</Attributes>
+	<Commands>
+		<Command name="ЗаполнитьПустыми" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить пустыми</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить пустыми</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗаполнитьПустыми</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ЗаполнитьГруппой" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить группой</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заполнить группой</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗаполнитьГруппой</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="УмножитьПлановую" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Умножить плановую</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Умножить плановую</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>УмножитьПлановую</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="УмножитьРозничную" id="4">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Умножить розничную</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Умножить розничную</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>УмножитьРозничную</Action>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+	</Commands>
 </Form>
