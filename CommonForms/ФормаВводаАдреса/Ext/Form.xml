@@ -9,17 +9,51 @@
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
 	<AutoURL>false</AutoURL>
-	<CommandBarLocation>Bottom</CommandBarLocation>
+	<CommandBarLocation>Top</CommandBarLocation>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
-		<HorizontalAlign>Right</HorizontalAlign>
 		<Autofill>false</Autofill>
+		<ChildItems>
+			<Button name="КомандаОК" id="7">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.Command.КомандаОК</CommandName>
+				<TextColor>style:ButtonTextColor</TextColor>
+				<BackColor>style:ButtonBackColor</BackColor>
+				<BorderColor>style:BorderColor</BorderColor>
+				<ExtendedTooltip name="КомандаОКExtendedTooltip" id="77"/>
+			</Button>
+			<Button name="ФормаОтмена" id="113">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Cancel</CommandName>
+				<ExtendedTooltip name="ФормаОтменаРасширеннаяПодсказка" id="114"/>
+			</Button>
+		</ChildItems>
 	</AutoCommandBar>
 	<Events>
 		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
+		<UsualGroup name="ГруппаКоманднаяПанель" id="128">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа командная панель</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа командная панель</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаКоманднаяПанельРасширеннаяПодсказка" id="129"/>
+		</UsualGroup>
 		<CheckBoxField name="АвтоматическийВвод" id="163">
 			<DataPath>АвтоматическийВвод</DataPath>
 			<TitleLocation>None</TitleLocation>
@@ -66,14 +100,17 @@
 					</ToolTip>
 					<ExtendedTooltip name="ПоКлассификаторуРасширеннаяПодсказка" id="127"/>
 					<ChildItems>
-						<InputField name="Подразделение" id="118">
+						<LabelField name="ГородВладелец" id="118">
 							<DataPath>ГородВладелец</DataPath>
-							<ContextMenu name="ПодразделениеКонтекстноеМеню" id="119"/>
-							<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="120"/>
-							<Events>
-								<Event name="OnChange">ПодразделениеПриИзменении</Event>
-							</Events>
-						</InputField>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Расстояние от</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ГородВладелецКонтекстноеМеню" id="119"/>
+							<ExtendedTooltip name="ГородВладелецРасширеннаяПодсказка" id="120"/>
+						</LabelField>
 						<InputField name="НаселенныйПункт" id="23">
 							<DataPath>НаселенныйПункт</DataPath>
 							<Title>
@@ -376,41 +413,6 @@
 			<ContextMenu name="ОтображениеАдресаКонтекстноеМеню" id="116"/>
 			<ExtendedTooltip name="ОтображениеАдресаРасширеннаяПодсказка" id="117"/>
 		</InputField>
-		<UsualGroup name="ГруппаКоманднаяПанель" id="128">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа командная панель</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа командная панель</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Group>Horizontal</Group>
-			<Representation>None</Representation>
-			<ShowTitle>false</ShowTitle>
-			<ExtendedTooltip name="ГруппаКоманднаяПанельРасширеннаяПодсказка" id="129"/>
-			<ChildItems>
-				<Button name="КомандаОК" id="7">
-					<Type>UsualButton</Type>
-					<DefaultButton>true</DefaultButton>
-					<SkipOnInput>false</SkipOnInput>
-					<CommandName>Form.Command.КомандаОК</CommandName>
-					<TextColor>style:ButtonTextColor</TextColor>
-					<BackColor>style:ButtonBackColor</BackColor>
-					<BorderColor>style:BorderColor</BorderColor>
-					<ExtendedTooltip name="КомандаОКExtendedTooltip" id="77"/>
-				</Button>
-				<Button name="ФормаОтмена" id="113">
-					<Type>UsualButton</Type>
-					<CommandName>Form.StandardCommand.Cancel</CommandName>
-					<ExtendedTooltip name="ФормаОтменаРасширеннаяПодсказка" id="114"/>
-				</Button>
-			</ChildItems>
-		</UsualGroup>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="НаселенныйПункт" id="8">
