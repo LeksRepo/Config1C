@@ -56,11 +56,42 @@
 				</v8:item>
 			</title>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СпецификацияСсылкаТехнолог</dataPath>
+			<field>СпецификацияСсылкаТехнолог</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Технолог</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СпецификацияСсылкаИзделие</dataPath>
+			<field>СпецификацияСсылкаИзделие</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изделие</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ОценкаСупервайзера</dataPath>
+			<field>ОценкаСупервайзера</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Оценка в акте</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	ДокДоговор.Ссылка КАК ДоговорСсылка,
 	ДокДоговор.Спецификация КАК СпецификацияСсылка,
-	ДокДоговор.СуммаДокумента КАК СуммаПродажи
+	ДокДоговор.СуммаДокумента КАК СуммаПродажи,
+	ДокАкт.ОценкаСупервайзера
 ПОМЕСТИТЬ втДоговоры
 ИЗ
 	Документ.АктВыполненияДоговора КАК ДокАкт
@@ -114,7 +145,10 @@
 	втДоговоры.СпецификацияСсылка,
 	втДоговоры.СуммаПродажи,
 	NULL КАК ДопСоглашениеСсылка,
-	0 КАК СуммаСпецификации
+	0 КАК СуммаСпецификации,
+	NULL КАК СпецификацияСсылкаТехнолог,
+	NULL КАК СпецификацияСсылкаИзделие,
+	втДоговоры.ОценкаСупервайзера
 ИЗ
 	втДоговоры КАК втДоговоры
 
@@ -125,7 +159,10 @@
 	NULL,
 	втДопСоглашения.СуммаПродажи,
 	втДопСоглашения.ДопСоглашениеСсылка,
-	0
+	0,
+	NULL,
+	NULL,
+	NULL
 ИЗ
 	втДопСоглашения КАК втДопСоглашения
 
@@ -136,7 +173,10 @@
 	втСпецификации.СпецификацияСсылка,
 	0,
 	NULL,
-	втСпецификации.СуммаСпецификации
+	втСпецификации.СуммаСпецификации,
+	втСпецификации.СпецификацияСсылка.Технолог,
+	втСпецификации.СпецификацияСсылка.Изделие,
+	NULL
 ИЗ
 	втСпецификации КАК втСпецификации</query>
 	</dataSet>
@@ -167,6 +207,24 @@
 	<totalField>
 		<dataPath>Маржа</dataPath>
 		<expression>Сумма(Маржа)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>СпецификацияСсылкаТехнолог</dataPath>
+		<expression>Максимум(СпецификацияСсылкаТехнолог)</expression>
+		<group>Договор</group>
+		<group>ДопСоглашение</group>
+	</totalField>
+	<totalField>
+		<dataPath>СпецификацияСсылкаИзделие</dataPath>
+		<expression>Максимум(СпецификацияСсылкаИзделие)</expression>
+		<group>Договор</group>
+		<group>ДопСоглашение</group>
+	</totalField>
+	<totalField>
+		<dataPath>ОценкаСупервайзера</dataPath>
+		<expression>Максимум(ОценкаСупервайзера)</expression>
+		<group>Договор</group>
+		<group>ДопСоглашение</group>
 	</totalField>
 	<parameter>
 		<name>КонецПериода</name>
@@ -230,6 +288,12 @@
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
 			<dcsset:selection>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СпецификацияСсылкаИзделие</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СпецификацияСсылкаТехнолог</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>СуммаПродажи</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
@@ -237,6 +301,9 @@
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Маржа</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ОценкаСупервайзера</dcsset:field>
 				</dcsset:item>
 			</dcsset:selection>
 			<dcsset:dataParameters>
