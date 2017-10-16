@@ -8,11 +8,7 @@
 	</Title>
 	<AutoTitle>false</AutoTitle>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
-	<CommandSet>
-		<ExcludedCommand>SetDeletionMark</ExcludedCommand>
-		<ExcludedCommand>Delete</ExcludedCommand>
-		<ExcludedCommand>Change</ExcludedCommand>
-	</CommandSet>
+	<CommandSet/>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<Autofill>false</Autofill>
 		<ChildItems>
@@ -258,10 +254,7 @@
 				<xr:Ref>CommonPicture.КоллекцияПиктограммФайлов</xr:Ref>
 				<xr:LoadTransparent>false</xr:LoadTransparent>
 			</RowsPicture>
-			<CommandSet>
-				<ExcludedCommand>SetDeletionMark</ExcludedCommand>
-				<ExcludedCommand>Delete</ExcludedCommand>
-			</CommandSet>
+			<CommandSet/>
 			<SearchStringLocation>None</SearchStringLocation>
 			<ViewStatusLocation>None</ViewStatusLocation>
 			<SearchControlLocation>None</SearchControlLocation>
@@ -492,29 +485,29 @@
 			</ContextMenu>
 			<AutoCommandBar name="СписокКоманднаяПанель" id="8"/>
 			<ExtendedTooltip name="СписокExtendedTooltip" id="156"/>
-			<SearchStringAddition name="СписокСтрокаПоиска" id="165">
+			<SearchStringAddition name="СписокСтрокаПоиска" id="168">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="166"/>
-				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="167"/>
+				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="169"/>
+				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="170"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокСостояниеПросмотра" id="168">
+			<ViewStatusAddition name="СписокСостояниеПросмотра" id="171">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="169"/>
-				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="170"/>
+				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="172"/>
+				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="173"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокУправлениеПоиском" id="171">
+			<SearchControlAddition name="СписокУправлениеПоиском" id="174">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="172"/>
-				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="173"/>
+				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="175"/>
+				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="176"/>
 			</SearchControlAddition>
 			<Events>
 				<Event name="DragCheck">СписокПроверкаПеретаскивания</Event>
@@ -570,15 +563,27 @@
 					<UserVisible>
 						<xr:Common>false</xr:Common>
 					</UserVisible>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Дата добавления файла в базу.</v8:content>
+						</v8:item>
+					</ToolTip>
 					<ContextMenu name="СписокДатаСозданияКонтекстноеМеню" id="95"/>
 					<ExtendedTooltip name="СписокДатаСозданияExtendedTooltip" id="161"/>
 				</LabelField>
 				<LabelField name="СписокДатаИзменения" id="100">
 					<DataPath>Список.ДатаИзменения</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Данные от</v8:content>
+						</v8:item>
+					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Местная дата изменения файла.</v8:content>
+							<v8:content>Дата изменения данных файла (местное время).</v8:content>
 						</v8:item>
 					</ToolTip>
 					<ContextMenu name="СписокДатаИзмененияКонтекстноеМеню" id="101"/>
@@ -586,6 +591,12 @@
 				</LabelField>
 				<LabelField name="СписокАвтор" id="96">
 					<DataPath>Список.Автор</DataPath>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Пользователь, который добавил файл.</v8:content>
+						</v8:item>
+					</ToolTip>
 					<ContextMenu name="СписокАвторКонтекстноеМеню" id="97"/>
 					<ExtendedTooltip name="СписокАвторExtendedTooltip" id="163"/>
 				</LabelField>
@@ -597,8 +608,22 @@
 							<v8:content>Размер (байт)</v8:content>
 						</v8:item>
 					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Размер данных файла.</v8:content>
+						</v8:item>
+					</ToolTip>
 					<ContextMenu name="СписокРазмерКонтекстноеМеню" id="99"/>
 					<ExtendedTooltip name="СписокРазмерExtendedTooltip" id="164"/>
+				</LabelField>
+				<LabelField name="СписокСсылка" id="165">
+					<DataPath>Список.Ссылка</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="СписокСсылкаКонтекстноеМеню" id="166"/>
+					<ExtendedTooltip name="СписокСсылкаРасширеннаяПодсказка" id="167"/>
 				</LabelField>
 			</ChildItems>
 		</Table>
@@ -627,7 +652,7 @@
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
-				<DynamicDataRead>true</DynamicDataRead>
+				<DynamicDataRead>false</DynamicDataRead>
 				<QueryText>ВЫБРАТЬ
 	ЗНАЧЕНИЕ(Справочник.Пользователи.ПустаяСсылка) КАК Ссылка,
 	ЛОЖЬ КАК ПометкаУдаления,
@@ -642,9 +667,7 @@
 	ЛОЖЬ КАК Зашифрован,
 	ЛОЖЬ КАК ФайлРедактируется,
 	ЛОЖЬ КАК ФайлРедактируетТекущийПользователь
-ИЗ
-	Справочник.Пользователи</QueryText>
-				<MainTable>Catalog.Пользователи</MainTable>
+</QueryText>
 				<ListSettings>
 					<dcsset:filter>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
@@ -681,58 +704,6 @@
 			</Title>
 			<Type/>
 		</Attribute>
-		<ConditionalAppearance>
-			<dcsset:item>
-				<dcsset:selection>
-					<dcsset:item>
-						<dcsset:field>Список</dcsset:field>
-					</dcsset:item>
-				</dcsset:selection>
-				<dcsset:filter>
-					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">Список.ФайлРедактируется</dcsset:left>
-						<dcsset:comparisonType>Equal</dcsset:comparisonType>
-						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">Список.ФайлРедактируетТекущийПользователь</dcsset:left>
-						<dcsset:comparisonType>Equal</dcsset:comparisonType>
-						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-					</dcsset:item>
-				</dcsset:filter>
-				<dcsset:appearance>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>ЦветТекста</dcscor:parameter>
-						<dcscor:value xsi:type="v8ui:Color">style:ФайлЗанятыйТекущимПользователем</dcscor:value>
-					</dcscor:item>
-				</dcsset:appearance>
-			</dcsset:item>
-			<dcsset:item>
-				<dcsset:selection>
-					<dcsset:item>
-						<dcsset:field>Список</dcsset:field>
-					</dcsset:item>
-				</dcsset:selection>
-				<dcsset:filter>
-					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">Список.ФайлРедактируется</dcsset:left>
-						<dcsset:comparisonType>Equal</dcsset:comparisonType>
-						<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-					</dcsset:item>
-					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">Список.ФайлРедактируетТекущийПользователь</dcsset:left>
-						<dcsset:comparisonType>Equal</dcsset:comparisonType>
-						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
-					</dcsset:item>
-				</dcsset:filter>
-				<dcsset:appearance>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>ЦветТекста</dcscor:parameter>
-						<dcscor:value xsi:type="v8ui:Color">style:ФайлЗанятыйДругимПользователем</dcscor:value>
-					</dcscor:item>
-				</dcsset:appearance>
-			</dcsset:item>
-		</ConditionalAppearance>
 	</Attributes>
 	<Commands>
 		<Command name="ОткрытьФайлДляПросмотра" id="2">

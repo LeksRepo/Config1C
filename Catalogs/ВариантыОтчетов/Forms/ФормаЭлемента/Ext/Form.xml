@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4">
+	<AutoTitle>false</AutoTitle>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<CommandSet>
 		<ExcludedCommand>Copy</ExcludedCommand>
@@ -88,6 +89,7 @@
 	</AutoCommandBar>
 	<Events>
 		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="AfterWriteAtServer">ПослеЗаписиНаСервере</Event>
 		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
 		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
 		<Event name="OnOpen">ПриОткрытии</Event>
@@ -223,7 +225,6 @@
 			<Representation>Tree</Representation>
 			<TitleLocation>Top</TitleLocation>
 			<ChangeRowOrder>false</ChangeRowOrder>
-			<Height>15</Height>
 			<AutoInsertNewRow>true</AutoInsertNewRow>
 			<InitialTreeView>ExpandAllLevels</InitialTreeView>
 			<DataPath>ДеревоПодсистем</DataPath>
@@ -247,29 +248,29 @@
 				<Autofill>false</Autofill>
 			</AutoCommandBar>
 			<ExtendedTooltip name="ДеревоПодсистемExtendedTooltip" id="169"/>
-			<SearchStringAddition name="ДеревоПодсистемСтрокаПоиска" id="182">
+			<SearchStringAddition name="ДеревоПодсистемСтрокаПоиска" id="195">
 				<AdditionSource>
 					<Item>ДеревоПодсистем</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="ДеревоПодсистемСтрокаПоискаКонтекстноеМеню" id="183"/>
-				<ExtendedTooltip name="ДеревоПодсистемСтрокаПоискаРасширеннаяПодсказка" id="184"/>
+				<ContextMenu name="ДеревоПодсистемСтрокаПоискаКонтекстноеМеню" id="196"/>
+				<ExtendedTooltip name="ДеревоПодсистемСтрокаПоискаРасширеннаяПодсказка" id="197"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="ДеревоПодсистемСостояниеПросмотра" id="185">
+			<ViewStatusAddition name="ДеревоПодсистемСостояниеПросмотра" id="198">
 				<AdditionSource>
 					<Item>ДеревоПодсистем</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="ДеревоПодсистемСостояниеПросмотраКонтекстноеМеню" id="186"/>
-				<ExtendedTooltip name="ДеревоПодсистемСостояниеПросмотраРасширеннаяПодсказка" id="187"/>
+				<ContextMenu name="ДеревоПодсистемСостояниеПросмотраКонтекстноеМеню" id="199"/>
+				<ExtendedTooltip name="ДеревоПодсистемСостояниеПросмотраРасширеннаяПодсказка" id="200"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="ДеревоПодсистемУправлениеПоиском" id="188">
+			<SearchControlAddition name="ДеревоПодсистемУправлениеПоиском" id="201">
 				<AdditionSource>
 					<Item>ДеревоПодсистем</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="ДеревоПодсистемУправлениеПоискомКонтекстноеМеню" id="189"/>
-				<ExtendedTooltip name="ДеревоПодсистемУправлениеПоискомРасширеннаяПодсказка" id="190"/>
+				<ContextMenu name="ДеревоПодсистемУправлениеПоискомКонтекстноеМеню" id="202"/>
+				<ExtendedTooltip name="ДеревоПодсистемУправлениеПоискомРасширеннаяПодсказка" id="203"/>
 			</SearchControlAddition>
 			<ChildItems>
 				<ColumnGroup name="ГруппаКолонок" id="83">
@@ -350,11 +351,22 @@
 			<Group>Vertical</Group>
 			<ExtendedTooltip name="ТехническаяИнформацияExtendedTooltip" id="174"/>
 			<ChildItems>
+				<UsualGroup name="Группа1" id="188">
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="189"/>
+				</UsualGroup>
 				<InputField name="Отчет" id="136">
 					<DataPath>Объект.Отчет</DataPath>
 					<OpenButton>true</OpenButton>
 					<ContextMenu name="ОтчетКонтекстноеМеню" id="137"/>
 					<ExtendedTooltip name="ОтчетExtendedTooltip" id="175"/>
+				</InputField>
+				<InputField name="КлючВарианта" id="192">
+					<DataPath>Объект.КлючВарианта</DataPath>
+					<ContextMenu name="КлючВариантаКонтекстноеМеню" id="193"/>
+					<ExtendedTooltip name="КлючВариантаРасширеннаяПодсказка" id="194"/>
 				</InputField>
 				<InputField name="ПредопределенныйВариант" id="120">
 					<DataPath>Объект.ПредопределенныйВариант</DataPath>
@@ -368,6 +380,12 @@
 					<EnableStartDrag>true</EnableStartDrag>
 					<EnableDrag>true</EnableDrag>
 					<DataPath>Объект.Размещение</DataPath>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Данные по размещению (без учета настроек предопределенного варианта)</v8:content>
+						</v8:item>
+					</Title>
 					<CommandSet>
 						<ExcludedCommand>Copy</ExcludedCommand>
 						<ExcludedCommand>SortListAsc</ExcludedCommand>
@@ -391,29 +409,29 @@
 					<ContextMenu name="РазмещениеКонтекстноеМеню" id="123"/>
 					<AutoCommandBar name="РазмещениеКоманднаяПанель" id="124"/>
 					<ExtendedTooltip name="РазмещениеExtendedTooltip" id="177"/>
-					<SearchStringAddition name="РазмещениеСтрокаПоиска" id="191">
+					<SearchStringAddition name="РазмещениеСтрокаПоиска" id="204">
 						<AdditionSource>
 							<Item>Размещение</Item>
 							<Type>SearchStringRepresentation</Type>
 						</AdditionSource>
-						<ContextMenu name="РазмещениеСтрокаПоискаКонтекстноеМеню" id="192"/>
-						<ExtendedTooltip name="РазмещениеСтрокаПоискаРасширеннаяПодсказка" id="193"/>
+						<ContextMenu name="РазмещениеСтрокаПоискаКонтекстноеМеню" id="205"/>
+						<ExtendedTooltip name="РазмещениеСтрокаПоискаРасширеннаяПодсказка" id="206"/>
 					</SearchStringAddition>
-					<ViewStatusAddition name="РазмещениеСостояниеПросмотра" id="194">
+					<ViewStatusAddition name="РазмещениеСостояниеПросмотра" id="207">
 						<AdditionSource>
 							<Item>Размещение</Item>
 							<Type>ViewStatusRepresentation</Type>
 						</AdditionSource>
-						<ContextMenu name="РазмещениеСостояниеПросмотраКонтекстноеМеню" id="195"/>
-						<ExtendedTooltip name="РазмещениеСостояниеПросмотраРасширеннаяПодсказка" id="196"/>
+						<ContextMenu name="РазмещениеСостояниеПросмотраКонтекстноеМеню" id="208"/>
+						<ExtendedTooltip name="РазмещениеСостояниеПросмотраРасширеннаяПодсказка" id="209"/>
 					</ViewStatusAddition>
-					<SearchControlAddition name="РазмещениеУправлениеПоиском" id="197">
+					<SearchControlAddition name="РазмещениеУправлениеПоиском" id="210">
 						<AdditionSource>
 							<Item>Размещение</Item>
 							<Type>SearchControl</Type>
 						</AdditionSource>
-						<ContextMenu name="РазмещениеУправлениеПоискомКонтекстноеМеню" id="198"/>
-						<ExtendedTooltip name="РазмещениеУправлениеПоискомРасширеннаяПодсказка" id="199"/>
+						<ContextMenu name="РазмещениеУправлениеПоискомКонтекстноеМеню" id="211"/>
+						<ExtendedTooltip name="РазмещениеУправлениеПоискомРасширеннаяПодсказка" id="212"/>
 					</SearchControlAddition>
 					<ChildItems>
 						<CheckBoxField name="РазмещениеИспользование" id="127">
@@ -445,6 +463,30 @@
 						</CheckBoxField>
 					</ChildItems>
 				</Table>
+				<UsualGroup name="Группа2" id="190">
+					<Group>Horizontal</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="Группа2РасширеннаяПодсказка" id="191"/>
+					<ChildItems>
+						<InputField name="НаименованияПолей" id="182">
+							<DataPath>Объект.НаименованияПолей</DataPath>
+							<TitleLocation>Top</TitleLocation>
+							<Height>3</Height>
+							<MultiLine>true</MultiLine>
+							<ContextMenu name="НаименованияПолейКонтекстноеМеню" id="183"/>
+							<ExtendedTooltip name="НаименованияПолейРасширеннаяПодсказка" id="184"/>
+						</InputField>
+						<InputField name="НаименованияПараметровИОтборов" id="185">
+							<DataPath>Объект.НаименованияПараметровИОтборов</DataPath>
+							<TitleLocation>Top</TitleLocation>
+							<Height>3</Height>
+							<MultiLine>true</MultiLine>
+							<ContextMenu name="НаименованияПараметровИОтборовКонтекстноеМеню" id="186"/>
+							<ExtendedTooltip name="НаименованияПараметровИОтборовРасширеннаяПодсказка" id="187"/>
+						</InputField>
+					</ChildItems>
+				</UsualGroup>
 			</ChildItems>
 		</UsualGroup>
 	</ChildItems>
@@ -455,17 +497,6 @@
 			</Type>
 			<MainAttribute>true</MainAttribute>
 			<SavedData>true</SavedData>
-		</Attribute>
-		<Attribute name="ЭтоНовый" id="3">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Это новый</v8:content>
-				</v8:item>
-			</Title>
-			<Type>
-				<v8:Type>xs:boolean</v8:Type>
-			</Type>
 		</Attribute>
 		<Attribute name="ПолныеПраваНаВарианты" id="4">
 			<Title>

@@ -3,8 +3,7 @@
 // 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// СЛУЖЕБНЫЙ ПРОГРАММНЫЙ ИНТЕРФЕЙС
+#Область СлужебныйПрограммныйИнтерфейс
 //
 
 // Возвращает имя события для регистрации в журнале событий контактной информации
@@ -709,6 +708,7 @@
 	Преобразователь.ЗагрузитьИзСтроки("
 		|<xsl:stylesheet version=""1.0"" xmlns:xsl=""http://www.w3.org/1999/XSL/Transform""
 		|  xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance""
+		|  xmlns:xs=""http://www.w3.org/2001/XMLSchema""
 		|  xmlns:tns=""http://v8.1c.ru/8.1/data/core""
 		|  xmlns=""http://www.v8.1c.ru/ssl/contactinfo"" 
 		|
@@ -716,17 +716,17 @@
 		|
 		|  xmlns:exsl=""http://exslt.org/common""
 		|  extension-element-prefixes=""exsl""
-		|  exclude-result-prefixes=""data""
+		|  exclude-result-prefixes=""data tns""
 		|>
 		|<xsl:output method=""xml"" omit-xml-declaration=""yes"" indent=""yes"" encoding=""utf-8""/>
 		|  " + XSLT_ШаблоныСтроковыхФункций() + "
 		|  
-		|  <xsl:variable name=""local-сountry"">РОССИЯ</xsl:variable>
+		|  <xsl:variable name=""local-country"">РОССИЯ</xsl:variable>
 		|
 		|  <xsl:variable name=""presentation"" select=""tns:Structure/tns:Property[@name='Представление']/tns:Value/text()"" />
 		|  
 		|  <xsl:template match=""/"">
-		|    <xsl:element name=""КонтактнаяИнформация"">
+		|    <КонтактнаяИнформация>
 		|
 		|      <xsl:attribute name=""Представление"">
 		|        <xsl:value-of select=""$presentation""/>
@@ -747,7 +747,7 @@
 		|        <xsl:attribute name=""Страна"">
 		|          <xsl:choose>
 		|            <xsl:when test=""0=count($country)"">
-		|              <xsl:value-of select=""$local-сountry"" />
+		|              <xsl:value-of select=""$local-country"" />
 		|            </xsl:when>
 		|            <xsl:otherwise>
 		|              <xsl:value-of select=""$country"" />
@@ -759,7 +759,7 @@
 		|          <xsl:when test=""0=count($country)"">
 		|            <xsl:apply-templates select=""/"" mode=""domestic"" />
 		|          </xsl:when>
-		|          <xsl:when test=""$country-upper=$local-сountry"">
+		|          <xsl:when test=""$country-upper=$local-country"">
 		|            <xsl:apply-templates select=""/"" mode=""domestic"" />
 		|          </xsl:when>
 		|          <xsl:otherwise>
@@ -768,7 +768,7 @@
 		|        </xsl:choose>
 		|
 		|      </xsl:element>
-		|    </xsl:element>
+		|    </КонтактнаяИнформация>
 		|  </xsl:template>
 		|  
 		|  <xsl:template match=""/"" mode=""foreign"">
@@ -838,17 +838,20 @@
 		|
 		|      <xsl:call-template name=""add-elem-number"">
 		|        <xsl:with-param name=""source"" select=""tns:Structure/tns:Property[@name='ТипДома']/tns:Value/text()"" />
-		|        <xsl:with-param name=""value"" select=""tns:Structure/tns:Property[@name='Дом']/tns:Value/text()"" />
+		|        <xsl:with-param name=""defsrc"" select=""'Дом'"" />
+		|        <xsl:with-param name=""value""  select=""tns:Structure/tns:Property[@name='Дом']/tns:Value/text()"" />
 		|      </xsl:call-template>
 		|
 		|      <xsl:call-template name=""add-elem-number"">
 		|        <xsl:with-param name=""source"" select=""tns:Structure/tns:Property[@name='ТипКорпуса']/tns:Value/text()"" />
-		|        <xsl:with-param name=""value"" select=""tns:Structure/tns:Property[@name='Корпус']/tns:Value/text()"" />
+		|        <xsl:with-param name=""defsrc"" select=""'Корпус'"" />
+		|        <xsl:with-param name=""value""  select=""tns:Structure/tns:Property[@name='Корпус']/tns:Value/text()"" />
 		|      </xsl:call-template>
 		|
 		|      <xsl:call-template name=""add-elem-number"">
 		|        <xsl:with-param name=""source"" select=""tns:Structure/tns:Property[@name='ТипКвартиры']/tns:Value/text()"" />
-		|        <xsl:with-param name=""value"" select=""tns:Structure/tns:Property[@name='Квартира']/tns:Value/text()"" />
+		|        <xsl:with-param name=""defsrc"" select=""'Квартира'"" />
+		|        <xsl:with-param name=""value""  select=""tns:Structure/tns:Property[@name='Квартира']/tns:Value/text()"" />
 		|      </xsl:call-template>
 		|    
 		|    </xsl:element>
@@ -866,18 +869,34 @@
 		|  
 		|  <xsl:template name=""add-elem-number"">
 		|    <xsl:param name=""source"" />
+		|    <xsl:param name=""defsrc"" />
 		|    <xsl:param name=""value"" />
-		|  
-		|    <xsl:if test=""0!=count($source)"">
-		|      <xsl:variable name=""type-code"" select=""$enum-codevalue-nodes/data:item[@data:title=$source]"" />
-		|      <xsl:if test=""0!=count($type-code)"">
-		|        <xsl:element name=""ДопАдрЭл"">
-		|          <xsl:element name=""Номер"">
-		|            <xsl:attribute name=""Тип""><xsl:value-of select=""$type-code"" /></xsl:attribute>
-		|            <xsl:attribute name=""Значение""><xsl:value-of select=""$value""/></xsl:attribute>
+		|
+		|    <xsl:if test=""0!=count($value)"">
+		|
+		|      <xsl:choose>
+		|        <xsl:when test=""0!=count($source)"">
+		|          <xsl:variable name=""type-code"" select=""$enum-codevalue-nodes/data:item[@data:title=$source]"" />
+		|          <xsl:element name=""ДопАдрЭл"">
+		|            <xsl:element name=""Номер"">
+		|              <xsl:attribute name=""Тип""><xsl:value-of select=""$type-code"" /></xsl:attribute>
+		|              <xsl:attribute name=""Значение""><xsl:value-of select=""$value""/></xsl:attribute>
+		|            </xsl:element>
 		|          </xsl:element>
-		|        </xsl:element>
-		|      </xsl:if>
+		|
+		|        </xsl:when>
+		|        <xsl:otherwise>
+		|          <xsl:variable name=""type-code"" select=""$enum-codevalue-nodes/data:item[@data:title=$defsrc]"" />
+		|          <xsl:element name=""ДопАдрЭл"">
+		|            <xsl:element name=""Номер"">
+		|              <xsl:attribute name=""Тип""><xsl:value-of select=""$type-code"" /></xsl:attribute>
+		|              <xsl:attribute name=""Значение""><xsl:value-of select=""$value""/></xsl:attribute>
+		|            </xsl:element>
+		|          </xsl:element>
+		|
+		|        </xsl:otherwise>
+		|      </xsl:choose>
+		|
 		|    </xsl:if>
 		|  
 		|  </xsl:template>
@@ -1170,3 +1189,4 @@
 		|";
 КонецФункции
 
+#КонецОбласти

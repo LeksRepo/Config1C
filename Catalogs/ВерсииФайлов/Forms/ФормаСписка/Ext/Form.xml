@@ -112,29 +112,29 @@
 				<Autofill>false</Autofill>
 			</AutoCommandBar>
 			<ExtendedTooltip name="СписокExtendedTooltip" id="38"/>
-			<SearchStringAddition name="СписокСтрокаПоиска" id="48">
+			<SearchStringAddition name="СписокСтрокаПоиска" id="51">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="49"/>
-				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="50"/>
+				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="52"/>
+				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="53"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокСостояниеПросмотра" id="51">
+			<ViewStatusAddition name="СписокСостояниеПросмотра" id="54">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="52"/>
-				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="53"/>
+				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="55"/>
+				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="56"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокУправлениеПоиском" id="54">
+			<SearchControlAddition name="СписокУправлениеПоиском" id="57">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="55"/>
-				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="56"/>
+				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="58"/>
+				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="59"/>
 			</SearchControlAddition>
 			<Events>
 				<Event name="Selection">СписокВыбор</Event>
@@ -192,6 +192,14 @@
 					<ContextMenu name="РасширениеКонтекстноеМеню" id="31"/>
 					<ExtendedTooltip name="РасширениеExtendedTooltip" id="47"/>
 				</LabelField>
+				<LabelField name="Ссылка" id="48">
+					<DataPath>Список.Ссылка</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="СсылкаКонтекстноеМеню" id="49"/>
+					<ExtendedTooltip name="СсылкаРасширеннаяПодсказка" id="50"/>
+				</LabelField>
 			</ChildItems>
 		</Table>
 	</ChildItems>
@@ -201,10 +209,14 @@
 				<v8:Type>cfg:DynamicList</v8:Type>
 			</Type>
 			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>Список.Ссылка</Field>
+			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
 				<QueryText>ВЫБРАТЬ
+	ВерсииФайлов.Ссылка КАК Ссылка,
 	ВерсииФайлов.НомерВерсии КАК НомерВерсии,
 	ВерсииФайлов.ФайлХранилище,
 	ВерсииФайлов.Размер,

@@ -181,23 +181,14 @@
 					<ShowTitle>false</ShowTitle>
 					<ExtendedTooltip name="ГруппаОтчетыАдминистратораРасширеннаяПодсказка" id="1717"/>
 					<ChildItems>
-						<Button name="ОтчетыАдминистратора" id="1718">
+						<Button name="ОбщаяКомандаПанельОтчетовАдминистрирование" id="1795">
 							<Type>Hyperlink</Type>
-							<CommandName>Form.Command.ОтчетыАдминистратора</CommandName>
-							<ExtendedTooltip name="ОтчетыАдминистратораРасширеннаяПодсказка" id="1719"/>
+							<CommandName>CommonCommand.ПанельОтчетовАдминистрирование</CommandName>
+							<ToolTipRepresentation>ShowBottom</ToolTipRepresentation>
+							<ExtendedTooltip name="ОбщаяКомандаПанельОтчетовАдминистрированиеРасширеннаяПодсказка" id="1796">
+								<TextColor>style:ПоясняющийТекст</TextColor>
+							</ExtendedTooltip>
 						</Button>
-						<LabelDecoration name="ПояснениеОтчетыАдминистратора" id="1720">
-							<TextColor>style:ПоясняющийТекст</TextColor>
-							<Title formatted="false">
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Отчеты по журналу регистрации и другие отчеты для администрирования программы.</v8:content>
-								</v8:item>
-							</Title>
-							<VerticalAlign>Top</VerticalAlign>
-							<ContextMenu name="ПояснениеОтчетыАдминистратораКонтекстноеМеню" id="1721"/>
-							<ExtendedTooltip name="ПояснениеОтчетыАдминистратораРасширеннаяПодсказка" id="1722"/>
-						</LabelDecoration>
 					</ChildItems>
 				</UsualGroup>
 				<UsualGroup name="Группа7" id="1730">
@@ -1450,7 +1441,7 @@
 					<ChildItems>
 						<Button name="ОбработкаГрупповоеИзменениеОбъектовГрупповоеИзменениеРеквизитов" id="1778">
 							<Type>Hyperlink</Type>
-							<CommandName>DataProcessor.ГрупповоеИзменениеОбъектов.Command.ГрупповоеИзменениеРеквизитов</CommandName>
+							<CommandName>DataProcessor.ГрупповоеИзменениеРеквизитов.Command.ГрупповоеИзменениеРеквизитов</CommandName>
 							<ExtendedTooltip name="ОбработкаГрупповоеИзменениеОбъектовГрупповоеИзменениеРеквизитовРасширеннаяПодсказка" id="1779"/>
 						</Button>
 						<LabelDecoration name="ПояснениеКОбработкеГрупповоеИзменениеОбъектов" id="1761">
@@ -1463,6 +1454,42 @@
 							</Title>
 							<ContextMenu name="ПояснениеКОбработкеГрупповоеИзменениеОбъектовКонтекстноеМеню" id="1762"/>
 							<ExtendedTooltip name="ПояснениеКОбработкеГрупповоеИзменениеОбъектовРасширеннаяПодсказка" id="1763"/>
+						</LabelDecoration>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаПоискИУдалениеДублей" id="1788">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа поиск и удаление дублей</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа поиск и удаление дублей</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаПоискИУдалениеДублейРасширеннаяПодсказка" id="1789"/>
+					<ChildItems>
+						<Button name="ПоискИУдалениеДублей" id="1790">
+							<Type>Hyperlink</Type>
+							<CommandName>Form.Command.ПоискИУдалениеДублей</CommandName>
+							<ExtendedTooltip name="ПоискИУдалениеДублейРасширеннаяПодсказка" id="1791"/>
+						</Button>
+						<LabelDecoration name="ПояснениеКПоискуИУдалениюДублей" id="1792">
+							<TextColor>style:ПоясняющийТекст</TextColor>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Поиск похожих элементов по заданным условиям сравнения</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ПояснениеКПоискуИУдалениюДублейКонтекстноеМеню" id="1793"/>
+							<ExtendedTooltip name="ПояснениеКПоискуИУдалениюДублейРасширеннаяПодсказка" id="1794"/>
 						</LabelDecoration>
 					</ChildItems>
 				</UsualGroup>
@@ -1486,6 +1513,7 @@
 				<Field>НаборКонстант.ПровайдерSMS.Ref</Field>
 				<Field>НаборКонстант.ИспользоватьРазделениеПоОбластямДанных</Field>
 				<Field>НаборКонстант.ИспользоватьПолнотекстовыйПоиск</Field>
+				<Field>НаборКонстант.ИспользоватьДополнительныеОтчетыИОбработки</Field>
 			</UseAlways>
 		</Attribute>
 		<Attribute name="РежимРаботы" id="3">
@@ -1611,21 +1639,6 @@
 			</ToolTip>
 			<Action>ОтложеннаяОбработкаДанных</Action>
 		</Command>
-		<Command name="ОтчетыАдминистратора" id="6">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Отчеты администратора</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Отчеты администратора</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Action>ОтчетыАдминистратора</Action>
-		</Command>
 		<Command name="ДополнительныеОтчетыПоАдминистрированию" id="7">
 			<Title>
 				<v8:item>
@@ -1640,6 +1653,9 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ДополнительныеОтчетыПоАдминистрированию</Action>
+			<FunctionalOptions>
+				<Item>FunctionalOption.ИспользоватьДополнительныеОтчетыИОбработки</Item>
+			</FunctionalOptions>
 		</Command>
 		<Command name="ДополнительныеОбработкиПоАдминистрированию" id="8">
 			<Title>
@@ -1655,6 +1671,9 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ДополнительныеОбработкиПоАдминистрированию</Action>
+			<FunctionalOptions>
+				<Item>FunctionalOption.ИспользоватьДополнительныеОтчетыИОбработки</Item>
+			</FunctionalOptions>
 		</Command>
 		<Command name="НастройкаОбновленияПрограммы" id="9">
 			<Title>
@@ -1685,6 +1704,21 @@
 				</v8:item>
 			</ToolTip>
 			<Action>УдалениеПомеченныхНастроитьРасписание</Action>
+		</Command>
+		<Command name="ПоискИУдалениеДублей" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поиск и удаление дублей</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Поиск и удаление дублей</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПоискИУдалениеДублей</Action>
 		</Command>
 	</Commands>
 </Form>

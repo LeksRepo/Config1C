@@ -3,7 +3,7 @@
 	<Title>
 		<v8:item>
 			<v8:lang>ru</v8:lang>
-			<v8:content>Помощник создания автономного рабочего места</v8:content>
+			<v8:content>Создание автономного рабочего места</v8:content>
 		</v8:item>
 	</Title>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
@@ -51,7 +51,7 @@
 							<Title formatted="false">
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Вас приветствует помощник создания автономного рабочего места</v8:content>
+									<v8:content>Создание автономного рабочего места</v8:content>
 								</v8:item>
 							</Title>
 							<VerticalAlign>Top</VerticalAlign>
@@ -91,7 +91,7 @@
 										<v8:item>
 											<v8:lang>ru</v8:lang>
 											<v8:content>Для автономной работы на Вашем компьютере должна быть установлена
-платформа "1С:Предприятие 8" версии &lt;ВерсияПриложения&gt;</v8:content>
+платформа "1С:Предприятие" версии &lt;ВерсияПриложения&gt;</v8:content>
 										</v8:item>
 									</Title>
 									<VerticalAlign>Center</VerticalAlign>
@@ -476,7 +476,19 @@
 											<v8:content>Автономная работа.zip (&lt;РазмерФайла&gt; Мб)</v8:content>
 										</v8:item>
 									</Title>
-									<ExtendedTooltip name="ЗагрузитьНачальныйОбразНаКомпьютерПользователяExtendedTooltip" id="261"/>
+									<ToolTipRepresentation>Button</ToolTipRepresentation>
+									<ExtendedTooltip name="ЗагрузитьНачальныйОбразНаКомпьютерПользователяExtendedTooltip" id="261">
+										<Title formatted="true">
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>При возникновении проблем скачивания файла с использованием веб-клиента можно попробовать использовать для работы тонкий клиент 1С:Предприятия.
+Для использования тонкого клиента ознакомьтесь с &lt;link АдресИнструкцииПоНастройкеТонкогоКлиента&gt;инструкцией&lt;/&gt; или обратитесь за помощью у администратору.</v8:content>
+											</v8:item>
+										</Title>
+										<Events>
+											<Event name="URLProcessing">ЗагрузитьНачальныйОбразНаКомпьютерПользователяРасширеннаяПодсказкаОбработкаНавигационнойСсылки</Event>
+										</Events>
+									</ExtendedTooltip>
 								</Button>
 							</ChildItems>
 						</UsualGroup>
@@ -1153,6 +1165,21 @@
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="АдресИнструкцииПоНастройкеТонкогоКлиента" id="17">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес инструкции по настройке тонкого клиента</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
 		<ConditionalAppearance>

@@ -46,29 +46,29 @@
 			<ContextMenu name="ВалютыКонтекстноеМеню" id="26"/>
 			<AutoCommandBar name="ВалютыКоманднаяПанель" id="27"/>
 			<ExtendedTooltip name="ВалютыExtendedTooltip" id="52"/>
-			<SearchStringAddition name="ВалютыСтрокаПоиска" id="61">
+			<SearchStringAddition name="ВалютыСтрокаПоиска" id="64">
 				<AdditionSource>
 					<Item>Валюты</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="ВалютыСтрокаПоискаКонтекстноеМеню" id="62"/>
-				<ExtendedTooltip name="ВалютыСтрокаПоискаРасширеннаяПодсказка" id="63"/>
+				<ContextMenu name="ВалютыСтрокаПоискаКонтекстноеМеню" id="65"/>
+				<ExtendedTooltip name="ВалютыСтрокаПоискаРасширеннаяПодсказка" id="66"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="ВалютыСостояниеПросмотра" id="64">
+			<ViewStatusAddition name="ВалютыСостояниеПросмотра" id="67">
 				<AdditionSource>
 					<Item>Валюты</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="ВалютыСостояниеПросмотраКонтекстноеМеню" id="65"/>
-				<ExtendedTooltip name="ВалютыСостояниеПросмотраРасширеннаяПодсказка" id="66"/>
+				<ContextMenu name="ВалютыСостояниеПросмотраКонтекстноеМеню" id="68"/>
+				<ExtendedTooltip name="ВалютыСостояниеПросмотраРасширеннаяПодсказка" id="69"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="ВалютыУправлениеПоиском" id="67">
+			<SearchControlAddition name="ВалютыУправлениеПоиском" id="70">
 				<AdditionSource>
 					<Item>Валюты</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="ВалютыУправлениеПоискомКонтекстноеМеню" id="68"/>
-				<ExtendedTooltip name="ВалютыУправлениеПоискомРасширеннаяПодсказка" id="69"/>
+				<ContextMenu name="ВалютыУправлениеПоискомКонтекстноеМеню" id="71"/>
+				<ExtendedTooltip name="ВалютыУправлениеПоискомРасширеннаяПодсказка" id="72"/>
 			</SearchControlAddition>
 			<Events>
 				<Event name="BeforeAddRow">ВалютыПередНачаломДобавления</Event>
@@ -150,6 +150,14 @@
 						</LabelField>
 					</ChildItems>
 				</ColumnGroup>
+				<LabelField name="Ссылка" id="61">
+					<DataPath>Список.Ref</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="СсылкаКонтекстноеМеню" id="62"/>
+					<ExtendedTooltip name="СсылкаРасширеннаяПодсказка" id="63"/>
+				</LabelField>
 			</ChildItems>
 		</Table>
 	</ChildItems>
@@ -159,6 +167,9 @@
 				<v8:Type>cfg:DynamicList</v8:Type>
 			</Type>
 			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>Список.Ref</Field>
+			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
@@ -168,29 +179,26 @@
 	Валюты.Наименование,
 	Валюты.НаименованиеПолное,
 	КурсыВалют.Курс,
-	ВЫБОР 
-		КОГДА КурсыВалют.Кратность = 1 ТОГДА
-			" "
-		Иначе
-			"руб. за"
-	Конец Как РубЗа,
-	ВЫБОР 
-		КОГДА КурсыВалют.Кратность = 1 ТОГДА
-			" "
-		Иначе
-			КурсыВалют.Кратность
-	Конец Как Кратность,
-	ВЫБОР 
-		КОГДА КурсыВалют.Кратность = 1 ТОГДА
-			" "
-		Иначе
-			Валюты.Наименование
-	Конец Как КраткоеНаименование
+	ВЫБОР
+		КОГДА КурсыВалют.Кратность = 1
+			ТОГДА " "
+		ИНАЧЕ "руб. за"
+	КОНЕЦ КАК РубЗа,
+	ВЫБОР
+		КОГДА КурсыВалют.Кратность = 1
+			ТОГДА " "
+		ИНАЧЕ КурсыВалют.Кратность
+	КОНЕЦ КАК Кратность,
+	ВЫБОР
+		КОГДА КурсыВалют.Кратность = 1
+			ТОГДА " "
+		ИНАЧЕ Валюты.Наименование
+	КОНЕЦ КАК КраткоеНаименование,
+	Валюты.Ссылка
 ИЗ
-	Справочник.Валюты как Валюты
-ЛЕВОЕ ВНЕШНЕЕ СОЕДИНЕНИЕ	
-	РегистрСведений.КурсыВалют.СрезПоследних(&amp;КонецПериода) КАК КурсыВалют
-ПО Валюты.Ссылка = КурсыВалют.Валюта</QueryText>
+	Справочник.Валюты КАК Валюты
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.КурсыВалют.СрезПоследних(&amp;КонецПериода, ) КАК КурсыВалют
+		ПО Валюты.Ссылка = КурсыВалют.Валюта</QueryText>
 				<MainTable>Catalog.Валюты</MainTable>
 				<ListSettings>
 					<dcsset:filter>

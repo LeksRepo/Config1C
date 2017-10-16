@@ -1907,113 +1907,6 @@
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
-		<ConditionalAppearance>
-			<dcsset:item>
-				<dcsset:selection>
-					<dcsset:item>
-						<dcsset:field>ПользователиПолноеПредставление</dcsset:field>
-					</dcsset:item>
-				</dcsset:selection>
-				<dcsset:filter>
-					<dcsset:item xsi:type="dcsset:FilterItemGroup">
-						<dcsset:groupType>OrGroup</dcsset:groupType>
-						<dcsset:item xsi:type="dcsset:FilterItemComparison">
-							<dcsset:left xsi:type="dcscor:Field">ПользователиДатЗапрета.ПолноеПредставление</dcsset:left>
-							<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
-						</dcsset:item>
-						<dcsset:item xsi:type="dcsset:FilterItemGroup">
-							<dcsset:groupType>AndGroup</dcsset:groupType>
-							<dcsset:item xsi:type="dcsset:FilterItemComparison">
-								<dcsset:left xsi:type="dcscor:Field">ПользователиДатЗапрета.Пользователь</dcsset:left>
-								<dcsset:comparisonType>NotInList</dcsset:comparisonType>
-								<dcsset:right xsi:type="dcscor:DesignTimeValue">Перечисление.ВидыНазначенияДатЗапрета.ДляВсехПользователей</dcsset:right>
-								<dcsset:right xsi:type="dcscor:DesignTimeValue">Перечисление.ВидыНазначенияДатЗапрета.ДляВсехИнформационныхБаз</dcsset:right>
-							</dcsset:item>
-							<dcsset:item xsi:type="dcsset:FilterItemComparison">
-								<dcsset:left xsi:type="dcscor:Field">ПользователиДатЗапрета.БезДатыЗапрета</dcsset:left>
-								<dcsset:comparisonType>Equal</dcsset:comparisonType>
-								<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-							</dcsset:item>
-						</dcsset:item>
-					</dcsset:item>
-				</dcsset:filter>
-				<dcsset:appearance>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>ОтметкаНезаполненного</dcscor:parameter>
-						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
-					</dcscor:item>
-				</dcsset:appearance>
-			</dcsset:item>
-			<dcsset:item>
-				<dcsset:selection>
-					<dcsset:item>
-						<dcsset:field>ДатыЗапретаПолноеПредставление</dcsset:field>
-					</dcsset:item>
-				</dcsset:selection>
-				<dcsset:filter>
-					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">ДатыЗапрета.ПолноеПредставление</dcsset:left>
-						<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
-					</dcsset:item>
-				</dcsset:filter>
-				<dcsset:appearance>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>ОтметкаНезаполненного</dcscor:parameter>
-						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
-					</dcscor:item>
-				</dcsset:appearance>
-			</dcsset:item>
-			<dcsset:item>
-				<dcsset:selection>
-					<dcsset:item>
-						<dcsset:field>ДатыЗапретаДатаЗапрета</dcsset:field>
-					</dcsset:item>
-				</dcsset:selection>
-				<dcsset:filter>
-					<dcsset:item xsi:type="dcsset:FilterItemGroup">
-						<dcsset:groupType>OrGroup</dcsset:groupType>
-						<dcsset:item xsi:type="dcsset:FilterItemGroup">
-							<dcsset:groupType>AndGroup</dcsset:groupType>
-							<dcsset:item xsi:type="dcsset:FilterItemComparison">
-								<dcsset:left xsi:type="dcscor:Field">ТекущийПользователь</dcsset:left>
-								<dcsset:comparisonType>NotInList</dcsset:comparisonType>
-								<dcsset:right xsi:type="dcscor:DesignTimeValue">Перечисление.ВидыНазначенияДатЗапрета.ДляВсехПользователей</dcsset:right>
-								<dcsset:right xsi:type="dcscor:DesignTimeValue">Перечисление.ВидыНазначенияДатЗапрета.ДляВсехИнформационныхБаз</dcsset:right>
-							</dcsset:item>
-							<dcsset:item xsi:type="dcsset:FilterItemComparison">
-								<dcsset:left xsi:type="dcscor:Field">ДатыЗапрета.ЭтоРаздел</dcsset:left>
-								<dcsset:comparisonType>Equal</dcsset:comparisonType>
-								<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-							</dcsset:item>
-							<dcsset:item xsi:type="dcsset:FilterItemComparison">
-								<dcsset:left xsi:type="dcscor:Field">ДатыЗапрета.БезДатыЗапрета</dcsset:left>
-								<dcsset:comparisonType>Equal</dcsset:comparisonType>
-								<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-							</dcsset:item>
-						</dcsset:item>
-						<dcsset:item xsi:type="dcsset:FilterItemGroup">
-							<dcsset:groupType>AndGroup</dcsset:groupType>
-							<dcsset:item xsi:type="dcsset:FilterItemComparison">
-								<dcsset:left xsi:type="dcscor:Field">ДатыЗапрета.ЭтоРаздел</dcsset:left>
-								<dcsset:comparisonType>Equal</dcsset:comparisonType>
-								<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
-							</dcsset:item>
-							<dcsset:item xsi:type="dcsset:FilterItemComparison">
-								<dcsset:left xsi:type="dcscor:Field">ДатыЗапрета.БезДатыЗапрета</dcsset:left>
-								<dcsset:comparisonType>Equal</dcsset:comparisonType>
-								<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
-							</dcsset:item>
-						</dcsset:item>
-					</dcsset:item>
-				</dcsset:filter>
-				<dcsset:appearance>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>ОтметкаНезаполненного</dcscor:parameter>
-						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
-					</dcscor:item>
-				</dcsset:appearance>
-			</dcsset:item>
-		</ConditionalAppearance>
 	</Attributes>
 	<Commands>
 		<Command name="ДатыЗапретаПоПользователям" id="1">
@@ -2037,7 +1930,7 @@
 			<Action>ДатыЗапретаПоПользователям</Action>
 			<Representation>TextPicture</Representation>
 		</Command>
-		<Command name="ПодобратьОбъекты" id="5">
+		<Command name="ПодобратьОбъекты" id="2">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -2052,7 +1945,7 @@
 			</ToolTip>
 			<Action>ПодобратьОбъекты</Action>
 		</Command>
-		<Command name="Обновить" id="4">
+		<Command name="Обновить" id="3">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -2072,7 +1965,7 @@
 			</Picture>
 			<Action>Обновить</Action>
 		</Command>
-		<Command name="ПодобратьПользователей" id="6">
+		<Command name="ПодобратьПользователей" id="4">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -2087,7 +1980,7 @@
 			</ToolTip>
 			<Action>ПодобратьПользователей</Action>
 		</Command>
-		<Command name="ДатыЗапретаПоРазделамОбъектамДляПользователей" id="2">
+		<Command name="ДатыЗапретаПоРазделамОбъектамДляПользователей" id="5">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -2108,7 +2001,7 @@
 			<Action>ДатыЗапретаПоРазделамОбъектамДляПользователей</Action>
 			<Representation>TextPicture</Representation>
 		</Command>
-		<Command name="Разделы" id="3">
+		<Command name="Разделы" id="6">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>

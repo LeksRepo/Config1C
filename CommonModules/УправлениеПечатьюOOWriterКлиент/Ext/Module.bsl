@@ -115,7 +115,7 @@
 	Параметры.SetValue(0, СвойствоЗначение(ServiceManager, "Hidden", Истина));
 #КонецЕсли
 	
-	Document = Desktop.LoadComponentFromURL("file:///" + ИмяВременногоФайла, "_blank", 0, Параметры);
+	Document = Desktop.LoadComponentFromURL("file:///" + СтрЗаменить(ИмяВременногоФайла, "\", "/"), "_blank", 0, Параметры);
 	
 #Если ВебКлиент Тогда
 	Document.getCurrentController().getFrame().getContainerWindow().setVisible(Ложь);

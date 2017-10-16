@@ -1098,7 +1098,7 @@
 						<LabelDecoration name="НадписьИтогиЧастичногоУдаления1" id="377">
 							<Height>2</Height>
 							<TextColor>style:ПоясняющийТекст</TextColor>
-							<Title formatted="true">
+							<Title formatted="false">
 								<v8:item>
 									<v8:lang>ru</v8:lang>
 									<v8:content>Для удаления объектов необходимо либо пометить на удаление все связанные с ними объекты (в списке "Места использования"), либо очистить (заменить) их ссылки в перечисленных местах использования.</v8:content>
@@ -1692,63 +1692,6 @@
 				</Column>
 			</Columns>
 		</Attribute>
-		<ConditionalAppearance>
-			<dcsset:item>
-				<dcsset:use>false</dcsset:use>
-				<dcsset:selection>
-					<dcsset:item>
-						<dcsset:field>ПричиныНеудаления</dcsset:field>
-					</dcsset:item>
-					<dcsset:item>
-						<dcsset:field>ПричиныНеудаленияПредставление</dcsset:field>
-					</dcsset:item>
-				</dcsset:selection>
-				<dcsset:filter>
-					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">СвязиНеУдаленных.УдаляемыйСсылка</dcsset:left>
-						<dcsset:comparisonType>Equal</dcsset:comparisonType>
-						<dcsset:right xsi:type="dcscor:Field">НеУдаленные.УдаляемыйСсылка</dcsset:right>
-					</dcsset:item>
-				</dcsset:filter>
-				<dcsset:appearance>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>Видимость</dcscor:parameter>
-						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
-					</dcscor:item>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>Отображать</dcscor:parameter>
-						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
-					</dcscor:item>
-				</dcsset:appearance>
-			</dcsset:item>
-			<dcsset:item>
-				<dcsset:selection>
-					<dcsset:item>
-						<dcsset:field>ПричиныНеудаления</dcsset:field>
-					</dcsset:item>
-					<dcsset:item>
-						<dcsset:field>ПричиныНеудаленияПредставление</dcsset:field>
-					</dcsset:item>
-				</dcsset:selection>
-				<dcsset:filter>
-					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">СвязиНеУдаленных.Видимость</dcsset:left>
-						<dcsset:comparisonType>Equal</dcsset:comparisonType>
-						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
-					</dcsset:item>
-				</dcsset:filter>
-				<dcsset:appearance>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>Видимость</dcscor:parameter>
-						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
-					</dcscor:item>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>Отображать</dcscor:parameter>
-						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
-					</dcscor:item>
-				</dcsset:appearance>
-			</dcsset:item>
-		</ConditionalAppearance>
 	</Attributes>
 	<Commands>
 		<Command name="КомандаДалее" id="1">
@@ -1798,7 +1741,7 @@
 			</Picture>
 			<Action>ДеревоПомеченныхНаУдалениеСнятьВсе</Action>
 		</Command>
-		<Command name="КомандаНазад" id="5">
+		<Command name="КомандаНазад" id="4">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -1807,7 +1750,7 @@
 			</Title>
 			<Action>КомандаНазад</Action>
 		</Command>
-		<Command name="ДеревоПомеченныхНаУдалениеОбновить" id="7">
+		<Command name="ДеревоПомеченныхНаУдалениеОбновить" id="5">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -1828,7 +1771,7 @@
 			<Action>ДеревоПомеченныхНаУдалениеОбновить</Action>
 			<Representation>Picture</Representation>
 		</Command>
-		<Command name="СвязиНеУдаленныхУдалить" id="9">
+		<Command name="СвязиНеУдаленныхУдалить" id="6">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -1847,7 +1790,7 @@
 			</Picture>
 			<Action>СвязиНеУдаленныхУдалить</Action>
 		</Command>
-		<Command name="НеУдаленныеЗаменитьНа" id="10">
+		<Command name="НеУдаленныеЗаменитьНа" id="7">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -1862,7 +1805,7 @@
 			</ToolTip>
 			<Action>НеУдаленныеЗаменитьНа</Action>
 		</Command>
-		<Command name="ДеревоПомеченныхНаУдалениеИзменить" id="4">
+		<Command name="ДеревоПомеченныхНаУдалениеИзменить" id="8">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -1882,7 +1825,7 @@
 			</Picture>
 			<Action>ДеревоПомеченныхНаУдалениеИзменить</Action>
 		</Command>
-		<Command name="НеУдаленныеУдалить" id="6">
+		<Command name="НеУдаленныеУдалить" id="9">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>

@@ -9,12 +9,12 @@
 				<Type>CommandBarButton</Type>
 				<DefaultButton>true</DefaultButton>
 				<CommandName>Form.Command.ОбновитьИндекс</CommandName>
-				<ExtendedTooltip name="ФормаОбновитьИндексРасширеннаяПодсказка" id="13"/>
+				<ExtendedTooltip name="ФормаОбновитьИндексExtendedTooltip" id="13"/>
 			</Button>
 			<Button name="ФормаОчиститьИндекс" id="12">
 				<Type>CommandBarButton</Type>
 				<CommandName>Form.Command.ОчиститьИндекс</CommandName>
-				<ExtendedTooltip name="ФормаОчиститьИндексРасширеннаяПодсказка" id="14"/>
+				<ExtendedTooltip name="ФормаОчиститьИндексExtendedTooltip" id="14"/>
 			</Button>
 		</ChildItems>
 	</AutoCommandBar>
@@ -27,14 +27,14 @@
 			<SkipOnInput>true</SkipOnInput>
 			<HorizontalStretch>false</HorizontalStretch>
 			<ContextMenu name="ДатаАктуальностиИндексаКонтекстноеМеню" id="6"/>
-			<ExtendedTooltip name="ДатаАктуальностиИндексаРасширеннаяПодсказка" id="15"/>
+			<ExtendedTooltip name="ДатаАктуальностиИндексаExtendedTooltip" id="15"/>
 		</LabelField>
 		<LabelField name="СтатусИндекса" id="3">
 			<DataPath>СтатусИндекса</DataPath>
 			<SkipOnInput>true</SkipOnInput>
 			<HorizontalStretch>true</HorizontalStretch>
 			<ContextMenu name="СтатусИндексаКонтекстноеМеню" id="4"/>
-			<ExtendedTooltip name="СтатусИндексаРасширеннаяПодсказка" id="16"/>
+			<ExtendedTooltip name="СтатусИндексаExtendedTooltip" id="16"/>
 		</LabelField>
 	</ChildItems>
 	<Attributes>
@@ -96,28 +96,6 @@
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
-		<ConditionalAppearance>
-			<dcsset:item>
-				<dcsset:selection>
-					<dcsset:item>
-						<dcsset:field>СтатусИндекса</dcsset:field>
-					</dcsset:item>
-				</dcsset:selection>
-				<dcsset:filter>
-					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">ИндексАктуален</dcsset:left>
-						<dcsset:comparisonType>Equal</dcsset:comparisonType>
-						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
-					</dcsset:item>
-				</dcsset:filter>
-				<dcsset:appearance>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>Шрифт</dcscor:parameter>
-						<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
-					</dcscor:item>
-				</dcsset:appearance>
-			</dcsset:item>
-		</ConditionalAppearance>
 	</Attributes>
 	<Commands>
 		<Command name="ОбновитьИндекс" id="1">

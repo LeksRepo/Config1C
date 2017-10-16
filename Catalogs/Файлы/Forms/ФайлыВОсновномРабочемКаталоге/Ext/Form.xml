@@ -117,29 +117,29 @@
 			</ContextMenu>
 			<AutoCommandBar name="СписокФайловКоманднаяПанель" id="16"/>
 			<ExtendedTooltip name="СписокФайловExtendedTooltip" id="41"/>
-			<SearchStringAddition name="СписокФайловСтрокаПоиска" id="48">
+			<SearchStringAddition name="СписокФайловСтрокаПоиска" id="54">
 				<AdditionSource>
 					<Item>СписокФайлов</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокФайловСтрокаПоискаКонтекстноеМеню" id="49"/>
-				<ExtendedTooltip name="СписокФайловСтрокаПоискаРасширеннаяПодсказка" id="50"/>
+				<ContextMenu name="СписокФайловСтрокаПоискаКонтекстноеМеню" id="55"/>
+				<ExtendedTooltip name="СписокФайловСтрокаПоискаРасширеннаяПодсказка" id="56"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокФайловСостояниеПросмотра" id="51">
+			<ViewStatusAddition name="СписокФайловСостояниеПросмотра" id="57">
 				<AdditionSource>
 					<Item>СписокФайлов</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокФайловСостояниеПросмотраКонтекстноеМеню" id="52"/>
-				<ExtendedTooltip name="СписокФайловСостояниеПросмотраРасширеннаяПодсказка" id="53"/>
+				<ContextMenu name="СписокФайловСостояниеПросмотраКонтекстноеМеню" id="58"/>
+				<ExtendedTooltip name="СписокФайловСостояниеПросмотраРасширеннаяПодсказка" id="59"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокФайловУправлениеПоиском" id="54">
+			<SearchControlAddition name="СписокФайловУправлениеПоиском" id="60">
 				<AdditionSource>
 					<Item>СписокФайлов</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокФайловУправлениеПоискомКонтекстноеМеню" id="55"/>
-				<ExtendedTooltip name="СписокФайловУправлениеПоискомРасширеннаяПодсказка" id="56"/>
+				<ContextMenu name="СписокФайловУправлениеПоискомКонтекстноеМеню" id="61"/>
+				<ExtendedTooltip name="СписокФайловУправлениеПоискомРасширеннаяПодсказка" id="62"/>
 			</SearchControlAddition>
 			<Events>
 				<Event name="BeforeDeleteRow">СписокФайловПередУдалением</Event>
@@ -233,6 +233,36 @@
 					<ContextMenu name="НаРедактированиеКонтекстноеМеню" id="18"/>
 					<ExtendedTooltip name="НаРедактированиеExtendedTooltip" id="47"/>
 				</CheckBoxField>
+				<InputField name="СписокФайловСсылкаФайл" id="48">
+					<DataPath>СписокФайлов.Файл</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ссылка (Файл)</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="СписокФайловСсылкаФайлКонтекстноеМеню" id="49"/>
+					<ExtendedTooltip name="СписокФайловСсылкаФайлРасширеннаяПодсказка" id="50"/>
+				</InputField>
+				<InputField name="СписокФайловСсылкаВерсия" id="51">
+					<DataPath>СписокФайлов.Версия</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ссылка (Версия)</v8:content>
+						</v8:item>
+					</Title>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="СписокФайловСсылкаВерсияКонтекстноеМеню" id="52"/>
+					<ExtendedTooltip name="СписокФайловСсылкаВерсияРасширеннаяПодсказка" id="53"/>
+				</InputField>
 			</ChildItems>
 		</Table>
 	</ChildItems>
@@ -340,6 +370,17 @@
 					</Title>
 					<Type>
 						<v8:Type>xs:boolean</v8:Type>
+					</Type>
+				</Column>
+				<Column name="Файл" id="8">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Файл</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>cfg:CatalogRef.Файлы</v8:Type>
 					</Type>
 				</Column>
 			</Columns>

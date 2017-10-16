@@ -6,6 +6,8 @@
 			<v8:content>Не удалось выполнить обновление</v8:content>
 		</v8:item>
 	</Title>
+	<Width>70</Width>
+	<Height>7</Height>
 	<WindowOpeningMode>LockWholeInterface</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
 	<CommandBarLocation>Bottom</CommandBarLocation>
@@ -53,19 +55,22 @@
 						</v8:item>
 					</Title>
 					<Picture>
-						<xr:Ref>CommonPicture.Предупреждение32</xr:Ref>
+						<xr:Ref>CommonPicture.Ошибка32</xr:Ref>
 						<xr:LoadTransparent>false</xr:LoadTransparent>
 					</Picture>
 					<ContextMenu name="КартинкаОшибкиКонтекстноеМеню" id="9"/>
 					<ExtendedTooltip name="КартинкаОшибкиExtendedTooltip" id="16"/>
 				</PictureDecoration>
 				<LabelDecoration name="ТекстСообщенияОбОшибке" id="1">
+					<HorizontalStretch>true</HorizontalStretch>
+					<VerticalStretch>true</VerticalStretch>
 					<Title formatted="false">
 						<v8:item>
 							<v8:lang>ru</v8:lang>
 							<v8:content>%Текст сообщения об ошибке%</v8:content>
 						</v8:item>
 					</Title>
+					<VerticalAlign>Top</VerticalAlign>
 					<ContextMenu name="ТекстСообщенияОбОшибкеКонтекстноеМеню" id="2"/>
 					<ExtendedTooltip name="ТекстСообщенияОбОшибкеExtendedTooltip" id="17"/>
 				</LabelDecoration>
@@ -78,33 +83,30 @@
 					<v8:content>Группа техническая информация о результатах обновления</v8:content>
 				</v8:item>
 			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Группа техническая информация о результатах обновления</v8:content>
-				</v8:item>
-			</ToolTip>
 			<Group>Horizontal</Group>
-			<Representation>None</Representation>
+			<Representation>NormalSeparation</Representation>
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ГруппаТехническаяИнформацияОРезультатахОбновленияExtendedTooltip" id="18"/>
 			<ChildItems>
-				<LabelDecoration name="Отступ" id="11">
-					<Width>4</Width>
-					<ContextMenu name="ОтступКонтекстноеМеню" id="12"/>
-					<ExtendedTooltip name="ОтступExtendedTooltip" id="19"/>
-				</LabelDecoration>
 				<LabelDecoration name="ТехническаяИнформацияОРезультатахОбновления" id="5">
 					<Width>34</Width>
 					<Title formatted="false">
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Подробности см. в Журнале регистрации</v8:content>
+							<v8:content>Техническая информация о результатах обновления</v8:content>
 						</v8:item>
 					</Title>
+					<ToolTipRepresentation>Button</ToolTipRepresentation>
 					<Hyperlink>true</Hyperlink>
 					<ContextMenu name="ТехническаяИнформацияОРезультатахОбновленияКонтекстноеМеню" id="6"/>
-					<ExtendedTooltip name="ТехническаяИнформацияОРезультатахОбновленияExtendedTooltip" id="20"/>
+					<ExtendedTooltip name="ТехническаяИнформацияОРезультатахОбновленияExtendedTooltip" id="20">
+						<Title formatted="false">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Техническая информация из журнала регистрации для обращения в службу технической поддержки.</v8:content>
+							</v8:item>
+						</Title>
+					</ExtendedTooltip>
 					<Events>
 						<Event name="Click">ПоказатьСведенияОРезультатахОбновленияНажатие</Event>
 					</Events>
@@ -184,7 +186,7 @@
 				</v8:StringQualifiers>
 			</Type>
 		</Parameter>
-		<Parameter name="ДатаНачалаОбновления">
+		<Parameter name="ВремяНачалаОбновления">
 			<Type>
 				<v8:Type>xs:dateTime</v8:Type>
 				<v8:DateQualifiers>
@@ -192,7 +194,7 @@
 				</v8:DateQualifiers>
 			</Type>
 		</Parameter>
-		<Parameter name="ДатаОкончанияОбновления">
+		<Parameter name="ВремяОкончанияОбновления">
 			<Type>
 				<v8:Type>xs:dateTime</v8:Type>
 				<v8:DateQualifiers>

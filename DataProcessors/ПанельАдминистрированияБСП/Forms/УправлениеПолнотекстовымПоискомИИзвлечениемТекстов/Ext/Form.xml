@@ -42,7 +42,7 @@
 			<ExtendedTooltip name="Группа1ExtendedTooltip" id="114"/>
 			<ChildItems>
 				<CheckBoxField name="ИспользоватьПолнотекстовыйПоиск" id="97">
-					<DataPath>НаборКонстант.ИспользоватьПолнотекстовыйПоиск</DataPath>
+					<DataPath>ИспользоватьПолнотекстовыйПоиск</DataPath>
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -50,11 +50,11 @@
 						</v8:item>
 					</Title>
 					<TitleLocation>Right</TitleLocation>
-					<CheckBoxType>Auto</CheckBoxType>
+					<ThreeState>true</ThreeState>
 					<ContextMenu name="ИспользоватьПолнотекстовыйПоискКонтекстноеМеню" id="98"/>
 					<ExtendedTooltip name="ИспользоватьПолнотекстовыйПоискExtendedTooltip" id="115"/>
 					<Events>
-						<Event name="OnChange">Подключаемый_ПриИзмененииРеквизита</Event>
+						<Event name="OnChange">ИспользоватьПолнотекстовыйПоискПриИзменении</Event>
 					</Events>
 				</CheckBoxField>
 				<Button name="ОбработкаАктивныеПользователи" id="102">
@@ -390,6 +390,7 @@
 			<UseAlways>
 				<Field>НаборКонстант.РежимИспользованияИнформационнойБазы.Ref</Field>
 				<Field>НаборКонстант.ПровайдерSMS.Ref</Field>
+				<Field>НаборКонстант.ИспользоватьПолнотекстовыйПоиск</Field>
 				<Field>НаборКонстант.ИзвлекатьТекстыФайловНаСервере</Field>
 			</UseAlways>
 		</Attribute>
@@ -413,28 +414,22 @@
 			</Title>
 			<Type/>
 		</Attribute>
-		<ConditionalAppearance>
-			<dcsset:item>
-				<dcsset:selection>
-					<dcsset:item>
-						<dcsset:field>СтатусИндекса</dcsset:field>
-					</dcsset:item>
-				</dcsset:selection>
-				<dcsset:filter>
-					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">ИндексАктуален</dcsset:left>
-						<dcsset:comparisonType>Equal</dcsset:comparisonType>
-						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
-					</dcsset:item>
-				</dcsset:filter>
-				<dcsset:appearance>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>Шрифт</dcscor:parameter>
-						<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
-					</dcscor:item>
-				</dcsset:appearance>
-			</dcsset:item>
-		</ConditionalAppearance>
+		<Attribute name="ИспользоватьПолнотекстовыйПоиск" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Использовать полнотекстовый поиск</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>1</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
+			</Type>
+		</Attribute>
 	</Attributes>
 	<Commands>
 		<Command name="ОбновитьИндекс" id="1">

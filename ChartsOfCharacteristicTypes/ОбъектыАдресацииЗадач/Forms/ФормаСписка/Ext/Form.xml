@@ -33,30 +33,30 @@
 			<UpdateOnDataChange>Auto</UpdateOnDataChange>
 			<ContextMenu name="Список_КонтекстноеМеню" id="2"/>
 			<AutoCommandBar name="Список_КоманднаяПанель" id="3"/>
-			<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="10"/>
-			<SearchStringAddition name="СписокСтрокаПоиска" id="11">
+			<ExtendedTooltip name="СписокExtendedTooltip" id="10"/>
+			<SearchStringAddition name="СписокСтрокаПоиска" id="16">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="12"/>
-				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="13"/>
+				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="17"/>
+				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="18"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокСостояниеПросмотра" id="14">
+			<ViewStatusAddition name="СписокСостояниеПросмотра" id="19">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="15"/>
-				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="16"/>
+				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="20"/>
+				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="21"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокУправлениеПоиском" id="17">
+			<SearchControlAddition name="СписокУправлениеПоиском" id="22">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="18"/>
-				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="19"/>
+				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="23"/>
+				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="24"/>
 			</SearchControlAddition>
 			<ChildItems>
 				<InputField name="Наименование" id="6">
@@ -70,7 +70,7 @@
 					<Width>30</Width>
 					<Wrap>false</Wrap>
 					<ContextMenu name="Наименование_КонтекстноеМеню" id="7"/>
-					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="20"/>
+					<ExtendedTooltip name="НаименованиеExtendedTooltip" id="11"/>
 				</InputField>
 				<InputField name="ТипЗначения" id="8">
 					<DataPath>Список.ValueType</DataPath>
@@ -83,7 +83,15 @@
 					</Title>
 					<Wrap>false</Wrap>
 					<ContextMenu name="ТипЗначения_КонтекстноеМеню" id="9"/>
-					<ExtendedTooltip name="ТипЗначенияРасширеннаяПодсказка" id="21"/>
+					<ExtendedTooltip name="ТипЗначенияExtendedTooltip" id="12"/>
+				</InputField>
+				<InputField name="Ссылка" id="13">
+					<DataPath>Список.Ref</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="СсылкаКонтекстноеМеню" id="14"/>
+					<ExtendedTooltip name="СсылкаРасширеннаяПодсказка" id="15"/>
 				</InputField>
 			</ChildItems>
 		</Table>
@@ -94,6 +102,9 @@
 				<v8:Type>cfg:DynamicList</v8:Type>
 			</Type>
 			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>Список.Ref</Field>
+			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>false</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>

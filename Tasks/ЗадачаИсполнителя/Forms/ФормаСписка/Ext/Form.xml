@@ -311,34 +311,32 @@
 			</ContextMenu>
 			<AutoCommandBar name="СписокКоманднаяПанель" id="3"/>
 			<ExtendedTooltip name="СписокExtendedTooltip" id="115"/>
-			<SearchStringAddition name="СписокСтрокаПоиска" id="134">
+			<SearchStringAddition name="СписокСтрокаПоиска" id="137">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="135"/>
-				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="136"/>
+				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="138"/>
+				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="139"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокСостояниеПросмотра" id="137">
+			<ViewStatusAddition name="СписокСостояниеПросмотра" id="140">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="138"/>
-				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="139"/>
+				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="141"/>
+				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="142"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокУправлениеПоиском" id="140">
+			<SearchControlAddition name="СписокУправлениеПоиском" id="143">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="141"/>
-				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="142"/>
+				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="144"/>
+				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="145"/>
 			</SearchControlAddition>
 			<Events>
-				<Event name="Selection">СписокВыбор</Event>
 				<Event name="BeforeAddRow">СписокПередНачаломДобавления</Event>
-				<Event name="BeforeRowChange">СписокПередНачаломИзменения</Event>
 			</Events>
 			<ChildItems>
 				<PictureField name="ВажностьКартинка" id="81">
@@ -526,6 +524,14 @@
 					<ContextMenu name="ПредметКонтекстноеМеню" id="52"/>
 					<ExtendedTooltip name="ПредметExtendedTooltip" id="133"/>
 				</LabelField>
+				<LabelField name="Ссылка" id="134">
+					<DataPath>Список.Ref</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="СсылкаКонтекстноеМеню" id="135"/>
+					<ExtendedTooltip name="СсылкаРасширеннаяПодсказка" id="136"/>
+				</LabelField>
 			</ChildItems>
 		</Table>
 	</ChildItems>
@@ -535,6 +541,9 @@
 				<v8:Type>cfg:DynamicList</v8:Type>
 			</Type>
 			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>Список.Ref</Field>
+			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>

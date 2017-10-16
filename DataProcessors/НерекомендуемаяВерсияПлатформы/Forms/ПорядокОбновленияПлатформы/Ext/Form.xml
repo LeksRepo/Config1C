@@ -15,31 +15,40 @@
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<HorizontalAlign>Right</HorizontalAlign>
 		<Autofill>false</Autofill>
-		<ChildItems>
-			<Button name="ФормаЗакрыть" id="7">
-				<Type>CommandBarButton</Type>
-				<Representation>Text</Representation>
-				<DefaultButton>true</DefaultButton>
-				<CommandName>Form.StandardCommand.Close</CommandName>
-				<ExtendedTooltip name="ФормаЗакрытьExtendedTooltip" id="8"/>
-			</Button>
-			<Button name="ФормаСправка" id="4">
-				<Type>CommandBarButton</Type>
-				<CommandName>Form.StandardCommand.Help</CommandName>
-				<ExtendedTooltip name="ФормаСправкаExtendedTooltip" id="9"/>
-			</Button>
-		</ChildItems>
 	</AutoCommandBar>
 	<Events>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
+		<CommandBar name="ПанельСохранитьИНапечатать" id="15">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Панель сохранить и напечатать</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Панель сохранить и напечатать</v8:content>
+				</v8:item>
+			</ToolTip>
+			<ExtendedTooltip name="ПанельСохранитьИНапечататьРасширеннаяПодсказка" id="16"/>
+			<ChildItems>
+				<Button name="ПечатьИнструкции" id="13">
+					<Type>CommandBarButton</Type>
+					<CommandName>Form.Command.ПечатьИнструкции</CommandName>
+					<ExtendedTooltip name="ПечатьИнструкцииРасширеннаяПодсказка" id="14"/>
+				</Button>
+			</ChildItems>
+		</CommandBar>
 		<HTMLDocumentField name="ПорядокОбновленияПрограммы" id="5">
 			<DataPath>ПорядокОбновленияПрограммы</DataPath>
 			<TitleLocation>None</TitleLocation>
 			<ContextMenu name="ПорядокОбновленияПрограммыКонтекстноеМеню" id="6"/>
 			<ExtendedTooltip name="ПорядокОбновленияПрограммыExtendedTooltip" id="10"/>
 			<Events>
+				<Event name="DocumentComplete">ПорядокОбновленияПрограммыДокументСформирован</Event>
 				<Event name="OnClick">ПорядокОбновленияПрограммыПриНажатии</Event>
 			</Events>
 		</HTMLDocumentField>
@@ -61,4 +70,20 @@
 			</Type>
 		</Attribute>
 	</Attributes>
+	<Commands>
+		<Command name="ПечатьИнструкции" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Печать</v8:content>
+				</v8:item>
+			</Title>
+			<Picture>
+				<xr:Ref>StdPicture.Print</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ПечатьИнструкции</Action>
+			<Representation>TextPicture</Representation>
+		</Command>
+	</Commands>
 </Form>

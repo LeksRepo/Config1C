@@ -25,23 +25,6 @@
 				<CommandName>Form.Command.АктивныеПользователи</CommandName>
 				<ExtendedTooltip name="АктивныеПользователиExtendedTooltip" id="83"/>
 			</Button>
-			<Button name="ПараметрыАдминистрированияИнформационнойБазы" id="43">
-				<Type>CommandBarButton</Type>
-				<UserVisible>
-					<xr:Common>false</xr:Common>
-					<xr:Value name="Role.ПолныеПрава">true</xr:Value>
-				</UserVisible>
-				<SkipOnInput>false</SkipOnInput>
-				<OnlyInAllActions>false</OnlyInAllActions>
-				<CommandName>Form.Command.ПараметрыАдминистрированияИнформационнойБазы</CommandName>
-				<Title>
-					<v8:item>
-						<v8:lang>ru</v8:lang>
-						<v8:content>Параметры администрирования ИБ</v8:content>
-					</v8:item>
-				</Title>
-				<ExtendedTooltip name="ПараметрыАдминистрированияИнформационнойБазыExtendedTooltip" id="84"/>
-			</Button>
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
@@ -99,65 +82,6 @@
 							<ContextMenu name="ТекстОшибкиКонтекстноеМеню" id="72"/>
 							<ExtendedTooltip name="ТекстОшибкиExtendedTooltip" id="88"/>
 						</LabelDecoration>
-						<UsualGroup name="ГруппаПараметры" id="79">
-							<Group>Horizontal</Group>
-							<Representation>None</Representation>
-							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ГруппаПараметрыExtendedTooltip" id="89"/>
-							<ChildItems>
-								<LabelDecoration name="НадписьПараметры" id="80">
-									<HorizontalStretch>true</HorizontalStretch>
-									<SkipOnInput>false</SkipOnInput>
-									<Title formatted="false">
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Возможно не настроены параметры администрирования информационной базы.</v8:content>
-										</v8:item>
-									</Title>
-									<TitleHeight>2</TitleHeight>
-									<ContextMenu name="НадписьПараметрыКонтекстноеМеню" id="81"/>
-									<ExtendedTooltip name="НадписьПараметрыExtendedTooltip" id="90"/>
-								</LabelDecoration>
-								<Button name="Настроить" id="82">
-									<Type>UsualButton</Type>
-									<CommandName>Form.Command.ПараметрыАдминистрированияИнформационнойБазы</CommandName>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Настроить</v8:content>
-										</v8:item>
-									</Title>
-									<ExtendedTooltip name="НастроитьExtendedTooltip" id="91"/>
-								</Button>
-							</ChildItems>
-						</UsualGroup>
-						<UsualGroup name="ГруппаComcntr" id="73">
-							<Group>Horizontal</Group>
-							<Representation>None</Representation>
-							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ГруппаComcntrExtendedTooltip" id="92"/>
-							<ChildItems>
-								<LabelDecoration name="НадписьОбновитьВерсиюКомпоненты" id="74">
-									<HorizontalStretch>true</HorizontalStretch>
-									<SkipOnInput>false</SkipOnInput>
-									<Title formatted="false">
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>При ошибке версии компоненты "comcntr", следует выполнить ее перерегистрацию (потребуется перезапуск сервера).</v8:content>
-										</v8:item>
-									</Title>
-									<ToolTip>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Возможно необходимо обновить версию компоненты "comcntr". При этом потребуется перезапустить сеанс 1С. Для этого нажмите здесь</v8:content>
-										</v8:item>
-									</ToolTip>
-									<TitleHeight>2</TitleHeight>
-									<ContextMenu name="НадписьОбновитьВерсиюКомпонентыКонтекстноеМеню" id="75"/>
-									<ExtendedTooltip name="НадписьОбновитьВерсиюКомпонентыExtendedTooltip" id="93"/>
-								</LabelDecoration>
-							</ChildItems>
-						</UsualGroup>
 					</ChildItems>
 				</UsualGroup>
 			</ChildItems>
@@ -280,37 +204,45 @@
 							</ContextMenu>
 							<ExtendedTooltip name="КодДляРазблокировкиExtendedTooltip" id="102"/>
 						</InputField>
-						<UsualGroup name="ГруппаЗапретитьРаботуРегламентныхЗаданий" id="67">
-							<Title>
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Группа запретить работу регламентных заданий</v8:content>
-								</v8:item>
-							</Title>
-							<Group>Vertical</Group>
-							<Representation>NormalSeparation</Representation>
-							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ГруппаЗапретитьРаботуРегламентныхЗаданийExtendedTooltip" id="103"/>
+						<Pages name="ГруппаЗапретитьРаботуРегламентныхЗаданий" id="120">
+							<HorizontalStretch>true</HorizontalStretch>
+							<PagesRepresentation>None</PagesRepresentation>
+							<ExtendedTooltip name="ГруппаЗапретитьРаботуРегламентныхЗаданийРасширеннаяПодсказка" id="121"/>
 							<ChildItems>
-								<CheckBoxField name="ЗапретитьРаботуРегламентныхЗаданий" id="44">
-									<DataPath>Объект.ЗапретитьРаботуРегламентныхЗаданий</DataPath>
-									<UserVisible>
-										<xr:Common>false</xr:Common>
-										<xr:Value name="Role.ПолныеПрава">true</xr:Value>
-									</UserVisible>
-									<Title>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Также запретить работу регламентных заданий</v8:content>
-										</v8:item>
-									</Title>
-									<TitleLocation>Right</TitleLocation>
-									<CheckBoxType>Auto</CheckBoxType>
-									<ContextMenu name="ЗапретитьРаботуРегламентныхЗаданийКонтекстноеМеню" id="45"/>
-									<ExtendedTooltip name="ЗапретитьРаботуРегламентныхЗаданийExtendedTooltip" id="104"/>
-								</CheckBoxField>
+								<Page name="ГруппаВводаПараметровАдминистрирования" id="124">
+									<ExtendedTooltip name="ГруппаВводаПараметровАдминистрированияРасширеннаяПодсказка" id="125"/>
+									<ChildItems>
+										<Button name="ПараметрыАдминистрирования" id="126">
+											<Type>Hyperlink</Type>
+											<CommandName>Form.Command.ПараметрыАдминистрирования</CommandName>
+											<ExtendedTooltip name="ПараметрыАдминистрированияРасширеннаяПодсказка" id="127"/>
+										</Button>
+									</ChildItems>
+								</Page>
+								<Page name="ГруппаУправлениеРегламентнымиЗаданиями" id="122">
+									<ExtendedTooltip name="ГруппаУправлениеРегламентнымиЗаданиямиРасширеннаяПодсказка" id="123"/>
+									<ChildItems>
+										<CheckBoxField name="ЗапретитьРаботуРегламентныхЗаданий" id="44">
+											<DataPath>Объект.ЗапретитьРаботуРегламентныхЗаданий</DataPath>
+											<UserVisible>
+												<xr:Common>false</xr:Common>
+												<xr:Value name="Role.ПолныеПрава">true</xr:Value>
+											</UserVisible>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Также запретить работу регламентных заданий</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>Right</TitleLocation>
+											<CheckBoxType>Auto</CheckBoxType>
+											<ContextMenu name="ЗапретитьРаботуРегламентныхЗаданийКонтекстноеМеню" id="45"/>
+											<ExtendedTooltip name="ЗапретитьРаботуРегламентныхЗаданийExtendedTooltip" id="104"/>
+										</CheckBoxField>
+									</ChildItems>
+								</Page>
 							</ChildItems>
-						</UsualGroup>
+						</Pages>
 					</ChildItems>
 				</Page>
 				<Page name="СтраницаСостоянияБлокировки" id="48">
@@ -532,98 +464,50 @@
 				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
-		<ConditionalAppearance>
-			<dcsset:item>
-				<dcsset:selection>
-					<dcsset:item>
-						<dcsset:field>НачальныйСтатусЗапретаРаботыПользователей</dcsset:field>
-					</dcsset:item>
-				</dcsset:selection>
-				<dcsset:filter>
-					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">СтатусЗапретаРаботыПользователей</dcsset:left>
-						<dcsset:comparisonType>Equal</dcsset:comparisonType>
-						<dcsset:right xsi:type="xs:string">Запрещено</dcsset:right>
-					</dcsset:item>
-				</dcsset:filter>
-				<dcsset:appearance>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>ЦветТекста</dcscor:parameter>
-						<dcscor:value xsi:type="v8ui:Color">style:ПоясняющийОшибкуТекст</dcscor:value>
-					</dcscor:item>
-				</dcsset:appearance>
-			</dcsset:item>
-			<dcsset:item>
-				<dcsset:selection>
-					<dcsset:item>
-						<dcsset:field>НачальныйСтатусЗапретаРаботыПользователей</dcsset:field>
-					</dcsset:item>
-				</dcsset:selection>
-				<dcsset:filter>
-					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">СтатусЗапретаРаботыПользователей</dcsset:left>
-						<dcsset:comparisonType>Equal</dcsset:comparisonType>
-						<dcsset:right xsi:type="xs:string">Запланировано</dcsset:right>
-					</dcsset:item>
-				</dcsset:filter>
-				<dcsset:appearance>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>ЦветТекста</dcscor:parameter>
-						<dcscor:value xsi:type="v8ui:Color">style:ПоясняющийОшибкуТекст</dcscor:value>
-					</dcscor:item>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:use>false</dcscor:use>
-						<dcscor:parameter>Текст</dcscor:parameter>
-						<dcscor:value xsi:nil="true"/>
-					</dcscor:item>
-				</dcsset:appearance>
-			</dcsset:item>
-			<dcsset:item>
-				<dcsset:selection>
-					<dcsset:item>
-						<dcsset:field>НачальныйСтатусЗапретаРаботыПользователей</dcsset:field>
-					</dcsset:item>
-				</dcsset:selection>
-				<dcsset:filter>
-					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">СтатусЗапретаРаботыПользователей</dcsset:left>
-						<dcsset:comparisonType>Equal</dcsset:comparisonType>
-						<dcsset:right xsi:type="xs:string">Истекло</dcsset:right>
-					</dcsset:item>
-				</dcsset:filter>
-				<dcsset:appearance>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>ЦветТекста</dcscor:parameter>
-						<dcscor:value xsi:type="v8ui:Color">style:ЗаблокированныйРеквизитЦвет</dcscor:value>
-					</dcscor:item>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:use>false</dcscor:use>
-						<dcscor:parameter>Текст</dcscor:parameter>
-						<dcscor:value xsi:nil="true"/>
-					</dcscor:item>
-				</dcsset:appearance>
-			</dcsset:item>
-			<dcsset:item>
-				<dcsset:selection>
-					<dcsset:item>
-						<dcsset:field>НачальныйСтатусЗапретаРаботыПользователей</dcsset:field>
-					</dcsset:item>
-				</dcsset:selection>
-				<dcsset:filter>
-					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">СтатусЗапретаРаботыПользователей</dcsset:left>
-						<dcsset:comparisonType>Equal</dcsset:comparisonType>
-						<dcsset:right xsi:type="xs:string">Разрешено</dcsset:right>
-					</dcsset:item>
-				</dcsset:filter>
-				<dcsset:appearance>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>ЦветТекста</dcscor:parameter>
-						<dcscor:value xsi:type="v8ui:Color">style:FormTextColor</dcscor:value>
-					</dcscor:item>
-				</dcsset:appearance>
-			</dcsset:item>
-		</ConditionalAppearance>
+		<Attribute name="ЭтоФайловаяБаза" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Это файловая база</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЭтоАдминистраторСистемы" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Это администратор системы</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ВведеныКорректныеПараметрыАдминистрирования" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Введены корректные параметры администрирования</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="СеансЗапущенБезРазделителей" id="10">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сеанс запущен без разделителей</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
 	</Attributes>
 	<Commands>
 		<Command name="Применить" id="1">
@@ -661,21 +545,6 @@
 			<Action>АктивныеПользователи</Action>
 			<Representation>TextPicture</Representation>
 		</Command>
-		<Command name="ПараметрыАдминистрированияИнформационнойБазы" id="3">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Параметры администрирования информационной базы</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Параметры администрирования информационной базы</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Action>ПараметрыАдминистрированияИнформационнойБазы</Action>
-		</Command>
 		<Command name="Остановить" id="4">
 			<Title>
 				<v8:item>
@@ -695,6 +564,21 @@
 			</Picture>
 			<Action>Остановить</Action>
 			<Representation>TextPicture</Representation>
+		</Command>
+		<Command name="ПараметрыАдминистрирования" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Включить возможность управления блокировкой регламентных заданий</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Параметры администрирования</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПараметрыАдминистрирования</Action>
 		</Command>
 	</Commands>
 </Form>

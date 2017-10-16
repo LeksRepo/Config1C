@@ -61,29 +61,29 @@
 			<ContextMenu name="СписокКонтекстноеМеню" id="2"/>
 			<AutoCommandBar name="СписокКоманднаяПанель" id="3"/>
 			<ExtendedTooltip name="СписокExtendedTooltip" id="34"/>
-			<SearchStringAddition name="СписокСтрокаПоиска" id="37">
+			<SearchStringAddition name="СписокСтрокаПоиска" id="40">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="38"/>
-				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="39"/>
+				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="41"/>
+				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="42"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокСостояниеПросмотра" id="40">
+			<ViewStatusAddition name="СписокСостояниеПросмотра" id="43">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="41"/>
-				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="42"/>
+				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="44"/>
+				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="45"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокУправлениеПоиском" id="43">
+			<SearchControlAddition name="СписокУправлениеПоиском" id="46">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="44"/>
-				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="45"/>
+				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="47"/>
+				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="48"/>
 			</SearchControlAddition>
 			<Events>
 				<Event name="BeforeAddRow">СписокПередНачаломДобавления</Event>
@@ -105,14 +105,22 @@
 					<ContextMenu name="НомерКартинкиКонтекстноеМеню" id="29"/>
 					<ExtendedTooltip name="НомерКартинкиExtendedTooltip" id="35"/>
 				</PictureField>
-				<InputField name="Ссылка" id="30">
-					<DataPath>Список.Ref</DataPath>
+				<LabelField name="Наименование" id="37">
+					<DataPath>Список.Description</DataPath>
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
 							<v8:content>Вид контактной информации</v8:content>
 						</v8:item>
 					</Title>
+					<ContextMenu name="НаименованиеКонтекстноеМеню" id="38"/>
+					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="39"/>
+				</LabelField>
+				<InputField name="Ссылка" id="30">
+					<DataPath>Список.Ref</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
 					<Wrap>false</Wrap>
 					<ContextMenu name="СсылкаКонтекстноеМеню" id="31"/>
 					<ExtendedTooltip name="СсылкаExtendedTooltip" id="36"/>

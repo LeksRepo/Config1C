@@ -6,7 +6,7 @@
 			<Button name="ФормаВключитьОтключитьРегламентноеЗадание" id="12">
 				<Type>CommandBarButton</Type>
 				<CommandName>Form.Command.ВключитьОтключитьРегламентноеЗадание</CommandName>
-				<ExtendedTooltip name="ФормаВключитьОтключитьРегламентноеЗаданиеРасширеннаяПодсказка" id="14"/>
+				<ExtendedTooltip name="ФормаВключитьОтключитьРегламентноеЗаданиеExtendedTooltip" id="14"/>
 			</Button>
 		</ChildItems>
 	</AutoCommandBar>
@@ -40,35 +40,35 @@
 					<Button name="СписокКонтекстноеМенюВключитьОтключитьРегламентноеЗадание" id="13">
 						<Type>CommandBarButton</Type>
 						<CommandName>Form.Command.ВключитьОтключитьРегламентноеЗадание</CommandName>
-						<ExtendedTooltip name="СписокКонтекстноеМенюВключитьОтключитьРегламентноеЗаданиеРасширеннаяПодсказка" id="15"/>
+						<ExtendedTooltip name="СписокКонтекстноеМенюВключитьОтключитьРегламентноеЗаданиеExtendedTooltip" id="15"/>
 					</Button>
 				</ChildItems>
 			</ContextMenu>
 			<AutoCommandBar name="СписокКоманднаяПанель" id="3"/>
-			<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="16"/>
-			<SearchStringAddition name="СписокСтрокаПоиска" id="17">
+			<ExtendedTooltip name="СписокExtendedTooltip" id="16"/>
+			<SearchStringAddition name="СписокСтрокаПоиска" id="22">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="18"/>
-				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="19"/>
+				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="23"/>
+				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="24"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокСостояниеПросмотра" id="20">
+			<ViewStatusAddition name="СписокСостояниеПросмотра" id="25">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="21"/>
-				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="22"/>
+				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="26"/>
+				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="27"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокУправлениеПоиском" id="23">
+			<SearchControlAddition name="СписокУправлениеПоиском" id="28">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="24"/>
-				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="25"/>
+				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="29"/>
+				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="30"/>
 			</SearchControlAddition>
 			<ChildItems>
 				<PictureField name="ИспользоватьРегламентноеЗадание" id="8">
@@ -81,7 +81,7 @@
 						<xr:LoadTransparent>true</xr:LoadTransparent>
 					</ValuesPicture>
 					<ContextMenu name="ИспользоватьРегламентноеЗаданиеКонтекстноеМеню" id="9"/>
-					<ExtendedTooltip name="ИспользоватьРегламентноеЗаданиеРасширеннаяПодсказка" id="26"/>
+					<ExtendedTooltip name="ИспользоватьРегламентноеЗаданиеExtendedTooltip" id="17"/>
 				</PictureField>
 				<InputField name="Наименование" id="4">
 					<DataPath>Список.Description</DataPath>
@@ -94,8 +94,16 @@
 					</Title>
 					<Wrap>false</Wrap>
 					<ContextMenu name="НаименованиеКонтекстноеМеню" id="5"/>
-					<ExtendedTooltip name="НаименованиеРасширеннаяПодсказка" id="27"/>
+					<ExtendedTooltip name="НаименованиеExtendedTooltip" id="18"/>
 				</InputField>
+				<LabelField name="Ссылка" id="19">
+					<DataPath>Список.Ref</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="СсылкаКонтекстноеМеню" id="20"/>
+					<ExtendedTooltip name="СсылкаРасширеннаяПодсказка" id="21"/>
+				</LabelField>
 			</ChildItems>
 		</Table>
 	</ChildItems>
@@ -105,6 +113,9 @@
 				<v8:Type>cfg:DynamicList</v8:Type>
 			</Type>
 			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>Список.Ref</Field>
+			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>false</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>

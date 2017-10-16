@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4">
-	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<AutoTime>CurrentOrLast</AutoTime>
 	<UsePostingMode>Auto</UsePostingMode>
@@ -238,7 +237,7 @@
 											<ExtendedTooltip name="ГруппаКонтактыНеЗаполненыExtendedTooltip" id="113"/>
 										</UsualGroup>
 										<LabelDecoration name="ДекорацияКонтактыНеЗаполнены" id="86">
-											<Width>32</Width>
+											<Width>31</Width>
 											<HorizontalStretch>false</HorizontalStretch>
 											<TextColor>style:FieldSelectionBackColor</TextColor>
 											<Title formatted="false">
@@ -252,7 +251,7 @@
 										</LabelDecoration>
 										<InputField name="Важность" id="84">
 											<DataPath>Объект.Важность</DataPath>
-											<Width>9</Width>
+											<Width>10</Width>
 											<HorizontalStretch>false</HorizontalStretch>
 											<Wrap>false</Wrap>
 											<ContextMenu name="ВажностьКонтекстноеМеню" id="85"/>
@@ -443,18 +442,17 @@
 					<ContextMenu name="ДекорацияПустаяПодвалКонтекстноеМеню" id="93"/>
 					<ExtendedTooltip name="ДекорацияПустаяПодвалExtendedTooltip" id="128"/>
 				</LabelDecoration>
-				<LabelField name="Дата" id="94">
+				<InputField name="Дата" id="94">
 					<DataPath>Объект.Date</DataPath>
-					<ReadOnly>true</ReadOnly>
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Создан</v8:content>
+							<v8:content>Дата звонка</v8:content>
 						</v8:item>
 					</Title>
 					<TitleLocation>Left</TitleLocation>
 					<HorizontalAlign>Left</HorizontalAlign>
-					<Width>13</Width>
+					<Width>14</Width>
 					<HorizontalStretch>false</HorizontalStretch>
 					<Format>
 						<v8:item>
@@ -464,7 +462,7 @@
 					</Format>
 					<ContextMenu name="ДатаКонтекстноеМеню" id="95"/>
 					<ExtendedTooltip name="ДатаExtendedTooltip" id="129"/>
-				</LabelField>
+				</InputField>
 				<LabelField name="Автор" id="96">
 					<DataPath>Объект.Автор</DataPath>
 					<ReadOnly>true</ReadOnly>
@@ -669,7 +667,7 @@
 				</Visible>
 			</Item>
 			<Item>
-				<Command>3:a2e29b53-6944-41d7-9c3a-17891f4fb451</Command>
+				<Command>3</Command>
 				<Type>Auto</Type>
 				<DefaultVisible>false</DefaultVisible>
 				<Visible>
@@ -710,6 +708,14 @@
 			</Item>
 			<Item>
 				<Command>Document.Встреча.StandardCommand.CreateBasedOn</Command>
+				<Type>Auto</Type>
+				<DefaultVisible>false</DefaultVisible>
+				<Visible>
+					<xr:Common>false</xr:Common>
+				</Visible>
+			</Item>
+			<Item>
+				<Command>Document.СообщениеSMS.StandardCommand.CreateBasedOn</Command>
 				<Type>Auto</Type>
 				<DefaultVisible>false</DefaultVisible>
 				<Visible>

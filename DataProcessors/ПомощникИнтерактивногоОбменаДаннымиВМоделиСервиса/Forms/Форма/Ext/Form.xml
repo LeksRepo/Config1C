@@ -6,6 +6,7 @@
 			<v8:content>Отправка данных в "%1"</v8:content>
 		</v8:item>
 	</Title>
+	<Width>70</Width>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
 	<Customizable>false</Customizable>
@@ -25,9 +26,11 @@
 	</CommandSet>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
+		<Event name="ChoiceProcessing">ОбработкаВыбора</Event>
 		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="BeforeClose">ПередЗакрытием</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+		<Event name="OnClose">ПриЗакрытии</Event>
 	</Events>
 	<ChildItems>
 		<Pages name="ПанельОсновная" id="3">
@@ -63,17 +66,48 @@
 					</ToolTip>
 					<ExtendedTooltip name="ИзменениеСоставаВыгрузкиExtendedTooltip" id="334"/>
 					<ChildItems>
-						<LabelDecoration name="Декорация1" id="331">
-							<Title formatted="false">
+						<UsualGroup name="ГруппаОписание" id="444">
+							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Основной состав отправляемых данных определяется общими настройками.
-Укажите, какие данные вы хотите добавить:</v8:content>
+									<v8:content>Группа описание</v8:content>
 								</v8:item>
 							</Title>
-							<ContextMenu name="Декорация1КонтекстноеМеню" id="332"/>
-							<ExtendedTooltip name="Декорация1ExtendedTooltip" id="335"/>
-						</LabelDecoration>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа описание</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>NormalSeparation</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаОписаниеРасширеннаяПодсказка" id="445"/>
+							<ChildItems>
+								<PictureDecoration name="Декорация4" id="446">
+									<Width>2</Width>
+									<Height>1</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.Информация</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Декорация4КонтекстноеМеню" id="447"/>
+									<ExtendedTooltip name="Декорация4РасширеннаяПодсказка" id="448"/>
+								</PictureDecoration>
+								<LabelDecoration name="Декорация5" id="449">
+									<VerticalStretch>false</VerticalStretch>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Состав отправляемых данных определяется автоматически по общим правилам, указанным при настройке синхронизации между приложениями.
+Дополнительно к данным, отправляемым автоматически, можно также добавить данные вручную. Однако, фактически будут отправлены только данные, удовлетворяющие ограничениям, заданным в общих правилах.</v8:content>
+										</v8:item>
+									</Title>
+									<ContextMenu name="Декорация5КонтекстноеМеню" id="450"/>
+									<ExtendedTooltip name="Декорация5РасширеннаяПодсказка" id="451"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
 						<UsualGroup name="ГруппаНастройкиОбменаДанными" id="284">
 							<Title>
 								<v8:item>
@@ -92,168 +126,390 @@
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="ГруппаНастройкиОбменаДаннымиExtendedTooltip" id="336"/>
 							<ChildItems>
-								<UsualGroup name="Группа15" id="285">
+								<UsualGroup name="ВариантыДополненияВыгрузки" id="285">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Варианты дополнения выгрузки</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Варианты дополнения выгрузки</v8:content>
+										</v8:item>
+									</ToolTip>
 									<Width>85</Width>
 									<HorizontalStretch>false</HorizontalStretch>
 									<Group>Vertical</Group>
 									<Representation>None</Representation>
 									<ShowTitle>false</ShowTitle>
-									<ExtendedTooltip name="Группа15ExtendedTooltip" id="337"/>
+									<ExtendedTooltip name="ВариантыДополненияВыгрузкиРасширеннаяПодсказка" id="337"/>
 									<ChildItems>
-										<RadioButtonField name="ДополнениеВыгрузкиВариантВыгрузки0" id="286">
-											<DataPath>ДополнениеВыгрузки.ВариантВыгрузки</DataPath>
-											<TitleLocation>None</TitleLocation>
-											<VerticalAlign>Top</VerticalAlign>
-											<RadioButtonType>Auto</RadioButtonType>
-											<ColumnsCount>1</ColumnsCount>
-											<ChoiceList>
-												<xr:Item>
-													<xr:Presentation/>
-													<xr:CheckState>0</xr:CheckState>
-													<xr:Value xsi:type="FormChoiceListDesTimeValue">
-														<Presentation>
-															<v8:item>
-																<v8:lang>ru</v8:lang>
-																<v8:content>Не добавлять. Будут отправлены только данные согласно общим настройкам.</v8:content>
-															</v8:item>
-														</Presentation>
-														<Value xsi:type="xs:decimal">0</Value>
-													</xr:Value>
-												</xr:Item>
-											</ChoiceList>
-											<ContextMenu name="ДополнениеВыгрузкиВариантВыгрузки0КонтекстноеМеню" id="287"/>
-											<ExtendedTooltip name="ДополнениеВыгрузкиВариантВыгрузки0ExtendedTooltip" id="338"/>
-											<Events>
-												<Event name="OnChange">ДополнениеВыгрузкиВариантВыгрузкиПриИзменении</Event>
-											</Events>
-										</RadioButtonField>
-										<RadioButtonField name="ДополнениеВыгрузкиВариантВыгрузки1" id="288">
-											<DataPath>ДополнениеВыгрузки.ВариантВыгрузки</DataPath>
-											<TitleLocation>None</TitleLocation>
-											<VerticalAlign>Top</VerticalAlign>
-											<RadioButtonType>Auto</RadioButtonType>
-											<ColumnsCount>1</ColumnsCount>
-											<ChoiceList>
-												<xr:Item>
-													<xr:Presentation/>
-													<xr:CheckState>0</xr:CheckState>
-													<xr:Value xsi:type="FormChoiceListDesTimeValue">
-														<Presentation>
-															<v8:item>
-																<v8:lang>ru</v8:lang>
-																<v8:content>Добавить документы:</v8:content>
-															</v8:item>
-														</Presentation>
-														<Value xsi:type="xs:decimal">1</Value>
-													</xr:Value>
-												</xr:Item>
-											</ChoiceList>
-											<ContextMenu name="ДополнениеВыгрузкиВариантВыгрузки1КонтекстноеМеню" id="289"/>
-											<ExtendedTooltip name="ДополнениеВыгрузкиВариантВыгрузки1ExtendedTooltip" id="339"/>
-											<Events>
-												<Event name="OnChange">ДополнениеВыгрузкиВариантВыгрузкиПриИзменении</Event>
-											</Events>
-										</RadioButtonField>
-										<UsualGroup name="ГруппаОтборВсеДокументы" id="290">
+										<UsualGroup name="ТиповойВариантДополненияНет" id="452">
 											<Title>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Группа отбор все документы</v8:content>
+													<v8:content>Типовой вариант дополнения нет</v8:content>
 												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Группа отбор все документы</v8:content>
+													<v8:content>Типовой вариант дополнения нет</v8:content>
 												</v8:item>
 											</ToolTip>
-											<Group>Horizontal</Group>
+											<Group>Vertical</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
-											<ExtendedTooltip name="ГруппаОтборВсеДокументыExtendedTooltip" id="340"/>
+											<ExtendedTooltip name="ТиповойВариантДополненияНетРасширеннаяПодсказка" id="453"/>
 											<ChildItems>
-												<LabelDecoration name="Декорация21" id="291">
-													<Width>3</Width>
-													<ContextMenu name="Декорация21КонтекстноеМеню" id="292"/>
-													<ExtendedTooltip name="Декорация21ExtendedTooltip" id="341"/>
-												</LabelDecoration>
-												<UsualGroup name="Группа9" id="293">
-													<HorizontalStretch>false</HorizontalStretch>
-													<Group>Vertical</Group>
+												<RadioButtonField name="ДополнениеВыгрузкиВариантВыгрузки0" id="286">
+													<DataPath>ДополнениеВыгрузки.ВариантВыгрузки</DataPath>
+													<TitleLocation>None</TitleLocation>
+													<VerticalAlign>Top</VerticalAlign>
+													<RadioButtonType>Auto</RadioButtonType>
+													<ColumnsCount>1</ColumnsCount>
+													<ChoiceList>
+														<xr:Item>
+															<xr:Presentation/>
+															<xr:CheckState>0</xr:CheckState>
+															<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																<Presentation>
+																	<v8:item>
+																		<v8:lang>ru</v8:lang>
+																		<v8:content>Не добавлять.</v8:content>
+																	</v8:item>
+																</Presentation>
+																<Value xsi:type="xs:decimal">0</Value>
+															</xr:Value>
+														</xr:Item>
+													</ChoiceList>
+													<ContextMenu name="ДополнениеВыгрузкиВариантВыгрузки0КонтекстноеМеню" id="287"/>
+													<ExtendedTooltip name="ДополнениеВыгрузкиВариантВыгрузки0ExtendedTooltip" id="338"/>
+													<Events>
+														<Event name="OnChange">ДополнениеВыгрузкиВариантВыгрузкиПриИзменении</Event>
+													</Events>
+												</RadioButtonField>
+												<UsualGroup name="Группа1" id="494">
+													<Group>Horizontal</Group>
 													<Representation>None</Representation>
 													<ShowTitle>false</ShowTitle>
-													<ExtendedTooltip name="Группа9ExtendedTooltip" id="342"/>
+													<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="495"/>
 													<ChildItems>
-														<UsualGroup name="Группа8" id="294">
-															<Group>Horizontal</Group>
+														<LabelDecoration name="Декорация1" id="499">
+															<Width>3</Width>
+															<ContextMenu name="Декорация1КонтекстноеМеню" id="500"/>
+															<ExtendedTooltip name="Декорация1РасширеннаяПодсказка" id="501"/>
+														</LabelDecoration>
+														<LabelDecoration name="ТиповойВариантДополненияНетПояснение" id="496">
+															<TextColor>style:ПоясняющийТекст</TextColor>
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Типовой вариант дополнения нет пояснение</v8:content>
+																</v8:item>
+															</Title>
+															<ContextMenu name="ТиповойВариантДополненияНетПояснениеКонтекстноеМеню" id="497"/>
+															<ExtendedTooltip name="ТиповойВариантДополненияНетПояснениеExtendedTooltip" id="498"/>
+														</LabelDecoration>
+													</ChildItems>
+												</UsualGroup>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="ТиповойВариантДополненияДокументы" id="454">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Типовой вариант дополнения документы</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Типовой вариант дополнения документы</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="ТиповойВариантДополненияДокументыРасширеннаяПодсказка" id="455"/>
+											<ChildItems>
+												<RadioButtonField name="ДополнениеВыгрузкиВариантВыгрузки1" id="288">
+													<DataPath>ДополнениеВыгрузки.ВариантВыгрузки</DataPath>
+													<TitleLocation>None</TitleLocation>
+													<VerticalAlign>Top</VerticalAlign>
+													<RadioButtonType>Auto</RadioButtonType>
+													<ColumnsCount>1</ColumnsCount>
+													<ChoiceList>
+														<xr:Item>
+															<xr:Presentation/>
+															<xr:CheckState>0</xr:CheckState>
+															<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																<Presentation>
+																	<v8:item>
+																		<v8:lang>ru</v8:lang>
+																		<v8:content>Добавить документы:</v8:content>
+																	</v8:item>
+																</Presentation>
+																<Value xsi:type="xs:decimal">1</Value>
+															</xr:Value>
+														</xr:Item>
+													</ChoiceList>
+													<ContextMenu name="ДополнениеВыгрузкиВариантВыгрузки1КонтекстноеМеню" id="289"/>
+													<ExtendedTooltip name="ДополнениеВыгрузкиВариантВыгрузки1ExtendedTooltip" id="339"/>
+													<Events>
+														<Event name="OnChange">ДополнениеВыгрузкиВариантВыгрузкиПриИзменении</Event>
+													</Events>
+												</RadioButtonField>
+												<UsualGroup name="ГруппаОтборВсеДокументы" id="290">
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Группа отбор все документы</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Группа отбор все документы</v8:content>
+														</v8:item>
+													</ToolTip>
+													<Group>Horizontal</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="ГруппаОтборВсеДокументыExtendedTooltip" id="340"/>
+													<ChildItems>
+														<LabelDecoration name="Декорация21" id="291">
+															<Width>3</Width>
+															<ContextMenu name="Декорация21КонтекстноеМеню" id="292"/>
+															<ExtendedTooltip name="Декорация21ExtendedTooltip" id="341"/>
+														</LabelDecoration>
+														<UsualGroup name="Группа9" id="293">
+															<HorizontalStretch>false</HorizontalStretch>
+															<Group>Vertical</Group>
 															<Representation>None</Representation>
 															<ShowTitle>false</ShowTitle>
-															<ExtendedTooltip name="Группа8ExtendedTooltip" id="343"/>
+															<ExtendedTooltip name="Группа9ExtendedTooltip" id="342"/>
 															<ChildItems>
-																<LabelDecoration name="Декорация11" id="295">
+																<LabelDecoration name="ТиповойВариантДополненияДокументыПояснение" id="502">
+																	<TextColor>style:ПоясняющийТекст</TextColor>
 																	<Title formatted="false">
 																		<v8:item>
 																			<v8:lang>ru</v8:lang>
-																			<v8:content>За период:</v8:content>
+																			<v8:content>Типовой вариант дополнения документы пояснение</v8:content>
 																		</v8:item>
 																	</Title>
-																	<ContextMenu name="Декорация11КонтекстноеМеню" id="296"/>
-																	<ExtendedTooltip name="Декорация11ExtendedTooltip" id="344"/>
+																	<ContextMenu name="ТиповойВариантДополненияДокументыПояснениеКонтекстноеМеню" id="503"/>
+																	<ExtendedTooltip name="ТиповойВариантДополненияДокументыПояснениеExtendedTooltip" id="504"/>
 																</LabelDecoration>
-																<InputField name="ДополнениеВыгрузкиОбщийПериодДокументов" id="297">
-																	<DataPath>ДополнениеВыгрузки.ПериодОтбораВсехДокументов</DataPath>
-																	<TitleLocation>None</TitleLocation>
-																	<Width>35</Width>
-																	<HorizontalStretch>false</HorizontalStretch>
-																	<ClearButton>true</ClearButton>
-																	<ContextMenu name="ДополнениеВыгрузкиОбщийПериодДокументовКонтекстноеМеню" id="298"/>
-																	<ExtendedTooltip name="ДополнениеВыгрузкиОбщийПериодДокументовExtendedTooltip" id="345"/>
-																	<Events>
-																		<Event name="ChoiceProcessing">ДополнениеВыгрузкиОбщийПериодДокументовОбработкаВыбора</Event>
-																	</Events>
-																</InputField>
+																<UsualGroup name="Группа8" id="294">
+																	<Group>Horizontal</Group>
+																	<Representation>None</Representation>
+																	<ShowTitle>false</ShowTitle>
+																	<ExtendedTooltip name="Группа8ExtendedTooltip" id="343"/>
+																	<ChildItems>
+																		<LabelDecoration name="Декорация11" id="295">
+																			<Title formatted="false">
+																				<v8:item>
+																					<v8:lang>ru</v8:lang>
+																					<v8:content>За период:</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ContextMenu name="Декорация11КонтекстноеМеню" id="296"/>
+																			<ExtendedTooltip name="Декорация11ExtendedTooltip" id="344"/>
+																		</LabelDecoration>
+																		<InputField name="ДополнениеВыгрузкиОбщийПериодДокументов" id="297">
+																			<DataPath>ДополнениеВыгрузки.ПериодОтбораВсехДокументов</DataPath>
+																			<TitleLocation>None</TitleLocation>
+																			<Width>35</Width>
+																			<HorizontalStretch>false</HorizontalStretch>
+																			<ClearButton>true</ClearButton>
+																			<ContextMenu name="ДополнениеВыгрузкиОбщийПериодДокументовКонтекстноеМеню" id="298"/>
+																			<ExtendedTooltip name="ДополнениеВыгрузкиОбщийПериодДокументовExtendedTooltip" id="345"/>
+																		</InputField>
+																	</ChildItems>
+																</UsualGroup>
+																<UsualGroup name="Группа10" id="299">
+																	<HorizontalStretch>true</HorizontalStretch>
+																	<Group>Horizontal</Group>
+																	<Representation>None</Representation>
+																	<ShowTitle>false</ShowTitle>
+																	<ExtendedTooltip name="Группа10ExtendedTooltip" id="346"/>
+																	<ChildItems>
+																		<LabelDecoration name="Декорация13" id="300">
+																			<Title formatted="false">
+																				<v8:item>
+																					<v8:lang>ru</v8:lang>
+																					<v8:content>С отбором:</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ContextMenu name="Декорация13КонтекстноеМеню" id="301"/>
+																			<ExtendedTooltip name="Декорация13ExtendedTooltip" id="347"/>
+																		</LabelDecoration>
+																		<LabelDecoration name="ДополнениеВыгрузкиОбщийОтборДокументов" id="302">
+																			<Height>1</Height>
+																			<Title formatted="false">
+																				<v8:item>
+																					<v8:lang>ru</v8:lang>
+																					<v8:content>Все документы</v8:content>
+																				</v8:item>
+																			</Title>
+																			<Hyperlink>true</Hyperlink>
+																			<TitleHeight>1</TitleHeight>
+																			<ContextMenu name="ДополнениеВыгрузкиОбщийОтборДокументовКонтекстноеМеню" id="303"/>
+																			<ExtendedTooltip name="ДополнениеВыгрузкиОбщийОтборДокументовExtendedTooltip" id="348"/>
+																			<Events>
+																				<Event name="Click">ДополнениеВыгрузкиОбщийОтборДокументовНажатие</Event>
+																			</Events>
+																		</LabelDecoration>
+																		<Button name="ДополнениеВыгрузкиОчисткаОбщегоОтбора" id="304">
+																			<Type>UsualButton</Type>
+																			<Representation>Picture</Representation>
+																			<Width>2</Width>
+																			<Height>1</Height>
+																			<CommandName>Form.Command.ДополнениеВыгрузкиОчисткаОбщегоОтбора</CommandName>
+																			<ExtendedTooltip name="ДополнениеВыгрузкиОчисткаОбщегоОтбораExtendedTooltip" id="349"/>
+																		</Button>
+																	</ChildItems>
+																</UsualGroup>
 															</ChildItems>
 														</UsualGroup>
-														<UsualGroup name="Группа10" id="299">
-															<HorizontalStretch>true</HorizontalStretch>
+													</ChildItems>
+												</UsualGroup>
+											</ChildItems>
+										</UsualGroup>
+										<UsualGroup name="ТиповойВариантДополненияПроизвольный" id="456">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Типовой вариант дополнения произвольный</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Типовой вариант дополнения произвольный</v8:content>
+												</v8:item>
+											</ToolTip>
+											<Group>Vertical</Group>
+											<Representation>None</Representation>
+											<ShowTitle>false</ShowTitle>
+											<ExtendedTooltip name="ТиповойВариантДополненияПроизвольныйРасширеннаяПодсказка" id="457"/>
+											<ChildItems>
+												<RadioButtonField name="ДополнениеВыгрузкиВариантВыгрузки2" id="305">
+													<DataPath>ДополнениеВыгрузки.ВариантВыгрузки</DataPath>
+													<TitleLocation>None</TitleLocation>
+													<VerticalAlign>Top</VerticalAlign>
+													<RadioButtonType>Auto</RadioButtonType>
+													<ColumnsCount>1</ColumnsCount>
+													<ChoiceList>
+														<xr:Item>
+															<xr:Presentation/>
+															<xr:CheckState>0</xr:CheckState>
+															<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																<Presentation>
+																	<v8:item>
+																		<v8:lang>ru</v8:lang>
+																		<v8:content>Добавить данные:</v8:content>
+																	</v8:item>
+																</Presentation>
+																<Value xsi:type="xs:decimal">2</Value>
+															</xr:Value>
+														</xr:Item>
+													</ChoiceList>
+													<ContextMenu name="ДополнениеВыгрузкиВариантВыгрузки2КонтекстноеМеню" id="306"/>
+													<ExtendedTooltip name="ДополнениеВыгрузкиВариантВыгрузки2ExtendedTooltip" id="350"/>
+													<Events>
+														<Event name="OnChange">ДополнениеВыгрузкиВариантВыгрузкиПриИзменении</Event>
+													</Events>
+												</RadioButtonField>
+												<UsualGroup name="Группа14" id="505">
+													<Group>Horizontal</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="Группа14РасширеннаяПодсказка" id="506"/>
+													<ChildItems>
+														<LabelDecoration name="Декорация27" id="507">
+															<Width>3</Width>
+															<ContextMenu name="Декорация27КонтекстноеМеню" id="508"/>
+															<ExtendedTooltip name="Декорация27РасширеннаяПодсказка" id="509"/>
+														</LabelDecoration>
+														<LabelDecoration name="ТиповойВариантДополненияПроизвольныйПояснение" id="510">
+															<TextColor>style:ПоясняющийТекст</TextColor>
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Типовой вариант дополнения произвольный пояснение</v8:content>
+																</v8:item>
+															</Title>
+															<ContextMenu name="ТиповойВариантДополненияПроизвольныйПояснениеКонтекстноеМеню" id="511"/>
+															<ExtendedTooltip name="ТиповойВариантДополненияПроизвольныйПояснениеExtendedTooltip" id="512"/>
+														</LabelDecoration>
+													</ChildItems>
+												</UsualGroup>
+												<UsualGroup name="ГруппаОтборДетальный" id="307">
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Группа отбор детальный</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Группа отбор детальный</v8:content>
+														</v8:item>
+													</ToolTip>
+													<HorizontalStretch>true</HorizontalStretch>
+													<Group>Horizontal</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="ГруппаОтборДетальныйExtendedTooltip" id="351"/>
+													<ChildItems>
+														<LabelDecoration name="Декорация22" id="308">
+															<Width>3</Width>
+															<ContextMenu name="Декорация22КонтекстноеМеню" id="309"/>
+															<ExtendedTooltip name="Декорация22ExtendedTooltip" id="352"/>
+														</LabelDecoration>
+														<LabelDecoration name="Декорация23" id="310">
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>С отбором:</v8:content>
+																</v8:item>
+															</Title>
+															<ContextMenu name="Декорация23КонтекстноеМеню" id="311"/>
+															<ExtendedTooltip name="Декорация23ExtendedTooltip" id="353"/>
+														</LabelDecoration>
+														<UsualGroup name="Группа11" id="312">
 															<Group>Horizontal</Group>
 															<Representation>None</Representation>
 															<ShowTitle>false</ShowTitle>
-															<ExtendedTooltip name="Группа10ExtendedTooltip" id="346"/>
+															<ExtendedTooltip name="Группа11ExtendedTooltip" id="354"/>
 															<ChildItems>
-																<LabelDecoration name="Декорация13" id="300">
-																	<Title formatted="false">
-																		<v8:item>
-																			<v8:lang>ru</v8:lang>
-																			<v8:content>С отбором:</v8:content>
-																		</v8:item>
-																	</Title>
-																	<ContextMenu name="Декорация13КонтекстноеМеню" id="301"/>
-																	<ExtendedTooltip name="Декорация13ExtendedTooltip" id="347"/>
-																</LabelDecoration>
-																<LabelDecoration name="ДополнениеВыгрузкиОбщийОтборДокументов" id="302">
+																<LabelDecoration name="ДополнениеВыгрузкиДетальныйОтбор" id="313">
 																	<Height>1</Height>
 																	<Title formatted="false">
 																		<v8:item>
 																			<v8:lang>ru</v8:lang>
-																			<v8:content>Все документы</v8:content>
+																			<v8:content>Дополнительные данные не выбраны</v8:content>
 																		</v8:item>
 																	</Title>
 																	<Hyperlink>true</Hyperlink>
-																	<TitleHeight>1</TitleHeight>
-																	<ContextMenu name="ДополнениеВыгрузкиОбщийОтборДокументовКонтекстноеМеню" id="303"/>
-																	<ExtendedTooltip name="ДополнениеВыгрузкиОбщийОтборДокументовExtendedTooltip" id="348"/>
+																	<ContextMenu name="ДополнениеВыгрузкиДетальныйОтборКонтекстноеМеню" id="314"/>
+																	<ExtendedTooltip name="ДополнениеВыгрузкиДетальныйОтборExtendedTooltip" id="355"/>
 																	<Events>
-																		<Event name="Click">ДополнениеВыгрузкиОбщийОтборДокументовНажатие</Event>
+																		<Event name="Click">ДополнениеВыгрузкиДетальныйОтборНажатие</Event>
 																	</Events>
 																</LabelDecoration>
-																<Button name="ДополнениеВыгрузкиОчисткаОбщегоОтбора" id="304">
+																<Button name="ДополнениеВыгрузкиОчисткаДетальногоОтбора" id="315">
 																	<Type>UsualButton</Type>
 																	<Representation>Picture</Representation>
 																	<Width>2</Width>
 																	<Height>1</Height>
-																	<CommandName>Form.Command.ДополнениеВыгрузкиОчисткаОбщегоОтбора</CommandName>
-																	<ExtendedTooltip name="ДополнениеВыгрузкиОчисткаОбщегоОтбораExtendedTooltip" id="349"/>
+																	<CommandName>Form.Command.ДополнениеВыгрузкиОчисткаДетальногоОтбора</CommandName>
+																	<ExtendedTooltip name="ДополнениеВыгрузкиОчисткаДетальногоОтбораExtendedTooltip" id="356"/>
 																</Button>
 															</ChildItems>
 														</UsualGroup>
@@ -261,96 +517,182 @@
 												</UsualGroup>
 											</ChildItems>
 										</UsualGroup>
-										<RadioButtonField name="ДополнениеВыгрузкиВариантВыгрузки2" id="305">
-											<DataPath>ДополнениеВыгрузки.ВариантВыгрузки</DataPath>
-											<TitleLocation>None</TitleLocation>
-											<VerticalAlign>Top</VerticalAlign>
-											<RadioButtonType>Auto</RadioButtonType>
-											<ColumnsCount>1</ColumnsCount>
-											<ChoiceList>
-												<xr:Item>
-													<xr:Presentation/>
-													<xr:CheckState>0</xr:CheckState>
-													<xr:Value xsi:type="FormChoiceListDesTimeValue">
-														<Presentation>
-															<v8:item>
-																<v8:lang>ru</v8:lang>
-																<v8:content>Добавить данные:</v8:content>
-															</v8:item>
-														</Presentation>
-														<Value xsi:type="xs:decimal">2</Value>
-													</xr:Value>
-												</xr:Item>
-											</ChoiceList>
-											<ContextMenu name="ДополнениеВыгрузкиВариантВыгрузки2КонтекстноеМеню" id="306"/>
-											<ExtendedTooltip name="ДополнениеВыгрузкиВариантВыгрузки2ExtendedTooltip" id="350"/>
-											<Events>
-												<Event name="OnChange">ДополнениеВыгрузкиВариантВыгрузкиПриИзменении</Event>
-											</Events>
-										</RadioButtonField>
-										<UsualGroup name="ГруппаОтборДетальный" id="307">
+										<UsualGroup name="НастраиваемыйВариантДополнения" id="458">
 											<Title>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Группа отбор детальный</v8:content>
+													<v8:content>Настраиваемый вариант дополнения</v8:content>
 												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Группа отбор детальный</v8:content>
+													<v8:content>Настраиваемый вариант дополнения</v8:content>
 												</v8:item>
 											</ToolTip>
-											<HorizontalStretch>true</HorizontalStretch>
-											<Group>Horizontal</Group>
+											<Group>Vertical</Group>
 											<Representation>None</Representation>
 											<ShowTitle>false</ShowTitle>
-											<ExtendedTooltip name="ГруппаОтборДетальныйExtendedTooltip" id="351"/>
+											<ExtendedTooltip name="НастраиваемыйВариантДополненияExtendedTooltip" id="459"/>
 											<ChildItems>
-												<LabelDecoration name="Декорация22" id="308">
-													<Width>3</Width>
-													<ContextMenu name="Декорация22КонтекстноеМеню" id="309"/>
-													<ExtendedTooltip name="Декорация22ExtendedTooltip" id="352"/>
-												</LabelDecoration>
-												<LabelDecoration name="Декорация23" id="310">
+												<RadioButtonField name="ДополнениеВыгрузкиВариантВыгрузкиУзел" id="460">
+													<DataPath>ДополнениеВыгрузки.ВариантВыгрузки</DataPath>
+													<TitleLocation>None</TitleLocation>
+													<VerticalAlign>Top</VerticalAlign>
+													<RadioButtonType>Auto</RadioButtonType>
+													<ColumnsCount>1</ColumnsCount>
+													<ChoiceList>
+														<xr:Item>
+															<xr:Presentation/>
+															<xr:CheckState>0</xr:CheckState>
+															<xr:Value xsi:type="FormChoiceListDesTimeValue">
+																<Presentation>
+																	<v8:item>
+																		<v8:lang>ru</v8:lang>
+																		<v8:content>Данные по настройкам узла:</v8:content>
+																	</v8:item>
+																</Presentation>
+																<Value xsi:type="xs:decimal">3</Value>
+															</xr:Value>
+														</xr:Item>
+													</ChoiceList>
+													<ContextMenu name="ДополнениеВыгрузкиВариантВыгрузкиУзелКонтекстноеМеню" id="461"/>
+													<ExtendedTooltip name="ДополнениеВыгрузкиВариантВыгрузкиУзелExtendedTooltip" id="462"/>
+													<Events>
+														<Event name="OnChange">ДополнениеВыгрузкиВариантВыгрузкиПриИзменении</Event>
+													</Events>
+												</RadioButtonField>
+												<LabelDecoration name="ДополнениеВыгрузкиВариантВыгрузкиУзелСтрокой" id="463">
+													<Visible>false</Visible>
 													<Title formatted="false">
 														<v8:item>
 															<v8:lang>ru</v8:lang>
-															<v8:content>С отбором:</v8:content>
+															<v8:content>Дополнение выгрузки вариант выгрузки узел строкой</v8:content>
 														</v8:item>
 													</Title>
-													<ContextMenu name="Декорация23КонтекстноеМеню" id="311"/>
-													<ExtendedTooltip name="Декорация23ExtendedTooltip" id="353"/>
+													<ContextMenu name="ДополнениеВыгрузкиВариантВыгрузкиУзелСтрокойКонтекстноеМеню" id="464"/>
+													<ExtendedTooltip name="ДополнениеВыгрузкиВариантВыгрузкиУзелСтрокойExtendedTooltip" id="465"/>
 												</LabelDecoration>
-												<UsualGroup name="Группа11" id="312">
+												<UsualGroup name="ГруппаОтборНастраиваемый" id="466">
+													<Title>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Группа отбор настраиваемый</v8:content>
+														</v8:item>
+													</Title>
+													<ToolTip>
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Группа отбор настраиваемый</v8:content>
+														</v8:item>
+													</ToolTip>
 													<Group>Horizontal</Group>
 													<Representation>None</Representation>
 													<ShowTitle>false</ShowTitle>
-													<ExtendedTooltip name="Группа11ExtendedTooltip" id="354"/>
+													<ExtendedTooltip name="ГруппаОтборНастраиваемыйExtendedTooltip" id="467"/>
 													<ChildItems>
-														<LabelDecoration name="ДополнениеВыгрузкиДетальныйОтбор" id="313">
-															<Height>1</Height>
-															<Title formatted="false">
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>Дополнительные данные не выбраны</v8:content>
-																</v8:item>
-															</Title>
-															<Hyperlink>true</Hyperlink>
-															<ContextMenu name="ДополнениеВыгрузкиДетальныйОтборКонтекстноеМеню" id="314"/>
-															<ExtendedTooltip name="ДополнениеВыгрузкиДетальныйОтборExtendedTooltip" id="355"/>
-															<Events>
-																<Event name="Click">ДополнениеВыгрузкиДетальныйОтборНажатие</Event>
-															</Events>
+														<LabelDecoration name="ДекорацияОтступГруппыНастраиваемый" id="468">
+															<Width>3</Width>
+															<ContextMenu name="ДекорацияОтступГруппыНастраиваемыйКонтекстноеМеню" id="469"/>
+															<ExtendedTooltip name="ДекорацияОтступГруппыНастраиваемыйExtendedTooltip" id="470"/>
 														</LabelDecoration>
-														<Button name="ДополнениеВыгрузкиОчисткаДетальногоОтбора" id="315">
-															<Type>UsualButton</Type>
-															<Representation>Picture</Representation>
-															<Width>2</Width>
-															<Height>1</Height>
-															<CommandName>Form.Command.ДополнениеВыгрузкиОчисткаДетальногоОтбора</CommandName>
-															<ExtendedTooltip name="ДополнениеВыгрузкиОчисткаДетальногоОтбораExtendedTooltip" id="356"/>
-														</Button>
+														<UsualGroup name="Группа15" id="471">
+															<Group>Vertical</Group>
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="Группа15ExtendedTooltip" id="472"/>
+															<ChildItems>
+																<LabelDecoration name="НастраиваемыйВариантДополненияПояснение" id="473">
+																	<TextColor>style:ПоясняющийТекст</TextColor>
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Настраиваемый вариант дополнения пояснение</v8:content>
+																		</v8:item>
+																	</Title>
+																	<ContextMenu name="НастраиваемыйВариантДополненияПояснениеКонтекстноеМеню" id="474"/>
+																	<ExtendedTooltip name="НастраиваемыйВариантДополненияПояснениеExtendedTooltip" id="475"/>
+																</LabelDecoration>
+																<UsualGroup name="Группа6" id="476">
+																	<Group>Horizontal</Group>
+																	<Representation>None</Representation>
+																	<ShowTitle>false</ShowTitle>
+																	<ExtendedTooltip name="Группа6ExtendedTooltip" id="477"/>
+																	<ChildItems>
+																		<UsualGroup name="ГруппаПериодВыгрузкиСценарийУзла" id="478">
+																			<Title>
+																				<v8:item>
+																					<v8:lang>ru</v8:lang>
+																					<v8:content>Группа период выгрузки сценарий узла</v8:content>
+																				</v8:item>
+																			</Title>
+																			<ToolTip>
+																				<v8:item>
+																					<v8:lang>ru</v8:lang>
+																					<v8:content>Группа период выгрузки сценарий узла</v8:content>
+																				</v8:item>
+																			</ToolTip>
+																			<HorizontalStretch>false</HorizontalStretch>
+																			<Group>Horizontal</Group>
+																			<Representation>None</Representation>
+																			<ShowTitle>false</ShowTitle>
+																			<ExtendedTooltip name="ГруппаПериодВыгрузкиСценарийУзлаExtendedTooltip" id="479"/>
+																			<ChildItems>
+																				<LabelDecoration name="Декорация16" id="480">
+																					<Title formatted="false">
+																						<v8:item>
+																							<v8:lang>ru</v8:lang>
+																							<v8:content>За период:</v8:content>
+																						</v8:item>
+																					</Title>
+																					<ContextMenu name="Декорация16КонтекстноеМеню" id="481"/>
+																					<ExtendedTooltip name="Декорация16ExtendedTooltip" id="482"/>
+																				</LabelDecoration>
+																				<InputField name="ДополнениеВыгрузкиПериодОтбораСценарияУзла" id="483">
+																					<DataPath>ДополнениеВыгрузки.ПериодОтбораСценарияУзла</DataPath>
+																					<TitleLocation>None</TitleLocation>
+																					<Width>29</Width>
+																					<HorizontalStretch>false</HorizontalStretch>
+																					<ClearButton>false</ClearButton>
+																					<ContextMenu name="ДополнениеВыгрузкиПериодОтбораСценарияУзлаКонтекстноеМеню" id="484"/>
+																					<ExtendedTooltip name="ДополнениеВыгрузкиПериодОтбораСценарияУзлаExtendedTooltip" id="485"/>
+																					<Events>
+																						<Event name="OnChange">ДополнениеВыгрузкиПериодОтбораСценарияУзлаПриИзменении</Event>
+																						<Event name="Clearing">ДополнениеВыгрузкиПериодОтбораСценарияУзлаОчистка</Event>
+																					</Events>
+																				</InputField>
+																			</ChildItems>
+																		</UsualGroup>
+																	</ChildItems>
+																</UsualGroup>
+																<InputField name="ДополнениеВыгрузкиПредставлениеОтбораСценарияУзла" id="488">
+																	<DataPath>ДополнениеВыгрузки.ПредставлениеОтбораСценарияУзла</DataPath>
+																	<TitleLocation>None</TitleLocation>
+																	<Width>50</Width>
+																	<Height>3</Height>
+																	<HorizontalStretch>false</HorizontalStretch>
+																	<MultiLine>true</MultiLine>
+																	<TextEdit>false</TextEdit>
+																	<BackColor>style:FormBackColor</BackColor>
+																	<ContextMenu name="ДополнениеВыгрузкиПредставлениеОтбораСценарияУзлаКонтекстноеМеню" id="489"/>
+																	<ExtendedTooltip name="ДополнениеВыгрузкиПредставлениеОтбораСценарияУзлаExtendedTooltip" id="490"/>
+																</InputField>
+																<LabelDecoration name="ДополнениеВыгрузкиОтборПоСценариюУзла" id="491">
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Изменить параметры отбора</v8:content>
+																		</v8:item>
+																	</Title>
+																	<Hyperlink>true</Hyperlink>
+																	<ContextMenu name="ДополнениеВыгрузкиОтборПоСценариюУзлаКонтекстноеМеню" id="492"/>
+																	<ExtendedTooltip name="ДополнениеВыгрузкиОтборПоСценариюУзлаРасширеннаяПодсказка" id="493"/>
+																	<Events>
+																		<Event name="Click">ДополнениеВыгрузкиОтборПоСценариюУзлаНажатие</Event>
+																	</Events>
+																</LabelDecoration>
+															</ChildItems>
+														</UsualGroup>
 													</ChildItems>
 												</UsualGroup>
 											</ChildItems>
@@ -364,53 +706,47 @@
 							<ContextMenu name="Декорация24КонтекстноеМеню" id="317"/>
 							<ExtendedTooltip name="Декорация24ExtendedTooltip" id="357"/>
 						</LabelDecoration>
-						<UsualGroup name="Группа12" id="318">
-							<Group>Horizontal</Group>
-							<Representation>NormalSeparation</Representation>
+						<UsualGroup name="ГруппаЗагрузкаТиповыхВариантовНастроек" id="318">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа загрузка типовых вариантов настроек</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа загрузка типовых вариантов настроек</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Vertical</Group>
+							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="Группа12ExtendedTooltip" id="358"/>
+							<ExtendedTooltip name="ГруппаЗагрузкаТиповыхВариантовНастроекРасширеннаяПодсказка" id="358"/>
 							<ChildItems>
+								<Button name="ДополнениеВыгрузкиСоставВыгрузки" id="320">
+									<Type>Hyperlink</Type>
+									<Representation>PictureAndText</Representation>
+									<CommandName>Form.Command.ДополнениеВыгрузкиСоставВыгрузки</CommandName>
+									<ExtendedTooltip name="ДополнениеВыгрузкиСоставВыгрузкиExtendedTooltip" id="360"/>
+								</Button>
 								<UsualGroup name="Группа13" id="319">
-									<Group>Vertical</Group>
+									<Group>Horizontal</Group>
 									<Representation>None</Representation>
 									<ShowTitle>false</ShowTitle>
 									<ExtendedTooltip name="Группа13ExtendedTooltip" id="359"/>
 									<ChildItems>
-										<Button name="ДополнениеВыгрузкиСоставВыгрузки" id="320">
-											<Type>UsualButton</Type>
-											<Representation>PictureAndText</Representation>
-											<CommandName>Form.Command.ДополнениеВыгрузкиСоставВыгрузки</CommandName>
-											<ExtendedTooltip name="ДополнениеВыгрузкиСоставВыгрузкиExtendedTooltip" id="360"/>
-										</Button>
 										<Button name="ДополнениеВыгрузкиИсторияОтборов" id="321">
 											<Type>UsualButton</Type>
 											<Representation>PictureAndText</Representation>
 											<CommandName>Form.Command.ДополнениеВыгрузкиИсторияОтборов</CommandName>
 											<ExtendedTooltip name="ДополнениеВыгрузкиИсторияОтборовExtendedTooltip" id="361"/>
 										</Button>
-									</ChildItems>
-								</UsualGroup>
-								<UsualGroup name="Группа14" id="322">
-									<Group>Vertical</Group>
-									<Representation>None</Representation>
-									<ShowTitle>false</ShowTitle>
-									<ExtendedTooltip name="Группа14ExtendedTooltip" id="362"/>
-									<ChildItems>
-										<LabelDecoration name="Декорация6" id="323">
-											<Title formatted="false">
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Открыть отчет по составу отправляемых данных. </v8:content>
-												</v8:item>
-											</Title>
-											<ContextMenu name="Декорация6КонтекстноеМеню" id="324"/>
-											<ExtendedTooltip name="Декорация6ExtendedTooltip" id="363"/>
-										</LabelDecoration>
 										<LabelDecoration name="Декорация25" id="325">
 											<Title formatted="false">
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Выбрать ранее сохраненный вариант настроек.</v8:content>
+													<v8:content>Сохранить настройки или выбрать ранее сохраненный вариант.</v8:content>
 												</v8:item>
 											</Title>
 											<ContextMenu name="Декорация25КонтекстноеМеню" id="326"/>
@@ -434,6 +770,67 @@
 						</LabelDecoration>
 					</ChildItems>
 				</Page>
+				<Page name="ОжиданиеВыгрузки" id="417">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Окончание</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Ожидание выгрузки</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ОжиданиеВыгрузкиРасширеннаяПодсказка" id="418"/>
+					<ChildItems>
+						<LabelDecoration name="Декорация2" id="430">
+							<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сихронизация данных</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Декорация2КонтекстноеМеню" id="431"/>
+							<ExtendedTooltip name="Декорация2РасширеннаяПодсказка" id="432"/>
+						</LabelDecoration>
+						<UsualGroup name="Группа7" id="419">
+							<VerticalStretch>false</VerticalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="Группа7РасширеннаяПодсказка" id="420"/>
+							<ChildItems>
+								<PictureDecoration name="Декорация45" id="421">
+									<Width>8</Width>
+									<Height>3</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.СинхронизацияДанныхДлительнаяОперация48</xr:Ref>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Декорация45КонтекстноеМеню" id="422"/>
+									<ExtendedTooltip name="Декорация45РасширеннаяПодсказка" id="423"/>
+								</PictureDecoration>
+								<LabelDecoration name="Декорация46" id="424">
+									<VerticalStretch>true</VerticalStretch>
+									<Font ref="style:TextFont" height="10" kind="StyleItem"/>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Выполняется синхронизация данных. Это может занять несколько минут.
+Пожалуйста, подождите...</v8:content>
+										</v8:item>
+									</Title>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="Декорация46КонтекстноеМеню" id="425"/>
+									<ExtendedTooltip name="Декорация46РасширеннаяПодсказка" id="426"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
 				<Page name="Окончание" id="121">
 					<Title>
 						<v8:item>
@@ -441,14 +838,43 @@
 							<v8:content>Окончание</v8:content>
 						</v8:item>
 					</Title>
-					<ExtendedTooltip name="ОкончаниеExtendedTooltip" id="366"/>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Окончание</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ОкончаниеРасширеннаяПодсказка" id="366"/>
 					<ChildItems>
-						<UsualGroup name="Группа6" id="192">
+						<LabelDecoration name="Декорация3" id="433">
+							<Font ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Сихронизация данных</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="Декорация3КонтекстноеМеню" id="434"/>
+							<ExtendedTooltip name="Декорация3РасширеннаяПодсказка" id="435"/>
+						</LabelDecoration>
+						<UsualGroup name="ГруппаЗавершеноУспешно" id="192">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа завершено успешно</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа завершено успешно</v8:content>
+								</v8:item>
+							</ToolTip>
 							<VerticalStretch>false</VerticalStretch>
 							<Group>Horizontal</Group>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="Группа6ExtendedTooltip" id="367"/>
+							<ExtendedTooltip name="ГруппаЗавершеноУспешноРасширеннаяПодсказка" id="367"/>
 							<ChildItems>
 								<PictureDecoration name="Декорация43" id="193">
 									<Width>8</Width>
@@ -466,15 +892,56 @@
 									<Title formatted="false">
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Данные отправляются.
-
-Вы можете продолжить работу в приложении,
-не дожидаясь завершения синхронизации.</v8:content>
+											<v8:content>Сихронизация данных успешно завершена.</v8:content>
 										</v8:item>
 									</Title>
 									<VerticalAlign>Center</VerticalAlign>
 									<ContextMenu name="Декорация44КонтекстноеМеню" id="196"/>
 									<ExtendedTooltip name="Декорация44ExtendedTooltip" id="369"/>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<UsualGroup name="ГруппаЗавершеноСОшибками" id="436">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа успешно завершено</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа успешно завершено</v8:content>
+								</v8:item>
+							</ToolTip>
+							<VerticalStretch>false</VerticalStretch>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаЗавершеноСОшибкамиРасширеннаяПодсказка" id="437"/>
+							<ChildItems>
+								<PictureDecoration name="Декорация47" id="438">
+									<Width>8</Width>
+									<Height>3</Height>
+									<Picture>
+										<xr:Ref>CommonPicture.Ошибка32</xr:Ref>
+										<xr:LoadTransparent>false</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="Декорация47КонтекстноеМеню" id="439"/>
+									<ExtendedTooltip name="Декорация47РасширеннаяПодсказка" id="440"/>
+								</PictureDecoration>
+								<LabelDecoration name="Декорация48" id="441">
+									<VerticalStretch>true</VerticalStretch>
+									<Font ref="sys:DefaultGUIFont" height="10" kind="WindowsFont"/>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>В процессе синхронизации данных возникли ошибки.</v8:content>
+										</v8:item>
+									</Title>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="Декорация48КонтекстноеМеню" id="442"/>
+									<ExtendedTooltip name="Декорация48РасширеннаяПодсказка" id="443"/>
 								</LabelDecoration>
 							</ChildItems>
 						</UsualGroup>
@@ -484,7 +951,7 @@
 							<Title formatted="false">
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Нажмите кнопку "Готово" для завершения работы с помощником.</v8:content>
+									<v8:content>Нажмите кнопку "Готово" для завершения.</v8:content>
 								</v8:item>
 							</Title>
 							<VerticalAlign>Bottom</VerticalAlign>
@@ -1042,6 +1509,30 @@
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
+		<Attribute name="СостояниеДлительнойОперации" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Состояние длительной операции</v8:content>
+				</v8:item>
+			</Title>
+			<Type/>
+		</Attribute>
+		<Attribute name="АдресСхемыКомпоновки" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Адрес схемы компоновки</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
 	</Attributes>
 	<Commands>
 		<Command name="КомандаДалее" id="1">
@@ -1141,7 +1632,7 @@
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Состав данных</v8:content>
+					<v8:content>Отчет о составе отправляемых данных</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>

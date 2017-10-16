@@ -39,29 +39,29 @@
 			<ContextMenu name="СписокКонтекстноеМеню" id="2"/>
 			<AutoCommandBar name="СписокКоманднаяПанель" id="3"/>
 			<ExtendedTooltip name="СписокExtendedTooltip" id="8"/>
-			<SearchStringAddition name="СписокСтрокаПоиска" id="11">
+			<SearchStringAddition name="СписокСтрокаПоиска" id="14">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="12"/>
-				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="13"/>
+				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="15"/>
+				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="16"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокСостояниеПросмотра" id="14">
+			<ViewStatusAddition name="СписокСостояниеПросмотра" id="17">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="15"/>
-				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="16"/>
+				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="18"/>
+				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="19"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокУправлениеПоиском" id="17">
+			<SearchControlAddition name="СписокУправлениеПоиском" id="20">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="18"/>
-				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="19"/>
+				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="21"/>
+				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="22"/>
 			</SearchControlAddition>
 			<ChildItems>
 				<InputField name="Наименование" id="4">
@@ -85,6 +85,14 @@
 					<ContextMenu name="КомментарийКонтекстноеМеню" id="7"/>
 					<ExtendedTooltip name="КомментарийExtendedTooltip" id="10"/>
 				</InputField>
+				<LabelField name="Ссылка" id="11">
+					<DataPath>Список.Ref</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="СсылкаКонтекстноеМеню" id="12"/>
+					<ExtendedTooltip name="СсылкаРасширеннаяПодсказка" id="13"/>
+				</LabelField>
 			</ChildItems>
 		</Table>
 	</ChildItems>
@@ -94,6 +102,9 @@
 				<v8:Type>cfg:DynamicList</v8:Type>
 			</Type>
 			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>Список.Ref</Field>
+			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>

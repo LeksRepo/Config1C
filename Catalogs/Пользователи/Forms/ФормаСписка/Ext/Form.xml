@@ -86,9 +86,14 @@
 						<CommandName>Form.Command.ПоказыватьНедействительныхПользователей</CommandName>
 						<ExtendedTooltip name="ПоказыватьНедействительныхПользователейExtendedTooltip" id="105"/>
 					</Button>
+					<Button name="СведенияОПользователях" id="132">
+						<Type>CommandBarButton</Type>
+						<OnlyInAllActions>false</OnlyInAllActions>
+						<CommandName>Form.Command.СведенияОПользователях</CommandName>
+						<ExtendedTooltip name="СведенияОПользователяхРасширеннаяПодсказка" id="133"/>
+					</Button>
 					<Button name="ПользователиИБ" id="6">
 						<Type>CommandBarButton</Type>
-						<SkipOnInput>false</SkipOnInput>
 						<OnlyInAllActions>false</OnlyInAllActions>
 						<CommandName>Catalog.Пользователи.Command.ПользователиИБ</CommandName>
 						<ExtendedTooltip name="ПользователиИБExtendedTooltip" id="106"/>
@@ -104,6 +109,7 @@
 	</AutoCommandBar>
 	<Events>
 		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
+		<Event name="OnOpen">ПриОткрытии</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 		<Event name="BeforeLoadDataFromSettingsAtServer">ПередЗагрузкеДанныхИзНастроекНаСервере</Event>
 	</Events>
@@ -192,29 +198,29 @@
 									<ContextMenu name="ГруппыПользователейКонтекстноеМеню" id="26"/>
 									<AutoCommandBar name="ГруппыПользователейКоманднаяПанель" id="27"/>
 									<ExtendedTooltip name="ГруппыПользователейExtendedTooltip" id="111"/>
-									<SearchStringAddition name="ГруппыПользователейСтрокаПоиска" id="132">
+									<SearchStringAddition name="ГруппыПользователейСтрокаПоиска" id="156">
 										<AdditionSource>
 											<Item>ГруппыПользователей</Item>
 											<Type>SearchStringRepresentation</Type>
 										</AdditionSource>
-										<ContextMenu name="ГруппыПользователейСтрокаПоискаКонтекстноеМеню" id="133"/>
-										<ExtendedTooltip name="ГруппыПользователейСтрокаПоискаРасширеннаяПодсказка" id="134"/>
+										<ContextMenu name="ГруппыПользователейСтрокаПоискаКонтекстноеМеню" id="157"/>
+										<ExtendedTooltip name="ГруппыПользователейСтрокаПоискаРасширеннаяПодсказка" id="158"/>
 									</SearchStringAddition>
-									<ViewStatusAddition name="ГруппыПользователейСостояниеПросмотра" id="135">
+									<ViewStatusAddition name="ГруппыПользователейСостояниеПросмотра" id="159">
 										<AdditionSource>
 											<Item>ГруппыПользователей</Item>
 											<Type>ViewStatusRepresentation</Type>
 										</AdditionSource>
-										<ContextMenu name="ГруппыПользователейСостояниеПросмотраКонтекстноеМеню" id="136"/>
-										<ExtendedTooltip name="ГруппыПользователейСостояниеПросмотраРасширеннаяПодсказка" id="137"/>
+										<ContextMenu name="ГруппыПользователейСостояниеПросмотраКонтекстноеМеню" id="160"/>
+										<ExtendedTooltip name="ГруппыПользователейСостояниеПросмотраРасширеннаяПодсказка" id="161"/>
 									</ViewStatusAddition>
-									<SearchControlAddition name="ГруппыПользователейУправлениеПоиском" id="138">
+									<SearchControlAddition name="ГруппыПользователейУправлениеПоиском" id="162">
 										<AdditionSource>
 											<Item>ГруппыПользователей</Item>
 											<Type>SearchControl</Type>
 										</AdditionSource>
-										<ContextMenu name="ГруппыПользователейУправлениеПоискомКонтекстноеМеню" id="139"/>
-										<ExtendedTooltip name="ГруппыПользователейУправлениеПоискомРасширеннаяПодсказка" id="140"/>
+										<ContextMenu name="ГруппыПользователейУправлениеПоискомКонтекстноеМеню" id="163"/>
+										<ExtendedTooltip name="ГруппыПользователейУправлениеПоискомРасширеннаяПодсказка" id="164"/>
 									</SearchControlAddition>
 									<Events>
 										<Event name="DragCheck">ГруппыПользователейПроверкаПеретаскивания</Event>
@@ -229,6 +235,14 @@
 											<Width>10</Width>
 											<ContextMenu name="НаименованиеГруппыКонтекстноеМеню" id="31"/>
 											<ExtendedTooltip name="НаименованиеГруппыExtendedTooltip" id="112"/>
+										</LabelField>
+										<LabelField name="СсылкаГруппы" id="153">
+											<DataPath>ГруппыПользователей.Ref</DataPath>
+											<UserVisible>
+												<xr:Common>false</xr:Common>
+											</UserVisible>
+											<ContextMenu name="СсылкаГруппыКонтекстноеМеню" id="154"/>
+											<ExtendedTooltip name="СсылкаГруппыРасширеннаяПодсказка" id="155"/>
 										</LabelField>
 									</ChildItems>
 								</Table>
@@ -330,29 +344,29 @@
 									</ContextMenu>
 									<AutoCommandBar name="ПользователиСписокКоманднаяПанель" id="50"/>
 									<ExtendedTooltip name="ПользователиСписокExtendedTooltip" id="120"/>
-									<SearchStringAddition name="ПользователиСписокСтрокаПоиска" id="141">
+									<SearchStringAddition name="ПользователиСписокСтрокаПоиска" id="165">
 										<AdditionSource>
 											<Item>ПользователиСписок</Item>
 											<Type>SearchStringRepresentation</Type>
 										</AdditionSource>
-										<ContextMenu name="ПользователиСписокСтрокаПоискаКонтекстноеМеню" id="142"/>
-										<ExtendedTooltip name="ПользователиСписокСтрокаПоискаРасширеннаяПодсказка" id="143"/>
+										<ContextMenu name="ПользователиСписокСтрокаПоискаКонтекстноеМеню" id="166"/>
+										<ExtendedTooltip name="ПользователиСписокСтрокаПоискаРасширеннаяПодсказка" id="167"/>
 									</SearchStringAddition>
-									<ViewStatusAddition name="ПользователиСписокСостояниеПросмотра" id="144">
+									<ViewStatusAddition name="ПользователиСписокСостояниеПросмотра" id="168">
 										<AdditionSource>
 											<Item>ПользователиСписок</Item>
 											<Type>ViewStatusRepresentation</Type>
 										</AdditionSource>
-										<ContextMenu name="ПользователиСписокСостояниеПросмотраКонтекстноеМеню" id="145"/>
-										<ExtendedTooltip name="ПользователиСписокСостояниеПросмотраРасширеннаяПодсказка" id="146"/>
+										<ContextMenu name="ПользователиСписокСостояниеПросмотраКонтекстноеМеню" id="169"/>
+										<ExtendedTooltip name="ПользователиСписокСостояниеПросмотраРасширеннаяПодсказка" id="170"/>
 									</ViewStatusAddition>
-									<SearchControlAddition name="ПользователиСписокУправлениеПоиском" id="147">
+									<SearchControlAddition name="ПользователиСписокУправлениеПоиском" id="171">
 										<AdditionSource>
 											<Item>ПользователиСписок</Item>
 											<Type>SearchControl</Type>
 										</AdditionSource>
-										<ContextMenu name="ПользователиСписокУправлениеПоискомКонтекстноеМеню" id="148"/>
-										<ExtendedTooltip name="ПользователиСписокУправлениеПоискомРасширеннаяПодсказка" id="149"/>
+										<ContextMenu name="ПользователиСписокУправлениеПоискомКонтекстноеМеню" id="172"/>
+										<ExtendedTooltip name="ПользователиСписокУправлениеПоискомРасширеннаяПодсказка" id="173"/>
 									</SearchControlAddition>
 									<Events>
 										<Event name="DragCheck">ПользователиСписокПроверкаПеретаскивания</Event>
@@ -362,14 +376,16 @@
 									<ChildItems>
 										<LabelField name="Наименование" id="51">
 											<DataPath>ПользователиСписок.Description</DataPath>
-											<Title>
-												<v8:item>
-													<v8:lang>ru</v8:lang>
-													<v8:content>Пользователь</v8:content>
-												</v8:item>
-											</Title>
 											<ContextMenu name="НаименованиеКонтекстноеМеню" id="52"/>
 											<ExtendedTooltip name="НаименованиеExtendedTooltip" id="121"/>
+										</LabelField>
+										<LabelField name="Ссылка" id="134">
+											<DataPath>ПользователиСписок.Ref</DataPath>
+											<UserVisible>
+												<xr:Common>false</xr:Common>
+											</UserVisible>
+											<ContextMenu name="СсылкаКонтекстноеМеню" id="135"/>
+											<ExtendedTooltip name="СсылкаРасширеннаяПодсказка" id="136"/>
 										</LabelField>
 									</ChildItems>
 								</Table>
@@ -464,41 +480,39 @@
 								<Autofill>false</Autofill>
 							</AutoCommandBar>
 							<ExtendedTooltip name="СписокВыбранныхПользователейИГруппExtendedTooltip" id="128"/>
-							<SearchStringAddition name="СписокВыбранныхПользователейИГруппСтрокаПоиска" id="150">
+							<SearchStringAddition name="СписокВыбранныхПользователейИГруппСтрокаПоиска" id="174">
 								<AdditionSource>
 									<Item>СписокВыбранныхПользователейИГрупп</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокВыбранныхПользователейИГруппСтрокаПоискаКонтекстноеМеню" id="151"/>
-								<ExtendedTooltip name="СписокВыбранныхПользователейИГруппСтрокаПоискаРасширеннаяПодсказка" id="152"/>
+								<ContextMenu name="СписокВыбранныхПользователейИГруппСтрокаПоискаКонтекстноеМеню" id="175"/>
+								<ExtendedTooltip name="СписокВыбранныхПользователейИГруппСтрокаПоискаРасширеннаяПодсказка" id="176"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="СписокВыбранныхПользователейИГруппСостояниеПросмотра" id="153">
+							<ViewStatusAddition name="СписокВыбранныхПользователейИГруппСостояниеПросмотра" id="177">
 								<AdditionSource>
 									<Item>СписокВыбранныхПользователейИГрупп</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокВыбранныхПользователейИГруппСостояниеПросмотраКонтекстноеМеню" id="154"/>
-								<ExtendedTooltip name="СписокВыбранныхПользователейИГруппСостояниеПросмотраРасширеннаяПодсказка" id="155"/>
+								<ContextMenu name="СписокВыбранныхПользователейИГруппСостояниеПросмотраКонтекстноеМеню" id="178"/>
+								<ExtendedTooltip name="СписокВыбранныхПользователейИГруппСостояниеПросмотраРасширеннаяПодсказка" id="179"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="СписокВыбранныхПользователейИГруппУправлениеПоиском" id="156">
+							<SearchControlAddition name="СписокВыбранныхПользователейИГруппУправлениеПоиском" id="180">
 								<AdditionSource>
 									<Item>СписокВыбранныхПользователейИГрупп</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="СписокВыбранныхПользователейИГруппУправлениеПоискомКонтекстноеМеню" id="157"/>
-								<ExtendedTooltip name="СписокВыбранныхПользователейИГруппУправлениеПоискомРасширеннаяПодсказка" id="158"/>
+								<ContextMenu name="СписокВыбранныхПользователейИГруппУправлениеПоискомКонтекстноеМеню" id="181"/>
+								<ExtendedTooltip name="СписокВыбранныхПользователейИГруппУправлениеПоискомРасширеннаяПодсказка" id="182"/>
 							</SearchControlAddition>
 							<Events>
 								<Event name="Selection">СписокВыбранныхПользователейИГруппВыбор</Event>
+								<Event name="BeforeAddRow">СписокВыбранныхПользователейИГруппПередНачаломДобавления</Event>
 							</Events>
 							<ChildItems>
 								<InputField name="ПользователиИГруппы" id="81">
 									<DataPath>ВыбранныеПользователиИГруппы.Пользователь</DataPath>
+									<ReadOnly>true</ReadOnly>
 									<EditMode>EnterOnInput</EditMode>
-									<ChoiceButton>false</ChoiceButton>
-									<ClearButton>false</ClearButton>
-									<SpinButton>false</SpinButton>
-									<OpenButton>false</OpenButton>
 									<ChoiceListButton>false</ChoiceListButton>
 									<ContextMenu name="ПользователиИГруппыКонтекстноеМеню" id="82"/>
 									<ExtendedTooltip name="ПользователиИГруппыExtendedTooltip" id="129"/>
@@ -533,6 +547,93 @@
 				</CheckBoxField>
 			</ChildItems>
 		</UsualGroup>
+		<Pages name="Комментарии" id="137">
+			<UserVisible>
+				<xr:Common>false</xr:Common>
+			</UserVisible>
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Комментарии</v8:content>
+				</v8:item>
+			</Title>
+			<PagesRepresentation>None</PagesRepresentation>
+			<ExtendedTooltip name="КомментарииРасширеннаяПодсказка" id="138"/>
+			<ChildItems>
+				<Page name="КомментарийГруппы" id="139">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Комментарий группы</v8:content>
+						</v8:item>
+					</Title>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="КомментарийГруппыРасширеннаяПодсказка" id="140"/>
+					<ChildItems>
+						<UsualGroup name="ЗаголовокКомментарияГруппы" id="141">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Комментарий</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<TitleDataPath>Items.ГруппыПользователей.CurrentData.Description</TitleDataPath>
+							<ExtendedTooltip name="ЗаголовокКомментарияГруппыРасширеннаяПодсказка" id="142"/>
+							<ChildItems>
+								<InputField name="ГруппыПользователейКомментарий" id="143">
+									<DataPath>Items.ГруппыПользователей.CurrentData.Комментарий</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<TitleLocation>None</TitleLocation>
+									<AutoCellHeight>true</AutoCellHeight>
+									<ShowInHeader>false</ShowInHeader>
+									<Height>3</Height>
+									<ContextMenu name="ГруппыПользователейКомментарийКонтекстноеМеню" id="144"/>
+									<ExtendedTooltip name="ГруппыПользователейКомментарийРасширеннаяПодсказка" id="145"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="КомментарийПользователя" id="146">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Комментарий пользователя</v8:content>
+						</v8:item>
+					</Title>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="КомментарийПользователяРасширеннаяПодсказка" id="147"/>
+					<ChildItems>
+						<UsualGroup name="ЗаголовокКомментарияПользователя" id="148">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Комментарий</v8:content>
+								</v8:item>
+							</Title>
+							<Group>Vertical</Group>
+							<Representation>NormalSeparation</Representation>
+							<TitleDataPath>Items.ПользователиСписок.CurrentData.Description</TitleDataPath>
+							<ExtendedTooltip name="ЗаголовокКомментарияПользователяРасширеннаяПодсказка" id="149"/>
+							<ChildItems>
+								<InputField name="ПользователиСписокКомментарий" id="150">
+									<DataPath>Items.ПользователиСписок.CurrentData.Комментарий</DataPath>
+									<ReadOnly>true</ReadOnly>
+									<TitleLocation>None</TitleLocation>
+									<AutoCellHeight>true</AutoCellHeight>
+									<ShowInHeader>false</ShowInHeader>
+									<Height>3</Height>
+									<ContextMenu name="ПользователиСписокКомментарийКонтекстноеМеню" id="151"/>
+									<ExtendedTooltip name="ПользователиСписокКомментарийРасширеннаяПодсказка" id="152"/>
+								</InputField>
+							</ChildItems>
+						</UsualGroup>
+					</ChildItems>
+				</Page>
+			</ChildItems>
+		</Pages>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="ПользователиСписок" id="1">
@@ -546,22 +647,26 @@
 				<v8:Type>cfg:DynamicList</v8:Type>
 			</Type>
 			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>ПользователиСписок.Недействителен</Field>
+				<Field>ПользователиСписок.Ref</Field>
+			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
 				<QueryText>ВЫБРАТЬ
 	Пользователи.Ссылка,
+	Пользователи.Подготовлен,
 	Пользователи.ПометкаУдаления,
 	Пользователи.Недействителен,
 	Пользователи.Наименование,
+	Пользователи.Служебный,
+	Пользователи.Комментарий,
 	ВЫБОР
 		КОГДА Пользователи.ПометкаУдаления
 			ТОГДА 0
-		КОГДА Пользователи.ИдентификаторПользователяИБ = &amp;ПустойУникальныйИдентификатор
-			ТОГДА 4
 		ИНАЧЕ 1
-	КОНЕЦ КАК НомерКартинки,
-	Пользователи.Служебный
+	КОНЕЦ КАК НомерКартинки
 ИЗ
 	Справочник.Пользователи КАК Пользователи
 ГДЕ
@@ -586,10 +691,23 @@
 				<MainTable>Catalog.Пользователи</MainTable>
 				<ListSettings>
 					<dcsset:filter>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:use>false</dcsset:use>
+							<dcsset:left xsi:type="dcscor:Field">Подготовлен</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+							<dcsset:presentation xsi:type="xs:string">Подготовленные ответственным за список</dcsset:presentation>
+							<dcsset:viewMode>Normal</dcsset:viewMode>
+						</dcsset:item>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
-						<dcsset:userSettingID>dfcece9d-5077-440b-b6b3-45a5cb4538eb</dcsset:userSettingID>
+						<dcsset:userSettingID>73ec9c65-83f1-4821-af16-5dcbfa3cd980</dcsset:userSettingID>
 					</dcsset:filter>
 					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>Наименование</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+							<dcsset:viewMode>Normal</dcsset:viewMode>
+						</dcsset:item>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
 						<dcsset:userSettingID>88619765-ccb3-46c6-ac52-38e9c992ebd4</dcsset:userSettingID>
 					</dcsset:order>
@@ -613,6 +731,7 @@
 				<v8:Type>cfg:DynamicList</v8:Type>
 			</Type>
 			<UseAlways>
+				<Field>ГруппыПользователей.Ref</Field>
 				<Field>ГруппыПользователей.Parent</Field>
 				<Field>ГруппыПользователей.DeletionMark</Field>
 			</UseAlways>
@@ -629,7 +748,8 @@
 		КОГДА СправочникГруппыПользователей.ПометкаУдаления
 			ТОГДА 2
 		ИНАЧЕ 3
-	КОНЕЦ КАК НомерКартинки
+	КОНЕЦ КАК НомерКартинки,
+	СправочникГруппыПользователей.Комментарий
 ИЗ
 	Справочник.ГруппыПользователей КАК СправочникГруппыПользователей</QueryText>
 				<MainTable>Catalog.ГруппыПользователей</MainTable>
@@ -726,6 +846,21 @@
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИмяТекущегоЭлемента" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Имя текущего элемента</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
 	</Attributes>
@@ -861,6 +996,25 @@
 			</ToolTip>
 			<Action>ОчиститьСписокВыбранныхПользователейИГрупп</Action>
 		</Command>
+		<Command name="СведенияОПользователях" id="9">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сведения о пользователях</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сведения о пользователях</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.Report</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>СведенияОПользователях</Action>
+		</Command>
 	</Commands>
 	<Parameters>
 		<Parameter name="ВыборГруппПользователей">
@@ -871,7 +1025,7 @@
 		<Parameter name="ЗакрыватьПриВыборе">
 			<Type/>
 		</Parameter>
-		<Parameter name="ДоступКИнформационнойБазеРазрешен">
+		<Parameter name="СкрытьПользователейБезПользователяИБ">
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>

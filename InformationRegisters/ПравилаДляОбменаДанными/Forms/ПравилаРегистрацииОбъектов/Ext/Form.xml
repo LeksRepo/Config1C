@@ -10,34 +10,38 @@
 	<AutoTitle>false</AutoTitle>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<CommandSet>
+		<ExcludedCommand>WriteAndClose</ExcludedCommand>
 		<ExcludedCommand>Copy</ExcludedCommand>
 	</CommandSet>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<ChildItems>
-			<Button name="ФормаПеречитать" id="31">
+			<Button name="ФормаЗаписатьИЗакрыть" id="50">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.ЗаписатьИЗакрыть</CommandName>
+				<ExtendedTooltip name="ФормаЗаписатьИЗакрытьРасширеннаяПодсказка" id="51"/>
+			</Button>
+			<Button name="ФормаЗаписать" id="52">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Write</CommandName>
+				<ExtendedTooltip name="ФормаЗаписатьРасширеннаяПодсказка" id="53"/>
+			</Button>
+			<Button name="ФормаПеречитать" id="54">
 				<Type>CommandBarButton</Type>
 				<OnlyInAllActions>false</OnlyInAllActions>
 				<CommandName>Form.StandardCommand.Reread</CommandName>
-				<ExtendedTooltip name="ФормаПеречитатьExtendedTooltip" id="32"/>
+				<ExtendedTooltip name="ФормаПеречитатьРасширеннаяПодсказка" id="55"/>
 			</Button>
-			<ButtonGroup name="ГруппаКнопок" id="24">
-				<Title>
-					<v8:item>
-						<v8:lang>ru</v8:lang>
-						<v8:content>Группа кнопок</v8:content>
-					</v8:item>
-				</Title>
-				<ToolTip>
-					<v8:item>
-						<v8:lang>ru</v8:lang>
-						<v8:content>Группа кнопок</v8:content>
-					</v8:item>
-				</ToolTip>
-				<ExtendedTooltip name="ГруппаКнопокExtendedTooltip" id="33"/>
-			</ButtonGroup>
+			<Button name="ФормаУдалить" id="56">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Delete</CommandName>
+				<ExtendedTooltip name="ФормаУдалитьРасширеннаяПодсказка" id="57"/>
+			</Button>
 		</ChildItems>
 	</AutoCommandBar>
 	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
+		<Event name="BeforeWrite">ПередЗаписью</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
@@ -61,7 +65,6 @@
 			<ChildItems>
 				<InputField name="ИмяПланаОбмена" id="1">
 					<DataPath>Запись.ИмяПланаОбмена</DataPath>
-					<ChoiceButton>false</ChoiceButton>
 					<ListChoiceMode>true</ListChoiceMode>
 					<ContextMenu name="ИмяПланаОбменаКонтекстноеМеню" id="2"/>
 					<ExtendedTooltip name="ИмяПланаОбменаExtendedTooltip" id="35"/>
@@ -162,7 +165,6 @@
 								<InputField name="ИмяМакетаПравил" id="7">
 									<DataPath>Запись.ИмяМакетаПравил</DataPath>
 									<TitleLocation>None</TitleLocation>
-									<ChoiceButton>true</ChoiceButton>
 									<ListChoiceMode>true</ListChoiceMode>
 									<TextEdit>false</TextEdit>
 									<ChoiceListButton>false</ChoiceListButton>
@@ -223,8 +225,6 @@
 									<DataPath>Запись.ИмяФайлаПравил</DataPath>
 									<ReadOnly>true</ReadOnly>
 									<TitleLocation>None</TitleLocation>
-									<ChoiceButton>false</ChoiceButton>
-									<OpenButton>false</OpenButton>
 									<ContextMenu name="ИмяФайлаПравилКонтекстноеМеню" id="6"/>
 									<ExtendedTooltip name="ИмяФайлаПравилExtendedTooltip" id="45"/>
 								</InputField>
@@ -372,6 +372,26 @@
 			<Action>ВыгрузитьПравила</Action>
 			<Representation>TextPicture</Representation>
 			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ЗаписатьИЗакрыть" id="3">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать и закрыть</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать и закрыть</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.WriteAndClose</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ЗаписатьИЗакрыть</Action>
+			<Representation>Text</Representation>
 		</Command>
 	</Commands>
 </Form>

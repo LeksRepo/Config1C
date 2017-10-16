@@ -4,12 +4,35 @@
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<CommandSet>
+		<ExcludedCommand>WriteAndClose</ExcludedCommand>
 		<ExcludedCommand>Copy</ExcludedCommand>
 		<ExcludedCommand>Delete</ExcludedCommand>
 	</CommandSet>
-	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<ChildItems>
+			<Button name="ФормаЗаписатьИЗакрыть" id="184">
+				<Type>CommandBarButton</Type>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.ЗаписатьИЗакрыть</CommandName>
+				<ExtendedTooltip name="ФормаЗаписатьИЗакрытьРасширеннаяПодсказка" id="185"/>
+			</Button>
+			<Button name="ФормаЗаписать" id="186">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Write</CommandName>
+				<ExtendedTooltip name="ФормаЗаписатьРасширеннаяПодсказка" id="187"/>
+			</Button>
+			<Button name="ФормаПеречитать" id="188">
+				<Type>CommandBarButton</Type>
+				<OnlyInAllActions>false</OnlyInAllActions>
+				<CommandName>Form.StandardCommand.Reread</CommandName>
+				<ExtendedTooltip name="ФормаПеречитатьРасширеннаяПодсказка" id="189"/>
+			</Button>
+		</ChildItems>
+	</AutoCommandBar>
 	<Events>
+		<Event name="AfterWrite">ПослеЗаписи</Event>
 		<Event name="OnOpen">ПриОткрытии</Event>
+		<Event name="BeforeWrite">ПередЗаписью</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
@@ -222,19 +245,6 @@
 									<CommandName>Form.Command.ПроверитьПодключениеCOM</CommandName>
 									<ExtendedTooltip name="ПроверитьПодключениеCOMExtendedTooltip" id="136"/>
 								</Button>
-								<UsualGroup name="ГруппаComcntrФайловыйРежим" id="182">
-									<Group>Vertical</Group>
-									<Representation>None</Representation>
-									<ShowTitle>false</ShowTitle>
-									<ExtendedTooltip name="ГруппаComcntrФайловыйРежимРасширеннаяПодсказка" id="183"/>
-									<ChildItems>
-										<Button name="ИсправитьОшибкиУстановкиВнешнегоСоединения" id="98">
-											<Type>UsualButton</Type>
-											<CommandName>Form.Command.ИсправитьОшибкиУстановкиВнешнегоСоединения</CommandName>
-											<ExtendedTooltip name="ИсправитьОшибкиУстановкиВнешнегоСоединенияExtendedTooltip" id="137"/>
-										</Button>
-									</ChildItems>
-								</UsualGroup>
 							</ChildItems>
 						</UsualGroup>
 					</ChildItems>
@@ -592,35 +602,6 @@
 				</Page>
 			</ChildItems>
 		</Pages>
-		<UsualGroup name="ДополнительныеНастройки" id="36">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Дополнительные настройки</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Дополнительные настройки</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Group>Vertical</Group>
-			<Representation>StrongSeparation</Representation>
-			<ExtendedTooltip name="ДополнительныеНастройкиExtendedTooltip" id="179"/>
-			<ChildItems>
-				<InputField name="КоличествоЭлементовВТранзакцииЗагрузкиДанных" id="70">
-					<DataPath>Запись.КоличествоЭлементовВТранзакцииЗагрузкиДанных</DataPath>
-					<ContextMenu name="КоличествоЭлементовВТранзакцииЗагрузкиДанныхКонтекстноеМеню" id="71"/>
-					<ExtendedTooltip name="КоличествоЭлементовВТранзакцииЗагрузкиДанныхExtendedTooltip" id="180"/>
-				</InputField>
-				<InputField name="КоличествоЭлементовВТранзакцииВыгрузкиДанных" id="68">
-					<DataPath>Запись.КоличествоЭлементовВТранзакцииВыгрузкиДанных</DataPath>
-					<ContextMenu name="КоличествоЭлементовВТранзакцииВыгрузкиДанныхКонтекстноеМеню" id="69"/>
-					<ExtendedTooltip name="КоличествоЭлементовВТранзакцииВыгрузкиДанныхExtendedTooltip" id="181"/>
-				</InputField>
-			</ChildItems>
-		</UsualGroup>
 	</ChildItems>
 	<Attributes>
 		<Attribute name="Запись" id="1">
@@ -722,26 +703,6 @@
 			</ToolTip>
 			<Action>ПроверитьПодключениеWS</Action>
 		</Command>
-		<Command name="ИсправитьОшибкиУстановкиВнешнегоСоединения" id="5">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Исправить ошибки установки внешнего соединения</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Исправить ошибки установки внешнего соединения</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Picture>
-				<xr:Ref>StdPicture.CheckSyntax</xr:Ref>
-				<xr:LoadTransparent>true</xr:LoadTransparent>
-			</Picture>
-			<Action>ИсправитьОшибкиУстановкиВнешнегоСоединения</Action>
-			<Representation>TextPicture</Representation>
-		</Command>
 		<Command name="ПараметрыДоступаВИнтернет" id="7">
 			<Title>
 				<v8:item>
@@ -756,6 +717,26 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ПараметрыДоступаВИнтернет</Action>
+		</Command>
+		<Command name="ЗаписатьИЗакрыть" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать и закрыть</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать и закрыть</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.WriteAndClose</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>ЗаписатьИЗакрыть</Action>
+			<Representation>Text</Representation>
 		</Command>
 	</Commands>
 </Form>

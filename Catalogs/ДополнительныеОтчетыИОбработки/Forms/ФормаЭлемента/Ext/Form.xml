@@ -5,20 +5,67 @@
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<UseForFoldersAndItems>Items</UseForFoldersAndItems>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
+		<Autofill>false</Autofill>
 		<ChildItems>
-			<Button name="ЗагрузитьФайлОбработкиОтчета" id="10">
+			<Button name="КомандаЗаписатьИЗакрыть" id="240">
 				<Type>CommandBarButton</Type>
-				<Representation>PictureAndText</Representation>
-				<SkipOnInput>false</SkipOnInput>
-				<CommandName>Form.Command.ЗагрузитьФайлОбработкиОтчета</CommandName>
-				<ExtendedTooltip name="ЗагрузитьФайлОбработкиОтчетаExtendedTooltip" id="176"/>
+				<DefaultButton>true</DefaultButton>
+				<CommandName>Form.Command.КомандаЗаписатьИЗакрыть</CommandName>
+				<ExtendedTooltip name="КомандаЗаписатьИЗакрытьРасширеннаяПодсказка" id="241"/>
 			</Button>
-			<Button name="СохранитьФайлОбработкиОтчета" id="11">
+			<Button name="КомандаЗаписать" id="242">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.Command.КомандаЗаписать</CommandName>
+				<ExtendedTooltip name="КомандаЗаписатьРасширеннаяПодсказка" id="243"/>
+			</Button>
+			<Button name="ЗагрузитьИзФайла" id="10">
 				<Type>CommandBarButton</Type>
 				<Representation>PictureAndText</Representation>
 				<SkipOnInput>false</SkipOnInput>
-				<CommandName>Form.Command.ВыгрузитьФайлОбработкиОтчета</CommandName>
-				<ExtendedTooltip name="СохранитьФайлОбработкиОтчетаExtendedTooltip" id="177"/>
+				<CommandName>Form.Command.ЗагрузитьИзФайла</CommandName>
+				<ExtendedTooltip name="ЗагрузитьИзФайлаРасширеннаяПодсказка" id="176"/>
+			</Button>
+			<Button name="ВыгрузитьВФайл" id="11">
+				<Type>CommandBarButton</Type>
+				<Representation>PictureAndText</Representation>
+				<SkipOnInput>false</SkipOnInput>
+				<CommandName>Form.Command.ВыгрузитьВФайл</CommandName>
+				<ExtendedTooltip name="ВыгрузитьВФайлРасширеннаяПодсказка" id="177"/>
+			</Button>
+			<ButtonGroup name="КомандыФормы" id="255">
+				<Title>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Команды формы</v8:content>
+					</v8:item>
+				</Title>
+				<ToolTip>
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>Команды формы</v8:content>
+					</v8:item>
+				</ToolTip>
+				<CommandSource>Form</CommandSource>
+				<ExtendedTooltip name="КомандыФормыРасширеннаяПодсказка" id="256"/>
+				<ChildItems>
+					<Button name="ФормаЗаписатьИЗакрыть" id="244">
+						<Type>CommandBarButton</Type>
+						<Visible>false</Visible>
+						<CommandName>Form.StandardCommand.WriteAndClose</CommandName>
+						<ExtendedTooltip name="ФормаЗаписатьИЗакрытьРасширеннаяПодсказка" id="245"/>
+					</Button>
+					<Button name="ФормаЗаписать" id="246">
+						<Type>CommandBarButton</Type>
+						<Visible>false</Visible>
+						<CommandName>Form.StandardCommand.Write</CommandName>
+						<ExtendedTooltip name="ФормаЗаписатьРасширеннаяПодсказка" id="247"/>
+					</Button>
+				</ChildItems>
+			</ButtonGroup>
+			<Button name="ФормаСправка" id="257">
+				<Type>CommandBarButton</Type>
+				<CommandName>Form.StandardCommand.Help</CommandName>
+				<ExtendedTooltip name="ФормаСправкаРасширеннаяПодсказка" id="258"/>
 			</Button>
 		</ChildItems>
 	</AutoCommandBar>
@@ -162,23 +209,23 @@
 				</CheckBoxField>
 			</ChildItems>
 		</UsualGroup>
-		<Pages name="СтраницыВариантыКоманды" id="80">
+		<Pages name="СтраницыВариантыКомандыРазрешения" id="80">
 			<EnableContentChange>true</EnableContentChange>
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Варианты, Команды</v8:content>
+					<v8:content>Варианты, Команды, Разрешения</v8:content>
 				</v8:item>
 			</Title>
 			<ToolTip>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Страницы варианты команды</v8:content>
+					<v8:content>Страницы варианты команды разрешения</v8:content>
 				</v8:item>
 			</ToolTip>
-			<ExtendedTooltip name="СтраницыВариантыКомандыExtendedTooltip" id="186"/>
+			<ExtendedTooltip name="СтраницыВариантыКомандыРазрешенияРасширеннаяПодсказка" id="186"/>
 			<ChildItems>
-				<Page name="СтраницаРазрешения" id="169">
+				<Page name="СтраницаРазрешения" id="259">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -191,17 +238,280 @@
 							<v8:content>Страница разрешения</v8:content>
 						</v8:item>
 					</ToolTip>
-					<ExtendedTooltip name="СтраницаРазрешенияExtendedTooltip" id="187"/>
+					<ExtendedTooltip name="СтраницаРазрешенияРасширеннаяПодсказка" id="260"/>
 					<ChildItems>
-						<HTMLDocumentField name="Разрешения" id="170">
-							<DataPath>ПредставлениеРазрешений</DataPath>
-							<TitleLocation>None</TitleLocation>
-							<ContextMenu name="РазрешенияКонтекстноеМеню" id="171"/>
-							<ExtendedTooltip name="РазрешенияExtendedTooltip" id="188"/>
-							<Events>
-								<Event name="OnClick">РазрешенияПриНажатии</Event>
-							</Events>
-						</HTMLDocumentField>
+						<UsualGroup name="ГруппаБезопасныйРежимСРазрешениями" id="287">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа безопасный режим с разрешениями</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа безопасный режим с разрешениями</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаБезопасныйРежимСРазрешениямиРасширеннаяПодсказка" id="288"/>
+							<ChildItems>
+								<PictureDecoration name="ДекорацияБезопасныйРежимСРазрешениямиПиктограмма" id="267">
+									<Width>2</Width>
+									<Height>1</Height>
+									<VerticalStretch>true</VerticalStretch>
+									<Title formatted="false">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Декорация безопасный режим с разрешениями пиктограмма</v8:content>
+										</v8:item>
+									</Title>
+									<Picture>
+										<xr:Ref>CommonPicture.ИнформацияПоНедоступнымПолям</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</Picture>
+									<ContextMenu name="ДекорацияБезопасныйРежимСРазрешениямиПиктограммаКонтекстноеМеню" id="268"/>
+									<ExtendedTooltip name="ДекорацияБезопасныйРежимСРазрешениямиПиктограммаРасширеннаяПодсказка" id="269"/>
+								</PictureDecoration>
+								<Pages name="СтраницыБезопасныйРежимСРазрешениями" id="263">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страницы безопасный режим с разрешениями</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страницы безопасный режим с разрешениями</v8:content>
+										</v8:item>
+									</ToolTip>
+									<PagesRepresentation>None</PagesRepresentation>
+									<ExtendedTooltip name="СтраницыБезопасныйРежимСРазрешениямиРасширеннаяПодсказка" id="264"/>
+									<ChildItems>
+										<Page name="СтраницаПерсональныйПрофильБезопасности" id="289">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Страница персональный профиль безопасности</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Страница персональный профиль безопасности</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="СтраницаПерсональныйПрофильБезопасностиРасширеннаяПодсказка" id="290"/>
+											<ChildItems>
+												<LabelDecoration name="ДекорацияПерсональныйПрофильБезопасностиНадпись" id="295">
+													<HorizontalStretch>true</HorizontalStretch>
+													<VerticalStretch>true</VerticalStretch>
+													<TextColor>style:FieldSelectionBackColor</TextColor>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Дополнительный отчет или обработка будет подключаться к программе с использованием "персонального"
+профиля безопасности %1, в котором будут разрешены только следующие операции:</v8:content>
+														</v8:item>
+													</Title>
+													<VerticalAlign>Center</VerticalAlign>
+													<ContextMenu name="ДекорацияПерсональныйПрофильБезопасностиНадписьКонтекстноеМеню" id="296"/>
+													<ExtendedTooltip name="ДекорацияПерсональныйПрофильБезопасностиНадписьРасширеннаяПодсказка" id="297"/>
+												</LabelDecoration>
+											</ChildItems>
+										</Page>
+										<Page name="СтраницаНебезопасныйРежимСРазрешениями" id="293">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Страница небезопасный режим с разрешениями</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Страница небезопасный режим с разрешениями</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="СтраницаНебезопасныйРежимСРазрешениямиРасширеннаяПодсказка" id="294"/>
+											<ChildItems>
+												<LabelDecoration name="ДекорацияНебезопасныйРежимНадпись" id="298">
+													<HorizontalStretch>true</HorizontalStretch>
+													<VerticalStretch>true</VerticalStretch>
+													<TextColor>style:SpecialTextColor</TextColor>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Дополнительный отчет или обработка будет подключаться к программе без установки безопасного режима,
+т.к. для корректной работы дополнительного отчета или обработки требуется выполнение следующих операций
+с внешними ресурсами:</v8:content>
+														</v8:item>
+													</Title>
+													<VerticalAlign>Center</VerticalAlign>
+													<ContextMenu name="ДекорацияНебезопасныйРежимНадписьКонтекстноеМеню" id="299"/>
+													<ExtendedTooltip name="ДекорацияНебезопасныйРежимНадписьРасширеннаяПодсказка" id="300"/>
+												</LabelDecoration>
+											</ChildItems>
+										</Page>
+										<Page name="СтраницаБезопасныйРежимСРазрешениями" id="291">
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Страница безопасный режим с разрешениями</v8:content>
+												</v8:item>
+											</Title>
+											<ToolTip>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Страница безопасный режим с разрешениями</v8:content>
+												</v8:item>
+											</ToolTip>
+											<ExtendedTooltip name="СтраницаБезопасныйРежимСРазрешениямиРасширеннаяПодсказка" id="292"/>
+											<ChildItems>
+												<LabelDecoration name="ДекорацияБезопасныйРежимСРазрешениямиНадпись" id="301">
+													<HorizontalStretch>true</HorizontalStretch>
+													<VerticalStretch>true</VerticalStretch>
+													<TextColor>style:FieldSelectionBackColor</TextColor>
+													<Title formatted="false">
+														<v8:item>
+															<v8:lang>ru</v8:lang>
+															<v8:content>Дополнительный отчет или обработка будет подключаться к программе в безопасном режиме с предоставлением
+дополнительных разрешений:</v8:content>
+														</v8:item>
+													</Title>
+													<VerticalAlign>Center</VerticalAlign>
+													<ContextMenu name="ДекорацияБезопасныйРежимСРазрешениямиНадписьКонтекстноеМеню" id="302"/>
+													<ExtendedTooltip name="ДекорацияБезопасныйРежимСРазрешениямиНадписьРасширеннаяПодсказка" id="303"/>
+												</LabelDecoration>
+											</ChildItems>
+										</Page>
+									</ChildItems>
+								</Pages>
+							</ChildItems>
+						</UsualGroup>
+						<Pages name="ГруппаСтраницыРежимыСовместимостиРазрешений" id="261">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа страницы режимы совместимости разрешений</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа страницы режимы совместимости разрешений</v8:content>
+								</v8:item>
+							</ToolTip>
+							<PagesRepresentation>None</PagesRepresentation>
+							<ExtendedTooltip name="ГруппаСтраницыРежимыСовместимостиРазрешенийРасширеннаяПодсказка" id="262"/>
+							<ChildItems>
+								<Page name="СтраницаРазрешенияВерсия_2_1_3" id="169">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Разрешения (режим совместимости  разрешений "Версия 2.1.3")</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страница разрешения версия 2 1 3</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="СтраницаРазрешенияВерсия_2_1_3РасширеннаяПодсказка" id="187"/>
+									<ChildItems>
+										<HTMLDocumentField name="Разрешения" id="170">
+											<DataPath>ПредставлениеРазрешений_2_1_3</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<ContextMenu name="РазрешенияКонтекстноеМеню" id="171"/>
+											<ExtendedTooltip name="РазрешенияExtendedTooltip" id="188"/>
+											<Events>
+												<Event name="OnClick">РазрешенияПриНажатии</Event>
+											</Events>
+										</HTMLDocumentField>
+									</ChildItems>
+								</Page>
+								<Page name="СтраницаРазрешенияВерсия_2_2_2" id="250">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Разрешения (режим совместимости  разрешений "Версия 2.2.3")</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страница разрешения версия 2 2 2</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="СтраницаРазрешенияВерсия_2_2_2РасширеннаяПодсказка" id="251"/>
+									<ChildItems>
+										<SpreadSheetDocumentField name="ПредставлениеРазрешений_2_2_2" id="252">
+											<DataPath>ПредставлениеРазрешений_2_2_2</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<Width>80</Width>
+											<VerticalScrollBar>true</VerticalScrollBar>
+											<HorizontalScrollBar>true</HorizontalScrollBar>
+											<ContextMenu name="ПредставлениеРазрешений_2_2_2КонтекстноеМеню" id="253"/>
+											<ExtendedTooltip name="ПредставлениеРазрешений_2_2_2РасширеннаяПодсказка" id="254"/>
+										</SpreadSheetDocumentField>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
+						<UsualGroup name="ГруппаВключениеПрофилейБезопасности" id="304">
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа включение профилей безопасности</v8:content>
+								</v8:item>
+							</Title>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Группа включение профилей безопасности</v8:content>
+								</v8:item>
+							</ToolTip>
+							<Group>Horizontal</Group>
+							<Representation>None</Representation>
+							<ShowTitle>false</ShowTitle>
+							<ExtendedTooltip name="ГруппаВключениеПрофилейБезопасностиРасширеннаяПодсказка" id="305"/>
+							<ChildItems>
+								<LabelDecoration name="ДекорацияВключениеПрофилейБезопасностиНадпись" id="306">
+									<HorizontalStretch>true</HorizontalStretch>
+									<VerticalStretch>true</VerticalStretch>
+									<Title formatted="true">
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Для того, чтобы "изолировать" возможность обращения к внешних ресурсам из кода дополнительного отчета
+или обработки только вышеперчисленными операциями, требуется&lt;link int://sp-on&gt; включить использование профилей&lt;/&gt; &lt;link int://sp-on&gt;безопасности&lt;/&gt;.
+При этом для дополинтельного отчета или обработки будет создан "персональный" профиль безопасности, содержащий
+разрешения только на выполнение явно одобренных операций и подключение дополнительного отчета или обработке к
+программе без установки безопасного режима больше не будет требоваться.</v8:content>
+										</v8:item>
+									</Title>
+									<VerticalAlign>Center</VerticalAlign>
+									<ContextMenu name="ДекорацияВключениеПрофилейБезопасностиНадписьКонтекстноеМеню" id="307"/>
+									<ExtendedTooltip name="ДекорацияВключениеПрофилейБезопасностиНадписьРасширеннаяПодсказка" id="308"/>
+									<Events>
+										<Event name="URLProcessing">ДекорацияВключениеПрофилейБезопасностиНадписьОбработкаНавигационнойСсылки</Event>
+									</Events>
+								</LabelDecoration>
+							</ChildItems>
+						</UsualGroup>
+						<LabelDecoration name="ДекормацияРазрешенияСмТакже" id="311">
+							<Title formatted="false">
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Подробно о режимах подключения дополнительных отчетов и обработок см. информацию в справке к форме.</v8:content>
+								</v8:item>
+							</Title>
+							<ContextMenu name="ДекормацияРазрешенияСмТакжеКонтекстноеМеню" id="312"/>
+							<ExtendedTooltip name="ДекормацияРазрешенияСмТакжеРасширеннаяПодсказка" id="313"/>
+						</LabelDecoration>
 					</ChildItems>
 				</Page>
 				<Page name="СтраницаВарианты" id="81">
@@ -269,11 +579,11 @@
 											<ContextMenu name="ВариантыИнформационнаяНадписьКонтекстноеМеню" id="86"/>
 											<ExtendedTooltip name="ВариантыИнформационнаяНадписьExtendedTooltip" id="192"/>
 										</LabelDecoration>
-										<Button name="Записать" id="87">
+										<Button name="КомандаЗаписатьДляВариантовОтчетов" id="248">
 											<Type>UsualButton</Type>
 											<Representation>PictureAndText</Representation>
-											<CommandName>Form.StandardCommand.Write</CommandName>
-											<ExtendedTooltip name="ЗаписатьExtendedTooltip" id="193"/>
+											<CommandName>Form.Command.КомандаЗаписать</CommandName>
+											<ExtendedTooltip name="КомандаЗаписатьДляВариантовОтчетовРасширеннаяПодсказка" id="249"/>
 										</Button>
 									</ChildItems>
 								</Page>
@@ -418,29 +728,29 @@
 												</ChildItems>
 											</AutoCommandBar>
 											<ExtendedTooltip name="ВариантыДополнительногоОтчетаExtendedTooltip" id="207"/>
-											<SearchStringAddition name="ВариантыДополнительногоОтчетаСтрокаПоиска" id="240">
+											<SearchStringAddition name="ВариантыДополнительногоОтчетаСтрокаПоиска" id="314">
 												<AdditionSource>
 													<Item>ВариантыДополнительногоОтчета</Item>
 													<Type>SearchStringRepresentation</Type>
 												</AdditionSource>
-												<ContextMenu name="ВариантыДополнительногоОтчетаСтрокаПоискаКонтекстноеМеню" id="241"/>
-												<ExtendedTooltip name="ВариантыДополнительногоОтчетаСтрокаПоискаРасширеннаяПодсказка" id="242"/>
+												<ContextMenu name="ВариантыДополнительногоОтчетаСтрокаПоискаКонтекстноеМеню" id="315"/>
+												<ExtendedTooltip name="ВариантыДополнительногоОтчетаСтрокаПоискаРасширеннаяПодсказка" id="316"/>
 											</SearchStringAddition>
-											<ViewStatusAddition name="ВариантыДополнительногоОтчетаСостояниеПросмотра" id="243">
+											<ViewStatusAddition name="ВариантыДополнительногоОтчетаСостояниеПросмотра" id="317">
 												<AdditionSource>
 													<Item>ВариантыДополнительногоОтчета</Item>
 													<Type>ViewStatusRepresentation</Type>
 												</AdditionSource>
-												<ContextMenu name="ВариантыДополнительногоОтчетаСостояниеПросмотраКонтекстноеМеню" id="244"/>
-												<ExtendedTooltip name="ВариантыДополнительногоОтчетаСостояниеПросмотраРасширеннаяПодсказка" id="245"/>
+												<ContextMenu name="ВариантыДополнительногоОтчетаСостояниеПросмотраКонтекстноеМеню" id="318"/>
+												<ExtendedTooltip name="ВариантыДополнительногоОтчетаСостояниеПросмотраРасширеннаяПодсказка" id="319"/>
 											</ViewStatusAddition>
-											<SearchControlAddition name="ВариантыДополнительногоОтчетаУправлениеПоиском" id="246">
+											<SearchControlAddition name="ВариантыДополнительногоОтчетаУправлениеПоиском" id="320">
 												<AdditionSource>
 													<Item>ВариантыДополнительногоОтчета</Item>
 													<Type>SearchControl</Type>
 												</AdditionSource>
-												<ContextMenu name="ВариантыДополнительногоОтчетаУправлениеПоискомКонтекстноеМеню" id="247"/>
-												<ExtendedTooltip name="ВариантыДополнительногоОтчетаУправлениеПоискомРасширеннаяПодсказка" id="248"/>
+												<ContextMenu name="ВариантыДополнительногоОтчетаУправлениеПоискомКонтекстноеМеню" id="321"/>
+												<ExtendedTooltip name="ВариантыДополнительногоОтчетаУправлениеПоискомРасширеннаяПодсказка" id="322"/>
 											</SearchControlAddition>
 											<Events>
 												<Event name="BeforeAddRow">ВариантыДополнительногоОтчетаПередНачаломДобавления</Event>
@@ -536,29 +846,29 @@
 							</ContextMenu>
 							<AutoCommandBar name="ОбъектКомандыКоманднаяПанель" id="149"/>
 							<ExtendedTooltip name="ОбъектКомандыExtendedTooltip" id="213"/>
-							<SearchStringAddition name="ОбъектКомандыСтрокаПоиска" id="249">
+							<SearchStringAddition name="ОбъектКомандыСтрокаПоиска" id="323">
 								<AdditionSource>
 									<Item>ОбъектКоманды</Item>
 									<Type>SearchStringRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="ОбъектКомандыСтрокаПоискаКонтекстноеМеню" id="250"/>
-								<ExtendedTooltip name="ОбъектКомандыСтрокаПоискаРасширеннаяПодсказка" id="251"/>
+								<ContextMenu name="ОбъектКомандыСтрокаПоискаКонтекстноеМеню" id="324"/>
+								<ExtendedTooltip name="ОбъектКомандыСтрокаПоискаРасширеннаяПодсказка" id="325"/>
 							</SearchStringAddition>
-							<ViewStatusAddition name="ОбъектКомандыСостояниеПросмотра" id="252">
+							<ViewStatusAddition name="ОбъектКомандыСостояниеПросмотра" id="326">
 								<AdditionSource>
 									<Item>ОбъектКоманды</Item>
 									<Type>ViewStatusRepresentation</Type>
 								</AdditionSource>
-								<ContextMenu name="ОбъектКомандыСостояниеПросмотраКонтекстноеМеню" id="253"/>
-								<ExtendedTooltip name="ОбъектКомандыСостояниеПросмотраРасширеннаяПодсказка" id="254"/>
+								<ContextMenu name="ОбъектКомандыСостояниеПросмотраКонтекстноеМеню" id="327"/>
+								<ExtendedTooltip name="ОбъектКомандыСостояниеПросмотраРасширеннаяПодсказка" id="328"/>
 							</ViewStatusAddition>
-							<SearchControlAddition name="ОбъектКомандыУправлениеПоиском" id="255">
+							<SearchControlAddition name="ОбъектКомандыУправлениеПоиском" id="329">
 								<AdditionSource>
 									<Item>ОбъектКоманды</Item>
 									<Type>SearchControl</Type>
 								</AdditionSource>
-								<ContextMenu name="ОбъектКомандыУправлениеПоискомКонтекстноеМеню" id="256"/>
-								<ExtendedTooltip name="ОбъектКомандыУправлениеПоискомРасширеннаяПодсказка" id="257"/>
+								<ContextMenu name="ОбъектКомандыУправлениеПоискомКонтекстноеМеню" id="330"/>
+								<ExtendedTooltip name="ОбъектКомандыУправлениеПоискомРасширеннаяПодсказка" id="331"/>
 							</SearchControlAddition>
 							<Events>
 								<Event name="BeforeAddRow">ОбъектКомандыПередНачаломДобавления</Event>
@@ -576,6 +886,12 @@
 								</InputField>
 								<InputField name="ОбъектКомандыБыстрыйДоступПредставление" id="158">
 									<DataPath>Объект.Команды.БыстрыйДоступПредставление</DataPath>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Пользователи, которым выведена команда.</v8:content>
+										</v8:item>
+									</ToolTip>
 									<EditMode>Directly</EditMode>
 									<Width>1</Width>
 									<HorizontalStretch>false</HorizontalStretch>
@@ -592,6 +908,12 @@
 								<CheckBoxField name="ОбъектКомандыРегламентноеЗаданиеИспользование" id="160">
 									<DataPath>Объект.Команды.РегламентноеЗаданиеИспользование</DataPath>
 									<TitleLocation>None</TitleLocation>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Выполнять команду по расписанию</v8:content>
+										</v8:item>
+									</ToolTip>
 									<EditMode>EnterOnInput</EditMode>
 									<HeaderPicture>
 										<xr:Ref>StdPicture.SetTime</xr:Ref>
@@ -606,6 +928,12 @@
 								</CheckBoxField>
 								<InputField name="ОбъектКомандыРегламентноеЗаданиеПредставление" id="162">
 									<DataPath>Объект.Команды.РегламентноеЗаданиеПредставление</DataPath>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Расписание выполнения команды.</v8:content>
+										</v8:item>
+									</ToolTip>
 									<EditMode>Directly</EditMode>
 									<Width>12</Width>
 									<ChoiceButton>true</ChoiceButton>
@@ -623,7 +951,7 @@
 				</Page>
 			</ChildItems>
 		</Pages>
-		<Pages name="ГруппаДополнительнаяИнформация" id="33">
+		<UsualGroup name="ГруппаДополнительнаяИнформация" id="309">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -636,180 +964,130 @@
 					<v8:content>Группа дополнительная информация</v8:content>
 				</v8:item>
 			</ToolTip>
-			<HorizontalStretch>true</HorizontalStretch>
-			<PagesRepresentation>None</PagesRepresentation>
-			<ExtendedTooltip name="ГруппаДополнительнаяИнформацияExtendedTooltip" id="218"/>
+			<Group>Vertical</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаДополнительнаяИнформацияРасширеннаяПодсказка" id="310"/>
 			<ChildItems>
-				<Page name="ГруппаБезТекста" id="40">
+				<UsualGroup name="ГруппаБезопасныйРежимГлобальный" id="273">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Группа без текста</v8:content>
+							<v8:content>Группа безопасный режим глобальный</v8:content>
 						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Группа без текста</v8:content>
-						</v8:item>
-					</ToolTip>
-					<ExtendedTooltip name="ГруппаБезТекстаExtendedTooltip" id="219"/>
-					<ChildItems>
-						<LabelDecoration name="ПустаяДекорация" id="41">
-							<SkipOnInput>true</SkipOnInput>
-							<ContextMenu name="ПустаяДекорацияКонтекстноеМеню" id="42"/>
-							<ExtendedTooltip name="ПустаяДекорацияExtendedTooltip" id="220"/>
-						</LabelDecoration>
-					</ChildItems>
-				</Page>
-				<Page name="ГруппаПредупреждениеОбработки" id="34">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа предупреждение обработки</v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа предупреждение обработки</v8:content>
-						</v8:item>
-					</ToolTip>
-					<ExtendedTooltip name="ГруппаПредупреждениеОбработкиExtendedTooltip" id="221"/>
-					<ChildItems>
-						<LabelDecoration name="ПредупреждениеОбработкиОНебезопасномРежиме" id="36">
-							<SkipOnInput>true</SkipOnInput>
-							<TextColor>#FF0000</TextColor>
-							<Title formatted="false">
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Внимание! Обработка требует разрешить использование в небезопасном режиме.
-Более подробно о небезопасном режиме см. информацию в справке к форме.</v8:content>
-								</v8:item>
-							</Title>
-							<ContextMenu name="ПредупреждениеОбработкиОНебезопасномРежимеКонтекстноеМеню" id="37"/>
-							<ExtendedTooltip name="ПредупреждениеОбработкиОНебезопасномРежимеExtendedTooltip" id="222"/>
-						</LabelDecoration>
-					</ChildItems>
-				</Page>
-				<Page name="ГруппаПредупреждениеОтчета" id="105">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа предупреждение</v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа предупреждение</v8:content>
-						</v8:item>
-					</ToolTip>
-					<ExtendedTooltip name="ГруппаПредупреждениеОтчетаExtendedTooltip" id="223"/>
-					<ChildItems>
-						<LabelDecoration name="ПредупреждениеОтчетаОНебезопасномРежиме" id="106">
-							<SkipOnInput>true</SkipOnInput>
-							<TextColor>#FF0000</TextColor>
-							<Title formatted="false">
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Внимание! Отчет требует разрешить использование в небезопасном режиме.
-Более подробно о небезопасном режиме см. информацию в справке к форме.</v8:content>
-								</v8:item>
-							</Title>
-							<ContextMenu name="ПредупреждениеОтчетаОНебезопасномРежимеКонтекстноеМеню" id="107"/>
-							<ExtendedTooltip name="ПредупреждениеОтчетаОНебезопасномРежимеExtendedTooltip" id="224"/>
-						</LabelDecoration>
-					</ChildItems>
-				</Page>
-				<Page name="ГруппаИнформацияОбработки" id="35">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа информация обработки</v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа информация обработки</v8:content>
+							<v8:content>Группа безопасный режим глобальный</v8:content>
 						</v8:item>
 					</ToolTip>
 					<Group>Horizontal</Group>
-					<ExtendedTooltip name="ГруппаИнформацияОбработкиExtendedTooltip" id="225"/>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаБезопасныйРежимГлобальныйРасширеннаяПодсказка" id="274"/>
 					<ChildItems>
-						<LabelDecoration name="ИнформацияОбработкиОБезопасномРежиме" id="38">
-							<SkipOnInput>true</SkipOnInput>
-							<TextColor>#407D1E</TextColor>
+						<PictureDecoration name="ДекорацияБезопасныйРежимГлобальныйПиктограмма" id="275">
+							<Width>2</Width>
+							<Height>2</Height>
+							<VerticalStretch>true</VerticalStretch>
 							<Title formatted="false">
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Обработка используется в безопасном режиме</v8:content>
+									<v8:content>Декорация безопасный режим ложь пиктограмма</v8:content>
 								</v8:item>
 							</Title>
-							<HorizontalAlign>Right</HorizontalAlign>
-							<ContextMenu name="ИнформацияОбработкиОБезопасномРежимеКонтекстноеМеню" id="39"/>
-							<ExtendedTooltip name="ИнформацияОбработкиОБезопасномРежимеExtendedTooltip" id="226"/>
-						</LabelDecoration>
-						<LabelDecoration name="ИнформацияОбработкиОРазрешениях" id="172">
-							<SkipOnInput>true</SkipOnInput>
-							<TextColor>#407D1E</TextColor>
-							<Title formatted="false">
+							<Picture>
+								<xr:Ref>CommonPicture.ИнформацияПоНедоступнымПолям</xr:Ref>
+								<xr:LoadTransparent>true</xr:LoadTransparent>
+							</Picture>
+							<ContextMenu name="ДекорацияБезопасныйРежимГлобальныйПиктограммаКонтекстноеМеню" id="276"/>
+							<ExtendedTooltip name="ДекорацияБезопасныйРежимГлобальныйПиктограммаРасширеннаяПодсказка" id="277"/>
+						</PictureDecoration>
+						<Pages name="СтраницыБезопасныйРежимГлобальный" id="278">
+							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>(с предоставлением дополнительных разрешений)</v8:content>
+									<v8:content>Страницы безопасный режим глобальный</v8:content>
 								</v8:item>
 							</Title>
-							<ContextMenu name="ИнформацияОбработкиОРазрешенияхКонтекстноеМеню" id="173"/>
-							<ExtendedTooltip name="ИнформацияОбработкиОРазрешенияхExtendedTooltip" id="227"/>
-						</LabelDecoration>
+							<ToolTip>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Страницы безопасный режим глобальный</v8:content>
+								</v8:item>
+							</ToolTip>
+							<PagesRepresentation>None</PagesRepresentation>
+							<ExtendedTooltip name="СтраницыБезопасныйРежимГлобальныйРасширеннаяПодсказка" id="279"/>
+							<ChildItems>
+								<Page name="СтраницаБезопасныйРежимЛожь" id="280">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страница безопасный режим ложь</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страница безопасный режим ложь</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="СтраницаБезопасныйРежимЛожьРасширеннаяПодсказка" id="281"/>
+									<ChildItems>
+										<LabelDecoration name="ДекорацияБезопасныйРежимЛожьНадпись" id="270">
+											<VerticalStretch>true</VerticalStretch>
+											<TextColor>style:SpecialTextColor</TextColor>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Дополнительный отчет или обработка будет подключаться к программе без установки безопасного режима!
+Подробно о режимах подключения дополнительных отчетов и обработок к программе см. информацию в справке к форме.</v8:content>
+												</v8:item>
+											</Title>
+											<VerticalAlign>Center</VerticalAlign>
+											<ContextMenu name="ДекорацияБезопасныйРежимЛожьНадписьКонтекстноеМеню" id="271"/>
+											<ExtendedTooltip name="ДекорацияБезопасныйРежимЛожьНадписьРасширеннаяПодсказка" id="272"/>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+								<Page name="СтраницаБезопасныйРежимИстина" id="282">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страница безопасный режим истина</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Страница безопасный режим истина</v8:content>
+										</v8:item>
+									</ToolTip>
+									<ExtendedTooltip name="СтраницаБезопасныйРежимИстинаРасширеннаяПодсказка" id="283"/>
+									<ChildItems>
+										<LabelDecoration name="ДекорацияБезопасныйРежимИстинаНадпись" id="284">
+											<VerticalStretch>true</VerticalStretch>
+											<TextColor>style:FieldSelectionBackColor</TextColor>
+											<Title formatted="false">
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Дополнительный отчет или обработка будет подключаться к программе с установкой безопасного режима.
+Подробно о режимах подключения дополнительных отчетов и обработок см. информацию в справке к форме.</v8:content>
+												</v8:item>
+											</Title>
+											<VerticalAlign>Center</VerticalAlign>
+											<ContextMenu name="ДекорацияБезопасныйРежимИстинаНадписьКонтекстноеМеню" id="285"/>
+											<ExtendedTooltip name="ДекорацияБезопасныйРежимИстинаНадписьРасширеннаяПодсказка" id="286"/>
+										</LabelDecoration>
+									</ChildItems>
+								</Page>
+							</ChildItems>
+						</Pages>
 					</ChildItems>
-				</Page>
-				<Page name="ГруппаИнформацияОтчета" id="108">
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа информация отчета</v8:content>
-						</v8:item>
-					</Title>
-					<ToolTip>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Группа информация отчета</v8:content>
-						</v8:item>
-					</ToolTip>
-					<Group>Horizontal</Group>
-					<ExtendedTooltip name="ГруппаИнформацияОтчетаExtendedTooltip" id="228"/>
-					<ChildItems>
-						<LabelDecoration name="ИнформацияОтчетаОБезопасномРежиме" id="109">
-							<SkipOnInput>true</SkipOnInput>
-							<TextColor>#407D1E</TextColor>
-							<Title formatted="false">
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>Отчет используется в безопасном режиме</v8:content>
-								</v8:item>
-							</Title>
-							<HorizontalAlign>Right</HorizontalAlign>
-							<ContextMenu name="ИнформацияОтчетаОБезопасномРежимеКонтекстноеМеню" id="110"/>
-							<ExtendedTooltip name="ИнформацияОтчетаОБезопасномРежимеExtendedTooltip" id="229"/>
-						</LabelDecoration>
-						<LabelDecoration name="ИнформацияОтчетаОРазрешениях" id="174">
-							<SkipOnInput>true</SkipOnInput>
-							<TextColor>#407D1E</TextColor>
-							<Title formatted="false">
-								<v8:item>
-									<v8:lang>ru</v8:lang>
-									<v8:content>(с предоставлением дополнительных разрешений)</v8:content>
-								</v8:item>
-							</Title>
-							<ContextMenu name="ИнформацияОтчетаОРазрешенияхКонтекстноеМеню" id="175"/>
-							<ExtendedTooltip name="ИнформацияОтчетаОРазрешенияхExtendedTooltip" id="230"/>
-						</LabelDecoration>
-					</ChildItems>
-				</Page>
+				</UsualGroup>
 			</ChildItems>
-		</Pages>
+		</UsualGroup>
 		<UsualGroup name="ДополнительнаяИнформация" id="6">
 			<Title>
 				<v8:item>
@@ -1021,9 +1299,6 @@
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
-			<Edit>
-				<xr:Common>false</xr:Common>
-			</Edit>
 		</Attribute>
 		<Attribute name="ЭтоНовый" id="6">
 			<Title>
@@ -1248,11 +1523,11 @@
 				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
-		<Attribute name="ПредставлениеРазрешений" id="12">
+		<Attribute name="ПредставлениеРазрешений_2_1_3" id="12">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Представление разрешений</v8:content>
+					<v8:content>Представление разрешений 2 1 3</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -1278,50 +1553,31 @@
 				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
-		<Attribute name="ДиалогЗагрузкиНовогоПройден" id="14">
+		<Attribute name="ПоказатьДиалогЗагрузкиИзФайлаПриОткрытии" id="15">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Диалог загрузки нового пройден</v8:content>
+					<v8:content>Показать диалог загрузки из файла при открытии</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
-		<ConditionalAppearance>
-			<dcsset:item>
-				<dcsset:selection>
-					<dcsset:item>
-						<dcsset:field>ОбъектКомандыРегламентноеЗаданиеИспользование</dcsset:field>
-					</dcsset:item>
-					<dcsset:item>
-						<dcsset:field>ОбъектКомандыРегламентноеЗаданиеПредставление</dcsset:field>
-					</dcsset:item>
-				</dcsset:selection>
-				<dcsset:filter>
-					<dcsset:item xsi:type="dcsset:FilterItemComparison">
-						<dcsset:left xsi:type="dcscor:Field">Объект.Команды.РегламентноеЗаданиеРазрешено</dcsset:left>
-						<dcsset:comparisonType>Equal</dcsset:comparisonType>
-						<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
-					</dcsset:item>
-				</dcsset:filter>
-				<dcsset:appearance>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:use>false</dcscor:use>
-						<dcscor:parameter>Доступность</dcscor:parameter>
-						<dcscor:value xsi:type="xs:boolean">false</dcscor:value>
-					</dcscor:item>
-					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
-						<dcscor:parameter>ТолькоПросмотр</dcscor:parameter>
-						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
-					</dcscor:item>
-				</dcsset:appearance>
-			</dcsset:item>
-		</ConditionalAppearance>
+		<Attribute name="ПредставлениеРазрешений_2_2_2" id="14">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Представление разрешений 2 2 2</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type xmlns:mxl="http://v8.1c.ru/8.2/data/spreadsheet">mxl:SpreadsheetDocument</v8:Type>
+			</Type>
+		</Attribute>
 	</Attributes>
 	<Commands>
-		<Command name="ЗагрузитьФайлОбработкиОтчета" id="1">
+		<Command name="ЗагрузитьИзФайла" id="1">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -1334,10 +1590,10 @@
 					<v8:content>Загрузить обработку (отчет) из файла на компьютере</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Action>ЗагрузитьФайлОбработкиОтчета</Action>
+			<Action>ЗагрузитьИзФайла</Action>
 			<Representation>Picture</Representation>
 		</Command>
-		<Command name="ВыгрузитьФайлОбработкиОтчета" id="2">
+		<Command name="ВыгрузитьВФайл" id="2">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -1350,10 +1606,10 @@
 					<v8:content>Выгрузить обработку (отчет) в файл на компьютер</v8:content>
 				</v8:item>
 			</ToolTip>
-			<Action>ВыгрузитьФайлОбработкиОтчета</Action>
+			<Action>ВыгрузитьВФайл</Action>
 			<Representation>Picture</Representation>
 		</Command>
-		<Command name="ОбъектКомандыНастроитьБыстрыйДоступ" id="6">
+		<Command name="ОбъектКомандыНастроитьБыстрыйДоступ" id="3">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -1383,7 +1639,7 @@
 			</ToolTip>
 			<Action>ОбъектКомандыНастроитьРасписание</Action>
 		</Command>
-		<Command name="ВариантыДополнительногоОтчетаОткрыть" id="7">
+		<Command name="ВариантыДополнительногоОтчетаОткрыть" id="5">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -1403,7 +1659,7 @@
 			<Action>ВариантыДополнительногоОтчетаОткрыть</Action>
 			<Representation>TextPicture</Representation>
 		</Command>
-		<Command name="РазместитьВРазделах" id="8">
+		<Command name="РазместитьВРазделах" id="6">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
@@ -1417,6 +1673,47 @@
 				</v8:item>
 			</ToolTip>
 			<Action>РазместитьВРазделах</Action>
+		</Command>
+		<Command name="КомандаЗаписатьИЗакрыть" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать и закрыть</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать объект и закрыть форму</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Picture>
+				<xr:Ref>StdPicture.WriteAndClose</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>КомандаЗаписатьИЗакрыть</Action>
+			<Representation>Text</Representation>
+		</Command>
+		<Command name="КомандаЗаписать" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать объект</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Shortcut>Ctrl+S</Shortcut>
+			<Picture>
+				<xr:Ref>StdPicture.Write</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</Picture>
+			<Action>КомандаЗаписать</Action>
+			<Representation>Picture</Representation>
 		</Command>
 	</Commands>
 </Form>

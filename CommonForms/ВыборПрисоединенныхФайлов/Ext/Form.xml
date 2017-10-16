@@ -6,6 +6,7 @@
 			<v8:content>Файлы</v8:content>
 		</v8:item>
 	</Title>
+	<Width>50</Width>
 	<WindowOpeningMode>LockOwnerWindow</WindowOpeningMode>
 	<AutoTitle>false</AutoTitle>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
@@ -16,22 +17,22 @@
 				<Type>CommandBarButton</Type>
 				<DefaultButton>true</DefaultButton>
 				<CommandName>Form.Command.СтандартнаяКомандаВыбрать</CommandName>
-				<ExtendedTooltip name="ФормаСтандартнаяКомандаВыбратьРасширеннаяПодсказка" id="12"/>
+				<ExtendedTooltip name="ФормаСтандартнаяКомандаВыбратьExtendedTooltip" id="12"/>
 			</Button>
 			<Button name="ФормаСтандартнаяКомандаСвойстваОбъекта" id="1">
 				<Type>CommandBarButton</Type>
 				<CommandName>Form.Command.СтандартнаяКомандаСвойстваОбъекта</CommandName>
-				<ExtendedTooltip name="ФормаСтандартнаяКомандаСвойстваОбъектаРасширеннаяПодсказка" id="13"/>
+				<ExtendedTooltip name="ФормаСтандартнаяКомандаСвойстваОбъектаExtendedTooltip" id="13"/>
 			</Button>
 			<Button name="ФормаСправка" id="2">
 				<Type>CommandBarButton</Type>
 				<CommandName>Form.StandardCommand.Help</CommandName>
-				<ExtendedTooltip name="ФормаСправкаРасширеннаяПодсказка" id="14"/>
+				<ExtendedTooltip name="ФормаСправкаExtendedTooltip" id="14"/>
 			</Button>
 			<Button name="ФормаИзменитьФорму" id="11">
 				<Type>CommandBarButton</Type>
 				<CommandName>Form.StandardCommand.CustomizeForm</CommandName>
-				<ExtendedTooltip name="ФормаИзменитьФормуРасширеннаяПодсказка" id="15"/>
+				<ExtendedTooltip name="ФормаИзменитьФормуExtendedTooltip" id="15"/>
 			</Button>
 		</ChildItems>
 	</AutoCommandBar>
@@ -40,11 +41,16 @@
 	</Events>
 	<ChildItems>
 		<Table name="Список" id="4">
+			<CommandBarLocation>None</CommandBarLocation>
 			<ReadOnly>true</ReadOnly>
 			<Header>false</Header>
 			<UseAlternationRowColor>true</UseAlternationRowColor>
 			<DataPath>Список</DataPath>
-			<RowPictureDataPath>Список.DefaultPicture</RowPictureDataPath>
+			<RowPictureDataPath>Список.ИндексКартинки</RowPictureDataPath>
+			<RowsPicture>
+				<xr:Ref>CommonPicture.КоллекцияПиктограммФайлов</xr:Ref>
+				<xr:LoadTransparent>true</xr:LoadTransparent>
+			</RowsPicture>
 			<SearchStringLocation>None</SearchStringLocation>
 			<ViewStatusLocation>None</ViewStatusLocation>
 			<SearchControlLocation>None</SearchControlLocation>
@@ -67,55 +73,70 @@
 					<Button name="СписокКонтекстноеМенюВыбрать" id="9">
 						<Type>CommandBarButton</Type>
 						<CommandName>Form.Item.Список.StandardCommand.Choose</CommandName>
-						<ExtendedTooltip name="СписокКонтекстноеМенюВыбратьРасширеннаяПодсказка" id="16"/>
+						<ExtendedTooltip name="СписокКонтекстноеМенюВыбратьExtendedTooltip" id="16"/>
 					</Button>
 					<Button name="СписокКонтекстноеМенюНайти" id="7">
 						<Type>CommandBarButton</Type>
 						<CommandName>Form.Item.Список.StandardCommand.Find</CommandName>
-						<ExtendedTooltip name="СписокКонтекстноеМенюНайтиРасширеннаяПодсказка" id="17"/>
+						<ExtendedTooltip name="СписокКонтекстноеМенюНайтиExtendedTooltip" id="17"/>
 					</Button>
 					<Button name="СписокКонтекстноеМенюОтменитьПоиск" id="8">
 						<Type>CommandBarButton</Type>
 						<CommandName>Form.Item.Список.StandardCommand.CancelSearch</CommandName>
-						<ExtendedTooltip name="СписокКонтекстноеМенюОтменитьПоискРасширеннаяПодсказка" id="18"/>
+						<ExtendedTooltip name="СписокКонтекстноеМенюОтменитьПоискExtendedTooltip" id="18"/>
 					</Button>
 					<Button name="СписокКонтекстноеМенюВывестиСписок" id="10">
 						<Type>CommandBarButton</Type>
 						<CommandName>Form.Item.Список.StandardCommand.OutputList</CommandName>
-						<ExtendedTooltip name="СписокКонтекстноеМенюВывестиСписокРасширеннаяПодсказка" id="19"/>
+						<ExtendedTooltip name="СписокКонтекстноеМенюВывестиСписокExtendedTooltip" id="19"/>
 					</Button>
 				</ChildItems>
 			</ContextMenu>
 			<AutoCommandBar name="СписокКоманднаяПанель" id="6"/>
-			<ExtendedTooltip name="СписокРасширеннаяПодсказка" id="20"/>
-			<SearchStringAddition name="СписокСтрокаПоиска" id="21">
+			<ExtendedTooltip name="СписокExtendedTooltip" id="20"/>
+			<SearchStringAddition name="СписокСтрокаПоиска" id="30">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchStringRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="22"/>
-				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="23"/>
+				<ContextMenu name="СписокСтрокаПоискаКонтекстноеМеню" id="31"/>
+				<ExtendedTooltip name="СписокСтрокаПоискаРасширеннаяПодсказка" id="32"/>
 			</SearchStringAddition>
-			<ViewStatusAddition name="СписокСостояниеПросмотра" id="24">
+			<ViewStatusAddition name="СписокСостояниеПросмотра" id="33">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>ViewStatusRepresentation</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="25"/>
-				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="26"/>
+				<ContextMenu name="СписокСостояниеПросмотраКонтекстноеМеню" id="34"/>
+				<ExtendedTooltip name="СписокСостояниеПросмотраРасширеннаяПодсказка" id="35"/>
 			</ViewStatusAddition>
-			<SearchControlAddition name="СписокУправлениеПоиском" id="27">
+			<SearchControlAddition name="СписокУправлениеПоиском" id="36">
 				<AdditionSource>
 					<Item>Список</Item>
 					<Type>SearchControl</Type>
 				</AdditionSource>
-				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="28"/>
-				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="29"/>
+				<ContextMenu name="СписокУправлениеПоискомКонтекстноеМеню" id="37"/>
+				<ExtendedTooltip name="СписокУправлениеПоискомРасширеннаяПодсказка" id="38"/>
 			</SearchControlAddition>
 			<Events>
 				<Event name="ValueChoice">СписокВыборЗначения</Event>
 				<Event name="Selection">СписокВыбор</Event>
 			</Events>
+			<ChildItems>
+				<LabelField name="СписокНаименование" id="27">
+					<DataPath>Список.Наименование</DataPath>
+					<ContextMenu name="СписокНаименованиеКонтекстноеМеню" id="28"/>
+					<ExtendedTooltip name="СписокНаименованиеРасширеннаяПодсказка" id="29"/>
+				</LabelField>
+				<LabelField name="СписокСсылка" id="21">
+					<DataPath>Список.Ссылка</DataPath>
+					<UserVisible>
+						<xr:Common>false</xr:Common>
+					</UserVisible>
+					<ContextMenu name="СписокСсылкаКонтекстноеМеню" id="22"/>
+					<ExtendedTooltip name="СписокСсылкаРасширеннаяПодсказка" id="23"/>
+				</LabelField>
+			</ChildItems>
 		</Table>
 	</ChildItems>
 	<Attributes>
@@ -130,9 +151,17 @@
 				<v8:Type>cfg:DynamicList</v8:Type>
 			</Type>
 			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>Список.Ссылка</Field>
+			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
-				<DynamicDataRead>true</DynamicDataRead>
+				<DynamicDataRead>false</DynamicDataRead>
+				<QueryText>ВЫБРАТЬ
+	ЗНАЧЕНИЕ(Справочник.Пользователи.ПустаяСсылка) КАК Ссылка,
+	ВЫРАЗИТЬ("" КАК Строка(150)) КАК Наименование,
+	1 КАК ИндексКартинки
+</QueryText>
 				<ListSettings>
 					<dcsset:filter>
 						<dcsset:viewMode>Normal</dcsset:viewMode>
