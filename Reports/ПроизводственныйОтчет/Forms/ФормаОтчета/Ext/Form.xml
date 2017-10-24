@@ -6,9 +6,10 @@
 	<ReportFormType>Main</ReportFormType>
 	<VariantAppearance/>
 	<AutoShowState>Auto</AutoShowState>
-	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
-		<Autofill>false</Autofill>
-	</AutoCommandBar>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
 	<ChildItems>
 		<UsualGroup name="ГруппаОсновная" id="14">
 			<Title>
@@ -61,6 +62,88 @@
 				</InputField>
 			</ChildItems>
 		</UsualGroup>
+		<UsualGroup name="ГруппаРазделы" id="16">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выводить разделы</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа разделы</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<ExtendedTooltip name="ГруппаРазделыРасширеннаяПодсказка" id="17"/>
+			<ChildItems>
+				<UsualGroup name="ГруппаРазделыЛеваяКолонка" id="30">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа разделы левая колонка</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа разделы левая колонка</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаРазделыЛеваяКолонкаРасширеннаяПодсказка" id="31"/>
+					<ChildItems>
+						<CheckBoxField name="НеПроведенныеНоОплаченные" id="34">
+							<DataPath>НеПроведенныеНоОплаченные</DataPath>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="НеПроведенныеНоОплаченныеКонтекстноеМеню" id="35"/>
+							<ExtendedTooltip name="НеПроведенныеНоОплаченныеРасширеннаяПодсказка" id="36"/>
+						</CheckBoxField>
+						<CheckBoxField name="РазмещенныеИНаПроверке" id="27">
+							<DataPath>РазмещенныеИНаПроверке</DataPath>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="РазмещенныеИНаПроверкеКонтекстноеМеню" id="28"/>
+							<ExtendedTooltip name="РазмещенныеИНаПроверкеРасширеннаяПодсказка" id="29"/>
+						</CheckBoxField>
+					</ChildItems>
+				</UsualGroup>
+				<UsualGroup name="ГруппаРазделыПраваяКолонка" id="32">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа разделы правая колонка</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа разделы правая колонка</v8:content>
+						</v8:item>
+					</ToolTip>
+					<Group>Vertical</Group>
+					<Representation>None</Representation>
+					<ShowTitle>false</ShowTitle>
+					<ExtendedTooltip name="ГруппаРазделыПраваяКолонкаРасширеннаяПодсказка" id="33"/>
+					<ChildItems>
+						<CheckBoxField name="ПросроченноеИзготовление" id="24">
+							<DataPath>ПросроченноеИзготовление</DataPath>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ПросроченноеИзготовлениеКонтекстноеМеню" id="25"/>
+							<ExtendedTooltip name="ПросроченноеИзготовлениеРасширеннаяПодсказка" id="26"/>
+						</CheckBoxField>
+						<CheckBoxField name="ИзделияНаСкладеГотовойПродукции" id="18">
+							<DataPath>ИзделияНаСкладеГотовойПродукции</DataPath>
+							<CheckBoxType>Auto</CheckBoxType>
+							<ContextMenu name="ИзделияНаСкладеГотовойПродукцииКонтекстноеМеню" id="19"/>
+							<ExtendedTooltip name="ИзделияНаСкладеГотовойПродукцииРасширеннаяПодсказка" id="20"/>
+						</CheckBoxField>
+					</ChildItems>
+				</UsualGroup>
+			</ChildItems>
+		</UsualGroup>
 		<SpreadSheetDocumentField name="ТабДок" id="1">
 			<DataPath>ТабДок</DataPath>
 			<TitleLocation>None</TitleLocation>
@@ -100,6 +183,50 @@
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.Подразделения</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="НеПроведенныеНоОплаченные" id="5">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Не проведенные но оплаченные</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="РазмещенныеИНаПроверке" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Размещенные и на проверке</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПросроченноеИзготовление" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Просроченное изготовление</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ИзделияНаСкладеГотовойПродукции" id="8">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Изделия на складе готовой продукции</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
 			</Type>
 		</Attribute>
 	</Attributes>
