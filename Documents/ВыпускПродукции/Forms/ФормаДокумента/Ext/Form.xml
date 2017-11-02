@@ -203,7 +203,6 @@
 				<ExtendedTooltip name="СписокСпецификацийУправлениеПоискомРасширеннаяПодсказка" id="54"/>
 			</SearchControlAddition>
 			<Events>
-				<Event name="Selection">СписокСпецификацийВыбор</Event>
 				<Event name="BeforeAddRow">СписокСпецификацийПередНачаломДобавления</Event>
 			</Events>
 			<ChildItems>
@@ -216,14 +215,22 @@
 				</LabelField>
 				<InputField name="СписокСпецификацийСпецификация" id="28">
 					<DataPath>Объект.СписокСпецификаций.Спецификация</DataPath>
-					<ReadOnly>true</ReadOnly>
 					<EditMode>EnterOnInput</EditMode>
 					<ContextMenu name="СписокСпецификацийСпецификацияКонтекстноеМеню" id="29"/>
 					<ExtendedTooltip name="СписокСпецификацийСпецификацияРасширеннаяПодсказка" id="30"/>
+					<Events>
+						<Event name="StartChoice">СписокСпецификацийСпецификацияНачалоВыбора</Event>
+					</Events>
 				</InputField>
 				<InputField name="СписокСпецификацийОтветственный" id="65">
 					<DataPath>Объект.СписокСпецификаций.Ответственный</DataPath>
 					<EditMode>EnterOnInput</EditMode>
+					<DropListButton>true</DropListButton>
+					<ChoiceButton>false</ChoiceButton>
+					<ClearButton>false</ClearButton>
+					<SpinButton>false</SpinButton>
+					<OpenButton>false</OpenButton>
+					<CreateButton>false</CreateButton>
 					<QuickChoice>true</QuickChoice>
 					<ContextMenu name="СписокСпецификацийОтветственныйКонтекстноеМеню" id="66"/>
 					<ExtendedTooltip name="СписокСпецификацийОтветственныйРасширеннаяПодсказка" id="67"/>
