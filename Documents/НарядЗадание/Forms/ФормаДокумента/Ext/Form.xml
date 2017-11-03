@@ -328,6 +328,11 @@
 								</InputField>
 							</ChildItems>
 						</Table>
+						<LabelField name="Автор1" id="487">
+							<DataPath>Объект.Автор</DataPath>
+							<ContextMenu name="Автор1КонтекстноеМеню" id="488"/>
+							<ExtendedTooltip name="Автор1РасширеннаяПодсказка" id="489"/>
+						</LabelField>
 					</ChildItems>
 				</Page>
 				<Page name="СтраницаСписокНоменклатуры" id="12">
@@ -1025,6 +1030,129 @@
 						</Table>
 					</ChildItems>
 				</Page>
+				<Page name="СтраницаИсключаемыхОстатков" id="485">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Исключаемые остатки</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница исключаемых остатков</v8:content>
+						</v8:item>
+					</ToolTip>
+					<TitleDataPath>Объект.СписокИсключаемыхОстатков.RowsCount</TitleDataPath>
+					<ExtendedTooltip name="СтраницаИсключаемыхОстатковРасширеннаяПодсказка" id="486"/>
+					<ChildItems>
+						<Table name="СписокИсключаемыхОстатков" id="490">
+							<ReadOnly>true</ReadOnly>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Объект.СписокИсключаемыхОстатков</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Исключаемые остатки</v8:content>
+								</v8:item>
+							</Title>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="СписокИсключаемыхОстатковКонтекстноеМеню" id="491"/>
+							<AutoCommandBar name="СписокИсключаемыхОстатковКоманднаяПанель" id="492">
+								<Autofill>false</Autofill>
+								<ChildItems>
+									<Button name="СписокИсключаемыхОстатковПодобратьИсключаемыеОстатки" id="518">
+										<Type>CommandBarButton</Type>
+										<Representation>PictureAndText</Representation>
+										<CommandName>Form.Command.ПодобратьИсключаемыеОстатки</CommandName>
+										<Picture>
+											<xr:Ref>StdPicture.GenerateReport</xr:Ref>
+											<xr:LoadTransparent>true</xr:LoadTransparent>
+										</Picture>
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Подобрать</v8:content>
+											</v8:item>
+										</Title>
+										<ExtendedTooltip name="СписокИсключаемыхОстатковПодобратьИсключаемыеОстаткиРасширеннаяПодсказка" id="519"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="СписокИсключаемыхОстатковРасширеннаяПодсказка" id="493"/>
+							<SearchStringAddition name="СписокИсключаемыхОстатковСтрокаПоиска" id="494">
+								<AdditionSource>
+									<Item>СписокИсключаемыхОстатков</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокИсключаемыхОстатковСтрокаПоискаКонтекстноеМеню" id="495"/>
+								<ExtendedTooltip name="СписокИсключаемыхОстатковСтрокаПоискаРасширеннаяПодсказка" id="496"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="СписокИсключаемыхОстатковСостояниеПросмотра" id="497">
+								<AdditionSource>
+									<Item>СписокИсключаемыхОстатков</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокИсключаемыхОстатковСостояниеПросмотраКонтекстноеМеню" id="498"/>
+								<ExtendedTooltip name="СписокИсключаемыхОстатковСостояниеПросмотраРасширеннаяПодсказка" id="499"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="СписокИсключаемыхОстатковУправлениеПоиском" id="500">
+								<AdditionSource>
+									<Item>СписокИсключаемыхОстатков</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокИсключаемыхОстатковУправлениеПоискомКонтекстноеМеню" id="501"/>
+								<ExtendedTooltip name="СписокИсключаемыхОстатковУправлениеПоискомРасширеннаяПодсказка" id="502"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="ChoiceProcessing">СписокИсключаемыхОстатковОбработкаВыбора</Event>
+							</Events>
+							<ChildItems>
+								<LabelField name="СписокИсключаемыхОстатковНомерСтроки" id="503">
+									<DataPath>Объект.СписокИсключаемыхОстатков.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="СписокИсключаемыхОстатковНомерСтрокиКонтекстноеМеню" id="504"/>
+									<ExtendedTooltip name="СписокИсключаемыхОстатковНомерСтрокиРасширеннаяПодсказка" id="505"/>
+								</LabelField>
+								<InputField name="СписокИсключаемыхОстатковНоменклатура" id="512">
+									<DataPath>Объект.СписокИсключаемыхОстатков.Номенклатура</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="СписокИсключаемыхОстатковНоменклатураКонтекстноеМеню" id="513"/>
+									<ExtendedTooltip name="СписокИсключаемыхОстатковНоменклатураРасширеннаяПодсказка" id="514"/>
+								</InputField>
+								<InputField name="СписокИсключаемыхОстатковРезерв" id="515">
+									<DataPath>Объект.СписокИсключаемыхОстатков.Резерв</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>На резерве</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="СписокИсключаемыхОстатковРезервКонтекстноеМеню" id="516"/>
+									<ExtendedTooltip name="СписокИсключаемыхОстатковРезервРасширеннаяПодсказка" id="517"/>
+								</InputField>
+								<InputField name="СписокИсключаемыхОстатковВысотаОстатка" id="506">
+									<DataPath>Объект.СписокИсключаемыхОстатков.Высота</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="СписокИсключаемыхОстатковВысотаОстаткаКонтекстноеМеню" id="507"/>
+									<ExtendedTooltip name="СписокИсключаемыхОстатковВысотаОстаткаРасширеннаяПодсказка" id="508"/>
+								</InputField>
+								<InputField name="СписокИсключаемыхОстатковШиринаОстатка" id="509">
+									<DataPath>Объект.СписокИсключаемыхОстатков.Ширина</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="СписокИсключаемыхОстатковШиринаОстаткаКонтекстноеМеню" id="510"/>
+									<ExtendedTooltip name="СписокИсключаемыхОстатковШиринаОстаткаРасширеннаяПодсказка" id="511"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
 			</ChildItems>
 		</Pages>
 		<LabelField name="Автор" id="120">
@@ -1495,6 +1623,22 @@
 			</Picture>
 			<Action>СформироватьРаскройНаХлысты</Action>
 			<Representation>TextPicture</Representation>
+			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ПодобратьИсключаемыеОстатки" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобрать исключаемые остатки</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подобрать исключаемые остатки</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ПодобратьИсключаемыеОстатки</Action>
 			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>
 	</Commands>
