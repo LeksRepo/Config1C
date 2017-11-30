@@ -144,6 +144,7 @@
 		</LabelField>
 		<Table name="СписокНоменклатуры" id="19">
 			<Representation>List</Representation>
+			<ChangeRowOrder>false</ChangeRowOrder>
 			<AutoInsertNewRow>true</AutoInsertNewRow>
 			<EnableStartDrag>true</EnableStartDrag>
 			<EnableDrag>true</EnableDrag>
@@ -190,22 +191,26 @@
 			</SearchControlAddition>
 			<Events>
 				<Event name="BeforeAddRow">СписокНоменклатурыПередНачаломДобавления</Event>
+				<Event name="BeforeDeleteRow">СписокНоменклатурыПередУдалением</Event>
 			</Events>
 			<ChildItems>
 				<LabelField name="СписокНоменклатурыНомерСтроки" id="23">
 					<DataPath>Объект.СписокНоменклатуры.LineNumber</DataPath>
+					<ReadOnly>true</ReadOnly>
 					<EditMode>EnterOnInput</EditMode>
 					<ContextMenu name="СписокНоменклатурыНомерСтрокиКонтекстноеМеню" id="24"/>
 					<ExtendedTooltip name="СписокНоменклатурыНомерСтрокиРасширеннаяПодсказка" id="25"/>
 				</LabelField>
 				<InputField name="СписокНоменклатурыНоменклатура" id="32">
 					<DataPath>Объект.СписокНоменклатуры.Номенклатура</DataPath>
+					<ReadOnly>true</ReadOnly>
 					<EditMode>EnterOnInput</EditMode>
 					<ContextMenu name="СписокНоменклатурыНоменклатураКонтекстноеМеню" id="33"/>
 					<ExtendedTooltip name="СписокНоменклатурыНоменклатураРасширеннаяПодсказка" id="34"/>
 				</InputField>
 				<LabelField name="СписокНоменклатурыНоменклатураЕдиницаИзмерения" id="45">
 					<DataPath>Объект.СписокНоменклатуры.Номенклатура.ЕдиницаИзмерения</DataPath>
+					<ReadOnly>true</ReadOnly>
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
@@ -218,15 +223,29 @@
 				</LabelField>
 				<InputField name="СписокНоменклатурыКоличествоСклад" id="48">
 					<DataPath>Объект.СписокНоменклатуры.КоличествоСклад</DataPath>
+					<ReadOnly>true</ReadOnly>
 					<EditMode>EnterOnInput</EditMode>
 					<ContextMenu name="СписокНоменклатурыКоличествоСкладКонтекстноеМеню" id="49"/>
 					<ExtendedTooltip name="СписокНоменклатурыКоличествоСкладРасширеннаяПодсказка" id="50"/>
 				</InputField>
+				<InputField name="СписокНоменклатурыЗатребованоСклад" id="78">
+					<DataPath>Объект.СписокНоменклатуры.ЗатребованоСклад</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="СписокНоменклатурыЗатребованоСкладКонтекстноеМеню" id="79"/>
+					<ExtendedTooltip name="СписокНоменклатурыЗатребованоСкладРасширеннаяПодсказка" id="80"/>
+				</InputField>
 				<InputField name="СписокНоменклатурыКоличествоЦех" id="51">
 					<DataPath>Объект.СписокНоменклатуры.КоличествоЦех</DataPath>
+					<ReadOnly>true</ReadOnly>
 					<EditMode>EnterOnInput</EditMode>
 					<ContextMenu name="СписокНоменклатурыКоличествоЦехКонтекстноеМеню" id="52"/>
 					<ExtendedTooltip name="СписокНоменклатурыКоличествоЦехРасширеннаяПодсказка" id="53"/>
+				</InputField>
+				<InputField name="СписокНоменклатурыЗатребованоЦех" id="81">
+					<DataPath>Объект.СписокНоменклатуры.ЗатребованоЦех</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="СписокНоменклатурыЗатребованоЦехКонтекстноеМеню" id="82"/>
+					<ExtendedTooltip name="СписокНоменклатурыЗатребованоЦехРасширеннаяПодсказка" id="83"/>
 				</InputField>
 				<InputField name="СписокНоменклатурыКомментарий" id="72">
 					<DataPath>Объект.СписокНоменклатуры.Комментарий</DataPath>
