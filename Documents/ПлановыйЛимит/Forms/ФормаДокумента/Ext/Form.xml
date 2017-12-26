@@ -54,7 +54,7 @@
 								</v8:item>
 							</Title>
 							<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
-							<Width>23</Width>
+							<Width>30</Width>
 							<HorizontalStretch>false</HorizontalStretch>
 							<Font ref="sys:DefaultGUIFont" kind="WindowsFont"/>
 							<ContextMenu name="НомерКонтекстноеМеню" id="50"/>
@@ -63,7 +63,7 @@
 						<InputField name="Подразделение" id="1">
 							<DataPath>Объект.Подразделение</DataPath>
 							<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
-							<Width>23</Width>
+							<Width>30</Width>
 							<HorizontalStretch>false</HorizontalStretch>
 							<OpenButton>false</OpenButton>
 							<QuickChoice>true</QuickChoice>
@@ -84,7 +84,7 @@
 								</v8:item>
 							</Title>
 							<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
-							<Width>23</Width>
+							<Width>30</Width>
 							<HorizontalStretch>false</HorizontalStretch>
 							<EditFormat>
 								<v8:item>
@@ -102,7 +102,7 @@
 						</InputField>
 						<Button name="Заполнить" id="42">
 							<Type>UsualButton</Type>
-							<Width>37</Width>
+							<Width>45</Width>
 							<CommandName>Form.Command.Заполнить</CommandName>
 							<TextColor>style:FormTextColor</TextColor>
 							<BackColor>#F0E6B4</BackColor>
@@ -113,7 +113,7 @@
 						<Table name="ТаблицаДней" id="7">
 							<ChangeRowSet>false</ChangeRowSet>
 							<ChangeRowOrder>false</ChangeRowOrder>
-							<Width>37</Width>
+							<Width>45</Width>
 							<SelectionMode>SingleRow</SelectionMode>
 							<AutoInsertNewRow>true</AutoInsertNewRow>
 							<HorizontalStretch>false</HorizontalStretch>
@@ -178,6 +178,18 @@
 									</EditFormat>
 									<ContextMenu name="ТаблицаДнейДатаКонтекстноеМеню" id="30"/>
 									<ExtendedTooltip name="ТаблицаДнейДатаРасширеннаяПодсказка" id="31"/>
+								</InputField>
+								<InputField name="ТаблицаДнейКоличествоДеталей" id="64">
+									<DataPath>Объект.ТаблицаДней.КоличествоДеталей</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Кол. деталей</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ТаблицаДнейКоличествоДеталейКонтекстноеМеню" id="65"/>
+									<ExtendedTooltip name="ТаблицаДнейКоличествоДеталейРасширеннаяПодсказка" id="66"/>
 								</InputField>
 								<InputField name="ТаблицаДнейКоличествоКоробов" id="44">
 									<DataPath>Объект.ТаблицаДней.КоличествоКоробов</DataPath>
@@ -252,13 +264,7 @@
 			<dcsset:item>
 				<dcsset:selection>
 					<dcsset:item>
-						<dcsset:field>ТаблицаДнейДата</dcsset:field>
-					</dcsset:item>
-					<dcsset:item>
-						<dcsset:field>ТаблицаДнейНорматив</dcsset:field>
-					</dcsset:item>
-					<dcsset:item>
-						<dcsset:field>ТаблицаДнейКоличествоКоробов</dcsset:field>
+						<dcsset:field>ТаблицаДней</dcsset:field>
 					</dcsset:item>
 				</dcsset:selection>
 				<dcsset:filter>
@@ -269,6 +275,11 @@
 					</dcsset:item>
 					<dcsset:item xsi:type="dcsset:FilterItemComparison">
 						<dcsset:left xsi:type="dcscor:Field">Объект.ТаблицаДней.КоличествоКоробов</dcsset:left>
+						<dcsset:comparisonType>Equal</dcsset:comparisonType>
+						<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:FilterItemComparison">
+						<dcsset:left xsi:type="dcscor:Field">Объект.ТаблицаДней.КоличествоДеталей</dcsset:left>
 						<dcsset:comparisonType>Equal</dcsset:comparisonType>
 						<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
 					</dcsset:item>
