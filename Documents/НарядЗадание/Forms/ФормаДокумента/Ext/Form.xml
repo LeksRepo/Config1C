@@ -696,34 +696,6 @@
 									<ContextMenu name="ОстаткиХлыстовКонтекстноеМеню" id="293"/>
 									<AutoCommandBar name="ОстаткиХлыстовКоманднаяПанель" id="294">
 										<Autofill>false</Autofill>
-										<ChildItems>
-											<Button name="ОстаткиХлыстовСформироватьРаскройНаХлысты" id="338">
-												<Type>CommandBarButton</Type>
-												<DefaultItem>true</DefaultItem>
-												<CommandName>Form.Command.СформироватьРаскройНаХлысты</CommandName>
-												<ExtendedTooltip name="ОстаткиХлыстовСформироватьРаскройНаХлыстыРасширеннаяПодсказка" id="339"/>
-											</Button>
-											<Button name="ОстаткиХлыстовДобавить" id="340">
-												<Type>CommandBarButton</Type>
-												<CommandName>Form.Item.ОстаткиХлыстов.StandardCommand.Add</CommandName>
-												<ExtendedTooltip name="ОстаткиХлыстовДобавитьРасширеннаяПодсказка" id="341"/>
-											</Button>
-											<Button name="ОстаткиХлыстовСкопировать" id="342">
-												<Type>CommandBarButton</Type>
-												<CommandName>Form.Item.ОстаткиХлыстов.StandardCommand.Copy</CommandName>
-												<ExtendedTooltip name="ОстаткиХлыстовСкопироватьРасширеннаяПодсказка" id="343"/>
-											</Button>
-											<Button name="ОстаткиХлыстовУдалить" id="344">
-												<Type>CommandBarButton</Type>
-												<CommandName>Form.Item.ОстаткиХлыстов.StandardCommand.Delete</CommandName>
-												<ExtendedTooltip name="ОстаткиХлыстовУдалитьРасширеннаяПодсказка" id="345"/>
-											</Button>
-											<Button name="ОстаткиХлыстовОчиститьСписокХлыстов" id="336">
-												<Type>CommandBarButton</Type>
-												<CommandName>Form.Command.ОчиститьСписокХлыстов</CommandName>
-												<ExtendedTooltip name="ОстаткиХлыстовОчиститьСписокХлыстовРасширеннаяПодсказка" id="337"/>
-											</Button>
-										</ChildItems>
 									</AutoCommandBar>
 									<ExtendedTooltip name="ОстаткиХлыстовРасширеннаяПодсказка" id="295"/>
 									<SearchStringAddition name="ОстаткиХлыстовСтрокаПоиска" id="394">
@@ -751,11 +723,13 @@
 										<ExtendedTooltip name="ОстаткиХлыстовУправлениеПоискомРасширеннаяПодсказка" id="402"/>
 									</SearchControlAddition>
 									<Events>
-										<Event name="OnChange">ОстаткиХлыстовПриИзменении</Event>
+										<Event name="BeforeAddRow">ОстаткиХлыстовПередНачаломДобавления</Event>
+										<Event name="BeforeDeleteRow">ОстаткиХлыстовПередУдалением</Event>
 									</Events>
 									<ChildItems>
 										<InputField name="ОстаткиХлыстовКоличество" id="302">
 											<DataPath>Объект.ОстаткиХлыстов.Количество</DataPath>
+											<ReadOnly>true</ReadOnly>
 											<EditMode>EnterOnInput</EditMode>
 											<ContextMenu name="ОстаткиХлыстовКоличествоКонтекстноеМеню" id="303"/>
 											<ExtendedTooltip name="ОстаткиХлыстовКоличествоРасширеннаяПодсказка" id="304"/>
@@ -847,6 +821,81 @@
 								</Table>
 							</ChildItems>
 						</UsualGroup>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаОстаткиХлыстовогоМатериала" id="520">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Остатки хлыстового материала</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница остатки хлыстового материала</v8:content>
+						</v8:item>
+					</ToolTip>
+					<TitleDataPath>1/0:82950d93-6bf0-40ec-ac5f-8bdf7c7759eb/100000000</TitleDataPath>
+					<ExtendedTooltip name="СтраницаОстаткиХлыстовогоМатериалаРасширеннаяПодсказка" id="521"/>
+					<ChildItems>
+						<Table name="ОстаткиХлыстовогоМатериала" id="522">
+							<ReadOnly>true</ReadOnly>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>1/0:82950d93-6bf0-40ec-ac5f-8bdf7c7759eb</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ОстаткиХлыстовогоМатериалаКонтекстноеМеню" id="523"/>
+							<AutoCommandBar name="ОстаткиХлыстовогоМатериалаКоманднаяПанель" id="524">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ОстаткиХлыстовогоМатериалаРасширеннаяПодсказка" id="525"/>
+							<SearchStringAddition name="ОстаткиХлыстовогоМатериалаСтрокаПоиска" id="526">
+								<AdditionSource>
+									<Item>ОстаткиХлыстовогоМатериала</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ОстаткиХлыстовогоМатериалаСтрокаПоискаКонтекстноеМеню" id="527"/>
+								<ExtendedTooltip name="ОстаткиХлыстовогоМатериалаСтрокаПоискаРасширеннаяПодсказка" id="528"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ОстаткиХлыстовогоМатериалаСостояниеПросмотра" id="529">
+								<AdditionSource>
+									<Item>ОстаткиХлыстовогоМатериала</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ОстаткиХлыстовогоМатериалаСостояниеПросмотраКонтекстноеМеню" id="530"/>
+								<ExtendedTooltip name="ОстаткиХлыстовогоМатериалаСостояниеПросмотраРасширеннаяПодсказка" id="531"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ОстаткиХлыстовогоМатериалаУправлениеПоиском" id="532">
+								<AdditionSource>
+									<Item>ОстаткиХлыстовогоМатериала</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ОстаткиХлыстовогоМатериалаУправлениеПоискомКонтекстноеМеню" id="533"/>
+								<ExtendedTooltip name="ОстаткиХлыстовогоМатериалаУправлениеПоискомРасширеннаяПодсказка" id="534"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="ОстаткиХлыстовогоМатериалаНомерСтроки" id="535">
+									<DataPath>1/0:82950d93-6bf0-40ec-ac5f-8bdf7c7759eb/-2</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ОстаткиХлыстовогоМатериалаНомерСтрокиКонтекстноеМеню" id="536"/>
+									<ExtendedTooltip name="ОстаткиХлыстовогоМатериалаНомерСтрокиРасширеннаяПодсказка" id="537"/>
+								</LabelField>
+								<InputField name="ОстаткиХлыстовогоМатериалаДлинаОстатка" id="538">
+									<DataPath>1/0:82950d93-6bf0-40ec-ac5f-8bdf7c7759eb/0:23d2effe-1e6a-4538-a3ef-50549a846eab</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ОстаткиХлыстовогоМатериалаДлинаОстаткаКонтекстноеМеню" id="539"/>
+									<ExtendedTooltip name="ОстаткиХлыстовогоМатериалаДлинаОстаткаРасширеннаяПодсказка" id="540"/>
+								</InputField>
+								<InputField name="ОстаткиХлыстовогоМатериалаНоменклатура" id="541">
+									<DataPath>1/0:82950d93-6bf0-40ec-ac5f-8bdf7c7759eb/0:45cef172-31a8-45f4-9360-ff0106de218e</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ОстаткиХлыстовогоМатериалаНоменклатураКонтекстноеМеню" id="542"/>
+									<ExtendedTooltip name="ОстаткиХлыстовогоМатериалаНоменклатураРасширеннаяПодсказка" id="543"/>
+								</InputField>
+							</ChildItems>
+						</Table>
 					</ChildItems>
 				</Page>
 				<Page name="СтраницаЛистовНоменклатуры" id="428">
@@ -1601,27 +1650,6 @@
 				<xr:Ref>StdPicture.DeleteDirectly</xr:Ref>
 				<xr:LoadTransparent>true</xr:LoadTransparent>
 			</Picture>
-			<Representation>TextPicture</Representation>
-			<ModifiesSavedData>true</ModifiesSavedData>
-		</Command>
-		<Command name="СформироватьРаскройНаХлысты" id="5">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Раскроить</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Сформировать раскрой на хлысты</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Picture>
-				<xr:Ref>CommonPicture.ИерархическийСписок</xr:Ref>
-				<xr:LoadTransparent>true</xr:LoadTransparent>
-			</Picture>
-			<Action>СформироватьРаскройНаХлысты</Action>
 			<Representation>TextPicture</Representation>
 			<ModifiesSavedData>true</ModifiesSavedData>
 		</Command>
