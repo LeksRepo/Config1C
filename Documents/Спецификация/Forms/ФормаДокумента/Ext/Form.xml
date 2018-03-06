@@ -382,6 +382,9 @@
 									<CheckBoxType>Auto</CheckBoxType>
 									<ContextMenu name="УпаковкаКонтекстноеМеню" id="421"/>
 									<ExtendedTooltip name="УпаковкаРасширеннаяПодсказка" id="422"/>
+									<Events>
+										<Event name="OnChange">УпаковкаПриИзменении</Event>
+									</Events>
 								</CheckBoxField>
 							</ChildItems>
 						</UsualGroup>
@@ -1046,6 +1049,7 @@
 								<Event name="BeforeDeleteRow">КомплектацияПередУдалением</Event>
 								<Event name="OnActivateRow">КомплектацияПриАктивизацииСтроки</Event>
 								<Event name="ChoiceProcessing">КомплектацияОбработкаВыбора</Event>
+								<Event name="OnChange">КомплектацияПриИзменении</Event>
 							</Events>
 							<ChildItems>
 								<LabelField name="КомплектацияНомерСтроки" id="403">
@@ -1464,6 +1468,9 @@
 								<ContextMenu name="СписокМатериаловПодЗаказУправлениеПоискомКонтекстноеМеню" id="1046"/>
 								<ExtendedTooltip name="СписокМатериаловПодЗаказУправлениеПоискомРасширеннаяПодсказка" id="1047"/>
 							</SearchControlAddition>
+							<Events>
+								<Event name="OnChange">СписокМатериаловПодЗаказПриИзменении</Event>
+							</Events>
 							<ChildItems>
 								<LabelField name="СписокМатериаловПодЗаказНомерСтроки" id="747">
 									<DataPath>Объект.СписокМатериаловПодЗаказ.LineNumber</DataPath>
@@ -1601,6 +1608,7 @@
 							<Events>
 								<Event name="BeforeAddRow">СписокМатериаловЗаказчикаПередНачаломДобавления</Event>
 								<Event name="BeforeDeleteRow">СписокМатериаловЗаказчикаПередУдалением</Event>
+								<Event name="OnChange">СписокМатериаловЗаказчикаПриИзменении</Event>
 							</Events>
 							<ChildItems>
 								<LabelField name="СписокМатериаловЗаказчикаНомерСтроки" id="872">
@@ -1977,6 +1985,9 @@
 								<ContextMenu name="СкладГотовойПродукцииУправлениеПоискомКонтекстноеМеню" id="1082"/>
 								<ExtendedTooltip name="СкладГотовойПродукцииУправлениеПоискомРасширеннаяПодсказка" id="1083"/>
 							</SearchControlAddition>
+							<Events>
+								<Event name="OnChange">СкладГотовойПродукцииПриИзменении</Event>
+							</Events>
 							<ChildItems>
 								<LabelField name="СкладГотовойПродукцииНомерСтроки" id="606">
 									<DataPath>Объект.СкладГотовойПродукции.LineNumber</DataPath>
@@ -2173,6 +2184,9 @@
 								<ContextMenu name="СписокСерийныхИзделийУправлениеПоискомКонтекстноеМеню" id="1100"/>
 								<ExtendedTooltip name="СписокСерийныхИзделийУправлениеПоискомРасширеннаяПодсказка" id="1101"/>
 							</SearchControlAddition>
+							<Events>
+								<Event name="OnChange">СписокСерийныхИзделийПриИзменении</Event>
+							</Events>
 							<ChildItems>
 								<LabelField name="СписокСерийныхИзделийНомерСтроки" id="982">
 									<DataPath>Объект.СписокСерийныхИзделий.LineNumber</DataPath>
@@ -2836,6 +2850,17 @@
 				<v8:item>
 					<v8:lang>ru</v8:lang>
 					<v8:content>Запрет редактирования</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПересчитатьНоменклатуру" id="19">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Пересчитать номенклатуру</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
