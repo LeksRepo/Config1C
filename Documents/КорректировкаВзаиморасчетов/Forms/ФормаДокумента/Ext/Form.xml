@@ -6,6 +6,7 @@
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
 		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
 		<UsualGroup name="ГруппаШапка" id="35">
@@ -155,7 +156,15 @@
 							</ChoiceList>
 							<ContextMenu name="ВидКорректировкиКонтекстноеМеню" id="46"/>
 							<ExtendedTooltip name="ВидКорректировкиРасширеннаяПодсказка" id="47"/>
+							<Events>
+								<Event name="OnChange">ВидКорректировкиПриИзменении</Event>
+							</Events>
 						</RadioButtonField>
+						<InputField name="Статья" id="55">
+							<DataPath>Объект.Статья</DataPath>
+							<ContextMenu name="СтатьяКонтекстноеМеню" id="56"/>
+							<ExtendedTooltip name="СтатьяРасширеннаяПодсказка" id="57"/>
+						</InputField>
 						<InputField name="Контрагент" id="39">
 							<DataPath>Объект.Контрагент</DataPath>
 							<ContextMenu name="КонтрагентКонтекстноеМеню" id="40"/>
