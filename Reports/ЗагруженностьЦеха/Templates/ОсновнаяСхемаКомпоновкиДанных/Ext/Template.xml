@@ -90,10 +90,20 @@
 				</v8:item>
 			</title>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоДоставокПлан</dataPath>
+			<field>КоличествоДоставокПлан</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоДеталейПлан</dataPath>
+			<field>КоличествоДеталейПлан</field>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗЛИЧНЫЕ
 	ЦеховойЛимит.Период КАК Дата,
 	ЦеховойЛимит.СтоимостьУслугПлан КАК Норматив,
+	ЦеховойЛимит.КоличествоДеталейПлан КАК КоличествоДеталейПлан,
+	ЦеховойЛимит.КоличествоДоставокПлан КАК КоличествоДоставокПлан,
 	ЦеховойЛимит.Регистратор
 ПОМЕСТИТЬ втПлан
 ИЗ
@@ -140,7 +150,9 @@
 	Обороты.КоличествоДеталей,
 	Обороты.КоличествоДоставок,
 	Наряды.СуммаНарядов,
-	План.Норматив КАК План
+	План.Норматив КАК План,
+	План.КоличествоДеталейПлан,
+	План.КоличествоДоставокПлан
 ИЗ
 	втОбороты КАК Обороты
 		ЛЕВОЕ СОЕДИНЕНИЕ втНаряды КАК Наряды
@@ -171,6 +183,14 @@
 	<totalField>
 		<dataPath>КоличествоДоставок</dataPath>
 		<expression>Сумма(КоличествоДоставок)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>КоличествоДеталейПлан</dataPath>
+		<expression>Сумма(КоличествоДеталейПлан)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>КоличествоДоставокПлан</dataPath>
+		<expression>Сумма(КоличествоДоставокПлан)</expression>
 	</totalField>
 	<parameter>
 		<name>ПериодОтчета</name>
@@ -388,6 +408,9 @@
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
 						<dcsset:field>КоличествоДеталей</dcsset:field>
 					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>КоличествоДеталейПлан</dcsset:field>
+					</dcsset:item>
 				</dcsset:selection>
 				<dcsset:outputParameters>
 					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
@@ -425,6 +448,9 @@
 				<dcsset:selection>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
 						<dcsset:field>КоличествоДоставок</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>КоличествоДоставокПлан</dcsset:field>
 					</dcsset:item>
 				</dcsset:selection>
 				<dcsset:outputParameters>
