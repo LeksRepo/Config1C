@@ -7,12 +7,26 @@
 	<dataSet xsi:type="DataSetQuery">
 		<name>НаборДанных1</name>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Регистратор</dataPath>
-			<field>Регистратор</field>
-			<role>
-				<dcscom:periodNumber>1</dcscom:periodNumber>
-				<dcscom:periodType>Main</dcscom:periodType>
-			</role>
+			<dataPath>Приход</dataPath>
+			<field>КоличествоПриход</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Расход</dataPath>
+			<field>КоличествоРасход</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Расход</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Подразделение</dataPath>
+			<field>Подразделение</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Спецификация</dataPath>
+			<field>Спецификация</field>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>Высота</dataPath>
@@ -37,14 +51,36 @@
 			</role>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Расход</dataPath>
-			<field>КоличествоРасход</field>
+			<dataPath>Регистратор</dataPath>
+			<field>Регистратор</field>
+			<role>
+				<dcscom:periodNumber>1</dcscom:periodNumber>
+				<dcscom:periodType>Main</dcscom:periodType>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Размер</dataPath>
+			<field>Размер</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Ширина</dataPath>
+			<field>Ширина</field>
 			<title xsi:type="v8:LocalStringType">
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Расход</v8:content>
+					<v8:content>Ширина</v8:content>
 				</v8:item>
 			</title>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Номенклатура</dataPath>
+			<field>Номенклатура</field>
+			<role>
+				<dcscom:dimension>true</dcscom:dimension>
+			</role>
 		</field>
 		<field xsi:type="DataSetFieldField">
 			<dataPath>НачальныйОстаток</dataPath>
@@ -62,34 +98,6 @@
 			</role>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Приход</dataPath>
-			<field>КоличествоПриход</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Приход</v8:content>
-				</v8:item>
-			</title>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>Номенклатура</dataPath>
-			<field>Номенклатура</field>
-			<role>
-				<dcscom:dimension>true</dcscom:dimension>
-			</role>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>Подразделение</dataPath>
-			<field>Подразделение</field>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>Ширина</dataPath>
-			<field>Ширина</field>
-			<role>
-				<dcscom:dimension>true</dcscom:dimension>
-			</role>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>ПериодСекунда</dataPath>
 			<field>ПериодСекунда</field>
 			<role>
@@ -97,23 +105,34 @@
 				<dcscom:periodType>Main</dcscom:periodType>
 			</role>
 		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>Спецификация</dataPath>
-			<field>Спецификация</field>
-		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
-	ОбрезкиЛистовойМатериалОстаткиИОбороты.Регистратор,
-	ОбрезкиЛистовойМатериалОстаткиИОбороты.Высота,
-	ОбрезкиЛистовойМатериалОстаткиИОбороты.Номенклатура,
-	ОбрезкиЛистовойМатериалОстаткиИОбороты.Ширина,
-	ОбрезкиЛистовойМатериалОстаткиИОбороты.КоличествоНачальныйОстаток,
-	ОбрезкиЛистовойМатериалОстаткиИОбороты.КоличествоКонечныйОстаток,
-	ОбрезкиЛистовойМатериалОстаткиИОбороты.КоличествоПриход,
-	ОбрезкиЛистовойМатериалОстаткиИОбороты.КоличествоРасход,
-	ОбрезкиЛистовойМатериалОстаткиИОбороты.ПериодСекунда
+	Обрезки.Регистратор,
+	Обрезки.Высота КАК Высота,
+	Обрезки.Ширина,
+	Обрезки.Номенклатура,
+	Обрезки.КоличествоНачальныйОстаток,
+	Обрезки.КоличествоКонечныйОстаток,
+	Обрезки.КоличествоПриход,
+	Обрезки.КоличествоРасход,
+	Обрезки.ПериодСекунда
 ИЗ
-	РегистрНакопления.ОбрезкиЛистовойМатериал.ОстаткиИОбороты({(&amp;НачалоПериода)}, {(ДОБАВИТЬКДАТЕ(&amp;КонецПериода, СЕКУНДА, 1))}, Авто, , ) КАК ОбрезкиЛистовойМатериалОстаткиИОбороты</query>
+	РегистрНакопления.ОбрезкиЛистовойМатериал.ОстаткиИОбороты({(&amp;НачалоПериода)}, {(ДОБАВИТЬКДАТЕ(&amp;КонецПериода, СЕКУНДА, 1))}, Авто, , Подразделение = &amp;Подразделение) КАК Обрезки
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	Обрезки.Регистратор,
+	Обрезки.Размер,
+	0,
+	Обрезки.Номенклатура,
+	Обрезки.КоличествоНачальныйОстаток,
+	Обрезки.КоличествоКонечныйОстаток,
+	Обрезки.КоличествоПриход,
+	Обрезки.КоличествоРасход,
+	Обрезки.ПериодСекунда
+ИЗ
+	РегистрНакопления.ОбрезкиХлыстовойМатериал.ОстаткиИОбороты({(&amp;НачалоПериода)}, {(ДОБАВИТЬКДАТЕ(&amp;КонецПериода, СЕКУНДА, 1))}, Авто, , Подразделение = &amp;Подразделение) КАК Обрезки</query>
 	</dataSet>
 	<totalField>
 		<dataPath>КонечныйОстаток</dataPath>
@@ -132,42 +151,35 @@
 		<expression>Сумма(Расход)</expression>
 	</totalField>
 	<parameter>
-		<name>КонецПериода</name>
+		<name>Подразделение</name>
 		<title xsi:type="v8:LocalStringType">
 			<v8:item>
 				<v8:lang>ru</v8:lang>
-				<v8:content>Конец периода</v8:content>
+				<v8:content>Подразделение</v8:content>
 			</v8:item>
 		</title>
 		<valueType>
-			<v8:Type>xs:dateTime</v8:Type>
-			<v8:DateQualifiers>
-				<v8:DateFractions>DateTime</v8:DateFractions>
-			</v8:DateQualifiers>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Подразделения</v8:Type>
 		</valueType>
-		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-		<useRestriction>true</useRestriction>
-		<expression>&amp;ПериодОтчета.ДатаОкончания</expression>
-		<availableAsField>false</availableAsField>
-	</parameter>
-	<parameter>
-		<name>НачалоПериода</name>
-		<title xsi:type="v8:LocalStringType">
-			<v8:item>
-				<v8:lang>ru</v8:lang>
-				<v8:content>Начало периода</v8:content>
-			</v8:item>
-		</title>
-		<valueType>
-			<v8:Type>xs:dateTime</v8:Type>
-			<v8:DateQualifiers>
-				<v8:DateFractions>DateTime</v8:DateFractions>
-			</v8:DateQualifiers>
-		</valueType>
-		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
-		<useRestriction>true</useRestriction>
-		<expression>&amp;ПериодОтчета.ДатаНачала</expression>
-		<availableAsField>false</availableAsField>
+		<value xsi:nil="true"/>
+		<useRestriction>false</useRestriction>
+		<inputParameters>
+			<dcscor:item>
+				<dcscor:parameter>ПараметрыВыбора</dcscor:parameter>
+				<dcscor:value xsi:type="dcscor:ChoiceParameters">
+					<dcscor:item>
+						<dcscor:choiceParameter>Отбор.Активность</dcscor:choiceParameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcscor:value>
+			</dcscor:item>
+			<dcscor:item>
+				<dcscor:parameter>БыстрыйВыбор</dcscor:parameter>
+				<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+			</dcscor:item>
+		</inputParameters>
+		<denyIncompleteValues>true</denyIncompleteValues>
+		<use>Always</use>
 	</parameter>
 	<parameter>
 		<name>ПериодОтчета</name>
@@ -186,6 +198,42 @@
 			<v8:endDate>0001-01-01T00:00:00</v8:endDate>
 		</value>
 		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>КонецПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Конец периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
+	</parameter>
+	<parameter>
+		<name>НачалоПериода</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Начало периода</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>true</useRestriction>
+		<availableAsField>false</availableAsField>
 	</parameter>
 	<settingsVariant>
 		<dcsset:name>Основной</dcsset:name>
@@ -214,15 +262,12 @@
 					<dcsset:field>КонечныйОстаток</dcsset:field>
 				</dcsset:item>
 			</dcsset:selection>
-			<dcsset:filter>
-				<dcsset:item xsi:type="dcsset:FilterItemComparison">
-					<dcsset:use>false</dcsset:use>
-					<dcsset:left xsi:type="dcscor:Field">Подразделение</dcsset:left>
-					<dcsset:comparisonType>Equal</dcsset:comparisonType>
-					<dcsset:userSettingID>b9209241-3b18-47cd-a000-2f63245f435e</dcsset:userSettingID>
-				</dcsset:item>
-			</dcsset:filter>
 			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Подразделение</dcscor:parameter>
+					<dcscor:value xsi:nil="true"/>
+					<dcsset:userSettingID>d87f411a-d8bd-481e-8d5c-ec7164f307fb</dcsset:userSettingID>
+				</dcscor:item>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>ПериодОтчета</dcscor:parameter>
 					<dcscor:value xsi:type="v8:StandardPeriod">
@@ -231,8 +276,15 @@
 					<dcsset:userSettingID>9a884d21-1fa8-495f-b286-740ff85a4c2b</dcsset:userSettingID>
 				</dcscor:item>
 			</dcsset:dataParameters>
+			<dcsset:order>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>Номенклатура</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+			</dcsset:order>
 			<dcsset:outputParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
 					<dcscor:parameter>Заголовок</dcscor:parameter>
 					<dcscor:value xsi:type="v8:LocalStringType">
 						<v8:item>
