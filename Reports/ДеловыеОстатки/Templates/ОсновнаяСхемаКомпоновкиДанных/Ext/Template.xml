@@ -107,32 +107,32 @@
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
-	Обрезки.Регистратор,
-	Обрезки.Высота КАК Высота,
-	Обрезки.Ширина,
-	Обрезки.Номенклатура,
-	Обрезки.КоличествоНачальныйОстаток,
-	Обрезки.КоличествоКонечныйОстаток,
-	Обрезки.КоличествоПриход,
-	Обрезки.КоличествоРасход,
-	Обрезки.ПериодСекунда
+	ОбрезкиЛистовой.Регистратор,
+	ОбрезкиЛистовой.Высота КАК Высота,
+	ОбрезкиЛистовой.Ширина,
+	ОбрезкиЛистовой.Номенклатура,
+	ОбрезкиЛистовой.КоличествоНачальныйОстаток,
+	ОбрезкиЛистовой.КоличествоКонечныйОстаток,
+	ОбрезкиЛистовой.КоличествоПриход,
+	ОбрезкиЛистовой.КоличествоРасход,
+	ОбрезкиЛистовой.ПериодСекунда
 ИЗ
-	РегистрНакопления.ОбрезкиЛистовойМатериал.ОстаткиИОбороты({(&amp;НачалоПериода)}, {(ДОБАВИТЬКДАТЕ(&amp;КонецПериода, СЕКУНДА, 1))}, Авто, , Подразделение = &amp;Подразделение) КАК Обрезки
+	РегистрНакопления.ОбрезкиЛистовойМатериал.ОстаткиИОбороты({&amp;НачалоПериода}, {ДОБАВИТЬКДАТЕ(&amp;КонецПериода, СЕКУНДА, 1)}, Авто, , Подразделение = &amp;Подразделение) КАК ОбрезкиЛистовой
 
 ОБЪЕДИНИТЬ ВСЕ
 
 ВЫБРАТЬ
-	Обрезки.Регистратор,
-	Обрезки.Размер,
+	ОбрезкиХлыстовой.Регистратор,
+	ОбрезкиХлыстовой.Размер,
 	0,
-	Обрезки.Номенклатура,
-	Обрезки.КоличествоНачальныйОстаток,
-	Обрезки.КоличествоКонечныйОстаток,
-	Обрезки.КоличествоПриход,
-	Обрезки.КоличествоРасход,
-	Обрезки.ПериодСекунда
+	ОбрезкиХлыстовой.Номенклатура,
+	ОбрезкиХлыстовой.КоличествоНачальныйОстаток,
+	ОбрезкиХлыстовой.КоличествоКонечныйОстаток,
+	ОбрезкиХлыстовой.КоличествоПриход,
+	ОбрезкиХлыстовой.КоличествоРасход,
+	ОбрезкиХлыстовой.ПериодСекунда
 ИЗ
-	РегистрНакопления.ОбрезкиХлыстовойМатериал.ОстаткиИОбороты({(&amp;НачалоПериода)}, {(ДОБАВИТЬКДАТЕ(&amp;КонецПериода, СЕКУНДА, 1))}, Авто, , Подразделение = &amp;Подразделение) КАК Обрезки</query>
+	РегистрНакопления.ОбрезкиХлыстовойМатериал.ОстаткиИОбороты({&amp;НачалоПериода}, {ДОБАВИТЬКДАТЕ(&amp;КонецПериода, СЕКУНДА, 1)}, Авто, , Подразделение = &amp;Подразделение) КАК ОбрезкиХлыстовой</query>
 	</dataSet>
 	<totalField>
 		<dataPath>КонечныйОстаток</dataPath>
@@ -215,6 +215,7 @@
 		</valueType>
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 		<useRestriction>true</useRestriction>
+		<expression>&amp;ПериодОтчета.ДатаОкончания</expression>
 		<availableAsField>false</availableAsField>
 	</parameter>
 	<parameter>
@@ -233,6 +234,7 @@
 		</valueType>
 		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
 		<useRestriction>true</useRestriction>
+		<expression>&amp;ПериодОтчета.ДатаНачала</expression>
 		<availableAsField>false</availableAsField>
 	</parameter>
 	<settingsVariant>
@@ -282,6 +284,24 @@
 					<dcsset:orderType>Asc</dcsset:orderType>
 				</dcsset:item>
 			</dcsset:order>
+			<dcsset:conditionalAppearance>
+				<dcsset:item>
+					<dcsset:selection/>
+					<dcsset:filter>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">КонечныйОстаток</dcsset:left>
+							<dcsset:comparisonType>Less</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
+						</dcsset:item>
+					</dcsset:filter>
+					<dcsset:appearance>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>ЦветФона</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:Color">web:Pink</dcscor:value>
+						</dcscor:item>
+					</dcsset:appearance>
+				</dcsset:item>
+			</dcsset:conditionalAppearance>
 			<dcsset:outputParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:use>false</dcscor:use>
