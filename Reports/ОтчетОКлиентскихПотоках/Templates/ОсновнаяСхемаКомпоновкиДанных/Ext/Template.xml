@@ -110,12 +110,23 @@
 				</v8:item>
 			</title>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Встреча2</dataPath>
+			<field>Встреча2</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Встреча2</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	ДокЗамер.Ссылка КАК Количество2,
 	ДокЗамер.Ссылка КАК Регистратор2,
 	ДокЗамер.Подразделение КАК Подразделение2,
-	ЕСТЬNULL(Встречи.Ответственный, " Встреча не назначена") КАК Ответственный
+	ЕСТЬNULL(Встречи.Ответственный, " Встреча не назначена") КАК Ответственный,
+	Встречи.Ссылка КАК Встреча2
 ИЗ
 	Документ.Замер КАК ДокЗамер
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.АктивностьЗамеров КАК АктивностьЗамеров
@@ -253,7 +264,7 @@
 			</title>
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
-		<query>ВЫБРАТЬ
+		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	Обращение.Ссылка КАК Количество4,
 	Обращение.Ссылка КАК Регистратор4,
 	"Вид обращения" КАК Разрез,
@@ -338,7 +349,7 @@
 			</title>
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
-		<query>ВЫБРАТЬ
+		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	Обращение.Ссылка КАК Количество5,
 	Обращение.Ссылка КАК Регистратор5,
 	ВЫБОР
@@ -353,6 +364,7 @@
 	Документ.Обращение КАК Обращение
 ГДЕ
 	Обращение.Подразделение = &amp;Подразделение
+	И НЕ Обращение.Архив
 {ГДЕ
 	(Обращение.ДатаКонтроля МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода)}
 
@@ -399,7 +411,7 @@
 			</title>
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
-		<query>ВЫБРАТЬ
+		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	Спец.Автор КАК СпецификацияАвтор,
 	Спец.Ссылка КАК Спецификация,
 	Спец.Ссылка КАК СпецификацияКоличество,
@@ -410,7 +422,9 @@
 		ПО (СтатусСпец.Спецификация = Спец.Ссылка)
 ГДЕ
 	СтатусСпец.Статус = ЗНАЧЕНИЕ(Перечисление.СтатусыСпецификации.Сохранен)
-	И НЕ Спец.Дилерский</query>
+	И НЕ Спец.Дилерский
+{ГДЕ
+	(Спец.ДатаСоздания МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода)}</query>
 	</dataSet>
 	<totalField>
 		<dataPath>Количество2</dataPath>
@@ -712,6 +726,13 @@
 								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
 								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
 							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>Встреча2</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
 						</dcsset:groupItems>
 						<dcsset:order>
 							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
@@ -723,6 +744,15 @@
 									<v8:item>
 										<v8:lang>ru</v8:lang>
 										<v8:content>Замер</v8:content>
+									</v8:item>
+								</dcsset:lwsTitle>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>Встреча2</dcsset:field>
+								<dcsset:lwsTitle>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Встреча</v8:content>
 									</v8:item>
 								</dcsset:lwsTitle>
 							</dcsset:item>
