@@ -82,6 +82,10 @@
 			<dataPath>Статус</dataPath>
 			<field>Статус</field>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ДатаОтгрузки</dataPath>
+			<field>ДатаОтгрузки</field>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	ВЫБОР
@@ -118,6 +122,7 @@
 ВЫБРАТЬ
 	Статусы.Статус КАК Статус,
 	ПодЗаказ.Ссылка КАК Спецификация,
+	ПодЗаказ.Ссылка.ДатаОтгрузки КАК ДатаОтгрузки,
 	ПодЗаказ.Номенклатура,
 	ПодЗаказ.Комментарий,
 	ПодЗаказ.Количество,
@@ -193,6 +198,15 @@
 					<dcsset:field>Спецификация</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>ДатаОтгрузки</dcsset:field>
+					<dcsset:lwsTitle>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Отгрузка</v8:content>
+						</v8:item>
+					</dcsset:lwsTitle>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Номенклатура</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
@@ -227,6 +241,16 @@
 					<dcsset:userSettingID>7553d2c4-b5ba-492d-ab60-96ad4b936a0c</dcsset:userSettingID>
 				</dcscor:item>
 			</dcsset:dataParameters>
+			<dcsset:order>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>Статус</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:OrderItemField">
+					<dcsset:field>ДатаОтгрузки</dcsset:field>
+					<dcsset:orderType>Asc</dcsset:orderType>
+				</dcsset:item>
+			</dcsset:order>
 			<dcsset:conditionalAppearance>
 				<dcsset:item>
 					<dcsset:selection>
@@ -255,6 +279,9 @@
 					<dcsset:selection>
 						<dcsset:item>
 							<dcsset:field>Спецификация</dcsset:field>
+						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>ДатаОтгрузки</dcsset:field>
 						</dcsset:item>
 					</dcsset:selection>
 					<dcsset:filter/>
@@ -330,6 +357,13 @@
 					<dcsset:groupItems>
 						<dcsset:item xsi:type="dcsset:GroupItemField">
 							<dcsset:field>Спецификация</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>ДатаОтгрузки</dcsset:field>
 							<dcsset:groupType>Items</dcsset:groupType>
 							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
