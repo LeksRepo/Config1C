@@ -120,23 +120,53 @@
 				</v8:item>
 			</title>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Документ2</dataPath>
+			<field>Документ2</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Документ2</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	ДокЗамер.Ссылка КАК Количество2,
 	ДокЗамер.Ссылка КАК Регистратор2,
 	ДокЗамер.Подразделение КАК Подразделение2,
 	ЕСТЬNULL(Встречи.Ответственный, " Встреча не назначена") КАК Ответственный,
-	Встречи.Ссылка КАК Встреча2
+	Встречи.Ссылка КАК Встреча2,
+	ВЫБОР
+		КОГДА НЕ Договоры.Ссылка ЕСТЬ NULL
+			ТОГДА Договоры.Ссылка
+		ИНАЧЕ Спец.Ссылка
+	КОНЕЦ КАК Документ2
 ИЗ
 	Документ.Замер КАК ДокЗамер
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.АктивностьЗамеров КАК АктивностьЗамеров
 		ПО (АктивностьЗамеров.Замер = ДокЗамер.Ссылка)
 		ЛЕВОЕ СОЕДИНЕНИЕ Документ.ВстречаСКлиентом КАК Встречи
 		ПО (Встречи.Основание = ДокЗамер.Ссылка)
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.Спецификация КАК Спец
+		ПО (Спец.ДокументОснование = ДокЗамер.Ссылка)
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.Договор КАК Договоры
+		ПО (Спец.Ссылка = Договоры.Спецификация)
 ГДЕ
 	ДокЗамер.Проведен
 	И ДокЗамер.Подразделение = &amp;Подразделение
 	И АктивностьЗамеров.Статус
+{ГДЕ
+	(ВЫБОР
+				КОГДА Спец.Ссылка &lt;&gt; ЗНАЧЕНИЕ(Документ.Спецификация.ПустаяСсылка)
+					ТОГДА Спец.Дата МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+				ИНАЧЕ ИСТИНА
+			КОНЕЦ
+			И ВЫБОР
+				КОГДА Договоры.Ссылка &lt;&gt; ЗНАЧЕНИЕ(Документ.Спецификация.ПустаяСсылка)
+					ТОГДА Договоры.Дата МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+				ИНАЧЕ ИСТИНА
+			КОНЕЦ)}
 
 УПОРЯДОЧИТЬ ПО
 	Ответственный,
@@ -733,6 +763,13 @@
 								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
 								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
 							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>Документ2</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
 						</dcsset:groupItems>
 						<dcsset:order>
 							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
@@ -753,6 +790,15 @@
 									<v8:item>
 										<v8:lang>ru</v8:lang>
 										<v8:content>Встреча</v8:content>
+									</v8:item>
+								</dcsset:lwsTitle>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>Документ2</dcsset:field>
+								<dcsset:lwsTitle>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Документ</v8:content>
 									</v8:item>
 								</dcsset:lwsTitle>
 							</dcsset:item>
@@ -904,7 +950,7 @@
 						<dcscor:value xsi:type="v8:LocalStringType">
 							<v8:item>
 								<v8:lang>ru</v8:lang>
-								<v8:content>Отказы</v8:content>
+								<v8:content>Отказы по замерам</v8:content>
 							</v8:item>
 						</dcscor:value>
 					</dcscor:item>
