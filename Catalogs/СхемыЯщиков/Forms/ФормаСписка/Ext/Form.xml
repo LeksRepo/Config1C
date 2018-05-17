@@ -68,6 +68,11 @@
 					<ContextMenu name="КодКонтекстноеМеню" id="9"/>
 					<ExtendedTooltip name="КодРасширеннаяПодсказка" id="10"/>
 				</LabelField>
+				<LabelField name="Подразделение" id="20">
+					<DataPath>Список.Подразделение</DataPath>
+					<ContextMenu name="ПодразделениеКонтекстноеМеню" id="21"/>
+					<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="22"/>
+				</LabelField>
 			</ChildItems>
 		</Table>
 	</ChildItems>
@@ -101,10 +106,17 @@
 								</dcsset:item>
 							</dcsset:selection>
 							<dcsset:filter>
-								<dcsset:item xsi:type="dcsset:FilterItemComparison">
-									<dcsset:left xsi:type="dcscor:Field">Активность</dcsset:left>
-									<dcsset:comparisonType>Equal</dcsset:comparisonType>
-									<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+								<dcsset:item xsi:type="dcsset:FilterItemGroup">
+									<dcsset:groupType>OrGroup</dcsset:groupType>
+									<dcsset:item xsi:type="dcsset:FilterItemComparison">
+										<dcsset:left xsi:type="dcscor:Field">Активность</dcsset:left>
+										<dcsset:comparisonType>Equal</dcsset:comparisonType>
+										<dcsset:right xsi:type="xs:boolean">false</dcsset:right>
+									</dcsset:item>
+									<dcsset:item xsi:type="dcsset:FilterItemComparison">
+										<dcsset:left xsi:type="dcscor:Field">Подразделение</dcsset:left>
+										<dcsset:comparisonType>NotFilled</dcsset:comparisonType>
+									</dcsset:item>
 								</dcsset:item>
 							</dcsset:filter>
 							<dcsset:appearance>

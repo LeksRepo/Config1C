@@ -3,24 +3,9 @@
 	<AutoTime>CurrentOrLast</AutoTime>
 	<UsePostingMode>Auto</UsePostingMode>
 	<RepostOnWrite>true</RepostOnWrite>
-	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
-		<Autofill>false</Autofill>
-		<ChildItems>
-			<Button name="ФормаПровестиИЗакрыть" id="55">
-				<Type>CommandBarButton</Type>
-				<DefaultButton>true</DefaultButton>
-				<CommandName>Form.StandardCommand.PostAndClose</CommandName>
-				<Title>
-					<v8:item>
-						<v8:lang>ru</v8:lang>
-						<v8:content>Записать и закрыть</v8:content>
-					</v8:item>
-				</Title>
-				<ExtendedTooltip name="ФормаПровестиИЗакрытьРасширеннаяПодсказка" id="56"/>
-			</Button>
-		</ChildItems>
-	</AutoCommandBar>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
+		<Event name="BeforeWrite">ПередЗаписью</Event>
 		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
 	</Events>
 	<ChildItems>
@@ -143,12 +128,6 @@
 					<ContextMenu name="ТекстПользователяКонтекстноеМеню" id="43"/>
 					<ExtendedTooltip name="ТекстПользователяРасширеннаяПодсказка" id="44"/>
 				</InputField>
-				<Button name="Отправить" id="45">
-					<Type>UsualButton</Type>
-					<Height>2</Height>
-					<CommandName>Form.Command.Отправить</CommandName>
-					<ExtendedTooltip name="ОтправитьРасширеннаяПодсказка" id="46"/>
-				</Button>
 			</ChildItems>
 		</UsualGroup>
 		<UsualGroup name="Группа2" id="35">
@@ -255,22 +234,4 @@
 			</Type>
 		</Attribute>
 	</Attributes>
-	<Commands>
-		<Command name="Отправить" id="1">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Отправить</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Отправить</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Action>Отправить</Action>
-			<ModifiesSavedData>true</ModifiesSavedData>
-		</Command>
-	</Commands>
 </Form>
