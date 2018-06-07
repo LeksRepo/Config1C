@@ -315,6 +315,27 @@
 			</dcscor:item>
 		</appearance>
 	</calculatedField>
+	<calculatedField>
+		<dataPath>ВыручкаИМатериалы</dataPath>
+		<expression>Выручка + ПродажиМатериалов</expression>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Выручка и материалы</v8:content>
+			</v8:item>
+		</title>
+		<appearance>
+			<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+				<dcscor:parameter>Формат</dcscor:parameter>
+				<dcscor:value xsi:type="v8:LocalStringType">
+					<v8:item>
+						<v8:lang>ru</v8:lang>
+						<v8:content>ЧДЦ=2</v8:content>
+					</v8:item>
+				</dcscor:value>
+			</dcscor:item>
+		</appearance>
+	</calculatedField>
 	<totalField>
 		<dataPath>Выручка</dataPath>
 		<expression>Сумма(Выручка)</expression>
@@ -350,6 +371,10 @@
 	<totalField>
 		<dataPath>ПродажиМатериалов</dataPath>
 		<expression>Сумма(ПродажиМатериалов)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ВыручкаИМатериалы</dataPath>
+		<expression>Сумма(ВыручкаИМатериалы)</expression>
 	</totalField>
 	<parameter>
 		<name>НачалоПериода</name>
@@ -414,7 +439,13 @@
 					<dcsset:field>План</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Выручка</dcsset:field>
+					<dcsset:field>ВыручкаИМатериалы</dcsset:field>
+					<dcsset:lwsTitle>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Выручка</v8:content>
+						</v8:item>
+					</dcsset:lwsTitle>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>ПроцентВыполнения</dcsset:field>
@@ -456,6 +487,22 @@
 					<dcsset:userSettingID>1c2eaf58-c86d-4f0c-a175-c1f88c61238b</dcsset:userSettingID>
 				</dcscor:item>
 			</dcsset:dataParameters>
+			<dcsset:conditionalAppearance>
+				<dcsset:item>
+					<dcsset:selection>
+						<dcsset:item>
+							<dcsset:field>ВыручкаИМатериалы</dcsset:field>
+						</dcsset:item>
+					</dcsset:selection>
+					<dcsset:filter/>
+					<dcsset:appearance>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>Шрифт</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+						</dcscor:item>
+					</dcsset:appearance>
+				</dcsset:item>
+			</dcsset:conditionalAppearance>
 			<dcsset:outputParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>АвтоПозицияРесурсов</dcscor:parameter>

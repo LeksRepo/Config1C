@@ -1,0 +1,466 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DataCompositionSchema xmlns="http://v8.1c.ru/8.1/data-composition-system/schema" xmlns:dcscom="http://v8.1c.ru/8.1/data-composition-system/common" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dataSource>
+		<name>ИсточникДанных1</name>
+		<dataSourceType>Local</dataSourceType>
+	</dataSource>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных1</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Спецификация</dataPath>
+			<field>Спецификация</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоДеталей</dataPath>
+			<field>КоличествоДеталей</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество деталей</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоЯщиков</dataPath>
+			<field>КоличествоЯщиков</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество ящиков</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВидДетали</dataPath>
+			<field>ВидДетали</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоДверей</dataPath>
+			<field>КоличествоДверей</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество дверей</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КоличествоКоробов</dataPath>
+			<field>КоличествоКоробов</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество коробов</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Наряд</dataPath>
+			<field>Наряд</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Наряд</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НомерСпецификация</dataPath>
+			<field>НомерСпецификация</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номер спецификация</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НомерНаряда</dataPath>
+			<field>НомерНаряда</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Номер наряда</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	СписокСпец.Ссылка КАК Наряд,
+	СписокСпец.Спецификация КАК Спецификация
+ПОМЕСТИТЬ втСписокСпец
+ИЗ
+	Документ.НарядЗадание.СписокСпецификаций КАК СписокСпец
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СтатусСпецификации.СрезПоследних(, ) КАК Статусы
+		ПО СписокСпец.Спецификация = Статусы.Спецификация
+ГДЕ
+	Статусы.Статус = ЗНАЧЕНИЕ(Перечисление.СтатусыСпецификации.ПереданВЦех)
+	И СписокСпец.Ссылка.Подразделение = &amp;Подразделение
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	СписокСпец.Наряд КАК Наряд,
+	СписокСпец.Спецификация КАК Спецификация,
+	СписокДет.ВидДетали КАК ВидДетали,
+	СУММА(ВЫБОР
+			КОГДА СписокДет.НомерИзделия &gt; 0
+				ТОГДА 0
+			ИНАЧЕ СписокДет.Количество
+		КОНЕЦ) КАК Количество
+ПОМЕСТИТЬ втСписокПоВидамДеталей
+ИЗ
+	втСписокСпец КАК СписокСпец
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.Спецификация.СписокДеталей КАК СписокДет
+		ПО СписокСпец.Спецификация = СписокДет.Ссылка
+ГДЕ
+	ВЫБОР
+			КОГДА СписокДет.НомерИзделия &gt; 0
+				ТОГДА ЛОЖЬ
+			ИНАЧЕ ИСТИНА
+		КОНЕЦ
+	И НЕ СписокДет.ВидДетали ЕСТЬ NULL
+
+СГРУППИРОВАТЬ ПО
+	СписокСпец.Наряд,
+	СписокСпец.Спецификация,
+	СписокДет.ВидДетали
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	СписокСпец.Спецификация КАК Спецификация,
+	СУММА(СписокЯщ.КоличествоЯщиков) КАК Количество
+ПОМЕСТИТЬ втКоличествоЯщиков
+ИЗ
+	втСписокСпец КАК СписокСпец
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.Спецификация.СписокЯщики КАК СписокЯщ
+		ПО СписокСпец.Спецификация = СписокЯщ.Ссылка
+ГДЕ
+	НЕ СписокЯщ.КоличествоЯщиков ЕСТЬ NULL
+
+СГРУППИРОВАТЬ ПО
+	СписокСпец.Спецификация
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	СписокСпец.Спецификация КАК Спецификация,
+	СУММА(1) КАК Количество
+ПОМЕСТИТЬ втКоличествоКоробов
+ИЗ
+	втСписокСпец КАК СписокСпец
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.Спецификация.СписокИзделийПоКаталогу КАК СписокКороба
+		ПО СписокСпец.Спецификация = СписокКороба.Ссылка
+ГДЕ
+	(СписокКороба.Изделие.ВидИзделияПоКаталогу = ЗНАЧЕНИЕ(Справочник.ВидыИзделийПоКаталогу.КухняВерхний)
+			ИЛИ СписокКороба.Изделие.ВидИзделияПоКаталогу = ЗНАЧЕНИЕ(Справочник.ВидыИзделийПоКаталогу.КухняНижний))
+
+СГРУППИРОВАТЬ ПО
+	СписокСпец.Спецификация
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	СписокСпец.Спецификация КАК Спецификация,
+	СУММА(СписокДвери.Двери.Количество) КАК Количество
+ПОМЕСТИТЬ втКоличествоДверей
+ИЗ
+	втСписокСпец КАК СписокСпец
+		ЛЕВОЕ СОЕДИНЕНИЕ Документ.Спецификация.СписокДверей КАК СписокДвери
+		ПО СписокСпец.Спецификация = СписокДвери.Ссылка
+ГДЕ
+	НЕ СписокДвери.Двери ЕСТЬ NULL
+
+СГРУППИРОВАТЬ ПО
+	СписокСпец.Спецификация
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	СписокСпец.Наряд КАК Наряд,
+	СписокСпец.Наряд.Номер КАК НомерНаряда,
+	СписокСпец.Спецификация КАК Спецификация,
+	СписокСпец.Спецификация.Номер КАК НомерСпецификация,
+	ЕСТЬNULL(Ящики.Количество, 0) КАК КоличествоЯщиков,
+	ЕСТЬNULL(Короба.Количество, 0) КАК КоличествоКоробов,
+	ЕСТЬNULL(Двери.Количество, 0) КАК КоличествоДверей,
+	ЕСТЬNULL(Детали.Количество, 0) КАК КоличествоДеталей,
+	Детали.ВидДетали
+ИЗ
+	втСписокСпец КАК СписокСпец
+		ЛЕВОЕ СОЕДИНЕНИЕ втКоличествоЯщиков КАК Ящики
+		ПО СписокСпец.Спецификация = Ящики.Спецификация
+		ЛЕВОЕ СОЕДИНЕНИЕ втКоличествоКоробов КАК Короба
+		ПО СписокСпец.Спецификация = Короба.Спецификация
+		ЛЕВОЕ СОЕДИНЕНИЕ втКоличествоДверей КАК Двери
+		ПО СписокСпец.Спецификация = Двери.Спецификация
+		ЛЕВОЕ СОЕДИНЕНИЕ втСписокПоВидамДеталей КАК Детали
+		ПО СписокСпец.Спецификация = Детали.Спецификация
+
+УПОРЯДОЧИТЬ ПО
+	СписокСпец.Наряд.Номер,
+	СписокСпец.Спецификация.Номер,
+	ЕСТЬNULL(Детали.Количество, 0) УБЫВ</query>
+	</dataSet>
+	<totalField>
+		<dataPath>КоличествоДверей</dataPath>
+		<expression>Максимум(КоличествоДверей)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>КоличествоДеталей</dataPath>
+		<expression>Сумма(КоличествоДеталей)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>КоличествоКоробов</dataPath>
+		<expression>Максимум(КоличествоКоробов)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>КоличествоЯщиков</dataPath>
+		<expression>Максимум(КоличествоЯщиков)</expression>
+	</totalField>
+	<parameter>
+		<name>Период</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Период</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type>xs:dateTime</v8:Type>
+			<v8:DateQualifiers>
+				<v8:DateFractions>DateTime</v8:DateFractions>
+			</v8:DateQualifiers>
+		</valueType>
+		<value xsi:type="xs:dateTime">0001-01-01T00:00:00</value>
+		<useRestriction>false</useRestriction>
+	</parameter>
+	<parameter>
+		<name>Подразделение</name>
+		<title xsi:type="v8:LocalStringType">
+			<v8:item>
+				<v8:lang>ru</v8:lang>
+				<v8:content>Подразделение</v8:content>
+			</v8:item>
+		</title>
+		<valueType>
+			<v8:Type xmlns:d4p1="http://v8.1c.ru/8.1/data/enterprise/current-config">d4p1:CatalogRef.Подразделения</v8:Type>
+		</valueType>
+		<value xsi:nil="true"/>
+		<useRestriction>false</useRestriction>
+		<inputParameters>
+			<dcscor:item>
+				<dcscor:parameter>ПараметрыВыбора</dcscor:parameter>
+				<dcscor:value xsi:type="dcscor:ChoiceParameters">
+					<dcscor:item>
+						<dcscor:choiceParameter>Отбор.Активность</dcscor:choiceParameter>
+						<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+					</dcscor:item>
+				</dcscor:value>
+			</dcscor:item>
+			<dcscor:item>
+				<dcscor:parameter>БыстрыйВыбор</dcscor:parameter>
+				<dcscor:value xsi:type="xs:boolean">true</dcscor:value>
+			</dcscor:item>
+		</inputParameters>
+		<use>Always</use>
+	</parameter>
+	<settingsVariant>
+		<dcsset:name>Основной</dcsset:name>
+		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
+		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
+			<dcsset:dataParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Подразделение</dcscor:parameter>
+					<dcscor:value xsi:nil="true"/>
+					<dcsset:userSettingID>a923c22a-7dc1-486a-9d43-77c27f602f77</dcsset:userSettingID>
+				</dcscor:item>
+			</dcsset:dataParameters>
+			<dcsset:conditionalAppearance>
+				<dcsset:item>
+					<dcsset:selection>
+						<dcsset:item>
+							<dcsset:field>Наряд</dcsset:field>
+						</dcsset:item>
+					</dcsset:selection>
+					<dcsset:filter/>
+					<dcsset:appearance>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>ЦветТекста</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:Color">web:Brown</dcscor:value>
+						</dcscor:item>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>Шрифт</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" height="10" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+						</dcscor:item>
+					</dcsset:appearance>
+					<dcsset:useInOverall>DontUse</dcsset:useInOverall>
+					<dcsset:useInFieldsHeader>DontUse</dcsset:useInFieldsHeader>
+					<dcsset:useInHeader>DontUse</dcsset:useInHeader>
+					<dcsset:useInParameters>DontUse</dcsset:useInParameters>
+					<dcsset:useInFilter>DontUse</dcsset:useInFilter>
+				</dcsset:item>
+				<dcsset:item>
+					<dcsset:selection>
+						<dcsset:item>
+							<dcsset:field>Спецификация</dcsset:field>
+						</dcsset:item>
+					</dcsset:selection>
+					<dcsset:filter/>
+					<dcsset:appearance>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>Шрифт</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:Font" ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+						</dcscor:item>
+					</dcsset:appearance>
+					<dcsset:useInOverall>DontUse</dcsset:useInOverall>
+					<dcsset:useInFieldsHeader>DontUse</dcsset:useInFieldsHeader>
+					<dcsset:useInHeader>DontUse</dcsset:useInHeader>
+					<dcsset:useInParameters>DontUse</dcsset:useInParameters>
+					<dcsset:useInFilter>DontUse</dcsset:useInFilter>
+				</dcsset:item>
+				<dcsset:item>
+					<dcsset:selection/>
+					<dcsset:filter>
+						<dcsset:item xsi:type="dcsset:FilterItemGroup">
+							<dcsset:groupType>AndGroup</dcsset:groupType>
+							<dcsset:item xsi:type="dcsset:FilterItemComparison">
+								<dcsset:left xsi:type="dcscor:Field">КоличествоДверей</dcsset:left>
+								<dcsset:comparisonType>Equal</dcsset:comparisonType>
+								<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:FilterItemComparison">
+								<dcsset:left xsi:type="dcscor:Field">КоличествоДеталей</dcsset:left>
+								<dcsset:comparisonType>Equal</dcsset:comparisonType>
+								<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:FilterItemComparison">
+								<dcsset:left xsi:type="dcscor:Field">КоличествоКоробов</dcsset:left>
+								<dcsset:comparisonType>Equal</dcsset:comparisonType>
+								<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:FilterItemComparison">
+								<dcsset:left xsi:type="dcscor:Field">КоличествоЯщиков</dcsset:left>
+								<dcsset:comparisonType>Equal</dcsset:comparisonType>
+								<dcsset:right xsi:type="xs:decimal">0</dcsset:right>
+							</dcsset:item>
+						</dcsset:item>
+					</dcsset:filter>
+					<dcsset:appearance>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:parameter>ЦветФона</dcscor:parameter>
+							<dcscor:value xsi:type="v8ui:Color">web:Lavender</dcscor:value>
+						</dcscor:item>
+					</dcsset:appearance>
+				</dcsset:item>
+			</dcsset:conditionalAppearance>
+			<dcsset:outputParameters>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
+					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">Output</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Заголовок</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Производственный отчет по деталям</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</dcsset:outputParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemGroup">
+				<dcsset:groupItems>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>Наряд</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
+				</dcsset:groupItems>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+				</dcsset:selection>
+				<dcsset:item xsi:type="dcsset:StructureItemGroup">
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Спецификация</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>Спецификация</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>КоличествоДеталей</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Детали</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>КоличествоКоробов</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Короба</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>КоличествоЯщиков</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Ящики</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>КоличествоДверей</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Двери</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+						</dcsset:item>
+					</dcsset:selection>
+					<dcsset:item xsi:type="dcsset:StructureItemGroup">
+						<dcsset:groupItems>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>ВидДетали</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+						</dcsset:groupItems>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>ВидДетали</dcsset:field>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>КоличествоДеталей</dcsset:field>
+								<dcsset:lwsTitle>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Детали</v8:content>
+									</v8:item>
+								</dcsset:lwsTitle>
+							</dcsset:item>
+						</dcsset:selection>
+					</dcsset:item>
+				</dcsset:item>
+			</dcsset:item>
+		</dcsset:settings>
+	</settingsVariant>
+</DataCompositionSchema>

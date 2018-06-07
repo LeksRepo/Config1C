@@ -191,6 +191,62 @@
 		ЛЕВОЕ СОЕДИНЕНИЕ втДеталиПоНарядам КАК ДеталиПоНарядам
 		ПО Обороты.Дата = ДеталиПоНарядам.Дата</query>
 	</dataSet>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных2</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЦеховаяЗона</dataPath>
+			<field>ЦеховаяЗона</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Цеховая зона</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Сумма2</dataPath>
+			<field>Сумма2</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма2</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	Спис.Спецификация КАК Спец
+ПОМЕСТИТЬ втСпецификации
+ИЗ
+	Документ.НарядЗадание.СписокСпецификаций КАК Спис
+ГДЕ
+	Спис.Ссылка.ДатаИзготовления МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+	И Спис.Ссылка.Подразделение = &amp;Подразделение
+	И Спис.Ссылка.Проведен
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	СУММА(СписокНом.ЗарплатаЦеха) КАК Сумма2,
+	СписокНом.Номенклатура.ЦеховаяЗона КАК ЦеховаяЗона
+ИЗ
+	Документ.Спецификация.СписокНоменклатуры КАК СписокНом
+ГДЕ
+	СписокНом.Ссылка В
+			(ВЫБРАТЬ
+				С.Спец
+			ИЗ
+				втСпецификации КАК С)
+	И (СписокНом.Номенклатура.ЦеховаяЗона = ЗНАЧЕНИЕ(Перечисление.ЦеховыеЗоны.Кромочная)
+			ИЛИ СписокНом.Номенклатура.ЦеховаяЗона = ЗНАЧЕНИЕ(Перечисление.ЦеховыеЗоны.ФРС)
+			ИЛИ СписокНом.Номенклатура.ЦеховаяЗона = ЗНАЧЕНИЕ(Перечисление.ЦеховыеЗоны.Стеколка)
+			ИЛИ СписокНом.Номенклатура.ЦеховаяЗона = ЗНАЧЕНИЕ(Перечисление.ЦеховыеЗоны.Кухонная)
+			ИЛИ СписокНом.Номенклатура.ЦеховаяЗона = ЗНАЧЕНИЕ(Перечисление.ЦеховыеЗоны.Ящики))
+	И СписокНом.Номенклатура.ВидНоменклатуры = ЗНАЧЕНИЕ(Перечисление.ВидыНоменклатуры.Услуга)
+
+СГРУППИРОВАТЬ ПО
+	СписокНом.Номенклатура.ЦеховаяЗона</query>
+	</dataSet>
 	<totalField>
 		<dataPath>Норматив</dataPath>
 		<expression>Сумма(Норматив)</expression>
@@ -226,6 +282,10 @@
 	<totalField>
 		<dataPath>КоличествоДеталейПоНарядам</dataPath>
 		<expression>Сумма(КоличествоДеталейПоНарядам)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Сумма2</dataPath>
+		<expression>Сумма(Сумма2)</expression>
 	</totalField>
 	<parameter>
 		<name>ПериодОтчета</name>
@@ -315,9 +375,6 @@
 		<dcsset:name>Основной</dcsset:name>
 		<dcsset:presentation xsi:type="xs:string">Основной</dcsset:presentation>
 		<dcsset:settings xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows">
-			<dcsset:selection>
-				<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
-			</dcsset:selection>
 			<dcsset:dataParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:use>false</dcscor:use>
@@ -535,6 +592,45 @@
 							<dcscor:parameter>ТипДиаграммы.АвтоРаздвижениеСерий</dcscor:parameter>
 							<dcscor:value xsi:type="v8ui:AutoSeriesSeparation">All</dcscor:value>
 						</dcscor:item>
+					</dcscor:item>
+				</dcsset:outputParameters>
+			</dcsset:item>
+			<dcsset:item xsi:type="dcsset:StructureItemChart">
+				<dcsset:point>
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>ЦеховаяЗона</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>Сумма2</dcsset:field>
+							<dcsset:orderType>Desc</dcsset:orderType>
+						</dcsset:item>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+				</dcsset:point>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Сумма2</dcsset:field>
+						<dcsset:lwsTitle>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Сумма услуг по цеховым зонам</v8:content>
+							</v8:item>
+						</dcsset:lwsTitle>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:outputParameters>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ТипДиаграммы</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:ChartType">Column3D</dcscor:value>
 					</dcscor:item>
 				</dcsset:outputParameters>
 			</dcsset:item>
