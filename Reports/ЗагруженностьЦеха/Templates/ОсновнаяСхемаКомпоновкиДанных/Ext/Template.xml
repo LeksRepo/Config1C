@@ -108,8 +108,76 @@
 				</v8:item>
 			</title>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Счет</dataPath>
+			<field>Счет</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КорСчет</dataPath>
+			<field>КорСчет</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Субконто1</dataPath>
+			<field>Субконто1</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Субконто2</dataPath>
+			<field>Субконто2</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Субконто3</dataPath>
+			<field>Субконто3</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КорСубконто1</dataPath>
+			<field>КорСубконто1</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КорСубконто2</dataPath>
+			<field>КорСубконто2</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>КорСубконто3</dataPath>
+			<field>КорСубконто3</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СчетДтЧтение</dataPath>
+			<field>СчетДтЧтение</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СчетКтЧтение</dataPath>
+			<field>СчетКтЧтение</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ВыпускПродукции</dataPath>
+			<field>ВыпускПродукции</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Выпуск продукции</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
+	НАЧАЛОПЕРИОДА(НарядСписокСпец.Ссылка.ДатаИзготовления, ДЕНЬ) КАК Дата,
+	СУММА(УправленческийОбороты.СуммаОборот) КАК Количество
+ПОМЕСТИТЬ втКоличествоВыпущеннные
+ИЗ
+	Документ.НарядЗадание.СписокСпецификаций КАК НарядСписокСпец
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрБухгалтерии.Управленческий.Обороты(&amp;НачалоПериода, &amp;КонецПериода, Регистратор, Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ЗарплатаЦеха), , Подразделение = &amp;Подразделение, , ) КАК УправленческийОбороты
+		ПО (НарядСписокСпец.Спецификация = (ВЫРАЗИТЬ(УправленческийОбороты.Субконто1 КАК Документ.Спецификация)))
+ГДЕ
+	НарядСписокСпец.Ссылка.ДатаИзготовления МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода
+	И НарядСписокСпец.Ссылка.Подразделение = &amp;Подразделение
+	И НарядСписокСпец.Ссылка.Проведен
+
+СГРУППИРОВАТЬ ПО
+	НАЧАЛОПЕРИОДА(НарядСписокСпец.Ссылка.ДатаИзготовления, ДЕНЬ)
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
 	НАЧАЛОПЕРИОДА(НарядСписокСпец.Ссылка.ДатаИзготовления, ДЕНЬ) КАК Дата,
 	СУММА(НарядСписокСпец.Спецификация.КоличествоДеталей) КАК Количество
 ПОМЕСТИТЬ втДеталиПоНарядам
@@ -181,7 +249,8 @@
 	План.Норматив КАК План,
 	План.КоличествоДеталейПлан,
 	План.КоличествоДоставокПлан,
-	ДеталиПоНарядам.Количество КАК КоличествоДеталейПоНарядам
+	ДеталиПоНарядам.Количество КАК КоличествоДеталейПоНарядам,
+	Выпущенные.Количество КАК ВыпускПродукции
 ИЗ
 	втОбороты КАК Обороты
 		ЛЕВОЕ СОЕДИНЕНИЕ втНаряды КАК Наряды
@@ -189,7 +258,9 @@
 		ЛЕВОЕ СОЕДИНЕНИЕ втПлан КАК План
 		ПО Обороты.Дата = План.Дата
 		ЛЕВОЕ СОЕДИНЕНИЕ втДеталиПоНарядам КАК ДеталиПоНарядам
-		ПО Обороты.Дата = ДеталиПоНарядам.Дата</query>
+		ПО Обороты.Дата = ДеталиПоНарядам.Дата
+		ЛЕВОЕ СОЕДИНЕНИЕ втКоличествоВыпущеннные КАК Выпущенные
+		ПО Обороты.Дата = Выпущенные.Дата</query>
 	</dataSet>
 	<dataSet xsi:type="DataSetQuery">
 		<name>НаборДанных2</name>
@@ -286,6 +357,10 @@
 	<totalField>
 		<dataPath>Сумма2</dataPath>
 		<expression>Сумма(Сумма2)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>ВыпускПродукции</dataPath>
+		<expression>Сумма(ВыпускПродукции)</expression>
 	</totalField>
 	<parameter>
 		<name>ПериодОтчета</name>
@@ -457,6 +532,9 @@
 								<v8:content>По нарядам</v8:content>
 							</v8:item>
 						</dcsset:lwsTitle>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>ВыпускПродукции</dcsset:field>
 					</dcsset:item>
 				</dcsset:selection>
 				<dcsset:outputParameters>
