@@ -84,6 +84,80 @@
 				</v8:item>
 			</title>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Номенклатура</dataPath>
+			<field>Номенклатура</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>УслугиКромочная</dataPath>
+			<field>УслугиКромочная</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Услуги кромочная</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>УслугиСтеколка</dataPath>
+			<field>УслугиСтеколка</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Услуги стеколка</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>УслугиОтгрузка</dataPath>
+			<field>УслугиОтгрузка</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Услуги отгрузка</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>УслугиКухонная</dataPath>
+			<field>УслугиКухонная</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Услуги кухонная</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>УслугиКриволинейная</dataPath>
+			<field>УслугиКриволинейная</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Услуги криволинейная</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>УслугиЯщики</dataPath>
+			<field>УслугиЯщики</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Услуги ящики</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>УслугиФРС</dataPath>
+			<field>УслугиФРС</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Услуги ФРС</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	СписокСпец.Ссылка КАК Наряд,
@@ -100,9 +174,34 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 ВЫБРАТЬ
+	СУММА(СписокНом.ЗарплатаЦеха) КАК СуммаПоЗонам,
+	СписокНом.Ссылка КАК Спецификация,
+	СписокНом.Номенклатура.ЦеховаяЗона КАК ЦеховаяЗона
+ПОМЕСТИТЬ втСуммаПоЗонам
+ИЗ
+	Документ.Спецификация.СписокНоменклатуры КАК СписокНом
+ГДЕ
+	СписокНом.Ссылка В
+			(ВЫБРАТЬ
+				С.Спецификация
+			ИЗ
+				втСписокСпец КАК С)
+	И СписокНом.Номенклатура.ЦеховаяЗона &lt;&gt; ЗНАЧЕНИЕ(Перечисление.ЦеховыеЗоны.ВнешниеУслуги)
+	И СписокНом.Номенклатура.ЦеховаяЗона &lt;&gt; ЗНАЧЕНИЕ(Перечисление.ЦеховыеЗоны.Офис)
+	И СписокНом.Номенклатура.ВидНоменклатуры = ЗНАЧЕНИЕ(Перечисление.ВидыНоменклатуры.Услуга)
+	И СписокНом.ЗарплатаЦеха &gt; 0
+
+СГРУППИРОВАТЬ ПО
+	СписокНом.Ссылка,
+	СписокНом.Номенклатура.ЦеховаяЗона
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
 	СписокСпец.Наряд КАК Наряд,
 	СписокСпец.Спецификация КАК Спецификация,
 	СписокДет.ВидДетали КАК ВидДетали,
+	СписокДет.Номенклатура КАК Номенклатура,
 	СУММА(ВЫБОР
 			КОГДА СписокДет.НомерИзделия &gt; 0
 				ТОГДА 0
@@ -124,7 +223,8 @@
 СГРУППИРОВАТЬ ПО
 	СписокСпец.Наряд,
 	СписокСпец.Спецификация,
-	СписокДет.ВидДетали
+	СписокДет.ВидДетали,
+	СписокДет.Номенклатура
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -186,7 +286,43 @@
 	ЕСТЬNULL(Короба.Количество, 0) КАК КоличествоКоробов,
 	ЕСТЬNULL(Двери.Количество, 0) КАК КоличествоДверей,
 	ЕСТЬNULL(Детали.Количество, 0) КАК КоличествоДеталей,
-	Детали.ВидДетали
+	Детали.ВидДетали КАК ВидДетали,
+	Детали.Номенклатура КАК Номенклатура,
+	СУММА(ВЫБОР
+			КОГДА Услуги.ЦеховаяЗона = ЗНАЧЕНИЕ(Перечисление.ЦеховыеЗоны.Кромочная)
+				ТОГДА Услуги.СуммаПоЗонам
+			ИНАЧЕ 0
+		КОНЕЦ) КАК УслугиКромочная,
+	СУММА(ВЫБОР
+			КОГДА Услуги.ЦеховаяЗона = ЗНАЧЕНИЕ(Перечисление.ЦеховыеЗоны.ФРС)
+				ТОГДА Услуги.СуммаПоЗонам
+			ИНАЧЕ 0
+		КОНЕЦ) КАК УслугиФРС,
+	СУММА(ВЫБОР
+			КОГДА Услуги.ЦеховаяЗона = ЗНАЧЕНИЕ(Перечисление.ЦеховыеЗоны.Кухонная)
+				ТОГДА Услуги.СуммаПоЗонам
+			ИНАЧЕ 0
+		КОНЕЦ) КАК УслугиКухонная,
+	СУММА(ВЫБОР
+			КОГДА Услуги.ЦеховаяЗона = ЗНАЧЕНИЕ(Перечисление.ЦеховыеЗоны.Стеколка)
+				ТОГДА Услуги.СуммаПоЗонам
+			ИНАЧЕ 0
+		КОНЕЦ) КАК УслугиСтеколка,
+	СУММА(ВЫБОР
+			КОГДА Услуги.ЦеховаяЗона = ЗНАЧЕНИЕ(Перечисление.ЦеховыеЗоны.Отгрузка)
+				ТОГДА Услуги.СуммаПоЗонам
+			ИНАЧЕ 0
+		КОНЕЦ) КАК УслугиОтгрузка,
+	СУММА(ВЫБОР
+			КОГДА Услуги.ЦеховаяЗона = ЗНАЧЕНИЕ(Перечисление.ЦеховыеЗоны.Ящики)
+				ТОГДА Услуги.СуммаПоЗонам
+			ИНАЧЕ 0
+		КОНЕЦ) КАК УслугиЯщики,
+	СУММА(ВЫБОР
+			КОГДА Услуги.ЦеховаяЗона = ЗНАЧЕНИЕ(Перечисление.ЦеховыеЗоны.Криволинейная)
+				ТОГДА Услуги.СуммаПоЗонам
+			ИНАЧЕ 0
+		КОНЕЦ) КАК УслугиКриволинейная
 ИЗ
 	втСписокСпец КАК СписокСпец
 		ЛЕВОЕ СОЕДИНЕНИЕ втКоличествоЯщиков КАК Ящики
@@ -197,11 +333,83 @@
 		ПО СписокСпец.Спецификация = Двери.Спецификация
 		ЛЕВОЕ СОЕДИНЕНИЕ втСписокПоВидамДеталей КАК Детали
 		ПО СписокСпец.Спецификация = Детали.Спецификация
+		ЛЕВОЕ СОЕДИНЕНИЕ втСуммаПоЗонам КАК Услуги
+		ПО СписокСпец.Спецификация = Услуги.Спецификация
+
+СГРУППИРОВАТЬ ПО
+	СписокСпец.Наряд,
+	СписокСпец.Наряд.Номер,
+	СписокСпец.Спецификация,
+	СписокСпец.Спецификация.Номер,
+	ЕСТЬNULL(Ящики.Количество, 0),
+	ЕСТЬNULL(Короба.Количество, 0),
+	ЕСТЬNULL(Двери.Количество, 0),
+	ЕСТЬNULL(Детали.Количество, 0),
+	Детали.ВидДетали,
+	Детали.Номенклатура
 
 УПОРЯДОЧИТЬ ПО
 	СписокСпец.Наряд.Номер,
 	СписокСпец.Спецификация.Номер,
 	ЕСТЬNULL(Детали.Количество, 0) УБЫВ</query>
+	</dataSet>
+	<dataSet xsi:type="DataSetQuery">
+		<name>НаборДанных2</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>ЦеховаяЗона</dataPath>
+			<field>ЦеховаяЗона</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Цеховая зона</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СуммаПоЗонам</dataPath>
+			<field>СуммаПоЗонам</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сумма по зонам</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ
+	СписокСпец.Спецификация КАК Спец
+ПОМЕСТИТЬ втСпецификации
+ИЗ
+	Документ.НарядЗадание.СписокСпецификаций КАК СписокСпец
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СтатусСпецификации.СрезПоследних(, ) КАК Статусы
+		ПО СписокСпец.Спецификация = Статусы.Спецификация
+ГДЕ
+	Статусы.Статус = ЗНАЧЕНИЕ(Перечисление.СтатусыСпецификации.ПереданВЦех)
+	И СписокСпец.Ссылка.Подразделение = &amp;Подразделение
+;
+
+////////////////////////////////////////////////////////////////////////////////
+ВЫБРАТЬ
+	СУММА(СписокНом.ЗарплатаЦеха) КАК СуммаПоЗонам,
+	СписокНом.Номенклатура.ЦеховаяЗона КАК ЦеховаяЗона
+ИЗ
+	Документ.Спецификация.СписокНоменклатуры КАК СписокНом
+ГДЕ
+	СписокНом.Ссылка В
+			(ВЫБРАТЬ
+				С.Спец
+			ИЗ
+				втСпецификации КАК С)
+	И СписокНом.Номенклатура.ЦеховаяЗона &lt;&gt; ЗНАЧЕНИЕ(Перечисление.ЦеховыеЗоны.ВнешниеУслуги)
+	И СписокНом.Номенклатура.ЦеховаяЗона &lt;&gt; ЗНАЧЕНИЕ(Перечисление.ЦеховыеЗоны.Офис)
+	И СписокНом.Номенклатура.ВидНоменклатуры = ЗНАЧЕНИЕ(Перечисление.ВидыНоменклатуры.Услуга)
+	И СписокНом.ЗарплатаЦеха &gt; 0
+
+СГРУППИРОВАТЬ ПО
+	СписокНом.Номенклатура.ЦеховаяЗона
+
+УПОРЯДОЧИТЬ ПО
+	СУММА(СписокНом.ЗарплатаЦеха)</query>
 	</dataSet>
 	<totalField>
 		<dataPath>КоличествоДверей</dataPath>
@@ -218,6 +426,38 @@
 	<totalField>
 		<dataPath>КоличествоЯщиков</dataPath>
 		<expression>Максимум(КоличествоЯщиков)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>СуммаПоЗонам</dataPath>
+		<expression>Сумма(СуммаПоЗонам)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>УслугиКриволинейная</dataPath>
+		<expression>Максимум(УслугиКриволинейная)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>УслугиКромочная</dataPath>
+		<expression>Максимум(УслугиКромочная)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>УслугиКухонная</dataPath>
+		<expression>Максимум(УслугиКухонная)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>УслугиОтгрузка</dataPath>
+		<expression>Максимум(УслугиОтгрузка)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>УслугиСтеколка</dataPath>
+		<expression>Максимум(УслугиСтеколка)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>УслугиФРС</dataPath>
+		<expression>Максимум(УслугиФРС)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>УслугиЯщики</dataPath>
+		<expression>Максимум(УслугиЯщики)</expression>
 	</totalField>
 	<parameter>
 		<name>Период</name>
@@ -357,6 +597,11 @@
 			</dcsset:conditionalAppearance>
 			<dcsset:outputParameters>
 				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:use>false</dcscor:use>
+					<dcscor:parameter>РасположениеИтогов</dcscor:parameter>
+					<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">End</dcscor:value>
+				</dcscor:item>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 					<dcscor:parameter>ВыводитьЗаголовок</dcscor:parameter>
 					<dcscor:value xsi:type="dcsset:DataCompositionTextOutputType">Output</dcscor:value>
 				</dcscor:item>
@@ -370,6 +615,39 @@
 					</dcscor:value>
 				</dcscor:item>
 			</dcsset:outputParameters>
+			<dcsset:item xsi:type="dcsset:StructureItemTable">
+				<dcsset:column>
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>ЦеховаяЗона</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>СуммаПоЗонам</dcsset:field>
+							<dcsset:orderType>Desc</dcsset:orderType>
+						</dcsset:item>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+				</dcsset:column>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>СуммаПоЗонам</dcsset:field>
+						<dcsset:lwsTitle>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content> </v8:content>
+							</v8:item>
+						</dcsset:lwsTitle>
+					</dcsset:item>
+				</dcsset:selection>
+			</dcsset:item>
 			<dcsset:item xsi:type="dcsset:StructureItemGroup">
 				<dcsset:groupItems>
 					<dcsset:item xsi:type="dcsset:GroupItemField">
@@ -380,9 +658,19 @@
 						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
 					</dcsset:item>
 				</dcsset:groupItems>
+				<dcsset:order>
+					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+				</dcsset:order>
 				<dcsset:selection>
 					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
 				</dcsset:selection>
+				<dcsset:outputParameters>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:use>false</dcscor:use>
+						<dcscor:parameter>РасположениеИтогов</dcscor:parameter>
+						<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">End</dcscor:value>
+					</dcscor:item>
+				</dcsset:outputParameters>
 				<dcsset:item xsi:type="dcsset:StructureItemGroup">
 					<dcsset:groupItems>
 						<dcsset:item xsi:type="dcsset:GroupItemField">
@@ -393,6 +681,9 @@
 							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
 						</dcsset:item>
 					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
 					<dcsset:selection>
 						<dcsset:item xsi:type="dcsset:SelectedItemField">
 							<dcsset:field>Спецификация</dcsset:field>
@@ -433,7 +724,86 @@
 								</v8:item>
 							</dcsset:lwsTitle>
 						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemFolder">
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Услуги</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>УслугиКромочная</dcsset:field>
+								<dcsset:lwsTitle>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Кром.</v8:content>
+									</v8:item>
+								</dcsset:lwsTitle>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>УслугиФРС</dcsset:field>
+								<dcsset:lwsTitle>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>ФРС</v8:content>
+									</v8:item>
+								</dcsset:lwsTitle>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>УслугиКухонная</dcsset:field>
+								<dcsset:lwsTitle>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Кухон.</v8:content>
+									</v8:item>
+								</dcsset:lwsTitle>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>УслугиСтеколка</dcsset:field>
+								<dcsset:lwsTitle>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Стекол.</v8:content>
+									</v8:item>
+								</dcsset:lwsTitle>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>УслугиОтгрузка</dcsset:field>
+								<dcsset:lwsTitle>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Отгруз.</v8:content>
+									</v8:item>
+								</dcsset:lwsTitle>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>УслугиЯщики</dcsset:field>
+								<dcsset:lwsTitle>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Ящ.</v8:content>
+									</v8:item>
+								</dcsset:lwsTitle>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>УслугиКриволинейная</dcsset:field>
+								<dcsset:lwsTitle>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Крив.</v8:content>
+									</v8:item>
+								</dcsset:lwsTitle>
+							</dcsset:item>
+							<dcsset:placement>Auto</dcsset:placement>
+						</dcsset:item>
 					</dcsset:selection>
+					<dcsset:outputParameters>
+						<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+							<dcscor:use>false</dcscor:use>
+							<dcscor:parameter>РасположениеИтогов</dcscor:parameter>
+							<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">End</dcscor:value>
+						</dcscor:item>
+					</dcsset:outputParameters>
 					<dcsset:item xsi:type="dcsset:StructureItemGroup">
 						<dcsset:groupItems>
 							<dcsset:item xsi:type="dcsset:GroupItemField">
@@ -444,6 +814,9 @@
 								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
 							</dcsset:item>
 						</dcsset:groupItems>
+						<dcsset:order>
+							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						</dcsset:order>
 						<dcsset:selection>
 							<dcsset:item xsi:type="dcsset:SelectedItemField">
 								<dcsset:field>ВидДетали</dcsset:field>
@@ -458,6 +831,48 @@
 								</dcsset:lwsTitle>
 							</dcsset:item>
 						</dcsset:selection>
+						<dcsset:outputParameters>
+							<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+								<dcscor:use>false</dcscor:use>
+								<dcscor:parameter>РасположениеИтогов</dcscor:parameter>
+								<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">End</dcscor:value>
+							</dcscor:item>
+						</dcsset:outputParameters>
+						<dcsset:item xsi:type="dcsset:StructureItemGroup">
+							<dcsset:groupItems>
+								<dcsset:item xsi:type="dcsset:GroupItemField">
+									<dcsset:field>Номенклатура</dcsset:field>
+									<dcsset:groupType>Items</dcsset:groupType>
+									<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+									<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+									<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+								</dcsset:item>
+							</dcsset:groupItems>
+							<dcsset:order>
+								<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+							</dcsset:order>
+							<dcsset:selection>
+								<dcsset:item xsi:type="dcsset:SelectedItemField">
+									<dcsset:field>Номенклатура</dcsset:field>
+								</dcsset:item>
+								<dcsset:item xsi:type="dcsset:SelectedItemField">
+									<dcsset:field>КоличествоДеталей</dcsset:field>
+									<dcsset:lwsTitle>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Детали</v8:content>
+										</v8:item>
+									</dcsset:lwsTitle>
+								</dcsset:item>
+							</dcsset:selection>
+							<dcsset:outputParameters>
+								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+									<dcscor:use>false</dcscor:use>
+									<dcscor:parameter>РасположениеИтогов</dcscor:parameter>
+									<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">End</dcscor:value>
+								</dcscor:item>
+							</dcsset:outputParameters>
+						</dcsset:item>
 					</dcsset:item>
 				</dcsset:item>
 			</dcsset:item>
