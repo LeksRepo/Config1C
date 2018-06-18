@@ -198,8 +198,7 @@
 	И СписокНом.ЗарплатаЦеха &gt; 0
 
 СГРУППИРОВАТЬ ПО
-	СписокНом.Ссылка,
-	СписокНом.Номенклатура.ЦеховаяЗона
+	СписокНом.Ссылка
 ;
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -395,10 +394,6 @@
 		<expression>Максимум(КоличествоЯщиков)</expression>
 	</totalField>
 	<totalField>
-		<dataPath>СуммаПоЗонам</dataPath>
-		<expression>Сумма(СуммаПоЗонам)</expression>
-	</totalField>
-	<totalField>
 		<dataPath>УслугиКриволинейная</dataPath>
 		<expression>Максимум(УслугиКриволинейная)</expression>
 	</totalField>
@@ -417,6 +412,10 @@
 	<totalField>
 		<dataPath>УслугиФРС</dataPath>
 		<expression>Максимум(УслугиФРС)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>СуммаПоЗонам</dataPath>
+		<expression>Сумма(СуммаПоЗонам)</expression>
 	</totalField>
 	<parameter>
 		<name>Период</name>
@@ -621,7 +620,18 @@
 					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
 				</dcsset:order>
 				<dcsset:selection>
-					<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Наряд</dcsset:field>
+					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>КоличествоДеталей</dcsset:field>
+						<dcsset:lwsTitle>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Детали</v8:content>
+							</v8:item>
+						</dcsset:lwsTitle>
+					</dcsset:item>
 				</dcsset:selection>
 				<dcsset:outputParameters>
 					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
