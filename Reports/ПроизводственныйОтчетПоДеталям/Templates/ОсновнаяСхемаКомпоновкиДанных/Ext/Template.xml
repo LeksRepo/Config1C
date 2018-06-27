@@ -148,9 +148,14 @@
 				</v8:item>
 			</title>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>НомерСтроки</dataPath>
+			<field>НомерСтроки</field>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	СписокСпец.Ссылка КАК Наряд,
+	СписокСпец.НомерСтроки КАК НомерСтроки,
 	СписокСпец.Спецификация КАК Спецификация
 ПОМЕСТИТЬ втСписокСпец
 ИЗ
@@ -292,6 +297,7 @@
 ВЫБРАТЬ
 	СписокСпец.Наряд КАК Наряд,
 	СписокСпец.Наряд.Номер КАК НомерНаряда,
+	СписокСпец.НомерСтроки,
 	СписокСпец.Спецификация КАК Спецификация,
 	СписокСпец.Спецификация.Номер КАК НомерСпецификация,
 	ЕСТЬNULL(Ящики.Количество, 0) КАК КоличествоЯщиков,
@@ -317,12 +323,7 @@
 		ЛЕВОЕ СОЕДИНЕНИЕ втСписокПоВидамДеталей КАК Детали
 		ПО СписокСпец.Спецификация = Детали.Спецификация
 		ЛЕВОЕ СОЕДИНЕНИЕ втСуммаПоЗонам КАК Услуги
-		ПО СписокСпец.Спецификация = Услуги.Спецификация
-
-УПОРЯДОЧИТЬ ПО
-	СписокСпец.Наряд.Номер,
-	СписокСпец.Спецификация.Номер,
-	ЕСТЬNULL(Детали.Количество, 0) УБЫВ</query>
+		ПО СписокСпец.Спецификация = Услуги.Спецификация</query>
 	</dataSet>
 	<dataSet xsi:type="DataSetQuery">
 		<name>НаборДанных2</name>
@@ -627,9 +628,19 @@
 						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
 						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
 					</dcsset:item>
+					<dcsset:item xsi:type="dcsset:GroupItemField">
+						<dcsset:field>НомерНаряда</dcsset:field>
+						<dcsset:groupType>Items</dcsset:groupType>
+						<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+						<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+						<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+					</dcsset:item>
 				</dcsset:groupItems>
 				<dcsset:order>
-					<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					<dcsset:item xsi:type="dcsset:OrderItemField">
+						<dcsset:field>НомерНаряда</dcsset:field>
+						<dcsset:orderType>Asc</dcsset:orderType>
+					</dcsset:item>
 				</dcsset:order>
 				<dcsset:selection>
 					<dcsset:item xsi:type="dcsset:SelectedItemField">
@@ -670,9 +681,19 @@
 							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
 							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
 						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>НомерСтроки</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
 					</dcsset:groupItems>
 					<dcsset:order>
-						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						<dcsset:item xsi:type="dcsset:OrderItemField">
+							<dcsset:field>НомерСтроки</dcsset:field>
+							<dcsset:orderType>Asc</dcsset:orderType>
+						</dcsset:item>
 					</dcsset:order>
 					<dcsset:selection>
 						<dcsset:item xsi:type="dcsset:SelectedItemField">
@@ -796,7 +817,10 @@
 							</dcsset:item>
 						</dcsset:groupItems>
 						<dcsset:order>
-							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+							<dcsset:item xsi:type="dcsset:OrderItemField">
+								<dcsset:field>КоличествоДеталей</dcsset:field>
+								<dcsset:orderType>Desc</dcsset:orderType>
+							</dcsset:item>
 						</dcsset:order>
 						<dcsset:selection>
 							<dcsset:item xsi:type="dcsset:SelectedItemField">
