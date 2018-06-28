@@ -7,18 +7,37 @@
 		<Event name="NotificationProcessing">ОбработкаОповещения</Event>
 	</Events>
 	<ChildItems>
-		<Button name="СписокЗаполнить" id="26">
-			<Type>UsualButton</Type>
-			<Representation>PictureAndText</Representation>
-			<CommandName>Form.Command.Заполнить</CommandName>
-			<Picture>
-				<xr:Ref>StdPicture.DataCompositionNewTable</xr:Ref>
-				<xr:LoadTransparent>true</xr:LoadTransparent>
-			</Picture>
-			<ExtendedTooltip name="СписокЗаполнитьРасширеннаяПодсказка" id="27"/>
-		</Button>
+		<UsualGroup name="Группа1" id="30">
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="31"/>
+			<ChildItems>
+				<Button name="СписокЗаполнить" id="26">
+					<Type>UsualButton</Type>
+					<Representation>PictureAndText</Representation>
+					<CommandName>Form.Command.Заполнить</CommandName>
+					<Picture>
+						<xr:Ref>StdPicture.DataCompositionNewTable</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<ExtendedTooltip name="СписокЗаполнитьРасширеннаяПодсказка" id="27"/>
+				</Button>
+				<Button name="ФормаОткрытьСправочник" id="28">
+					<Type>UsualButton</Type>
+					<Representation>PictureAndText</Representation>
+					<CommandName>Form.Command.ОткрытьСправочник</CommandName>
+					<Picture>
+						<xr:Ref>CommonPicture.Папка</xr:Ref>
+						<xr:LoadTransparent>true</xr:LoadTransparent>
+					</Picture>
+					<ExtendedTooltip name="ФормаОткрытьСправочникРасширеннаяПодсказка" id="29"/>
+				</Button>
+			</ChildItems>
+		</UsualGroup>
 		<Table name="Список" id="1">
 			<Representation>List</Representation>
+			<Visible>false</Visible>
 			<CommandBarLocation>None</CommandBarLocation>
 			<DefaultItem>true</DefaultItem>
 			<UseAlternationRowColor>true</UseAlternationRowColor>
@@ -135,6 +154,21 @@
 				</v8:item>
 			</ToolTip>
 			<Action>Заполнить</Action>
+		</Command>
+		<Command name="ОткрытьСправочник" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть справочник</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Открыть справочник</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ОткрытьСправочник</Action>
 		</Command>
 	</Commands>
 </Form>
