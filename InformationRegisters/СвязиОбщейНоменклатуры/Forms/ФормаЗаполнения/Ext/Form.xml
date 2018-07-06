@@ -28,16 +28,6 @@
 					</Picture>
 					<ExtendedTooltip name="ЗаполнитьТекущимиРасширеннаяПодсказка" id="28"/>
 				</Button>
-				<Button name="ОткрытьСправочник" id="31">
-					<Type>UsualButton</Type>
-					<Representation>PictureAndText</Representation>
-					<CommandName>Form.Command.ОткрытьСправочник</CommandName>
-					<Picture>
-						<xr:Ref>CommonPicture.Папка</xr:Ref>
-						<xr:LoadTransparent>true</xr:LoadTransparent>
-					</Picture>
-					<ExtendedTooltip name="ОткрытьСправочникРасширеннаяПодсказка" id="32"/>
-				</Button>
 			</ChildItems>
 		</UsualGroup>
 		<InputField name="Подразделение" id="20">
@@ -54,6 +44,9 @@
 			</ChoiceParameters>
 			<ContextMenu name="ПодразделениеКонтекстноеМеню" id="21"/>
 			<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="22"/>
+			<Events>
+				<Event name="OnChange">ПодразделениеПриИзменении</Event>
+			</Events>
 		</InputField>
 		<Table name="Список" id="1">
 			<Representation>List</Representation>
@@ -99,6 +92,13 @@
 				<InputField name="СписокНоменклатура" id="17">
 					<DataPath>Список.Номенклатура</DataPath>
 					<EditMode>EnterOnInput</EditMode>
+					<ChoiceParameterLinks>
+						<xr:Link>
+							<xr:Name>Отбор.Подразделение</xr:Name>
+							<xr:DataPath xsi:type="xs:string">Подразделение</xr:DataPath>
+							<xr:ValueChange>Clear</xr:ValueChange>
+						</xr:Link>
+					</ChoiceParameterLinks>
 					<ChoiceParameters>
 						<app:item name="Отбор.Базовый">
 							<app:value xsi:type="FormChoiceListDesTimeValue">
@@ -192,21 +192,6 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ЗаполнитьТекущими</Action>
-		</Command>
-		<Command name="ОткрытьСправочник" id="3">
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Открыть справочник</v8:content>
-				</v8:item>
-			</Title>
-			<ToolTip>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Открыть справочник</v8:content>
-				</v8:item>
-			</ToolTip>
-			<Action>ОткрытьСправочник</Action>
 		</Command>
 	</Commands>
 </Form>
