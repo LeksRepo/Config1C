@@ -57,7 +57,7 @@
 			<ShowTitle>false</ShowTitle>
 			<ExtendedTooltip name="ГруппаСтатусПодразделениеРасширеннаяПодсказка" id="40"/>
 			<ChildItems>
-				<InputField name="Статус" id="33">
+				<InputField name="СтатусСпец" id="33">
 					<DataPath>Статус</DataPath>
 					<TitleTextColor>style:FieldSelectionBackColor</TitleTextColor>
 					<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
@@ -145,8 +145,8 @@
 							</xr:Value>
 						</xr:Item>
 					</ChoiceList>
-					<ContextMenu name="СтатусКонтекстноеМеню" id="34"/>
-					<ExtendedTooltip name="СтатусРасширеннаяПодсказка" id="35"/>
+					<ContextMenu name="СтатусСпецКонтекстноеМеню" id="34"/>
+					<ExtendedTooltip name="СтатусСпецРасширеннаяПодсказка" id="35"/>
 					<Events>
 						<Event name="OnChange">СтатусПриИзменении</Event>
 					</Events>
@@ -163,30 +163,28 @@
 		</UsualGroup>
 		<Table name="ТЗ" id="1">
 			<Representation>List</Representation>
-			<Footer>true</Footer>
+			<CommandBarLocation>Top</CommandBarLocation>
+			<DefaultItem>true</DefaultItem>
 			<AutoInsertNewRow>true</AutoInsertNewRow>
-			<EnableStartDrag>true</EnableStartDrag>
-			<EnableDrag>true</EnableDrag>
+			<InitialListView>Beginning</InitialListView>
+			<Output>Enable</Output>
 			<DataPath>ТЗ</DataPath>
 			<CommandSet>
 				<ExcludedCommand>Copy</ExcludedCommand>
-				<ExcludedCommand>SortListAsc</ExcludedCommand>
 				<ExcludedCommand>MoveUp</ExcludedCommand>
 				<ExcludedCommand>CancelSearch</ExcludedCommand>
 				<ExcludedCommand>OutputList</ExcludedCommand>
 				<ExcludedCommand>SelectAll</ExcludedCommand>
-				<ExcludedCommand>SortListDesc</ExcludedCommand>
 				<ExcludedCommand>CopyToClipboard</ExcludedCommand>
+				<ExcludedCommand>ShowRowRearrangement</ExcludedCommand>
 				<ExcludedCommand>Delete</ExcludedCommand>
 				<ExcludedCommand>EndEdit</ExcludedCommand>
 				<ExcludedCommand>Add</ExcludedCommand>
 				<ExcludedCommand>Change</ExcludedCommand>
 				<ExcludedCommand>Find</ExcludedCommand>
+				<ExcludedCommand>ShowMultipleSelection</ExcludedCommand>
 				<ExcludedCommand>MoveDown</ExcludedCommand>
 			</CommandSet>
-			<SearchStringLocation>None</SearchStringLocation>
-			<ViewStatusLocation>None</ViewStatusLocation>
-			<SearchControlLocation>None</SearchControlLocation>
 			<RowFilter xsi:nil="true"/>
 			<ContextMenu name="ТЗКонтекстноеМеню" id="2"/>
 			<AutoCommandBar name="ТЗКоманднаяПанель" id="3">
@@ -221,6 +219,25 @@
 						</Picture>
 						<ExtendedTooltip name="ТЗОткрытьЗаметкуРасширеннаяПодсказка" id="87"/>
 					</Button>
+					<Button name="ТЗСортироватьПоВозростанию" id="95">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.СортироватьПоВозростанию</CommandName>
+						<Picture>
+							<xr:Ref>StdPicture.SortListAsc</xr:Ref>
+							<xr:LoadTransparent>true</xr:LoadTransparent>
+						</Picture>
+						<ExtendedTooltip name="ТЗСортироватьПоВозростаниюРасширеннаяПодсказка" id="96"/>
+					</Button>
+					<Button name="ТЗСортироватьПоУбыванию" id="97">
+						<Type>CommandBarButton</Type>
+						<Representation>Picture</Representation>
+						<CommandName>Form.Command.СортироватьПоУбыванию</CommandName>
+						<Picture>
+							<xr:Ref>StdPicture.SortListDesc</xr:Ref>
+							<xr:LoadTransparent>true</xr:LoadTransparent>
+						</Picture>
+						<ExtendedTooltip name="ТЗСортироватьПоУбываниюРасширеннаяПодсказка" id="98"/>
+					</Button>
 				</ChildItems>
 			</AutoCommandBar>
 			<ExtendedTooltip name="ТЗExtendedTooltip" id="21"/>
@@ -252,18 +269,18 @@
 				<Event name="Selection">ТЗВыбор</Event>
 			</Events>
 			<ChildItems>
-				<CheckBoxField name="ТЗПометка" id="4">
+				<CheckBoxField name="Пометка" id="4">
 					<DataPath>ТЗ.Пометка</DataPath>
 					<TitleLocation>None</TitleLocation>
 					<EditMode>EnterOnInput</EditMode>
 					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="ТЗПометкаКонтекстноеМеню" id="5"/>
-					<ExtendedTooltip name="ТЗПометкаExtendedTooltip" id="22"/>
+					<ContextMenu name="ПометкаКонтекстноеМеню" id="5"/>
+					<ExtendedTooltip name="ПометкаРасширеннаяПодсказка" id="22"/>
 					<Events>
 						<Event name="OnChange">ТЗПометкаПриИзменении</Event>
 					</Events>
 				</CheckBoxField>
-				<PictureField name="ТЗЕстьЗаметка" id="65">
+				<PictureField name="ЕстьЗаметка" id="65">
 					<DataPath>ТЗ.ЕстьЗаметка</DataPath>
 					<ReadOnly>true</ReadOnly>
 					<TitleLocation>None</TitleLocation>
@@ -276,18 +293,18 @@
 						<xr:Ref>CommonPicture.Заметка</xr:Ref>
 						<xr:LoadTransparent>true</xr:LoadTransparent>
 					</ValuesPicture>
-					<ContextMenu name="ТЗЕстьЗаметкаКонтекстноеМеню" id="66"/>
-					<ExtendedTooltip name="ТЗЕстьЗаметкаРасширеннаяПодсказка" id="67"/>
+					<ContextMenu name="ЕстьЗаметкаКонтекстноеМеню" id="66"/>
+					<ExtendedTooltip name="ЕстьЗаметкаРасширеннаяПодсказка" id="67"/>
 				</PictureField>
-				<CheckBoxField name="ТЗСрочный" id="68">
+				<CheckBoxField name="Срочный" id="68">
 					<DataPath>ТЗ.Срочный</DataPath>
 					<ReadOnly>true</ReadOnly>
 					<EditMode>EnterOnInput</EditMode>
 					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="ТЗСрочныйКонтекстноеМеню" id="69"/>
-					<ExtendedTooltip name="ТЗСрочныйРасширеннаяПодсказка" id="70"/>
+					<ContextMenu name="СрочныйКонтекстноеМеню" id="69"/>
+					<ExtendedTooltip name="СрочныйРасширеннаяПодсказка" id="70"/>
 				</CheckBoxField>
-				<CheckBoxField name="ТЗМатериалЗаказчикаНеПредоставлен" id="83">
+				<CheckBoxField name="МатериалЗаказчикаНеПредоставлен" id="83">
 					<DataPath>ТЗ.МатериалЗаказчикаНеПредоставлен</DataPath>
 					<Enabled>false</Enabled>
 					<ReadOnly>true</ReadOnly>
@@ -306,10 +323,10 @@
 					<HorizontalAlign>Left</HorizontalAlign>
 					<EditMode>EnterOnInput</EditMode>
 					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="ТЗМатериалЗаказчикаНеПредоставленКонтекстноеМеню" id="84"/>
-					<ExtendedTooltip name="ТЗМатериалЗаказчикаНеПредоставленРасширеннаяПодсказка" id="85"/>
+					<ContextMenu name="МатериалЗаказчикаНеПредоставленКонтекстноеМеню" id="84"/>
+					<ExtendedTooltip name="МатериалЗаказчикаНеПредоставленРасширеннаяПодсказка" id="85"/>
 				</CheckBoxField>
-				<InputField name="ТЗСпецификация" id="6">
+				<InputField name="Спецификация" id="6">
 					<DataPath>ТЗ.Спецификация</DataPath>
 					<EditMode>EnterOnInput</EditMode>
 					<DropListButton>false</DropListButton>
@@ -318,10 +335,10 @@
 					<OpenButton>true</OpenButton>
 					<CreateButton>false</CreateButton>
 					<ChoiceListButton>false</ChoiceListButton>
-					<ContextMenu name="ТЗСпецификацияКонтекстноеМеню" id="7"/>
-					<ExtendedTooltip name="ТЗСпецификацияРасширеннаяПодсказка" id="24"/>
+					<ContextMenu name="СпецификацияКонтекстноеМеню" id="7"/>
+					<ExtendedTooltip name="СпецификацияРасширеннаяПодсказка" id="24"/>
 				</InputField>
-				<InputField name="ТЗДатаИзготовления" id="17">
+				<InputField name="ДатаИзготовления" id="17">
 					<DataPath>ТЗ.ДатаИзготовления</DataPath>
 					<ReadOnly>true</ReadOnly>
 					<Title>
@@ -331,10 +348,10 @@
 						</v8:item>
 					</Title>
 					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ТЗДатаИзготовленияКонтекстноеМеню" id="18"/>
-					<ExtendedTooltip name="ТЗДатаИзготовленияРасширеннаяПодсказка" id="23"/>
+					<ContextMenu name="ДатаИзготовленияКонтекстноеМеню" id="18"/>
+					<ExtendedTooltip name="ДатаИзготовленияРасширеннаяПодсказка" id="23"/>
 				</InputField>
-				<InputField name="ТЗДатаОтгрузки" id="47">
+				<InputField name="ДатаОтгрузки" id="47">
 					<DataPath>ТЗ.ДатаОтгрузки</DataPath>
 					<ReadOnly>true</ReadOnly>
 					<Title>
@@ -344,44 +361,44 @@
 						</v8:item>
 					</Title>
 					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ТЗДатаОтгрузкиКонтекстноеМеню" id="48"/>
-					<ExtendedTooltip name="ТЗДатаОтгрузкиРасширеннаяПодсказка" id="49"/>
+					<ContextMenu name="ДатаОтгрузкиКонтекстноеМеню" id="48"/>
+					<ExtendedTooltip name="ДатаОтгрузкиРасширеннаяПодсказка" id="49"/>
 				</InputField>
-				<InputField name="ТЗИзделие" id="50">
+				<InputField name="Изделие" id="50">
 					<DataPath>ТЗ.Изделие</DataPath>
 					<ReadOnly>true</ReadOnly>
 					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ТЗИзделиеКонтекстноеМеню" id="51"/>
-					<ExtendedTooltip name="ТЗИзделиеРасширеннаяПодсказка" id="52"/>
+					<ContextMenu name="ИзделиеКонтекстноеМеню" id="51"/>
+					<ExtendedTooltip name="ИзделиеРасширеннаяПодсказка" id="52"/>
 				</InputField>
-				<InputField name="ТЗСтатус" id="41">
+				<InputField name="Статус" id="41">
 					<DataPath>ТЗ.Статус</DataPath>
 					<ReadOnly>true</ReadOnly>
 					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ТЗСтатусКонтекстноеМеню" id="42"/>
-					<ExtendedTooltip name="ТЗСтатусРасширеннаяПодсказка" id="43"/>
+					<ContextMenu name="СтатусКонтекстноеМеню" id="42"/>
+					<ExtendedTooltip name="СтатусРасширеннаяПодсказка" id="43"/>
 				</InputField>
-				<InputField name="ТЗСуммаНаряда" id="8">
+				<InputField name="СуммаНаряда" id="8">
 					<DataPath>ТЗ.СуммаНаряда</DataPath>
 					<ReadOnly>true</ReadOnly>
 					<EditMode>EnterOnInput</EditMode>
 					<FooterDataPath>ОбщаяСуммаНаряда</FooterDataPath>
 					<FooterFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
-					<ContextMenu name="ТЗСуммаНарядаКонтекстноеМеню" id="9"/>
-					<ExtendedTooltip name="ТЗСуммаНарядаExtendedTooltip" id="25"/>
+					<ContextMenu name="СуммаНарядаКонтекстноеМеню" id="9"/>
+					<ExtendedTooltip name="СуммаНарядаРасширеннаяПодсказка" id="25"/>
 				</InputField>
-				<InputField name="ТЗОсобыеУслуги" id="62">
+				<InputField name="ОсобыеУслуги" id="62">
 					<DataPath>ТЗ.ОсобыеУслуги</DataPath>
 					<ReadOnly>true</ReadOnly>
 					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ТЗОсобыеУслугиКонтекстноеМеню" id="63"/>
-					<ExtendedTooltip name="ТЗОсобыеУслугиРасширеннаяПодсказка" id="64"/>
+					<ContextMenu name="ОсобыеУслугиКонтекстноеМеню" id="63"/>
+					<ExtendedTooltip name="ОсобыеУслугиРасширеннаяПодсказка" id="64"/>
 				</InputField>
-				<InputField name="ТЗЦветЛДСПОсновной" id="80">
+				<InputField name="ЦветЛДСПОсновной" id="80">
 					<DataPath>ТЗ.ЦветЛДСПОсновной</DataPath>
 					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ТЗЦветЛДСПОсновнойКонтекстноеМеню" id="81"/>
-					<ExtendedTooltip name="ТЗЦветЛДСПОсновнойРасширеннаяПодсказка" id="82"/>
+					<ContextMenu name="ЦветЛДСПОсновнойКонтекстноеМеню" id="81"/>
+					<ExtendedTooltip name="ЦветЛДСПОсновнойРасширеннаяПодсказка" id="82"/>
 				</InputField>
 			</ChildItems>
 		</Table>
@@ -825,6 +842,36 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ОткрытьЗаметку</Action>
+		</Command>
+		<Command name="СортироватьПоВозростанию" id="6">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сортировать по возростанию</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сортировать по возростанию</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СортироватьПоВозростанию</Action>
+		</Command>
+		<Command name="СортироватьПоУбыванию" id="7">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сортировать по убыванию</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Сортировать по убыванию</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>СортироватьПоУбыванию</Action>
 		</Command>
 	</Commands>
 </Form>
