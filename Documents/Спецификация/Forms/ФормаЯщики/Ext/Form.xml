@@ -616,6 +616,16 @@
 										<CommandName>Form.Item.Детали.StandardCommand.Delete</CommandName>
 										<ExtendedTooltip name="ДеталиУдалитьExtendedTooltip" id="206"/>
 									</Button>
+									<Button name="ФормаЗаменитьНоменклатуру" id="279">
+										<Type>CommandBarButton</Type>
+										<Representation>PictureAndText</Representation>
+										<CommandName>Form.Command.ЗаменитьНоменклатуру</CommandName>
+										<Picture>
+											<xr:Ref>CommonPicture.СинхронизацияДанныхКоллизия</xr:Ref>
+											<xr:LoadTransparent>true</xr:LoadTransparent>
+										</Picture>
+										<ExtendedTooltip name="ФормаЗаменитьНоменклатуруРасширеннаяПодсказка" id="280"/>
+									</Button>
 								</ChildItems>
 							</AutoCommandBar>
 							<ExtendedTooltip name="ДеталиExtendedTooltip" id="207"/>
@@ -646,6 +656,7 @@
 							<Events>
 								<Event name="OnEditEnd">ДеталиПриОкончанииРедактирования</Event>
 								<Event name="OnActivateRow">ДеталиПриАктивизацииСтроки</Event>
+								<Event name="ChoiceProcessing">ДеталиОбработкаВыбора</Event>
 							</Events>
 							<ChildItems>
 								<InputField name="ДеталиСхемаЯщика" id="148">
@@ -1225,6 +1236,21 @@
 			</ToolTip>
 			<Action>ДобавитьКДокументу</Action>
 			<ModifiesSavedData>true</ModifiesSavedData>
+		</Command>
+		<Command name="ЗаменитьНоменклатуру" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заменить номенклатуру</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заменить номенклатуру</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>ЗаменитьНоменклатуру</Action>
 		</Command>
 	</Commands>
 </Form>
