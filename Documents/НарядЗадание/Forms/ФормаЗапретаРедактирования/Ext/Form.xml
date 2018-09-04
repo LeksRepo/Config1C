@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4">
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<LabelField name="Наряд" id="1">
+			<DataPath>Наряд</DataPath>
+			<ContextMenu name="НарядКонтекстноеМеню" id="2"/>
+			<ExtendedTooltip name="НарядРасширеннаяПодсказка" id="3"/>
+		</LabelField>
+		<CheckBoxField name="РедактированиеЗавершено" id="4">
+			<DataPath>ЗапретРедактирования</DataPath>
+			<CheckBoxType>Auto</CheckBoxType>
+			<ContextMenu name="РедактированиеЗавершеноКонтекстноеМеню" id="5"/>
+			<ExtendedTooltip name="РедактированиеЗавершеноРасширеннаяПодсказка" id="6"/>
+		</CheckBoxField>
+		<Button name="Записать" id="7">
+			<Type>UsualButton</Type>
+			<CommandName>Form.Command.Записать</CommandName>
+			<ExtendedTooltip name="ЗаписатьРасширеннаяПодсказка" id="8"/>
+		</Button>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Наряд" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Наряд</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:DocumentRef.НарядЗадание</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ЗапретРедактирования" id="2">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Запрет редактирования</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+	</Attributes>
+	<Commands>
+		<Command name="Записать" id="1">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Записать</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Action>Записать</Action>
+		</Command>
+	</Commands>
+</Form>
