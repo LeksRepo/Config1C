@@ -47,6 +47,16 @@
 			<ContextMenu name="ВидИзделияКонтекстноеМеню" id="33"/>
 			<ExtendedTooltip name="ВидИзделияРасширеннаяПодсказка" id="34"/>
 		</InputField>
+		<InputField name="КраткоеНаименование" id="204">
+			<DataPath>Объект.КраткоеНаименование</DataPath>
+			<ContextMenu name="КраткоеНаименованиеКонтекстноеМеню" id="205"/>
+			<ExtendedTooltip name="КраткоеНаименованиеРасширеннаяПодсказка" id="206"/>
+		</InputField>
+		<InputField name="ИмяМакетаПаспорта" id="180">
+			<DataPath>Объект.ИмяМакетаПаспорта</DataPath>
+			<ContextMenu name="ИмяМакетаПаспортаКонтекстноеМеню" id="181"/>
+			<ExtendedTooltip name="ИмяМакетаПаспортаРасширеннаяПодсказка" id="182"/>
+		</InputField>
 		<Pages name="ГруппаСтраницы" id="93">
 			<Title>
 				<v8:item>
@@ -374,6 +384,71 @@
 									<EditMode>EnterOnInput</EditMode>
 									<ContextMenu name="ДоступныеПакетыУслугПакетУслугКонтекстноеМеню" id="140"/>
 									<ExtendedTooltip name="ДоступныеПакетыУслугПакетУслугРасширеннаяПодсказка" id="141"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="ГруппаДоступныеВидыИзделий" id="183">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Доступные виды изделий каталога</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Группа доступные виды изделий</v8:content>
+						</v8:item>
+					</ToolTip>
+					<ExtendedTooltip name="ГруппаДоступныеВидыИзделийРасширеннаяПодсказка" id="184"/>
+					<ChildItems>
+						<Table name="ДоступныеВидыИзделий" id="185">
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Объект.ДоступныеВидыИзделий</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ДоступныеВидыИзделийКонтекстноеМеню" id="186"/>
+							<AutoCommandBar name="ДоступныеВидыИзделийКоманднаяПанель" id="187"/>
+							<ExtendedTooltip name="ДоступныеВидыИзделийРасширеннаяПодсказка" id="188"/>
+							<SearchStringAddition name="ДоступныеВидыИзделийСтрокаПоиска" id="189">
+								<AdditionSource>
+									<Item>ДоступныеВидыИзделий</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ДоступныеВидыИзделийСтрокаПоискаКонтекстноеМеню" id="190"/>
+								<ExtendedTooltip name="ДоступныеВидыИзделийСтрокаПоискаРасширеннаяПодсказка" id="191"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ДоступныеВидыИзделийСостояниеПросмотра" id="192">
+								<AdditionSource>
+									<Item>ДоступныеВидыИзделий</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ДоступныеВидыИзделийСостояниеПросмотраКонтекстноеМеню" id="193"/>
+								<ExtendedTooltip name="ДоступныеВидыИзделийСостояниеПросмотраРасширеннаяПодсказка" id="194"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ДоступныеВидыИзделийУправлениеПоиском" id="195">
+								<AdditionSource>
+									<Item>ДоступныеВидыИзделий</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ДоступныеВидыИзделийУправлениеПоискомКонтекстноеМеню" id="196"/>
+								<ExtendedTooltip name="ДоступныеВидыИзделийУправлениеПоискомРасширеннаяПодсказка" id="197"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="ДоступныеВидыИзделийНомерСтроки" id="198">
+									<DataPath>Объект.ДоступныеВидыИзделий.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ДоступныеВидыИзделийНомерСтрокиКонтекстноеМеню" id="199"/>
+									<ExtendedTooltip name="ДоступныеВидыИзделийНомерСтрокиРасширеннаяПодсказка" id="200"/>
+								</LabelField>
+								<InputField name="ДоступныеВидыИзделийВид" id="201">
+									<DataPath>Объект.ДоступныеВидыИзделий.Вид</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ДоступныеВидыИзделийВидКонтекстноеМеню" id="202"/>
+									<ExtendedTooltip name="ДоступныеВидыИзделийВидРасширеннаяПодсказка" id="203"/>
 								</InputField>
 							</ChildItems>
 						</Table>
