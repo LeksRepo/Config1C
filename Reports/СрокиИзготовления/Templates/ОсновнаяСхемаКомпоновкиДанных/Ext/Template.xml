@@ -111,6 +111,16 @@
 				</v8:item>
 			</title>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Заметка</dataPath>
+			<field>Заметка</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Заметка</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ
 	ДокСпец.Ссылка КАК Спецификация,
@@ -124,16 +134,21 @@
 		ИНАЧЕ 0
 	КОНЕЦ КАК Просрочка,
 	ВЫБОР
-		КОГДА ДокСпец.ДатаИзготовления &lt; Выпуск.Ссылка.Дата
-			ТОГДА ВЫБОР
-					КОГДА ДокСпец.СуммаНарядаСпецификации * (1 - РАЗНОСТЬДАТ(ДокСпец.ДатаИзготовления, Выпуск.Ссылка.Дата, ДЕНЬ) * (&amp;Коэффициент / 100)) &gt; 0
-						ТОГДА ДокСпец.СуммаНарядаСпецификации * (1 - РАЗНОСТЬДАТ(ДокСпец.ДатаИзготовления, Выпуск.Ссылка.Дата, ДЕНЬ) * (&amp;Коэффициент / 100))
-					ИНАЧЕ 0
-				КОНЕЦ
-		ИНАЧЕ ДокСпец.СуммаНарядаСпецификации
+		КОГДА Выпуск.Ссылка.Дата ЕСТЬ NULL
+			ТОГДА 0
+		ИНАЧЕ ВЫБОР
+				КОГДА ДокСпец.ДатаИзготовления &lt; Выпуск.Ссылка.Дата
+					ТОГДА ВЫБОР
+							КОГДА ДокСпец.СуммаНарядаСпецификации * (1 - РАЗНОСТЬДАТ(ДокСпец.ДатаИзготовления, Выпуск.Ссылка.Дата, ДЕНЬ) * (&amp;Коэффициент / 100)) &gt; 0
+								ТОГДА ДокСпец.СуммаНарядаСпецификации * (1 - РАЗНОСТЬДАТ(ДокСпец.ДатаИзготовления, Выпуск.Ссылка.Дата, ДЕНЬ) * (&amp;Коэффициент / 100))
+							ИНАЧЕ 0
+						КОНЕЦ
+				ИНАЧЕ ДокСпец.СуммаНарядаСпецификации
+			КОНЕЦ
 	КОНЕЦ КАК НормативФакт,
 	Наряд.Ссылка КАК Наряд,
-	Наряд.Ссылка.ДатаИзготовления КАК ДатаНаряда
+	Наряд.Ссылка.ДатаИзготовления КАК ДатаНаряда,
+	Заметка.Ссылка КАК Заметка
 ИЗ
 	Документ.Спецификация КАК ДокСпец
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СтатусСпецификации.СрезПоследних(, ) КАК Статусы
@@ -142,6 +157,8 @@
 		ПО ДокСпец.Ссылка = Выпуск.Спецификация
 		ЛЕВОЕ СОЕДИНЕНИЕ Документ.НарядЗадание.СписокСпецификаций КАК Наряд
 		ПО ДокСпец.Ссылка = Наряд.Спецификация
+		ЛЕВОЕ СОЕДИНЕНИЕ Справочник.Заметки КАК Заметка
+		ПО ДокСпец.Ссылка = Заметка.Предмет
 ГДЕ
 	НЕ Наряд.Ссылка ЕСТЬ NULL
 	И ДокСпец.Подразделение = &amp;Подразделение
@@ -312,6 +329,9 @@
 					<dcsset:field>Просрочка</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Заметка</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Норматив</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
@@ -437,6 +457,9 @@
 						<dcsset:item>
 							<dcsset:field>НормативФакт</dcsset:field>
 						</dcsset:item>
+						<dcsset:item>
+							<dcsset:field>Заметка</dcsset:field>
+						</dcsset:item>
 					</dcsset:selection>
 					<dcsset:filter>
 						<dcsset:item xsi:type="dcsset:FilterItemComparison">
@@ -536,6 +559,13 @@
 							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
 							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
 						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Заметка</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
 					</dcsset:groupItems>
 					<dcsset:order>
 						<dcsset:item xsi:type="dcsset:OrderItemField">
@@ -562,6 +592,9 @@
 						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:SelectedItemField">
 							<dcsset:field>Просрочка</dcsset:field>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>Заметка</dcsset:field>
 						</dcsset:item>
 						<dcsset:item xsi:type="dcsset:SelectedItemField">
 							<dcsset:field>Норматив</dcsset:field>
