@@ -96,6 +96,21 @@
 				</v8:item>
 			</title>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Заказано</dataPath>
+			<field>Заказано</field>
+			<appearance>
+				<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+					<dcscor:parameter>Формат</dcscor:parameter>
+					<dcscor:value xsi:type="v8:LocalStringType">
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>БИ=' V '</v8:content>
+						</v8:item>
+					</dcscor:value>
+				</dcscor:item>
+			</appearance>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	ВЫБОР
@@ -149,13 +164,17 @@
 			ТОГДА 3
 		КОГДА Статусы.Статус = ЗНАЧЕНИЕ(Перечисление.СтатусыСпецификации.Размещен)
 			ТОГДА 4
-	КОНЕЦ КАК Порядок
+	КОНЕЦ КАК Порядок,
+	Неноменклатурный.Заказано КАК Заказано
 ИЗ
 	Документ.Спецификация.СписокМатериаловПодЗаказ КАК ПодЗаказ
 		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.СтатусСпецификации.СрезПоследних(, ) КАК Статусы
 		ПО ПодЗаказ.Ссылка = Статусы.Спецификация
 		ЛЕВОЕ СОЕДИНЕНИЕ втОстатки КАК Остатки
 		ПО ПодЗаказ.Номенклатура = Остатки.Номенклатура
+		ЛЕВОЕ СОЕДИНЕНИЕ РегистрСведений.ЗаказНеноменклатурногоМатериала КАК Неноменклатурный
+		ПО ПодЗаказ.Номенклатура = Неноменклатурный.Номенклатура
+			И ПодЗаказ.Ссылка = Неноменклатурный.Спецификация
 ГДЕ
 	(Статусы.Статус = ЗНАЧЕНИЕ(Перечисление.СтатусыСпецификации.ОжиданиеМатериала)
 			ИЛИ Статусы.Статус = ЗНАЧЕНИЕ(Перечисление.СтатусыСпецификации.Размещен)
@@ -317,6 +336,9 @@
 					</dcsset:lwsTitle>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>Заказано</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>Цена</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
@@ -389,10 +411,18 @@
 				<dcsset:item>
 					<dcsset:selection/>
 					<dcsset:filter>
-						<dcsset:item xsi:type="dcsset:FilterItemComparison">
-							<dcsset:left xsi:type="dcscor:Field">КоличествоОстаток</dcsset:left>
-							<dcsset:comparisonType>GreaterOrEqual</dcsset:comparisonType>
-							<dcsset:right xsi:type="dcscor:Field">Количество</dcsset:right>
+						<dcsset:item xsi:type="dcsset:FilterItemGroup">
+							<dcsset:groupType>OrGroup</dcsset:groupType>
+							<dcsset:item xsi:type="dcsset:FilterItemComparison">
+								<dcsset:left xsi:type="dcscor:Field">КоличествоОстаток</dcsset:left>
+								<dcsset:comparisonType>GreaterOrEqual</dcsset:comparisonType>
+								<dcsset:right xsi:type="dcscor:Field">Количество</dcsset:right>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:FilterItemComparison">
+								<dcsset:left xsi:type="dcscor:Field">Заказано</dcsset:left>
+								<dcsset:comparisonType>Equal</dcsset:comparisonType>
+								<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+							</dcsset:item>
 						</dcsset:item>
 					</dcsset:filter>
 					<dcsset:appearance>
@@ -412,10 +442,18 @@
 						</dcsset:item>
 					</dcsset:selection>
 					<dcsset:filter>
-						<dcsset:item xsi:type="dcsset:FilterItemComparison">
-							<dcsset:left xsi:type="dcscor:Field">КоличествоОстаток</dcsset:left>
-							<dcsset:comparisonType>GreaterOrEqual</dcsset:comparisonType>
-							<dcsset:right xsi:type="dcscor:Field">Количество</dcsset:right>
+						<dcsset:item xsi:type="dcsset:FilterItemGroup">
+							<dcsset:groupType>OrGroup</dcsset:groupType>
+							<dcsset:item xsi:type="dcsset:FilterItemComparison">
+								<dcsset:left xsi:type="dcscor:Field">КоличествоОстаток</dcsset:left>
+								<dcsset:comparisonType>GreaterOrEqual</dcsset:comparisonType>
+								<dcsset:right xsi:type="dcscor:Field">Количество</dcsset:right>
+							</dcsset:item>
+							<dcsset:item xsi:type="dcsset:FilterItemComparison">
+								<dcsset:left xsi:type="dcscor:Field">Заказано</dcsset:left>
+								<dcsset:comparisonType>Equal</dcsset:comparisonType>
+								<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+							</dcsset:item>
 						</dcsset:item>
 					</dcsset:filter>
 					<dcsset:appearance>

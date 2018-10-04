@@ -7,7 +7,7 @@
 	<RepostOnWrite>true</RepostOnWrite>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<ChildItems>
-			<Popup name="СоздатьНаОсновании" id="248">
+			<Popup name="ГруппаСоздатьНаОсновании" id="537">
 				<Title>
 					<v8:item>
 						<v8:lang>ru</v8:lang>
@@ -17,21 +17,27 @@
 				<ToolTip>
 					<v8:item>
 						<v8:lang>ru</v8:lang>
-						<v8:content>Создать на основании</v8:content>
+						<v8:content>Группа создать на основании</v8:content>
 					</v8:item>
 				</ToolTip>
-				<ExtendedTooltip name="СоздатьНаОснованииРасширеннаяПодсказка" id="249"/>
+				<ExtendedTooltip name="ГруппаСоздатьНаОснованииРасширеннаяПодсказка" id="538"/>
 				<ChildItems>
-					<Button name="ФормаДокументАвансовыйОтчетСоздатьНаОсновании" id="250">
+					<Button name="ФормаПоступлениеМатериаловУслуг" id="535">
+						<Type>CommandBarButton</Type>
+						<CommandName>Form.Command.ПоступлениеМатериаловУслуг</CommandName>
+						<ExtendedTooltip name="ФормаПоступлениеМатериаловУслугРасширеннаяПодсказка" id="536"/>
+					</Button>
+					<Button name="ФормаДокументАвансовыйОтчетСоздатьНаОсновании" id="539">
 						<Type>CommandBarButton</Type>
 						<CommandName>Document.АвансовыйОтчет.StandardCommand.CreateBasedOn</CommandName>
 						<DataPath>Объект.Ref</DataPath>
-						<ExtendedTooltip name="ФормаДокументАвансовыйОтчетСоздатьНаОснованииРасширеннаяПодсказка" id="251"/>
+						<ExtendedTooltip name="ФормаДокументАвансовыйОтчетСоздатьНаОснованииРасширеннаяПодсказка" id="540"/>
 					</Button>
-					<Button name="ФормаПоступлениеМатериаловУслуг" id="246">
+					<Button name="ФормаДокументСлужебнаяЗапискаСоздатьНаОсновании" id="541">
 						<Type>CommandBarButton</Type>
-						<CommandName>Form.Command.ПоступлениеМатериаловУслуг</CommandName>
-						<ExtendedTooltip name="ФормаПоступлениеМатериаловУслугРасширеннаяПодсказка" id="247"/>
+						<CommandName>Document.СлужебнаяЗаписка.StandardCommand.CreateBasedOn</CommandName>
+						<DataPath>Объект.Ref</DataPath>
+						<ExtendedTooltip name="ФормаДокументСлужебнаяЗапискаСоздатьНаОснованииРасширеннаяПодсказка" id="542"/>
 					</Button>
 				</ChildItems>
 			</Popup>
@@ -546,23 +552,323 @@
 								</ColumnGroup>
 							</ChildItems>
 						</Table>
+						<Table name="ТаблицаРасшифровки" id="48">
+							<Representation>List</Representation>
+							<TitleLocation>Top</TitleLocation>
+							<ReadOnly>true</ReadOnly>
+							<Height>5</Height>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<VerticalStretch>false</VerticalStretch>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Объект.ТаблицаРасшифровки</DataPath>
+							<Title>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Количество номенклатуры в разрезе спецификаций</v8:content>
+								</v8:item>
+							</Title>
+							<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="ТаблицаРасшифровкиКонтекстноеМеню" id="49"/>
+							<AutoCommandBar name="ТаблицаРасшифровкиКоманднаяПанель" id="50">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
+							<ExtendedTooltip name="ТаблицаРасшифровкиРасширеннаяПодсказка" id="51"/>
+							<SearchStringAddition name="ТаблицаРасшифровкиСтрокаПоиска" id="335">
+								<AdditionSource>
+									<Item>ТаблицаРасшифровки</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаРасшифровкиСтрокаПоискаКонтекстноеМеню" id="336"/>
+								<ExtendedTooltip name="ТаблицаРасшифровкиСтрокаПоискаРасширеннаяПодсказка" id="337"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="ТаблицаРасшифровкиСостояниеПросмотра" id="338">
+								<AdditionSource>
+									<Item>ТаблицаРасшифровки</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаРасшифровкиСостояниеПросмотраКонтекстноеМеню" id="339"/>
+								<ExtendedTooltip name="ТаблицаРасшифровкиСостояниеПросмотраРасширеннаяПодсказка" id="340"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="ТаблицаРасшифровкиУправлениеПоиском" id="341">
+								<AdditionSource>
+									<Item>ТаблицаРасшифровки</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="ТаблицаРасшифровкиУправлениеПоискомКонтекстноеМеню" id="342"/>
+								<ExtendedTooltip name="ТаблицаРасшифровкиУправлениеПоискомРасширеннаяПодсказка" id="343"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">ТаблицаРасшифровкиВыбор</Event>
+							</Events>
+							<ChildItems>
+								<InputField name="ТаблицаРасшифровкиСпецификация" id="383">
+									<DataPath>Объект.ТаблицаРасшифровки.Спецификация</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ТаблицаРасшифровкиСпецификацияКонтекстноеМеню" id="384"/>
+									<ExtendedTooltip name="ТаблицаРасшифровкиСпецификацияРасширеннаяПодсказка" id="385"/>
+								</InputField>
+								<InputField name="ТаблицаРасшифровкиКомментарий" id="440">
+									<DataPath>Объект.ТаблицаРасшифровки.Комментарий</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="ТаблицаРасшифровкиКомментарийКонтекстноеМеню" id="441"/>
+									<ExtendedTooltip name="ТаблицаРасшифровкиКомментарийРасширеннаяПодсказка" id="442"/>
+								</InputField>
+								<InputField name="ТаблицаРасшифровкиДатаИзготовления" id="371">
+									<DataPath>Объект.ТаблицаРасшифровки.ДатаИзготовления</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>1</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ТаблицаРасшифровкиДатаИзготовленияКонтекстноеМеню" id="372"/>
+									<ExtendedTooltip name="ТаблицаРасшифровкиДатаИзготовленияРасширеннаяПодсказка" id="373"/>
+								</InputField>
+								<CheckBoxField name="ТаблицаРасшифровкиСкомплектован" id="380">
+									<DataPath>Объект.ТаблицаРасшифровки.Скомплектован</DataPath>
+									<TitleLocation>None</TitleLocation>
+									<EditMode>EnterOnInput</EditMode>
+									<HeaderPicture>
+										<xr:Ref>StdPicture.WriteChanges</xr:Ref>
+										<xr:LoadTransparent>true</xr:LoadTransparent>
+									</HeaderPicture>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="ТаблицаРасшифровкиСкомплектованКонтекстноеМеню" id="381"/>
+									<ExtendedTooltip name="ТаблицаРасшифровкиСкомплектованРасширеннаяПодсказка" id="382"/>
+								</CheckBoxField>
+								<InputField name="ТаблицаРасшифровкиКоличество" id="374">
+									<DataPath>Объект.ТаблицаРасшифровки.Количество</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>1</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="ТаблицаРасшифровкиКоличествоКонтекстноеМеню" id="375"/>
+									<ExtendedTooltip name="ТаблицаРасшифровкиКоличествоРасширеннаяПодсказка" id="376"/>
+								</InputField>
+							</ChildItems>
+						</Table>
 					</ChildItems>
 				</Page>
-				<Page name="СтраницаПодЗаказ" id="289">
+				<Page name="ГруппаНеноменклатурный" id="463">
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Номенклатура под заказ</v8:content>
+							<v8:content>Не номенклатурный</v8:content>
 						</v8:item>
 					</Title>
 					<ToolTip>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Страница под заказ</v8:content>
+							<v8:content>Группа неноменклатурный</v8:content>
 						</v8:item>
 					</ToolTip>
-					<TitleDataPath>1/0:b7b18c01-dfa2-44b3-bbd2-fce116e5f111/101000000:b33ba0b5-8b7d-48c1-8358-823256d2b4b0</TitleDataPath>
-					<ExtendedTooltip name="СтраницаПодЗаказРасширеннаяПодсказка" id="290"/>
+					<TitleDataPath>Объект.НеноменклатурныйМатериал.RowsCount</TitleDataPath>
+					<ExtendedTooltip name="ГруппаНеноменклатурныйРасширеннаяПодсказка" id="464"/>
+					<ChildItems>
+						<Table name="НеноменклатурныйМатериал" id="465">
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<DataPath>Объект.НеноменклатурныйМатериал</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="НеноменклатурныйМатериалКонтекстноеМеню" id="466"/>
+							<AutoCommandBar name="НеноменклатурныйМатериалКоманднаяПанель" id="467">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
+							<ExtendedTooltip name="НеноменклатурныйМатериалРасширеннаяПодсказка" id="468"/>
+							<SearchStringAddition name="НеноменклатурныйМатериалСтрокаПоиска" id="469">
+								<AdditionSource>
+									<Item>НеноменклатурныйМатериал</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="НеноменклатурныйМатериалСтрокаПоискаКонтекстноеМеню" id="470"/>
+								<ExtendedTooltip name="НеноменклатурныйМатериалСтрокаПоискаРасширеннаяПодсказка" id="471"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="НеноменклатурныйМатериалСостояниеПросмотра" id="472">
+								<AdditionSource>
+									<Item>НеноменклатурныйМатериал</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="НеноменклатурныйМатериалСостояниеПросмотраКонтекстноеМеню" id="473"/>
+								<ExtendedTooltip name="НеноменклатурныйМатериалСостояниеПросмотраРасширеннаяПодсказка" id="474"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="НеноменклатурныйМатериалУправлениеПоиском" id="475">
+								<AdditionSource>
+									<Item>НеноменклатурныйМатериал</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="НеноменклатурныйМатериалУправлениеПоискомКонтекстноеМеню" id="476"/>
+								<ExtendedTooltip name="НеноменклатурныйМатериалУправлениеПоискомРасширеннаяПодсказка" id="477"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="BeforeAddRow">НеноменклатурныйМатериалПередНачаломДобавления</Event>
+								<Event name="BeforeDeleteRow">НеноменклатурныйМатериалПередУдалением</Event>
+							</Events>
+							<ChildItems>
+								<LabelField name="НеноменклатурныйМатериалНомерСтроки" id="478">
+									<DataPath>Объект.НеноменклатурныйМатериал.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="НеноменклатурныйМатериалНомерСтрокиКонтекстноеМеню" id="479"/>
+									<ExtendedTooltip name="НеноменклатурныйМатериалНомерСтрокиРасширеннаяПодсказка" id="480"/>
+								</LabelField>
+								<CheckBoxField name="НеноменклатурныйМатериалЗаказано" id="529">
+									<DataPath>Объект.НеноменклатурныйМатериал.Заказано</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="НеноменклатурныйМатериалЗаказаноКонтекстноеМеню" id="530"/>
+									<ExtendedTooltip name="НеноменклатурныйМатериалЗаказаноРасширеннаяПодсказка" id="531"/>
+									<Events>
+										<Event name="OnChange">НеноменклатурныйМатериалЗаказаноПриИзменении</Event>
+									</Events>
+								</CheckBoxField>
+								<ColumnGroup name="НеноменклатурныйМатериалГруппа1" id="523">
+									<ExtendedTooltip name="НеноменклатурныйМатериалГруппа1РасширеннаяПодсказка" id="524"/>
+									<ChildItems>
+										<LabelField name="НеноменклатурныйМатериалНоменклатура" id="496">
+											<DataPath>Объект.НеноменклатурныйМатериал.Номенклатура</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="НеноменклатурныйМатериалНоменклатураКонтекстноеМеню" id="497"/>
+											<ExtendedTooltip name="НеноменклатурныйМатериалНоменклатураРасширеннаяПодсказка" id="498"/>
+										</LabelField>
+										<InputField name="НеноменклатурныйМатериалКомментарий" id="493">
+											<DataPath>Объект.НеноменклатурныйМатериал.Комментарий</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="НеноменклатурныйМатериалКомментарийКонтекстноеМеню" id="494"/>
+											<ExtendedTooltip name="НеноменклатурныйМатериалКомментарийРасширеннаяПодсказка" id="495"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+								<ColumnGroup name="НеноменклатурныйМатериалГруппа2" id="525">
+									<ExtendedTooltip name="НеноменклатурныйМатериалГруппа2РасширеннаяПодсказка" id="526"/>
+									<ChildItems>
+										<LabelField name="НеноменклатурныйМатериалЕдиницаИзмерения" id="481">
+											<DataPath>Объект.НеноменклатурныйМатериал.Номенклатура.ЕдиницаИзмерения</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="НеноменклатурныйМатериалЕдиницаИзмеренияКонтекстноеМеню" id="482"/>
+											<ExtendedTooltip name="НеноменклатурныйМатериалЕдиницаИзмеренияРасширеннаяПодсказка" id="483"/>
+										</LabelField>
+										<InputField name="НеноменклатурныйМатериалПоставщик" id="505">
+											<DataPath>Объект.НеноменклатурныйМатериал.Поставщик</DataPath>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="НеноменклатурныйМатериалПоставщикКонтекстноеМеню" id="506"/>
+											<ExtendedTooltip name="НеноменклатурныйМатериалПоставщикРасширеннаяПодсказка" id="507"/>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+								<InputField name="НеноменклатурныйМатериалСпецификация" id="508">
+									<DataPath>Объект.НеноменклатурныйМатериал.Спецификация</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ChoiceButton>false</ChoiceButton>
+									<OpenButton>true</OpenButton>
+									<ContextMenu name="НеноменклатурныйМатериалСпецификацияКонтекстноеМеню" id="509"/>
+									<ExtendedTooltip name="НеноменклатурныйМатериалСпецификацияРасширеннаяПодсказка" id="510"/>
+									<Events>
+										<Event name="EditTextChange">НеноменклатурныйМатериалСпецификацияИзменениеТекстаРедактирования</Event>
+										<Event name="StartChoice">НеноменклатурныйМатериалСпецификацияНачалоВыбора</Event>
+										<Event name="Clearing">НеноменклатурныйМатериалСпецификацияОчистка</Event>
+									</Events>
+								</InputField>
+								<LabelField name="НеноменклатурныйМатериалСтатус" id="532">
+									<DataPath>Объект.НеноменклатурныйМатериал.Статус</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Статус</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="НеноменклатурныйМатериалСтатусКонтекстноеМеню" id="533"/>
+									<ExtendedTooltip name="НеноменклатурныйМатериалСтатусРасширеннаяПодсказка" id="534"/>
+								</LabelField>
+								<LabelField name="НеноменклатурныйМатериалКоличество" id="484">
+									<DataPath>Объект.НеноменклатурныйМатериал.Количество</DataPath>
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Требуется</v8:content>
+										</v8:item>
+									</Title>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>8</Width>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<HorizontalStretch>false</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
+									<ContextMenu name="НеноменклатурныйМатериалКоличествоКонтекстноеМеню" id="485"/>
+									<ExtendedTooltip name="НеноменклатурныйМатериалКоличествоРасширеннаяПодсказка" id="486"/>
+								</LabelField>
+								<InputField name="НеноменклатурныйМатериалЦена" id="520">
+									<DataPath>Объект.НеноменклатурныйМатериал.Цена</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>7</Width>
+									<AutoMaxWidth>false</AutoMaxWidth>
+									<AutoMaxHeight>false</AutoMaxHeight>
+									<HorizontalStretch>false</HorizontalStretch>
+									<VerticalStretch>false</VerticalStretch>
+									<ContextMenu name="НеноменклатурныйМатериалЦенаКонтекстноеМеню" id="521"/>
+									<ExtendedTooltip name="НеноменклатурныйМатериалЦенаРасширеннаяПодсказка" id="522"/>
+									<Events>
+										<Event name="OnChange">НеноменклатурныйМатериалЦенаПриИзменении</Event>
+									</Events>
+								</InputField>
+								<ColumnGroup name="НеноменклатурныйМатериалГруппа3" id="527">
+									<ExtendedTooltip name="НеноменклатурныйМатериалГруппа3РасширеннаяПодсказка" id="528"/>
+									<ChildItems>
+										<InputField name="НеноменклатурныйМатериалКоличествоПоставщик" id="490">
+											<DataPath>Объект.НеноменклатурныйМатериал.КоличествоПоставщик</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Привезет поставщик</v8:content>
+												</v8:item>
+											</Title>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="НеноменклатурныйМатериалКоличествоПоставщикКонтекстноеМеню" id="491"/>
+											<ExtendedTooltip name="НеноменклатурныйМатериалКоличествоПоставщикРасширеннаяПодсказка" id="492"/>
+											<Events>
+												<Event name="OnChange">НеноменклатурныйМатериалКоличествоПоставщикПриИзменении</Event>
+											</Events>
+										</InputField>
+										<InputField name="НеноменклатурныйМатериалКоличествоКупить" id="487">
+											<DataPath>Объект.НеноменклатурныйМатериал.КоличествоКупить</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Купить самостоятельно</v8:content>
+												</v8:item>
+											</Title>
+											<EditMode>EnterOnInput</EditMode>
+											<ContextMenu name="НеноменклатурныйМатериалКоличествоКупитьКонтекстноеМеню" id="488"/>
+											<ExtendedTooltip name="НеноменклатурныйМатериалКоличествоКупитьРасширеннаяПодсказка" id="489"/>
+											<Events>
+												<Event name="OnChange">НеноменклатурныйМатериалКоличествоКупитьПриИзменении</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</ColumnGroup>
+								<InputField name="НеноменклатурныйМатериалОстаткиНаСкладе" id="499">
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="НеноменклатурныйМатериалОстаткиНаСкладеКонтекстноеМеню" id="500"/>
+									<ExtendedTooltip name="НеноменклатурныйМатериалОстаткиНаСкладеРасширеннаяПодсказка" id="501"/>
+								</InputField>
+								<CheckBoxField name="НеноменклатурныйМатериалПодЗаказ" id="502">
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="НеноменклатурныйМатериалПодЗаказКонтекстноеМеню" id="503"/>
+									<ExtendedTooltip name="НеноменклатурныйМатериалПодЗаказРасширеннаяПодсказка" id="504"/>
+								</CheckBoxField>
+								<CheckBoxField name="НеноменклатурныйМатериалСработалРезерв" id="511">
+									<EditMode>EnterOnInput</EditMode>
+									<CheckBoxType>Auto</CheckBoxType>
+									<ContextMenu name="НеноменклатурныйМатериалСработалРезервКонтекстноеМеню" id="512"/>
+									<ExtendedTooltip name="НеноменклатурныйМатериалСработалРезервРасширеннаяПодсказка" id="513"/>
+								</CheckBoxField>
+								<InputField name="НеноменклатурныйМатериалУжеСкомплектовано" id="517">
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="НеноменклатурныйМатериалУжеСкомплектованоКонтекстноеМеню" id="518"/>
+									<ExtendedTooltip name="НеноменклатурныйМатериалУжеСкомплектованоРасширеннаяПодсказка" id="519"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+					</ChildItems>
 				</Page>
 				<Page name="СтраницаНарядЗадания" id="294">
 					<Title>
@@ -664,102 +970,6 @@
 				</Page>
 			</ChildItems>
 		</Pages>
-		<Table name="ТаблицаРасшифровки" id="48">
-			<Representation>List</Representation>
-			<TitleLocation>Top</TitleLocation>
-			<ReadOnly>true</ReadOnly>
-			<Height>5</Height>
-			<AutoInsertNewRow>true</AutoInsertNewRow>
-			<VerticalStretch>false</VerticalStretch>
-			<EnableStartDrag>true</EnableStartDrag>
-			<EnableDrag>true</EnableDrag>
-			<DataPath>Объект.ТаблицаРасшифровки</DataPath>
-			<Title>
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Количество номенклатуры в разрезе спецификаций</v8:content>
-				</v8:item>
-			</Title>
-			<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
-			<SearchStringLocation>None</SearchStringLocation>
-			<ViewStatusLocation>None</ViewStatusLocation>
-			<SearchControlLocation>None</SearchControlLocation>
-			<RowFilter xsi:nil="true"/>
-			<ContextMenu name="ТаблицаРасшифровкиКонтекстноеМеню" id="49"/>
-			<AutoCommandBar name="ТаблицаРасшифровкиКоманднаяПанель" id="50">
-				<Autofill>false</Autofill>
-			</AutoCommandBar>
-			<ExtendedTooltip name="ТаблицаРасшифровкиРасширеннаяПодсказка" id="51"/>
-			<SearchStringAddition name="ТаблицаРасшифровкиСтрокаПоиска" id="335">
-				<AdditionSource>
-					<Item>ТаблицаРасшифровки</Item>
-					<Type>SearchStringRepresentation</Type>
-				</AdditionSource>
-				<ContextMenu name="ТаблицаРасшифровкиСтрокаПоискаКонтекстноеМеню" id="336"/>
-				<ExtendedTooltip name="ТаблицаРасшифровкиСтрокаПоискаРасширеннаяПодсказка" id="337"/>
-			</SearchStringAddition>
-			<ViewStatusAddition name="ТаблицаРасшифровкиСостояниеПросмотра" id="338">
-				<AdditionSource>
-					<Item>ТаблицаРасшифровки</Item>
-					<Type>ViewStatusRepresentation</Type>
-				</AdditionSource>
-				<ContextMenu name="ТаблицаРасшифровкиСостояниеПросмотраКонтекстноеМеню" id="339"/>
-				<ExtendedTooltip name="ТаблицаРасшифровкиСостояниеПросмотраРасширеннаяПодсказка" id="340"/>
-			</ViewStatusAddition>
-			<SearchControlAddition name="ТаблицаРасшифровкиУправлениеПоиском" id="341">
-				<AdditionSource>
-					<Item>ТаблицаРасшифровки</Item>
-					<Type>SearchControl</Type>
-				</AdditionSource>
-				<ContextMenu name="ТаблицаРасшифровкиУправлениеПоискомКонтекстноеМеню" id="342"/>
-				<ExtendedTooltip name="ТаблицаРасшифровкиУправлениеПоискомРасширеннаяПодсказка" id="343"/>
-			</SearchControlAddition>
-			<Events>
-				<Event name="Selection">ТаблицаРасшифровкиВыбор</Event>
-			</Events>
-			<ChildItems>
-				<InputField name="ТаблицаРасшифровкиСпецификация" id="383">
-					<DataPath>Объект.ТаблицаРасшифровки.Спецификация</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ТаблицаРасшифровкиСпецификацияКонтекстноеМеню" id="384"/>
-					<ExtendedTooltip name="ТаблицаРасшифровкиСпецификацияРасширеннаяПодсказка" id="385"/>
-				</InputField>
-				<InputField name="ТаблицаРасшифровкиКомментарий" id="440">
-					<DataPath>Объект.ТаблицаРасшифровки.Комментарий</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<ContextMenu name="ТаблицаРасшифровкиКомментарийКонтекстноеМеню" id="441"/>
-					<ExtendedTooltip name="ТаблицаРасшифровкиКомментарийРасширеннаяПодсказка" id="442"/>
-				</InputField>
-				<InputField name="ТаблицаРасшифровкиДатаИзготовления" id="371">
-					<DataPath>Объект.ТаблицаРасшифровки.ДатаИзготовления</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<Width>1</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<ContextMenu name="ТаблицаРасшифровкиДатаИзготовленияКонтекстноеМеню" id="372"/>
-					<ExtendedTooltip name="ТаблицаРасшифровкиДатаИзготовленияРасширеннаяПодсказка" id="373"/>
-				</InputField>
-				<CheckBoxField name="ТаблицаРасшифровкиСкомплектован" id="380">
-					<DataPath>Объект.ТаблицаРасшифровки.Скомплектован</DataPath>
-					<TitleLocation>None</TitleLocation>
-					<EditMode>EnterOnInput</EditMode>
-					<HeaderPicture>
-						<xr:Ref>StdPicture.WriteChanges</xr:Ref>
-						<xr:LoadTransparent>true</xr:LoadTransparent>
-					</HeaderPicture>
-					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="ТаблицаРасшифровкиСкомплектованКонтекстноеМеню" id="381"/>
-					<ExtendedTooltip name="ТаблицаРасшифровкиСкомплектованРасширеннаяПодсказка" id="382"/>
-				</CheckBoxField>
-				<InputField name="ТаблицаРасшифровкиКоличество" id="374">
-					<DataPath>Объект.ТаблицаРасшифровки.Количество</DataPath>
-					<EditMode>EnterOnInput</EditMode>
-					<Width>1</Width>
-					<HorizontalStretch>false</HorizontalStretch>
-					<ContextMenu name="ТаблицаРасшифровкиКоличествоКонтекстноеМеню" id="375"/>
-					<ExtendedTooltip name="ТаблицаРасшифровкиКоличествоРасширеннаяПодсказка" id="376"/>
-				</InputField>
-			</ChildItems>
-		</Table>
 		<UsualGroup name="ГруппаКомментарийАвтор" id="355">
 			<Title>
 				<v8:item>
