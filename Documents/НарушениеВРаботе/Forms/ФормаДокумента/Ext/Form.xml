@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4">
+	<AutoTime>CurrentOrLast</AutoTime>
+	<UsePostingMode>Auto</UsePostingMode>
+	<RepostOnWrite>true</RepostOnWrite>
+	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
+	<Events>
+		<Event name="OnReadAtServer">ПриЧтенииНаСервере</Event>
+		<Event name="OnCreateAtServer">ПриСозданииНаСервере</Event>
+	</Events>
+	<ChildItems>
+		<UsualGroup name="ГруппаДатаНомер" id="13">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа дата номер</v8:content>
+				</v8:item>
+			</Title>
+			<ToolTip>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Группа дата номер</v8:content>
+				</v8:item>
+			</ToolTip>
+			<Group>Horizontal</Group>
+			<Representation>None</Representation>
+			<ShowTitle>false</ShowTitle>
+			<ExtendedTooltip name="ГруппаДатаНомерРасширеннаяПодсказка" id="14"/>
+			<ChildItems>
+				<InputField name="Номер" id="1">
+					<DataPath>Объект.Number</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="НомерКонтекстноеМеню" id="2"/>
+					<ExtendedTooltip name="НомерРасширеннаяПодсказка" id="3"/>
+				</InputField>
+				<InputField name="Дата" id="4">
+					<DataPath>Объект.Date</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="ДатаКонтекстноеМеню" id="5"/>
+					<ExtendedTooltip name="ДатаРасширеннаяПодсказка" id="6"/>
+				</InputField>
+			</ChildItems>
+		</UsualGroup>
+		<InputField name="Подразделение" id="10">
+			<DataPath>Объект.Подразделение</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<HorizontalStretch>false</HorizontalStretch>
+			<ContextMenu name="ПодразделениеКонтекстноеМеню" id="11"/>
+			<ExtendedTooltip name="ПодразделениеРасширеннаяПодсказка" id="12"/>
+		</InputField>
+		<Table name="СписокНарушений" id="15">
+			<AutoInsertNewRow>true</AutoInsertNewRow>
+			<EnableStartDrag>true</EnableStartDrag>
+			<EnableDrag>true</EnableDrag>
+			<DataPath>Объект.СписокНарушений</DataPath>
+			<RowFilter xsi:nil="true"/>
+			<ContextMenu name="СписокНарушенийКонтекстноеМеню" id="16"/>
+			<AutoCommandBar name="СписокНарушенийКоманднаяПанель" id="17"/>
+			<ExtendedTooltip name="СписокНарушенийРасширеннаяПодсказка" id="18"/>
+			<SearchStringAddition name="СписокНарушенийСтрокаПоиска" id="19">
+				<AdditionSource>
+					<Item>СписокНарушений</Item>
+					<Type>SearchStringRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокНарушенийСтрокаПоискаКонтекстноеМеню" id="20"/>
+				<ExtendedTooltip name="СписокНарушенийСтрокаПоискаРасширеннаяПодсказка" id="21"/>
+			</SearchStringAddition>
+			<ViewStatusAddition name="СписокНарушенийСостояниеПросмотра" id="22">
+				<AdditionSource>
+					<Item>СписокНарушений</Item>
+					<Type>ViewStatusRepresentation</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокНарушенийСостояниеПросмотраКонтекстноеМеню" id="23"/>
+				<ExtendedTooltip name="СписокНарушенийСостояниеПросмотраРасширеннаяПодсказка" id="24"/>
+			</ViewStatusAddition>
+			<SearchControlAddition name="СписокНарушенийУправлениеПоиском" id="25">
+				<AdditionSource>
+					<Item>СписокНарушений</Item>
+					<Type>SearchControl</Type>
+				</AdditionSource>
+				<ContextMenu name="СписокНарушенийУправлениеПоискомКонтекстноеМеню" id="26"/>
+				<ExtendedTooltip name="СписокНарушенийУправлениеПоискомРасширеннаяПодсказка" id="27"/>
+			</SearchControlAddition>
+			<ChildItems>
+				<LabelField name="СписокНарушенийНомерСтроки" id="28">
+					<DataPath>Объект.СписокНарушений.LineNumber</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="СписокНарушенийНомерСтрокиКонтекстноеМеню" id="29"/>
+					<ExtendedTooltip name="СписокНарушенийНомерСтрокиРасширеннаяПодсказка" id="30"/>
+				</LabelField>
+				<InputField name="СписокНарушенийВиновный" id="31">
+					<DataPath>Объект.СписокНарушений.Виновный</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="СписокНарушенийВиновныйКонтекстноеМеню" id="32"/>
+					<ExtendedTooltip name="СписокНарушенийВиновныйРасширеннаяПодсказка" id="33"/>
+				</InputField>
+				<InputField name="СписокНарушенийНарушение" id="37">
+					<DataPath>Объект.СписокНарушений.Нарушение</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="СписокНарушенийНарушениеКонтекстноеМеню" id="38"/>
+					<ExtendedTooltip name="СписокНарушенийНарушениеРасширеннаяПодсказка" id="39"/>
+				</InputField>
+				<InputField name="СписокНарушенийКомментарий" id="34">
+					<DataPath>Объект.СписокНарушений.Комментарий</DataPath>
+					<EditMode>EnterOnInput</EditMode>
+					<ContextMenu name="СписокНарушенийКомментарийКонтекстноеМеню" id="35"/>
+					<ExtendedTooltip name="СписокНарушенийКомментарийРасширеннаяПодсказка" id="36"/>
+				</InputField>
+			</ChildItems>
+		</Table>
+		<LabelField name="Автор" id="7">
+			<DataPath>Объект.Автор</DataPath>
+			<EditMode>EnterOnInput</EditMode>
+			<ContextMenu name="АвторКонтекстноеМеню" id="8"/>
+			<ExtendedTooltip name="АвторРасширеннаяПодсказка" id="9"/>
+		</LabelField>
+	</ChildItems>
+	<Attributes>
+		<Attribute name="Объект" id="1">
+			<Type>
+				<v8:Type>cfg:DocumentObject.НарушениеВРаботе</v8:Type>
+			</Type>
+			<MainAttribute>true</MainAttribute>
+			<SavedData>true</SavedData>
+			<UseAlways>
+				<Field>Объект.RegisterRecords</Field>
+			</UseAlways>
+		</Attribute>
+	</Attributes>
+</Form>
