@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.7">
 	<Title>
 		<v8:item>
 			<v8:lang>ru</v8:lang>
@@ -8,7 +8,6 @@
 	</Title>
 	<AutoTitle>false</AutoTitle>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
-	<CommandSet/>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<Autofill>false</Autofill>
 		<ChildItems>
@@ -248,13 +247,13 @@
 			<UseAlternationRowColor>true</UseAlternationRowColor>
 			<EnableStartDrag>true</EnableStartDrag>
 			<EnableDrag>true</EnableDrag>
+			<FileDragMode>AsFile</FileDragMode>
 			<DataPath>Список</DataPath>
 			<RowPictureDataPath>Список.ИндексКартинки</RowPictureDataPath>
 			<RowsPicture>
 				<xr:Ref>CommonPicture.КоллекцияПиктограммФайлов</xr:Ref>
 				<xr:LoadTransparent>false</xr:LoadTransparent>
 			</RowsPicture>
-			<CommandSet/>
 			<SearchStringLocation>None</SearchStringLocation>
 			<ViewStatusLocation>None</ViewStatusLocation>
 			<SearchControlLocation>None</SearchControlLocation>
@@ -529,6 +528,7 @@
 						<xr:Ref>CommonPicture.ПодписанЭП</xr:Ref>
 						<xr:LoadTransparent>false</xr:LoadTransparent>
 					</ValuesPicture>
+					<FileDragMode>AsFile</FileDragMode>
 					<ContextMenu name="СписокПодписанЭПКонтекстноеМеню" id="89"/>
 					<ExtendedTooltip name="СписокПодписанЭПРасширеннаяПодсказка" id="157"/>
 				</PictureField>
@@ -543,6 +543,7 @@
 						<xr:Ref>CommonPicture.Зашифрован</xr:Ref>
 						<xr:LoadTransparent>false</xr:LoadTransparent>
 					</ValuesPicture>
+					<FileDragMode>AsFile</FileDragMode>
 					<ContextMenu name="СписокЗашифрованКонтекстноеМеню" id="91"/>
 					<ExtendedTooltip name="СписокЗашифрованExtendedTooltip" id="158"/>
 				</PictureField>
@@ -641,14 +642,14 @@
 			</Type>
 			<MainAttribute>true</MainAttribute>
 			<UseAlways>
-				<Field>Список.ФайлРедактируется</Field>
-				<Field>Список.ФайлРедактируетТекущийПользователь</Field>
-				<Field>Список.Ссылка</Field>
-				<Field>Список.ПодписанЭП</Field>
-				<Field>Список.Зашифрован</Field>
-				<Field>~Список.ПодписанЭЦП</Field>
-				<Field>~Список.Ref</Field>
 				<Field>~Список.DeletionMark</Field>
+				<Field>~Список.Ref</Field>
+				<Field>~Список.ПодписанЭЦП</Field>
+				<Field>Список.Зашифрован</Field>
+				<Field>Список.ПодписанЭП</Field>
+				<Field>Список.Ссылка</Field>
+				<Field>Список.ФайлРедактируетТекущийПользователь</Field>
+				<Field>Список.ФайлРедактируется</Field>
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
@@ -725,6 +726,7 @@
 			</Picture>
 			<Action>ОткрытьФайлДляПросмотра</Action>
 			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="СохранитьКак" id="4">
 			<Title>
@@ -745,6 +747,7 @@
 			</Picture>
 			<Action>СохранитьКак</Action>
 			<Representation>Picture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ОткрытьКаталогФайла" id="3">
 			<Title>
@@ -764,6 +767,7 @@
 				<xr:LoadTransparent>false</xr:LoadTransparent>
 			</Picture>
 			<Action>ОткрытьКаталогФайла</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ЭППодписать" id="5">
 			<Title>
@@ -787,6 +791,7 @@
 				<Item>FunctionalOption.ИспользоватьЭПВПрисоединенныхФайлах</Item>
 			</FunctionalOptions>
 			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="УстановитьПометкуУдаления" id="8">
 			<Title>
@@ -806,6 +811,7 @@
 				<xr:LoadTransparent>true</xr:LoadTransparent>
 			</Picture>
 			<Action>УстановитьПометкуУдаления</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="Редактировать" id="9">
 			<Title>
@@ -827,6 +833,7 @@
 			</Picture>
 			<Action>Редактировать</Action>
 			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ЗакончитьРедактирование" id="10">
 			<Title>
@@ -847,6 +854,7 @@
 			</Picture>
 			<Action>ЗакончитьРедактирование</Action>
 			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="Освободить" id="13">
 			<Title>
@@ -867,6 +875,7 @@
 			</Picture>
 			<Action>Освободить</Action>
 			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ОбновитьИзФайлаНаДиске" id="14">
 			<Title>
@@ -883,6 +892,7 @@
 			</ToolTip>
 			<Action>ОбновитьИзФайлаНаДиске</Action>
 			<Representation>Text</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="СохранитьВместеСЭП" id="11">
 			<Title>
@@ -901,6 +911,7 @@
 			<FunctionalOptions>
 				<Item>FunctionalOption.ИспользоватьЭПВПрисоединенныхФайлах</Item>
 			</FunctionalOptions>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ДобавитьЭПИзФайла" id="12">
 			<Title>
@@ -919,6 +930,7 @@
 			<FunctionalOptions>
 				<Item>FunctionalOption.ИспользоватьЭПВПрисоединенныхФайлах</Item>
 			</FunctionalOptions>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="Зашифровать" id="15">
 			<Title>
@@ -941,6 +953,7 @@
 			<FunctionalOptions>
 				<Item>FunctionalOption.ИспользоватьЭПВПрисоединенныхФайлах</Item>
 			</FunctionalOptions>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="Расшифровать" id="16">
 			<Title>
@@ -959,6 +972,7 @@
 			<FunctionalOptions>
 				<Item>FunctionalOption.ИспользоватьЭПВПрисоединенныхФайлах</Item>
 			</FunctionalOptions>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ОткрытьСвойстваФайла" id="1">
 			<Title>
@@ -980,6 +994,7 @@
 			</Picture>
 			<Action>ОткрытьСвойстваФайла</Action>
 			<Representation>Picture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="Создать" id="6">
 			<Title>
@@ -1000,6 +1015,7 @@
 			</Picture>
 			<Action>Создать</Action>
 			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="Скопировать" id="7">
 			<Title>
@@ -1020,6 +1036,7 @@
 				<xr:LoadTransparent>true</xr:LoadTransparent>
 			</Picture>
 			<Action>Скопировать</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 	</Commands>
 	<Parameters>

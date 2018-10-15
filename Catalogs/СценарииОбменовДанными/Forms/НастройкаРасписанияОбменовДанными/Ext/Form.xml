@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.7">
 	<AutoTitle>false</AutoTitle>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<CommandSet>
-		<ExcludedCommand>SetDeletionMark</ExcludedCommand>
-		<ExcludedCommand>Copy</ExcludedCommand>
-		<ExcludedCommand>Delete</ExcludedCommand>
-		<ExcludedCommand>Create</ExcludedCommand>
-		<ExcludedCommand>Change</ExcludedCommand>
 		<ExcludedCommand>CancelSearch</ExcludedCommand>
+		<ExcludedCommand>Change</ExcludedCommand>
+		<ExcludedCommand>Copy</ExcludedCommand>
+		<ExcludedCommand>Create</ExcludedCommand>
+		<ExcludedCommand>Delete</ExcludedCommand>
 		<ExcludedCommand>Find</ExcludedCommand>
+		<ExcludedCommand>SetDeletionMark</ExcludedCommand>
 	</CommandSet>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1">
 		<ChildItems>
@@ -116,6 +116,7 @@
 			<UseAlternationRowColor>true</UseAlternationRowColor>
 			<InitialTreeView>ExpandTopLevel</InitialTreeView>
 			<EnableStartDrag>true</EnableStartDrag>
+			<FileDragMode>AsFile</FileDragMode>
 			<DataPath>Список</DataPath>
 			<RowPictureDataPath>Список.DefaultPicture</RowPictureDataPath>
 			<SearchStringLocation>None</SearchStringLocation>
@@ -287,7 +288,7 @@
 			<ReadOnly>true</ReadOnly>
 			<AutoCellHeight>true</AutoCellHeight>
 			<ShowInHeader>false</ShowInHeader>
-			<TextColor>style:ПоясняющийТекст</TextColor>
+			<TextColor>0:ad87bd29-0ad1-4da4-ac62-38e714e0cb9f</TextColor>
 			<ContextMenu name="КомментарийКонтекстноеМеню" id="35"/>
 			<ExtendedTooltip name="КомментарийExtendedTooltip" id="56"/>
 		</InputField>
@@ -299,12 +300,12 @@
 			</Type>
 			<MainAttribute>true</MainAttribute>
 			<UseAlways>
-				<Field>Список.ФлагИспользованияЗагрузки</Field>
-				<Field>Список.ФлагИспользованияВыгрузки</Field>
-				<Field>Список.ФлагИспользования</Field>
-				<Field>Список.ИспользоватьРегламентноеЗадание</Field>
-				<Field>Список.Ref</Field>
 				<Field>~Список.ФлагНестандартногоИспользования</Field>
+				<Field>Список.Ref</Field>
+				<Field>Список.ИспользоватьРегламентноеЗадание</Field>
+				<Field>Список.ФлагИспользования</Field>
+				<Field>Список.ФлагИспользованияВыгрузки</Field>
+				<Field>Список.ФлагИспользованияЗагрузки</Field>
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
@@ -433,6 +434,7 @@
 			</Picture>
 			<Action>Создать</Action>
 			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ИзменитьСценарийОбменаДанными" id="2">
 			<Title>
@@ -452,6 +454,7 @@
 				<xr:LoadTransparent>true</xr:LoadTransparent>
 			</Picture>
 			<Action>ИзменитьСценарийОбменаДанными</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ВключитьОтключитьРегламентноеЗадание" id="3">
 			<Title>
@@ -471,6 +474,7 @@
 				<xr:LoadTransparent>true</xr:LoadTransparent>
 			</Picture>
 			<Action>ВключитьОтключитьРегламентноеЗадание</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ВключитьОтключитьВыгрузку" id="5">
 			<Title>
@@ -486,6 +490,7 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ВключитьОтключитьВыгрузку</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ВключитьОтключитьЗагрузку" id="6">
 			<Title>
@@ -501,6 +506,7 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ВключитьОтключитьЗагрузку</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ВключитьОтключитьЗагрузкуВыгрузку" id="4">
 			<Title>
@@ -516,6 +522,7 @@
 				</v8:item>
 			</ToolTip>
 			<Action>ВключитьОтключитьЗагрузкуВыгрузку</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ВыполнитьСценарий" id="7">
 			<Title>
@@ -537,6 +544,7 @@
 			</Picture>
 			<Action>ВыполнитьСценарий</Action>
 			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 	</Commands>
 	<Parameters>

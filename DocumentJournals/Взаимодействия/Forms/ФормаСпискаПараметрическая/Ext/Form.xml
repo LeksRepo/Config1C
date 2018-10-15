@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.7">
 	<Title>
 		<v8:item>
 			<v8:lang>ru</v8:lang>
@@ -346,6 +346,7 @@
 							<SkipOnInput>false</SkipOnInput>
 							<Width>70</Width>
 							<UseAlternationRowColor>true</UseAlternationRowColor>
+							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>Список</DataPath>
 							<RowPictureDataPath>Список.НомерКартинки</RowPictureDataPath>
 							<RowsPicture>
@@ -353,8 +354,8 @@
 								<xr:LoadTransparent>false</xr:LoadTransparent>
 							</RowsPicture>
 							<CommandSet>
-								<ExcludedCommand>UndoPosting</ExcludedCommand>
 								<ExcludedCommand>Post</ExcludedCommand>
+								<ExcludedCommand>UndoPosting</ExcludedCommand>
 							</CommandSet>
 							<SearchStringLocation>None</SearchStringLocation>
 							<ViewStatusLocation>None</ViewStatusLocation>
@@ -724,6 +725,7 @@
 							<InitialTreeView>ExpandAllLevels</InitialTreeView>
 							<EnableStartDrag>true</EnableStartDrag>
 							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
 							<DataPath>ДеревоВзаимодействий</DataPath>
 							<RowPictureDataPath>ДеревоВзаимодействий.НомерКартинки</RowPictureDataPath>
 							<RowsPicture>
@@ -731,16 +733,16 @@
 								<xr:LoadTransparent>false</xr:LoadTransparent>
 							</RowsPicture>
 							<CommandSet>
+								<ExcludedCommand>Add</ExcludedCommand>
+								<ExcludedCommand>EndEdit</ExcludedCommand>
 								<ExcludedCommand>HierarchicalList</ExcludedCommand>
-								<ExcludedCommand>Tree</ExcludedCommand>
 								<ExcludedCommand>List</ExcludedCommand>
-								<ExcludedCommand>SortListAsc</ExcludedCommand>
+								<ExcludedCommand>MoveDown</ExcludedCommand>
 								<ExcludedCommand>MoveUp</ExcludedCommand>
 								<ExcludedCommand>OutputList</ExcludedCommand>
+								<ExcludedCommand>SortListAsc</ExcludedCommand>
 								<ExcludedCommand>SortListDesc</ExcludedCommand>
-								<ExcludedCommand>EndEdit</ExcludedCommand>
-								<ExcludedCommand>Add</ExcludedCommand>
-								<ExcludedCommand>MoveDown</ExcludedCommand>
+								<ExcludedCommand>Tree</ExcludedCommand>
 							</CommandSet>
 							<SearchStringLocation>None</SearchStringLocation>
 							<ViewStatusLocation>None</ViewStatusLocation>
@@ -989,6 +991,7 @@
 												<xr:Ref>CommonPicture.Взаимодействия</xr:Ref>
 												<xr:LoadTransparent>false</xr:LoadTransparent>
 											</ValuesPicture>
+											<FileDragMode>AsFile</FileDragMode>
 											<ContextMenu name="ДеревоВзаимодействийНомерКартинкиКонтекстноеМеню" id="114"/>
 											<ExtendedTooltip name="ДеревоВзаимодействийНомерКартинкиExtendedTooltip" id="212"/>
 										</PictureField>
@@ -1038,14 +1041,14 @@
 			</Type>
 			<MainAttribute>true</MainAttribute>
 			<UseAlways>
-				<Field>Список.Рассмотрено</Field>
-				<Field>Список.Предмет</Field>
-				<Field>Список.Ответственный</Field>
-				<Field>Список.НомерКартинки</Field>
-				<Field>Список.Ref</Field>
-				<Field>Список.Date</Field>
-				<Field>~Список.ОтработатьПосле</Field>
 				<Field>~Список.Отработано</Field>
+				<Field>~Список.ОтработатьПосле</Field>
+				<Field>Список.Date</Field>
+				<Field>Список.Ref</Field>
+				<Field>Список.НомерКартинки</Field>
+				<Field>Список.Ответственный</Field>
+				<Field>Список.Предмет</Field>
+				<Field>Список.Рассмотрено</Field>
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
@@ -1162,7 +1165,7 @@
 							<dcsset:appearance>
 								<dcscor:item xsi:type="dcsset:SettingsParameterValue">
 									<dcscor:parameter>ЦветТекста</dcscor:parameter>
-									<dcscor:value xsi:type="v8ui:Color">style:ВыполненнаяЗадача</dcscor:value>
+									<dcscor:value xsi:type="v8ui:Color">0:61cd6eab-6bab-4382-986e-4c7fc44f369b</dcscor:value>
 								</dcscor:item>
 							</dcsset:appearance>
 						</dcsset:item>
@@ -1491,6 +1494,7 @@
 				<Item>FunctionalOption.ИспользоватьПризнакРассмотрено</Item>
 			</FunctionalOptions>
 			<Representation>Picture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="Ответственный" id="2">
 			<Title>
@@ -1510,6 +1514,7 @@
 				<xr:LoadTransparent>false</xr:LoadTransparent>
 			</Picture>
 			<Action>ОтветственныйВыполнить</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="Предмет" id="3">
 			<Title>
@@ -1529,6 +1534,7 @@
 				<xr:LoadTransparent>false</xr:LoadTransparent>
 			</Picture>
 			<Action>ПредметВыполнить</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ОтложитьРассмотрение" id="4">
 			<Title>
@@ -1551,6 +1557,7 @@
 			<FunctionalOptions>
 				<Item>FunctionalOption.ИспользоватьПризнакРассмотрено</Item>
 			</FunctionalOptions>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="СоздатьВстречу" id="5">
 			<Title>
@@ -1573,6 +1580,7 @@
 			<FunctionalOptions>
 				<Item>FunctionalOption.ИспользоватьПрочиеВзаимодействия</Item>
 			</FunctionalOptions>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="СоздатьЗапланированноеВзаимодействие" id="6">
 			<Title>
@@ -1595,6 +1603,7 @@
 			<FunctionalOptions>
 				<Item>FunctionalOption.ИспользоватьПрочиеВзаимодействия</Item>
 			</FunctionalOptions>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="СоздатьТелефонныйЗвонок" id="7">
 			<Title>
@@ -1617,6 +1626,7 @@
 			<FunctionalOptions>
 				<Item>FunctionalOption.ИспользоватьПрочиеВзаимодействия</Item>
 			</FunctionalOptions>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="СоздатьЭлектронноеПисьмо" id="8">
 			<Title>
@@ -1636,6 +1646,7 @@
 				<xr:LoadTransparent>true</xr:LoadTransparent>
 			</Picture>
 			<Action>СоздатьЭлектронноеПисьмо</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ПереключитьРежимПросмотра" id="9">
 			<Title>
@@ -1655,6 +1666,7 @@
 				<xr:LoadTransparent>false</xr:LoadTransparent>
 			</Picture>
 			<Action>ПереключитьРежимПросмотра</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ОбновитьДерево" id="10">
 			<Title>
@@ -1671,6 +1683,7 @@
 			</ToolTip>
 			<Shortcut>F5</Shortcut>
 			<Action>ОбновитьДерево</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="УстановитьИнтервал" id="11">
 			<Title>
@@ -1690,6 +1703,7 @@
 				<xr:LoadTransparent>true</xr:LoadTransparent>
 			</Picture>
 			<Action>УстановитьИнтервал</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="НеРассмотрено" id="12">
 			<Title>
@@ -1712,6 +1726,7 @@
 			<FunctionalOptions>
 				<Item>FunctionalOption.ИспользоватьПризнакРассмотрено</Item>
 			</FunctionalOptions>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="СоздатьСообщениеSMS" id="13">
 			<Title>
@@ -1734,6 +1749,7 @@
 			<FunctionalOptions>
 				<Item>FunctionalOption.ИспользоватьПрочиеВзаимодействия</Item>
 			</FunctionalOptions>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 	</Commands>
 </Form>

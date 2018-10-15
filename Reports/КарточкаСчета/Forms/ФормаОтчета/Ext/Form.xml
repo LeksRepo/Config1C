@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.4">
+<Form xmlns="http://v8.1c.ru/8.3/xcf/logform" xmlns:app="http://v8.1c.ru/8.2/managed-application/core" xmlns:cfg="http://v8.1c.ru/8.1/data/enterprise/current-config" xmlns:dcscor="http://v8.1c.ru/8.1/data-composition-system/core" xmlns:dcsset="http://v8.1c.ru/8.1/data-composition-system/settings" xmlns:ent="http://v8.1c.ru/8.1/data/enterprise" xmlns:lf="http://v8.1c.ru/8.2/managed-application/logform" xmlns:style="http://v8.1c.ru/8.1/data/ui/style" xmlns:sys="http://v8.1c.ru/8.1/data/ui/fonts/system" xmlns:v8="http://v8.1c.ru/8.1/data/core" xmlns:v8ui="http://v8.1c.ru/8.1/data/ui" xmlns:web="http://v8.1c.ru/8.1/data/ui/colors/web" xmlns:win="http://v8.1c.ru/8.1/data/ui/colors/windows" xmlns:xr="http://v8.1c.ru/8.3/xcf/readable" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.7">
 	<AutoTitle>false</AutoTitle>
 	<CommandBarLocation>None</CommandBarLocation>
 	<VerticalScroll>useIfNecessary</VerticalScroll>
 	<ReportResult>Результат</ReportResult>
 	<DetailsData>ДанныеРасшифровки</DetailsData>
 	<ReportFormType>Main</ReportFormType>
-	<VariantAppearance/>
 	<AutoShowState>Auto</AutoShowState>
+	<ReportResultViewMode>Auto</ReportResultViewMode>
 	<AutoCommandBar name="ФормаКоманднаяПанель" id="-1"/>
 	<Events>
 		<Event name="OnOpen">ПриОткрытии</Event>
@@ -245,6 +245,7 @@
 					<Enabled>false</Enabled>
 					<Width>3</Width>
 					<Height>1</Height>
+					<FileDragMode>AsFile</FileDragMode>
 					<ContextMenu name="ДекорацияАвтоСуммаКонтекстноеМеню" id="285"/>
 					<ExtendedTooltip name="ДекорацияАвтоСуммаExtendedTooltip" id="313"/>
 				</PictureDecoration>
@@ -625,14 +626,15 @@
 													<VerticalStretch>false</VerticalStretch>
 													<EnableStartDrag>true</EnableStartDrag>
 													<EnableDrag>true</EnableDrag>
+													<FileDragMode>AsFile</FileDragMode>
 													<DataPath>Отчет.SettingsComposer.Settings.Filter</DataPath>
 													<CommandSet>
-														<ExcludedCommand>HierarchicalList</ExcludedCommand>
-														<ExcludedCommand>Tree</ExcludedCommand>
-														<ExcludedCommand>List</ExcludedCommand>
-														<ExcludedCommand>UserSettingItemProperties</ExcludedCommand>
-														<ExcludedCommand>EndEdit</ExcludedCommand>
 														<ExcludedCommand>Change</ExcludedCommand>
+														<ExcludedCommand>EndEdit</ExcludedCommand>
+														<ExcludedCommand>HierarchicalList</ExcludedCommand>
+														<ExcludedCommand>List</ExcludedCommand>
+														<ExcludedCommand>Tree</ExcludedCommand>
+														<ExcludedCommand>UserSettingItemProperties</ExcludedCommand>
 													</CommandSet>
 													<SearchStringLocation>None</SearchStringLocation>
 													<ViewStatusLocation>None</ViewStatusLocation>
@@ -879,11 +881,12 @@
 													<VerticalStretch>false</VerticalStretch>
 													<EnableStartDrag>true</EnableStartDrag>
 													<EnableDrag>true</EnableDrag>
+													<FileDragMode>AsFile</FileDragMode>
 													<DataPath>Отчет.SettingsComposer.Settings.ConditionalAppearance</DataPath>
 													<CommandSet>
-														<ExcludedCommand>UserSettingItemProperties</ExcludedCommand>
-														<ExcludedCommand>EndEdit</ExcludedCommand>
 														<ExcludedCommand>Change</ExcludedCommand>
+														<ExcludedCommand>EndEdit</ExcludedCommand>
+														<ExcludedCommand>UserSettingItemProperties</ExcludedCommand>
 													</CommandSet>
 													<SearchStringLocation>None</SearchStringLocation>
 													<ViewStatusLocation>None</ViewStatusLocation>
@@ -1093,19 +1096,19 @@
 			</Type>
 			<MainAttribute>true</MainAttribute>
 			<Save>
-				<Field>Отчет.Счет</Field>
-				<Field>Отчет.ПоказательПР</Field>
-				<Field>Отчет.ПоказательНУ</Field>
-				<Field>Отчет.ПоказательКоличество</Field>
-				<Field>Отчет.ПоказательВалютнаяСумма</Field>
-				<Field>Отчет.ПоказательВР</Field>
-				<Field>Отчет.ПоказательБУ</Field>
-				<Field>Отчет.Подразделение</Field>
-				<Field>Отчет.Периодичность</Field>
-				<Field>Отчет.НачалоПериода</Field>
-				<Field>Отчет.КонецПериода</Field>
-				<Field>1/0:9e8643bb-71c8-48e4-b923-cfa9d451efc8</Field>
 				<Field>1/0:82fc64fc-bcb9-4d8a-967e-06f89856aedf</Field>
+				<Field>1/0:9e8643bb-71c8-48e4-b923-cfa9d451efc8</Field>
+				<Field>Отчет.КонецПериода</Field>
+				<Field>Отчет.НачалоПериода</Field>
+				<Field>Отчет.Периодичность</Field>
+				<Field>Отчет.Подразделение</Field>
+				<Field>Отчет.ПоказательБУ</Field>
+				<Field>Отчет.ПоказательВР</Field>
+				<Field>Отчет.ПоказательВалютнаяСумма</Field>
+				<Field>Отчет.ПоказательКоличество</Field>
+				<Field>Отчет.ПоказательНУ</Field>
+				<Field>Отчет.ПоказательПР</Field>
+				<Field>Отчет.Счет</Field>
 			</Save>
 		</Attribute>
 		<Attribute name="Результат" id="3">
@@ -1399,6 +1402,7 @@
 				</v8:item>
 			</ToolTip>
 			<Action>СформироватьОтчет</Action>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 		<Command name="ПанельНастроек" id="4">
 			<Title>
@@ -1415,6 +1419,7 @@
 			</ToolTip>
 			<Action>ПанельНастроек</Action>
 			<Representation>TextPicture</Representation>
+			<CurrentRowUse>DontUse</CurrentRowUse>
 		</Command>
 	</Commands>
 </Form>
