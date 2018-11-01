@@ -112,18 +112,6 @@
 					<ContextMenu name="КоэффициентБазовыхКонтекстноеМеню" id="45"/>
 					<ExtendedTooltip name="КоэффициентБазовыхРасширеннаяПодсказка" id="46"/>
 				</LabelField>
-				<CheckBoxField name="ЗапретИспользования" id="107">
-					<DataPath>Список.ЗапретИспользования</DataPath>
-					<Title>
-						<v8:item>
-							<v8:lang>ru</v8:lang>
-							<v8:content>Запрет</v8:content>
-						</v8:item>
-					</Title>
-					<CheckBoxType>Auto</CheckBoxType>
-					<ContextMenu name="ЗапретИспользованияКонтекстноеМеню" id="108"/>
-					<ExtendedTooltip name="ЗапретИспользованияРасширеннаяПодсказка" id="109"/>
-				</CheckBoxField>
 			</ChildItems>
 		</Table>
 		<HTMLDocumentField name="АдресКартинки" id="83">
@@ -144,6 +132,7 @@
 			<UseAlways>
 				<Field>Список.Code</Field>
 				<Field>Список.Ref</Field>
+				<Field>Список.ЗапретИспользования</Field>
 			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>false</ManualQuery>
@@ -197,5 +186,35 @@
 				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
+		<ConditionalAppearance>
+			<dcsset:item>
+				<dcsset:selection>
+					<dcsset:item>
+						<dcsset:field>Список</dcsset:field>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:filter>
+					<dcsset:item xsi:type="dcsset:FilterItemGroup">
+						<dcsset:groupType>OrGroup</dcsset:groupType>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">Список.ЗапретИспользования</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+						</dcsset:item>
+						<dcsset:item xsi:type="dcsset:FilterItemComparison">
+							<dcsset:left xsi:type="dcscor:Field">Список.ПометкаУдаления</dcsset:left>
+							<dcsset:comparisonType>Equal</dcsset:comparisonType>
+							<dcsset:right xsi:type="xs:boolean">true</dcsset:right>
+						</dcsset:item>
+					</dcsset:item>
+				</dcsset:filter>
+				<dcsset:appearance>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ЦветФона</dcscor:parameter>
+						<dcscor:value xsi:type="v8ui:Color">web:Pink</dcscor:value>
+					</dcscor:item>
+				</dcsset:appearance>
+			</dcsset:item>
+		</ConditionalAppearance>
 	</Attributes>
 </Form>
