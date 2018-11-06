@@ -68,16 +68,6 @@
 			</appearance>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>ОтклонениеПоДоговорам</dataPath>
-			<field>ОтклонениеПоДоговорам</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Отклонение по договорам</v8:content>
-				</v8:item>
-			</title>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>Благодарность</dataPath>
 			<field>Благодарность</field>
 			<title xsi:type="v8:LocalStringType">
@@ -128,16 +118,6 @@
 			</title>
 		</field>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>КоличествоДовозов</dataPath>
-			<field>КоличествоДовозов</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Довоз осуществил</v8:content>
-				</v8:item>
-			</title>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>Счет</dataPath>
 			<field>Счет</field>
 		</field>
@@ -176,6 +156,26 @@
 		<field xsi:type="DataSetFieldField">
 			<dataPath>СчетКтЧтение</dataPath>
 			<field>СчетКтЧтение</field>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СписаноОстатки</dataPath>
+			<field>СписаноОстатки</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Списано остатки</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>СписаноМатериалы</dataPath>
+			<field>СписаноМатериалы</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Списано материалы</v8:content>
+				</v8:item>
+			</title>
 		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
@@ -305,10 +305,10 @@
 	NULL КАК Переделки,
 	СлужебнаяЗаписка.Адресат.ФизическоеЛицо.Подразделение КАК Подразделение,
 	СлужебнаяЗаписка.Ссылка КАК Документ,
-	NULL КАК ОтклонениеПоДоговорам,
 	NULL КАК Благодарность,
 	NULL КАК Недовольство,
-	NULL КАК КоличествоДовозов
+	NULL КАК СписаноМатериалы,
+	NULL КАК СписаноОстатки
 ИЗ
 	Документ.СлужебнаяЗаписка КАК СлужебнаяЗаписка
 ГДЕ
@@ -334,40 +334,14 @@
 ОБЪЕДИНИТЬ ВСЕ
 
 ВЫБРАТЬ
-	докДоговор.Автор.ФизическоеЛицо,
-	NULL,
-	NULL,
-	докДоговор.Автор.ФизическоеЛицо.Подразделение,
-	докДоговор.Ссылка,
-	ВЫБОР
-		КОГДА докДоговор.Спецификация.Проведен
-			ТОГДА докДоговор.СуммаДокументаБезСкидки - докДоговор.Спецификация.СуммаДокумента
-		ИНАЧЕ 0
-	КОНЕЦ,
-	NULL,
-	NULL,
-	NULL
-ИЗ
-	Документ.Договор КАК докДоговор
-ГДЕ
-	ВЫБОР
-			КОГДА докДоговор.Спецификация.Проведен
-				ТОГДА докДоговор.СуммаДокументаБезСкидки - докДоговор.Спецификация.СуммаДокумента
-			ИНАЧЕ 0
-		КОНЕЦ &lt; 0
-	И докДоговор.Дата МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания
-
-ОБЪЕДИНИТЬ ВСЕ
-
-ВЫБРАТЬ
 	Благодарности_Недовольства.Сотрудник,
 	NULL,
 	NULL,
 	Благодарности_Недовольства.Подразделение,
 	Благодарности_Недовольства.Комментарий,
-	NULL,
 	Благодарности_Недовольства.Благодарность,
 	Благодарности_Недовольства.Недовольство,
+	NULL,
 	NULL
 ИЗ
 	Благодарности_Недовольства КАК Благодарности_Недовольства
@@ -375,55 +349,56 @@
 ОБЪЕДИНИТЬ ВСЕ
 
 ВЫБРАТЬ
-	докСпецификация.ДовозОсуществил,
+	УправленческийОбороты.Субконто1,
 	NULL,
 	NULL,
-	докСпецификация.ДовозОсуществил.Подразделение,
-	докСпецификация.Ссылка,
+	УправленческийОбороты.Подразделение,
+	УправленческийОбороты.Регистратор,
 	NULL,
 	NULL,
 	NULL,
-	1
+	УправленческийОбороты.СуммаОборот
 ИЗ
-	Документ.Спецификация КАК докСпецификация
-ГДЕ
-	докСпецификация.Дата МЕЖДУ &amp;ДатаНачала И &amp;ДатаОкончания
-	И докСпецификация.Проведен
-	И докСпецификация.ДовозОсуществил &lt;&gt; ЗНАЧЕНИЕ(Справочник.ФизическиеЛица.ПустаяСсылка)</query>
+	РегистрБухгалтерии.Управленческий.Обороты(&amp;ДатаНачала, &amp;ДатаОкончания, Регистратор, Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ВзаиморасчетыССотрудниками), , Субконто2 = ЗНАЧЕНИЕ(Справочник.ВидыНачисленийУдержаний.УдержанияЗаСписаниеОбрезков), , ) КАК УправленческийОбороты
+
+ОБЪЕДИНИТЬ ВСЕ
+
+ВЫБРАТЬ
+	УправленческийОбороты.Субконто1,
+	NULL,
+	NULL,
+	УправленческийОбороты.Подразделение,
+	УправленческийОбороты.Регистратор,
+	NULL,
+	NULL,
+	УправленческийОбороты.СуммаОборот,
+	NULL
+ИЗ
+	РегистрБухгалтерии.Управленческий.Обороты(&amp;ДатаНачала, &amp;ДатаОкончания, Регистратор, Счет = ЗНАЧЕНИЕ(ПланСчетов.Управленческий.ВзаиморасчетыССотрудниками), , Субконто2 = ЗНАЧЕНИЕ(Справочник.ВидыНачисленийУдержаний.УдержанияЗаСписаниеМатериалов), , ) КАК УправленческийОбороты</query>
 	</dataSet>
 	<totalField>
 		<dataPath>НарушенияВРаботе</dataPath>
 		<expression>Сумма(НарушенияВРаботе)</expression>
 	</totalField>
 	<totalField>
-		<dataPath>ОтклонениеПоДоговорам</dataPath>
-		<expression>Сумма(ОтклонениеПоДоговорам)</expression>
-	</totalField>
-	<totalField>
-		<dataPath>Благодарность</dataPath>
-		<expression>Благодарность</expression>
-	</totalField>
-	<totalField>
-		<dataPath>Недовольство</dataPath>
-		<expression>Недовольство</expression>
-	</totalField>
-	<totalField>
 		<dataPath>Благодарность</dataPath>
 		<expression>Сумма(Благодарность)</expression>
-		<group>ОбщийИтог</group>
 	</totalField>
 	<totalField>
 		<dataPath>Недовольство</dataPath>
 		<expression>Сумма(Недовольство)</expression>
-		<group>ОбщийИтог</group>
 	</totalField>
 	<totalField>
 		<dataPath>Переделки</dataPath>
 		<expression>Сумма(Переделки)</expression>
 	</totalField>
 	<totalField>
-		<dataPath>КоличествоДовозов</dataPath>
-		<expression>Сумма(КоличествоДовозов)</expression>
+		<dataPath>СписаноМатериалы</dataPath>
+		<expression>Сумма(СписаноМатериалы)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>СписаноОстатки</dataPath>
+		<expression>Сумма(СписаноОстатки)</expression>
 	</totalField>
 	<parameter>
 		<name>ДатаНачала</name>
@@ -534,16 +509,16 @@
 					<dcsset:field>Недовольство</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>Переделки</dcsset:field>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>ОтклонениеПоДоговорам</dcsset:field>
-				</dcsset:item>
-				<dcsset:item xsi:type="dcsset:SelectedItemField">
 					<dcsset:field>НарушенияВРаботе</dcsset:field>
 				</dcsset:item>
 				<dcsset:item xsi:type="dcsset:SelectedItemField">
-					<dcsset:field>КоличествоДовозов</dcsset:field>
+					<dcsset:field>Переделки</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СписаноМатериалы</dcsset:field>
+				</dcsset:item>
+				<dcsset:item xsi:type="dcsset:SelectedItemField">
+					<dcsset:field>СписаноОстатки</dcsset:field>
 				</dcsset:item>
 			</dcsset:selection>
 			<dcsset:dataParameters>
