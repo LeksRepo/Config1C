@@ -968,6 +968,11 @@
 	И НЕ СпрНоменклатура.ЭтоГруппа
 	И НЕ СпрНоменклатура.ЗапретИспользования
 	И ВЫБОР
+		   КОГДА &amp;ПраваяНоменклатура = 0 ТОГДА ИСТИНА
+		   КОГДА &amp;ПраваяНоменклатура = 1 ТОГДА НЕ СпрНоменклатура.Правый
+		   КОГДА &amp;ПраваяНоменклатура = 2 ТОГДА СпрНоменклатура.Правый
+		   КОНЕЦ
+	И ВЫБОР
 			КОГДА &amp;ЕстьОстаток
 				ТОГДА ВЫБОР
 						КОГДА &amp;ТолькоБазовая
@@ -1442,6 +1447,22 @@
 			</Title>
 			<Type>
 				<v8:Type>xs:boolean</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ПраваяНоменклатура" id="22">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Правая номенклатура</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
 			</Type>
 		</Attribute>
 	</Attributes>
