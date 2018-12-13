@@ -51,6 +51,7 @@
 					<v8:content>Основная группа</v8:content>
 				</v8:item>
 			</ToolTip>
+			<HorizontalStretch>true</HorizontalStretch>
 			<Group>Horizontal</Group>
 			<Representation>None</Representation>
 			<ShowTitle>false</ShowTitle>
@@ -1645,6 +1646,8 @@
 							<v8:content>Группа изображение</v8:content>
 						</v8:item>
 					</ToolTip>
+					<HorizontalStretch>true</HorizontalStretch>
+					<VerticalStretch>true</VerticalStretch>
 					<Group>Vertical</Group>
 					<Representation>None</Representation>
 					<ShowTitle>false</ShowTitle>
@@ -1677,6 +1680,7 @@
 					<v8:content>Группа страницы</v8:content>
 				</v8:item>
 			</ToolTip>
+			<HorizontalStretch>true</HorizontalStretch>
 			<VerticalStretch>true</VerticalStretch>
 			<ExtendedTooltip name="ГруппаСтраницыРасширеннаяПодсказка" id="60"/>
 			<ChildItems>
@@ -2065,7 +2069,7 @@
 					<Title>
 						<v8:item>
 							<v8:lang>ru</v8:lang>
-							<v8:content>Доп элементы</v8:content>
+							<v8:content>Элементы</v8:content>
 						</v8:item>
 					</Title>
 					<ToolTip>
@@ -2787,6 +2791,81 @@
 										</InputField>
 									</ChildItems>
 								</ColumnGroup>
+							</ChildItems>
+						</Table>
+					</ChildItems>
+				</Page>
+				<Page name="СтраницаКоординатыПрисадок" id="778">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Координаты присадок</v8:content>
+						</v8:item>
+					</Title>
+					<ToolTip>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Страница координаты присадок</v8:content>
+						</v8:item>
+					</ToolTip>
+					<TitleDataPath>Объект.СписокКоординатПрисадок.RowsCount</TitleDataPath>
+					<ExtendedTooltip name="СтраницаКоординатыПрисадокРасширеннаяПодсказка" id="779"/>
+					<ChildItems>
+						<Table name="СписокКоординатПрисадок" id="780">
+							<ReadOnly>true</ReadOnly>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<DataPath>Объект.СписокКоординатПрисадок</DataPath>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="СписокКоординатПрисадокКонтекстноеМеню" id="781"/>
+							<AutoCommandBar name="СписокКоординатПрисадокКоманднаяПанель" id="782">
+								<Autofill>false</Autofill>
+							</AutoCommandBar>
+							<ExtendedTooltip name="СписокКоординатПрисадокРасширеннаяПодсказка" id="783"/>
+							<SearchStringAddition name="СписокКоординатПрисадокСтрокаПоиска" id="784">
+								<AdditionSource>
+									<Item>СписокКоординатПрисадок</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокКоординатПрисадокСтрокаПоискаКонтекстноеМеню" id="785"/>
+								<ExtendedTooltip name="СписокКоординатПрисадокСтрокаПоискаРасширеннаяПодсказка" id="786"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="СписокКоординатПрисадокСостояниеПросмотра" id="787">
+								<AdditionSource>
+									<Item>СписокКоординатПрисадок</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокКоординатПрисадокСостояниеПросмотраКонтекстноеМеню" id="788"/>
+								<ExtendedTooltip name="СписокКоординатПрисадокСостояниеПросмотраРасширеннаяПодсказка" id="789"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="СписокКоординатПрисадокУправлениеПоиском" id="790">
+								<AdditionSource>
+									<Item>СписокКоординатПрисадок</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокКоординатПрисадокУправлениеПоискомКонтекстноеМеню" id="791"/>
+								<ExtendedTooltip name="СписокКоординатПрисадокУправлениеПоискомРасширеннаяПодсказка" id="792"/>
+							</SearchControlAddition>
+							<ChildItems>
+								<LabelField name="СписокКоординатПрисадокНомерСтроки" id="793">
+									<DataPath>Объект.СписокКоординатПрисадок.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="СписокКоординатПрисадокНомерСтрокиКонтекстноеМеню" id="794"/>
+									<ExtendedTooltip name="СписокКоординатПрисадокНомерСтрокиРасширеннаяПодсказка" id="795"/>
+								</LabelField>
+								<InputField name="СписокКоординатПрисадокНазвание" id="799">
+									<DataPath>Объект.СписокКоординатПрисадок.Название</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="СписокКоординатПрисадокНазваниеКонтекстноеМеню" id="800"/>
+									<ExtendedTooltip name="СписокКоординатПрисадокНазваниеРасширеннаяПодсказка" id="801"/>
+								</InputField>
+								<InputField name="СписокКоординатПрисадокЗначение" id="802">
+									<DataPath>Объект.СписокКоординатПрисадок.Значение</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="СписокКоординатПрисадокЗначениеКонтекстноеМеню" id="803"/>
+									<ExtendedTooltip name="СписокКоординатПрисадокЗначениеРасширеннаяПодсказка" id="804"/>
+								</InputField>
 							</ChildItems>
 						</Table>
 					</ChildItems>
