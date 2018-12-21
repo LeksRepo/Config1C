@@ -72,7 +72,7 @@
 							<v8:content>Параметры изделия</v8:content>
 						</v8:item>
 					</ToolTip>
-					<Width>45</Width>
+					<Width>43</Width>
 					<HorizontalStretch>false</HorizontalStretch>
 					<Group>Vertical</Group>
 					<Representation>None</Representation>
@@ -100,6 +100,16 @@
 							<BackColor>style:ButtonBackColor</BackColor>
 							<ExtendedTooltip name="ОбщиеРазмерыРасширеннаяПодсказка" id="119"/>
 							<ChildItems>
+								<InputField name="ВариантШкафа" id="211">
+									<DataPath>ВариантШкафа</DataPath>
+									<TitleFont ref="style:TextFont" bold="true" italic="false" underline="false" strikeout="false" kind="StyleItem"/>
+									<QuickChoice>true</QuickChoice>
+									<ContextMenu name="ВариантШкафаКонтекстноеМеню" id="212"/>
+									<ExtendedTooltip name="ВариантШкафаРасширеннаяПодсказка" id="213"/>
+									<Events>
+										<Event name="OnChange">ВариантШкафаПриИзменении</Event>
+									</Events>
+								</InputField>
 								<InputField name="ВысотаИтог" id="111">
 									<DataPath>ВысотаИтог</DataPath>
 									<Title>
@@ -384,7 +394,7 @@
 						</UsualGroup>
 						<Table name="Детали" id="23">
 							<Representation>List</Representation>
-							<Width>45</Width>
+							<Width>43</Width>
 							<Height>7</Height>
 							<AutoInsertNewRow>true</AutoInsertNewRow>
 							<HorizontalStretch>false</HorizontalStretch>
@@ -484,7 +494,8 @@
 									<TitleTextColor>style:FieldSelectionBackColor</TitleTextColor>
 									<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 									<EditMode>EnterOnInput</EditMode>
-									<Width>3</Width>
+									<Width>2</Width>
+									<HorizontalStretch>false</HorizontalStretch>
 									<ClearButton>false</ClearButton>
 									<SpinButton>false</SpinButton>
 									<OpenButton>false</OpenButton>
@@ -700,7 +711,8 @@
 									<TitleTextColor>style:FieldSelectionBackColor</TitleTextColor>
 									<TitleFont ref="sys:DefaultGUIFont" bold="true" italic="false" underline="false" strikeout="false" kind="WindowsFont"/>
 									<EditMode>EnterOnInput</EditMode>
-									<Width>5</Width>
+									<Width>4</Width>
+									<HorizontalStretch>false</HorizontalStretch>
 									<ListChoiceMode>true</ListChoiceMode>
 									<TextEdit>false</TextEdit>
 									<ChoiceList>
@@ -739,6 +751,9 @@
 									</ChoiceList>
 									<ContextMenu name="ДеталиВидСтеныКонтекстноеМеню" id="167"/>
 									<ExtendedTooltip name="ДеталиВидСтеныРасширеннаяПодсказка" id="168"/>
+									<Events>
+										<Event name="OnChange">ДеталиВидСтеныПриИзменении</Event>
+									</Events>
 								</InputField>
 							</ChildItems>
 						</Table>
@@ -848,7 +863,13 @@
 									<v8:content>Группа центр</v8:content>
 								</v8:item>
 							</ToolTip>
+							<HorizontalStretch>true</HorizontalStretch>
+							<VerticalStretch>true</VerticalStretch>
+							<GroupHorizontalAlign>Center</GroupHorizontalAlign>
+							<GroupVerticalAlign>Center</GroupVerticalAlign>
 							<Group>Vertical</Group>
+							<HorizontalAlign>Center</HorizontalAlign>
+							<VerticalAlign>Center</VerticalAlign>
 							<Representation>None</Representation>
 							<ShowTitle>false</ShowTitle>
 							<ExtendedTooltip name="ГруппаЦентрРасширеннаяПодсказка" id="196"/>
@@ -887,39 +908,177 @@
 										<Event name="Click">ИзделиеНажатие</Event>
 									</Events>
 								</PictureField>
-								<PictureField name="ОсновнойЭлемент" id="70">
-									<DataPath>ОсновнойЭлемент</DataPath>
+								<UsualGroup name="ГруппаОсновнойЭлемент" id="235">
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Основной элемент</v8:content>
+											<v8:content>Группа основной элемент</v8:content>
 										</v8:item>
 									</Title>
-									<TitleLocation>None</TitleLocation>
-									<PictureSize>Proportionally</PictureSize>
-									<Hyperlink>true</Hyperlink>
-									<BorderColor>#999999</BorderColor>
-									<FileDragMode>AsFile</FileDragMode>
-									<ContextMenu name="ОсновнойЭлементКонтекстноеМеню" id="71">
-										<Autofill>false</Autofill>
-										<ChildItems>
-											<Button name="ОсновнойЭлементКонтекстноеМенюВыборИзделия" id="87">
-												<Type>CommandBarButton</Type>
-												<CommandName>Form.Command.ВыборИзделия</CommandName>
-												<ExtendedTooltip name="ОсновнойЭлементКонтекстноеМенюВыборИзделияРасширеннаяПодсказка" id="88"/>
-											</Button>
-											<Button name="ОсновнойЭлементКонтекстноеМенюОчистить" id="89">
-												<Type>CommandBarButton</Type>
-												<CommandName>Form.Command.Очистить</CommandName>
-												<ExtendedTooltip name="ОсновнойЭлементКонтекстноеМенюОчиститьРасширеннаяПодсказка" id="90"/>
-											</Button>
-										</ChildItems>
-									</ContextMenu>
-									<ExtendedTooltip name="ОсновнойЭлементРасширеннаяПодсказка" id="72"/>
-									<Events>
-										<Event name="Click">ИзделиеНажатие</Event>
-									</Events>
-								</PictureField>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа основной элемент</v8:content>
+										</v8:item>
+									</ToolTip>
+									<HorizontalStretch>true</HorizontalStretch>
+									<VerticalStretch>true</VerticalStretch>
+									<GroupHorizontalAlign>Center</GroupHorizontalAlign>
+									<GroupVerticalAlign>Center</GroupVerticalAlign>
+									<Group>AlwaysHorizontal</Group>
+									<HorizontalAlign>Center</HorizontalAlign>
+									<VerticalAlign>Center</VerticalAlign>
+									<Representation>None</Representation>
+									<ChildItemsWidth>Equal</ChildItemsWidth>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="ГруппаОсновнойЭлементРасширеннаяПодсказка" id="236"/>
+									<ChildItems>
+										<PictureField name="ОсновнойЭлемент1" id="70" DisplayImportance="Usual">
+											<DataPath>ОсновнойЭлемент1</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Основной элемент1</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>None</TitleLocation>
+											<GroupHorizontalAlign>Center</GroupHorizontalAlign>
+											<GroupVerticalAlign>Center</GroupVerticalAlign>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<PictureSize>Proportionally</PictureSize>
+											<Hyperlink>true</Hyperlink>
+											<BorderColor>#999999</BorderColor>
+											<FileDragMode>AsFile</FileDragMode>
+											<ContextMenu name="ОсновнойЭлемент1КонтекстноеМеню" id="71">
+												<Autofill>false</Autofill>
+												<ChildItems>
+													<Button name="ОсновнойЭлементКонтекстноеМенюВыборИзделия" id="87">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.ВыборИзделия</CommandName>
+														<ExtendedTooltip name="ОсновнойЭлементКонтекстноеМенюВыборИзделияРасширеннаяПодсказка" id="88"/>
+													</Button>
+													<Button name="ОсновнойЭлементКонтекстноеМенюОчистить" id="89">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.Очистить</CommandName>
+														<ExtendedTooltip name="ОсновнойЭлементКонтекстноеМенюОчиститьРасширеннаяПодсказка" id="90"/>
+													</Button>
+												</ChildItems>
+											</ContextMenu>
+											<ExtendedTooltip name="ОсновнойЭлемент1РасширеннаяПодсказка" id="72"/>
+											<Events>
+												<Event name="Click">ИзделиеНажатие</Event>
+											</Events>
+										</PictureField>
+										<PictureField name="ОсновнойЭлемент2" id="214" DisplayImportance="Usual">
+											<DataPath>ОсновнойЭлемент2</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Основной элемент1</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>None</TitleLocation>
+											<GroupHorizontalAlign>Center</GroupHorizontalAlign>
+											<GroupVerticalAlign>Center</GroupVerticalAlign>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<PictureSize>Proportionally</PictureSize>
+											<Hyperlink>true</Hyperlink>
+											<BorderColor>#999999</BorderColor>
+											<FileDragMode>AsFile</FileDragMode>
+											<ContextMenu name="ОсновнойЭлемент2КонтекстноеМеню" id="215">
+												<Autofill>false</Autofill>
+												<ChildItems>
+													<Button name="ОсновнойЭлементКонтекстноеМенюВыборИзделия1" id="217">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.ВыборИзделия</CommandName>
+														<ExtendedTooltip name="ОсновнойЭлементКонтекстноеМенюВыборИзделия1РасширеннаяПодсказка" id="218"/>
+													</Button>
+													<Button name="ОсновнойЭлементКонтекстноеМенюОчистить1" id="219">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.Очистить</CommandName>
+														<ExtendedTooltip name="ОсновнойЭлементКонтекстноеМенюОчистить1РасширеннаяПодсказка" id="220"/>
+													</Button>
+												</ChildItems>
+											</ContextMenu>
+											<ExtendedTooltip name="ОсновнойЭлемент2РасширеннаяПодсказка" id="216"/>
+											<Events>
+												<Event name="Click">ИзделиеНажатие</Event>
+											</Events>
+										</PictureField>
+										<PictureField name="ОсновнойЭлемент3" id="221" DisplayImportance="Usual">
+											<DataPath>ОсновнойЭлемент3</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Основной элемент1</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>None</TitleLocation>
+											<GroupHorizontalAlign>Center</GroupHorizontalAlign>
+											<GroupVerticalAlign>Center</GroupVerticalAlign>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<PictureSize>Proportionally</PictureSize>
+											<Hyperlink>true</Hyperlink>
+											<BorderColor>#999999</BorderColor>
+											<FileDragMode>AsFile</FileDragMode>
+											<ContextMenu name="ОсновнойЭлемент3КонтекстноеМеню" id="222">
+												<Autofill>false</Autofill>
+												<ChildItems>
+													<Button name="ОсновнойЭлементКонтекстноеМенюВыборИзделия2" id="224">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.ВыборИзделия</CommandName>
+														<ExtendedTooltip name="ОсновнойЭлементКонтекстноеМенюВыборИзделия2РасширеннаяПодсказка" id="225"/>
+													</Button>
+													<Button name="ОсновнойЭлементКонтекстноеМенюОчистить2" id="226">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.Очистить</CommandName>
+														<ExtendedTooltip name="ОсновнойЭлементКонтекстноеМенюОчистить2РасширеннаяПодсказка" id="227"/>
+													</Button>
+												</ChildItems>
+											</ContextMenu>
+											<ExtendedTooltip name="ОсновнойЭлемент3РасширеннаяПодсказка" id="223"/>
+											<Events>
+												<Event name="Click">ИзделиеНажатие</Event>
+											</Events>
+										</PictureField>
+										<PictureField name="ОсновнойЭлемент4" id="228" DisplayImportance="Usual">
+											<DataPath>ОсновнойЭлемент4</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Основной элемент1</v8:content>
+												</v8:item>
+											</Title>
+											<TitleLocation>None</TitleLocation>
+											<GroupHorizontalAlign>Center</GroupHorizontalAlign>
+											<GroupVerticalAlign>Center</GroupVerticalAlign>
+											<AutoMaxWidth>false</AutoMaxWidth>
+											<PictureSize>Proportionally</PictureSize>
+											<Hyperlink>true</Hyperlink>
+											<BorderColor>#999999</BorderColor>
+											<FileDragMode>AsFile</FileDragMode>
+											<ContextMenu name="ОсновнойЭлемент4КонтекстноеМеню" id="229">
+												<Autofill>false</Autofill>
+												<ChildItems>
+													<Button name="ОсновнойЭлементКонтекстноеМенюВыборИзделия3" id="231">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.ВыборИзделия</CommandName>
+														<ExtendedTooltip name="ОсновнойЭлементКонтекстноеМенюВыборИзделия3РасширеннаяПодсказка" id="232"/>
+													</Button>
+													<Button name="ОсновнойЭлементКонтекстноеМенюОчистить3" id="233">
+														<Type>CommandBarButton</Type>
+														<CommandName>Form.Command.Очистить</CommandName>
+														<ExtendedTooltip name="ОсновнойЭлементКонтекстноеМенюОчистить3РасширеннаяПодсказка" id="234"/>
+													</Button>
+												</ChildItems>
+											</ContextMenu>
+											<ExtendedTooltip name="ОсновнойЭлемент4РасширеннаяПодсказка" id="230"/>
+											<Events>
+												<Event name="Click">ИзделиеНажатие</Event>
+											</Events>
+										</PictureField>
+									</ChildItems>
+								</UsualGroup>
 								<PictureField name="Пол" id="76">
 									<DataPath>Пол</DataPath>
 									<Title>
@@ -1570,6 +1729,22 @@
 						<v8:Type>xs:boolean</v8:Type>
 					</Type>
 				</Column>
+				<Column name="НомерОтсека" id="40">
+					<Title>
+						<v8:item>
+							<v8:lang>ru</v8:lang>
+							<v8:content>Номер отсека</v8:content>
+						</v8:item>
+					</Title>
+					<Type>
+						<v8:Type>xs:decimal</v8:Type>
+						<v8:NumberQualifiers>
+							<v8:Digits>2</v8:Digits>
+							<v8:FractionDigits>0</v8:FractionDigits>
+							<v8:AllowedSign>Nonnegative</v8:AllowedSign>
+						</v8:NumberQualifiers>
+					</Type>
+				</Column>
 			</Columns>
 		</Attribute>
 		<Attribute name="Потолок" id="2">
@@ -1602,11 +1777,11 @@
 				</v8:StringQualifiers>
 			</Type>
 		</Attribute>
-		<Attribute name="ОсновнойЭлемент" id="4">
+		<Attribute name="ОсновнойЭлемент1" id="4">
 			<Title>
 				<v8:item>
 					<v8:lang>ru</v8:lang>
-					<v8:content>Основной элемент</v8:content>
+					<v8:content>Основной элемент1</v8:content>
 				</v8:item>
 			</Title>
 			<Type>
@@ -2019,6 +2194,78 @@
 			</Title>
 			<Type>
 				<v8:Type>cfg:CatalogRef.Контрагенты</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ВариантШкафа" id="32">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вариант шкафа</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>cfg:CatalogRef.ВариантыШкафовПоКаталогу</v8:Type>
+			</Type>
+		</Attribute>
+		<Attribute name="ОсновнойЭлемент2" id="33">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Основной элемент2</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ОсновнойЭлемент3" id="34">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Основной элемент3</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="ОсновнойЭлемент4" id="35">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Основной элемент4</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="КоличествоОтсеков" id="36">
+			<Title>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество отсеков</v8:content>
+				</v8:item>
+			</Title>
+			<Type>
+				<v8:Type>xs:decimal</v8:Type>
+				<v8:NumberQualifiers>
+					<v8:Digits>10</v8:Digits>
+					<v8:FractionDigits>0</v8:FractionDigits>
+					<v8:AllowedSign>Any</v8:AllowedSign>
+				</v8:NumberQualifiers>
 			</Type>
 		</Attribute>
 	</Attributes>
