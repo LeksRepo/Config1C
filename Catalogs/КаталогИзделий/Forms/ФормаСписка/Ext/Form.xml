@@ -164,6 +164,12 @@
 					<ContextMenu name="АвторСменыСтатусаКонтекстноеМеню" id="18"/>
 					<ExtendedTooltip name="АвторСменыСтатусаРасширеннаяПодсказка" id="19"/>
 				</LabelField>
+				<LabelField name="Код" id="55">
+					<DataPath>Список.Код</DataPath>
+					<Visible>false</Visible>
+					<ContextMenu name="КодКонтекстноеМеню" id="56"/>
+					<ExtendedTooltip name="КодРасширеннаяПодсказка" id="57"/>
+				</LabelField>
 			</ChildItems>
 		</Table>
 		<HTMLDocumentField name="АдресКартинки" id="11">
@@ -181,6 +187,9 @@
 				<v8:Type>cfg:DynamicList</v8:Type>
 			</Type>
 			<MainAttribute>true</MainAttribute>
+			<UseAlways>
+				<Field>Список.Код</Field>
+			</UseAlways>
 			<Settings xsi:type="DynamicList">
 				<ManualQuery>true</ManualQuery>
 				<DynamicDataRead>true</DynamicDataRead>
@@ -191,6 +200,7 @@
 	СправочникКаталогИзделий.АктивныйДляДилера КАК АктивныйДляДилера,
 	СправочникКаталогИзделий.ДатаОплаты КАК ДатаОплаты,
 	СправочникКаталогИзделий.СтатусИзделияПоКаталогу КАК СтатусИзделияПоКаталогу,
+	СправочникКаталогИзделий.Код КАК Код,
 	РеализованныеИзделияПоКаталогуОстатки.КоличествоОстаток
 ИЗ
 	Справочник.КаталогИзделий КАК СправочникКаталогИзделий
@@ -253,6 +263,15 @@
 					<v8:content>Рабочий каталог</v8:content>
 				</v8:item>
 			</Title>
+			<Type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>0</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</Type>
+		</Attribute>
+		<Attribute name="Реквизит1" id="4">
 			<Type>
 				<v8:Type>xs:string</v8:Type>
 				<v8:StringQualifiers>
