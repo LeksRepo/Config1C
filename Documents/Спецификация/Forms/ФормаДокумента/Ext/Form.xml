@@ -1285,930 +1285,892 @@
 							<v8:content>Страница изделия по каталогу</v8:content>
 						</v8:item>
 					</ToolTip>
-					<HorizontalStretch>true</HorizontalStretch>
-					<VerticalStretch>true</VerticalStretch>
-					<Group>AlwaysHorizontal</Group>
+					<Group>Horizontal</Group>
 					<TitleDataPath>Объект.СписокИзделийПоКаталогу.RowsCount</TitleDataPath>
 					<ExtendedTooltip name="СтраницаИзделияПоКаталогуРасширеннаяПодсказка" id="522"/>
 					<ChildItems>
-						<UsualGroup name="ГруппаКаталог" id="1307">
+						<Table name="СписокИзделийПоКаталогу" id="492">
+							<ReadOnly>true</ReadOnly>
+							<AutoInsertNewRow>true</AutoInsertNewRow>
+							<EnableStartDrag>true</EnableStartDrag>
+							<EnableDrag>true</EnableDrag>
+							<FileDragMode>AsFile</FileDragMode>
+							<DataPath>Объект.СписокИзделийПоКаталогу</DataPath>
+							<SearchStringLocation>None</SearchStringLocation>
+							<ViewStatusLocation>None</ViewStatusLocation>
+							<SearchControlLocation>None</SearchControlLocation>
+							<RowFilter xsi:nil="true"/>
+							<ContextMenu name="СписокИзделийПоКаталогуКонтекстноеМеню" id="493"/>
+							<AutoCommandBar name="СписокИзделийПоКаталогуКоманднаяПанель" id="494">
+								<Autofill>false</Autofill>
+								<ChildItems>
+									<Button name="СписокИзделийПоКаталогуПодобрать" id="511">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Command.Подобрать</CommandName>
+										<Title>
+											<v8:item>
+												<v8:lang>ru</v8:lang>
+												<v8:content>Редактировать</v8:content>
+											</v8:item>
+										</Title>
+										<ExtendedTooltip name="СписокИзделийПоКаталогуПодобратьРасширеннаяПодсказка" id="512"/>
+									</Button>
+									<Button name="СписокИзделийПоКаталогуНайти" id="515">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.СписокИзделийПоКаталогу.StandardCommand.Find</CommandName>
+										<ExtendedTooltip name="СписокИзделийПоКаталогуНайтиРасширеннаяПодсказка" id="516"/>
+									</Button>
+									<Button name="СписокИзделийПоКаталогуОтменитьПоиск" id="517">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.СписокИзделийПоКаталогу.StandardCommand.CancelSearch</CommandName>
+										<ExtendedTooltip name="СписокИзделийПоКаталогуОтменитьПоискРасширеннаяПодсказка" id="518"/>
+									</Button>
+									<Button name="СписокИзделийПоКаталогуВывестиСписок" id="519">
+										<Type>CommandBarButton</Type>
+										<CommandName>Form.Item.СписокИзделийПоКаталогу.StandardCommand.OutputList</CommandName>
+										<ExtendedTooltip name="СписокИзделийПоКаталогуВывестиСписокРасширеннаяПодсказка" id="520"/>
+									</Button>
+									<Button name="СписокИзделийПоКаталогуЗаполнить" id="523">
+										<Type>CommandBarButton</Type>
+										<Representation>PictureAndText</Representation>
+										<CommandName>Form.Command.ЗаполнитьПоКаталогу</CommandName>
+										<Picture>
+											<xr:Ref>CommonPicture.ПриложитьФайл</xr:Ref>
+											<xr:LoadTransparent>true</xr:LoadTransparent>
+										</Picture>
+										<ExtendedTooltip name="СписокИзделийПоКаталогуЗаполнитьРасширеннаяПодсказка" id="524"/>
+									</Button>
+								</ChildItems>
+							</AutoCommandBar>
+							<ExtendedTooltip name="СписокИзделийПоКаталогуРасширеннаяПодсказка" id="495"/>
+							<SearchStringAddition name="СписокИзделийПоКаталогуСтрокаПоиска" id="1030">
+								<AdditionSource>
+									<Item>СписокИзделийПоКаталогу</Item>
+									<Type>SearchStringRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокИзделийПоКаталогуСтрокаПоискаКонтекстноеМеню" id="1031"/>
+								<ExtendedTooltip name="СписокИзделийПоКаталогуСтрокаПоискаРасширеннаяПодсказка" id="1032"/>
+							</SearchStringAddition>
+							<ViewStatusAddition name="СписокИзделийПоКаталогуСостояниеПросмотра" id="1033">
+								<AdditionSource>
+									<Item>СписокИзделийПоКаталогу</Item>
+									<Type>ViewStatusRepresentation</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокИзделийПоКаталогуСостояниеПросмотраКонтекстноеМеню" id="1034"/>
+								<ExtendedTooltip name="СписокИзделийПоКаталогуСостояниеПросмотраРасширеннаяПодсказка" id="1035"/>
+							</ViewStatusAddition>
+							<SearchControlAddition name="СписокИзделийПоКаталогуУправлениеПоиском" id="1036">
+								<AdditionSource>
+									<Item>СписокИзделийПоКаталогу</Item>
+									<Type>SearchControl</Type>
+								</AdditionSource>
+								<ContextMenu name="СписокИзделийПоКаталогуУправлениеПоискомКонтекстноеМеню" id="1037"/>
+								<ExtendedTooltip name="СписокИзделийПоКаталогуУправлениеПоискомРасширеннаяПодсказка" id="1038"/>
+							</SearchControlAddition>
+							<Events>
+								<Event name="Selection">ИзделияПоКаталогуВыбор</Event>
+								<Event name="ChoiceProcessing">ИзделияПоКаталогуОбработкаВыбора</Event>
+							</Events>
+							<ChildItems>
+								<LabelField name="СписокИзделийПоКаталогуНомерСтроки" id="496">
+									<DataPath>Объект.СписокИзделийПоКаталогу.LineNumber</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>1</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="СписокИзделийПоКаталогуНомерСтрокиКонтекстноеМеню" id="497"/>
+									<ExtendedTooltip name="СписокИзделийПоКаталогуНомерСтрокиРасширеннаяПодсказка" id="498"/>
+								</LabelField>
+								<InputField name="СписокИзделийПоКаталогуИзделие" id="499">
+									<DataPath>Объект.СписокИзделийПоКаталогу.Изделие</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<ContextMenu name="СписокИзделийПоКаталогуИзделиеКонтекстноеМеню" id="500"/>
+									<ExtendedTooltip name="СписокИзделийПоКаталогуИзделиеРасширеннаяПодсказка" id="501"/>
+								</InputField>
+								<InputField name="СписокИзделийПоКаталогуГлубинаИзделия" id="502">
+									<DataPath>Объект.СписокИзделийПоКаталогу.ГлубинаИзделия</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>1</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="СписокИзделийПоКаталогуГлубинаИзделияКонтекстноеМеню" id="503"/>
+									<ExtendedTooltip name="СписокИзделийПоКаталогуГлубинаИзделияРасширеннаяПодсказка" id="504"/>
+								</InputField>
+								<InputField name="СписокИзделийПоКаталогуШиринаИзделия" id="505">
+									<DataPath>Объект.СписокИзделийПоКаталогу.ШиринаИзделия</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>1</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="СписокИзделийПоКаталогуШиринаИзделияКонтекстноеМеню" id="506"/>
+									<ExtendedTooltip name="СписокИзделийПоКаталогуШиринаИзделияРасширеннаяПодсказка" id="507"/>
+								</InputField>
+								<InputField name="СписокИзделийПоКаталогуВысотаИзделия" id="508">
+									<DataPath>Объект.СписокИзделийПоКаталогу.ВысотаИзделия</DataPath>
+									<EditMode>EnterOnInput</EditMode>
+									<Width>1</Width>
+									<HorizontalStretch>false</HorizontalStretch>
+									<ContextMenu name="СписокИзделийПоКаталогуВысотаИзделияКонтекстноеМеню" id="509"/>
+									<ExtendedTooltip name="СписокИзделийПоКаталогуВысотаИзделияРасширеннаяПодсказка" id="510"/>
+								</InputField>
+							</ChildItems>
+						</Table>
+						<UsualGroup name="ГруппаКухонныеКоллекции" id="1153">
 							<Title>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Группа каталог</v8:content>
+									<v8:content>Настройки кухонной коллекции</v8:content>
 								</v8:item>
 							</Title>
 							<ToolTip>
 								<v8:item>
 									<v8:lang>ru</v8:lang>
-									<v8:content>Группа каталог</v8:content>
+									<v8:content>Группа кухонные коллекции</v8:content>
 								</v8:item>
 							</ToolTip>
-							<Group>AlwaysHorizontal</Group>
-							<Representation>None</Representation>
-							<ChildItemsWidth>Equal</ChildItemsWidth>
-							<ShowTitle>false</ShowTitle>
-							<ExtendedTooltip name="ГруппаКаталогРасширеннаяПодсказка" id="1308"/>
+							<HorizontalStretch>true</HorizontalStretch>
+							<Group>Vertical</Group>
+							<ExtendedTooltip name="ГруппаКухонныеКоллекцииРасширеннаяПодсказка" id="1154"/>
 							<ChildItems>
-								<Table name="СписокИзделийПоКаталогу" id="492">
-									<ReadOnly>true</ReadOnly>
-									<SelectionMode>SingleRow</SelectionMode>
-									<AutoInsertNewRow>true</AutoInsertNewRow>
-									<EnableStartDrag>true</EnableStartDrag>
-									<EnableDrag>true</EnableDrag>
-									<FileDragMode>AsFile</FileDragMode>
-									<DataPath>Объект.СписокИзделийПоКаталогу</DataPath>
-									<SearchStringLocation>None</SearchStringLocation>
-									<ViewStatusLocation>None</ViewStatusLocation>
-									<SearchControlLocation>None</SearchControlLocation>
-									<RowFilter xsi:nil="true"/>
-									<ContextMenu name="СписокИзделийПоКаталогуКонтекстноеМеню" id="493"/>
-									<AutoCommandBar name="СписокИзделийПоКаталогуКоманднаяПанель" id="494">
-										<Autofill>false</Autofill>
-										<ChildItems>
-											<Button name="СписокИзделийПоКаталогуПодобрать" id="511">
-												<Type>CommandBarButton</Type>
-												<CommandName>Form.Command.Подобрать</CommandName>
-												<Title>
-													<v8:item>
-														<v8:lang>ru</v8:lang>
-														<v8:content>Редактировать</v8:content>
-													</v8:item>
-												</Title>
-												<ExtendedTooltip name="СписокИзделийПоКаталогуПодобратьРасширеннаяПодсказка" id="512"/>
-											</Button>
-											<Button name="СписокИзделийПоКаталогуНайти" id="515">
-												<Type>CommandBarButton</Type>
-												<CommandName>Form.Item.СписокИзделийПоКаталогу.StandardCommand.Find</CommandName>
-												<ExtendedTooltip name="СписокИзделийПоКаталогуНайтиРасширеннаяПодсказка" id="516"/>
-											</Button>
-											<Button name="СписокИзделийПоКаталогуОтменитьПоиск" id="517">
-												<Type>CommandBarButton</Type>
-												<CommandName>Form.Item.СписокИзделийПоКаталогу.StandardCommand.CancelSearch</CommandName>
-												<ExtendedTooltip name="СписокИзделийПоКаталогуОтменитьПоискРасширеннаяПодсказка" id="518"/>
-											</Button>
-											<Button name="СписокИзделийПоКаталогуВывестиСписок" id="519">
-												<Type>CommandBarButton</Type>
-												<CommandName>Form.Item.СписокИзделийПоКаталогу.StandardCommand.OutputList</CommandName>
-												<ExtendedTooltip name="СписокИзделийПоКаталогуВывестиСписокРасширеннаяПодсказка" id="520"/>
-											</Button>
-											<Button name="СписокИзделийПоКаталогуЗаполнить" id="523">
-												<Type>CommandBarButton</Type>
-												<Representation>PictureAndText</Representation>
-												<CommandName>Form.Command.ЗаполнитьПоКаталогу</CommandName>
-												<Picture>
-													<xr:Ref>CommonPicture.ПриложитьФайл</xr:Ref>
-													<xr:LoadTransparent>true</xr:LoadTransparent>
-												</Picture>
-												<ExtendedTooltip name="СписокИзделийПоКаталогуЗаполнитьРасширеннаяПодсказка" id="524"/>
-											</Button>
-										</ChildItems>
-									</AutoCommandBar>
-									<ExtendedTooltip name="СписокИзделийПоКаталогуРасширеннаяПодсказка" id="495"/>
-									<SearchStringAddition name="СписокИзделийПоКаталогуСтрокаПоиска" id="1030">
-										<AdditionSource>
-											<Item>СписокИзделийПоКаталогу</Item>
-											<Type>SearchStringRepresentation</Type>
-										</AdditionSource>
-										<ContextMenu name="СписокИзделийПоКаталогуСтрокаПоискаКонтекстноеМеню" id="1031"/>
-										<ExtendedTooltip name="СписокИзделийПоКаталогуСтрокаПоискаРасширеннаяПодсказка" id="1032"/>
-									</SearchStringAddition>
-									<ViewStatusAddition name="СписокИзделийПоКаталогуСостояниеПросмотра" id="1033">
-										<AdditionSource>
-											<Item>СписокИзделийПоКаталогу</Item>
-											<Type>ViewStatusRepresentation</Type>
-										</AdditionSource>
-										<ContextMenu name="СписокИзделийПоКаталогуСостояниеПросмотраКонтекстноеМеню" id="1034"/>
-										<ExtendedTooltip name="СписокИзделийПоКаталогуСостояниеПросмотраРасширеннаяПодсказка" id="1035"/>
-									</ViewStatusAddition>
-									<SearchControlAddition name="СписокИзделийПоКаталогуУправлениеПоиском" id="1036">
-										<AdditionSource>
-											<Item>СписокИзделийПоКаталогу</Item>
-											<Type>SearchControl</Type>
-										</AdditionSource>
-										<ContextMenu name="СписокИзделийПоКаталогуУправлениеПоискомКонтекстноеМеню" id="1037"/>
-										<ExtendedTooltip name="СписокИзделийПоКаталогуУправлениеПоискомРасширеннаяПодсказка" id="1038"/>
-									</SearchControlAddition>
-									<Events>
-										<Event name="Selection">ИзделияПоКаталогуВыбор</Event>
-										<Event name="ChoiceProcessing">ИзделияПоКаталогуОбработкаВыбора</Event>
-									</Events>
+								<UsualGroup name="Группа6" id="1295">
+									<Group>Horizontal</Group>
+									<Representation>None</Representation>
+									<ShowTitle>false</ShowTitle>
+									<ExtendedTooltip name="Группа6РасширеннаяПодсказка" id="1296"/>
 									<ChildItems>
-										<LabelField name="СписокИзделийПоКаталогуНомерСтроки" id="496">
-											<DataPath>Объект.СписокИзделийПоКаталогу.LineNumber</DataPath>
-											<EditMode>EnterOnInput</EditMode>
-											<Width>1</Width>
-											<HorizontalStretch>false</HorizontalStretch>
-											<ContextMenu name="СписокИзделийПоКаталогуНомерСтрокиКонтекстноеМеню" id="497"/>
-											<ExtendedTooltip name="СписокИзделийПоКаталогуНомерСтрокиРасширеннаяПодсказка" id="498"/>
-										</LabelField>
-										<InputField name="СписокИзделийПоКаталогуИзделие" id="499">
-											<DataPath>Объект.СписокИзделийПоКаталогу.Изделие</DataPath>
-											<EditMode>EnterOnInput</EditMode>
-											<ContextMenu name="СписокИзделийПоКаталогуИзделиеКонтекстноеМеню" id="500"/>
-											<ExtendedTooltip name="СписокИзделийПоКаталогуИзделиеРасширеннаяПодсказка" id="501"/>
-										</InputField>
-										<InputField name="СписокИзделийПоКаталогуГлубинаИзделия" id="502">
-											<DataPath>Объект.СписокИзделийПоКаталогу.ГлубинаИзделия</DataPath>
-											<EditMode>EnterOnInput</EditMode>
-											<Width>1</Width>
-											<HorizontalStretch>false</HorizontalStretch>
-											<ContextMenu name="СписокИзделийПоКаталогуГлубинаИзделияКонтекстноеМеню" id="503"/>
-											<ExtendedTooltip name="СписокИзделийПоКаталогуГлубинаИзделияРасширеннаяПодсказка" id="504"/>
-										</InputField>
-										<InputField name="СписокИзделийПоКаталогуШиринаИзделия" id="505">
-											<DataPath>Объект.СписокИзделийПоКаталогу.ШиринаИзделия</DataPath>
-											<EditMode>EnterOnInput</EditMode>
-											<Width>1</Width>
-											<HorizontalStretch>false</HorizontalStretch>
-											<ContextMenu name="СписокИзделийПоКаталогуШиринаИзделияКонтекстноеМеню" id="506"/>
-											<ExtendedTooltip name="СписокИзделийПоКаталогуШиринаИзделияРасширеннаяПодсказка" id="507"/>
-										</InputField>
-										<InputField name="СписокИзделийПоКаталогуВысотаИзделия" id="508">
-											<DataPath>Объект.СписокИзделийПоКаталогу.ВысотаИзделия</DataPath>
-											<EditMode>EnterOnInput</EditMode>
-											<Width>1</Width>
-											<HorizontalStretch>false</HorizontalStretch>
-											<ContextMenu name="СписокИзделийПоКаталогуВысотаИзделияКонтекстноеМеню" id="509"/>
-											<ExtendedTooltip name="СписокИзделийПоКаталогуВысотаИзделияРасширеннаяПодсказка" id="510"/>
+										<InputField name="КухоннаяКоллекция" id="1155">
+											<DataPath>Объект.КухоннаяКоллекция</DataPath>
+											<TitleLocation>None</TitleLocation>
+											<OpenButton>false</OpenButton>
+											<ContextMenu name="КухоннаяКоллекцияКонтекстноеМеню" id="1156"/>
+											<ExtendedTooltip name="КухоннаяКоллекцияРасширеннаяПодсказка" id="1157"/>
+											<Events>
+												<Event name="OnChange">КухоннаяКоллекцияПриИзменении</Event>
+											</Events>
 										</InputField>
 									</ChildItems>
-								</Table>
-								<UsualGroup name="ГруппаКухонныеКоллекции" id="1153">
+								</UsualGroup>
+								<UsualGroup name="ГруппаКоллекцияРазмеры" id="1244">
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Настройки кухонной коллекции</v8:content>
+											<v8:content>Группа коллекция размеры</v8:content>
 										</v8:item>
 									</Title>
 									<ToolTip>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
-											<v8:content>Группа кухонные коллекции</v8:content>
+											<v8:content>Группа коллекция размеры</v8:content>
 										</v8:item>
 									</ToolTip>
-									<HorizontalStretch>true</HorizontalStretch>
-									<VerticalStretch>false</VerticalStretch>
-									<Group>Vertical</Group>
+									<Group>Horizontal</Group>
 									<Representation>None</Representation>
 									<ShowTitle>false</ShowTitle>
-									<ExtendedTooltip name="ГруппаКухонныеКоллекцииРасширеннаяПодсказка" id="1154"/>
+									<ExtendedTooltip name="ГруппаКоллекцияРазмерыРасширеннаяПодсказка" id="1245"/>
 									<ChildItems>
-										<UsualGroup name="Группа6" id="1295">
-											<Group>AlwaysHorizontal</Group>
-											<Representation>None</Representation>
-											<ShowTitle>false</ShowTitle>
-											<ExtendedTooltip name="Группа6РасширеннаяПодсказка" id="1296"/>
-											<ChildItems>
-												<InputField name="КухоннаяКоллекция" id="1155">
-													<DataPath>Объект.КухоннаяКоллекция</DataPath>
-													<TitleLocation>None</TitleLocation>
-													<OpenButton>false</OpenButton>
-													<ContextMenu name="КухоннаяКоллекцияКонтекстноеМеню" id="1156"/>
-													<ExtendedTooltip name="КухоннаяКоллекцияРасширеннаяПодсказка" id="1157"/>
-													<Events>
-														<Event name="OnChange">КухоннаяКоллекцияПриИзменении</Event>
-													</Events>
-												</InputField>
-											</ChildItems>
-										</UsualGroup>
-										<UsualGroup name="ГруппаКоллекцияРазмеры" id="1244">
+										<UsualGroup name="ГруппаКоллекцияРазмерыШиринаГлубина" id="1199">
 											<Title>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Группа коллекция размеры</v8:content>
+													<v8:content>Размеры кухни ширина/глубина</v8:content>
 												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Группа коллекция размеры</v8:content>
+													<v8:content>Группа коллекция размеры ширина глубина</v8:content>
 												</v8:item>
 											</ToolTip>
-											<Group>AlwaysHorizontal</Group>
-											<Representation>None</Representation>
-											<ShowTitle>false</ShowTitle>
-											<ExtendedTooltip name="ГруппаКоллекцияРазмерыРасширеннаяПодсказка" id="1245"/>
+											<Width>27</Width>
+											<HorizontalStretch>false</HorizontalStretch>
+											<VerticalStretch>true</VerticalStretch>
+											<Group>Vertical</Group>
+											<Representation>StrongSeparation</Representation>
+											<ExtendedTooltip name="ГруппаКоллекцияРазмерыШиринаГлубинаРасширеннаяПодсказка" id="1200"/>
 											<ChildItems>
-												<UsualGroup name="ГруппаКоллекцияРазмерыШиринаГлубина" id="1199">
-													<Title>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>Размеры кухни ширина/глубина</v8:content>
-														</v8:item>
-													</Title>
-													<ToolTip>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>Группа коллекция размеры ширина глубина</v8:content>
-														</v8:item>
-													</ToolTip>
-													<Width>30</Width>
-													<Height>5</Height>
+												<InputField name="НастройкиКоллекцииФорма" id="1201">
+													<DataPath>Items.НастройкиКоллекции.CurrentData.Форма</DataPath>
+													<TitleLocation>None</TitleLocation>
+													<Width>27</Width>
 													<HorizontalStretch>false</HorizontalStretch>
-													<VerticalStretch>false</VerticalStretch>
-													<Group>Vertical</Group>
-													<Representation>StrongSeparation</Representation>
-													<ExtendedTooltip name="ГруппаКоллекцияРазмерыШиринаГлубинаРасширеннаяПодсказка" id="1200"/>
-													<ChildItems>
-														<InputField name="НастройкиКоллекцииФорма" id="1201">
-															<DataPath>Items.НастройкиКоллекции.CurrentData.Форма</DataPath>
-															<TitleLocation>None</TitleLocation>
-															<HorizontalStretch>true</HorizontalStretch>
-															<ContextMenu name="НастройкиКоллекцииФормаКонтекстноеМеню" id="1202"/>
-															<ExtendedTooltip name="НастройкиКоллекцииФормаРасширеннаяПодсказка" id="1203"/>
-															<Events>
-																<Event name="OnChange">НастройкиКоллекцииФормаПриИзменении</Event>
-															</Events>
-														</InputField>
-														<UsualGroup name="ГруппаКоллекцияФормаРазмеры" id="1204">
-															<Title>
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>Группа коллекция форма размеры</v8:content>
-																</v8:item>
-															</Title>
-															<Group>AlwaysHorizontal</Group>
-															<Representation>None</Representation>
-															<ShowTitle>false</ShowTitle>
-															<ExtendedTooltip name="ГруппаКоллекцияФормаРазмерыРасширеннаяПодсказка" id="1205"/>
-															<ChildItems>
-																<UsualGroup name="Группа2" id="1220">
-																	<Representation>None</Representation>
-																	<ShowTitle>false</ShowTitle>
-																	<ExtendedTooltip name="Группа2РасширеннаяПодсказка" id="1221"/>
-																	<ChildItems>
-																		<LabelDecoration name="Декорация3" id="1222">
-																			<Height>1</Height>
-																			<ContextMenu name="Декорация3КонтекстноеМеню" id="1223"/>
-																			<ExtendedTooltip name="Декорация3РасширеннаяПодсказка" id="1224"/>
-																		</LabelDecoration>
-																		<InputField name="НастройкиКоллекцииШиринаКухниЛево" id="1209">
-																			<DataPath>Items.НастройкиКоллекции.CurrentData.ШиринаКухниЛево</DataPath>
-																			<Title>
-																				<v8:item>
-																					<v8:lang>ru</v8:lang>
-																					<v8:content>Лево</v8:content>
-																				</v8:item>
-																			</Title>
-																			<TitleLocation>Top</TitleLocation>
-																			<ToolTip>
-																				<v8:item>
-																					<v8:lang>ru</v8:lang>
-																					<v8:content>Ширина</v8:content>
-																				</v8:item>
-																			</ToolTip>
-																			<Width>4</Width>
-																			<HorizontalStretch>false</HorizontalStretch>
-																			<ContextMenu name="НастройкиКоллекцииШиринаКухниЛевоКонтекстноеМеню" id="1210"/>
-																			<ExtendedTooltip name="НастройкиКоллекцииШиринаКухниЛевоРасширеннаяПодсказка" id="1211"/>
-																		</InputField>
-																		<InputField name="НастройкиКоллекцииГлубинаКухниЛево" id="1257">
-																			<DataPath>Items.НастройкиКоллекции.CurrentData.ГлубинаКухниЛево</DataPath>
-																			<TitleLocation>None</TitleLocation>
-																			<ToolTip>
-																				<v8:item>
-																					<v8:lang>ru</v8:lang>
-																					<v8:content>Глубина</v8:content>
-																				</v8:item>
-																			</ToolTip>
-																			<Width>4</Width>
-																			<HorizontalStretch>false</HorizontalStretch>
-																			<ContextMenu name="НастройкиКоллекцииГлубинаКухниЛевоКонтекстноеМеню" id="1258"/>
-																			<ExtendedTooltip name="НастройкиКоллекцииГлубинаКухниЛевоРасширеннаяПодсказка" id="1259"/>
-																		</InputField>
-																	</ChildItems>
-																</UsualGroup>
-																<UsualGroup name="Группа1" id="1218">
-																	<Representation>None</Representation>
-																	<ShowTitle>false</ShowTitle>
-																	<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="1219"/>
-																	<ChildItems>
-																		<UsualGroup name="Группа4" id="1230">
-																			<Group>AlwaysHorizontal</Group>
-																			<Representation>None</Representation>
-																			<ShowTitle>false</ShowTitle>
-																			<ExtendedTooltip name="Группа4РасширеннаяПодсказка" id="1231"/>
-																			<ChildItems>
-																				<LabelDecoration name="Декорация6" id="1235">
-																					<Width>3</Width>
-																					<ContextMenu name="Декорация6КонтекстноеМеню" id="1236"/>
-																					<ExtendedTooltip name="Декорация6РасширеннаяПодсказка" id="1237"/>
-																				</LabelDecoration>
-																				<UsualGroup name="Группа5" id="1266">
-																					<Representation>None</Representation>
-																					<ShowTitle>false</ShowTitle>
-																					<ExtendedTooltip name="Группа5РасширеннаяПодсказка" id="1267"/>
-																					<ChildItems>
-																						<InputField name="НастройкиКоллекцииШиринаКухниЦентр" id="1215">
-																							<DataPath>Items.НастройкиКоллекции.CurrentData.ШиринаКухниЦентр</DataPath>
-																							<Title>
-																								<v8:item>
-																									<v8:lang>ru</v8:lang>
-																									<v8:content>Центр</v8:content>
-																								</v8:item>
-																							</Title>
-																							<TitleLocation>Top</TitleLocation>
-																							<ToolTip>
-																								<v8:item>
-																									<v8:lang>ru</v8:lang>
-																									<v8:content>Ширина</v8:content>
-																								</v8:item>
-																							</ToolTip>
-																							<GroupHorizontalAlign>Center</GroupHorizontalAlign>
-																							<GroupVerticalAlign>Center</GroupVerticalAlign>
-																							<Width>4</Width>
-																							<HorizontalStretch>false</HorizontalStretch>
-																							<ContextMenu name="НастройкиКоллекцииШиринаКухниЦентрКонтекстноеМеню" id="1216"/>
-																							<ExtendedTooltip name="НастройкиКоллекцииШиринаКухниЦентрРасширеннаяПодсказка" id="1217"/>
-																						</InputField>
-																						<InputField name="НастройкиКоллекцииГлубинаКухниЦентр" id="1263">
-																							<DataPath>Items.НастройкиКоллекции.CurrentData.ГлубинаКухниЦентр</DataPath>
-																							<TitleLocation>None</TitleLocation>
-																							<ToolTip>
-																								<v8:item>
-																									<v8:lang>ru</v8:lang>
-																									<v8:content>Глубина</v8:content>
-																								</v8:item>
-																							</ToolTip>
-																							<Width>4</Width>
-																							<HorizontalStretch>false</HorizontalStretch>
-																							<ContextMenu name="НастройкиКоллекцииГлубинаКухниЦентрКонтекстноеМеню" id="1264"/>
-																							<ExtendedTooltip name="НастройкиКоллекцииГлубинаКухниЦентрРасширеннаяПодсказка" id="1265"/>
-																						</InputField>
-																					</ChildItems>
-																				</UsualGroup>
-																				<LabelDecoration name="Декорация5" id="1232">
-																					<ContextMenu name="Декорация5КонтекстноеМеню" id="1233"/>
-																					<ExtendedTooltip name="Декорация5РасширеннаяПодсказка" id="1234"/>
-																				</LabelDecoration>
-																			</ChildItems>
-																		</UsualGroup>
-																		<PictureDecoration name="КартинкаФормаКухниПрямая" id="1206">
-																			<Visible>false</Visible>
-																			<Width>15</Width>
-																			<Height>2</Height>
-																			<HorizontalStretch>false</HorizontalStretch>
-																			<Title formatted="false">
-																				<v8:item>
-																					<v8:lang>ru</v8:lang>
-																					<v8:content>Картинка форма кухни прямая</v8:content>
-																				</v8:item>
-																			</Title>
-																			<Picture>
-																				<xr:Ref>CommonPicture.КоллекцияКухняПрямая</xr:Ref>
-																				<xr:LoadTransparent>true</xr:LoadTransparent>
-																			</Picture>
-																			<ContextMenu name="КартинкаФормаКухниПрямаяКонтекстноеМеню" id="1207"/>
-																			<ExtendedTooltip name="КартинкаФормаКухниПрямаяРасширеннаяПодсказка" id="1208"/>
-																		</PictureDecoration>
-																		<PictureDecoration name="КартинкаФормаКухниПрямаяСтенаСлева" id="1268">
-																			<Visible>false</Visible>
-																			<Width>15</Width>
-																			<Height>2</Height>
-																			<HorizontalStretch>false</HorizontalStretch>
-																			<Title formatted="false">
-																				<v8:item>
-																					<v8:lang>ru</v8:lang>
-																					<v8:content>Картинка форма кухни прямая стена слева</v8:content>
-																				</v8:item>
-																			</Title>
-																			<Picture>
-																				<xr:Ref>CommonPicture.КоллекцияКухняПрямаяСтенаСлева</xr:Ref>
-																				<xr:LoadTransparent>true</xr:LoadTransparent>
-																			</Picture>
-																			<ContextMenu name="КартинкаФормаКухниПрямаяСтенаСлеваКонтекстноеМеню" id="1269"/>
-																			<ExtendedTooltip name="КартинкаФормаКухниПрямаяСтенаСлеваРасширеннаяПодсказка" id="1270"/>
-																		</PictureDecoration>
-																		<PictureDecoration name="КартинкаФормаКухниПрямаяСтенаСправа" id="1271">
-																			<Visible>false</Visible>
-																			<Width>15</Width>
-																			<Height>2</Height>
-																			<HorizontalStretch>false</HorizontalStretch>
-																			<Title formatted="false">
-																				<v8:item>
-																					<v8:lang>ru</v8:lang>
-																					<v8:content>Картинка форма кухни прямая стена справа</v8:content>
-																				</v8:item>
-																			</Title>
-																			<Picture>
-																				<xr:Ref>CommonPicture.КоллекцияКухняПрямаяСтенаСправа</xr:Ref>
-																				<xr:LoadTransparent>true</xr:LoadTransparent>
-																			</Picture>
-																			<ContextMenu name="КартинкаФормаКухниПрямаяСтенаСправаКонтекстноеМеню" id="1272"/>
-																			<ExtendedTooltip name="КартинкаФормаКухниПрямаяСтенаСправаРасширеннаяПодсказка" id="1273"/>
-																		</PictureDecoration>
-																		<PictureDecoration name="КартинкаФормаКухниПрямаяСтеныСДвухСторон" id="1274">
-																			<Visible>false</Visible>
-																			<Width>15</Width>
-																			<Height>2</Height>
-																			<HorizontalStretch>false</HorizontalStretch>
-																			<Title formatted="false">
-																				<v8:item>
-																					<v8:lang>ru</v8:lang>
-																					<v8:content>Картинка форма кухни прямая стены с двух сторон</v8:content>
-																				</v8:item>
-																			</Title>
-																			<Picture>
-																				<xr:Ref>CommonPicture.КоллекцияКухняПрямаяСтеныСДвухСторон</xr:Ref>
-																				<xr:LoadTransparent>true</xr:LoadTransparent>
-																			</Picture>
-																			<ContextMenu name="КартинкаФормаКухниПрямаяСтеныСДвухСторонКонтекстноеМеню" id="1275"/>
-																			<ExtendedTooltip name="КартинкаФормаКухниПрямаяСтеныСДвухСторонРасширеннаяПодсказка" id="1276"/>
-																		</PictureDecoration>
-																		<PictureDecoration name="КартинкаФормаКухниУгловая" id="1238">
-																			<Visible>false</Visible>
-																			<Width>15</Width>
-																			<Height>4</Height>
-																			<HorizontalStretch>false</HorizontalStretch>
-																			<Title formatted="false">
-																				<v8:item>
-																					<v8:lang>ru</v8:lang>
-																					<v8:content>Картинка форма кухни угловая</v8:content>
-																				</v8:item>
-																			</Title>
-																			<Picture>
-																				<xr:Ref>CommonPicture.КоллекцияКухняУгловая</xr:Ref>
-																				<xr:LoadTransparent>true</xr:LoadTransparent>
-																			</Picture>
-																			<ContextMenu name="КартинкаФормаКухниУгловаяКонтекстноеМеню" id="1239"/>
-																			<ExtendedTooltip name="КартинкаФормаКухниУгловаяРасширеннаяПодсказка" id="1240"/>
-																		</PictureDecoration>
-																		<PictureDecoration name="КартинкаФормаКухниУгловаяСтенаСлева" id="1280">
-																			<Visible>false</Visible>
-																			<Width>15</Width>
-																			<Height>4</Height>
-																			<HorizontalStretch>false</HorizontalStretch>
-																			<Title formatted="false">
-																				<v8:item>
-																					<v8:lang>ru</v8:lang>
-																					<v8:content>Картинка форма кухни угловая стена слева</v8:content>
-																				</v8:item>
-																			</Title>
-																			<Picture>
-																				<xr:Ref>CommonPicture.КоллекцияКухняУгловаяСтенаСлева</xr:Ref>
-																				<xr:LoadTransparent>true</xr:LoadTransparent>
-																			</Picture>
-																			<ContextMenu name="КартинкаФормаКухниУгловаяСтенаСлеваКонтекстноеМеню" id="1281"/>
-																			<ExtendedTooltip name="КартинкаФормаКухниУгловаяСтенаСлеваРасширеннаяПодсказка" id="1282"/>
-																		</PictureDecoration>
-																		<PictureDecoration name="КартинкаФормаКухниУгловаяСтенаСправа" id="1283">
-																			<Visible>false</Visible>
-																			<Width>15</Width>
-																			<Height>4</Height>
-																			<HorizontalStretch>false</HorizontalStretch>
-																			<Title formatted="false">
-																				<v8:item>
-																					<v8:lang>ru</v8:lang>
-																					<v8:content>Картинка форма кухни угловая стена справа</v8:content>
-																				</v8:item>
-																			</Title>
-																			<Picture>
-																				<xr:Ref>CommonPicture.КоллекцияКухняУгловаяСтенаСправа</xr:Ref>
-																				<xr:LoadTransparent>true</xr:LoadTransparent>
-																			</Picture>
-																			<ContextMenu name="КартинкаФормаКухниУгловаяСтенаСправаКонтекстноеМеню" id="1284"/>
-																			<ExtendedTooltip name="КартинкаФормаКухниУгловаяСтенаСправаРасширеннаяПодсказка" id="1285"/>
-																		</PictureDecoration>
-																		<PictureDecoration name="КартинкаФормаКухниУгловаяСтеныСДвухСторон" id="1277">
-																			<Visible>false</Visible>
-																			<Width>15</Width>
-																			<Height>4</Height>
-																			<HorizontalStretch>false</HorizontalStretch>
-																			<Title formatted="false">
-																				<v8:item>
-																					<v8:lang>ru</v8:lang>
-																					<v8:content>Картинка форма кухни угловая стены с двух сторон</v8:content>
-																				</v8:item>
-																			</Title>
-																			<Picture>
-																				<xr:Ref>CommonPicture.КоллекцияКухняУгловаяСтеныСДвухСторон</xr:Ref>
-																				<xr:LoadTransparent>true</xr:LoadTransparent>
-																			</Picture>
-																			<ContextMenu name="КартинкаФормаКухниУгловаяСтеныСДвухСторонКонтекстноеМеню" id="1278"/>
-																			<ExtendedTooltip name="КартинкаФормаКухниУгловаяСтеныСДвухСторонРасширеннаяПодсказка" id="1279"/>
-																		</PictureDecoration>
-																		<PictureDecoration name="КартинкаФормаКухниПОбразная" id="1241">
-																			<Width>15</Width>
-																			<Height>4</Height>
-																			<HorizontalStretch>false</HorizontalStretch>
-																			<Title formatted="false">
-																				<v8:item>
-																					<v8:lang>ru</v8:lang>
-																					<v8:content>Картинка форма кухни п образная</v8:content>
-																				</v8:item>
-																			</Title>
-																			<Picture>
-																				<xr:Ref>CommonPicture.КоллекцияКухняПОбразная</xr:Ref>
-																				<xr:LoadTransparent>true</xr:LoadTransparent>
-																			</Picture>
-																			<ContextMenu name="КартинкаФормаКухниПОбразнаяКонтекстноеМеню" id="1242"/>
-																			<ExtendedTooltip name="КартинкаФормаКухниПОбразнаяРасширеннаяПодсказка" id="1243"/>
-																		</PictureDecoration>
-																		<PictureDecoration name="КартинкаФормаКухниПОбразнаяСтенаСлева" id="1286">
-																			<Visible>false</Visible>
-																			<Width>15</Width>
-																			<Height>4</Height>
-																			<HorizontalStretch>false</HorizontalStretch>
-																			<Title formatted="false">
-																				<v8:item>
-																					<v8:lang>ru</v8:lang>
-																					<v8:content>Картинка форма кухни п образная стена слева</v8:content>
-																				</v8:item>
-																			</Title>
-																			<Picture>
-																				<xr:Ref>CommonPicture.КоллекцияКухняПОбразнаяСтенаСлева</xr:Ref>
-																				<xr:LoadTransparent>true</xr:LoadTransparent>
-																			</Picture>
-																			<ContextMenu name="КартинкаФормаКухниПОбразнаяСтенаСлеваКонтекстноеМеню" id="1287"/>
-																			<ExtendedTooltip name="КартинкаФормаКухниПОбразнаяСтенаСлеваРасширеннаяПодсказка" id="1288"/>
-																		</PictureDecoration>
-																		<PictureDecoration name="КартинкаФормаКухниПОбразнаяСтенаСправа" id="1289">
-																			<Visible>false</Visible>
-																			<Width>15</Width>
-																			<Height>4</Height>
-																			<HorizontalStretch>false</HorizontalStretch>
-																			<Title formatted="false">
-																				<v8:item>
-																					<v8:lang>ru</v8:lang>
-																					<v8:content>Картинка форма кухни п образная стена справа</v8:content>
-																				</v8:item>
-																			</Title>
-																			<Picture>
-																				<xr:Ref>CommonPicture.КоллекцияКухняПОбразнаяСтенаСправа</xr:Ref>
-																				<xr:LoadTransparent>true</xr:LoadTransparent>
-																			</Picture>
-																			<ContextMenu name="КартинкаФормаКухниПОбразнаяСтенаСправаКонтекстноеМеню" id="1290"/>
-																			<ExtendedTooltip name="КартинкаФормаКухниПОбразнаяСтенаСправаРасширеннаяПодсказка" id="1291"/>
-																		</PictureDecoration>
-																		<PictureDecoration name="КартинкаФормаКухниПОбразнаяСтеныСДвухСторон" id="1292">
-																			<Visible>false</Visible>
-																			<Width>15</Width>
-																			<Height>4</Height>
-																			<HorizontalStretch>false</HorizontalStretch>
-																			<Title formatted="false">
-																				<v8:item>
-																					<v8:lang>ru</v8:lang>
-																					<v8:content>Картинка форма кухни п образная стены с двух сторон</v8:content>
-																				</v8:item>
-																			</Title>
-																			<Picture>
-																				<xr:Ref>CommonPicture.КоллекцияКухняПОбразнаяСтеныСдвухСторон</xr:Ref>
-																				<xr:LoadTransparent>true</xr:LoadTransparent>
-																			</Picture>
-																			<ContextMenu name="КартинкаФормаКухниПОбразнаяСтеныСДвухСторонКонтекстноеМеню" id="1293"/>
-																			<ExtendedTooltip name="КартинкаФормаКухниПОбразнаяСтеныСДвухСторонРасширеннаяПодсказка" id="1294"/>
-																		</PictureDecoration>
-																	</ChildItems>
-																</UsualGroup>
-																<UsualGroup name="Группа3" id="1225">
-																	<Representation>None</Representation>
-																	<ShowTitle>false</ShowTitle>
-																	<ExtendedTooltip name="Группа3РасширеннаяПодсказка" id="1226"/>
-																	<ChildItems>
-																		<LabelDecoration name="Декорация4" id="1227">
-																			<ContextMenu name="Декорация4КонтекстноеМеню" id="1228"/>
-																			<ExtendedTooltip name="Декорация4РасширеннаяПодсказка" id="1229"/>
-																		</LabelDecoration>
-																		<InputField name="НастройкиКоллекцииШиринаКухниПраво" id="1212">
-																			<DataPath>Items.НастройкиКоллекции.CurrentData.ШиринаКухниПраво</DataPath>
-																			<Title>
-																				<v8:item>
-																					<v8:lang>ru</v8:lang>
-																					<v8:content>Право</v8:content>
-																				</v8:item>
-																			</Title>
-																			<TitleLocation>Top</TitleLocation>
-																			<ToolTip>
-																				<v8:item>
-																					<v8:lang>ru</v8:lang>
-																					<v8:content>Ширина</v8:content>
-																				</v8:item>
-																			</ToolTip>
-																			<Width>4</Width>
-																			<HorizontalStretch>false</HorizontalStretch>
-																			<ContextMenu name="НастройкиКоллекцииШиринаКухниПравоКонтекстноеМеню" id="1213"/>
-																			<ExtendedTooltip name="НастройкиКоллекцииШиринаКухниПравоРасширеннаяПодсказка" id="1214"/>
-																		</InputField>
-																		<InputField name="НастройкиКоллекцииГлубинаКухниПраво" id="1260">
-																			<DataPath>Items.НастройкиКоллекции.CurrentData.ГлубинаКухниПраво</DataPath>
-																			<TitleLocation>None</TitleLocation>
-																			<ToolTip>
-																				<v8:item>
-																					<v8:lang>ru</v8:lang>
-																					<v8:content>Глубина</v8:content>
-																				</v8:item>
-																			</ToolTip>
-																			<Width>4</Width>
-																			<HorizontalStretch>false</HorizontalStretch>
-																			<ContextMenu name="НастройкиКоллекцииГлубинаКухниПравоКонтекстноеМеню" id="1261"/>
-																			<ExtendedTooltip name="НастройкиКоллекцииГлубинаКухниПравоРасширеннаяПодсказка" id="1262"/>
-																		</InputField>
-																	</ChildItems>
-																</UsualGroup>
-															</ChildItems>
-														</UsualGroup>
-													</ChildItems>
-												</UsualGroup>
-												<UsualGroup name="ГруппаКоллекцияРазмерыВысота" id="1194">
+													<ContextMenu name="НастройкиКоллекцииФормаКонтекстноеМеню" id="1202"/>
+													<ExtendedTooltip name="НастройкиКоллекцииФормаРасширеннаяПодсказка" id="1203"/>
+													<Events>
+														<Event name="OnChange">НастройкиКоллекцииФормаПриИзменении</Event>
+													</Events>
+												</InputField>
+												<UsualGroup name="ГруппаКоллекцияФормаРазмеры" id="1204">
 													<Title>
 														<v8:item>
 															<v8:lang>ru</v8:lang>
-															<v8:content>Размеры кухни по высоте</v8:content>
+															<v8:content>Группа коллекция форма размеры</v8:content>
 														</v8:item>
 													</Title>
-													<ToolTip>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>Группа коллекция размеры высота</v8:content>
-														</v8:item>
-													</ToolTip>
-													<HorizontalStretch>true</HorizontalStretch>
-													<VerticalStretch>false</VerticalStretch>
-													<Group>Vertical</Group>
-													<Representation>StrongSeparation</Representation>
-													<ExtendedTooltip name="ГруппаКоллекцияРазмерыВысотаРасширеннаяПодсказка" id="1195"/>
+													<Group>Horizontal</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="ГруппаКоллекцияФормаРазмерыРасширеннаяПодсказка" id="1205"/>
 													<ChildItems>
-														<UsualGroup name="Группа7" id="1297">
-															<Group>AlwaysHorizontal</Group>
+														<UsualGroup name="Группа2" id="1220">
 															<Representation>None</Representation>
 															<ShowTitle>false</ShowTitle>
-															<ExtendedTooltip name="Группа7РасширеннаяПодсказка" id="1298"/>
+															<ExtendedTooltip name="Группа2РасширеннаяПодсказка" id="1221"/>
 															<ChildItems>
-																<UsualGroup name="ГруппаКоллекцияРазмеры2" id="1192">
+																<LabelDecoration name="Декорация3" id="1222">
+																	<Height>1</Height>
+																	<ContextMenu name="Декорация3КонтекстноеМеню" id="1223"/>
+																	<ExtendedTooltip name="Декорация3РасширеннаяПодсказка" id="1224"/>
+																</LabelDecoration>
+																<InputField name="НастройкиКоллекцииШиринаКухниЛево" id="1209">
+																	<DataPath>Items.НастройкиКоллекции.CurrentData.ШиринаКухниЛево</DataPath>
 																	<Title>
 																		<v8:item>
 																			<v8:lang>ru</v8:lang>
-																			<v8:content>Группа коллекция размеры2</v8:content>
+																			<v8:content>Лево</v8:content>
 																		</v8:item>
 																	</Title>
+																	<TitleLocation>Top</TitleLocation>
 																	<ToolTip>
 																		<v8:item>
 																			<v8:lang>ru</v8:lang>
-																			<v8:content>Группа коллекция размеры2</v8:content>
+																			<v8:content>Ширина</v8:content>
 																		</v8:item>
 																	</ToolTip>
+																	<Width>4</Width>
+																	<HorizontalStretch>false</HorizontalStretch>
+																	<ContextMenu name="НастройкиКоллекцииШиринаКухниЛевоКонтекстноеМеню" id="1210"/>
+																	<ExtendedTooltip name="НастройкиКоллекцииШиринаКухниЛевоРасширеннаяПодсказка" id="1211"/>
+																</InputField>
+																<InputField name="НастройкиКоллекцииГлубинаКухниЛево" id="1257">
+																	<DataPath>Items.НастройкиКоллекции.CurrentData.ГлубинаКухниЛево</DataPath>
+																	<TitleLocation>None</TitleLocation>
+																	<ToolTip>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Глубина</v8:content>
+																		</v8:item>
+																	</ToolTip>
+																	<Width>4</Width>
+																	<HorizontalStretch>false</HorizontalStretch>
+																	<ContextMenu name="НастройкиКоллекцииГлубинаКухниЛевоКонтекстноеМеню" id="1258"/>
+																	<ExtendedTooltip name="НастройкиКоллекцииГлубинаКухниЛевоРасширеннаяПодсказка" id="1259"/>
+																</InputField>
+															</ChildItems>
+														</UsualGroup>
+														<UsualGroup name="Группа1" id="1218">
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="Группа1РасширеннаяПодсказка" id="1219"/>
+															<ChildItems>
+																<UsualGroup name="Группа4" id="1230">
+																	<Group>Horizontal</Group>
 																	<Representation>None</Representation>
 																	<ShowTitle>false</ShowTitle>
-																	<ExtendedTooltip name="ГруппаКоллекцияРазмеры2РасширеннаяПодсказка" id="1193"/>
+																	<ExtendedTooltip name="Группа4РасширеннаяПодсказка" id="1231"/>
 																	<ChildItems>
-																		<LabelDecoration name="Декорация7" id="1246">
-																			<Width>1</Width>
-																			<HorizontalStretch>false</HorizontalStretch>
-																			<ContextMenu name="Декорация7КонтекстноеМеню" id="1247"/>
-																			<ExtendedTooltip name="Декорация7РасширеннаяПодсказка" id="1248"/>
+																		<LabelDecoration name="Декорация6" id="1235">
+																			<Width>3</Width>
+																			<ContextMenu name="Декорация6КонтекстноеМеню" id="1236"/>
+																			<ExtendedTooltip name="Декорация6РасширеннаяПодсказка" id="1237"/>
 																		</LabelDecoration>
-																		<InputField name="НастройкиКоллекцииОбщаяВысота" id="1186">
-																			<DataPath>Items.НастройкиКоллекции.CurrentData.ОбщаяВысота</DataPath>
-																			<Title>
-																				<v8:item>
-																					<v8:lang>ru</v8:lang>
-																					<v8:content>a) Общая</v8:content>
-																				</v8:item>
-																			</Title>
-																			<Width>6</Width>
-																			<HorizontalStretch>false</HorizontalStretch>
-																			<ContextMenu name="НастройкиКоллекцииОбщаяВысотаКонтекстноеМеню" id="1187"/>
-																			<ExtendedTooltip name="НастройкиКоллекцииОбщаяВысотаРасширеннаяПодсказка" id="1188"/>
-																		</InputField>
-																		<InputField name="НастройкиКоллекцииВысотаКоробовВерх" id="1180">
-																			<DataPath>Items.НастройкиКоллекции.CurrentData.ВысотаКоробовВерх</DataPath>
-																			<Title>
-																				<v8:item>
-																					<v8:lang>ru</v8:lang>
-																					<v8:content>b) Верх</v8:content>
-																				</v8:item>
-																			</Title>
-																			<Width>6</Width>
-																			<HorizontalStretch>false</HorizontalStretch>
-																			<ContextMenu name="НастройкиКоллекцииВысотаКоробовВерхКонтекстноеМеню" id="1181"/>
-																			<ExtendedTooltip name="НастройкиКоллекцииВысотаКоробовВерхРасширеннаяПодсказка" id="1182"/>
-																		</InputField>
-																		<InputField name="НастройкиКоллекцииВысотаКоробовНиз" id="1183">
-																			<DataPath>Items.НастройкиКоллекции.CurrentData.ВысотаКоробовНиз</DataPath>
-																			<Title>
-																				<v8:item>
-																					<v8:lang>ru</v8:lang>
-																					<v8:content>c) Низ</v8:content>
-																				</v8:item>
-																			</Title>
-																			<Width>6</Width>
-																			<HorizontalStretch>false</HorizontalStretch>
-																			<ContextMenu name="НастройкиКоллекцииВысотаКоробовНизКонтекстноеМеню" id="1184"/>
-																			<ExtendedTooltip name="НастройкиКоллекцииВысотаКоробовНизРасширеннаяПодсказка" id="1185"/>
-																		</InputField>
+																		<UsualGroup name="Группа5" id="1266">
+																			<Representation>None</Representation>
+																			<ShowTitle>false</ShowTitle>
+																			<ExtendedTooltip name="Группа5РасширеннаяПодсказка" id="1267"/>
+																			<ChildItems>
+																				<InputField name="НастройкиКоллекцииШиринаКухниЦентр" id="1215">
+																					<DataPath>Items.НастройкиКоллекции.CurrentData.ШиринаКухниЦентр</DataPath>
+																					<Title>
+																						<v8:item>
+																							<v8:lang>ru</v8:lang>
+																							<v8:content>Центр</v8:content>
+																						</v8:item>
+																					</Title>
+																					<TitleLocation>Top</TitleLocation>
+																					<ToolTip>
+																						<v8:item>
+																							<v8:lang>ru</v8:lang>
+																							<v8:content>Ширина</v8:content>
+																						</v8:item>
+																					</ToolTip>
+																					<GroupHorizontalAlign>Center</GroupHorizontalAlign>
+																					<GroupVerticalAlign>Center</GroupVerticalAlign>
+																					<Width>4</Width>
+																					<HorizontalStretch>false</HorizontalStretch>
+																					<ContextMenu name="НастройкиКоллекцииШиринаКухниЦентрКонтекстноеМеню" id="1216"/>
+																					<ExtendedTooltip name="НастройкиКоллекцииШиринаКухниЦентрРасширеннаяПодсказка" id="1217"/>
+																				</InputField>
+																				<InputField name="НастройкиКоллекцииГлубинаКухниЦентр" id="1263">
+																					<DataPath>Items.НастройкиКоллекции.CurrentData.ГлубинаКухниЦентр</DataPath>
+																					<TitleLocation>None</TitleLocation>
+																					<ToolTip>
+																						<v8:item>
+																							<v8:lang>ru</v8:lang>
+																							<v8:content>Глубина</v8:content>
+																						</v8:item>
+																					</ToolTip>
+																					<Width>4</Width>
+																					<HorizontalStretch>false</HorizontalStretch>
+																					<ContextMenu name="НастройкиКоллекцииГлубинаКухниЦентрКонтекстноеМеню" id="1264"/>
+																					<ExtendedTooltip name="НастройкиКоллекцииГлубинаКухниЦентрРасширеннаяПодсказка" id="1265"/>
+																				</InputField>
+																			</ChildItems>
+																		</UsualGroup>
+																		<LabelDecoration name="Декорация5" id="1232">
+																			<ContextMenu name="Декорация5КонтекстноеМеню" id="1233"/>
+																			<ExtendedTooltip name="Декорация5РасширеннаяПодсказка" id="1234"/>
+																		</LabelDecoration>
 																	</ChildItems>
 																</UsualGroup>
-																<PictureDecoration name="ДекорацияКоллекцияРазмеры" id="1196">
-																	<Height>5</Height>
+																<PictureDecoration name="КартинкаФормаКухниПрямая" id="1206">
+																	<Visible>false</Visible>
+																	<Width>15</Width>
+																	<Height>2</Height>
 																	<HorizontalStretch>false</HorizontalStretch>
-																	<VerticalStretch>false</VerticalStretch>
 																	<Title formatted="false">
 																		<v8:item>
 																			<v8:lang>ru</v8:lang>
-																			<v8:content>Декорация коллекция размеры</v8:content>
+																			<v8:content>Картинка форма кухни прямая</v8:content>
 																		</v8:item>
 																	</Title>
 																	<Picture>
-																		<xr:Ref>CommonPicture.КоллекцияРазмеры</xr:Ref>
+																		<xr:Ref>CommonPicture.КоллекцияКухняПрямая</xr:Ref>
 																		<xr:LoadTransparent>true</xr:LoadTransparent>
 																	</Picture>
-																	<ContextMenu name="ДекорацияКоллекцияРазмерыКонтекстноеМеню" id="1197"/>
-																	<ExtendedTooltip name="ДекорацияКоллекцияРазмерыРасширеннаяПодсказка" id="1198"/>
+																	<FileDragMode>AsFile</FileDragMode>
+																	<ContextMenu name="КартинкаФормаКухниПрямаяКонтекстноеМеню" id="1207"/>
+																	<ExtendedTooltip name="КартинкаФормаКухниПрямаяРасширеннаяПодсказка" id="1208"/>
+																</PictureDecoration>
+																<PictureDecoration name="КартинкаФормаКухниПрямаяСтенаСлева" id="1268">
+																	<Visible>false</Visible>
+																	<Width>15</Width>
+																	<Height>2</Height>
+																	<HorizontalStretch>false</HorizontalStretch>
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Картинка форма кухни прямая стена слева</v8:content>
+																		</v8:item>
+																	</Title>
+																	<Picture>
+																		<xr:Ref>CommonPicture.КоллекцияКухняПрямаяСтенаСлева</xr:Ref>
+																		<xr:LoadTransparent>true</xr:LoadTransparent>
+																	</Picture>
+																	<FileDragMode>AsFile</FileDragMode>
+																	<ContextMenu name="КартинкаФормаКухниПрямаяСтенаСлеваКонтекстноеМеню" id="1269"/>
+																	<ExtendedTooltip name="КартинкаФормаКухниПрямаяСтенаСлеваРасширеннаяПодсказка" id="1270"/>
+																</PictureDecoration>
+																<PictureDecoration name="КартинкаФормаКухниПрямаяСтенаСправа" id="1271">
+																	<Visible>false</Visible>
+																	<Width>15</Width>
+																	<Height>2</Height>
+																	<HorizontalStretch>false</HorizontalStretch>
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Картинка форма кухни прямая стена справа</v8:content>
+																		</v8:item>
+																	</Title>
+																	<Picture>
+																		<xr:Ref>CommonPicture.КоллекцияКухняПрямаяСтенаСправа</xr:Ref>
+																		<xr:LoadTransparent>true</xr:LoadTransparent>
+																	</Picture>
+																	<FileDragMode>AsFile</FileDragMode>
+																	<ContextMenu name="КартинкаФормаКухниПрямаяСтенаСправаКонтекстноеМеню" id="1272"/>
+																	<ExtendedTooltip name="КартинкаФормаКухниПрямаяСтенаСправаРасширеннаяПодсказка" id="1273"/>
+																</PictureDecoration>
+																<PictureDecoration name="КартинкаФормаКухниПрямаяСтеныСДвухСторон" id="1274">
+																	<Visible>false</Visible>
+																	<Width>15</Width>
+																	<Height>2</Height>
+																	<HorizontalStretch>false</HorizontalStretch>
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Картинка форма кухни прямая стены с двух сторон</v8:content>
+																		</v8:item>
+																	</Title>
+																	<Picture>
+																		<xr:Ref>CommonPicture.КоллекцияКухняПрямаяСтеныСДвухСторон</xr:Ref>
+																		<xr:LoadTransparent>true</xr:LoadTransparent>
+																	</Picture>
+																	<FileDragMode>AsFile</FileDragMode>
+																	<ContextMenu name="КартинкаФормаКухниПрямаяСтеныСДвухСторонКонтекстноеМеню" id="1275"/>
+																	<ExtendedTooltip name="КартинкаФормаКухниПрямаяСтеныСДвухСторонРасширеннаяПодсказка" id="1276"/>
+																</PictureDecoration>
+																<PictureDecoration name="КартинкаФормаКухниУгловая" id="1238">
+																	<Visible>false</Visible>
+																	<Width>15</Width>
+																	<Height>4</Height>
+																	<HorizontalStretch>false</HorizontalStretch>
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Картинка форма кухни угловая</v8:content>
+																		</v8:item>
+																	</Title>
+																	<Picture>
+																		<xr:Ref>CommonPicture.КоллекцияКухняУгловая</xr:Ref>
+																		<xr:LoadTransparent>true</xr:LoadTransparent>
+																	</Picture>
+																	<FileDragMode>AsFile</FileDragMode>
+																	<ContextMenu name="КартинкаФормаКухниУгловаяКонтекстноеМеню" id="1239"/>
+																	<ExtendedTooltip name="КартинкаФормаКухниУгловаяРасширеннаяПодсказка" id="1240"/>
+																</PictureDecoration>
+																<PictureDecoration name="КартинкаФормаКухниУгловаяСтенаСлева" id="1280">
+																	<Visible>false</Visible>
+																	<Width>15</Width>
+																	<Height>4</Height>
+																	<HorizontalStretch>false</HorizontalStretch>
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Картинка форма кухни угловая стена слева</v8:content>
+																		</v8:item>
+																	</Title>
+																	<Picture>
+																		<xr:Ref>CommonPicture.КоллекцияКухняУгловаяСтенаСлева</xr:Ref>
+																		<xr:LoadTransparent>true</xr:LoadTransparent>
+																	</Picture>
+																	<FileDragMode>AsFile</FileDragMode>
+																	<ContextMenu name="КартинкаФормаКухниУгловаяСтенаСлеваКонтекстноеМеню" id="1281"/>
+																	<ExtendedTooltip name="КартинкаФормаКухниУгловаяСтенаСлеваРасширеннаяПодсказка" id="1282"/>
+																</PictureDecoration>
+																<PictureDecoration name="КартинкаФормаКухниУгловаяСтенаСправа" id="1283">
+																	<Visible>false</Visible>
+																	<Width>15</Width>
+																	<Height>4</Height>
+																	<HorizontalStretch>false</HorizontalStretch>
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Картинка форма кухни угловая стена справа</v8:content>
+																		</v8:item>
+																	</Title>
+																	<Picture>
+																		<xr:Ref>CommonPicture.КоллекцияКухняУгловаяСтенаСправа</xr:Ref>
+																		<xr:LoadTransparent>true</xr:LoadTransparent>
+																	</Picture>
+																	<FileDragMode>AsFile</FileDragMode>
+																	<ContextMenu name="КартинкаФормаКухниУгловаяСтенаСправаКонтекстноеМеню" id="1284"/>
+																	<ExtendedTooltip name="КартинкаФормаКухниУгловаяСтенаСправаРасширеннаяПодсказка" id="1285"/>
+																</PictureDecoration>
+																<PictureDecoration name="КартинкаФормаКухниУгловаяСтеныСДвухСторон" id="1277">
+																	<Visible>false</Visible>
+																	<Width>15</Width>
+																	<Height>4</Height>
+																	<HorizontalStretch>false</HorizontalStretch>
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Картинка форма кухни угловая стены с двух сторон</v8:content>
+																		</v8:item>
+																	</Title>
+																	<Picture>
+																		<xr:Ref>CommonPicture.КоллекцияКухняУгловаяСтеныСДвухСторон</xr:Ref>
+																		<xr:LoadTransparent>true</xr:LoadTransparent>
+																	</Picture>
+																	<FileDragMode>AsFile</FileDragMode>
+																	<ContextMenu name="КартинкаФормаКухниУгловаяСтеныСДвухСторонКонтекстноеМеню" id="1278"/>
+																	<ExtendedTooltip name="КартинкаФормаКухниУгловаяСтеныСДвухСторонРасширеннаяПодсказка" id="1279"/>
+																</PictureDecoration>
+																<PictureDecoration name="КартинкаФормаКухниПОбразная" id="1241">
+																	<Width>15</Width>
+																	<Height>4</Height>
+																	<HorizontalStretch>false</HorizontalStretch>
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Картинка форма кухни п образная</v8:content>
+																		</v8:item>
+																	</Title>
+																	<Picture>
+																		<xr:Ref>CommonPicture.КоллекцияКухняПОбразная</xr:Ref>
+																		<xr:LoadTransparent>true</xr:LoadTransparent>
+																	</Picture>
+																	<FileDragMode>AsFile</FileDragMode>
+																	<ContextMenu name="КартинкаФормаКухниПОбразнаяКонтекстноеМеню" id="1242"/>
+																	<ExtendedTooltip name="КартинкаФормаКухниПОбразнаяРасширеннаяПодсказка" id="1243"/>
+																</PictureDecoration>
+																<PictureDecoration name="КартинкаФормаКухниПОбразнаяСтенаСлева" id="1286">
+																	<Visible>false</Visible>
+																	<Width>15</Width>
+																	<Height>4</Height>
+																	<HorizontalStretch>false</HorizontalStretch>
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Картинка форма кухни п образная стена слева</v8:content>
+																		</v8:item>
+																	</Title>
+																	<Picture>
+																		<xr:Ref>CommonPicture.КоллекцияКухняПОбразнаяСтенаСлева</xr:Ref>
+																		<xr:LoadTransparent>true</xr:LoadTransparent>
+																	</Picture>
+																	<FileDragMode>AsFile</FileDragMode>
+																	<ContextMenu name="КартинкаФормаКухниПОбразнаяСтенаСлеваКонтекстноеМеню" id="1287"/>
+																	<ExtendedTooltip name="КартинкаФормаКухниПОбразнаяСтенаСлеваРасширеннаяПодсказка" id="1288"/>
+																</PictureDecoration>
+																<PictureDecoration name="КартинкаФормаКухниПОбразнаяСтенаСправа" id="1289">
+																	<Visible>false</Visible>
+																	<Width>15</Width>
+																	<Height>4</Height>
+																	<HorizontalStretch>false</HorizontalStretch>
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Картинка форма кухни п образная стена справа</v8:content>
+																		</v8:item>
+																	</Title>
+																	<Picture>
+																		<xr:Ref>CommonPicture.КоллекцияКухняПОбразнаяСтенаСправа</xr:Ref>
+																		<xr:LoadTransparent>true</xr:LoadTransparent>
+																	</Picture>
+																	<FileDragMode>AsFile</FileDragMode>
+																	<ContextMenu name="КартинкаФормаКухниПОбразнаяСтенаСправаКонтекстноеМеню" id="1290"/>
+																	<ExtendedTooltip name="КартинкаФормаКухниПОбразнаяСтенаСправаРасширеннаяПодсказка" id="1291"/>
+																</PictureDecoration>
+																<PictureDecoration name="КартинкаФормаКухниПОбразнаяСтеныСДвухСторон" id="1292">
+																	<Visible>false</Visible>
+																	<Width>15</Width>
+																	<Height>4</Height>
+																	<HorizontalStretch>false</HorizontalStretch>
+																	<Title formatted="false">
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Картинка форма кухни п образная стены с двух сторон</v8:content>
+																		</v8:item>
+																	</Title>
+																	<Picture>
+																		<xr:Ref>CommonPicture.КоллекцияКухняПОбразнаяСтеныСдвухСторон</xr:Ref>
+																		<xr:LoadTransparent>true</xr:LoadTransparent>
+																	</Picture>
+																	<FileDragMode>AsFile</FileDragMode>
+																	<ContextMenu name="КартинкаФормаКухниПОбразнаяСтеныСДвухСторонКонтекстноеМеню" id="1293"/>
+																	<ExtendedTooltip name="КартинкаФормаКухниПОбразнаяСтеныСДвухСторонРасширеннаяПодсказка" id="1294"/>
 																</PictureDecoration>
 															</ChildItems>
 														</UsualGroup>
-														<Table name="НастройкиКоллекции" id="1158">
-															<Representation>List</Representation>
-															<CommandBarLocation>None</CommandBarLocation>
-															<ReadOnly>true</ReadOnly>
-															<Height>1</Height>
-															<AutoMaxHeight>false</AutoMaxHeight>
-															<MaxHeight>1</MaxHeight>
-															<HeightInTableRows>1</HeightInTableRows>
-															<HorizontalScrollBar>DontUse</HorizontalScrollBar>
-															<VerticalScrollBar>DontUse</VerticalScrollBar>
-															<HorizontalLines>false</HorizontalLines>
-															<VerticalLines>false</VerticalLines>
-															<AutoInsertNewRow>true</AutoInsertNewRow>
-															<VerticalStretch>false</VerticalStretch>
-															<EnableStartDrag>true</EnableStartDrag>
-															<EnableDrag>true</EnableDrag>
-															<DataPath>Объект.НастройкиКоллекции</DataPath>
-															<RowFilter xsi:nil="true"/>
-															<ContextMenu name="НастройкиКоллекцииКонтекстноеМеню" id="1159"/>
-															<AutoCommandBar name="НастройкиКоллекцииКоманднаяПанель" id="1160">
-																<Autofill>false</Autofill>
-															</AutoCommandBar>
-															<ExtendedTooltip name="НастройкиКоллекцииРасширеннаяПодсказка" id="1161"/>
-															<SearchStringAddition name="НастройкиКоллекцииСтрокаПоиска" id="1162">
-																<AdditionSource>
-																	<Item>НастройкиКоллекции</Item>
-																	<Type>SearchStringRepresentation</Type>
-																</AdditionSource>
-																<ContextMenu name="НастройкиКоллекцииСтрокаПоискаКонтекстноеМеню" id="1163"/>
-																<ExtendedTooltip name="НастройкиКоллекцииСтрокаПоискаРасширеннаяПодсказка" id="1164"/>
-															</SearchStringAddition>
-															<ViewStatusAddition name="НастройкиКоллекцииСостояниеПросмотра" id="1165">
-																<AdditionSource>
-																	<Item>НастройкиКоллекции</Item>
-																	<Type>ViewStatusRepresentation</Type>
-																</AdditionSource>
-																<ContextMenu name="НастройкиКоллекцииСостояниеПросмотраКонтекстноеМеню" id="1166"/>
-																<ExtendedTooltip name="НастройкиКоллекцииСостояниеПросмотраРасширеннаяПодсказка" id="1167"/>
-															</ViewStatusAddition>
-															<SearchControlAddition name="НастройкиКоллекцииУправлениеПоиском" id="1168">
-																<AdditionSource>
-																	<Item>НастройкиКоллекции</Item>
-																	<Type>SearchControl</Type>
-																</AdditionSource>
-																<ContextMenu name="НастройкиКоллекцииУправлениеПоискомКонтекстноеМеню" id="1169"/>
-																<ExtendedTooltip name="НастройкиКоллекцииУправлениеПоискомРасширеннаяПодсказка" id="1170"/>
-															</SearchControlAddition>
+														<UsualGroup name="Группа3" id="1225">
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="Группа3РасширеннаяПодсказка" id="1226"/>
 															<ChildItems>
-																<InputField name="НастройкиКоллекцииКоллекция" id="1189">
-																	<DataPath>Объект.НастройкиКоллекции.Коллекция</DataPath>
-																	<Enabled>false</Enabled>
-																	<ReadOnly>true</ReadOnly>
+																<LabelDecoration name="Декорация4" id="1227">
+																	<ContextMenu name="Декорация4КонтекстноеМеню" id="1228"/>
+																	<ExtendedTooltip name="Декорация4РасширеннаяПодсказка" id="1229"/>
+																</LabelDecoration>
+																<InputField name="НастройкиКоллекцииШиринаКухниПраво" id="1212">
+																	<DataPath>Items.НастройкиКоллекции.CurrentData.ШиринаКухниПраво</DataPath>
+																	<Title>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Право</v8:content>
+																		</v8:item>
+																	</Title>
+																	<TitleLocation>Top</TitleLocation>
+																	<ToolTip>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Ширина</v8:content>
+																		</v8:item>
+																	</ToolTip>
+																	<Width>4</Width>
+																	<HorizontalStretch>false</HorizontalStretch>
+																	<ContextMenu name="НастройкиКоллекцииШиринаКухниПравоКонтекстноеМеню" id="1213"/>
+																	<ExtendedTooltip name="НастройкиКоллекцииШиринаКухниПравоРасширеннаяПодсказка" id="1214"/>
+																</InputField>
+																<InputField name="НастройкиКоллекцииГлубинаКухниПраво" id="1260">
+																	<DataPath>Items.НастройкиКоллекции.CurrentData.ГлубинаКухниПраво</DataPath>
 																	<TitleLocation>None</TitleLocation>
-																	<EditMode>EnterOnInput</EditMode>
-																	<ShowInHeader>false</ShowInHeader>
-																	<ShowInFooter>false</ShowInFooter>
-																	<ContextMenu name="НастройкиКоллекцииКоллекцияКонтекстноеМеню" id="1190"/>
-																	<ExtendedTooltip name="НастройкиКоллекцииКоллекцияРасширеннаяПодсказка" id="1191"/>
+																	<ToolTip>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>Глубина</v8:content>
+																		</v8:item>
+																	</ToolTip>
+																	<Width>4</Width>
+																	<HorizontalStretch>false</HorizontalStretch>
+																	<ContextMenu name="НастройкиКоллекцииГлубинаКухниПравоКонтекстноеМеню" id="1261"/>
+																	<ExtendedTooltip name="НастройкиКоллекцииГлубинаКухниПравоРасширеннаяПодсказка" id="1262"/>
 																</InputField>
 															</ChildItems>
-														</Table>
+														</UsualGroup>
 													</ChildItems>
 												</UsualGroup>
 											</ChildItems>
 										</UsualGroup>
-										<UsualGroup name="ГруппаСтолешницаПристенок" id="1309">
+										<UsualGroup name="ГруппаКоллекцияРазмерыВысота" id="1194">
 											<Title>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Группа столешница пристенок</v8:content>
+													<v8:content>Размеры кухни по высоте</v8:content>
 												</v8:item>
 											</Title>
 											<ToolTip>
 												<v8:item>
 													<v8:lang>ru</v8:lang>
-													<v8:content>Группа столешница пристенок</v8:content>
+													<v8:content>Группа коллекция размеры высота</v8:content>
 												</v8:item>
 											</ToolTip>
-											<Height>4</Height>
-											<VerticalStretch>false</VerticalStretch>
-											<Group>AlwaysHorizontal</Group>
-											<Representation>None</Representation>
-											<ShowTitle>false</ShowTitle>
-											<ExtendedTooltip name="ГруппаСтолешницаПристенокРасширеннаяПодсказка" id="1310"/>
+											<HorizontalStretch>true</HorizontalStretch>
+											<VerticalStretch>true</VerticalStretch>
+											<Group>Vertical</Group>
+											<Representation>StrongSeparation</Representation>
+											<ExtendedTooltip name="ГруппаКоллекцияРазмерыВысотаРасширеннаяПодсказка" id="1195"/>
 											<ChildItems>
-												<UsualGroup name="ГруппаКоллекцияСтолешница" id="1249">
-													<Title>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>Столешница</v8:content>
-														</v8:item>
-													</Title>
-													<ToolTip>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>Группа коллекция столешница</v8:content>
-														</v8:item>
-													</ToolTip>
-													<Width>30</Width>
-													<Height>3</Height>
-													<HorizontalStretch>false</HorizontalStretch>
-													<VerticalStretch>false</VerticalStretch>
-													<Representation>StrongSeparation</Representation>
-													<ExtendedTooltip name="ГруппаКоллекцияСтолешницаРасширеннаяПодсказка" id="1250"/>
+												<UsualGroup name="Группа7" id="1297">
+													<Group>Horizontal</Group>
+													<Representation>None</Representation>
+													<ShowTitle>false</ShowTitle>
+													<ExtendedTooltip name="Группа7РасширеннаяПодсказка" id="1298"/>
 													<ChildItems>
-														<InputField name="НастройкиКоллекцииСтолешница" id="1251">
-															<DataPath>Items.НастройкиКоллекции.CurrentData.Столешница</DataPath>
+														<UsualGroup name="ГруппаКоллекцияРазмеры2" id="1192">
 															<Title>
 																<v8:item>
 																	<v8:lang>ru</v8:lang>
-																	<v8:content>Номенклатура</v8:content>
+																	<v8:content>Группа коллекция размеры2</v8:content>
 																</v8:item>
 															</Title>
-															<OpenButton>false</OpenButton>
-															<ContextMenu name="НастройкиКоллекцииСтолешницаКонтекстноеМеню" id="1252"/>
-															<ExtendedTooltip name="НастройкиКоллекцииСтолешницаРасширеннаяПодсказка" id="1253"/>
-															<Events>
-																<Event name="StartChoice">НастройкиКоллекцииСтолешницаНачалоВыбора</Event>
-															</Events>
-														</InputField>
-														<InputField name="НастройкиКоллекцииКромкаСтолешница" id="1254">
-															<DataPath>Items.НастройкиКоллекции.CurrentData.КромкаСтолешница</DataPath>
-															<Title>
+															<ToolTip>
 																<v8:item>
 																	<v8:lang>ru</v8:lang>
-																	<v8:content>Кромка</v8:content>
+																	<v8:content>Группа коллекция размеры2</v8:content>
+																</v8:item>
+															</ToolTip>
+															<Representation>None</Representation>
+															<ShowTitle>false</ShowTitle>
+															<ExtendedTooltip name="ГруппаКоллекцияРазмеры2РасширеннаяПодсказка" id="1193"/>
+															<ChildItems>
+																<LabelDecoration name="Декорация7" id="1246">
+																	<Width>1</Width>
+																	<HorizontalStretch>false</HorizontalStretch>
+																	<ContextMenu name="Декорация7КонтекстноеМеню" id="1247"/>
+																	<ExtendedTooltip name="Декорация7РасширеннаяПодсказка" id="1248"/>
+																</LabelDecoration>
+																<InputField name="НастройкиКоллекцииОбщаяВысота" id="1186">
+																	<DataPath>Items.НастройкиКоллекции.CurrentData.ОбщаяВысота</DataPath>
+																	<Title>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>a) Общая</v8:content>
+																		</v8:item>
+																	</Title>
+																	<Width>6</Width>
+																	<HorizontalStretch>false</HorizontalStretch>
+																	<ContextMenu name="НастройкиКоллекцииОбщаяВысотаКонтекстноеМеню" id="1187"/>
+																	<ExtendedTooltip name="НастройкиКоллекцииОбщаяВысотаРасширеннаяПодсказка" id="1188"/>
+																</InputField>
+																<InputField name="НастройкиКоллекцииВысотаКоробовВерх" id="1180">
+																	<DataPath>Items.НастройкиКоллекции.CurrentData.ВысотаКоробовВерх</DataPath>
+																	<Title>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>b) Верх</v8:content>
+																		</v8:item>
+																	</Title>
+																	<Width>6</Width>
+																	<HorizontalStretch>false</HorizontalStretch>
+																	<ContextMenu name="НастройкиКоллекцииВысотаКоробовВерхКонтекстноеМеню" id="1181"/>
+																	<ExtendedTooltip name="НастройкиКоллекцииВысотаКоробовВерхРасширеннаяПодсказка" id="1182"/>
+																</InputField>
+																<InputField name="НастройкиКоллекцииВысотаКоробовНиз" id="1183">
+																	<DataPath>Items.НастройкиКоллекции.CurrentData.ВысотаКоробовНиз</DataPath>
+																	<Title>
+																		<v8:item>
+																			<v8:lang>ru</v8:lang>
+																			<v8:content>c) Низ</v8:content>
+																		</v8:item>
+																	</Title>
+																	<Width>6</Width>
+																	<HorizontalStretch>false</HorizontalStretch>
+																	<ContextMenu name="НастройкиКоллекцииВысотаКоробовНизКонтекстноеМеню" id="1184"/>
+																	<ExtendedTooltip name="НастройкиКоллекцииВысотаКоробовНизРасширеннаяПодсказка" id="1185"/>
+																</InputField>
+															</ChildItems>
+														</UsualGroup>
+														<PictureDecoration name="ДекорацияКоллекцияРазмеры" id="1196">
+															<Height>5</Height>
+															<HorizontalStretch>false</HorizontalStretch>
+															<VerticalStretch>false</VerticalStretch>
+															<Title formatted="false">
+																<v8:item>
+																	<v8:lang>ru</v8:lang>
+																	<v8:content>Декорация коллекция размеры</v8:content>
 																</v8:item>
 															</Title>
-															<OpenButton>false</OpenButton>
-															<ContextMenu name="НастройкиКоллекцииКромкаСтолешницаКонтекстноеМеню" id="1255"/>
-															<ExtendedTooltip name="НастройкиКоллекцииКромкаСтолешницаРасширеннаяПодсказка" id="1256"/>
-															<Events>
-																<Event name="StartChoice">НастройкиКоллекцииКромкаСтолешницаНачалоВыбора</Event>
-															</Events>
-														</InputField>
+															<Picture>
+																<xr:Ref>CommonPicture.КоллекцияРазмеры</xr:Ref>
+																<xr:LoadTransparent>true</xr:LoadTransparent>
+															</Picture>
+															<FileDragMode>AsFile</FileDragMode>
+															<ContextMenu name="ДекорацияКоллекцияРазмерыКонтекстноеМеню" id="1197"/>
+															<ExtendedTooltip name="ДекорацияКоллекцияРазмерыРасширеннаяПодсказка" id="1198"/>
+														</PictureDecoration>
 													</ChildItems>
 												</UsualGroup>
-												<UsualGroup name="ГруппаКоллекцияПристенок" id="1302">
-													<Title>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>Пристенок</v8:content>
-														</v8:item>
-													</Title>
-													<ToolTip>
-														<v8:item>
-															<v8:lang>ru</v8:lang>
-															<v8:content>Группа коллекция пристенок</v8:content>
-														</v8:item>
-													</ToolTip>
-													<Height>3</Height>
-													<HorizontalStretch>true</HorizontalStretch>
+												<Table name="НастройкиКоллекции" id="1158">
+													<Representation>List</Representation>
+													<CommandBarLocation>None</CommandBarLocation>
+													<ReadOnly>true</ReadOnly>
+													<Height>1</Height>
+													<AutoMaxHeight>false</AutoMaxHeight>
+													<MaxHeight>1</MaxHeight>
+													<HeightInTableRows>1</HeightInTableRows>
+													<HorizontalScrollBar>DontUse</HorizontalScrollBar>
+													<VerticalScrollBar>DontUse</VerticalScrollBar>
+													<HorizontalLines>false</HorizontalLines>
+													<VerticalLines>false</VerticalLines>
+													<AutoInsertNewRow>true</AutoInsertNewRow>
 													<VerticalStretch>false</VerticalStretch>
-													<Group>Vertical</Group>
-													<Representation>StrongSeparation</Representation>
-													<ExtendedTooltip name="ГруппаКоллекцияПристенокРасширеннаяПодсказка" id="1303"/>
+													<EnableStartDrag>true</EnableStartDrag>
+													<EnableDrag>true</EnableDrag>
+													<FileDragMode>AsFile</FileDragMode>
+													<DataPath>Объект.НастройкиКоллекции</DataPath>
+													<RowFilter xsi:nil="true"/>
+													<ContextMenu name="НастройкиКоллекцииКонтекстноеМеню" id="1159"/>
+													<AutoCommandBar name="НастройкиКоллекцииКоманднаяПанель" id="1160">
+														<Autofill>false</Autofill>
+													</AutoCommandBar>
+													<ExtendedTooltip name="НастройкиКоллекцииРасширеннаяПодсказка" id="1161"/>
+													<SearchStringAddition name="НастройкиКоллекцииСтрокаПоиска" id="1162">
+														<AdditionSource>
+															<Item>НастройкиКоллекции</Item>
+															<Type>SearchStringRepresentation</Type>
+														</AdditionSource>
+														<ContextMenu name="НастройкиКоллекцииСтрокаПоискаКонтекстноеМеню" id="1163"/>
+														<ExtendedTooltip name="НастройкиКоллекцииСтрокаПоискаРасширеннаяПодсказка" id="1164"/>
+													</SearchStringAddition>
+													<ViewStatusAddition name="НастройкиКоллекцииСостояниеПросмотра" id="1165">
+														<AdditionSource>
+															<Item>НастройкиКоллекции</Item>
+															<Type>ViewStatusRepresentation</Type>
+														</AdditionSource>
+														<ContextMenu name="НастройкиКоллекцииСостояниеПросмотраКонтекстноеМеню" id="1166"/>
+														<ExtendedTooltip name="НастройкиКоллекцииСостояниеПросмотраРасширеннаяПодсказка" id="1167"/>
+													</ViewStatusAddition>
+													<SearchControlAddition name="НастройкиКоллекцииУправлениеПоиском" id="1168">
+														<AdditionSource>
+															<Item>НастройкиКоллекции</Item>
+															<Type>SearchControl</Type>
+														</AdditionSource>
+														<ContextMenu name="НастройкиКоллекцииУправлениеПоискомКонтекстноеМеню" id="1169"/>
+														<ExtendedTooltip name="НастройкиКоллекцииУправлениеПоискомРасширеннаяПодсказка" id="1170"/>
+													</SearchControlAddition>
 													<ChildItems>
-														<InputField name="НастройкиКоллекцииПристенок" id="1299">
-															<DataPath>Items.НастройкиКоллекции.CurrentData.Пристенок</DataPath>
-															<Title>
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>Номенклатура</v8:content>
-																</v8:item>
-															</Title>
-															<OpenButton>false</OpenButton>
-															<ContextMenu name="НастройкиКоллекцииПристенокКонтекстноеМеню" id="1300"/>
-															<ExtendedTooltip name="НастройкиКоллекцииПристенокРасширеннаяПодсказка" id="1301"/>
-															<Events>
-																<Event name="StartChoice">НастройкиКоллекцииПристенокНачалоВыбора</Event>
-															</Events>
-														</InputField>
-														<InputField name="НастройкиКоллекцииКромкаПристенок" id="1304">
-															<DataPath>Items.НастройкиКоллекции.CurrentData.КромкаПристенок</DataPath>
-															<Title>
-																<v8:item>
-																	<v8:lang>ru</v8:lang>
-																	<v8:content>Кромка</v8:content>
-																</v8:item>
-															</Title>
-															<OpenButton>false</OpenButton>
-															<ContextMenu name="НастройкиКоллекцииКромкаПристенокКонтекстноеМеню" id="1305"/>
-															<ExtendedTooltip name="НастройкиКоллекцииКромкаПристенокРасширеннаяПодсказка" id="1306"/>
-															<Events>
-																<Event name="StartChoice">НастройкиКоллекцииКромкаПристенокНачалоВыбора</Event>
-															</Events>
+														<InputField name="НастройкиКоллекцииКоллекция" id="1189">
+															<DataPath>Объект.НастройкиКоллекции.Коллекция</DataPath>
+															<Enabled>false</Enabled>
+															<ReadOnly>true</ReadOnly>
+															<TitleLocation>None</TitleLocation>
+															<EditMode>EnterOnInput</EditMode>
+															<ShowInHeader>false</ShowInHeader>
+															<ShowInFooter>false</ShowInFooter>
+															<ContextMenu name="НастройкиКоллекцииКоллекцияКонтекстноеМеню" id="1190"/>
+															<ExtendedTooltip name="НастройкиКоллекцииКоллекцияРасширеннаяПодсказка" id="1191"/>
 														</InputField>
 													</ChildItems>
-												</UsualGroup>
+												</Table>
 											</ChildItems>
 										</UsualGroup>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="ГруппаКоллекцияСтолешница" id="1249">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Столешница</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа коллекция столешница</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Height>4</Height>
+									<VerticalStretch>false</VerticalStretch>
+									<Representation>StrongSeparation</Representation>
+									<ExtendedTooltip name="ГруппаКоллекцияСтолешницаРасширеннаяПодсказка" id="1250"/>
+									<ChildItems>
+										<InputField name="НастройкиКоллекцииСтолешница" id="1251">
+											<DataPath>Items.НастройкиКоллекции.CurrentData.Столешница</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Номенклатура</v8:content>
+												</v8:item>
+											</Title>
+											<OpenButton>false</OpenButton>
+											<ContextMenu name="НастройкиКоллекцииСтолешницаКонтекстноеМеню" id="1252"/>
+											<ExtendedTooltip name="НастройкиКоллекцииСтолешницаРасширеннаяПодсказка" id="1253"/>
+											<Events>
+												<Event name="StartChoice">НастройкиКоллекцииСтолешницаНачалоВыбора</Event>
+											</Events>
+										</InputField>
+										<InputField name="НастройкиКоллекцииКромкаСтолешница" id="1254">
+											<DataPath>Items.НастройкиКоллекции.CurrentData.КромкаСтолешница</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Кромка</v8:content>
+												</v8:item>
+											</Title>
+											<OpenButton>false</OpenButton>
+											<ContextMenu name="НастройкиКоллекцииКромкаСтолешницаКонтекстноеМеню" id="1255"/>
+											<ExtendedTooltip name="НастройкиКоллекцииКромкаСтолешницаРасширеннаяПодсказка" id="1256"/>
+											<Events>
+												<Event name="StartChoice">НастройкиКоллекцииКромкаСтолешницаНачалоВыбора</Event>
+											</Events>
+										</InputField>
+									</ChildItems>
+								</UsualGroup>
+								<UsualGroup name="ГруппаКоллекцияПристенок" id="1302">
+									<Title>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Пристенок</v8:content>
+										</v8:item>
+									</Title>
+									<ToolTip>
+										<v8:item>
+											<v8:lang>ru</v8:lang>
+											<v8:content>Группа коллекция пристенок</v8:content>
+										</v8:item>
+									</ToolTip>
+									<Height>4</Height>
+									<VerticalStretch>false</VerticalStretch>
+									<Group>Vertical</Group>
+									<Representation>StrongSeparation</Representation>
+									<ExtendedTooltip name="ГруппаКоллекцияПристенокРасширеннаяПодсказка" id="1303"/>
+									<ChildItems>
+										<InputField name="НастройкиКоллекцииПристенок" id="1299">
+											<DataPath>Items.НастройкиКоллекции.CurrentData.Пристенок</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Номенклатура</v8:content>
+												</v8:item>
+											</Title>
+											<OpenButton>false</OpenButton>
+											<ContextMenu name="НастройкиКоллекцииПристенокКонтекстноеМеню" id="1300"/>
+											<ExtendedTooltip name="НастройкиКоллекцииПристенокРасширеннаяПодсказка" id="1301"/>
+											<Events>
+												<Event name="StartChoice">НастройкиКоллекцииПристенокНачалоВыбора</Event>
+											</Events>
+										</InputField>
+										<InputField name="НастройкиКоллекцииКромкаПристенок" id="1304">
+											<DataPath>Items.НастройкиКоллекции.CurrentData.КромкаПристенок</DataPath>
+											<Title>
+												<v8:item>
+													<v8:lang>ru</v8:lang>
+													<v8:content>Кромка</v8:content>
+												</v8:item>
+											</Title>
+											<OpenButton>false</OpenButton>
+											<ContextMenu name="НастройкиКоллекцииКромкаПристенокКонтекстноеМеню" id="1305"/>
+											<ExtendedTooltip name="НастройкиКоллекцииКромкаПристенокРасширеннаяПодсказка" id="1306"/>
+											<Events>
+												<Event name="StartChoice">НастройкиКоллекцииКромкаПристенокНачалоВыбора</Event>
+											</Events>
+										</InputField>
 									</ChildItems>
 								</UsualGroup>
 							</ChildItems>
@@ -2722,7 +2684,6 @@
 									<ExtendedTooltip name="СписокНоменклатурыКоличествоТребуетсяРасширеннаяПодсказка" id="943"/>
 								</InputField>
 								<InputField name="СписокНоменклатурыЕдиницаИзмерения" id="382">
-									<DataPath>1/0:970afd21-034f-4da9-92e4-00318ece3ca6/0:c8222e5c-9b0a-4206-9531-11dab259e19f</DataPath>
 									<Title>
 										<v8:item>
 											<v8:lang>ru</v8:lang>
