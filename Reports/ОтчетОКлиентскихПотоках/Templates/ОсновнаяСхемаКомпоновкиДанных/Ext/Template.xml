@@ -257,26 +257,6 @@
 	<dataSet xsi:type="DataSetQuery">
 		<name>Обращения</name>
 		<field xsi:type="DataSetFieldField">
-			<dataPath>Разрез</dataPath>
-			<field>Разрез</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Разрез</v8:content>
-				</v8:item>
-			</title>
-		</field>
-		<field xsi:type="DataSetFieldField">
-			<dataPath>Вид</dataPath>
-			<field>Вид</field>
-			<title xsi:type="v8:LocalStringType">
-				<v8:item>
-					<v8:lang>ru</v8:lang>
-					<v8:content>Вид</v8:content>
-				</v8:item>
-			</title>
-		</field>
-		<field xsi:type="DataSetFieldField">
 			<dataPath>Регистратор4</dataPath>
 			<field>Регистратор4</field>
 			<title xsi:type="v8:LocalStringType">
@@ -306,28 +286,22 @@
 				</v8:item>
 			</title>
 		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Вид4</dataPath>
+			<field>Вид4</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид4</v8:content>
+				</v8:item>
+			</title>
+		</field>
 		<dataSource>ИсточникДанных1</dataSource>
 		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
 	Обращение.Ссылка КАК Количество4,
 	Обращение.Ссылка КАК Регистратор4,
-	"Вид обращения" КАК Разрез,
-	Обращение.ВидОбращения КАК Вид,
+	Обращение.ВидОбращения КАК Вид4,
 	Обращение.Подразделение КАК Подразделение4
-ИЗ
-	Документ.Обращение КАК Обращение
-ГДЕ
-	Обращение.Подразделение = &amp;Подразделение
-{ГДЕ
-	(Обращение.Дата МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода)}
-
-ОБЪЕДИНИТЬ ВСЕ
-
-ВЫБРАТЬ
-	Обращение.Ссылка,
-	Обращение.Ссылка,
-	"Откуда узнали",
-	Обращение.ОткудаУзнали,
-	Обращение.Подразделение
 ИЗ
 	Документ.Обращение КАК Обращение
 ГДЕ
@@ -592,6 +566,61 @@
 УПОРЯДОЧИТЬ ПО
 	ДоговорКоличество УБЫВ</query>
 	</dataSet>
+	<dataSet xsi:type="DataSetQuery">
+		<name>ОткудаУзнали</name>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Вид6</dataPath>
+			<field>Вид6</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Вид6</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Количество6</dataPath>
+			<field>Количество6</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Количество6</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Подразделение6</dataPath>
+			<field>Подразделение6</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Подразделение6</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<field xsi:type="DataSetFieldField">
+			<dataPath>Регистратор6</dataPath>
+			<field>Регистратор6</field>
+			<title xsi:type="v8:LocalStringType">
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Регистратор6</v8:content>
+				</v8:item>
+			</title>
+		</field>
+		<dataSource>ИсточникДанных1</dataSource>
+		<query>ВЫБРАТЬ РАЗРЕШЕННЫЕ
+	Обращение.Ссылка КАК Количество6,
+	Обращение.Ссылка КАК Регистратор6,
+	Обращение.ОткудаУзнали КАК Вид6,
+	Обращение.Подразделение КАК Подразделение6
+ИЗ
+	Документ.Обращение КАК Обращение
+ГДЕ
+	Обращение.Подразделение = &amp;Подразделение
+{ГДЕ
+	(Обращение.Дата МЕЖДУ &amp;НачалоПериода И &amp;КонецПериода)}</query>
+	</dataSet>
 	<totalField>
 		<dataPath>Количество2</dataPath>
 		<expression>Количество(Различные Количество2)</expression>
@@ -623,6 +652,10 @@
 	<totalField>
 		<dataPath>ДоговорКоличество</dataPath>
 		<expression>Количество(ДоговорКоличество)</expression>
+	</totalField>
+	<totalField>
+		<dataPath>Количество6</dataPath>
+		<expression>Количество(Количество6)</expression>
 	</totalField>
 	<parameter>
 		<name>КонецПериода</name>
@@ -1135,7 +1168,7 @@
 				<dcsset:row>
 					<dcsset:groupItems>
 						<dcsset:item xsi:type="dcsset:GroupItemField">
-							<dcsset:field>Разрез</dcsset:field>
+							<dcsset:field>Вид4</dcsset:field>
 							<dcsset:groupType>Items</dcsset:groupType>
 							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
@@ -1151,7 +1184,7 @@
 					<dcsset:item>
 						<dcsset:groupItems>
 							<dcsset:item xsi:type="dcsset:GroupItemField">
-								<dcsset:field>Вид</dcsset:field>
+								<dcsset:field>Регистратор4</dcsset:field>
 								<dcsset:groupType>Items</dcsset:groupType>
 								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
 								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
@@ -1162,33 +1195,16 @@
 							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
 						</dcsset:order>
 						<dcsset:selection>
-							<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>Регистратор4</dcsset:field>
+								<dcsset:lwsTitle>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Обращение</v8:content>
+									</v8:item>
+								</dcsset:lwsTitle>
+							</dcsset:item>
 						</dcsset:selection>
-						<dcsset:item>
-							<dcsset:groupItems>
-								<dcsset:item xsi:type="dcsset:GroupItemField">
-									<dcsset:field>Регистратор4</dcsset:field>
-									<dcsset:groupType>Items</dcsset:groupType>
-									<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
-									<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
-									<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
-								</dcsset:item>
-							</dcsset:groupItems>
-							<dcsset:order>
-								<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
-							</dcsset:order>
-							<dcsset:selection>
-								<dcsset:item xsi:type="dcsset:SelectedItemField">
-									<dcsset:field>Регистратор4</dcsset:field>
-									<dcsset:lwsTitle>
-										<v8:item>
-											<v8:lang>ru</v8:lang>
-											<v8:content>Обращение</v8:content>
-										</v8:item>
-									</dcsset:lwsTitle>
-								</dcsset:item>
-							</dcsset:selection>
-						</dcsset:item>
 					</dcsset:item>
 				</dcsset:row>
 				<dcsset:selection>
@@ -1213,6 +1229,101 @@
 							<v8:item>
 								<v8:lang>ru</v8:lang>
 								<v8:content>Обращения</v8:content>
+							</v8:item>
+						</dcscor:value>
+					</dcscor:item>
+				</dcsset:outputParameters>
+			</dcsset:item>
+			<dcsset:item xsi:type="dcsset:StructureItemTable">
+				<dcsset:column>
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Подразделение6</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemField">
+							<dcsset:field>Подразделение6</dcsset:field>
+							<dcsset:lwsTitle>
+								<v8:item>
+									<v8:lang>ru</v8:lang>
+									<v8:content>Подразделение</v8:content>
+								</v8:item>
+							</dcsset:lwsTitle>
+						</dcsset:item>
+					</dcsset:selection>
+				</dcsset:column>
+				<dcsset:row>
+					<dcsset:groupItems>
+						<dcsset:item xsi:type="dcsset:GroupItemField">
+							<dcsset:field>Вид6</dcsset:field>
+							<dcsset:groupType>Items</dcsset:groupType>
+							<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+							<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+							<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+						</dcsset:item>
+					</dcsset:groupItems>
+					<dcsset:order>
+						<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+					</dcsset:order>
+					<dcsset:selection>
+						<dcsset:item xsi:type="dcsset:SelectedItemAuto"/>
+					</dcsset:selection>
+					<dcsset:item>
+						<dcsset:groupItems>
+							<dcsset:item xsi:type="dcsset:GroupItemField">
+								<dcsset:field>Регистратор6</dcsset:field>
+								<dcsset:groupType>Items</dcsset:groupType>
+								<dcsset:periodAdditionType>None</dcsset:periodAdditionType>
+								<dcsset:periodAdditionBegin xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionBegin>
+								<dcsset:periodAdditionEnd xsi:type="xs:dateTime">0001-01-01T00:00:00</dcsset:periodAdditionEnd>
+							</dcsset:item>
+						</dcsset:groupItems>
+						<dcsset:order>
+							<dcsset:item xsi:type="dcsset:OrderItemAuto"/>
+						</dcsset:order>
+						<dcsset:selection>
+							<dcsset:item xsi:type="dcsset:SelectedItemField">
+								<dcsset:field>Регистратор6</dcsset:field>
+								<dcsset:lwsTitle>
+									<v8:item>
+										<v8:lang>ru</v8:lang>
+										<v8:content>Обращение</v8:content>
+									</v8:item>
+								</dcsset:lwsTitle>
+							</dcsset:item>
+						</dcsset:selection>
+					</dcsset:item>
+				</dcsset:row>
+				<dcsset:selection>
+					<dcsset:item xsi:type="dcsset:SelectedItemField">
+						<dcsset:field>Количество6</dcsset:field>
+						<dcsset:lwsTitle>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Количество</v8:content>
+							</v8:item>
+						</dcsset:lwsTitle>
+					</dcsset:item>
+				</dcsset:selection>
+				<dcsset:outputParameters>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>ГоризонтальноеРасположениеОбщихИтогов</dcscor:parameter>
+						<dcscor:value xsi:type="dcscor:DataCompositionTotalPlacement">None</dcscor:value>
+					</dcscor:item>
+					<dcscor:item xsi:type="dcsset:SettingsParameterValue">
+						<dcscor:parameter>Заголовок</dcscor:parameter>
+						<dcscor:value xsi:type="v8:LocalStringType">
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Откуда узнали</v8:content>
 							</v8:item>
 						</dcscor:value>
 					</dcscor:item>
